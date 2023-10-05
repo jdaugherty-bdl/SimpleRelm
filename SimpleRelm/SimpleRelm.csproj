@@ -53,24 +53,30 @@
     <Compile Include="Attributes\RelmDto.cs" />
     <Compile Include="Attributes\RelmTable.cs" />
     <Compile Include="Interfaces\IRelmSetBase.cs" />
-    <Compile Include="IRelmContext.cs" />
-    <Compile Include="IRelmModel.cs" />
-    <Compile Include="IRelmResolver.cs" />
-    <Compile Include="IRelmSet.cs" />
+    <Compile Include="Interfaces\IRelmContext.cs" />
+    <Compile Include="Interfaces\IRelmModel.cs" />
+    <Compile Include="Interfaces\IRelmResolver.cs" />
+    <Compile Include="Interfaces\IRelmSet.cs" />
     <Compile Include="Models\RelmModel.cs" />
     <Compile Include="Options\RelmContextOptionsBuilder.cs" />
     <Compile Include="Persistence\BulkTableWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\RelmContext.cs" />
+    <Compile Include="RelmHelper.cs" />
     <Compile Include="RelmInternal\Extensions\ListExtensions.cs" />
+    <Compile Include="RelmInternal\Extensions\StatementDecorationsExtension.cs" />
     <Compile Include="RelmInternal\Extensions\UnderscoreNamesHelper.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\DatabaseWorkHelper.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\ObjectResultsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\Persistence\DataOutputOperations.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\RefinedResultsHelper.cs" />
+    <Compile Include="RelmInternal\Helpers\DataTransfer\RowIdentityHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\ConnectionHelper.cs" />
+    <Compile Include="RelmInternal\Helpers\Operations\TableOperationsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\CoreUtilities.cs" />
     <Compile Include="RelmInternal\Models\DALPropertyType.cs" />
     <Compile Include="RelmInternal\Models\DALTableRowDescriptor.cs" />
+    <Compile Include="RelmInternal\Models\WritableTableDefinition.cs" />
     <Compile Include="RelmInternal\Resolvers\DefaultRelmResolver.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace SimpleRelm
+namespace SimpleRelm.Interfaces
 {
     public interface IRelmModel
     {

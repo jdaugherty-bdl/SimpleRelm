@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleRelm
+namespace SimpleRelm.Interfaces
 {
     public interface IRelmSet<T> : ICollection<T>, IRelmSetBase where T : IRelmModel, new()
     {
