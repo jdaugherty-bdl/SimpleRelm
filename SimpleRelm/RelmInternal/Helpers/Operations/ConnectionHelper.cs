@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using SimpleRelm.Interfaces;
 using SimpleRelm.RelmInternal.Resolvers;
 using System;
 using System.Collections.Generic;
@@ -68,7 +69,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         /// <returns>A connection string builder that can be used to establish connections</returns>
         internal static MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionType(Enum ConfigConnectionString)
         {
-            return DALResolver?.GetConnectionBuilderFromConnectionType(ConfigConnectionString);
+            return DALResolver?.GetConnectionBuilder(ConfigConnectionString);
         }
 
         internal static MySqlConnection GetConnectionFromString(Enum ConfigConnectionString, bool AllowUserVariables = false)

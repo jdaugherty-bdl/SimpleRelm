@@ -13,25 +13,61 @@ namespace SimpleRelm.Tests.RelmInternal.Resolvers
     {
         enum ConnectionType
         {
-            SimpleRelmMySql
+            InvalidConnectionString,
+            SimpleRelmMySql,
+            SimpleRelmSqlExpress,
+            SimpleRelmSqlServerCe
         }
 
         [Fact]
-        public void GetConnectionBuilderFromConnectionType_InvalidConnection_ShouldThrowException()
+        public void GetConnectionBuilder_ByString_ThrowsException()
         {
-            // Arrange, Act & Assert
-            Assert.Throws<NullReferenceException>(() => new MySqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["INVALID"].ConnectionString));
+            // Arrange
+            var resolver = new DefaultRelmResolver();
+
+            // Act
+            var ex = Assert.Throws<ArgumentException>(() => resolver.GetConnectionBuilder("INVALID CONNECTION STRING"));
+
+            // Assert
+            Assert.Equal("Format of the initialization string does not conform to specification starting at index 0.", ex.Message);
         }
 
         [Fact]
-        public void GetConnectionBuilderFromConnectionType_MySql()
+        public void GetConnectionBuilder_ByType_ThrowsException()
+        {
+            // Arrange
+            var resolver = new DefaultRelmResolver();
+
+            // Act
+            var ex = Assert.Throws<ArgumentException>(() => resolver.GetConnectionBuilder(ConnectionType.InvalidConnectionString));
+
+            // Assert
+            Assert.Equal("Format of the initialization string does not conform to specification starting at index 0.", ex.Message);
+        }
+
+        [Fact]
+        public void GetConnectionBuilder_ByString_MySql()
+        {
+            // Arrange
+            var resolver = new DefaultRelmResolver();
+            var expected = new MySqlConnectionStringBuilder("server=localhost;database=simple_relm;uid=simplerelmuser;pwd=simplerelmpassword");
+
+            // Act
+            var actual = resolver.GetConnectionBuilder("server=localhost;database=simple_relm;uid=simplerelmuser;pwd=simplerelmpassword");
+
+            // Assert
+            Assert.Equal(expected.ConnectionString, actual.ConnectionString);
+        }
+
+        [Fact]
+        public void GetConnectionBuilder_ByType_MySql()
         {
             // Arrange
             var resolver = new DefaultRelmResolver();
             var expected = new MySqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["SimpleRelmMySql"].ConnectionString);
 
             // Act
-            var actual = resolver.GetConnectionBuilderFromConnectionType(ConnectionType.SimpleRelmMySql);
+            var actual = resolver.GetConnectionBuilder(ConnectionType.SimpleRelmMySql);
 
             // Assert
             Assert.Equal(expected.ConnectionString, actual.ConnectionString);

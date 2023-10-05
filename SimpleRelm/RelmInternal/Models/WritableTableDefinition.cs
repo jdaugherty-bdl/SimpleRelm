@@ -1,4 +1,7 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MoreLinq;
+using MySql.Data.MySqlClient;
+using SimpleRelm.Attributes;
+using SimpleRelm.Models;
 using SimpleRelm.RelmInternal.Extensions;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
@@ -8,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static SimpleRelm.GlobalEnums;
 
 namespace SimpleRelm.RelmInternal.Models
 {
@@ -30,13 +34,13 @@ namespace SimpleRelm.RelmInternal.Models
             }
         }
         public IEnumerable<DALPropertyType> TableProperties { get; set; }
-        public Dictionary<TriggerTypes, DALTrigger<T>> Triggers { get; set; }
+        public Dictionary<TriggerTypes, RelmTrigger<T>> Triggers { get; set; }
 
         internal WritableTableDefinition()
         {
             TableType = typeof(T);
             TableName = TableType
-                .GetCustomAttribute<DALTable>()?.TableName?.MySqlObjectQuote()
+                .GetCustomAttribute<RelmTable>()?.TableName?.MySqlObjectQuote()
                 ??
                 throw new CustomAttributeFormatException(CoreUtilities.NoDalTableAttributeError);
 
@@ -44,7 +48,7 @@ namespace SimpleRelm.RelmInternal.Models
 
             var resolvableProperties = TableType
                 .GetProperties()
-                .Where(x => x.GetCustomAttribute<DALResolvable>() != null);
+                .Where(x => x.GetCustomAttribute<RelmColumn>() != null);
 
             if (resolvableProperties.Count() == 0)
                 throw new CustomAttributeFormatException(CoreUtilities.NoDalPropertyAttributeError);
@@ -57,13 +61,13 @@ namespace SimpleRelm.RelmInternal.Models
                     ColumnName = x.Key.MySqlObjectQuote(),
                     PropertyName = x.Value.Item1,
                     PropertyTypeInformation = x.Value.Item2,
-                    ResolvableSettings = x.Value.Item2.GetCustomAttribute<DALResolvable>()
+                    ResolvableSettings = x.Value.Item2.GetCustomAttribute<RelmColumn>()
                 });
         }
 
         public bool ClearAllTriggers()
         {
-            Triggers = new Dictionary<TriggerTypes, DALTrigger<T>>();
+            Triggers = new Dictionary<TriggerTypes, RelmTrigger<T>>();
 
             return true;
         }
@@ -80,12 +84,12 @@ namespace SimpleRelm.RelmInternal.Models
 
         private WritableTableDefinition<T> AppendTriggerData(TriggerTypes TriggerType, string TriggerBody, bool AppendTriggerBody = true)
         {
-            var trigger = new DALTrigger<T>(TriggerType, TriggerBody)
+            var trigger = new RelmTrigger<T>(TriggerType, TriggerBody)
             {
                 DatabaseName = this.DatabaseName
             };
 
-            Triggers = Triggers ?? new Dictionary<TriggerTypes, DALTrigger<T>>();
+            Triggers = Triggers ?? new Dictionary<TriggerTypes, RelmTrigger<T>>();
 
             if (Triggers.ContainsKey(TriggerType))
             {

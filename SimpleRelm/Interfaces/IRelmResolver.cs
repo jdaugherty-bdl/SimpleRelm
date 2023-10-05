@@ -9,7 +9,7 @@ namespace SimpleRelm.Interfaces
 {
     public interface IRelmResolver
     {
-        MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionType(Enum ConfigConnectionString);
-        MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionString(string ConfigConnectionString);
+        MySqlConnectionStringBuilder GetConnectionBuilder(Enum ConnectionType);
+        MySqlConnectionStringBuilder GetConnectionBuilder(string ConnectionString);
     }
 }

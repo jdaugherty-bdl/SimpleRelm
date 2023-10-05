@@ -20,7 +20,7 @@ namespace SimpleRelm.RelmInternal.Models
         public Type PropertyType { get; private set; }
         public int DefaultColumnSize { get; private set; }
 
-        public RelmColumn ColumnSettings { get; set; }
+        public RelmColumn ResolvableSettings { get; set; }
 
         // items first in list take precedence when converting from one tuple item to another - this list may look like it has duplicates, but it doesn't
         private static readonly IEnumerable<Tuple<string, MySqlDbType, Type, int>> MySqlTypeConverter = new List<Tuple<string, MySqlDbType, Type, int>>

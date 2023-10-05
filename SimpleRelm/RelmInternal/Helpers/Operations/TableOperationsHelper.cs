@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using SimpleRelm.Attributes;
+using SimpleRelm.Interfaces;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
+using SimpleRelm.RelmInternal.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static SimpleRelm.GlobalEnums;
 
 namespace SimpleRelm.RelmInternal.Helpers.Operations
 {
@@ -79,7 +82,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         {
             var tableDef = new WritableTableDefinition<T>
             {
-                DatabaseName = ExistingConnection?.Database ?? DALHelper.GetConnectionBuilderFromConnectionType(ConnectionStringType)?.Database
+                DatabaseName = ExistingConnection?.Database ?? RelmHelper.GetConnectionBuilderFromConnectionType(ConnectionStringType)?.Database
             };
 
             if (AddStandardTriggers)
@@ -105,7 +108,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
             var createdTable = GetDalModelTableObject<T>(ExistingConnection: ExistingConnection);
 
-            var rowsUpdated = DALHelper.DoDatabaseWork<int>(ExistingConnection, createdTable.ToString(), UseTransaction: false); //, SqlTransaction: SqlTransaction);
+            var rowsUpdated = RelmHelper.DoDatabaseWork<int>(ExistingConnection, createdTable.ToString(), UseTransaction: false); //, SqlTransaction: SqlTransaction);
 
             return true;
         }
@@ -136,14 +139,14 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             return !string.IsNullOrWhiteSpace(tableName);
         }
 
-        internal static string GetDalTable<T>() where T : DALBaseModel
+        internal static string GetDalTable<T>() where T : IRelmModel, new()
         {
             return GetDalTable(typeof(T));
         }
 
         internal static string GetDalTable(Type DalObjectType)
         {
-            return DalObjectType.GetCustomAttribute<DALTable>()?.TableName;
+            return DalObjectType.GetCustomAttribute<RelmTable>()?.TableName;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using SimpleRelm.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,13 +12,13 @@ namespace SimpleRelm.RelmInternal.Resolvers
     internal class DefaultRelmResolver : IRelmResolver
     {
         // if no other DAL Resolvers are specified in the client program, this one is used
-        public MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionType(Enum ConfigConnectionString)
+        public MySqlConnectionStringBuilder GetConnectionBuilder(Enum ConnectionType)
         {
             // converts the enum name directly to string and then looks for that in the configuration file
-            return GetConnectionBuilderFromConnectionString(ConfigurationManager.ConnectionStrings[ConfigConnectionString.ToString()].ConnectionString);
+            return GetConnectionBuilder(ConfigurationManager.ConnectionStrings[ConnectionType.ToString()].ConnectionString);
         }
 
-        public MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionString(string ConfigConnectionString)
+        public MySqlConnectionStringBuilder GetConnectionBuilder(string ConfigConnectionString)
         {
             return new MySqlConnectionStringBuilder(ConfigConnectionString);
         }

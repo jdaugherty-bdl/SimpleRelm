@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using SimpleRelm.Interfaces;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence;
 using System;
 using System.Collections.Generic;

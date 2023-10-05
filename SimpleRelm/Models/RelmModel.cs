@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using SimpleRelm.Attributes;
+using SimpleRelm.Interfaces;
 using SimpleRelm.RelmInternal.Extensions;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence;
 using System;
