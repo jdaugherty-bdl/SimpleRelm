@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.RelmInternal.Extensions
 {
-    internal static class ListExtensions
+    public static class ListExtensions
     {
         public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, Enum ConnectionStringType) where T : IRelmModel
         {

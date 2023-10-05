@@ -70,7 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\RelmContext.cs" />
     <Compile Include="RelmHelper.cs" />
-    <Compile Include="RelmInternal\Extensions\ListExtensions.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="RelmInternal\Extensions\StatementDecorationsExtension.cs" />
     <Compile Include="RelmInternal\Extensions\UnderscoreNamesHelper.cs" />
     <Compile Include="RelmInternal\GlobalEnums.cs" />
