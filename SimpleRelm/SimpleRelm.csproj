@@ -64,6 +64,7 @@
     <Compile Include="Interfaces\IRelmMember.cs" />
     <Compile Include="Interfaces\IRelmModel.cs" />
     <Compile Include="Interfaces\IRelmModelApartment.cs" />
+    <Compile Include="Interfaces\Resolvers\IRelmResolverBase.cs" />
     <Compile Include="Interfaces\Resolvers\IRelmResolver_MySQL.cs" />
     <Compile Include="Interfaces\IRelmDataSet.cs" />
     <Compile Include="Interfaces\Resolvers\IRelmResolver_ODBC.cs" />
@@ -92,6 +93,8 @@
     <Compile Include="RelmInternal\Models\DALTableRowDescriptor.cs" />
     <Compile Include="RelmInternal\Models\WritableTableDefinition.cs" />
     <Compile Include="RelmInternal\Resolvers\DefaultRelmResolver.cs" />
+    <Compile Include="RelmInternal\Resolvers\DefaultRelmResolver_MySQL.cs" />
+    <Compile Include="RelmInternal\Resolvers\DefaultRelmResolver_ODBC.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

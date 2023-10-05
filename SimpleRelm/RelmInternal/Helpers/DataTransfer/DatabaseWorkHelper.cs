@@ -23,7 +23,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         /// <summary>
         /// Convenience function to check if there's an error cached
         /// </summary>
-        internal static bool HasError => !string.IsNullOrEmpty(LastExecutionError);
+        internal static bool HasError => LastExecutionException != null;
 
         /// <summary>
         /// Execute a non-query on the database with the specified parameters without returning a value

@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleRelm.Interfaces;
+using SimpleRelm.Interfaces.Resolvers;
+using SimpleRelm.RelmInternal.Resolvers;
 
 namespace SimpleRelm
 {

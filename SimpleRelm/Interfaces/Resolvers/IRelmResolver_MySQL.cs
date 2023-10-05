@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.Interfaces.Resolvers
 {
-    public interface IRelmResolver_MySQL
+    public interface IRelmResolver_MySQL : IRelmResolverBase
     {
-        MySqlConnectionStringBuilder GetConnectionBuilder(Enum ConnectionType);
-        MySqlConnectionStringBuilder GetConnectionBuilder(string ConnectionString);
+        new MySqlConnectionStringBuilder GetConnectionBuilder(Enum ConnectionType);
+        new MySqlConnectionStringBuilder GetConnectionBuilder(string ConnectionString);
     }
 }

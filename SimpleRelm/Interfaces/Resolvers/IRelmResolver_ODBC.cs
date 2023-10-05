@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.Interfaces.Resolvers
 {
-    public interface IRelmResolver_ODBC
+    public interface IRelmResolver_ODBC : IRelmResolverBase
     {
-        OdbcConnectionStringBuilder GetConnectionBuilder(Enum ConnectionType);
-        OdbcConnectionStringBuilder GetConnectionBuilder(string ConnectionString);
+        new OdbcConnectionStringBuilder GetConnectionBuilder(Enum ConnectionType);
+        new OdbcConnectionStringBuilder GetConnectionBuilder(string ConnectionString);
     }
 }
