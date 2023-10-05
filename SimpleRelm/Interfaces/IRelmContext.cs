@@ -12,9 +12,9 @@ namespace SimpleRelm.Interfaces
     {
         RelmContextOptionsBuilder OptionsBuilder { get; }
 
-        IRelmSet<T> GetDataSetType<T>() where T : IRelmModel, new();
-        IRelmSet<T> GetDataSetType<T>(bool throwException) where T : IRelmModel, new();
-        IRelmSetBase GetDataSetType(Type dataSetType);
-        IRelmSetBase GetDataSetType(Type dataSetType, bool throwException);
+        IRelmDataSet<T> GetDataSetType<T>() where T : IRelmModel, new();
+        IRelmDataSet<T> GetDataSetType<T>(bool throwException) where T : IRelmModel, new();
+        IRelmDataSetBase GetDataSetType(Type dataSetType);
+        IRelmDataSetBase GetDataSetType(Type dataSetType, bool throwException);
     }
 }

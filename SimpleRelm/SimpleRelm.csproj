@@ -52,11 +52,11 @@
     <Compile Include="Attributes\RelmDatabase.cs" />
     <Compile Include="Attributes\RelmDto.cs" />
     <Compile Include="Attributes\RelmTable.cs" />
-    <Compile Include="Interfaces\IRelmSetBase.cs" />
+    <Compile Include="Interfaces\IRelmDataSetBase.cs" />
     <Compile Include="Interfaces\IRelmContext.cs" />
     <Compile Include="Interfaces\IRelmModel.cs" />
     <Compile Include="Interfaces\IRelmResolver.cs" />
-    <Compile Include="Interfaces\IRelmSet.cs" />
+    <Compile Include="Interfaces\IRelmDataSet.cs" />
     <Compile Include="Models\RelmModel.cs" />
     <Compile Include="Options\RelmContextOptionsBuilder.cs" />
     <Compile Include="Persistence\BulkTableWriter.cs" />

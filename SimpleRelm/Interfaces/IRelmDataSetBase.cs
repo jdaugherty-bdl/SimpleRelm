@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.Interfaces
 {
-    public interface IRelmSetBase
+    public interface IRelmDataSetBase
     {
     }
 }
