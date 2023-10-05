@@ -1,0 +1,63 @@
+﻿using MySql.Data.MySqlClient;
+using SimpleRelm.RelmInternal.Helpers.Operations;
+using SimpleRelm.RelmInternal.Helpers.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
+{
+    internal class ObjectResultsHelper
+    {
+        internal static IEnumerable<T> GetDataList<T>(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false)
+        {
+            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables))
+            {
+                return GetDataList<T>(conn, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+            }
+        }
+
+        internal static IEnumerable<T> GetDataList<T>(MySqlConnection ExistingConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
+        {
+            return RefinedResultsHelper.GetDataTable(ExistingConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: SqlTransaction)
+                .AsEnumerable()
+                .Select(x => (T)CoreUtilities.ConvertScalar<T>(x[0]));
+        }
+
+        internal static T GetDataObject<T>(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
+        {
+            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables))
+            {
+                return GetDataObject<T>(conn, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+            }
+        }
+
+        internal static T GetDataObject<T>(MySqlConnection ExistingConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null) where T : IRelmModel
+        {
+            return GetDataObjects<T>(ExistingConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: SqlTransaction)
+                .FirstOrDefault();
+        }
+
+        internal static IEnumerable<T> GetDataObjects<T>(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
+        {
+            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables))
+            {
+                return GetDataObjects<T>(conn, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+            }
+        }
+
+        internal static IEnumerable<T> GetDataObjects<T>(MySqlConnection ExistingConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null) where T : IRelmModel
+        {
+            return RefinedResultsHelper.GetDataTable(ExistingConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: SqlTransaction)
+                .AsEnumerable()
+                .Select(x => x == null
+                    ? default
+                    : (typeof(T).GetConstructors().Any(y => y.GetParameters().Length > 2)
+                        ? CoreUtilities.CreateCreatorExpression<DataRow, string, bool, bool, T>()(x, null, false, false)
+                        : CoreUtilities.CreateCreatorExpression<DataRow, string, T>()(x, null)));
+        }
+    }
+}

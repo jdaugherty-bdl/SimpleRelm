@@ -1,0 +1,40 @@
+﻿using MySql.Data.MySqlClient;
+using SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SimpleRelm.RelmInternal.Extensions
+{
+    internal static class ListExtensions
+    {
+        public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, Enum ConnectionStringType) where T : IRelmModel
+        {
+            return DataOutputOperations.BulkTableWrite<T>(ConnectionStringType, DbModelData);
+        }
+
+        public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null) where T : IRelmModel
+        {
+            return DataOutputOperations.BulkTableWrite<T>(ExistingConnection, DbModelData, SqlTransaction: SqlTransaction);
+        }
+
+        public static IEnumerable<T> FlattenTreeObject<T>(this IEnumerable<T> EnumerableList, Func<T, IEnumerable<T>> GetChildrenFunction)
+        {
+            return EnumerableList
+                .SelectMany(enumerableItem =>
+                    Enumerable
+                    .Repeat(enumerableItem, 1)
+                    .Concat(GetChildrenFunction(enumerableItem)
+                        ?.FlattenTreeObject(GetChildrenFunction)
+                        ??
+                        Enumerable.Empty<T>()));
+        }
+
+        public static IEnumerable<dynamic> GenerateDTO<T>(this IEnumerable<T> BaseObjects, IEnumerable<string> IncludeProperties = null, IEnumerable<string> ExcludeProperties = null) where T : IRelmModel
+        {
+            return BaseObjects.Select(x => x.GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties));
+        }
+    }
+}
