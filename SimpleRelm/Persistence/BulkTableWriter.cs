@@ -215,7 +215,7 @@ namespace SimpleRelm.Persistence
                                 fieldSize = int.TryParse(typeParts[1], out int sizeField) ? sizeField : -1;
                             }
 
-                            var convertedType = new DALPropertyType(fieldType);
+                            var convertedType = new DALPropertyType_MySQL(fieldType);
 
                             // we don't already have this conversion defined, throw exception
                             //if (!MySqlTypeConverter.ContainsKey(fieldType))

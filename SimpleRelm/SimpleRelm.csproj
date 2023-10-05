@@ -57,13 +57,17 @@
     <Compile Include="Attributes\RelmColumn.cs" />
     <Compile Include="Attributes\RelmDatabase.cs" />
     <Compile Include="Attributes\RelmDto.cs" />
+    <Compile Include="Attributes\RelmForeignKey.cs" />
     <Compile Include="Attributes\RelmTable.cs" />
     <Compile Include="Interfaces\IRelmDataSetBase.cs" />
     <Compile Include="Interfaces\IRelmContext.cs" />
+    <Compile Include="Interfaces\IRelmMember.cs" />
     <Compile Include="Interfaces\IRelmModel.cs" />
+    <Compile Include="Interfaces\IRelmModelApartment.cs" />
     <Compile Include="Interfaces\IRelmResolver.cs" />
     <Compile Include="Interfaces\IRelmDataSet.cs" />
     <Compile Include="Models\RelmModel.cs" />
+    <Compile Include="Models\RelmModelApartment.cs" />
     <Compile Include="Models\RelmTrigger.cs" />
     <Compile Include="Options\RelmContextOptionsBuilder.cs" />
     <Compile Include="Persistence\BulkTableWriter.cs" />
@@ -82,7 +86,8 @@
     <Compile Include="RelmInternal\Helpers\Operations\ConnectionHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\TableOperationsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\CoreUtilities.cs" />
-    <Compile Include="RelmInternal\Models\DALPropertyType.cs" />
+    <Compile Include="RelmInternal\Models\DALPropertyType_MySQL.cs" />
+    <Compile Include="RelmInternal\Models\DALPropertyType_ODBC.cs" />
     <Compile Include="RelmInternal\Models\DALTableRowDescriptor.cs" />
     <Compile Include="RelmInternal\Models\WritableTableDefinition.cs" />
     <Compile Include="RelmInternal\Resolvers\DefaultRelmResolver.cs" />

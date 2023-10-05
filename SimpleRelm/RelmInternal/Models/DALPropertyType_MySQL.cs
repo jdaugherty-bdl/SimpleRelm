@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.RelmInternal.Models
 {
-    internal class DALPropertyType
+    internal class DALPropertyType_MySQL
     {
         public string ColumnName { get; set; }
         public string PropertyName { get; set; }
@@ -58,13 +58,13 @@ namespace SimpleRelm.RelmInternal.Models
             new Tuple<string, MySqlDbType, Type, int>("varchar", MySqlDbType.VarChar, typeof(TimeSpan), 45)
         };
 
-        public static implicit operator string(DALPropertyType Source) => MySqlTypeConverter.Where(x => x.Item1 == Source.PropertyColumnType).FirstOrDefault().Item1;
-        public static implicit operator MySqlDbType(DALPropertyType Source) => MySqlTypeConverter.Where(x => x.Item2 == Source.PropertyMySqlDbType).FirstOrDefault().Item2;
-        public static implicit operator Type(DALPropertyType Source) => MySqlTypeConverter.Where(x => x.Item3 == Source.PropertyType).FirstOrDefault().Item3;
+        public static implicit operator string(DALPropertyType_MySQL Source) => MySqlTypeConverter.Where(x => x.Item1 == Source.PropertyColumnType).FirstOrDefault().Item1;
+        public static implicit operator MySqlDbType(DALPropertyType_MySQL Source) => MySqlTypeConverter.Where(x => x.Item2 == Source.PropertyMySqlDbType).FirstOrDefault().Item2;
+        public static implicit operator Type(DALPropertyType_MySQL Source) => MySqlTypeConverter.Where(x => x.Item3 == Source.PropertyType).FirstOrDefault().Item3;
 
-        public static explicit operator DALPropertyType(string Source) => new DALPropertyType(Source);
-        public static explicit operator DALPropertyType(MySqlDbType Source) => new DALPropertyType(Source);
-        public static explicit operator DALPropertyType(Type Source) => new DALPropertyType(Source);
+        public static explicit operator DALPropertyType_MySQL(string Source) => new DALPropertyType_MySQL(Source);
+        public static explicit operator DALPropertyType_MySQL(MySqlDbType Source) => new DALPropertyType_MySQL(Source);
+        public static explicit operator DALPropertyType_MySQL(Type Source) => new DALPropertyType_MySQL(Source);
 
         public override string ToString() => $"[{PropertyColumnType} | {PropertyMySqlDbType} | {PropertyType}]";
 
@@ -87,7 +87,7 @@ namespace SimpleRelm.RelmInternal.Models
             return base.GetHashCode();
         }
 
-        public DALPropertyType(string SourcePropertyColumnName)
+        public DALPropertyType_MySQL(string SourcePropertyColumnName)
         {
             PropertyColumnType = SourcePropertyColumnName;
             PropertyMySqlDbType = ColumnNameToColumnType(PropertyColumnType);
@@ -96,7 +96,7 @@ namespace SimpleRelm.RelmInternal.Models
             DefaultColumnSize = GetDefaultColumnSize(SourcePropertyColumnName);
         }
 
-        public DALPropertyType(MySqlDbType SourcePropertyColumnType)
+        public DALPropertyType_MySQL(MySqlDbType SourcePropertyColumnType)
         {
             PropertyMySqlDbType = SourcePropertyColumnType;
             PropertyColumnType = ColumnTypeToColumnName(PropertyMySqlDbType);
@@ -105,7 +105,7 @@ namespace SimpleRelm.RelmInternal.Models
             DefaultColumnSize = GetDefaultColumnSize(SourcePropertyColumnType);
         }
 
-        public DALPropertyType(Type SourcePropertyType)
+        public DALPropertyType_MySQL(Type SourcePropertyType)
         {
             PropertyType = SourcePropertyType;
 

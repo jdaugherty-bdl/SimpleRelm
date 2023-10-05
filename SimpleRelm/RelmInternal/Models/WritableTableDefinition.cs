@@ -33,7 +33,7 @@ namespace SimpleRelm.RelmInternal.Models
                 _databaseName = value.MySqlObjectQuote();
             }
         }
-        public IEnumerable<DALPropertyType> TableProperties { get; set; }
+        public IEnumerable<DALPropertyType_MySQL> TableProperties { get; set; }
         public Dictionary<TriggerTypes, RelmTrigger<T>> Triggers { get; set; }
 
         internal WritableTableDefinition()
@@ -56,7 +56,7 @@ namespace SimpleRelm.RelmInternal.Models
             // get properties from object, convert to underscore names
             TableProperties = UnderscoreNamesHelper
                 .ConvertPropertiesToUnderscoreNames(TableType, ForceLowerCase: true, GetOnlyDalResolvables: true)
-                .Select(x => new DALPropertyType(x.Value.Item2.PropertyType)
+                .Select(x => new DALPropertyType_MySQL(x.Value.Item2.PropertyType)
                 {
                     ColumnName = x.Key.MySqlObjectQuote(),
                     PropertyName = x.Value.Item1,
