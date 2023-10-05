@@ -12,6 +12,7 @@ namespace SimpleRelm.Attributes
         public string ColumnName { get; private set; }
         public int ColumnSize { get; private set; }
         public int[] CompoundColumnSize { get; private set; }
+        public bool AllowDataTruncation { get; private set; }
         public bool IsNullable { get; private set; }
         public bool PrimaryKey { get; private set; }
         public bool Autonumber { get; private set; }
@@ -20,7 +21,7 @@ namespace SimpleRelm.Attributes
         public string Index { get; private set; }
         public bool IndexDescending { get; private set; }
 
-        public RelmColumn(string ColumnName = null, int ColumnSize = -1, int[] CompoundColumnSize = null, bool IsNullable = true, bool PrimaryKey = false, bool Autonumber = false, bool Unique = false, string DefaultValue = null, string Index = null, bool IndexDescending = false)
+        public RelmColumn(string ColumnName = null, int ColumnSize = -1, int[] CompoundColumnSize = null, bool IsNullable = true, bool PrimaryKey = false, bool Autonumber = false, bool Unique = false, string DefaultValue = null, string Index = null, bool IndexDescending = false, bool AllowDataTruncation = false)
         {
             this.ColumnName = ColumnName;
             this.ColumnSize = ColumnSize;
@@ -32,6 +33,7 @@ namespace SimpleRelm.Attributes
             this.DefaultValue = DefaultValue;
             this.Index = Index;
             this.IndexDescending = IndexDescending;
+            this.AllowDataTruncation = AllowDataTruncation;
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
+using SimpleRelm.Attributes;
 using SimpleRelm.RelmInternal.Extensions;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.RelmInternal.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Reflection;
@@ -16,7 +18,7 @@ namespace SimpleRelm.Persistence
     public class BulkTableWriter<T>
     {
         // config
-        private readonly int DEFAULT_BATCH_SIZE = 5; // default size of the write batches
+        private readonly int DEFAULT_BATCH_SIZE = 100; // default size of the write batches
 
         // exposed by functional methods
         private string InsertQuery;
@@ -37,37 +39,12 @@ namespace SimpleRelm.Persistence
         private readonly MySqlConnection ExistingConnection;
         private readonly Enum ConfigConnectionString;
         private DataTable OutputTable;
-        private readonly Dictionary<string, MySqlDbType> MySqlTypeConverter = new Dictionary<string, MySqlDbType>
-        {
-            { "bigint", MySqlDbType.Int64 },
-            { "bigint unsigned", MySqlDbType.UInt64 },
-            { "char", MySqlDbType.VarChar },
-            { "varchar", MySqlDbType.VarChar },
-            { "smallint", MySqlDbType.Int16 },
-            { "smallint unsigned", MySqlDbType.UInt16 },
-            { "mediumint", MySqlDbType.Int24 },
-            { "mediumint unsigned", MySqlDbType.UInt24 },
-            { "int", MySqlDbType.Int32 },
-            { "int unsigned", MySqlDbType.UInt32 },
-            { "tinyint", MySqlDbType.Int16 },
-            { "tinyint unsigned", MySqlDbType.UInt16 },
-            { "bit", MySqlDbType.Bit },
-            { "timestamp", MySqlDbType.Timestamp },
-            { "datetime", MySqlDbType.DateTime },
-            { "blob", MySqlDbType.Blob },
-            { "decimal", MySqlDbType.Decimal },
-            { "double", MySqlDbType.Double },
-            { "float", MySqlDbType.Float },
-            { "guid", MySqlDbType.Guid },
-            { "text", MySqlDbType.Text },
-            { "longtext", MySqlDbType.LongText },
-            { "time", MySqlDbType.Time },
-            { "date", MySqlDbType.Date },
-            { "json", MySqlDbType.JSON }
-        };
 
         // hide the constructor so that users need to use the factory pattern through DALHelper
-        internal BulkTableWriter() { }
+        internal BulkTableWriter() 
+        {
+            SetupBatchSize();
+        }
 
         // start with a connection string enum
         internal BulkTableWriter(Enum ConfigConnectionString, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = false, bool AllowUserVariables = false)
@@ -93,7 +70,12 @@ namespace SimpleRelm.Persistence
             this.ShouldAllowUserVariables = AllowUserVariables;
             this.SqlTransaction = SqlTransaction;
 
-            BatchSize = DEFAULT_BATCH_SIZE;
+            SetupBatchSize();
+        }
+
+        private void SetupBatchSize()
+        {
+            BatchSize = int.TryParse(ConfigurationManager.AppSettings["BulkWriterBatchSize"], out int bulkWriterBatchSize) ? bulkWriterBatchSize : DEFAULT_BATCH_SIZE;
         }
 
         /// <summary>
@@ -180,12 +162,9 @@ namespace SimpleRelm.Persistence
                     throw new ArgumentNullException("Error auto-populating Bulk Table Writer call: table name not defined");
 
                 // pull the table details from the database
-                var currentTableDetails = default(IEnumerable<DALTableRowDescriptor>);
-
-                if (ExistingConnection != null)
-                    currentTableDetails = ObjectResultsHelper.GetDataObjects<DALTableRowDescriptor>(ExistingConnection, $"DESCRIBE {TableName}");
-                else
-                    currentTableDetails = ObjectResultsHelper.GetDataObjects<DALTableRowDescriptor>(ConfigConnectionString, $"DESCRIBE {TableName}");
+                var currentTableDetails = (ExistingConnection != null)
+                    ? RelmHelper.GetDataObjects<DALTableRowDescriptor>(ExistingConnection, $"DESCRIBE {(string.IsNullOrWhiteSpace(DatabaseName) ? string.Empty : $"{DatabaseName}.")}{TableName}")
+                    : RelmHelper.GetDataObjects<DALTableRowDescriptor>(ConfigConnectionString, $"DESCRIBE {(string.IsNullOrWhiteSpace(DatabaseName) ? string.Empty : $"{DatabaseName}.")}{TableName}");
 
                 // use all column for insert EXCEPT autonumber fields and the boilerplate create_date and last_updated columns
                 var insertColumns = currentTableDetails
@@ -201,6 +180,7 @@ namespace SimpleRelm.Persistence
                     var newQuery = new StringBuilder();
 
                     newQuery.Append("INSERT INTO ");
+                    newQuery.Append(string.IsNullOrWhiteSpace(DatabaseName) ? string.Empty : $"{DatabaseName}.");
                     newQuery.Append(TableName);
                     newQuery.Append(" (`");
                     newQuery.Append(string.Join("`,`", insertColumns.Select(x => x.Field)));
@@ -240,7 +220,7 @@ namespace SimpleRelm.Persistence
                             // we don't already have this conversion defined, throw exception
                             //if (!MySqlTypeConverter.ContainsKey(fieldType))
                             if (convertedType.PropertyType == null)
-                                throw new KeyNotFoundException($"Error auto-populating columns for [{TableName}]: Invalid field type [{fieldType}]");
+                                throw new KeyNotFoundException($"Error auto-populating columns for [`{TableName}`.`{x.Field}`]: Invalid field type [{fieldType}]");
 
                             //return new Tuple<string, MySqlDbType, int, string, string>(x.Field, MySqlTypeConverter[fieldType], fieldSize, null, x.Default);
                             return new Tuple<string, MySqlDbType, int, string, string>(x.Field, convertedType.PropertyMySqlDbType, fieldSize, null, x.Default);
@@ -289,21 +269,6 @@ namespace SimpleRelm.Persistence
             // if there is no data conversion function specified, auto generate
             if (DataTableFunction == null)
             {
-                /*
-                // get all potential properties that can be converted to data
-                var convertableProperties = RowData
-                    .GetType()
-                    .GetProperties()
-                    .ToList();
-
-                var uppercaseSearchPattern = @"(?<!_|^|Internal)([A-Z])";
-                var replacePattern = @"_$1";
-
-                // get the underscore names and type info of the properties
-                var underscoreProperties = convertableProperties
-                    .ToDictionary(x => x.Name.StartsWith("InternalId") ? x.Name : Regex.Replace(x.Name, uppercaseSearchPattern, replacePattern), x => new Tuple<string, PropertyInfo>(x.Name, x))
-                    .ToList();
-                */
                 var underscoreProperties = RowData.ConvertPropertiesToUnderscoreNames();
 
                 // autoresolve object properties here
@@ -335,7 +300,8 @@ namespace SimpleRelm.Persistence
                     // if we found the underscore name then grab the value
                     if (underscoreProperty.HasValue)
                     {
-                        var resolvedObject = underscoreProperty.Value.Value.Item2.GetValue(RowData, null);
+                        var currentProperty = underscoreProperty.Value.Value.Item2;
+                        var resolvedObject = currentProperty.GetValue(RowData, null);
 
                         // get value from property name, perform any type conversions as necessary
                         switch (tableColumn.Value.Item1)
@@ -345,29 +311,45 @@ namespace SimpleRelm.Persistence
                             case MySqlDbType.Int24:
                             case MySqlDbType.Int32:
                             case MySqlDbType.Int64:
-                                if (underscoreProperty.Value.Value.Item2.PropertyType == typeof(bool) || underscoreProperty.Value.Value.Item2.PropertyType.GenericTypeArguments?.FirstOrDefault() == typeof(bool))
-                                    resolvedObject = (bool)underscoreProperty.Value.Value.Item2.GetValue(RowData, null) ? 1 : 0;
+                                if (currentProperty.PropertyType == typeof(bool) || currentProperty.PropertyType.GenericTypeArguments?.FirstOrDefault() == typeof(bool))
+                                    resolvedObject = (bool)currentProperty.GetValue(RowData, null) ? 1 : 0;
                                 break;
                             case MySqlDbType.Timestamp:
                             case MySqlDbType.DateTime:
-                                if (underscoreProperty.Value.Value.Item2.PropertyType == typeof(DateTime) || underscoreProperty.Value.Value.Item2.PropertyType.GenericTypeArguments?.FirstOrDefault() == typeof(DateTime))
-                                    resolvedObject = ((DateTime)underscoreProperty.Value.Value.Item2.GetValue(RowData, null)).ToString("yyyy-MM-dd HH:mm:ss");
+                                if (currentProperty.PropertyType == typeof(DateTime) || currentProperty.PropertyType.GenericTypeArguments?.FirstOrDefault() == typeof(DateTime))
+                                    resolvedObject = ((DateTime?)currentProperty.GetValue(RowData, null))?.ToString("yyyy-MM-dd HH:mm:ss") ?? ((currentProperty.GetCustomAttribute<RelmColumn>()?.IsNullable ?? true) ? null : "0000-00-00 00:00:00");
                                 break;
                             case MySqlDbType.Date:
-                                if (underscoreProperty.Value.Value.Item2.PropertyType == typeof(DateTime) || underscoreProperty.Value.Value.Item2.PropertyType.GenericTypeArguments?.FirstOrDefault() == typeof(DateTime))
-                                    resolvedObject = ((DateTime)underscoreProperty.Value.Value.Item2.GetValue(RowData, null)).ToString("yyyy-MM-dd");
+                                if (currentProperty.PropertyType == typeof(DateTime) || currentProperty.PropertyType.GenericTypeArguments?.FirstOrDefault() == typeof(DateTime))
+                                    resolvedObject = ((DateTime?)currentProperty.GetValue(RowData, null))?.ToString("yyyy-MM-dd") ?? ((currentProperty.GetCustomAttribute<RelmColumn>()?.IsNullable ?? true) ? null : "0000-00-00");
                                 break;
                             case MySqlDbType.Time:
-                                if (underscoreProperty.Value.Value.Item2.PropertyType == typeof(DateTime) || underscoreProperty.Value.Value.Item2.PropertyType.GenericTypeArguments?.FirstOrDefault() == typeof(DateTime))
-                                    resolvedObject = ((DateTime)underscoreProperty.Value.Value.Item2.GetValue(RowData, null)).ToString("HH:mm:ss");
+                                if (currentProperty.PropertyType == typeof(DateTime) || currentProperty.PropertyType.GenericTypeArguments?.FirstOrDefault() == typeof(DateTime))
+                                    resolvedObject = ((DateTime?)currentProperty.GetValue(RowData, null))?.ToString("HH:mm:ss") ?? ((currentProperty.GetCustomAttribute<RelmColumn>()?.IsNullable ?? true) ? null : "00:00:00");
                                 break;
                             case MySqlDbType.JSON:
-                                resolvedObject = Newtonsoft.Json.JsonConvert.SerializeObject(underscoreProperty.Value.Value.Item2.GetValue(RowData, null));
+                                resolvedObject = Newtonsoft.Json.JsonConvert.SerializeObject(resolvedObject);
                                 break;
                             case MySqlDbType.VarChar:
-                                if (underscoreProperty.Value.Value.Item2.PropertyType == typeof(Enum) || underscoreProperty.Value.Value.Item2.PropertyType.GenericTypeArguments?.FirstOrDefault() == typeof(Enum))
-                                    resolvedObject = ((Enum)underscoreProperty.Value.Value.Item2.GetValue(RowData, null)).ToString();
+                                if (currentProperty.PropertyType == typeof(Enum) || currentProperty.PropertyType.GenericTypeArguments?.FirstOrDefault() == typeof(Enum))
+                                    resolvedObject = ((Enum)currentProperty.GetValue(RowData, null)).ToString();
                                 break;
+                        }
+
+                        if (resolvedObject?.GetType().GenericTypeArguments?.Contains(typeof(string)) ?? false)
+                        {
+                            var columnResolvable = currentProperty.GetCustomAttribute<RelmColumn>();
+                            var columnSize = columnResolvable?.ColumnSize ?? tableColumn.Value?.Item2 ?? -1; // get DBModel specified, or get caller specified, or default to -1
+
+                            if (columnSize != -1 && (resolvedObject?.ToString()?.Length ?? -1) > columnSize)
+                            {
+                                var shouldTruncate = columnResolvable?.AllowDataTruncation ?? false;
+
+                                if (ShouldThrowException && !shouldTruncate)
+                                    throw new ArgumentException($"String length [{resolvedObject?.ToString()?.Length}] is too long for column [{underscoreProperty?.Key}]. Expected [{columnSize}].");
+                                else
+                                    resolvedObject = resolvedObject?.ToString()?.Substring(0, columnSize);
+                            }
                         }
 
                         // assign the data to the row
