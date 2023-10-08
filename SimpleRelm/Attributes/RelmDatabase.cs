@@ -19,6 +19,9 @@ namespace SimpleRelm.Attributes
 
         public RelmDatabase(string TableName)
         {
+            if (string.IsNullOrWhiteSpace(TableName))
+                throw new ArgumentNullException(nameof(TableName));
+
             _databaseName = TableName;
         }
     }

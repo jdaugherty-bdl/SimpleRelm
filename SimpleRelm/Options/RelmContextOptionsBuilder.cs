@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SimpleRelm.Options
@@ -78,6 +79,11 @@ namespace SimpleRelm.Options
 
         public void SetDatabaseName(string DatabaseName)
         {
+            string pattern = @"^[a-zA-Z0-9$_\u0080-\uFFFF]+$";
+
+            if (!Regex.IsMatch(DatabaseName, pattern))
+                throw new ArgumentException("DatabaseName", "Invalid database name. Must be alphanumeric with underscores.");
+
             this.DatabaseName = DatabaseName;
 
             _optionsBuilderType = OptionsBuilderTypes.ConnectionString;
@@ -181,8 +187,11 @@ namespace SimpleRelm.Options
             if (string.IsNullOrWhiteSpace(connectionDetails))
                 throw new ArgumentNullException(nameof(connectionDetails));
 
+            if (!connectionDetails.Contains("="))
+                throw new ArgumentException("Invalid connection details. Must be in the format of 'name=connectionString' or 'server=serverName;database=databaseName;user=userName;password=password'.");
+
             var connectionOptions = connectionDetails
-                .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                .Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(x => x.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries))
                 .ToDictionary(x => x[0].ToLower(), x => x[1]);
 
@@ -193,7 +202,18 @@ namespace SimpleRelm.Options
                    connectionOptions.ContainsKey("user") &&
                    connectionOptions.ContainsKey("password"))))
             {
-                throw new ArgumentException("Incomplete connection details. Either provide a 'name' or 'server', 'database', 'user', and 'password'.");
+                throw new ArgumentException("Incomplete connection details. Must be in the format of 'name=connectionString' or 'server=serverName;database=databaseName;user=userName;password=password'.");
+            }
+
+            if ((connectionOptions.ContainsKey("name") &&
+                    connectionOptions.Keys.Count > 1) ||
+                (connectionOptions.ContainsKey("server") &&
+                    connectionOptions.ContainsKey("database") &&
+                    connectionOptions.ContainsKey("user") &&
+                    connectionOptions.ContainsKey("password") && 
+                    connectionOptions.Keys.Count > 4))
+            {
+                throw new ArgumentException("Invalid connection details. Must be in the format of 'name=connectionString' or 'server=serverName;database=databaseName;user=userName;password=password'.");
             }
 
             if (connectionOptions.ContainsKey("name"))

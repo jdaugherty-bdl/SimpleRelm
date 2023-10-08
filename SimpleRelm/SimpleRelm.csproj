@@ -68,6 +68,7 @@
     <Compile Include="Interfaces\Resolvers\IRelmResolver_MySQL.cs" />
     <Compile Include="Interfaces\IRelmDataSet.cs" />
     <Compile Include="Interfaces\Resolvers\IRelmResolver_ODBC.cs" />
+    <Compile Include="Models\RelmDataSet.cs" />
     <Compile Include="Models\RelmModel.cs" />
     <Compile Include="Models\RelmModelApartment.cs" />
     <Compile Include="Models\RelmTrigger.cs" />

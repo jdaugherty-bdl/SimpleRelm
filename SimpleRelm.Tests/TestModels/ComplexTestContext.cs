@@ -1,5 +1,6 @@
 ﻿using SimpleRelm.Interfaces;
 using SimpleRelm.Models;
+using SimpleRelm.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,8 @@ namespace SimpleRelm.Tests.TestModels
 {
     internal class ComplexTestContext : RelmContext
     {
-        public ComplexTestContext() : base("name=ComplexTestContext")
-        {
-        }
+        public ComplexTestContext(string? connectionString) : base(connectionString) { }
+        public ComplexTestContext(RelmContextOptionsBuilder? options) : base(options) { }
 
         public IRelmDataSet<ComplexTestModel>? ComplexTestModels { get; set; }
     }
