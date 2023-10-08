@@ -84,5 +84,11 @@ namespace SimpleRelm.Tests.Attributes.RelmColumn_Testers
         {
             Assert.True(relmColumnAttribute?.AllowDataTruncation);
         }
+
+        [Fact]
+        public void RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True()
+        {
+            Assert.True(relmColumnAttribute?.Virtual);
+        }
     }
 }

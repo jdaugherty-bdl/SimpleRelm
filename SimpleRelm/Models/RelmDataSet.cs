@@ -1,6 +1,7 @@
 ﻿using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
 using SimpleRelm.RelmInternal.Extensions;
+using SimpleRelm.RelmInternal.Helpers.Operations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Routing;
+using static SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator;
 
 namespace SimpleRelm.Models
 {
@@ -69,7 +72,7 @@ namespace SimpleRelm.Models
             return _commands[PredicateCommand];
         }
 
-        public IDALDataSet<T> Where(Expression<Func<T, bool>> predicate)
+        public IRelmDataSet<T> Where(Expression<Func<T, bool>> predicate)
         {
             PrewarmQuery(Command.Where)
                 .Add(predicate);
@@ -77,7 +80,7 @@ namespace SimpleRelm.Models
             return this;
         }
 
-        public IDALDataSet<T> Reference(Expression<Func<T, object>> predicate)
+        public IRelmDataSet<T> Reference(Expression<Func<T, object>> predicate)
         {
             PrewarmQuery(Command.Reference)
                 .Add(predicate.Body);
@@ -85,7 +88,7 @@ namespace SimpleRelm.Models
             return this;
         }
 
-        public IDALDataSet<T> Collection(Expression<Func<T, object>> predicate)
+        public IRelmDataSet<T> Collection(Expression<Func<T, object>> predicate)
         {
             PrewarmQuery(Command.Collection)
                 .Add(predicate.Body);
@@ -139,7 +142,7 @@ namespace SimpleRelm.Models
 
             var selectQuery = GetSelectQuery(findOptions);
 
-            _items = DALHelper.GetDataObjects<T>(CurrentContext.OptionsBuilder.ConnectionStringType, selectQuery, findOptions).ToList();
+            _items = RelmHelper.GetDataObjects<T>(CurrentContext.OptionsBuilder.ConnectionStringType, selectQuery, findOptions).ToList();
 
             if (_items?.Any() ?? false)
             {
@@ -161,7 +164,7 @@ namespace SimpleRelm.Models
 
             var selectQuery = GetUpdateQuery(findOptions);
 
-            var resultCount = DALHelper.DoDatabaseWork<int>(CurrentContext.OptionsBuilder.ConnectionStringType, selectQuery, findOptions);
+            var resultCount = RelmHelper.DoDatabaseWork<int>(CurrentContext.OptionsBuilder.ConnectionStringType, selectQuery, findOptions);
 
             return resultCount;
         }
@@ -232,16 +235,16 @@ namespace SimpleRelm.Models
             }
 
             // Find the DALForeignKey attribute on the current item's property
-            var foreignKeyAttribute = referenceProperty.Member.GetCustomAttribute<DALForeignKey>()
+            var foreignKeyAttribute = referenceProperty.Member.GetCustomAttribute<RelmForeignKey>()
                 ?? throw new InvalidOperationException("DALForeignKey attribute not found on reference property.");
 
             // Find the property on the generic type that has a DALForeignKey attribute, 
             // and if the property is a generic, look at the generic type argument for the DALForeignKey attribute
             var foreignKeyProperty = genericTypeArgument.GetProperties()
                 .Where(x =>
-                    Attribute.IsDefined(x, typeof(DALForeignKey)) ||
+                    Attribute.IsDefined(x, typeof(RelmForeignKey)) ||
                     (x.PropertyType.IsGenericType &&
-                    x.PropertyType.GetGenericArguments().Any(y => Attribute.IsDefined(y, typeof(DALForeignKey))))
+                    x.PropertyType.GetGenericArguments().Any(y => Attribute.IsDefined(y, typeof(RelmForeignKey))))
                 )
                 .FirstOrDefault(x => x.PropertyType == typeof(T) ||
                                      (x.PropertyType.IsGenericType &&
@@ -253,7 +256,7 @@ namespace SimpleRelm.Models
             }
 
             // Get the DALForeignKey attribute from the matching property
-            var dalForeignKey = (((DALForeignKey)Attribute.GetCustomAttribute(foreignKeyProperty, typeof(DALForeignKey)))?.ForeignKey)
+            var dalForeignKey = (((RelmForeignKey)Attribute.GetCustomAttribute(foreignKeyProperty, typeof(RelmForeignKey)))?.ForeignKey)
                 ?? throw new Exception("DALForeignKey attribute not found on related entity.");
 
             // Generate a Func<> type based on the generic type argument for use below
@@ -271,7 +274,7 @@ namespace SimpleRelm.Models
             var dataSetMethod = newDalContextType.GetMethod(nameof(CurrentContext.GetDataSetType), new[] { typeof(Type) })
                 ?? throw new InvalidOperationException("Method not found.");
 
-            var dataSet = dataSetMethod.Invoke(CurrentContext, new object[] { genericTypeArgument }) as IDALDataSetBase
+            var dataSet = dataSetMethod.Invoke(CurrentContext, new object[] { genericTypeArgument }) as IRelmDataSetBase
                 ?? throw new InvalidOperationException($"DALDataSet with generic type {genericTypeArgument.Name} not found.");
 
             // get all the foreign keys to look up
@@ -290,7 +293,7 @@ namespace SimpleRelm.Models
             var whereMethod = dataSet
                 .GetType()
                 .GetMethods()
-                .Where(m => m.Name == nameof(DALDataSet<T>.Where))
+                .Where(m => m.Name == nameof(RelmDataSet<T>.Where))
                 .First();
 
             // Apply the "Where" and "Load" methods
@@ -324,7 +327,7 @@ namespace SimpleRelm.Models
             }
         }
 
-        public IDALDataSet<T> Entry(T Item)
+        public IRelmDataSet<T> Entry(T Item)
         {
             if (_items == null)
                 Add(Item);
@@ -336,21 +339,21 @@ namespace SimpleRelm.Models
             return this;
         }
 
-        public IDALDataSet<T> OrderBy(Expression<Func<T, object>> predicate)
+        public IRelmDataSet<T> OrderBy(Expression<Func<T, object>> predicate)
         {
             AddSingleExpression(PrewarmQuery(Command.OrderBy), predicate.Body);
 
             return this;
         }
 
-        public IDALDataSet<T> OrderByDescending(Expression<Func<T, object>> predicate)
+        public IRelmDataSet<T> OrderByDescending(Expression<Func<T, object>> predicate)
         {
             AddSingleExpression(PrewarmQuery(Command.OrderByDescending), predicate.Body);
 
             return this;
         }
 
-        public IDALDataSet<T> Set(Expression<Func<T, T>> predicate)
+        public IRelmDataSet<T> Set(Expression<Func<T, T>> predicate)
         {
             PrewarmQuery(Command.Set)
                 .Add(predicate.Body);
@@ -358,14 +361,14 @@ namespace SimpleRelm.Models
             return this;
         }
 
-        public IDALDataSet<T> GroupBy(Expression<Func<T, object>> predicate)
+        public IRelmDataSet<T> GroupBy(Expression<Func<T, object>> predicate)
         {
             AddSingleExpression(PrewarmQuery(Command.GroupBy), predicate.Body);
 
             return this;
         }
 
-        public IDALDataSet<T> Limit(int LimitCount)
+        public IRelmDataSet<T> Limit(int LimitCount)
         {
             AddSingleExpression(PrewarmQuery(Command.Limit), Expression.Constant(LimitCount, LimitCount.GetType()));
 
@@ -380,7 +383,7 @@ namespace SimpleRelm.Models
             expressions[0] = expression;
         }
 
-        public IDALDataSet<T> DistinctBy(Expression<Func<T, object>> predicate)
+        public IRelmDataSet<T> DistinctBy(Expression<Func<T, object>> predicate)
         {
             AddSingleExpression(PrewarmQuery(Command.DistinctBy), predicate.Body);
 

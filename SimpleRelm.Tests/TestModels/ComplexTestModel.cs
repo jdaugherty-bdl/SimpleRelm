@@ -12,9 +12,9 @@ namespace SimpleRelm.Tests.TestModels
     [RelmTable("nothing_table")]
     internal class ComplexTestModel : RelmModel
     {
-        [RelmColumn(ColumnName: "test_column_InternalId", ColumnSize: 255, IsNullable: false, PrimaryKey: false, Autonumber: true, Unique: true, DefaultValue: "DEFAULTVALUE", Index: "INDEX", IndexDescending: true, AllowDataTruncation: true)]
+        [RelmColumn(ColumnName: "test_column_InternalId", ColumnSize: 255, IsNullable: false, PrimaryKey: false, Autonumber: true, Unique: true, DefaultValue: "DEFAULTVALUE", Index: "INDEX", IndexDescending: true, AllowDataTruncation: true, Virtual: true)]
         public string? TestColumnInternalId { get; set; }
-        [RelmColumn(ColumnName: "test_column_id", ColumnSize: 255, IsNullable: false, PrimaryKey: false, Autonumber: true, Unique: true, DefaultValue: "DEFAULTVALUE", Index: "INDEX", IndexDescending: true, AllowDataTruncation: true)]
+        [RelmColumn(ColumnName: "test_column_id", ColumnSize: 255, IsNullable: false, PrimaryKey: false, Autonumber: true, Unique: true, DefaultValue: "DEFAULTVALUE", Index: "INDEX", IndexDescending: true, AllowDataTruncation: true, Virtual: true)]
         public int TestColumnId { get; set; }
 
         [RelmColumn]

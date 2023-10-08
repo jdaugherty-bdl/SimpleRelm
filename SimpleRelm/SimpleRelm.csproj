@@ -46,6 +46,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -87,6 +88,9 @@
     <Compile Include="RelmInternal\Helpers\DataTransfer\RefinedResultsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\RowIdentityHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\ConnectionHelper.cs" />
+    <Compile Include="RelmInternal\Helpers\Operations\DataNamingHelper.cs" />
+    <Compile Include="RelmInternal\Helpers\Operations\ExpressionEvaluator.cs" />
+    <Compile Include="RelmInternal\Helpers\Utilities\ExpressionUtilities.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\TableOperationsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\CoreUtilities.cs" />
     <Compile Include="RelmInternal\Models\DALPropertyType_MySQL.cs" />

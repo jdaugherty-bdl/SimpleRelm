@@ -84,5 +84,11 @@ namespace SimpleRelm.Tests.Attributes.RelmColumn_Testers
         {
             Assert.False(relmColumnAttribute?.Unique);
         }
+
+        [Fact]
+        public void RelmColumn_ComplexTestModel_Has_Attribute_Virtual_False_When_Not_Specified()
+        {
+            Assert.False(relmColumnAttribute?.Virtual);
+        }
     }
 }
