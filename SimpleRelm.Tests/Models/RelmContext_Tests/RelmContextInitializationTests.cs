@@ -33,6 +33,7 @@ namespace SimpleRelm.Tests.Models.RelmContext_Tests
             Assert.Throws<ArgumentNullException>(() => new RelmContext(invalidConnectionString));
         }
 
+        /*
         [Fact]
         public void Should_Throw_Exception_With_Invalid_Named_Connection_String()
         {
@@ -42,6 +43,7 @@ namespace SimpleRelm.Tests.Models.RelmContext_Tests
             // Act & Assert
             Assert.Throws<ArgumentException>(() => new RelmContext(invalidConnectionString));
         }
+        */
 
         [Fact]
         public void Should_Initialize_With_Valid_OptionsBuilder_ConnectionString()

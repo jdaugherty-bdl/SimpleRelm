@@ -32,7 +32,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         public void TestExpressionEvaluatorWhere_Equalities_Equals_Int()
         {
             // Arrange
-            predicate = x => x.Id == 3;
+            predicate = x => x.Id == 3L;
 
             // Act
             var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Where, new List<Expression> { predicate }), queryParameters);
@@ -40,7 +40,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             // Assert
             Assert.Equal(" WHERE  a.`Id` = @_Id_ ", result);
 
-            Assert.Equal(queryParameters["@_Id_"], 3);
+            Assert.Equal(queryParameters["@_Id_"], 3L);
         }
 
         [Fact]
@@ -113,7 +113,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         public void TestExpressionEvaluatorWhere_Equalities_Equals_4Types()
         {
             // Arrange
-            predicate = x => x.Id == 3 && x.InternalId == "00000000-0000-0000-0000-000000000000" && x.CreateDate == new DateTime(2021, 1, 1) && x.Active == true;
+            predicate = x => x.Id == 3L && x.InternalId == "00000000-0000-0000-0000-000000000000" && x.CreateDate == new DateTime(2021, 1, 1) && x.Active == true;
 
             // Act
             var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Where, new List<Expression> { predicate }), queryParameters);
@@ -121,7 +121,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             // Assert
             Assert.Equal(" WHERE  ( ( ( a.`Id` = @_Id_  AND  a.`InternalId` = @_InternalId_ ) AND  a.`Create_Date` = @_CreateDate_ ) AND  a.`Active` = @_Active_ )", result);
 
-            Assert.Equal(queryParameters["@_Id_"], 3);
+            Assert.Equal(queryParameters["@_Id_"], 3L);
             Assert.Equal(queryParameters["@_InternalId_"], "00000000-0000-0000-0000-000000000000");
             Assert.Equal(queryParameters["@_CreateDate_"], new DateTime(2021, 1, 1));
             Assert.Equal(queryParameters["@_Active_"], 1);

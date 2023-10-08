@@ -43,7 +43,12 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             // get the underscore names of all properties, add "_#" to the end of duplicate property names
             var underscoreNames = convertableProperties
                 //.ToDictionary(x => x.Name.StartsWith("InternalId") ? x.Name : Regex.Replace(x.Name, UnderscoreSearchPattern, UnderscoreReplacePattern), x => new Tuple<string, PropertyInfo>(x.Name, x))
-                .Select(x => new Tuple<string, PropertyInfo>(x.Name.StartsWith("InternalId") ? x.Name : Regex.Replace(x.Name, UnderscoreSearchPattern, UnderscoreReplacePattern), x))
+                .Select(x => new Tuple<string, PropertyInfo>(x.Name.StartsWith("InternalId") 
+                        ? x.Name 
+                        : (string.IsNullOrWhiteSpace(x.GetCustomAttribute<RelmColumn>(true).ColumnName)
+                            ? Regex.Replace(x.Name, UnderscoreSearchPattern, UnderscoreReplacePattern)
+                            : x.GetCustomAttribute<RelmColumn>(true).ColumnName.Trim())
+                    , x))
                 .OrderBy(x => x.Item1)
                 .Segment((prev, next, index) => prev.Item1 != next.Item1)
                 .SelectMany(x => x.Count() == 1

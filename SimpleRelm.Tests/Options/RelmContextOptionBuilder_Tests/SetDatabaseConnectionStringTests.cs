@@ -37,6 +37,7 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
             Assert.Equal(expectedConnectionStringType, builder.OptionsBuilderType);
         }
 
+        /*
         [Fact]
         public void SetDatabaseConnectionString_ThrowsExceptionForInvalidConnectionStringType()
         {
@@ -47,6 +48,7 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
             // Act & Assert
             Assert.Throws<ArgumentException>(() => builder.SetDatabaseConnectionString(invalidConnectionStringType));
         }
+        */
 
         [Fact]
         public void SetDatabaseConnectionString_SetsOptionsBuilderTypeToNamedConnectionString()

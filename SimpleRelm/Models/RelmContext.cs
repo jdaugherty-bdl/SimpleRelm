@@ -53,7 +53,7 @@ namespace SimpleRelm.Models
             {
                 var dalDataSetType = attachedProperty.PropertyType.GetGenericArguments()[0];
 
-                var dalDataSet = Activator.CreateInstance(typeof(IRelmDataSet<>).MakeGenericType(dalDataSetType), new object[] { this });
+                var dalDataSet = Activator.CreateInstance(typeof(RelmDataSet<>).MakeGenericType(dalDataSetType), new object[] { this });
 
                 attachedProperty.SetValue(this, dalDataSet);
 

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.Tests.TestModels
 {
-    internal class ComplexTestContext : RelmContext
+    internal class ComplexTestContext : RelmContext, IRelmContext
     {
         public ComplexTestContext(string? connectionString) : base(connectionString) { }
         public ComplexTestContext(RelmContextOptionsBuilder? options) : base(options) { }
 
-        public IRelmDataSet<ComplexTestModel>? ComplexTestModels { get; set; }
+        public virtual IRelmDataSet<ComplexTestModel>? ComplexTestModels { get; set; }
     }
 }
