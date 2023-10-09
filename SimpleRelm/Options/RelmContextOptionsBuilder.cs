@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -12,7 +13,8 @@ namespace SimpleRelm.Options
         public enum OptionsBuilderTypes
         {
             ConnectionString,
-            NamedConnectionString
+            NamedConnectionString,
+            OpenConnection
         }
 
         public string DatabaseServer { get; private set; }
@@ -20,6 +22,9 @@ namespace SimpleRelm.Options
         public string DatabaseUser { get; private set; }
         public string DatabasePassword { get; private set; }
         public string DatabaseConnectionString { get; private set; }
+
+        public DbConnection DatabaseConnection { get; private set; }
+        public DbTransaction DatabaseTransaction { get; private set; }
 
         private OptionsBuilderTypes _optionsBuilderType;
         public OptionsBuilderTypes OptionsBuilderType => _optionsBuilderType;
@@ -39,6 +44,7 @@ namespace SimpleRelm.Options
 
         public RelmContextOptionsBuilder(string databaseServer, string databaseName, string databaseUser, string databasePassword)
         {
+            /*
             if (string.IsNullOrEmpty(databaseServer))
                 throw new ArgumentNullException("Database server cannot be null or empty.", nameof(databaseServer));
 
@@ -57,48 +63,88 @@ namespace SimpleRelm.Options
             DatabasePassword = databasePassword;
 
             _optionsBuilderType = OptionsBuilderTypes.ConnectionString;
+            */
+            SetDatabaseServer(databaseServer);
+            SetDatabaseName(databaseName);
+            SetDatabaseUser(databaseUser);
+            SetDatabasePassword(databasePassword);
         }
 
         public RelmContextOptionsBuilder(Enum connectionStringType)
         {
+            /*
             if (!Enum.IsDefined(typeof(Enum), connectionStringType))
                 throw new ArgumentNullException("Invalid connection string type provided.", nameof(connectionStringType));
 
             _connectionStringType = connectionStringType;
 
             _optionsBuilderType = OptionsBuilderTypes.NamedConnectionString;
+            */
+            SetConnectionStringType(connectionStringType);
+        }
+
+        public RelmContextOptionsBuilder(DbConnection connection, DbTransaction transaction)
+        {
+            SetDatabaseConnection(connection);
+            SetDatabaseTransaction(transaction);
         }
 
         // create set methods for each property
-        public void SetDatabaseServer(string DatabaseServer)
+        public void SetDatabaseConnection(DbConnection connection)
         {
-            this.DatabaseServer = DatabaseServer;
+            DatabaseConnection = connection ?? throw new ArgumentNullException("Connection cannot be null.", nameof(connection));
+
+            _optionsBuilderType = OptionsBuilderTypes.OpenConnection;
+        }
+
+        public void SetDatabaseTransaction(DbTransaction transaction)
+        {
+            DatabaseTransaction = transaction ?? throw new ArgumentNullException("Transaction cannot be null.", nameof(transaction));
+
+            _optionsBuilderType = OptionsBuilderTypes.OpenConnection;
+        }
+
+        public void SetDatabaseServer(string databaseServer)
+        {
+            if (string.IsNullOrEmpty(databaseServer))
+                throw new ArgumentNullException("Database server cannot be null or empty.", nameof(databaseServer));
+
+            this.DatabaseServer = databaseServer;
 
             _optionsBuilderType = OptionsBuilderTypes.ConnectionString;
         }
 
-        public void SetDatabaseName(string DatabaseName)
+        public void SetDatabaseName(string databaseName)
         {
+            if (string.IsNullOrEmpty(databaseName))
+                throw new ArgumentNullException("Database name cannot be null or empty.", nameof(databaseName));
+
             string pattern = @"^[a-zA-Z0-9$_\u0080-\uFFFF]+$";
 
-            if (!Regex.IsMatch(DatabaseName, pattern))
+            if (!Regex.IsMatch(databaseName, pattern))
                 throw new ArgumentException("DatabaseName", "Invalid database name. Must be alphanumeric with underscores.");
 
-            this.DatabaseName = DatabaseName;
+            this.DatabaseName = databaseName;
 
             _optionsBuilderType = OptionsBuilderTypes.ConnectionString;
         }
 
-        public void SetDatabaseUser(string DatabaseUser)
+        public void SetDatabaseUser(string databaseUser)
         {
-            this.DatabaseUser = DatabaseUser;
+            if (string.IsNullOrEmpty(databaseUser))
+                throw new ArgumentNullException("Database user cannot be null or empty.", nameof(databaseUser));
+
+            this.DatabaseUser = databaseUser;
 
             _optionsBuilderType = OptionsBuilderTypes.ConnectionString;
         }
 
-        public void SetDatabasePassword(string DatabasePassword)
+        public void SetDatabasePassword(string databasePassword)
         {
-            this.DatabasePassword = DatabasePassword;
+            if (string.IsNullOrEmpty(databasePassword))
+                throw new ArgumentNullException("Database password cannot be null or empty.", nameof(databasePassword));
+
+            this.DatabasePassword = databasePassword;
 
             _optionsBuilderType = OptionsBuilderTypes.ConnectionString;
         }
@@ -117,11 +163,14 @@ namespace SimpleRelm.Options
             _optionsBuilderType = OptionsBuilderTypes.NamedConnectionString;
         }
 
-        public void SetConnectionStringType(Enum ConnectionStringType)
+        public void SetConnectionStringType(Enum connectionStringType)
         {
-            _connectionStringType = ConnectionStringType;
+            if (!Enum.IsDefined(typeof(Enum), connectionStringType))
+                throw new ArgumentNullException("Invalid connection string type provided.", nameof(connectionStringType));
 
-            DatabaseConnectionString = ConnectionStringType.ToString();
+            _connectionStringType = connectionStringType;
+
+            DatabaseConnectionString = connectionStringType.ToString();
 
             _optionsBuilderType = OptionsBuilderTypes.NamedConnectionString;
         }

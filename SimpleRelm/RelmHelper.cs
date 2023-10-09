@@ -270,8 +270,8 @@ namespace SimpleRelm
         /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
         /// <param name="ForceType">Force a type other than the specified one to be used when auto-retrieving the table name from the DALTable attribute.</param>
         /// <returns>The total number of rows written to the database.</returns>
-        public static int BulkTableWrite<T>(MySqlConnection EstablishedConnection, T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null)
-            => DataOutputOperations.BulkTableWrite<T>(EstablishedConnection, SourceData, TableName, SqlTransaction, ForceType);
+        public static int BulkTableWrite<T>(MySqlConnection EstablishedConnection, T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100)
+            => DataOutputOperations.BulkTableWrite<T>(EstablishedConnection, SourceData, TableName, SqlTransaction, ForceType, BatchSize: BatchSize);
 
         /// <summary>
         /// Writes out a list of objects to the database using a combination of supplied parameters and class attributes.
@@ -283,8 +283,8 @@ namespace SimpleRelm
         /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
         /// <param name="ForceType">Force a type other than the specified one to be used when auto-retrieving the table name from the DALTable attribute.</param>
         /// <returns>The total number of rows written to the database.</returns>
-        public static int BulkTableWrite<T>(MySqlConnection EstablishedConnection, IEnumerable<T> SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null)
-            => DataOutputOperations.BulkTableWrite<T>(EstablishedConnection, SourceData, TableName, SqlTransaction, ForceType);
+        public static int BulkTableWrite<T>(MySqlConnection EstablishedConnection, IEnumerable<T> SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100)
+            => DataOutputOperations.BulkTableWrite<T>(EstablishedConnection, SourceData, TableName, SqlTransaction, ForceType, BatchSize: BatchSize);
 
         /// <summary>
         /// Writes out a single object to the database using a combination of supplied parameters and class attributes.
@@ -295,8 +295,8 @@ namespace SimpleRelm
         /// <param name="TableName">The name of the table to write to. If none is supplied, DALHelper attempts to get it from the DALTable attribute.</param>
         /// <param name="ForceType">Force a type other than the specified one to be used when auto-retrieving the table name from the DALTable attribute.</param>
         /// <returns>The total number of rows written to the database.</returns>
-        public static int BulkTableWrite<T>(Enum ConfigConnectionString, T SourceData, string TableName = null, Type ForceType = null)
-            => DataOutputOperations.BulkTableWrite<T>(ConfigConnectionString, SourceData, TableName, ForceType);
+        public static int BulkTableWrite<T>(Enum ConfigConnectionString, T SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100)
+            => DataOutputOperations.BulkTableWrite<T>(ConfigConnectionString, SourceData, TableName, ForceType, BatchSize: BatchSize);
 
         /// <summary>
         /// Writes out a list of objects to the database using a combination of supplied parameters and class attributes.
@@ -307,8 +307,8 @@ namespace SimpleRelm
         /// <param name="TableName">The name of the table to write to. If none is supplied, DALHelper attempts to get it from the DALTable attribute.</param>
         /// <param name="ForceType">Force a type other than the specified one to be used when auto-retrieving the table name from the DALTable attribute.</param>
         /// <returns>The total number of rows written to the database.</returns>
-        public static int BulkTableWrite<T>(Enum ConfigConnectionString, IEnumerable<T> SourceData, string TableName = null, Type ForceType = null)
-            => DataOutputOperations.BulkTableWrite<T>(ConfigConnectionString, SourceData, TableName, ForceType);
+        public static int BulkTableWrite<T>(Enum ConfigConnectionString, IEnumerable<T> SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100)
+            => DataOutputOperations.BulkTableWrite<T>(ConfigConnectionString, SourceData, TableName, ForceType, BatchSize: BatchSize);
 
         //***************** Core functions *****************//
 

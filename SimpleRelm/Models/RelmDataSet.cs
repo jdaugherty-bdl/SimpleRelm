@@ -142,7 +142,7 @@ namespace SimpleRelm.Models
 
             var selectQuery = GetSelectQuery(findOptions);
 
-            _items = RelmHelper.GetDataObjects<T>(CurrentContext.OptionsBuilder.ConnectionStringType, selectQuery, findOptions).ToList();
+            _items = RelmHelper.GetDataObjects<T>(CurrentContext.ContextOptions.ConnectionStringType, selectQuery, findOptions).ToList();
 
             if (_items?.Any() ?? false)
             {
@@ -164,7 +164,7 @@ namespace SimpleRelm.Models
 
             var selectQuery = GetUpdateQuery(findOptions);
 
-            var resultCount = RelmHelper.DoDatabaseWork<int>(CurrentContext.OptionsBuilder.ConnectionStringType, selectQuery, findOptions);
+            var resultCount = RelmHelper.DoDatabaseWork<int>(CurrentContext.ContextOptions.ConnectionStringType, selectQuery, findOptions);
 
             return resultCount;
         }
@@ -405,11 +405,13 @@ namespace SimpleRelm.Models
             return Item;
         }
 
-        public void Save()
+        public int Save()
         {
-            _items.WriteToDatabase(CurrentContext.OptionsBuilder.ConnectionStringType);
+            var rowsUpdated = _items.WriteToDatabase(CurrentContext.ContextOptions.ConnectionStringType);
 
             Modified = false;
+
+            return rowsUpdated;
         }
 
         public T New()
@@ -542,7 +544,7 @@ namespace SimpleRelm.Models
 
             // If persisting is necessary, write to database
             if (Persist)
-                item.WriteToDatabase(CurrentContext.OptionsBuilder.ConnectionStringType);
+                item.WriteToDatabase(CurrentContext.ContextOptions.ConnectionStringType);
             else
                 Modified = true;
         }

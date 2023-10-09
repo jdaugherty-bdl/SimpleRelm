@@ -33,7 +33,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence
             return new BulkTableWriter<T>(ExistingConnection, InsertQuery: InsertQuery, ThrowException: ThrowException, UseTransaction: UseTransaction || SqlTransaction != null, SqlTransaction: SqlTransaction);
         }
 
-        internal static int BulkTableWrite<T>(Enum ConfigConnectionString, T SourceData, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 10, string DatabaseName = null)
+        internal static int BulkTableWrite<T>(Enum ConfigConnectionString, T SourceData, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 100, string DatabaseName = null)
         {
             using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables: AllowUserVariables))
             {
@@ -41,7 +41,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence
             }
         }
 
-        internal static int BulkTableWrite<T>(Enum ConfigConnectionString, IEnumerable<T> SourceData, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 10, string DatabaseName = null)
+        internal static int BulkTableWrite<T>(Enum ConfigConnectionString, IEnumerable<T> SourceData, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 100, string DatabaseName = null)
         {
             using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables: AllowUserVariables))
             {
@@ -50,7 +50,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence
         }
 
         //TODO: make each BulkTableWrite below chain up to a single BulkTableWrite that then calls GetBulkTableWriter
-        internal static int BulkTableWrite<T>(MySqlConnection ExistingConnection, T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 10, string DatabaseName = null)
+        internal static int BulkTableWrite<T>(MySqlConnection ExistingConnection, T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null)
         {
             var rowsUpdated = GetBulkTableWriter<T>(ExistingConnection)
                 .SetTableName(TableName ?? (ForceType ?? typeof(T)).GetCustomAttribute<RelmTable>()?.TableName ?? throw new CustomAttributeFormatException(CoreUtilities.NoDalTableAttributeError))
@@ -64,7 +64,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence
             return rowsUpdated;
         }
 
-        internal static int BulkTableWrite<T>(MySqlConnection ExistingConnection, IEnumerable<T> SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 10, string DatabaseName = null)
+        internal static int BulkTableWrite<T>(MySqlConnection ExistingConnection, IEnumerable<T> SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null)
         {
             var rowsUpdated = GetBulkTableWriter<T>(ExistingConnection)
                 .SetTableName(TableName ?? (ForceType ?? typeof(T)).GetCustomAttribute<RelmTable>()?.TableName ?? throw new CustomAttributeFormatException(CoreUtilities.NoDalTableAttributeError))

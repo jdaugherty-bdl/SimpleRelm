@@ -2,6 +2,7 @@
 using SimpleRelm.Options;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -11,16 +12,16 @@ namespace SimpleRelm.Models
 {
     public class RelmContext : IDisposable, IRelmContext
     {
-        public RelmContextOptionsBuilder OptionsBuilder { get; private set; }
+        public RelmContextOptionsBuilder ContextOptions { get; private set; }
 
         private IEnumerable<PropertyInfo> _attachedProperties;
         private List<object> _attachedDataSets;
 
         public RelmContext(RelmContextOptionsBuilder optionsBuilder)
         {
-            OptionsBuilder = optionsBuilder ?? throw new ArgumentNullException(nameof(optionsBuilder), "RelmContextOptionsBuilder cannot be null.");
+            ContextOptions = optionsBuilder ?? throw new ArgumentNullException(nameof(optionsBuilder), "RelmContextOptionsBuilder cannot be null.");
 
-            OptionsBuilder.ValidateAllSettings();
+            ContextOptions.ValidateAllSettings();
 
             InitializeContext();
         }
@@ -28,7 +29,14 @@ namespace SimpleRelm.Models
         public RelmContext(string connectionDetails)
         {
             // set the options and allow user to override
-            OptionsBuilder = new RelmContextOptionsBuilder(connectionDetails);
+            ContextOptions = new RelmContextOptionsBuilder(connectionDetails);
+
+            InitializeContext();
+        }
+
+        public RelmContext(DbConnection connection, DbTransaction transaction)
+        {
+            ContextOptions = new RelmContextOptionsBuilder(connection, transaction);
 
             InitializeContext();
         }
@@ -38,7 +46,7 @@ namespace SimpleRelm.Models
             _attachedDataSets = new List<object>();
 
             // call the user's OnConfigure method
-            OnConfigure(OptionsBuilder);
+            OnConfigure(ContextOptions);
 
             InitializeDataSets();
         }

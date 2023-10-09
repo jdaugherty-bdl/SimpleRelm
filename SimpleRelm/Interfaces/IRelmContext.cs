@@ -10,7 +10,7 @@ namespace SimpleRelm.Interfaces
 {
     public interface IRelmContext
     {
-        RelmContextOptionsBuilder OptionsBuilder { get; }
+        RelmContextOptionsBuilder ContextOptions { get; }
 
         IRelmDataSet<T> GetDataSetType<T>() where T : IRelmModel, new();
         IRelmDataSet<T> GetDataSetType<T>(bool throwException) where T : IRelmModel, new();
