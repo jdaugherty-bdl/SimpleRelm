@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleRelm.Attributes
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
-    internal class RelmTable : Attribute
+    public class RelmTable : Attribute
     {
         private string _tableName;
 
