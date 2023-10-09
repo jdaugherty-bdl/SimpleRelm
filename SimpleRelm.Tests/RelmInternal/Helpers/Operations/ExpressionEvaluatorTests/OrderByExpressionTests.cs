@@ -38,7 +38,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var result = evaluator.EvaluateOrderBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.OrderBy, new List<Expression> { predicate.Body }), false);
 
             // Assert
-            Assert.Equal(" ORDER BY a.`Id`  ASC ", result);
+            Assert.Equal("  ORDER BY a.`Id`  ASC ", result);
         }
 
         [Fact]
@@ -51,7 +51,36 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var result = evaluator.EvaluateOrderBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.OrderBy, new List<Expression> { predicate.Body }), true);
 
             // Assert
-            Assert.Equal(" ORDER BY a.`Id`  DESC ", result);
+            Assert.Equal("  ORDER BY a.`Id`  DESC ", result);
+        }
+
+        [Fact]
+        public void TestOrderByQuery_TwoOrderBys_BothAscending()
+        {
+            // Arrange
+            predicate = x => x.Id;
+            Expression<Func<ComplexTestModel, object>>? predicate2 = x => x.InternalId;
+
+            // Act
+            var result = evaluator.EvaluateOrderBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.OrderBy, new List<Expression> { predicate.Body, predicate2.Body }), false);
+
+            // Assert
+            Assert.Equal("  ORDER BY a.`Id`  ASC , a.`InternalId`  ASC ", result);
+        }
+
+        [Fact]
+        public void TestOrderByQuery_TwoOrderBys_OneAscending_OneDescending()
+        {
+            // Arrange
+            predicate = x => x.Id;
+            Expression<Func<ComplexTestModel, object>>? predicate2 = x => x.InternalId;
+
+            // Act
+            var result = evaluator.EvaluateOrderBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.OrderBy, new List<Expression> { predicate.Body }), false);
+            result += evaluator.EvaluateOrderBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.OrderBy, new List<Expression> { predicate2.Body }), true);
+
+            // Assert
+            Assert.Equal("  ORDER BY a.`Id`  ASC  , a.`InternalId`  DESC ", result);
         }
     }
 }

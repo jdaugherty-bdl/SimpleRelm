@@ -26,6 +26,8 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         }
 
         private bool HasWhere = false;
+        private bool HasOrderBy = false;
+
         private readonly Dictionary<string, string> UnderscoreProperties;
         private readonly Dictionary<string, string> UsedTableAliases;
 
@@ -252,23 +254,36 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
         public string EvaluateOrderBy(KeyValuePair<Command, List<Expression>> CommandExpression, bool IsDescending)
         {
-            MemberExpression methodOperand;
-            if (CommandExpression.Value[0] is MemberExpression methodCall)
-                methodOperand = methodCall;
-            else if (CommandExpression.Value[0] is UnaryExpression unaryExpression)
-                methodOperand = unaryExpression.Operand as MemberExpression;
-            else
-                throw new InvalidCastException();
+            var findQuery = " ";
 
-            var currentAlias = GetTableAlias(((RelmTable)methodOperand.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+            foreach (var commandExpression in CommandExpression.Value)
+            {
+                MemberExpression methodOperand;
+                if (commandExpression is MemberExpression methodCall)
+                    methodOperand = methodCall;
+                else if (commandExpression is UnaryExpression unaryExpression)
+                    methodOperand = unaryExpression.Operand as MemberExpression;
+                else
+                    throw new InvalidCastException();
 
-            var findQuery = $" ORDER BY ";
-            findQuery += currentAlias;
-            findQuery += ".`";
-            findQuery += UnderscoreProperties[methodOperand.Member.Name];
-            findQuery += "` ";
+                var currentAlias = GetTableAlias(((RelmTable)methodOperand.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
 
-            findQuery += IsDescending ? " DESC " : " ASC ";
+                if (!HasOrderBy)
+                {
+                    findQuery += $" ORDER BY ";
+
+                    HasOrderBy = true;
+                }
+                else
+                    findQuery += ", ";
+
+                findQuery += currentAlias;
+                findQuery += ".`";
+                findQuery += UnderscoreProperties[methodOperand.Member.Name];
+                findQuery += "` ";
+
+                findQuery += IsDescending ? " DESC " : " ASC ";
+            }
 
             return findQuery;
         }
