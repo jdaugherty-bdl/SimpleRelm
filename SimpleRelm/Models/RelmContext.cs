@@ -1,4 +1,5 @@
-﻿using SimpleRelm.Interfaces;
+﻿using MySql.Data.MySqlClient;
+using SimpleRelm.Interfaces;
 using SimpleRelm.Options;
 using System;
 using System.Collections.Generic;
@@ -17,32 +18,53 @@ namespace SimpleRelm.Models
         private IEnumerable<PropertyInfo> _attachedProperties;
         private List<object> _attachedDataSets;
 
-        public RelmContext(RelmContextOptionsBuilder optionsBuilder)
+        public RelmContext(RelmContextOptionsBuilder optionsBuilder, bool autoOpenConnection = true, bool autoOpenTransaction = false)
         {
             ContextOptions = optionsBuilder ?? throw new ArgumentNullException(nameof(optionsBuilder), "RelmContextOptionsBuilder cannot be null.");
 
             ContextOptions.ValidateAllSettings();
 
-            InitializeContext();
+            InitializeContext(autoOpenConnection, autoOpenTransaction);
         }
 
-        public RelmContext(string connectionDetails)
+        public RelmContext(string connectionDetails, bool autoOpenConnection = true, bool autoOpenTransaction = false)
         {
             // set the options and allow user to override
             ContextOptions = new RelmContextOptionsBuilder(connectionDetails);
 
-            InitializeContext();
+            InitializeContext(autoOpenConnection, autoOpenTransaction);
         }
 
-        public RelmContext(DbConnection connection, DbTransaction transaction)
+        public RelmContext(MySqlConnection connection, bool autoOpenConnection = true, bool autoOpenTransaction = false)
+        {
+            ContextOptions = new RelmContextOptionsBuilder(connection);
+
+            InitializeContext(autoOpenConnection, autoOpenTransaction);
+        }
+
+        public RelmContext(MySqlConnection connection, MySqlTransaction transaction, bool autoOpenConnection = true)
         {
             ContextOptions = new RelmContextOptionsBuilder(connection, transaction);
 
-            InitializeContext();
+            InitializeContext(autoOpenConnection, false);
         }
 
-        private void InitializeContext()
+        private void InitializeContext(bool autoOpenConnection = true, bool autoOpenTransaction = false)
         {
+            if (autoOpenConnection)
+            {
+                if (ContextOptions.DatabaseConnection == null)
+                {
+                    if (ContextOptions.OptionsBuilderType == RelmContextOptionsBuilder.OptionsBuilderTypes.ConnectionString)
+                        throw new NotImplementedException();
+                    else if (ContextOptions.OptionsBuilderType == RelmContextOptionsBuilder.OptionsBuilderTypes.NamedConnectionString)
+                        ContextOptions.SetDatabaseConnection(RelmHelper.GetConnectionFromString(ContextOptions.ConnectionStringType));
+                }
+
+                if (ContextOptions.DatabaseConnection != null)
+                    StartConnection(autoOpenTransaction);
+            }
+
             _attachedDataSets = new List<object>();
 
             // call the user's OnConfigure method
@@ -68,7 +90,46 @@ namespace SimpleRelm.Models
                 _attachedDataSets.Add(dalDataSet);
             }
         }
+
         public virtual void OnConfigure(RelmContextOptionsBuilder OptionsBuilder) { }
+
+        public void StartConnection(bool autoOpenTransaction = false)
+        {
+            if (ContextOptions.DatabaseConnection == null)
+                throw new InvalidOperationException("Cannot open a non-existent database connection.");
+
+            if (ContextOptions.DatabaseConnection.State == System.Data.ConnectionState.Closed)
+                ContextOptions.DatabaseConnection.Open();
+
+            if (autoOpenTransaction && ContextOptions.DatabaseConnection.State == System.Data.ConnectionState.Open)
+                ContextOptions.SetDatabaseTransaction(ContextOptions.DatabaseConnection.BeginTransaction());
+        }
+
+        public void EndConnection(bool commitTransaction = true)
+        {
+            if (ContextOptions.DatabaseConnection?.State != System.Data.ConnectionState.Closed)
+            {
+                if (commitTransaction)
+                    ContextOptions.DatabaseTransaction?.Commit();
+
+                ContextOptions.DatabaseConnection.Close();
+            }
+        }
+
+        public MySqlTransaction BeginTransaction()
+        {
+            if (ContextOptions.DatabaseTransaction == null)
+                ContextOptions.SetDatabaseTransaction(ContextOptions.DatabaseConnection?.BeginTransaction());
+
+            return ContextOptions.DatabaseTransaction;
+        }
+
+        public void CommitTransaction()
+        {
+            ContextOptions.DatabaseTransaction?.Commit();
+
+            ContextOptions.SetDatabaseTransaction(null);
+        }
 
         public void Dispose()
         {
@@ -79,6 +140,8 @@ namespace SimpleRelm.Models
 
         protected virtual void Dispose(bool disposing)
         {
+            EndConnection();
+
             if (disposing)
             {
                 foreach (var attachedProperty in _attachedProperties)
@@ -168,7 +231,7 @@ namespace SimpleRelm.Models
             // loop through each _attachedDataSet and call Save()
             foreach (var attachedDataSet in _attachedDataSets)
             {
-                var saveMethod = attachedDataSet.GetType().GetMethod("Save");
+                var saveMethod = attachedDataSet.GetType().GetMethod(nameof(RelmDataSet<RelmModel>.Save));
 
                 saveMethod.Invoke(attachedDataSet, null);
             }

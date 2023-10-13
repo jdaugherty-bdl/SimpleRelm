@@ -142,7 +142,10 @@ namespace SimpleRelm.Models
 
             var selectQuery = GetSelectQuery(findOptions);
 
-            _items = RelmHelper.GetDataObjects<T>(CurrentContext.ContextOptions.ConnectionStringType, selectQuery, findOptions).ToList();
+            if (CurrentContext.ContextOptions.OptionsBuilderType == Options.RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
+                _items = RelmHelper.GetDataObjects<T>(CurrentContext.ContextOptions.DatabaseConnection, selectQuery, findOptions, SqlTransaction: CurrentContext.ContextOptions.DatabaseTransaction).ToList();
+            else
+                _items = RelmHelper.GetDataObjects<T>(CurrentContext.ContextOptions.ConnectionStringType, selectQuery, findOptions).ToList();
 
             if (_items?.Any() ?? false)
             {
@@ -164,9 +167,10 @@ namespace SimpleRelm.Models
 
             var selectQuery = GetUpdateQuery(findOptions);
 
-            var resultCount = RelmHelper.DoDatabaseWork<int>(CurrentContext.ContextOptions.ConnectionStringType, selectQuery, findOptions);
-
-            return resultCount;
+            if (CurrentContext.ContextOptions.OptionsBuilderType == Options.RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
+                return RelmHelper.DoDatabaseWork<int>(CurrentContext.ContextOptions.DatabaseConnection, selectQuery, findOptions, SqlTransaction: CurrentContext.ContextOptions.DatabaseTransaction);
+            else
+                return RelmHelper.DoDatabaseWork<int>(CurrentContext.ContextOptions.ConnectionStringType, selectQuery, findOptions);
         }
 
         /// <summary>
@@ -339,6 +343,19 @@ namespace SimpleRelm.Models
             return this;
         }
 
+        public IRelmDataSet<T> Entry(T Item, bool Persist = true)
+        {
+            if (_items == null)
+                Add(Item, Persist);
+            else
+                _items = new List<T> { Item };
+
+            Modified = true;
+
+            return this;
+        }
+
+
         public IRelmDataSet<T> OrderBy(Expression<Func<T, object>> predicate)
         {
             AddSingleExpression(PrewarmQuery(Command.OrderBy), predicate.Body);
@@ -407,7 +424,11 @@ namespace SimpleRelm.Models
 
         public int Save()
         {
-            var rowsUpdated = _items.WriteToDatabase(CurrentContext.ContextOptions.ConnectionStringType);
+            int rowsUpdated;
+            if (CurrentContext.ContextOptions.OptionsBuilderType == Options.RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
+                rowsUpdated = _items.WriteToDatabase(CurrentContext.ContextOptions.DatabaseConnection, SqlTransaction: CurrentContext.ContextOptions.DatabaseTransaction);
+            else
+                rowsUpdated = _items.WriteToDatabase(CurrentContext.ContextOptions.ConnectionStringType);
 
             Modified = false;
 
@@ -544,7 +565,12 @@ namespace SimpleRelm.Models
 
             // If persisting is necessary, write to database
             if (Persist)
-                item.WriteToDatabase(CurrentContext.ContextOptions.ConnectionStringType);
+            {
+                if (CurrentContext.ContextOptions.OptionsBuilderType == Options.RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
+                    _items.WriteToDatabase(CurrentContext.ContextOptions.DatabaseConnection, SqlTransaction: CurrentContext.ContextOptions.DatabaseTransaction);
+                else
+                    item.WriteToDatabase(CurrentContext.ContextOptions.ConnectionStringType);
+            }
             else
                 Modified = true;
         }

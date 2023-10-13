@@ -22,6 +22,7 @@ namespace SimpleRelm.Interfaces
         ICollection<T> Load();
         int Write();
         IRelmDataSet<T> Entry(T Item);
+        IRelmDataSet<T> Entry(T Item, bool Persist = true);
         IRelmDataSet<T> OrderBy(Expression<Func<T, object>> predicate);
         IRelmDataSet<T> OrderByDescending(Expression<Func<T, object>> predicate);
         IRelmDataSet<T> Set(Expression<Func<T, T>> predicate);

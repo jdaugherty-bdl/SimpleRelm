@@ -82,6 +82,7 @@
     <Compile Include="RelmInternal\Extensions\StatementDecorationsExtension.cs" />
     <Compile Include="RelmInternal\Extensions\UnderscoreNamesHelper.cs" />
     <Compile Include="RelmInternal\GlobalEnums.cs" />
+    <Compile Include="RelmInternal\Helpers\Connections\StandardConnectionHelper.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\DatabaseWorkHelper.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\ObjectResultsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\Persistence\DataOutputOperations.cs" />

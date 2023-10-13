@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
@@ -23,8 +24,8 @@ namespace SimpleRelm.Options
         public string DatabasePassword { get; private set; }
         public string DatabaseConnectionString { get; private set; }
 
-        public DbConnection DatabaseConnection { get; private set; }
-        public DbTransaction DatabaseTransaction { get; private set; }
+        public MySqlConnection DatabaseConnection { get; private set; }
+        public MySqlTransaction DatabaseTransaction { get; private set; }
 
         private OptionsBuilderTypes _optionsBuilderType;
         public OptionsBuilderTypes OptionsBuilderType => _optionsBuilderType;
@@ -44,26 +45,6 @@ namespace SimpleRelm.Options
 
         public RelmContextOptionsBuilder(string databaseServer, string databaseName, string databaseUser, string databasePassword)
         {
-            /*
-            if (string.IsNullOrEmpty(databaseServer))
-                throw new ArgumentNullException("Database server cannot be null or empty.", nameof(databaseServer));
-
-            if (string.IsNullOrEmpty(databaseName))
-                throw new ArgumentNullException("Database name cannot be null or empty.", nameof(databaseName));
-
-            if (string.IsNullOrEmpty(databaseUser))
-                throw new ArgumentNullException("Database user cannot be null or empty.", nameof(databaseUser));
-
-            if (string.IsNullOrEmpty(databasePassword))
-                throw new ArgumentNullException("Database password cannot be null or empty.", nameof(databasePassword));
-
-            DatabaseServer = databaseServer;
-            DatabaseName = databaseName;
-            DatabaseUser = databaseUser;
-            DatabasePassword = databasePassword;
-
-            _optionsBuilderType = OptionsBuilderTypes.ConnectionString;
-            */
             SetDatabaseServer(databaseServer);
             SetDatabaseName(databaseName);
             SetDatabaseUser(databaseUser);
@@ -72,32 +53,28 @@ namespace SimpleRelm.Options
 
         public RelmContextOptionsBuilder(Enum connectionStringType)
         {
-            /*
-            if (!Enum.IsDefined(typeof(Enum), connectionStringType))
-                throw new ArgumentNullException("Invalid connection string type provided.", nameof(connectionStringType));
-
-            _connectionStringType = connectionStringType;
-
-            _optionsBuilderType = OptionsBuilderTypes.NamedConnectionString;
-            */
             SetConnectionStringType(connectionStringType);
         }
 
-        public RelmContextOptionsBuilder(DbConnection connection, DbTransaction transaction)
+        public RelmContextOptionsBuilder(MySqlConnection connection)
+        {
+            SetDatabaseConnection(connection);
+        }
+
+        public RelmContextOptionsBuilder(MySqlConnection connection, MySqlTransaction transaction)
         {
             SetDatabaseConnection(connection);
             SetDatabaseTransaction(transaction);
         }
 
-        // create set methods for each property
-        public void SetDatabaseConnection(DbConnection connection)
+        public void SetDatabaseConnection(MySqlConnection connection)
         {
             DatabaseConnection = connection ?? throw new ArgumentNullException("Connection cannot be null.", nameof(connection));
 
             _optionsBuilderType = OptionsBuilderTypes.OpenConnection;
         }
 
-        public void SetDatabaseTransaction(DbTransaction transaction)
+        public void SetDatabaseTransaction(MySqlTransaction transaction)
         {
             DatabaseTransaction = transaction ?? throw new ArgumentNullException("Transaction cannot be null.", nameof(transaction));
 

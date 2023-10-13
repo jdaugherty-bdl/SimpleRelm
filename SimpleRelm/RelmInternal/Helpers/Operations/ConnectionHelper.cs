@@ -73,9 +73,27 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             return DALResolver?.GetConnectionBuilder(ConfigConnectionString);
         }
 
+        internal static MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionType(string ConfigConnectionString)
+        {
+            return DALResolver?.GetConnectionBuilder(ConfigConnectionString);
+        }
+
+        internal static MySqlConnection GetConnectionFromString(string ConfigConnectionString, bool AllowUserVariables = false)
+        {
+            var connectionBuilder = GetConnectionBuilderFromConnectionType(ConfigConnectionString);
+
+            return GetConnection(connectionBuilder, AllowUserVariables);
+        }
+
         internal static MySqlConnection GetConnectionFromString(Enum ConfigConnectionString, bool AllowUserVariables = false)
         {
-            var connectionBuilder = GetConnectionBuilderFromConnectionType(ConfigConnectionString); // new MySqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[connectionString].ConnectionString);
+            var connectionBuilder = GetConnectionBuilderFromConnectionType(ConfigConnectionString);
+
+            return GetConnection(connectionBuilder, AllowUserVariables);
+        }
+
+        private static MySqlConnection GetConnection(MySqlConnectionStringBuilder connectionBuilder, bool AllowUserVariables = false)
+        { 
             connectionBuilder.ConvertZeroDateTime = true;
 
             if (AllowUserVariables)
