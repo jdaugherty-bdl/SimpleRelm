@@ -49,12 +49,29 @@ namespace SimpleRelm
             => ConnectionHelper.GetConnectionBuilderFromConnectionType(ConfigConnectionString);
 
         /// <summary>
+        /// Gets a MySQL connection builder that can then be used to establish a connection to the database, or to get connection details.
+        /// </summary>
+        /// <param name="ConfigConnectionString">A properly formatted database connection string.</param>
+        /// <returns>A connection string builder that can be used to establish connections.</returns>
+        public static MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionType(string ConfigConnectionString)
+            => ConnectionHelper.GetConnectionBuilderFromConnectionType(ConfigConnectionString);
+
+        /// <summary>
         /// Gets an unopened MySQL connection given a resolvable connection string type.
         /// </summary>
         /// <param name="ConfigConnectionString">An enum type to reference a connection string defined in web.config.</param>
         /// <param name="AllowUserVariables">Will allow special user variables (variables start with "@") to be defined in the query that will be eventually executed.</param>
         /// <returns>An unopened MySQL connection.</returns>
         public static MySqlConnection GetConnectionFromString(Enum ConfigConnectionString, bool AllowUserVariables = false)
+            => ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables: AllowUserVariables);
+
+        /// <summary>
+        /// Gets an unopened MySQL connection given a resolvable connection string type.
+        /// </summary>
+        /// <param name="ConfigConnectionString">An enum type to reference a connection string defined in web.config.</param>
+        /// <param name="AllowUserVariables">Will allow special user variables (variables start with "@") to be defined in the query that will be eventually executed.</param>
+        /// <returns>An unopened MySQL connection.</returns>
+        public static MySqlConnection GetConnectionFromString(string ConfigConnectionString, bool AllowUserVariables = false)
             => ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables: AllowUserVariables);
 
         //***************** Identity functions *****************//

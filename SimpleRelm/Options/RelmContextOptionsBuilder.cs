@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
+using SimpleRelm.RelmInternal.Helpers.Operations;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace SimpleRelm.Options
         public string DatabaseUser { get; private set; }
         public string DatabasePassword { get; private set; }
         public string DatabaseConnectionString { get; private set; }
+        public string NamedConnection { get; set; }
 
         public MySqlConnection DatabaseConnection { get; private set; }
         public MySqlTransaction DatabaseTransaction { get; private set; }
@@ -53,7 +56,7 @@ namespace SimpleRelm.Options
 
         public RelmContextOptionsBuilder(Enum connectionStringType)
         {
-            SetConnectionStringType(connectionStringType);
+            SetConnectionStringType(connectionStringType.GetType(), connectionStringType);
         }
 
         public RelmContextOptionsBuilder(MySqlConnection connection)
@@ -126,30 +129,45 @@ namespace SimpleRelm.Options
             _optionsBuilderType = OptionsBuilderTypes.ConnectionString;
         }
 
-        public void SetDatabaseConnectionString(string DatabaseConnectionString)
-        {
-            /*
-            if (!Enum.TryParse(DatabaseConnectionString, out _connectionStringType))
-                throw new ArgumentException($"Invalid connection string type '{DatabaseConnectionString}'.");
-            */
-
-            this.DatabaseConnectionString = DatabaseConnectionString;
-
-            //ConnectionStringType = (DALHelper.ConnectionStringTypes)Enum.Parse(typeof(DALHelper.ConnectionStringTypes), DatabaseConnectionString);
-
-            _optionsBuilderType = OptionsBuilderTypes.NamedConnectionString;
-        }
-
         public void SetConnectionStringType(Enum connectionStringType)
         {
-            if (!Enum.IsDefined(typeof(Enum), connectionStringType))
+            SetConnectionStringType(connectionStringType.GetType(), connectionStringType);
+        }
+
+        public void SetConnectionStringType(Type enumType, Enum connectionStringType)
+        { 
+            if (!Enum.IsDefined(enumType, connectionStringType))
                 throw new ArgumentNullException("Invalid connection string type provided.", nameof(connectionStringType));
 
             _connectionStringType = connectionStringType;
 
-            DatabaseConnectionString = connectionStringType.ToString();
+            NamedConnection = connectionStringType.ToString();
 
             _optionsBuilderType = OptionsBuilderTypes.NamedConnectionString;
+        }
+
+        public void SetNamedConnection(string namedConnection)
+        {
+            if (string.IsNullOrEmpty(namedConnection))
+                throw new ArgumentNullException(nameof(namedConnection));
+
+            NamedConnection = namedConnection;
+
+            /*
+            if (!Enum.TryParse(DatabaseConnectionString, out _connectionStringType))
+                throw new ArgumentException($"Invalid connection string type '{DatabaseConnectionString}'.");
+            ConnectionStringType = (DALHelper.ConnectionStringTypes)Enum.Parse(typeof(DALHelper.ConnectionStringTypes), DatabaseConnectionString);
+            */
+
+            _optionsBuilderType = OptionsBuilderTypes.NamedConnectionString;
+        }
+
+        public void SetDatabaseConnectionString(string DatabaseConnectionString)
+        {
+            if (string.IsNullOrEmpty(DatabaseConnectionString))
+                throw new ArgumentNullException(nameof(DatabaseConnectionString));
+
+            this.DatabaseConnectionString = DatabaseConnectionString;
         }
 
         public bool ValidateAllSettings(bool throwExceptions = true)
@@ -243,7 +261,11 @@ namespace SimpleRelm.Options
             }
 
             if (connectionOptions.ContainsKey("name"))
-                SetDatabaseConnectionString(connectionOptions["name"]);
+            {
+                SetNamedConnection(connectionOptions["name"]);
+
+                SetDatabaseConnectionString(RelmHelper.GetConnectionBuilderFromConnectionType(connectionOptions["name"]).ConnectionString);
+            }
             else
             {
                 if (connectionOptions.ContainsKey("server"))
@@ -257,6 +279,8 @@ namespace SimpleRelm.Options
 
                 if (connectionOptions.ContainsKey("password"))
                     SetDatabasePassword(connectionOptions["password"]);
+
+                DatabaseConnectionString = $"server={DatabaseServer};database={DatabaseName};uid={DatabasePassword};pwd={DatabaseUser}";
             }
         }
     }

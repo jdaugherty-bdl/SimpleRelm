@@ -16,12 +16,12 @@ namespace SimpleRelm.RelmInternal.Resolvers
         public MySqlConnectionStringBuilder GetConnectionBuilder(Enum ConnectionType)
         {
             // converts the enum name directly to string and then looks for that in the configuration file
-            return GetConnectionBuilder(ConfigurationManager.ConnectionStrings[ConnectionType.ToString()].ConnectionString);
+            return GetConnectionBuilder(ConnectionType.ToString());
         }
 
         public MySqlConnectionStringBuilder GetConnectionBuilder(string ConfigConnectionString)
         {
-            return new MySqlConnectionStringBuilder(ConfigConnectionString);
+            return new MySqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[ConfigConnectionString].ConnectionString);
         }
 
         DbConnectionStringBuilder IRelmResolverBase.GetConnectionBuilder(Enum ConnectionType)

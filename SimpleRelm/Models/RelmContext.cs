@@ -54,12 +54,7 @@ namespace SimpleRelm.Models
             if (autoOpenConnection)
             {
                 if (ContextOptions.DatabaseConnection == null)
-                {
-                    if (ContextOptions.OptionsBuilderType == RelmContextOptionsBuilder.OptionsBuilderTypes.ConnectionString)
-                        throw new NotImplementedException();
-                    else if (ContextOptions.OptionsBuilderType == RelmContextOptionsBuilder.OptionsBuilderTypes.NamedConnectionString)
-                        ContextOptions.SetDatabaseConnection(RelmHelper.GetConnectionFromString(ContextOptions.ConnectionStringType));
-                }
+                    ContextOptions.SetDatabaseConnection(RelmHelper.GetConnectionFromString(ContextOptions.DatabaseConnectionString));
 
                 if (ContextOptions.DatabaseConnection != null)
                     StartConnection(autoOpenTransaction);

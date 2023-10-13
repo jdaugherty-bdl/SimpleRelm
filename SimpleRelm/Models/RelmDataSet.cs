@@ -138,14 +138,7 @@ namespace SimpleRelm.Models
 
         public ICollection<T> Load()
         {
-            var findOptions = new Dictionary<string, object>();
-
-            var selectQuery = GetSelectQuery(findOptions);
-
-            if (CurrentContext.ContextOptions.OptionsBuilderType == Options.RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
-                _items = RelmHelper.GetDataObjects<T>(CurrentContext.ContextOptions.DatabaseConnection, selectQuery, findOptions, SqlTransaction: CurrentContext.ContextOptions.DatabaseTransaction).ToList();
-            else
-                _items = RelmHelper.GetDataObjects<T>(CurrentContext.ContextOptions.ConnectionStringType, selectQuery, findOptions).ToList();
+            _items = GetLoadData();
 
             if (_items?.Any() ?? false)
             {
@@ -159,6 +152,17 @@ namespace SimpleRelm.Models
             }
 
             return _items;
+        }
+
+        internal ICollection<T> GetLoadData()
+        {
+            var findOptions = new Dictionary<string, object>();
+            var selectQuery = GetSelectQuery(findOptions);
+
+            if (CurrentContext.ContextOptions.OptionsBuilderType == Options.RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
+                return RelmHelper.GetDataObjects<T>(CurrentContext.ContextOptions.DatabaseConnection, selectQuery, findOptions, SqlTransaction: CurrentContext.ContextOptions.DatabaseTransaction).ToList();
+            else
+                return RelmHelper.GetDataObjects<T>(CurrentContext.ContextOptions.ConnectionStringType, selectQuery, findOptions).ToList();
         }
 
         public int Write()
@@ -240,7 +244,7 @@ namespace SimpleRelm.Models
 
             // Find the DALForeignKey attribute on the current item's property
             var foreignKeyAttribute = referenceProperty.Member.GetCustomAttribute<RelmForeignKey>()
-                ?? throw new InvalidOperationException("DALForeignKey attribute not found on reference property.");
+                ?? throw new InvalidOperationException("RelmForeignKey attribute not found on reference property.");
 
             // Find the property on the generic type that has a DALForeignKey attribute, 
             // and if the property is a generic, look at the generic type argument for the DALForeignKey attribute
