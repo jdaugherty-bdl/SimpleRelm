@@ -84,6 +84,7 @@
     <Compile Include="RelmInternal\GlobalEnums.cs" />
     <Compile Include="RelmInternal\Helpers\Connections\StandardConnectionHelper.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\DatabaseWorkHelper.cs" />
+    <Compile Include="RelmInternal\Helpers\DataTransfer\DefaultDataLoader.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\ObjectResultsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\Persistence\DataOutputOperations.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\RefinedResultsHelper.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="RelmInternal\Helpers\Utilities\ExpressionUtilities.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\TableOperationsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\CoreUtilities.cs" />
+    <Compile Include="Interfaces\IRelmDataLoader.cs" />
     <Compile Include="RelmInternal\Models\DALPropertyType_MySQL.cs" />
     <Compile Include="RelmInternal\Models\DALPropertyType_ODBC.cs" />
     <Compile Include="RelmInternal\Models\DALTableRowDescriptor.cs" />
@@ -105,6 +107,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="RelmInternal\Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

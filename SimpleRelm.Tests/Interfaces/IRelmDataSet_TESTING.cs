@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.Tests.Interfaces
 {
-    internal interface IRelmContext_Test : IRelmContext
+    public interface IRelmDataSet_TESTING<T> : IRelmDataSet<T> where T : IRelmModel, new()
     {
+        ICollection<T> GetLoadData();
+        IRelmDataLoader<T> GetDataLoader();
     }
 }

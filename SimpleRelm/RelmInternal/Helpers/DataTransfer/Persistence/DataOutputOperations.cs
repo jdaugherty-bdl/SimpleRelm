@@ -35,7 +35,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence
 
         internal static int BulkTableWrite<T>(Enum ConfigConnectionString, T SourceData, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 100, string DatabaseName = null)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables: AllowUserVariables))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConfigConnectionString, allowUserVariables: AllowUserVariables))
             {
                 return BulkTableWrite<T>(conn, SourceData, TableName, null, ForceType, BatchSize, DatabaseName);
             }
@@ -43,7 +43,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence
 
         internal static int BulkTableWrite<T>(Enum ConfigConnectionString, IEnumerable<T> SourceData, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 100, string DatabaseName = null)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables: AllowUserVariables))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConfigConnectionString, allowUserVariables: AllowUserVariables))
             {
                 return BulkTableWrite<T>(conn, SourceData, TableName, null, ForceType, BatchSize, DatabaseName);
             }

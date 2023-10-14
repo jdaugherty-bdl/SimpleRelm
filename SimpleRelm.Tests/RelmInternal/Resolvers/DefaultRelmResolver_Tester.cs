@@ -26,7 +26,7 @@ namespace SimpleRelm.Tests.RelmInternal.Resolvers
             var resolver = new DefaultRelmResolver();
 
             // Act
-            var ex = Assert.Throws<ArgumentException>(() => resolver.GetConnectionBuilder("INVALID CONNECTION STRING"));
+            var ex = Assert.Throws<ArgumentException>(() => resolver.GetConnectionBuilderFromName("INVALID CONNECTION STRING"));
 
             // Assert
             Assert.Equal("Format of the initialization string does not conform to specification starting at index 0.", ex.Message);
@@ -39,7 +39,7 @@ namespace SimpleRelm.Tests.RelmInternal.Resolvers
             var resolver = new DefaultRelmResolver();
 
             // Act
-            var ex = Assert.Throws<ArgumentException>(() => resolver.GetConnectionBuilder(ConnectionType.InvalidConnectionString));
+            var ex = Assert.Throws<ArgumentException>(() => resolver.GetConnectionBuilderFromType(ConnectionType.InvalidConnectionString));
 
             // Assert
             Assert.Equal("Format of the initialization string does not conform to specification starting at index 0.", ex.Message);
@@ -53,7 +53,7 @@ namespace SimpleRelm.Tests.RelmInternal.Resolvers
             var expected = new MySqlConnectionStringBuilder("server=localhost;database=simple_relm;uid=simplerelmuser;pwd=simplerelmpassword");
 
             // Act
-            var actual = resolver.GetConnectionBuilder("server=localhost;database=simple_relm;uid=simplerelmuser;pwd=simplerelmpassword");
+            var actual = resolver.GetConnectionBuilderFromName("server=localhost;database=simple_relm;uid=simplerelmuser;pwd=simplerelmpassword");
 
             // Assert
             Assert.Equal(expected.ConnectionString, actual.ConnectionString);
@@ -67,7 +67,7 @@ namespace SimpleRelm.Tests.RelmInternal.Resolvers
             var expected = new MySqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["SimpleRelmMySql"].ConnectionString);
 
             // Act
-            var actual = resolver.GetConnectionBuilder(ConnectionType.SimpleRelmMySql);
+            var actual = resolver.GetConnectionBuilderFromType(ConnectionType.SimpleRelmMySql);
 
             // Assert
             Assert.Equal(expected.ConnectionString, actual.ConnectionString);

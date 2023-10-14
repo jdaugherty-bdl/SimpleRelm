@@ -34,7 +34,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         /// <param name="ThrowException">Throw swallow exception</param>
         internal static void DoDatabaseWork(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null, bool AllowUserVariables = false)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConfigConnectionString, AllowUserVariables))
             {
                 DoDatabaseWork(conn, QueryString, Parameters: Parameters, ThrowException: ThrowException, UseTransaction: UseTransaction || SqlTransaction != null, SqlTransaction: SqlTransaction);
             }
@@ -71,7 +71,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         /// <returns>Number of rows affected</returns>
         internal static T DoDatabaseWork<T>(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null, bool AllowUserVariables = false)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConfigConnectionString, AllowUserVariables))
             {
                 return DoDatabaseWork<T>(conn, QueryString, Parameters: Parameters, ThrowException: ThrowException, UseTransaction: UseTransaction || SqlTransaction != null, SqlTransaction: SqlTransaction);
             }
@@ -144,7 +144,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         /// <returns>Data of any type T</returns>
         internal static T DoDatabaseWork<T>(Enum ConfigConnectionString, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null, bool AllowUserVariables = false)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConfigConnectionString, AllowUserVariables))
             {
                 return DoDatabaseWork<T>(conn, QueryString, ActionCallback, ThrowException: ThrowException, UseTransaction: UseTransaction || SqlTransaction != null, SqlTransaction: SqlTransaction);
             }

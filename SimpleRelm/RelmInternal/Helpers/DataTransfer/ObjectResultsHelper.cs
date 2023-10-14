@@ -15,7 +15,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
     {
         internal static IEnumerable<T> GetDataList<T>(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConfigConnectionString, AllowUserVariables))
             {
                 return GetDataList<T>(conn, QueryString, Parameters: Parameters, ThrowException: ThrowException);
             }
@@ -30,7 +30,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
         internal static T GetDataObject<T>(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConfigConnectionString, AllowUserVariables))
             {
                 return GetDataObject<T>(conn, QueryString, Parameters: Parameters, ThrowException: ThrowException);
             }
@@ -44,7 +44,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
         internal static IEnumerable<T> GetDataObjects<T>(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConfigConnectionString, AllowUserVariables))
             {
                 return GetDataObjects<T>(conn, QueryString, Parameters: Parameters, ThrowException: ThrowException);
             }

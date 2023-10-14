@@ -43,36 +43,53 @@ namespace SimpleRelm
         /// <summary>
         /// Gets a MySQL connection builder that can then be used to establish a connection to the database, or to get connection details.
         /// </summary>
-        /// <param name="ConfigConnectionString">A properly formatted database connection string.</param>
+        /// <param name="connectionType">A properly formatted database connection string.</param>
         /// <returns>A connection string builder that can be used to establish connections.</returns>
-        public static MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionType(Enum ConfigConnectionString)
-            => ConnectionHelper.GetConnectionBuilderFromConnectionType(ConfigConnectionString);
+        public static MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionType(Enum connectionType)
+            => ConnectionHelper.GetConnectionBuilderFromType(connectionType);
 
         /// <summary>
         /// Gets a MySQL connection builder that can then be used to establish a connection to the database, or to get connection details.
         /// </summary>
-        /// <param name="ConfigConnectionString">A properly formatted database connection string.</param>
+        /// <param name="connectionName">A properly formatted database connection string.</param>
         /// <returns>A connection string builder that can be used to establish connections.</returns>
-        public static MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionType(string ConfigConnectionString)
-            => ConnectionHelper.GetConnectionBuilderFromConnectionType(ConfigConnectionString);
+        public static MySqlConnectionStringBuilder GetConnectionBuilderFromName(string connectionName)
+            => ConnectionHelper.GetConnectionBuilderFromName(connectionName);
+
+        /// <summary>
+        /// Gets a MySQL connection builder that can then be used to establish a connection to the database, or to get connection details.
+        /// </summary>
+        /// <param name="connectionString">A properly formatted database connection string.</param>
+        /// <returns>A connection string builder that can be used to establish connections.</returns>
+        public static MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionString(string connectionString)
+            => ConnectionHelper.GetConnectionBuilderFromConnectionString(connectionString);
 
         /// <summary>
         /// Gets an unopened MySQL connection given a resolvable connection string type.
         /// </summary>
-        /// <param name="ConfigConnectionString">An enum type to reference a connection string defined in web.config.</param>
-        /// <param name="AllowUserVariables">Will allow special user variables (variables start with "@") to be defined in the query that will be eventually executed.</param>
+        /// <param name="connectionType">An enum type to reference a connection string defined in web.config.</param>
+        /// <param name="allowUserVariables">Will allow special user variables (variables start with "@") to be defined in the query that will be eventually executed.</param>
         /// <returns>An unopened MySQL connection.</returns>
-        public static MySqlConnection GetConnectionFromString(Enum ConfigConnectionString, bool AllowUserVariables = false)
-            => ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables: AllowUserVariables);
+        public static MySqlConnection GetConnectionFromType(Enum connectionType, bool allowUserVariables = false)
+            => ConnectionHelper.GetConnectionFromType(connectionType, allowUserVariables: allowUserVariables);
 
         /// <summary>
         /// Gets an unopened MySQL connection given a resolvable connection string type.
         /// </summary>
-        /// <param name="ConfigConnectionString">An enum type to reference a connection string defined in web.config.</param>
-        /// <param name="AllowUserVariables">Will allow special user variables (variables start with "@") to be defined in the query that will be eventually executed.</param>
+        /// <param name="connectionName">An enum type to reference a connection string defined in web.config.</param>
+        /// <param name="allowUserVariables">Will allow special user variables (variables start with "@") to be defined in the query that will be eventually executed.</param>
         /// <returns>An unopened MySQL connection.</returns>
-        public static MySqlConnection GetConnectionFromString(string ConfigConnectionString, bool AllowUserVariables = false)
-            => ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables: AllowUserVariables);
+        public static MySqlConnection GetConnectionFromName(string connectionName, bool allowUserVariables = false)
+            => ConnectionHelper.GetConnectionFromName(connectionName, allowUserVariables: allowUserVariables);
+
+        /// <summary>
+        /// Gets an unopened MySQL connection given a resolvable connection string type.
+        /// </summary>
+        /// <param name="connectionString">An enum type to reference a connection string defined in web.config.</param>
+        /// <param name="allowUserVariables">Will allow special user variables (variables start with "@") to be defined in the query that will be eventually executed.</param>
+        /// <returns>An unopened MySQL connection.</returns>
+        public static MySqlConnection GetConnectionFromConnectionString(string connectionString, bool allowUserVariables = false)
+            => ConnectionHelper.GetConnectionFromConnectionString(connectionString, allowUserVariables: allowUserVariables);
 
         //***************** Identity functions *****************//
 

@@ -1,4 +1,5 @@
 ﻿using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using SimpleRelm.Options;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace SimpleRelm.Interfaces
     public interface IRelmContext
     {
         RelmContextOptionsBuilder ContextOptions { get; }
+
+        void SetDataLoader<T>(IRelmDataLoader<T> dataLoader) where T : RelmModel, new();
 
         IRelmDataSet<T> GetDataSetType<T>() where T : IRelmModel, new();
         IRelmDataSet<T> GetDataSetType<T>(bool throwException) where T : IRelmModel, new();

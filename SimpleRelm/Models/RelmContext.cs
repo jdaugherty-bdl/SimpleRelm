@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Options;
+using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -51,14 +52,11 @@ namespace SimpleRelm.Models
 
         private void InitializeContext(bool autoOpenConnection = true, bool autoOpenTransaction = false)
         {
-            if (autoOpenConnection)
-            {
-                if (ContextOptions.DatabaseConnection == null)
-                    ContextOptions.SetDatabaseConnection(RelmHelper.GetConnectionFromString(ContextOptions.DatabaseConnectionString));
+            if (ContextOptions.DatabaseConnection == null)
+                ContextOptions.SetDatabaseConnection(RelmHelper.GetConnectionFromConnectionString(ContextOptions.DatabaseConnectionString));
 
-                if (ContextOptions.DatabaseConnection != null)
-                    StartConnection(autoOpenTransaction);
-            }
+            if (autoOpenConnection && ContextOptions.DatabaseConnection != null)
+                StartConnection(autoOpenTransaction);
 
             _attachedDataSets = new List<object>();
 
@@ -78,11 +76,51 @@ namespace SimpleRelm.Models
             {
                 var dalDataSetType = attachedProperty.PropertyType.GetGenericArguments()[0];
 
-                var dalDataSet = Activator.CreateInstance(typeof(RelmDataSet<>).MakeGenericType(dalDataSetType), new object[] { this });
+                // create a default data loader for the generic type argument then create a dataset and pass the data loader
+                var dalDataLoader = Activator.CreateInstance(typeof(DefaultDataLoader<>).MakeGenericType(dalDataSetType), new object[] { ContextOptions });
+                var dalDataSet = Activator.CreateInstance(typeof(RelmDataSet<>).MakeGenericType(dalDataSetType), new object[] { this, dalDataLoader });
 
                 attachedProperty.SetValue(this, dalDataSet);
 
                 _attachedDataSets.Add(dalDataSet);
+            }
+        }
+
+        public void SetDataLoader<T>(IRelmDataLoader<T> dataLoader) where T : RelmModel, new()
+        {
+            if (!HasDataSet<T>())
+                throw new InvalidOperationException("No such data set exists");
+
+            GetDataSetType<T>().SetDataLoader(dataLoader);
+        }
+
+        /// <summary>
+        /// Search through the list of attached data sets for a data set of the same type as "dataSet", if found replace it, otherwise add it.
+        /// </summary>
+        /// <typeparam name="T">A class that inherits from RelmModel.</typeparam>
+        /// <param name="dataSet">The data set to add/replace with.</param>
+        //internal void SetDataSet<T>(IRelmDataSet<T> dataSet) where T : RelmModel, new()
+        internal void SetDataSet<T>(T dataSet)
+        {
+            // First, let's try to find an existing dataSet of the same type.
+            var existingDataSet = _attachedDataSets
+                .FirstOrDefault(ds => typeof(T).IsInstanceOfType(ds));
+
+            if (existingDataSet != null)
+            {
+                // If we found it, we replace the property and existing attached data set with the new dataSet.
+                this.GetType()
+                    .GetProperties()
+                    .FirstOrDefault(x => x.PropertyType.IsGenericType && typeof(T).IsInstanceOfType(x.GetValue(this)))
+                    .SetValue(this, dataSet);
+
+                var index = _attachedDataSets.IndexOf(existingDataSet);
+                _attachedDataSets[index] = dataSet;
+            }
+            else
+            {
+                // If we didn't find it, we add the new dataSet to the list.
+                _attachedDataSets.Add(dataSet);
             }
         }
 

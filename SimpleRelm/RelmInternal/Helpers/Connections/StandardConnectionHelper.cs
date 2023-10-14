@@ -55,7 +55,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Connections
         /// <returns>An object with a type of <typeparamref name="T"/></returns>
         public static T StandardConnectionWrapper<T>(Enum ConnectionType, Func<MySqlConnection, MySqlTransaction, T> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConnectionType))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConnectionType))
             {
                 conn.Open();
 

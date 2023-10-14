@@ -264,7 +264,7 @@ namespace SimpleRelm.Options
             {
                 SetNamedConnection(connectionOptions["name"]);
 
-                SetDatabaseConnectionString(RelmHelper.GetConnectionBuilderFromConnectionType(connectionOptions["name"]).ConnectionString);
+                SetDatabaseConnectionString(RelmHelper.GetConnectionBuilderFromName(connectionOptions["name"]).ConnectionString);
             }
             else
             {

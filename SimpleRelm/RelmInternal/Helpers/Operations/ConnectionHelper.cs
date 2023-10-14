@@ -66,37 +66,49 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         /// <summary>
         /// Gets a MySQL connection builder that is then used to establish a connection to the database
         /// </summary>
-        /// <param name="ConfigConnectionString">A properly formatted database connection string</param>
+        /// <param name="connectionType">A properly formatted database connection string</param>
         /// <returns>A connection string builder that can be used to establish connections</returns>
-        internal static MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionType(Enum ConfigConnectionString)
+        internal static MySqlConnectionStringBuilder GetConnectionBuilderFromType(Enum connectionType)
         {
-            return DALResolver?.GetConnectionBuilder(ConfigConnectionString);
+            return DALResolver?.GetConnectionBuilderFromType(connectionType);
         }
 
-        internal static MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionType(string ConfigConnectionString)
+        internal static MySqlConnectionStringBuilder GetConnectionBuilderFromName(string connectionName)
         {
-            return DALResolver?.GetConnectionBuilder(ConfigConnectionString);
+            return DALResolver?.GetConnectionBuilderFromName(connectionName);
         }
 
-        internal static MySqlConnection GetConnectionFromString(string ConfigConnectionString, bool AllowUserVariables = false)
+        internal static MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionString(string connectionString)
         {
-            var connectionBuilder = GetConnectionBuilderFromConnectionType(ConfigConnectionString);
-
-            return GetConnection(connectionBuilder, AllowUserVariables);
+            return DALResolver?.GetConnectionBuilderFromConnectionString(connectionString);
         }
 
-        internal static MySqlConnection GetConnectionFromString(Enum ConfigConnectionString, bool AllowUserVariables = false)
+        internal static MySqlConnection GetConnectionFromName(string connectionName, bool allowUserVariables = false)
         {
-            var connectionBuilder = GetConnectionBuilderFromConnectionType(ConfigConnectionString);
+            var connectionBuilder = GetConnectionBuilderFromName(connectionName);
 
-            return GetConnection(connectionBuilder, AllowUserVariables);
+            return GetConnection(connectionBuilder, allowUserVariables);
         }
 
-        private static MySqlConnection GetConnection(MySqlConnectionStringBuilder connectionBuilder, bool AllowUserVariables = false)
+        internal static MySqlConnection GetConnectionFromType(Enum connectionType, bool allowUserVariables = false)
+        {
+            var connectionBuilder = GetConnectionBuilderFromType(connectionType);
+
+            return GetConnection(connectionBuilder, allowUserVariables);
+        }
+
+        internal static MySqlConnection GetConnectionFromConnectionString(string connectionString, bool allowUserVariables = false)
+        {
+            var connectionBuilder = GetConnectionBuilderFromConnectionString(connectionString);
+
+            return GetConnection(connectionBuilder, allowUserVariables);
+        }
+
+        private static MySqlConnection GetConnection(MySqlConnectionStringBuilder connectionBuilder, bool allowUserVariables = false)
         { 
             connectionBuilder.ConvertZeroDateTime = true;
 
-            if (AllowUserVariables)
+            if (allowUserVariables)
                 connectionBuilder.AllowUserVariables = true;
 
             return new MySqlConnection(connectionBuilder.ToString());

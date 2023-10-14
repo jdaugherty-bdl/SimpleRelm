@@ -10,6 +10,7 @@ namespace SimpleRelm.Interfaces
 {
     public interface IRelmDataSet<T> : ICollection<T>, IRelmDataSetBase where T : IRelmModel, new()
     {
+        IRelmDataLoader<T> SetDataLoader(IRelmDataLoader<T> dataLoader);
         IRelmDataSet<T> Where(Expression<Func<T, bool>> predicate);
         IRelmDataSet<T> Reference(Expression<Func<T, object>> predicate);
         IRelmDataSet<T> Collection(Expression<Func<T, object>> predicate);

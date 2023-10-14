@@ -26,7 +26,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         /// <returns>Single value of type T</returns>
         internal static T GetScalar<T>(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConfigConnectionString, AllowUserVariables))
             {
                 return GetScalar<T>(conn, QueryString, Parameters, ThrowException: ThrowException);
             }
@@ -57,7 +57,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
         internal static DataRow GetDataRow(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConfigConnectionString, AllowUserVariables))
             {
                 return GetDataRow(conn, QueryString, Parameters, ThrowException: ThrowException);
             }
@@ -80,7 +80,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         /// <returns>DataTable with requested data</returns>
         internal static DataTable GetDataTable(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConfigConnectionString, AllowUserVariables))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConfigConnectionString, AllowUserVariables))
             {
                 return GetDataTable(conn, QueryString, Parameters, ThrowException: ThrowException);
             }

@@ -1,5 +1,6 @@
 ﻿using Moq;
 using SimpleRelm.Interfaces;
+using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.Tests.Interfaces;
 using SimpleRelm.Tests.TestModels;
 using System;
@@ -31,22 +32,20 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                 new ComplexReferenceObject { ComplexTestModelInternalId = "ID4", TestModel = null },
             };
 
-            var mockDataSetTestModel = new Mock<IRelmDataSet_Test<ComplexTestModel>>();
-            var mockDataSetReferenceObject = new Mock<IRelmDataSet_Test<ComplexReferenceObject>>();
+            var context = new ComplexTestContext("name=SimpleRelmMySql");
 
-            mockDataSetTestModel.Setup(m => m.GetLoadData()).Returns(mockComplexTestModels);
-            mockDataSetReferenceObject.Setup(m => m.GetLoadData()).Returns(mockComplexReferenceObjects);
-            mockDataSetTestModel.Reset();
+            var modelDataLoader = new Mock<DefaultDataLoader<ComplexTestModel>>(); // { CallBase = true };
+            var referenceDataLoader = new Mock<DefaultDataLoader<ComplexReferenceObject>>();
 
-            var context = new ComplexTestContext("name=SimpleRelmMySql")
-            {
-                ComplexTestModels = mockDataSetTestModel.Object,
-                ComplexReferenceObjects = mockDataSetReferenceObject.Object
-            };
+            modelDataLoader.Setup(x => x.GetLoadData()).CallBase();
+            modelDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexTestModels);
+            referenceDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexReferenceObjects);
+
+            context.ComplexTestModels!.SetDataLoader(modelDataLoader.Object);
+            context.ComplexReferenceObjects!.SetDataLoader(referenceDataLoader.Object);
 
             // Act
-            context.ComplexTestModels.Load();
-            context.ComplexTestModels.Reference(x => x.ReferenceObjects).Load();
+            context.ComplexTestModels!.Reference(x => x.ReferenceObjects).Load();
 
             // Assert
             var firstModel = context.ComplexTestModels.First();

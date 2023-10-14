@@ -29,7 +29,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
         internal static bool TruncateTable(Enum ConnectionStringType, string TableName = null, Type ForceType = null)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConnectionStringType))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConnectionStringType))
             {
                 return TruncateTable(conn, TableName: TableName, ForceType: ForceType, SqlTransaction: null);
             }
@@ -95,7 +95,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
         internal static bool CreateTable<T>(Enum ConnectionStringType, bool TruncateIfExists = false)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConnectionStringType))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConnectionStringType))
             {
                 return CreateTable<T>(conn, null, TruncateIfExists: TruncateIfExists);
             }
@@ -115,7 +115,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
         internal static bool TableExists(Enum ConnectionStringType, string TableName)
         {
-            using (var conn = ConnectionHelper.GetConnectionFromString(ConnectionStringType))
+            using (var conn = ConnectionHelper.GetConnectionFromType(ConnectionStringType))
             {
                 return TableExists(conn, TableName, null);
             }

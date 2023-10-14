@@ -1,4 +1,5 @@
 ﻿using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.Tests.Interfaces
 {
-    public interface IRelmDataSet_Test<T> : IRelmDataSet<T> where T : IRelmModel, new()
+    internal interface IRelmContext_TESTING : IRelmContext
     {
-        public ICollection<T> GetLoadData();
+        void SetDataSet<T>(IRelmDataSet<T> dataSet) where T : RelmModel, new();
     }
 }
