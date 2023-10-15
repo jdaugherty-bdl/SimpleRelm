@@ -26,7 +26,7 @@ namespace SimpleRelm.Tests.RelmInternal.Resolvers
             var resolver = new DefaultRelmResolver();
 
             // Act
-            var ex = Assert.Throws<ArgumentException>(() => resolver.GetConnectionBuilderFromName("INVALID CONNECTION STRING"));
+            var ex = Assert.Throws<ArgumentException>(() => resolver.GetConnectionBuilderFromConnectionString("INVALID CONNECTION STRING"));
 
             // Assert
             Assert.Equal("Format of the initialization string does not conform to specification starting at index 0.", ex.Message);
@@ -53,7 +53,21 @@ namespace SimpleRelm.Tests.RelmInternal.Resolvers
             var expected = new MySqlConnectionStringBuilder("server=localhost;database=simple_relm;uid=simplerelmuser;pwd=simplerelmpassword");
 
             // Act
-            var actual = resolver.GetConnectionBuilderFromName("server=localhost;database=simple_relm;uid=simplerelmuser;pwd=simplerelmpassword");
+            var actual = resolver.GetConnectionBuilderFromConnectionString("server=localhost;database=simple_relm;uid=simplerelmuser;pwd=simplerelmpassword");
+
+            // Assert
+            Assert.Equal(expected.ConnectionString, actual.ConnectionString);
+        }
+
+        [Fact]
+        public void GetConnectionBuilder_ByName_MySql()
+        {
+            // Arrange
+            var resolver = new DefaultRelmResolver();
+            var expected = new MySqlConnectionStringBuilder("server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword");
+
+            // Act
+            var actual = resolver.GetConnectionBuilderFromName("SimpleRelmMySql");
 
             // Assert
             Assert.Equal(expected.ConnectionString, actual.ConnectionString);

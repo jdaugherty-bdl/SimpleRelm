@@ -70,8 +70,7 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
         public void ValidateAllSettings_ReturnsTrue_ForValidNamedConnectionStringSettings()
         {
             // Arrange
-            var builder = new RelmContextOptionsBuilder();
-            builder.SetDatabaseConnectionString("PortalCertDatabase");
+            var builder = new RelmContextOptionsBuilder("name=SimpleRelmMySql");
 
             // Act
             var result = builder.ValidateAllSettings();

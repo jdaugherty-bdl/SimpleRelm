@@ -13,8 +13,8 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
         public void SetDatabaseConnectionString_SetsDatabaseConnectionStringConstructorCorrectly()
         {
             // Arrange
-            var expectedDatabaseConnectionString = "server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword";
             var expectedConnectionStringType = RelmContextOptionsBuilder.OptionsBuilderTypes.ConnectionString; // Make sure this is valid
+            var expectedDatabaseConnectionString = "server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword";
 
             // Act
             var builder = new RelmContextOptionsBuilder(expectedDatabaseConnectionString);
@@ -28,9 +28,10 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
         public void SetDatabaseConnectionString_SetsDatabaseConnectionStringPropertyCorrectly()
         {
             // Arrange
-            var builder = new RelmContextOptionsBuilder();
             var expectedConnectionStringType = RelmContextOptionsBuilder.OptionsBuilderTypes.ConnectionString; // Make sure this is valid
             var expectedDatabaseConnectionString = "server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword";
+            
+            var builder = new RelmContextOptionsBuilder();
 
             // Act
             builder.SetDatabaseConnectionString(expectedDatabaseConnectionString);
@@ -46,8 +47,11 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
             // Arrange
             var builder = new RelmContextOptionsBuilder();
 
-            // Act & Assert
-            Assert.Throws<ArgumentException>(() => builder.SetDatabaseConnectionString("INVALID CONNECTION STRING"));
+            // Act 
+            builder.SetDatabaseConnectionString("INVALID CONNECTION STRING");
+
+            // Assert
+            Assert.Throws<ArgumentNullException>(() => builder.ValidateAllSettings());
         }
 
         [Fact]
@@ -69,8 +73,7 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
         public void ValidateAllSettings_ReturnsTrue_ForValidNamedConnectionString()
         {
             // Arrange
-            var builder = new RelmContextOptionsBuilder();
-            builder.SetDatabaseConnectionString("server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword"); // Make sure this is valid
+            var builder = new RelmContextOptionsBuilder("server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword");
 
             // Act
             var result = builder.ValidateAllSettings();
@@ -83,8 +86,7 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
         public void ValidateAllSettings_ReturnsTrue_ForValidNamedConnectionString_WithFalseParameter()
         {
             // Arrange
-            var builder = new RelmContextOptionsBuilder();
-            builder.SetDatabaseConnectionString("server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword"); // Make sure this is valid
+            var builder = new RelmContextOptionsBuilder("server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword");
 
             // Act
             var result = builder.ValidateAllSettings(false);

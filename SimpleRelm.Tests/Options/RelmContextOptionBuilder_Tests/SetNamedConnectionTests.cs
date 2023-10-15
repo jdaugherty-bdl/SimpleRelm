@@ -10,21 +10,21 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
     public class SetNamedConnectionTests
     {
         [Fact]
-        public void SetDatabaseConnectionString_SetsDatabaseConnectionStringPropertyCorrectly()
+        public void SetNamedConnection_SetsNamedConnectionPropertyCorrectly()
         {
             // Arrange
             var builder = new RelmContextOptionsBuilder();
-            var expectedDatabaseConnectionString = "SimpleRelmMySql";
+            var expectedNamedConnection = "SimpleRelmMySql";
 
             // Act
-            builder.SetNamedConnection(expectedDatabaseConnectionString);
+            builder.SetNamedConnection(expectedNamedConnection);
 
             // Assert
-            Assert.Equal(expectedDatabaseConnectionString, builder.DatabaseConnectionString);
+            Assert.Equal(expectedNamedConnection, builder.NamedConnection);
         }
 
         [Fact]
-        public void SetDatabaseConnectionString_SetsConnectionStringTypeCorrectly()
+        public void SetNamedConnection_SetsConnectionStringTypeCorrectly()
         {
             // Arrange
             var builder = new RelmContextOptionsBuilder();
@@ -39,7 +39,7 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
 
         /*
         [Fact]
-        public void SetDatabaseConnectionString_ThrowsExceptionForInvalidConnectionStringType()
+        public void SetNamedConnection_ThrowsExceptionForInvalidConnectionStringType()
         {
             // Arrange
             var builder = new RelmContextOptionsBuilder();
@@ -51,7 +51,7 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
         */
 
         [Fact]
-        public void SetDatabaseConnectionString_SetsOptionsBuilderTypeToNamedConnectionString()
+        public void SetNamedConnection_SetsOptionsBuilderTypeToNamedConnectionString()
         {
             // Arrange
             var builder = new RelmContextOptionsBuilder();
@@ -69,8 +69,7 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
         public void ValidateAllSettings_ReturnsTrue_ForValidNamedConnectionString()
         {
             // Arrange
-            var builder = new RelmContextOptionsBuilder();
-            builder.SetNamedConnection("SimpleRelmMySql"); // Make sure this is valid
+            var builder = new RelmContextOptionsBuilder("name=SimpleRelmMySql");
 
             // Act
             var result = builder.ValidateAllSettings();
@@ -83,8 +82,7 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
         public void ValidateAllSettings_ReturnsTrue_ForValidNamedConnectionString_WithFalseParameter()
         {
             // Arrange
-            var builder = new RelmContextOptionsBuilder();
-            builder.SetNamedConnection("SimpleRelmMySql"); // Make sure this is valid
+            var builder = new RelmContextOptionsBuilder("name=SimpleRelmMySql");
 
             // Act
             var result = builder.ValidateAllSettings(false);

@@ -243,8 +243,8 @@ namespace SimpleRelm.Options
             if (!(connectionOptions.ContainsKey("name") ||
                   (connectionOptions.ContainsKey("server") &&
                    connectionOptions.ContainsKey("database") &&
-                   connectionOptions.ContainsKey("user") &&
-                   connectionOptions.ContainsKey("password"))))
+                   (connectionOptions.ContainsKey("uid") || connectionOptions.ContainsKey("user") || connectionOptions.ContainsKey("user id")) &&
+                   (connectionOptions.ContainsKey("pwd") || connectionOptions.ContainsKey("password")))))
             {
                 throw new ArgumentException("Incomplete connection details. Must be in the format of 'name=connectionString' or 'server=serverName;database=databaseName;user=userName;password=password'.");
             }
@@ -253,8 +253,8 @@ namespace SimpleRelm.Options
                     connectionOptions.Keys.Count > 1) ||
                 (connectionOptions.ContainsKey("server") &&
                     connectionOptions.ContainsKey("database") &&
-                    connectionOptions.ContainsKey("user") &&
-                    connectionOptions.ContainsKey("password") && 
+                   (connectionOptions.ContainsKey("uid") || connectionOptions.ContainsKey("user") || connectionOptions.ContainsKey("user id")) &&
+                   (connectionOptions.ContainsKey("pwd") || connectionOptions.ContainsKey("password")) &&
                     connectionOptions.Keys.Count > 4))
             {
                 throw new ArgumentException("Invalid connection details. Must be in the format of 'name=connectionString' or 'server=serverName;database=databaseName;user=userName;password=password'.");
@@ -274,13 +274,19 @@ namespace SimpleRelm.Options
                 if (connectionOptions.ContainsKey("database"))
                     SetDatabaseName(connectionOptions["database"]);
 
-                if (connectionOptions.ContainsKey("user"))
+                if (connectionOptions.ContainsKey("uid"))
+                    SetDatabaseUser(connectionOptions["uid"]);
+                else if (connectionOptions.ContainsKey("user"))
                     SetDatabaseUser(connectionOptions["user"]);
+                else if (connectionOptions.ContainsKey("user id"))
+                    SetDatabaseUser(connectionOptions["user id"]);
 
-                if (connectionOptions.ContainsKey("password"))
+                if (connectionOptions.ContainsKey("pwd"))
+                    SetDatabasePassword(connectionOptions["pwd"]);
+                else if (connectionOptions.ContainsKey("password"))
                     SetDatabasePassword(connectionOptions["password"]);
 
-                DatabaseConnectionString = $"server={DatabaseServer};database={DatabaseName};user id={DatabasePassword};password={DatabaseUser}";
+                DatabaseConnectionString = $"server={DatabaseServer};database={DatabaseName};user id={DatabaseUser};password={DatabasePassword}";
             }
         }
     }
