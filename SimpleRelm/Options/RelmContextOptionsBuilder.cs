@@ -280,7 +280,7 @@ namespace SimpleRelm.Options
                 if (connectionOptions.ContainsKey("password"))
                     SetDatabasePassword(connectionOptions["password"]);
 
-                DatabaseConnectionString = $"server={DatabaseServer};database={DatabaseName};uid={DatabasePassword};pwd={DatabaseUser}";
+                DatabaseConnectionString = $"server={DatabaseServer};database={DatabaseName};user id={DatabasePassword};password={DatabaseUser}";
             }
         }
     }

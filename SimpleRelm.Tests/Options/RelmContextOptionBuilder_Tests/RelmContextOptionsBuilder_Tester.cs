@@ -1,6 +1,7 @@
 ﻿using SimpleRelm.Options;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,10 +35,11 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
         public void RelmContextOptionsBuilder_Constructor_NamedConnection()
         {
             // Arrange & Act
-            var builder = new RelmContextOptionsBuilder("name=MyConnection");
+            var builder = new RelmContextOptionsBuilder("name=SimpleRelmMySql");
 
             // Assert
-            Assert.Equal("MyConnection", builder.DatabaseConnectionString);
+            Assert.Equal("SimpleRelmMySql", builder.NamedConnection);
+            Assert.Equal(ConfigurationManager.ConnectionStrings["SimpleRelmMySql"].ConnectionString, builder.DatabaseConnectionString);
             Assert.Equal(OptionsBuilderTypes.NamedConnectionString, builder.OptionsBuilderType);
         }
 

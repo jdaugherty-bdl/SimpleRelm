@@ -30,7 +30,7 @@ namespace SimpleRelm.Tests.Models.RelmContext_Tests
         {
             // Arrange
             var optionsBuilder = new RelmContextOptionsBuilder("x", "x", "x", "x");
-            var context = new RelmContext(optionsBuilder);
+            var context = new RelmContext(optionsBuilder, autoOpenConnection: false);
 
             // Act
             bool result = context.HasDataSet<ComplexTestModel>(throwException: false);  // Replace YourOtherDataSetType with the actual type
@@ -59,7 +59,7 @@ namespace SimpleRelm.Tests.Models.RelmContext_Tests
         {
             // Arrange
             var optionsBuilder = new RelmContextOptionsBuilder("x", "x", "x", "x");
-            var context = new RelmContext(optionsBuilder);
+            var context = new RelmContext(optionsBuilder, autoOpenConnection: false);
 
             // Act
             bool result = context.HasDataSet(typeof(ComplexTestModel), throwException: false);  // Replace YourOtherDataSetType with the actual type

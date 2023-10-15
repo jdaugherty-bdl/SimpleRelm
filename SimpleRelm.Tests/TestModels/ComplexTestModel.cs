@@ -24,6 +24,14 @@ namespace SimpleRelm.Tests.TestModels
 
         [RelmColumn]
         [RelmForeignKey("ComplexTestModelInternalId")]
-        public IOrderedEnumerable<ComplexReferenceObject>? ReferenceObjects { get; set; }
+        public ICollection<ComplexReferenceObject>? ComplexReferenceObjects { get; set; }
+
+        [RelmColumn]
+        [RelmForeignKey("ComplexTestModelInternalId")]
+        public ComplexReferenceObject? ComplexReferenceObject { get; set; }
+
+        [RelmColumn]
+        [RelmForeignKey("ComplexTestModelInternalId")]
+        public IOrderedEnumerable<SimpleReferenceObject>? SimpleReferenceObjects { get; set; }
     }
 }

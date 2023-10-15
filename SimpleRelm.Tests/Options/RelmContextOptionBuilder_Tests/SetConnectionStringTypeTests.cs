@@ -38,7 +38,7 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
             builder.SetConnectionStringType(expectedConnectionStringType);
 
             // Assert
-            Assert.Equal(expectedConnectionStringType.ToString(), builder.DatabaseConnectionString);
+            Assert.Equal(expectedConnectionStringType, builder.ConnectionStringType);
         }
 
         [Fact]

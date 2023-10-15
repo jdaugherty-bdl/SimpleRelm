@@ -10,53 +10,53 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
     public class SetDatabaseConnectionStringTests
     {
         [Fact]
+        public void SetDatabaseConnectionString_SetsDatabaseConnectionStringConstructorCorrectly()
+        {
+            // Arrange
+            var expectedDatabaseConnectionString = "server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword";
+            var expectedConnectionStringType = RelmContextOptionsBuilder.OptionsBuilderTypes.ConnectionString; // Make sure this is valid
+
+            // Act
+            var builder = new RelmContextOptionsBuilder(expectedDatabaseConnectionString);
+
+            // Assert
+            Assert.Equal(expectedConnectionStringType, builder.OptionsBuilderType);
+            Assert.Equal(expectedDatabaseConnectionString, builder.DatabaseConnectionString);
+        }
+
+        [Fact]
         public void SetDatabaseConnectionString_SetsDatabaseConnectionStringPropertyCorrectly()
         {
             // Arrange
             var builder = new RelmContextOptionsBuilder();
-            var expectedDatabaseConnectionString = "PortalCertDatabase";
+            var expectedConnectionStringType = RelmContextOptionsBuilder.OptionsBuilderTypes.ConnectionString; // Make sure this is valid
+            var expectedDatabaseConnectionString = "server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword";
 
             // Act
             builder.SetDatabaseConnectionString(expectedDatabaseConnectionString);
 
             // Assert
+            Assert.Equal(expectedConnectionStringType, builder.OptionsBuilderType);
             Assert.Equal(expectedDatabaseConnectionString, builder.DatabaseConnectionString);
         }
 
-        [Fact]
-        public void SetDatabaseConnectionString_SetsConnectionStringTypeCorrectly()
-        {
-            // Arrange
-            var builder = new RelmContextOptionsBuilder();
-            var expectedConnectionStringType = RelmContextOptionsBuilder.OptionsBuilderTypes.NamedConnectionString; // Make sure this is valid
-
-            // Act
-            builder.SetDatabaseConnectionString("PortalCertDatabase");
-
-            // Assert
-            Assert.Equal(expectedConnectionStringType, builder.OptionsBuilderType);
-        }
-
-        /*
         [Fact]
         public void SetDatabaseConnectionString_ThrowsExceptionForInvalidConnectionStringType()
         {
             // Arrange
             var builder = new RelmContextOptionsBuilder();
-            var invalidConnectionStringType = "InvalidType";
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => builder.SetDatabaseConnectionString(invalidConnectionStringType));
+            Assert.Throws<ArgumentException>(() => builder.SetDatabaseConnectionString("INVALID CONNECTION STRING"));
         }
-        */
 
         [Fact]
         public void SetDatabaseConnectionString_SetsOptionsBuilderTypeToNamedConnectionString()
         {
             // Arrange
             var builder = new RelmContextOptionsBuilder();
-            var expectedType = RelmContextOptionsBuilder.OptionsBuilderTypes.NamedConnectionString;
-            var validConnectionStringType = "PortalCertDatabase"; // Make sure this is valid
+            var expectedType = RelmContextOptionsBuilder.OptionsBuilderTypes.ConnectionString;
+            var validConnectionStringType = "server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword"; // Make sure this is valid
 
             // Act
             builder.SetDatabaseConnectionString(validConnectionStringType);
@@ -70,7 +70,7 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
         {
             // Arrange
             var builder = new RelmContextOptionsBuilder();
-            builder.SetDatabaseConnectionString("PortalCertDatabase"); // Make sure this is valid
+            builder.SetDatabaseConnectionString("server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword"); // Make sure this is valid
 
             // Act
             var result = builder.ValidateAllSettings();
@@ -84,7 +84,7 @@ namespace SimpleRelm.Tests.Options.RelmContextOptionBuilder_Tests
         {
             // Arrange
             var builder = new RelmContextOptionsBuilder();
-            builder.SetDatabaseConnectionString("PortalCertDatabase"); // Make sure this is valid
+            builder.SetDatabaseConnectionString("server=localhost;database=simple_relm;user id=simplerelmuser;password=simplerelmpassword"); // Make sure this is valid
 
             // Act
             var result = builder.ValidateAllSettings(false);

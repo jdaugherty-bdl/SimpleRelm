@@ -14,10 +14,10 @@ namespace SimpleRelm.Tests.Models.RelmContext_Tests
         public void Should_Initialize_With_Valid_Named_Connection_String()
         {
             // Arrange
-            string validConnectionString = "name=PortalCertDatabase";
+            string validConnectionString = "name=SimpleRelmMySql";
 
             // Act
-            var dataSet = new RelmContext(validConnectionString);
+            var dataSet = new RelmContext(validConnectionString, autoOpenConnection: false);
 
             // Assert
             Assert.NotNull(dataSet);
@@ -51,10 +51,11 @@ namespace SimpleRelm.Tests.Models.RelmContext_Tests
             // Arrange
             var validOptions = new RelmContextOptionsBuilder();
 
-            validOptions.SetDatabaseConnectionString("PortalCertDatabase");
+            validOptions.SetNamedConnection("SimpleRelmMySql");
+            validOptions.SetDatabaseConnectionString(RelmHelper.GetConnectionBuilderFromName("SimpleRelmMySql").ConnectionString);
 
             // Act
-            var dataSet = new RelmContext(validOptions);
+            var dataSet = new RelmContext(validOptions, autoOpenConnection: false);
 
             // Assert
             Assert.NotNull(dataSet);

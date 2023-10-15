@@ -40,7 +40,7 @@ namespace SimpleRelm.Models
 
         public IEnumerator<T> GetEnumerator()
         {
-            return (_items ?? Load()).GetEnumerator();
+            return (_items ?? Load())?.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -227,12 +227,12 @@ namespace SimpleRelm.Models
 
             if (foreignKeyProperty == null)
             {
-                throw new Exception("No property found with DALForeignKey attribute on the related entity.");
+                throw new MemberAccessException("No property found with RelmForeignKey attribute on the related entity.");
             }
 
             // Get the DALForeignKey attribute from the matching property
             var dalForeignKey = (((RelmForeignKey)Attribute.GetCustomAttribute(foreignKeyProperty, typeof(RelmForeignKey)))?.ForeignKey)
-                ?? throw new Exception("DALForeignKey attribute not found on related entity.");
+                ?? throw new Exception("RelmForeignKey attribute not found on related entity.");
 
             // Generate a Func<> type based on the generic type argument for use below
             var funcType = typeof(Func<,>).MakeGenericType(genericTypeArgument, typeof(bool));
@@ -240,7 +240,7 @@ namespace SimpleRelm.Models
             // get the property named by dalForeignKey from the type defined in genericTypeArgument and create a MemberExpression from it
             var parameter = Expression.Parameter(genericTypeArgument, "x");
             var memberExpression = Expression.Property(parameter, dalForeignKey)
-                ?? throw new Exception("Property referenced by DALForeignKey attribute could not be found.");
+                ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
 
             // Instantiate a new DALContext of the same type as CurrentContext so we can load the data we need without modifying anything in our context
             var newDalContextType = _currentContext.GetType();
@@ -250,11 +250,17 @@ namespace SimpleRelm.Models
                 ?? throw new InvalidOperationException("Method not found.");
 
             var dataSet = dataSetMethod.Invoke(_currentContext, new object[] { genericTypeArgument }) as IRelmDataSetBase
-                ?? throw new InvalidOperationException($"DALDataSet with generic type {genericTypeArgument.Name} not found.");
+                ?? throw new InvalidOperationException($"RelmDataSet with generic type {genericTypeArgument.Name} not found.");
 
             // get all the foreign keys to look up
+            /*
             var itemForeignKeys = _items
                 .Select(x => x.GetType().GetProperty(foreignKeyAttribute.ForeignKey)?.GetValue(x))
+                .Distinct()
+                .ToList();
+            */
+            var itemForeignKeys = _items
+                .Select(x => x.GetType().GetProperty(dalForeignKey)?.GetValue(x))
                 .Distinct()
                 .ToList();
 
@@ -277,19 +283,38 @@ namespace SimpleRelm.Models
             var collectionItemsContains = dataSet.GetType().GetMethod(nameof(Load)).Invoke(filteredDataSetContains, null);
 
             // use a foreach loop to convert collectionItemsContains to a dictionary where the key is the foreign key and the object is the item
-            var collectionItems = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(typeof(object), genericTypeArgument));
+            IDictionary collectionItems;
+            if (isCollection)
+                collectionItems = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(typeof(object), typeof(List<>).MakeGenericType(genericTypeArgument)));
+            else
+                collectionItems = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(typeof(object), genericTypeArgument));
+
             foreach (var item in (IEnumerable)dataSet)
             {
-                collectionItems.Add(genericTypeArgument.GetProperty(dalForeignKey).GetValue(item), item);
+                var targetObjectForeignKeyValue = genericTypeArgument.GetProperty(foreignKeyAttribute.ForeignKey).GetValue(item);
+
+                if (!collectionItems.Contains(targetObjectForeignKeyValue))
+                {
+                    collectionItems.Add(targetObjectForeignKeyValue, default);
+
+                    if (isCollection)
+                        collectionItems[targetObjectForeignKeyValue] = Activator.CreateInstance(typeof(List<>).MakeGenericType(genericTypeArgument));
+                }
+
+                if (isCollection)
+                    ((IList)collectionItems[targetObjectForeignKeyValue]).Add(item);
+                else
+                    collectionItems[targetObjectForeignKeyValue] = item;
             }
 
             // loop through each item in _items and add the related item to the collection
             foreach (var item in _items)
             {
-                var foreignKeyValue = item.GetType().GetProperty(foreignKeyAttribute.ForeignKey).GetValue(item);
+                var foreignKeyValue = item.GetType().GetProperty(dalForeignKey).GetValue(item);
                 var collectionItem = collectionItems[foreignKeyValue];
                 var collectionProperty = referenceProperty.Member as PropertyInfo;
 
+                /*
                 if (isCollection)
                 {
                     var collectionValue = collectionProperty.GetValue(item);
@@ -298,7 +323,8 @@ namespace SimpleRelm.Models
                     methodInfo.Invoke(collectionValue, new object[] { collectionItem });
                 }
                 else
-                    collectionProperty.SetValue(item, collectionItem);
+                */
+                collectionProperty.SetValue(item, collectionItem);
             }
         }
 
