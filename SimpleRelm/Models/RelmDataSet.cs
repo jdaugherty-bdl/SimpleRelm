@@ -396,19 +396,17 @@ namespace SimpleRelm.Models
             return this;
         }
 
-        public T Save(T Item)
+        public int Save(T Item)
         {
             // check if the item is already in the list, and if so, replace it, otherwise, add it
             if (_items?.Any(x => x.InternalId == Item.InternalId) ?? false)
             {
                 _items = _items.Select(x => x.InternalId == Item.InternalId ? Item : x).ToList();
 
-                Save();
+                return Save();
             }
             else
-                Add(Item, Persist: true);
-
-            return Item;
+                return Add(Item, Persist: true);
         }
 
         public int Save()
@@ -445,12 +443,12 @@ namespace SimpleRelm.Models
             return newObject;
         }
 
-        public void Add(T item)
+        public int Add(T item)
         {
-            Add(item, true);
+            return Add(item, true);
         }
 
-        public void Add(T item, bool Persist)
+        public int Add(T item, bool Persist)
         {
             // Instantiate _items if it has not been initialized
             _items = _items ?? new List<T>();
@@ -462,12 +460,34 @@ namespace SimpleRelm.Models
             if (Persist)
             {
                 if (_currentContext.ContextOptions.OptionsBuilderType == Options.RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
-                    _items.WriteToDatabase(_currentContext.ContextOptions.DatabaseConnection, SqlTransaction: _currentContext.ContextOptions.DatabaseTransaction);
+                    return _items.WriteToDatabase(_currentContext.ContextOptions.DatabaseConnection, SqlTransaction: _currentContext.ContextOptions.DatabaseTransaction);
                 else
-                    item.WriteToDatabase(_currentContext.ContextOptions.ConnectionStringType);
+                    return item.WriteToDatabase(_currentContext.ContextOptions.ConnectionStringType);
             }
             else
                 Modified = true;
+
+            return 1;
+        }
+
+        public int Add(ICollection<T> items)
+        {
+            return Add(items, true);
+        }
+
+        public int Add(ICollection<T> items, bool Persist)
+        {
+            var itemCounter = 0;
+            foreach (T item in items)
+            {
+                Add(item, false);
+                itemCounter++;
+            }
+
+            if (Persist)
+                return Save();
+
+            return itemCounter;
         }
 
         public void Clear()

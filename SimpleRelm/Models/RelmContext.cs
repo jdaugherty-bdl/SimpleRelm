@@ -28,6 +28,14 @@ namespace SimpleRelm.Models
             InitializeContext(autoOpenConnection, autoOpenTransaction);
         }
 
+        public RelmContext(Enum connectionStringType, bool autoOpenConnection = true, bool autoOpenTransaction = false)
+        {
+            // set the options and allow user to override
+            ContextOptions = new RelmContextOptionsBuilder(connectionStringType);
+
+            InitializeContext(autoOpenConnection, autoOpenTransaction);
+        }
+
         public RelmContext(string connectionDetails, bool autoOpenConnection = true, bool autoOpenTransaction = false)
         {
             // set the options and allow user to override

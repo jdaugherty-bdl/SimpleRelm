@@ -34,5 +34,9 @@ namespace SimpleRelm.Interfaces
         int Save();
         T New();
         T New(dynamic NewObjectParameters, bool Persist = true);
+        new int Add(T item);
+        int Add(T item, bool Persist);
+        int Add(ICollection<T> items);
+        int Add(ICollection<T> items, bool Persist);
     }
 }

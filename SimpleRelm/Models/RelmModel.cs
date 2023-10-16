@@ -150,11 +150,23 @@ namespace SimpleRelm.Models
         /// <summary>
         /// Writes the current object to the database using the table named in the DALTable attribute.
         /// </summary>
-        /// <param name="ConnectionStringType">Type of connection to use.</param>
+        /// <param name="connectionStringType">Type of connection to use.</param>
+        /// <param name="batchSize">The number of items to write out to the database per batch.</param>
         /// <returns>The number of rows written to the database.</returns>
-        public int WriteToDatabase(Enum ConnectionStringType, int BatchSize = 10)
+        public int WriteToDatabase(Enum connectionStringType, int batchSize = 100)
         {
-            return DataOutputOperations.BulkTableWrite(ConnectionStringType, this, ForceType: this.GetType(), BatchSize: BatchSize);
+            return DataOutputOperations.BulkTableWrite(connectionStringType, this, ForceType: this.GetType(), BatchSize: batchSize);
+        }
+
+        /// <summary>
+        /// Writes the current object to the database using the table named in the DALTable attribute.
+        /// </summary>
+        /// <param name="relmContext">An IRelmContext object with open connection and transaction.</param>
+        /// <param name="batchSize">The number of items to write out to the database per batch.</param>
+        /// <returns>The number of rows written to the database.</returns>
+        public int WriteToDatabase(IRelmContext relmContext, int batchSize = 100)
+        {
+            return DataOutputOperations.BulkTableWrite(relmContext.ContextOptions.DatabaseConnection, this, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType: this.GetType(), BatchSize: batchSize)
         }
 
         /// <summary>
@@ -162,10 +174,34 @@ namespace SimpleRelm.Models
         /// </summary>
         /// <param name="ExistingConnection">An existing and open connection to use when writing this data.</param>
         /// <param name="SqlTransaction">An optional transaction to write to the database under.</param>
+        /// <param name="batchSize">The number of items to write out to the database per batch.</param>
         /// <returns>The number of rows written to the database.</returns>
-        public int WriteToDatabase(MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null, int BatchSize = 10)
+        public int WriteToDatabase(MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null, int BatchSize = 100)
         {
             return DataOutputOperations.BulkTableWrite(ExistingConnection, this, SqlTransaction: SqlTransaction, ForceType: this.GetType(), BatchSize: BatchSize);
+        }
+
+        public T CopyFromSource<T>(T source) where T : RelmModel, new()
+        {
+            // create a new object of type T, then run through all the properties and members available on source and copy the value of each property and member that exists on the new object
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            T target = new T();
+
+            foreach (var property in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            {
+                // Check if the property can be written to and is not an index property
+                if (property.CanWrite && property.GetIndexParameters().Length == 0)
+                    property.SetValue(target, property.GetValue(source));
+            }
+
+            foreach (var field in typeof(T).GetFields(BindingFlags.Public | BindingFlags.Instance))
+            {
+                field.SetValue(target, field.GetValue(source));
+            }
+
+            return target;
         }
 
         /// <summary>
