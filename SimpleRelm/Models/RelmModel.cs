@@ -166,7 +166,7 @@ namespace SimpleRelm.Models
         /// <returns>The number of rows written to the database.</returns>
         public int WriteToDatabase(IRelmContext relmContext, int batchSize = 100)
         {
-            return DataOutputOperations.BulkTableWrite(relmContext.ContextOptions.DatabaseConnection, this, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType: this.GetType(), BatchSize: batchSize)
+            return DataOutputOperations.BulkTableWrite(relmContext.ContextOptions.DatabaseConnection, this, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType: this.GetType(), BatchSize: batchSize);
         }
 
         /// <summary>

@@ -443,6 +443,11 @@ namespace SimpleRelm.Models
             return newObject;
         }
 
+        void ICollection<T>.Add(T item)
+        {
+            Add(item, true);
+        }
+
         public int Add(T item)
         {
             return Add(item, true);

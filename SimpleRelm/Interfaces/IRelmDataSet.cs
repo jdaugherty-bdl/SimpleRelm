@@ -30,7 +30,7 @@ namespace SimpleRelm.Interfaces
         IRelmDataSet<T> GroupBy(Expression<Func<T, object>> predicate);
         IRelmDataSet<T> Limit(int LimitCount);
         IRelmDataSet<T> DistinctBy(Expression<Func<T, object>> predicate);
-        T Save(T Item);
+        int Save(T Item);
         int Save();
         T New();
         T New(dynamic NewObjectParameters, bool Persist = true);
