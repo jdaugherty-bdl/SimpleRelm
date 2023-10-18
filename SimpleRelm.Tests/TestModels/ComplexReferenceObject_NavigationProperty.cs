@@ -10,13 +10,13 @@ namespace SimpleRelm.Tests.TestModels
 {
     [RelmDatabase("test_database")]
     [RelmTable("nothing_table")]
-    public class ComplexReferenceObject : RelmModel
+    public class ComplexReferenceObject_NavigationProperty : RelmModel
     {
         [RelmColumn]
-        [RelmForeignKey(nameof(TestModel))]
         public string? ComplexTestModelInternalId { get; set; }
 
         [RelmColumn]
+        [RelmForeignKey(nameof(ComplexTestModelInternalId))]
         public ComplexTestModel? TestModel { get; set; }
     }
 }

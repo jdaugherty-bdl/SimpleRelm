@@ -10,10 +10,9 @@ namespace SimpleRelm.Tests.TestModels
 {
     [RelmDatabase("test_database")]
     [RelmTable("nothing_table")]
-    public class ComplexReferenceObject : RelmModel
+    public class ComplexReferenceObject_PrincipalEntity : RelmModel
     {
         [RelmColumn]
-        [RelmForeignKey(nameof(TestModel))]
         public string? ComplexTestModelInternalId { get; set; }
 
         [RelmColumn]

@@ -199,6 +199,50 @@ namespace SimpleRelm.Models
             var isCollection = referenceType.IsGenericType && referenceType.GetGenericTypeDefinition() == typeof(ICollection<>);
 
             // The type of class being referenced by the collection command
+            if (isCollection)
+            {
+                referenceType = referenceType.GetGenericArguments()[0];
+
+                // Check if the referenceType is compatible with ICollection<>
+                if (!typeof(ICollection<>).MakeGenericType(referenceType).IsAssignableFrom(referenceType))
+                    throw new InvalidOperationException($"Reference property type must be compatible with ICollection<{referenceType}>.");
+            }
+
+            // if foreign key attribute on the current item's property, then we have principal resolution
+            var foreignKeyAttribute = referenceType.GetCustomAttribute<RelmForeignKey>();
+
+            // Instantiate a new DALContext of the same type as CurrentContext so we can load the data we need without modifying anything in our context
+            var newDalContextType = _currentContext.GetType();
+
+            // Find the DALDataSet with the same generic type as referenceType and create a new one
+            var dataSetMethod = newDalContextType.GetMethod(nameof(_currentContext.GetDataSetType), new[] { typeof(Type) })
+                ?? throw new InvalidOperationException("Method not found.");
+
+            var dataSet = dataSetMethod.Invoke(_currentContext, new object[] { referenceType }) //as IRelmDataSetBase
+                ?? throw new InvalidOperationException($"RelmDataSet with generic type {referenceType.Name} not found.");
+
+            var targetProperties = dataSet.GetType().GetGenericArguments().FirstOrDefault().GetProperties();
+
+            var foreignTargetProperties = targetProperties
+                .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null)
+                .ToList();
+
+            // resolve everything in foreignTargetProperties
+
+
+            // if foreign key attribute is null, then check foreign key property on the dependent entity
+            // if foreign key attribute is STILL null, then check the navigation property on the dependent entity
+        }
+
+        private void LoadForeignObjects2(Expression collection)
+        {
+            var referenceProperty = collection as MemberExpression
+                ?? throw new InvalidOperationException("Collection must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
+
+            var referenceType = referenceProperty.Type;
+            var isCollection = referenceType.IsGenericType && referenceType.GetGenericTypeDefinition() == typeof(ICollection<>);
+
+            // The type of class being referenced by the collection command
             var genericTypeArgument = referenceType;
             if (isCollection)
             {
@@ -253,12 +297,6 @@ namespace SimpleRelm.Models
                 ?? throw new InvalidOperationException($"RelmDataSet with generic type {genericTypeArgument.Name} not found.");
 
             // get all the foreign keys to look up
-            /*
-            var itemForeignKeys = _items
-                .Select(x => x.GetType().GetProperty(foreignKeyAttribute.ForeignKey)?.GetValue(x))
-                .Distinct()
-                .ToList();
-            */
             var itemForeignKeys = _items
                 .Select(x => x.GetType().GetProperty(dalForeignKey)?.GetValue(x))
                 .Distinct()
@@ -314,16 +352,6 @@ namespace SimpleRelm.Models
                 var collectionItem = collectionItems[foreignKeyValue];
                 var collectionProperty = referenceProperty.Member as PropertyInfo;
 
-                /*
-                if (isCollection)
-                {
-                    var collectionValue = collectionProperty.GetValue(item);
-                    var methodInfo = collectionValue.GetType().GetMethod(nameof(Dictionary<object, object>.Add));
-
-                    methodInfo.Invoke(collectionValue, new object[] { collectionItem });
-                }
-                else
-                */
                 collectionProperty.SetValue(item, collectionItem);
             }
         }

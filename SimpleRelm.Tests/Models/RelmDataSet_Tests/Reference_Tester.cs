@@ -24,6 +24,20 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                 new ComplexTestModel { InternalId = "ID2", ComplexReferenceObjects = null },
             };
 
+            context = new ComplexTestContext("name=SimpleRelmMySql");
+
+            // create dummy data loaders for dummy data to be placed in both relevant data sets
+            var modelDataLoader = new Mock<DefaultDataLoader<ComplexTestModel>>(); // { CallBase = true };
+
+            // make sure GetLoadData() calls base so LastExecutedCommands (required for references) gets populated
+            modelDataLoader.Setup(x => x.GetLoadData()).CallBase();
+            modelDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexTestModels);
+            
+            context.ComplexTestModels!.SetDataLoader(modelDataLoader.Object);
+        }
+
+        private void SetupReferenceDataLoader()
+        {
             var mockComplexReferenceObjects = new List<ComplexReferenceObject>
             {
                 new ComplexReferenceObject { ComplexTestModelInternalId = "ID1", TestModel = null },
@@ -31,27 +45,50 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                 new ComplexReferenceObject { ComplexTestModelInternalId = "ID2", TestModel = null },
             };
 
-            context = new ComplexTestContext("name=SimpleRelmMySql");
-
-            // create dummy data loaders for dummy data to be placed in both relevant data sets
-            var modelDataLoader = new Mock<DefaultDataLoader<ComplexTestModel>>(); // { CallBase = true };
             var referenceDataLoader = new Mock<DefaultDataLoader<ComplexReferenceObject>>();
-
-            // make sure GetLoadData() calls base so LastExecutedCommands (required for references) gets populated
-            modelDataLoader.Setup(x => x.GetLoadData()).CallBase();
             referenceDataLoader.Setup(x => x.GetLoadData()).CallBase();
-
-            modelDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexTestModels);
             referenceDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexReferenceObjects);
 
-            context.ComplexTestModels!.SetDataLoader(modelDataLoader.Object);
             context.ComplexReferenceObjects!.SetDataLoader(referenceDataLoader.Object);
+        }
+
+        private void SetupNavigationDataLoader()
+        {
+            var mockComplexReferenceObjects_Navigation = new List<ComplexReferenceObject_NavigationProperty>
+            {
+                new ComplexReferenceObject_NavigationProperty { ComplexTestModelInternalId = "ID1", TestModel = null },
+                new ComplexReferenceObject_NavigationProperty { ComplexTestModelInternalId = "ID1", TestModel = null },
+                new ComplexReferenceObject_NavigationProperty { ComplexTestModelInternalId = "ID2", TestModel = null },
+            };
+
+            var navigationDataLoader = new Mock<DefaultDataLoader<ComplexReferenceObject_NavigationProperty>>();
+            navigationDataLoader.Setup(x => x.GetLoadData()).CallBase();
+            navigationDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexReferenceObjects_Navigation);
+
+            context.ComplexReferenceObject_NavigationProperties!.SetDataLoader(navigationDataLoader.Object);
+        }
+
+        private void SetupPrincipalDataLoader()
+        {
+            var mockComplexReferenceObjects_Principal = new List<ComplexReferenceObject_PrincipalEntity>
+            {
+                new ComplexReferenceObject_PrincipalEntity { ComplexTestModelInternalId = "ID1", TestModel = null },
+                new ComplexReferenceObject_PrincipalEntity { ComplexTestModelInternalId = "ID1", TestModel = null },
+                new ComplexReferenceObject_PrincipalEntity { ComplexTestModelInternalId = "ID2", TestModel = null },
+            };
+
+            var principalDataLoader = new Mock<DefaultDataLoader<ComplexReferenceObject_PrincipalEntity>>();
+            principalDataLoader.Setup(x => x.GetLoadData()).CallBase();
+            principalDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexReferenceObjects_Principal);
+
+            context.ComplexReferenceObject_PrincipalEntities!.SetDataLoader(principalDataLoader.Object);
         }
 
         [Fact]
         public void Reference_DoesNotLoadsReferenceObjectsCorrectly_ThrowsException()
         {
             // Arrange
+            SetupReferenceDataLoader();
 
             // Act & Assert
             Assert.Throws<MemberAccessException>(() => context.ComplexTestModels!.Reference(x => x.SimpleReferenceObjects).Load());
@@ -61,6 +98,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
         public void Reference_LoadsReferenceObjectsCorrectly()
         {
             // Arrange
+            SetupReferenceDataLoader();
 
             // Act
             context.ComplexTestModels!.Reference(x => x.ComplexReferenceObjects).Load();
@@ -87,6 +125,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
         public void Reference_LoadsReferenceObjectCorrectly()
         {
             // Arrange
+            SetupReferenceDataLoader();
 
             // Act
             context.ComplexTestModels!.Reference(x => x.ComplexReferenceObject).Load();
