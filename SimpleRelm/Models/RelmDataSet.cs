@@ -191,13 +191,24 @@ namespace SimpleRelm.Models
             }
         }
 
-        private void LoadForeignObjects(Expression collection)
+        /// <summary>
+        /// Takes EF6-like foreign key attributes and loads the related objects into their respective data sets in the current context, with the
+        /// difference that this function uses the explicitly declared [RelmKey] attribute. The foreign key may be 1) declared on the primary entity,
+        /// indicating which property on the navigation entity is the foreign key, or 2) declared on the navigation entity, indicating which property
+        /// is the foreign key, or 3) declared on the foreign key property itself, indicating which property is the navigation entity it is the primary
+        /// key for. If no [RelmKey] is declared, will default to "InternalId".
+        /// </summary>
+        /// <param name="member">The property member to load references for.</param>
+        /// <exception cref="InvalidOperationException">Thrown if there's an invalid operation.</exception>
+        /// <exception cref="MemberAccessException">Thrown if there's an invalid member.</exception>
+        /// <exception cref="Exception">Thrown if there's an exception.</exception>
+        private void LoadForeignObjects(Expression member)
         {
             PropertyInfo foreignKeyProperty = default;
             PropertyInfo navigationProperty = default;
             List<object> itemForeignKeys = default;
 
-            var referenceProperty = collection as MemberExpression
+            var referenceProperty = member as MemberExpression
                 ?? throw new InvalidOperationException("Collection must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
 
             var referenceType = referenceProperty.Type;
