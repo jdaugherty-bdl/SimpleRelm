@@ -293,6 +293,9 @@ namespace SimpleRelm.Models
                     })
                     .FirstOrDefault();
 
+                if (foreignKeyInfo == null)
+                    throw new NullReferenceException("No foreign key info found.");
+
                 foreignKeyProperty = foreignKeyInfo.ForeignKey;
                 navigationProperty = foreignKeyInfo.NavigationProperty;
             }

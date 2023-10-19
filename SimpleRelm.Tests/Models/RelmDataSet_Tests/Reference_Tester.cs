@@ -97,7 +97,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
             SetupReferenceDataLoader(false);
 
             // Act & Assert
-            Assert.Throws<MemberAccessException>(() => context.ComplexTestModels!.Reference(x => x.SimpleReferenceObjects).Load());
+            Assert.Throws<NullReferenceException>(() => context.ComplexTestModels!.Reference(x => x.SimpleReferenceObjects).Load());
         }
 
         [Fact]
