@@ -20,8 +20,42 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
             // dummy data
             var mockComplexTestModels = new List<ComplexTestModel>
             {
-                new ComplexTestModel { InternalId = "ID1", ComplexReferenceObjects = null },
-                new ComplexTestModel { InternalId = "ID2", ComplexReferenceObjects = null },
+                new ComplexTestModel 
+                { 
+                    InternalId = "ID1", 
+                    ComplexReferenceObjectLocalKey = "LOCALKEY1", 
+                    ComplexReferenceObjects = null,
+                    ComplexReferenceObject = null,
+                    ComplexReferenceObject_NavigationProperties = null,
+                    ComplexReferenceObject_NavigationPropertyItem = null,
+                    ComplexReferenceObject_PrincipalEntities = null,
+                    ComplexReferenceObject_PrincipalEntity_LocalKey = null,
+                    ComplexReferenceObject_PrincipalEntities_LocalKeys = null,
+                    ComplexReferenceObject_PrincipalEntityItem = null,
+                    ComplexTestModels = null,
+                    SimpleReferenceObjects = null,
+                    TestColumnId = default,
+                    TestColumnInternalId = null,
+                    TestColumnNoAttributeArguments = null,
+                },
+                new ComplexTestModel 
+                { 
+                    InternalId = "ID2", 
+                    ComplexReferenceObjectLocalKey = "LOCALKEY2",
+                    ComplexReferenceObjects = null,
+                    ComplexReferenceObject = null,
+                    ComplexReferenceObject_NavigationProperties = null,
+                    ComplexReferenceObject_NavigationPropertyItem = null,
+                    ComplexReferenceObject_PrincipalEntities = null,
+                    ComplexReferenceObject_PrincipalEntity_LocalKey = null,
+                    ComplexReferenceObject_PrincipalEntities_LocalKeys = null,
+                    ComplexReferenceObject_PrincipalEntityItem = null,
+                    ComplexTestModels = null,
+                    SimpleReferenceObjects = null,
+                    TestColumnId = default,
+                    TestColumnInternalId = null,
+                    TestColumnNoAttributeArguments = null,
+                },
             };
 
             context = new ComplexTestContext("name=SimpleRelmMySql");
@@ -36,7 +70,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
             context.ComplexTestModels!.SetDataLoader(modelDataLoader.Object);
         }
 
-        private void SetupReferenceDataLoader(bool secondId1)
+        private void SetupReferenceDataLoader(bool addSecondId)
         {
             var mockComplexReferenceObjects = new List<ComplexReferenceObject>
             {
@@ -44,7 +78,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                 new ComplexReferenceObject { ComplexTestModelInternalId = "ID2", TestModel = null },
             };
 
-            if (secondId1)
+            if (addSecondId)
                 mockComplexReferenceObjects.Add(new ComplexReferenceObject { ComplexTestModelInternalId = "ID1", TestModel = null });
 
             var referenceDataLoader = new Mock<DefaultDataLoader<ComplexReferenceObject>>();
@@ -54,7 +88,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
             context.ComplexReferenceObjects!.SetDataLoader(referenceDataLoader.Object);
         }
 
-        private void SetupNavigationDataLoader(bool secondId1)
+        private void SetupNavigationDataLoader(bool addSecondId)
         {
             var mockComplexReferenceObjects_Navigation = new List<ComplexReferenceObject_NavigationProperty>
             {
@@ -62,7 +96,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                 new ComplexReferenceObject_NavigationProperty { ComplexTestModelInternalId = "ID2", TestModel = null },
             };
 
-            if (secondId1)
+            if (addSecondId)
                 mockComplexReferenceObjects_Navigation.Add(new ComplexReferenceObject_NavigationProperty { ComplexTestModelInternalId = "ID1", TestModel = null });
 
             var navigationDataLoader = new Mock<DefaultDataLoader<ComplexReferenceObject_NavigationProperty>>();
@@ -72,7 +106,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
             context.ComplexReferenceObject_NavigationProperties!.SetDataLoader(navigationDataLoader.Object);
         }
 
-        private void SetupPrincipalDataLoader(bool secondId1)
+        private void SetupPrincipalDataLoader(bool addSecondId)
         {
             var mockComplexReferenceObjects_Principal = new List<ComplexReferenceObject_PrincipalEntity>
             {
@@ -80,8 +114,26 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                 new ComplexReferenceObject_PrincipalEntity { ComplexTestModelInternalId = "ID2", TestModel = null },
             };
 
-            if (secondId1)
+            if (addSecondId)
                 mockComplexReferenceObjects_Principal.Add(new ComplexReferenceObject_PrincipalEntity { ComplexTestModelInternalId = "ID1", TestModel = null });
+
+            var principalDataLoader = new Mock<DefaultDataLoader<ComplexReferenceObject_PrincipalEntity>>();
+            principalDataLoader.Setup(x => x.GetLoadData()).CallBase();
+            principalDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexReferenceObjects_Principal);
+
+            context.ComplexReferenceObject_PrincipalEntities!.SetDataLoader(principalDataLoader.Object);
+        }
+
+        private void SetupPrincipalDataLoaderLocalKey(bool addSecondId)
+        {
+            var mockComplexReferenceObjects_Principal = new List<ComplexReferenceObject_PrincipalEntity>
+            {
+                new ComplexReferenceObject_PrincipalEntity { ComplexTestModelLocalKey = "LOCALKEY1", TestModel = null },
+                new ComplexReferenceObject_PrincipalEntity { ComplexTestModelLocalKey = "LOCALKEY2", TestModel = null },
+            };
+
+            if (addSecondId)
+                mockComplexReferenceObjects_Principal.Add(new ComplexReferenceObject_PrincipalEntity { ComplexTestModelLocalKey = "LOCALKEY1", TestModel = null });
 
             var principalDataLoader = new Mock<DefaultDataLoader<ComplexReferenceObject_PrincipalEntity>>();
             principalDataLoader.Setup(x => x.GetLoadData()).CallBase();
@@ -227,6 +279,49 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
 
             Assert.NotNull(firstModel.ComplexReferenceObject_PrincipalEntityItem);
             Assert.Equal(firstModel.InternalId, firstModel?.ComplexReferenceObject_PrincipalEntityItem?.ComplexTestModelInternalId);
+        }
+
+        [Fact]
+        public void Reference_LoadReferenceLocalKeyObjectsCorrectly()
+        {
+            // Arrange
+            SetupPrincipalDataLoaderLocalKey(true);
+
+            // Act
+            context.ComplexTestModels!.Reference(x => x.ComplexReferenceObject_PrincipalEntities_LocalKeys).Load();
+
+            // Assert
+            var firstModel = context.ComplexTestModels.First();
+            var secondModel = context.ComplexTestModels.Skip(1).First();
+
+            Assert.NotNull(firstModel?.ComplexReferenceObject_PrincipalEntities_LocalKeys);
+            Assert.NotNull(secondModel?.ComplexReferenceObject_PrincipalEntities_LocalKeys);
+
+            Assert.True(firstModel.ComplexReferenceObject_PrincipalEntities_LocalKeys.Any());
+            Assert.True(secondModel.ComplexReferenceObject_PrincipalEntities_LocalKeys.Any());
+
+            Assert.Equal(2, firstModel.ComplexReferenceObject_PrincipalEntities_LocalKeys.Count);
+            Assert.Equal(1, secondModel.ComplexReferenceObject_PrincipalEntities_LocalKeys.Count);
+
+            Assert.Equal(firstModel.ComplexReferenceObjectLocalKey, firstModel.ComplexReferenceObject_PrincipalEntities_LocalKeys?.FirstOrDefault()?.ComplexTestModelLocalKey);
+            Assert.Equal(firstModel.ComplexReferenceObjectLocalKey, firstModel.ComplexReferenceObject_PrincipalEntities_LocalKeys?.Skip(1).FirstOrDefault()?.ComplexTestModelLocalKey);
+            Assert.Equal(secondModel.ComplexReferenceObjectLocalKey, secondModel.ComplexReferenceObject_PrincipalEntities_LocalKeys?.FirstOrDefault()?.ComplexTestModelLocalKey);
+        }
+
+        [Fact]
+        public void Reference_LoadReferenceLocalKeyObjectCorrectly()
+        {
+            // Arrange
+            SetupPrincipalDataLoaderLocalKey(false);
+
+            // Act
+            context.ComplexTestModels!.Reference(x => x.ComplexReferenceObject_PrincipalEntity_LocalKey).Load();
+
+            // Assert
+            var firstModel = context.ComplexTestModels.First();
+
+            Assert.NotNull(firstModel.ComplexReferenceObject_PrincipalEntity_LocalKey);
+            Assert.Equal(firstModel.ComplexReferenceObjectLocalKey, firstModel?.ComplexReferenceObject_PrincipalEntity_LocalKey?.ComplexTestModelLocalKey);
         }
     }
 }

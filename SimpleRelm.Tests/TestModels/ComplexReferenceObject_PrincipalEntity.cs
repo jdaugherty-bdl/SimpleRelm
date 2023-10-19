@@ -16,6 +16,9 @@ namespace SimpleRelm.Tests.TestModels
         public string? ComplexTestModelInternalId { get; set; }
 
         [RelmColumn]
+        public string? ComplexTestModelLocalKey { get; set; }
+
+        [RelmColumn]
         public ComplexTestModel? TestModel { get; set; }
     }
 }

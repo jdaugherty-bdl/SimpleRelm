@@ -19,19 +19,33 @@ namespace SimpleRelm.Tests.TestModels
         [RelmColumn]
         public string? TestColumnNoAttributeArguments { get; set; }
 
+        public string? ComplexReferenceObjectLocalKey { get; set; }
+        
         public virtual ICollection<ComplexTestModel>? ComplexTestModels { get; set; }
 
+        /********************* FOR TESTING REFERENCES *******************************/
+
+        /**** FOREIGN KEY ****/
         public virtual ICollection<ComplexReferenceObject>? ComplexReferenceObjects { get; set; }
         public virtual ComplexReferenceObject? ComplexReferenceObject { get; set; }
 
+        /**** NAVIGATION ENTITY ****/
         public virtual ICollection<ComplexReferenceObject_NavigationProperty>? ComplexReferenceObject_NavigationProperties { get; set; }
         public virtual ComplexReferenceObject_NavigationProperty? ComplexReferenceObject_NavigationPropertyItem { get; set; }
 
+        /**** PRIMARY ENTITY, REMOTE KEY ****/
         [RelmForeignKey(nameof(ComplexReferenceObject_PrincipalEntity.ComplexTestModelInternalId))]
         public virtual ICollection<ComplexReferenceObject_PrincipalEntity>? ComplexReferenceObject_PrincipalEntities { get; set; }
         [RelmForeignKey(nameof(ComplexReferenceObject_PrincipalEntity.ComplexTestModelInternalId))]
         public virtual ComplexReferenceObject_PrincipalEntity? ComplexReferenceObject_PrincipalEntityItem { get; set; }
-        
+
+        /**** PRIMARY ENTITY, LOCAL KEY ****/
+        [RelmForeignKey(nameof(ComplexReferenceObject_PrincipalEntity.ComplexTestModelLocalKey), LocalKey = nameof(ComplexReferenceObjectLocalKey))]
+        public virtual ICollection<ComplexReferenceObject_PrincipalEntity>? ComplexReferenceObject_PrincipalEntities_LocalKeys { get; set; }
+        [RelmForeignKey(nameof(ComplexReferenceObject_PrincipalEntity.ComplexTestModelLocalKey), LocalKey = nameof(ComplexReferenceObjectLocalKey))]
+        public virtual ComplexReferenceObject_PrincipalEntity? ComplexReferenceObject_PrincipalEntity_LocalKey { get; set; }
+
+        /**** INVALID REFERENCE ****/
         public virtual ICollection<SimpleReferenceObject>? SimpleReferenceObjects { get; set; }
     }
 }

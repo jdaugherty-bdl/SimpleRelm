@@ -10,10 +10,12 @@ namespace SimpleRelm.Attributes
     public sealed class RelmForeignKey : Attribute
     {
         public string ForeignKey { get; set; } = default;
+        public string LocalKey { get; set; } = default;
 
-        public RelmForeignKey(string ForeignKeyProperty)
+        public RelmForeignKey(string ForeignKeyProperty, string LocalKeyProperty = null)
         {
             this.ForeignKey = ForeignKeyProperty;
+            this.LocalKey = LocalKeyProperty;
         }
     }
 }

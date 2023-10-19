@@ -206,7 +206,7 @@ namespace SimpleRelm.Models
         {
             PropertyInfo foreignKeyProperty = default;
             PropertyInfo navigationProperty = default;
-            List<object> itemForeignKeys = default;
+            List<object> itemPrimaryKeys = default;
 
             var referenceProperty = member as MemberExpression
                 ?? throw new InvalidOperationException("Collection must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
@@ -224,22 +224,30 @@ namespace SimpleRelm.Models
                     throw new InvalidOperationException($"Reference property type must be compatible with ICollection<{referenceType}>.");
             }
 
+            // if foreign key attribute on the current item's property, then we have principal resolution
+            var principalReslolutionForeignKey = referenceProperty.Member.GetCustomAttribute<RelmForeignKey>();
+
             // get all RelmKeys on the main object
-            var referenceRelmKeys = typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmKey>() != null).ToList();
+            PropertyInfo referenceKey;
+            if (!string.IsNullOrWhiteSpace(principalReslolutionForeignKey?.LocalKey))
+                referenceKey = typeof(T).GetProperties().Where(x => principalReslolutionForeignKey.LocalKey == x.Name).FirstOrDefault();
+            else
+            {
+                var referenceRelmKeys = typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmKey>() != null).ToList();
 
-            var referenceKey = referenceRelmKeys.FirstOrDefault();
-
-            if (referenceRelmKeys.Count > 1)
-                referenceKey = referenceRelmKeys.FirstOrDefault(x => x.Name != nameof(RelmModel.InternalId));
+                referenceKey = referenceRelmKeys.FirstOrDefault();
+                if (referenceRelmKeys.Count > 1)
+                    referenceKey = referenceRelmKeys.FirstOrDefault(x => x.Name != nameof(RelmModel.InternalId));
+            }
 
             // go through all items in the current data set and collect all relmkey values
-            itemForeignKeys = _items
+            itemPrimaryKeys = _items
                 .Select(x => x.GetType().GetProperty(referenceKey.Name)?.GetValue(x))
                 .Distinct()
                 .ToList();
 
-            // if foreign key attribute on the current item's property, then we have principal resolution
-            var principalReslolutionForeignKey = referenceProperty.Member.GetCustomAttribute<RelmForeignKey>();
+            if (itemPrimaryKeys == null)
+                throw new Exception("No primary keys found.");
 
             // Instantiate a new DALContext of the same type as CurrentContext so we can load the data we need without modifying anything in our context
             var newDalContextType = _currentContext.GetType();
@@ -314,9 +322,6 @@ namespace SimpleRelm.Models
             if (navigationProperty == null)
                 throw new MemberAccessException("Property referenced by RelmForeignKey attribute could not be found.");
 
-            if (itemForeignKeys == null)
-                throw new Exception("No foreign keys found.");
-
             // Generate a Func<> type based on the generic type argument for use below
             var funcType = typeof(Func<,>).MakeGenericType(referenceType, typeof(bool));
 
@@ -326,7 +331,7 @@ namespace SimpleRelm.Models
                 ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
 
             // look up the Contains method on the itemForeignKeys type, then make a generic method with the memberExpression type
-            var containsMethod = itemForeignKeys
+            var containsMethod = itemPrimaryKeys
                 .GetType()
                 .GetMethod(nameof(List<object>.Contains));
 
@@ -338,7 +343,7 @@ namespace SimpleRelm.Models
                 .First();
 
             // Apply the "Where" and "Load" methods
-            var containsExpression = Expression.Call(Expression.Constant(itemForeignKeys), containsMethod, memberExpression);
+            var containsExpression = Expression.Call(Expression.Constant(itemPrimaryKeys), containsMethod, memberExpression);
             var filteredDataSetContains = whereMethod.Invoke(dataSet, new object[] { Expression.Lambda(funcType, containsExpression, parameter) });
             var collectionItemsContains = dataSet.GetType().GetMethod(nameof(Load)).Invoke(filteredDataSetContains, null);
 
