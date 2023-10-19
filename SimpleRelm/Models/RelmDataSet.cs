@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Routing;
+using System.Web.UI.WebControls;
 using static SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator;
 
 namespace SimpleRelm.Models
@@ -192,6 +193,10 @@ namespace SimpleRelm.Models
 
         private void LoadForeignObjects(Expression collection)
         {
+            PropertyInfo foreignKeyProperty = default;
+            PropertyInfo navigationProperty = default;
+            List<object> itemForeignKeys = default;
+
             var referenceProperty = collection as MemberExpression
                 ?? throw new InvalidOperationException("Collection must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
 
@@ -204,12 +209,26 @@ namespace SimpleRelm.Models
                 referenceType = referenceType.GetGenericArguments()[0];
 
                 // Check if the referenceType is compatible with ICollection<>
-                if (!typeof(ICollection<>).MakeGenericType(referenceType).IsAssignableFrom(referenceType))
+                if (!typeof(ICollection<>).MakeGenericType(referenceType).IsAssignableFrom(referenceProperty.Type))
                     throw new InvalidOperationException($"Reference property type must be compatible with ICollection<{referenceType}>.");
             }
 
+            // get all RelmKeys on the main object
+            var referenceRelmKeys = typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmKey>() != null).ToList();
+
+            var referenceKey = referenceRelmKeys.FirstOrDefault();
+
+            if (referenceRelmKeys.Count > 1)
+                referenceKey = referenceRelmKeys.FirstOrDefault(x => x.Name != nameof(RelmModel.InternalId));
+
+            // go through all items in the current data set and collect all relmkey values
+            itemForeignKeys = _items
+                .Select(x => x.GetType().GetProperty(referenceKey.Name)?.GetValue(x))
+                .Distinct()
+                .ToList();
+
             // if foreign key attribute on the current item's property, then we have principal resolution
-            var foreignKeyAttribute = referenceType.GetCustomAttribute<RelmForeignKey>();
+            var principalReslolutionForeignKey = referenceProperty.Member.GetCustomAttribute<RelmForeignKey>();
 
             // Instantiate a new DALContext of the same type as CurrentContext so we can load the data we need without modifying anything in our context
             var newDalContextType = _currentContext.GetType();
@@ -223,90 +242,130 @@ namespace SimpleRelm.Models
 
             var targetProperties = dataSet.GetType().GetGenericArguments().FirstOrDefault().GetProperties();
 
-            var foreignTargetProperties = targetProperties
-                .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null)
-                .ToList();
+            // make a list of all targetProperties that are of type T
+            var targetPropertiesOfTypeT = targetProperties
+                .Where(x => x.PropertyType == typeof(T))
+                .ToDictionary(x => x, x => x);
 
-            // resolve everything in foreignTargetProperties
-
-
-            // if foreign key attribute is null, then check foreign key property on the dependent entity
-            // if foreign key attribute is STILL null, then check the navigation property on the dependent entity
-        }
-
-        private void LoadForeignObjects2(Expression collection)
-        {
-            var referenceProperty = collection as MemberExpression
-                ?? throw new InvalidOperationException("Collection must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
-
-            var referenceType = referenceProperty.Type;
-            var isCollection = referenceType.IsGenericType && referenceType.GetGenericTypeDefinition() == typeof(ICollection<>);
-
-            // The type of class being referenced by the collection command
-            var genericTypeArgument = referenceType;
-            if (isCollection)
+            if (principalReslolutionForeignKey == null)
             {
-                genericTypeArgument = referenceType.GetGenericArguments()[0];
+                // dependent property has foreign key attribute
 
-                // Check if the referenceType is compatible with ICollection<>
-                if (!typeof(ICollection<>).MakeGenericType(genericTypeArgument).IsAssignableFrom(referenceType))
-                    throw new InvalidOperationException($"Reference property type must be compatible with ICollection<{genericTypeArgument}>.");
+                var foreignKeyProperties = targetProperties
+                    .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null)
+                    .ToList();
+
+                var foreignKeyValues = foreignKeyProperties
+                    .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>().ForeignKey);
+
+                /*
+                var navigationForeignKeys = targetPropertiesOfTypeT.Keys.Intersect(foreignKeyValues.Keys).ToList();
+
+                if (navigationForeignKeys.Count() == 0)
+                {
+                    // foreign key property on the dependent property
+
+                    /*
+                    foreach (var foreignTargetProperty in foreignKeyProperties)
+                    {
+                        navigationProperty = targetPropertiesOfTypeT
+                            .FirstOrDefault(x => x.Key.Name == foreignKeyValues[foreignTargetProperty])
+                            .Value;
+
+                        if (navigationProperty != null)
+                        {
+                            foreignKeyProperty = foreignTargetProperty;
+
+                            break;
+                        }
+                    }
+                    * /
+                    var foreignKeyInfo = foreignKeyProperties
+                        .Select(x => new
+                        {
+                            ForeignKey = x,
+                            NavigationProperty = targetPropertiesOfTypeT
+                                .FirstOrDefault(y => y.Key.Name == foreignKeyValues[x])
+                                .Value,
+                        })
+                        .FirstOrDefault();
+
+                    foreignKeyProperty = foreignKeyInfo.ForeignKey;
+                    navigationProperty = foreignKeyInfo.NavigationProperty;
+                }
+                else
+                {
+                    // navigation property on the dependent property
+
+                    var navigationTarget = navigationForeignKeys
+                        .Select(x => new
+                        {
+                            NavigationProperty = x,
+                            ForeignKey = targetProperties.FirstOrDefault(y => y.Name == foreignKeyValues[x])
+                        })
+                        .FirstOrDefault();
+
+                    foreignKeyProperty = navigationTarget.ForeignKey;
+                    navigationProperty = navigationTarget.NavigationProperty;
+                }
+                */
+                // foreign key property on the dependent property
+                // navigation property on the dependent property
+                var foreignKeyInfo = targetPropertiesOfTypeT
+                    .Keys
+                    .Intersect(foreignKeyValues.Keys)
+                    .Select(x => new
+                    {
+                        ForeignKey = targetProperties.FirstOrDefault(y => y.Name == foreignKeyValues[x]),
+                        NavigationProperty = x,
+                    })
+                    .FirstOrDefault()
+
+                    ??
+
+                    foreignKeyProperties
+                    .Select(x => new
+                    {
+                        ForeignKey = x,
+                        NavigationProperty = targetPropertiesOfTypeT
+                            .FirstOrDefault(y => y.Key.Name == foreignKeyValues[x])
+                            .Value,
+                    })
+                    .FirstOrDefault();
+
+                foreignKeyProperty = foreignKeyInfo.ForeignKey;
+                navigationProperty = foreignKeyInfo.NavigationProperty;
+            }
+            else
+            {
+                // get the primary entity's foreign key property
+                foreignKeyProperty = targetProperties.FirstOrDefault(x => x.Name == principalReslolutionForeignKey.ForeignKey);
+                navigationProperty = targetPropertiesOfTypeT.Values.FirstOrDefault();
             }
 
-            // Find the DALForeignKey attribute on the current item's property
-            var foreignKeyAttribute = referenceProperty.Member.GetCustomAttribute<RelmForeignKey>()
-                ?? throw new InvalidOperationException("RelmForeignKey attribute not found on reference property.");
-
-            // Find the property on the generic type that has a DALForeignKey attribute, 
-            // and if the property is a generic, look at the generic type argument for the DALForeignKey attribute
-            var foreignKeyProperty = genericTypeArgument.GetProperties()
-                .Where(x =>
-                    Attribute.IsDefined(x, typeof(RelmForeignKey)) ||
-                    (x.PropertyType.IsGenericType &&
-                    x.PropertyType.GetGenericArguments().Any(y => Attribute.IsDefined(y, typeof(RelmForeignKey))))
-                )
-                .FirstOrDefault(x => x.PropertyType == typeof(T) ||
-                                     (x.PropertyType.IsGenericType &&
-                                      x.PropertyType.GetGenericArguments().Any(y => y == typeof(T))));
-
+            // if foreignKeyProperty is null, throw an exception
             if (foreignKeyProperty == null)
-            {
-                throw new MemberAccessException("No property found with RelmForeignKey attribute on the related entity.");
-            }
+                throw new MemberAccessException("Property referenced by RelmForeignKey attribute could not be found.");
 
-            // Get the DALForeignKey attribute from the matching property
-            var dalForeignKey = (((RelmForeignKey)Attribute.GetCustomAttribute(foreignKeyProperty, typeof(RelmForeignKey)))?.ForeignKey)
-                ?? throw new Exception("RelmForeignKey attribute not found on related entity.");
+            // if navigationProperty is null, throw an exception
+            if (navigationProperty == null)
+                throw new MemberAccessException("Property referenced by RelmForeignKey attribute could not be found.");
+
+            if (itemForeignKeys == null)
+                throw new Exception("No foreign keys found.");
 
             // Generate a Func<> type based on the generic type argument for use below
-            var funcType = typeof(Func<,>).MakeGenericType(genericTypeArgument, typeof(bool));
+            var funcType = typeof(Func<,>).MakeGenericType(referenceType, typeof(bool));
 
             // get the property named by dalForeignKey from the type defined in genericTypeArgument and create a MemberExpression from it
-            var parameter = Expression.Parameter(genericTypeArgument, "x");
-            var memberExpression = Expression.Property(parameter, dalForeignKey)
+            var parameter = Expression.Parameter(referenceType, "x");
+            var memberExpression = Expression.Property(parameter, foreignKeyProperty.Name)
                 ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
-
-            // Instantiate a new DALContext of the same type as CurrentContext so we can load the data we need without modifying anything in our context
-            var newDalContextType = _currentContext.GetType();
-
-            // Find the DALDataSet with the same generic type as genericTypeArgument and create a new one
-            var dataSetMethod = newDalContextType.GetMethod(nameof(_currentContext.GetDataSetType), new[] { typeof(Type) })
-                ?? throw new InvalidOperationException("Method not found.");
-
-            var dataSet = dataSetMethod.Invoke(_currentContext, new object[] { genericTypeArgument }) as IRelmDataSetBase
-                ?? throw new InvalidOperationException($"RelmDataSet with generic type {genericTypeArgument.Name} not found.");
-
-            // get all the foreign keys to look up
-            var itemForeignKeys = _items
-                .Select(x => x.GetType().GetProperty(dalForeignKey)?.GetValue(x))
-                .Distinct()
-                .ToList();
 
             // look up the Contains method on the itemForeignKeys type, then make a generic method with the memberExpression type
             var containsMethod = itemForeignKeys
                 .GetType()
                 .GetMethod(nameof(List<object>.Contains));
-
 
             // Get the "Where" method from the data set
             var whereMethod = dataSet
@@ -323,20 +382,25 @@ namespace SimpleRelm.Models
             // use a foreach loop to convert collectionItemsContains to a dictionary where the key is the foreign key and the object is the item
             IDictionary collectionItems;
             if (isCollection)
-                collectionItems = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(typeof(object), typeof(List<>).MakeGenericType(genericTypeArgument)));
+                collectionItems = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(typeof(object), typeof(List<>).MakeGenericType(referenceType)));
             else
-                collectionItems = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(typeof(object), genericTypeArgument));
+                collectionItems = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(typeof(object), referenceType));
 
             foreach (var item in (IEnumerable)dataSet)
             {
-                var targetObjectForeignKeyValue = genericTypeArgument.GetProperty(foreignKeyAttribute.ForeignKey).GetValue(item);
+                var targetObjectForeignKeyValue = foreignKeyProperty.GetValue(item);
 
                 if (!collectionItems.Contains(targetObjectForeignKeyValue))
                 {
                     collectionItems.Add(targetObjectForeignKeyValue, default);
 
                     if (isCollection)
-                        collectionItems[targetObjectForeignKeyValue] = Activator.CreateInstance(typeof(List<>).MakeGenericType(genericTypeArgument));
+                        collectionItems[targetObjectForeignKeyValue] = Activator.CreateInstance(typeof(List<>).MakeGenericType(referenceType));
+                }
+                else if (!isCollection)
+                {
+                    // if the collectionItems already contains the key and it's not a collection, throw an exception
+                    throw new Exception("Collection already contains an item with the same foreign key.");
                 }
 
                 if (isCollection)
@@ -348,7 +412,8 @@ namespace SimpleRelm.Models
             // loop through each item in _items and add the related item to the collection
             foreach (var item in _items)
             {
-                var foreignKeyValue = item.GetType().GetProperty(dalForeignKey).GetValue(item);
+                var foreignKeyValue = item.GetType().GetProperty(referenceKey.Name).GetValue(item);
+                
                 var collectionItem = collectionItems[foreignKeyValue];
                 var collectionProperty = referenceProperty.Member as PropertyInfo;
 

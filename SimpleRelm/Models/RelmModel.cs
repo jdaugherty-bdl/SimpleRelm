@@ -23,6 +23,7 @@ namespace SimpleRelm.Models
         [RelmColumn(IsNullable: false, DefaultValue: "1")]
         public bool Active { get; set; }
 
+        [RelmKey]
         [RelmDto]
         [RelmColumn(IsNullable: false, Unique: true)]
         public string InternalId { get; set; }

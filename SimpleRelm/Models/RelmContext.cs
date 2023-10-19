@@ -148,7 +148,7 @@ namespace SimpleRelm.Models
 
         public void EndConnection(bool commitTransaction = true)
         {
-            if (ContextOptions.DatabaseConnection?.State != System.Data.ConnectionState.Closed)
+            if ((ContextOptions?.DatabaseConnection?.State ?? System.Data.ConnectionState.Closed) != System.Data.ConnectionState.Closed)
             {
                 if (commitTransaction)
                     ContextOptions.DatabaseTransaction?.Commit();

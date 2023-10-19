@@ -59,6 +59,7 @@
     <Compile Include="Attributes\RelmDatabase.cs" />
     <Compile Include="Attributes\RelmDto.cs" />
     <Compile Include="Attributes\RelmForeignKey.cs" />
+    <Compile Include="Attributes\RelmKey.cs" />
     <Compile Include="Attributes\RelmTable.cs" />
     <Compile Include="Interfaces\IRelmDataSetBase.cs" />
     <Compile Include="Interfaces\IRelmContext.cs" />
