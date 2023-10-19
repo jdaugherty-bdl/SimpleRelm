@@ -258,57 +258,6 @@ namespace SimpleRelm.Models
                 var foreignKeyValues = foreignKeyProperties
                     .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>().ForeignKey);
 
-                /*
-                var navigationForeignKeys = targetPropertiesOfTypeT.Keys.Intersect(foreignKeyValues.Keys).ToList();
-
-                if (navigationForeignKeys.Count() == 0)
-                {
-                    // foreign key property on the dependent property
-
-                    /*
-                    foreach (var foreignTargetProperty in foreignKeyProperties)
-                    {
-                        navigationProperty = targetPropertiesOfTypeT
-                            .FirstOrDefault(x => x.Key.Name == foreignKeyValues[foreignTargetProperty])
-                            .Value;
-
-                        if (navigationProperty != null)
-                        {
-                            foreignKeyProperty = foreignTargetProperty;
-
-                            break;
-                        }
-                    }
-                    * /
-                    var foreignKeyInfo = foreignKeyProperties
-                        .Select(x => new
-                        {
-                            ForeignKey = x,
-                            NavigationProperty = targetPropertiesOfTypeT
-                                .FirstOrDefault(y => y.Key.Name == foreignKeyValues[x])
-                                .Value,
-                        })
-                        .FirstOrDefault();
-
-                    foreignKeyProperty = foreignKeyInfo.ForeignKey;
-                    navigationProperty = foreignKeyInfo.NavigationProperty;
-                }
-                else
-                {
-                    // navigation property on the dependent property
-
-                    var navigationTarget = navigationForeignKeys
-                        .Select(x => new
-                        {
-                            NavigationProperty = x,
-                            ForeignKey = targetProperties.FirstOrDefault(y => y.Name == foreignKeyValues[x])
-                        })
-                        .FirstOrDefault();
-
-                    foreignKeyProperty = navigationTarget.ForeignKey;
-                    navigationProperty = navigationTarget.NavigationProperty;
-                }
-                */
                 // foreign key property on the dependent property
                 // navigation property on the dependent property
                 var foreignKeyInfo = targetPropertiesOfTypeT
