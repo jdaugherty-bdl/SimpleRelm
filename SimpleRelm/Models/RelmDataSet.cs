@@ -45,7 +45,8 @@ namespace SimpleRelm.Models
 
         public IEnumerator<T> GetEnumerator()
         {
-            return (_items ?? Load())?.GetEnumerator();
+            // get cached items if not null, otherwise load new items list if not null, otherwise return empty collection
+            return (_items ?? Load() ?? Enumerable.Empty<T>())?.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -58,26 +59,6 @@ namespace SimpleRelm.Models
             if (!typeof(T).GetProperties().Any(x => x.Name == fieldName))
                 throw new ArgumentException($"The field {fieldName} does not exist on the model {typeof(T).Name}");
 
-            /*
-            if (dataLoader == null)
-            {
-                if (_fieldDataLoaders.ContainsKey(fieldName))
-                    _fieldDataLoaders.Remove(fieldName);
-                else
-                    throw new ArgumentException($"The field {fieldName} does not have a data loader set");
-
-                return null;
-            }
-            else
-            {
-                if (!_fieldDataLoaders.ContainsKey(fieldName))
-                    _fieldDataLoaders.Add(fieldName, dataLoader);
-                else
-                    _fieldDataLoaders[fieldName] = dataLoader;
-
-                return _fieldDataLoaders[fieldName];
-            }
-            */
             return _fieldDataLoaders.RegisterFieldLoader(fieldName, dataLoader);
         }
 
@@ -153,6 +134,22 @@ namespace SimpleRelm.Models
 
             return _items.FirstOrDefault();
         }
+
+        /*
+        public int Count()
+        {
+
+        }
+
+        public int Count(Expression<Func<T, bool>> predicate)
+        {
+            _dataLoader.AddExpression(Command.Count, predicate.Body);
+
+            _items = Load();
+
+            return _items.Count();
+        }
+        */
 
         public ICollection<T> Load()
         {

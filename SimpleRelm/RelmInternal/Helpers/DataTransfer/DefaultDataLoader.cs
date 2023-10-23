@@ -154,6 +154,9 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
                         case Command.DistinctBy:
                             queryPieces[command.Key].Add(expressionEvaluator.EvaluateDistinctBy(command));
                             break;
+                        case Command.Count:
+                            queryPieces[command.Key].Add(expressionEvaluator.EvaluateCount(command));
+                            break;
                     }
                 }
             }
@@ -164,14 +167,22 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
             findQuery += " ";
 
-            if (queryPieces.ContainsKey(Command.DistinctBy))
+            if (queryPieces.ContainsKey(Command.Count))
             {
-                findQuery += string.Join("\n", queryPieces[Command.DistinctBy]);
-                findQuery += ", ";
+                findQuery += queryPieces[Command.Count];
+            }
+            else
+            {
+                if (queryPieces.ContainsKey(Command.DistinctBy))
+                {
+                    findQuery += string.Join("\n", queryPieces[Command.DistinctBy]);
+                    findQuery += ", ";
+                }
+
+                if (predicatePieces.Length > 1)
+                    findQuery += string.Join(" ", predicatePieces.Skip(1));
             }
 
-            if (predicatePieces.Length > 1)
-                findQuery += string.Join(" ", predicatePieces.Skip(1));
             if (isSelect)
                 findQuery += " FROM ";
             findQuery += $" `{_tableName}` a "; // hardcode first table alias to 'a'

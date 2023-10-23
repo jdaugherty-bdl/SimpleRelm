@@ -22,7 +22,8 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             Set,
             GroupBy,
             Limit,
-            DistinctBy
+            DistinctBy,
+            Count
         }
 
         private bool HasWhere = false;
@@ -349,6 +350,17 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             var groupBy = CommandExpression.Value;
 
             findQuery += $" GROUP BY ";
+
+            return findQuery;
+        }
+
+        public string EvaluateCount(KeyValuePair<Command, List<Expression>> CommandExpression)
+        {
+            var findQuery = string.Empty;
+
+            var count = CommandExpression.Value.Count;
+
+            findQuery += $" COUNT(*) ";
 
             return findQuery;
         }
