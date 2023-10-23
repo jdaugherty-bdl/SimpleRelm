@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.Attributes
 {
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Struct)]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Struct | AttributeTargets.Class)]
     public class RelmDataLoader : Attribute
     {
         public Type LoaderType { get; set; } = default;

@@ -43,7 +43,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             _tableName = typeof(T).GetCustomAttribute<RelmTable>(false).TableName;
 
             if (string.IsNullOrWhiteSpace(_tableName))
-                throw new Exception($"DALTable attribute not found on type {nameof(T)}");
+                throw new Exception($"RelmTable attribute not found on type {nameof(T)}");
 
             // get a list of all properties on T that are marked with the DALResolvable attribute
             _underscoreProperties = DataNamingHelper.GetUnderscoreProperties<T>(true).ToDictionary(x => x.Value.Item1, x => x.Key);

@@ -20,6 +20,7 @@ namespace SimpleRelm.Tests.TestModels
         public virtual IRelmDataSet<ComplexReferenceObject_NavigationProperty>? ComplexReferenceObject_NavigationProperties { get; set; }
         public virtual IRelmDataSet<ComplexReferenceObject_PrincipalEntity>? ComplexReferenceObject_PrincipalEntities { get; set; }
         public virtual IRelmDataSet<SimpleReferenceObject>? SimpleReferenceObjects { get; set; }
+        public virtual IRelmDataSet<DataLoaderTestModel>? DataLoaderTestModels { get; set; }
 
         void IRelmContext_TESTING.SetDataSet<T>(IRelmDataSet<T> dataSet)
         {

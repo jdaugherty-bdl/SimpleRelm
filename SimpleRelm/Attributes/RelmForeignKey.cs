@@ -11,11 +11,13 @@ namespace SimpleRelm.Attributes
     {
         public string ForeignKey { get; set; } = default;
         public string LocalKey { get; set; } = default;
+        public string OrderBy { get; set; } = default;
 
-        public RelmForeignKey(string ForeignKeyProperty, string LocalKeyProperty = null)
+        public RelmForeignKey(string ForeignKeyProperty, string LocalKeyProperty = null, string OrderByProperty = null)
         {
             this.ForeignKey = ForeignKeyProperty;
             this.LocalKey = LocalKeyProperty;
+            this.OrderBy = OrderByProperty;
         }
     }
 }

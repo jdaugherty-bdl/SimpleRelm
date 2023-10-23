@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
@@ -86,6 +87,14 @@ namespace SimpleRelm.Models
 
                 // create a default data loader for the generic type argument then create a dataset and pass the data loader
                 var dalDataLoader = Activator.CreateInstance(typeof(DefaultDataLoader<>).MakeGenericType(dalDataSetType), new object[] { ContextOptions });
+                // check if dalDataSetType has a RelmDataLoader attribute defined at the class leve, and create a new instance of the type indicated and save to dalDataLoader
+                var ddd = dalDataSetType.GetCustomAttribute<RelmDataLoader>(true);
+                if (ddd != null)
+                {
+                    var ttt = Activator.CreateInstance(ddd.LoaderType);
+                }
+
+
                 var dalDataSet = Activator.CreateInstance(typeof(RelmDataSet<>).MakeGenericType(dalDataSetType), new object[] { this, dalDataLoader });
 
                 attachedProperty.SetValue(this, dalDataSet);

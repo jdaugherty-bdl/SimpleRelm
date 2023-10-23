@@ -44,7 +44,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.DataTransfer
         }
 
         [Fact]
-        public void DataLoaderAttribute_DefaultRelmKey_UsedToResolveProperty_IsSuccessful()
+        public void FieldLoaderAttribute_DefaultRelmKey_UsedToResolveProperty_IsSuccessful()
         {
             // Arrange & Act
             context.ComplexTestModels!.Load();
@@ -55,6 +55,15 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.DataTransfer
 
             Assert.True(firstModel?.TestFieldBoolean);
             Assert.False(secondModel?.TestFieldBoolean);
+        }
+
+        [Fact]
+        public void DataLoaderAttribute_IsSuccessful()
+        {
+            // Arrange
+            context.DataLoaderTestModels!.Load();
+
+
         }
     }
 }
