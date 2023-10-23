@@ -23,6 +23,9 @@ namespace SimpleRelm.Tests.TestModels
         
         public virtual ICollection<ComplexTestModel>? ComplexTestModels { get; set; }
 
+        [RelmDataLoader(typeof(TestFieldBooleanFieldLoader))]
+        public virtual bool? TestFieldBoolean { get; set; }
+        
         /********************* FOR TESTING REFERENCES *******************************/
 
         /**** FOREIGN KEY ****/

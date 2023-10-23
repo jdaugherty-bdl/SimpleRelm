@@ -57,12 +57,14 @@
   <ItemGroup>
     <Compile Include="Attributes\RelmColumn.cs" />
     <Compile Include="Attributes\RelmDatabase.cs" />
+    <Compile Include="Attributes\RelmDataLoader.cs" />
     <Compile Include="Attributes\RelmDto.cs" />
     <Compile Include="Attributes\RelmForeignKey.cs" />
     <Compile Include="Attributes\RelmKey.cs" />
     <Compile Include="Attributes\RelmTable.cs" />
     <Compile Include="Interfaces\IRelmDataSetBase.cs" />
     <Compile Include="Interfaces\IRelmContext.cs" />
+    <Compile Include="Interfaces\IRelmFieldLoader.cs" />
     <Compile Include="Interfaces\IRelmMember.cs" />
     <Compile Include="Interfaces\IRelmModel.cs" />
     <Compile Include="Interfaces\IRelmModelApartment.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="RelmInternal\Helpers\Operations\ConnectionHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\DataNamingHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\ExpressionEvaluator.cs" />
+    <Compile Include="RelmInternal\Helpers\Operations\FieldLoaderRegistry.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\ExpressionUtilities.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\TableOperationsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\CoreUtilities.cs" />

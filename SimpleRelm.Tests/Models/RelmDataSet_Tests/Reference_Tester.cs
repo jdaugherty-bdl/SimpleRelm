@@ -37,6 +37,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                     TestColumnId = default,
                     TestColumnInternalId = null,
                     TestColumnNoAttributeArguments = null,
+                    TestFieldBoolean = null,
                 },
                 new ComplexTestModel 
                 { 
@@ -55,6 +56,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                     TestColumnId = default,
                     TestColumnInternalId = null,
                     TestColumnNoAttributeArguments = null,
+                    TestFieldBoolean = null,
                 },
             };
 

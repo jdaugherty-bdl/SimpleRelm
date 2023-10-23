@@ -27,14 +27,18 @@ namespace SimpleRelm.Models
 
         private readonly IRelmContext _currentContext;
         private IRelmDataLoader<T> _dataLoader;
+        //private Dictionary<string, IRelmFieldLoader<object>> _fieldDataLoaders;
+        private FieldLoaderRegistry _fieldDataLoaders;
 
         private ICollection<T> _items;
 
         public RelmDataSet(IRelmContext currentContext, IRelmDataLoader<T> dataLoader)
         {
             _currentContext = currentContext ?? throw new ArgumentNullException(nameof(currentContext));
+            _dataLoader = dataLoader ?? throw new ArgumentNullException(nameof(dataLoader));
 
-            _dataLoader = dataLoader; // new DefaultDataLoader<T>(currentContext.ContextOptions);
+            //_fieldDataLoaders = new Dictionary<string, IRelmFieldLoader<object>>();
+            _fieldDataLoaders = new FieldLoaderRegistry();
 
             Modified = false;
         }
@@ -47,6 +51,34 @@ namespace SimpleRelm.Models
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public IRelmFieldLoader SetFieldLoader(string fieldName, IRelmFieldLoader dataLoader)
+        {
+            if (!typeof(T).GetProperties().Any(x => x.Name == fieldName))
+                throw new ArgumentException($"The field {fieldName} does not exist on the model {typeof(T).Name}");
+
+            /*
+            if (dataLoader == null)
+            {
+                if (_fieldDataLoaders.ContainsKey(fieldName))
+                    _fieldDataLoaders.Remove(fieldName);
+                else
+                    throw new ArgumentException($"The field {fieldName} does not have a data loader set");
+
+                return null;
+            }
+            else
+            {
+                if (!_fieldDataLoaders.ContainsKey(fieldName))
+                    _fieldDataLoaders.Add(fieldName, dataLoader);
+                else
+                    _fieldDataLoaders[fieldName] = dataLoader;
+
+                return _fieldDataLoaders[fieldName];
+            }
+            */
+            return _fieldDataLoaders.RegisterFieldLoader(fieldName, dataLoader);
         }
 
         public IRelmDataLoader<T> SetDataLoader(IRelmDataLoader<T> dataLoader)
@@ -128,6 +160,45 @@ namespace SimpleRelm.Models
 
             if (_items?.Any() ?? false)
             {
+                // find all fields marked with a RelmFieldLoader attribute that have a type derived from IRelmFieldLoader<> and add them to the list of field loaders as long as they are not already there
+                //foreach (var field in typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmDataLoader>() != null))
+                foreach (var field in typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmDataLoader>()?.LoaderType?.GetInterfaces()?.Any(y => y == typeof(IRelmFieldLoader)) ?? false))
+                {
+                    //if (_fieldDataLoaders.ContainsKey(field.Name))
+                    if (_fieldDataLoaders.HasFieldLoader(field.Name))
+                        continue;
+
+                    var fieldLoader = field.GetCustomAttribute<RelmDataLoader>().LoaderType;
+
+                    //if (fieldLoader.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IRelmFieldLoader)))
+                    //if (fieldLoader.GetInterfaces().Any(x => x == typeof(IRelmFieldLoader)))
+                    {
+                        //var fieldType = fieldLoader.GetInterfaces().First(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IRelmFieldLoader)).GetGenericArguments().First();
+
+                        //if (!_fieldDataLoaders.ContainsKey(field.Name))
+                        //_fieldDataLoaders.Add(field.Name, (IRelmFieldLoader<object>)Activator.CreateInstance(fieldLoader.IsGenericTypeDefinition ? fieldLoader.MakeGenericType(fieldType) : fieldLoader)); // as IRelmFieldLoader<object>);
+                        //_fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(fieldLoader.IsGenericTypeDefinition ? fieldLoader.MakeGenericType(fieldType) : fieldLoader, new object[] { field.Name }));
+                        _fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(fieldLoader, new object[] { field.Name }));
+                    }
+                }
+
+                // find all fields that have the RelmKey
+                var referenceKey = GetReferenceKey(null);
+
+                // execute all field loaders
+                foreach (var fieldLoader in _fieldDataLoaders)
+                {
+                    var fieldData = fieldLoader.GetFieldData(_items.Select(x => x.GetType().GetProperty(referenceKey.Name).GetValue(x)).ToList());
+
+                    foreach (var item in _items)
+                    {
+                        var itemValue = item.GetType().GetProperty(referenceKey.Name).GetValue(item);
+
+                        if (fieldData.ContainsKey(itemValue))
+                            item.GetType().GetProperty(fieldLoader.FieldName).SetValue(item, fieldData[itemValue]);
+                    }
+                }
+
                 // load all references
                 if (_dataLoader.LastCommandsExecuted?.ContainsKey(Command.Reference) ?? false)
                     LoadReference();
@@ -228,17 +299,7 @@ namespace SimpleRelm.Models
             var principalReslolutionForeignKey = referenceProperty.Member.GetCustomAttribute<RelmForeignKey>();
 
             // get all RelmKeys on the main object
-            PropertyInfo referenceKey;
-            if (!string.IsNullOrWhiteSpace(principalReslolutionForeignKey?.LocalKey))
-                referenceKey = typeof(T).GetProperties().Where(x => principalReslolutionForeignKey.LocalKey == x.Name).FirstOrDefault();
-            else
-            {
-                var referenceRelmKeys = typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmKey>() != null).ToList();
-
-                referenceKey = referenceRelmKeys.FirstOrDefault();
-                if (referenceRelmKeys.Count > 1)
-                    referenceKey = referenceRelmKeys.FirstOrDefault(x => x.Name != nameof(RelmModel.InternalId));
-            }
+            var referenceKey = GetReferenceKey(principalReslolutionForeignKey?.LocalKey);
 
             // go through all items in the current data set and collect all relmkey values
             itemPrimaryKeys = _items
@@ -584,6 +645,28 @@ namespace SimpleRelm.Models
         public bool Remove(T item)
         {
             return _items?.Remove(item) ?? false;
+        }
+
+        /// <summary>
+        /// Searches through all properties in the current T type and identifies the property that is marked with the RelmKey attribute, overriding "InternalId" if necessary
+        /// </summary>
+        /// <param name="localKeyName"></param>
+        /// <returns></returns>
+        private PropertyInfo GetReferenceKey(string localKeyName)
+        {
+            PropertyInfo referenceKey;
+            if (!string.IsNullOrWhiteSpace(localKeyName))
+                referenceKey = typeof(T).GetProperties().Where(x => localKeyName == x.Name).FirstOrDefault();
+            else
+            {
+                var referenceRelmKeys = typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmKey>() != null).ToList();
+
+                referenceKey = referenceRelmKeys.FirstOrDefault();
+                if (referenceRelmKeys.Count > 1)
+                    referenceKey = referenceRelmKeys.FirstOrDefault(x => x.Name != nameof(RelmModel.InternalId));
+            }
+
+            return referenceKey;
         }
     }
 }

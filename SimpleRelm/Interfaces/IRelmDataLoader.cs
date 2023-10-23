@@ -9,7 +9,7 @@ using static SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator;
 
 namespace SimpleRelm.Interfaces
 {
-    public interface IRelmDataLoader<T> where T : IRelmModel, new()
+    public interface IRelmDataLoader<T>
     {
         Dictionary<Command, List<Expression>> LastCommandsExecuted { get; set; }
 
