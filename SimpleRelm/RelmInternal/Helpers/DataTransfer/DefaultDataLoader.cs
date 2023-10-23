@@ -17,10 +17,11 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
     {
         public Dictionary<Command, List<Expression>> LastCommandsExecuted { get; set; }
 
+        internal virtual string _tableName => typeof(T).GetCustomAttribute<RelmTable>(false)?.TableName;
+
         private readonly RelmContextOptionsBuilder _contextOptionsBuilder;
 
         private string _fullPropertySelectList;
-        private string _tableName;
         private Dictionary<string, string> _underscoreProperties;
 
         private Dictionary<Command, List<Expression>> _commands;
@@ -40,10 +41,10 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         private void InitialSetup()
         { 
             // get the table name from the DALTable attribute of T
-            _tableName = typeof(T).GetCustomAttribute<RelmTable>(false).TableName;
+            //_tableName = typeof(T).GetCustomAttribute<RelmTable>(false)?.TableName;
 
             if (string.IsNullOrWhiteSpace(_tableName))
-                throw new Exception($"RelmTable attribute not found on type {nameof(T)}");
+                throw new Exception($"RelmTable attribute not found on type {typeof(T).Name}");
 
             // get a list of all properties on T that are marked with the DALResolvable attribute
             _underscoreProperties = DataNamingHelper.GetUnderscoreProperties<T>(true).ToDictionary(x => x.Value.Item1, x => x.Key);
@@ -51,6 +52,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             // get a list of all class property names surrounded by ` quotes separated by commas
             _fullPropertySelectList = string.Join(", ", _underscoreProperties.Select(p => $"a.`{p.Value}`"));
         }
+
 
         public bool HasUnderscoreProperty(string PropertyKey) => _underscoreProperties?.ContainsKey(PropertyKey) ?? false;
 

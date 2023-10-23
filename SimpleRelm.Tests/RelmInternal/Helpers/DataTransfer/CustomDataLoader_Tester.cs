@@ -37,6 +37,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.DataTransfer
             var modelDataLoader = new Mock<DefaultDataLoader<ComplexTestModel>>(); // { CallBase = true };
 
             // make sure GetLoadData() calls base so LastExecutedCommands (required for references) gets populated
+            modelDataLoader.Setup(x => x._tableName).Returns("DUMMY NAME");
             modelDataLoader.Setup(x => x.GetLoadData()).CallBase();
             modelDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexTestModels);
 
@@ -63,7 +64,12 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.DataTransfer
             // Arrange
             context.DataLoaderTestModels!.Load();
 
+            // Assert
+            var firstModel = context.DataLoaderTestModels.First();
+            var secondModel = context.DataLoaderTestModels.Skip(1).First();
 
+            Assert.Equal("LOADER1", firstModel?.InternalId);
+            Assert.Equal("LOADER2", secondModel?.InternalId);
         }
     }
 }

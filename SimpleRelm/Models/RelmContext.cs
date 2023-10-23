@@ -86,13 +86,14 @@ namespace SimpleRelm.Models
                 var dalDataSetType = attachedProperty.PropertyType.GetGenericArguments()[0];
 
                 // create a default data loader for the generic type argument then create a dataset and pass the data loader
-                var dalDataLoader = Activator.CreateInstance(typeof(DefaultDataLoader<>).MakeGenericType(dalDataSetType), new object[] { ContextOptions });
-                // check if dalDataSetType has a RelmDataLoader attribute defined at the class leve, and create a new instance of the type indicated and save to dalDataLoader
-                var ddd = dalDataSetType.GetCustomAttribute<RelmDataLoader>(true);
-                if (ddd != null)
-                {
-                    var ttt = Activator.CreateInstance(ddd.LoaderType);
-                }
+                // check if dalDataSetType has a RelmDataLoader attribute defined at the class level, and create a new instance of the type indicated and save to dalDataLoader
+                object dalDataLoader = null;
+                var classDataLoader = dalDataSetType.GetCustomAttribute<RelmDataLoader>(true);
+
+                if (classDataLoader == null)
+                    dalDataLoader = Activator.CreateInstance(typeof(DefaultDataLoader<>).MakeGenericType(dalDataSetType), new object[] { ContextOptions });
+                else
+                    dalDataLoader = Activator.CreateInstance(classDataLoader.LoaderType, new object[] { ContextOptions });
 
 
                 var dalDataSet = Activator.CreateInstance(typeof(RelmDataSet<>).MakeGenericType(dalDataSetType), new object[] { this, dalDataLoader });
