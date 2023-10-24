@@ -180,7 +180,7 @@ namespace SimpleRelm.Models
                 }
 
                 // find all fields that have the RelmKey
-                var referenceKey = GetReferenceKey(null);
+                var referenceKey = GetReferenceKeys(null);
 
                 // execute all field loaders
                 foreach (var fieldLoader in _fieldDataLoaders)
@@ -277,7 +277,7 @@ namespace SimpleRelm.Models
         /// <exception cref="Exception">Thrown if there's an exception.</exception>
         private void LoadForeignObjects(Expression member)
         {
-            PropertyInfo foreignKeyProperty = default;
+            PropertyInfo[] foreignKeyProperties = default;
             PropertyInfo navigationProperty = default;
             List<object> itemPrimaryKeys = default;
 
@@ -367,18 +367,18 @@ namespace SimpleRelm.Models
                 if (foreignKeyInfo == null)
                     throw new NullReferenceException("No foreign key info found.");
 
-                foreignKeyProperty = foreignKeyInfo.ForeignKey;
+                foreignKeyProperties = foreignKeyInfo.ForeignKey;
                 navigationProperty = foreignKeyInfo.NavigationProperty;
             }
             else
             {
                 // get the primary entity's foreign key property
-                foreignKeyProperty = targetProperties.FirstOrDefault(x => x.Name == principalReslolutionForeignKey.ForeignKey);
+                foreignKeyProperties = targetProperties.FirstOrDefault(x => x.Name == principalReslolutionForeignKey.ForeignKey);
                 navigationProperty = targetPropertiesOfTypeT.Values.FirstOrDefault();
             }
 
             // if foreignKeyProperty is null, throw an exception
-            if (foreignKeyProperty == null)
+            if (foreignKeyProperties == null)
                 throw new MemberAccessException("Property referenced by RelmForeignKey attribute could not be found.");
 
             // if navigationProperty is null, throw an exception
@@ -390,7 +390,7 @@ namespace SimpleRelm.Models
 
             // get the property named by dalForeignKey from the type defined in genericTypeArgument and create a MemberExpression from it
             var parameter = Expression.Parameter(referenceType, "x");
-            var memberExpression = Expression.Property(parameter, foreignKeyProperty.Name)
+            var memberExpression = Expression.Property(parameter, foreignKeyProperties.Name)
                 ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
 
             // look up the Contains method on the itemForeignKeys type, then make a generic method with the memberExpression type
@@ -419,7 +419,7 @@ namespace SimpleRelm.Models
 
             foreach (var item in (IEnumerable)dataSet)
             {
-                var targetObjectForeignKeyValue = foreignKeyProperty.GetValue(item);
+                var targetObjectForeignKeyValue = foreignKeyProperties.GetValue(item);
 
                 if (!collectionItems.Contains(targetObjectForeignKeyValue))
                 {
@@ -652,23 +652,24 @@ namespace SimpleRelm.Models
         /// <summary>
         /// Searches through all properties in the current T type and identifies the property that is marked with the RelmKey attribute, overriding "InternalId" if necessary
         /// </summary>
-        /// <param name="localKeyName"></param>
+        /// <param name="localKeyNames"></param>
         /// <returns></returns>
-        private PropertyInfo GetReferenceKey(string localKeyName)
+        private PropertyInfo[] GetReferenceKeys(string[] localKeyNames)
         {
-            PropertyInfo referenceKey;
-            if (!string.IsNullOrWhiteSpace(localKeyName))
-                referenceKey = typeof(T).GetProperties().Where(x => localKeyName == x.Name).FirstOrDefault();
+            PropertyInfo[] referenceKeys;
+            //if (!string.IsNullOrWhiteSpace(localKeyNames))
+            if ((localKeyNames?.Length ?? 0) > 0)
+                referenceKeys = typeof(T).GetProperties().Where(x => localKeyNames == x.Name).FirstOrDefault();
             else
             {
                 var referenceRelmKeys = typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmKey>() != null).ToList();
 
-                referenceKey = referenceRelmKeys.FirstOrDefault();
+                referenceKeys = referenceRelmKeys.FirstOrDefault();
                 if (referenceRelmKeys.Count > 1)
-                    referenceKey = referenceRelmKeys.FirstOrDefault(x => x.Name != nameof(RelmModel.InternalId));
+                    referenceKeys = referenceRelmKeys.FirstOrDefault(x => x.Name != nameof(RelmModel.InternalId));
             }
 
-            return referenceKey;
+            return referenceKeys;
         }
     }
 }
