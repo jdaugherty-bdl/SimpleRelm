@@ -17,6 +17,7 @@ namespace SimpleRelm.Models
     {
         public Dictionary<Command, List<Expression>> LastCommandsExecuted { get; set; }
 
+        // this is internal to facilitate unit testing only
         internal virtual string _tableName => typeof(T).GetCustomAttribute<RelmTable>(false)?.TableName;
 
         private readonly RelmContextOptionsBuilder _contextOptionsBuilder;

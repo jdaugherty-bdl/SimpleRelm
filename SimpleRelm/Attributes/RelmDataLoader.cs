@@ -15,11 +15,7 @@ namespace SimpleRelm.Attributes
         public RelmDataLoader(Type LoaderType, string KeyField = null)
         {
             this.LoaderType = LoaderType;
-
-            if (KeyField != null)
-            {
-                this.KeyField = KeyField;
-            }
+            this.KeyField = KeyField;
         }
     }
 }
