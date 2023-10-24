@@ -87,7 +87,7 @@
     <Compile Include="RelmInternal\GlobalEnums.cs" />
     <Compile Include="RelmInternal\Helpers\Connections\StandardConnectionHelper.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\DatabaseWorkHelper.cs" />
-    <Compile Include="RelmInternal\Helpers\DataTransfer\DefaultDataLoader.cs" />
+    <Compile Include="Models\RelmDefaultDataLoader.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\ObjectResultsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\Persistence\DataOutputOperations.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\RefinedResultsHelper.cs" />

@@ -91,7 +91,7 @@ namespace SimpleRelm.Models
                 var classDataLoader = dalDataSetType.GetCustomAttribute<RelmDataLoader>(true);
 
                 if (classDataLoader == null)
-                    dalDataLoader = Activator.CreateInstance(typeof(DefaultDataLoader<>).MakeGenericType(dalDataSetType), new object[] { ContextOptions });
+                    dalDataLoader = Activator.CreateInstance(typeof(RelmDefaultDataLoader<>).MakeGenericType(dalDataSetType), new object[] { ContextOptions });
                 else
                     dalDataLoader = Activator.CreateInstance(classDataLoader.LoaderType, new object[] { ContextOptions });
 

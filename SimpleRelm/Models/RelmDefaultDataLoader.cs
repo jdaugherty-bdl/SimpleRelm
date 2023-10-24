@@ -11,9 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using static SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator;
 
-namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
+namespace SimpleRelm.Models
 {
-    internal class DefaultDataLoader<T> : IRelmDataLoader<T> where T : IRelmModel, new()
+    public class RelmDefaultDataLoader<T> : IRelmDataLoader<T> where T : IRelmModel, new()
     {
         public Dictionary<Command, List<Expression>> LastCommandsExecuted { get; set; }
 
@@ -26,12 +26,12 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
         private Dictionary<Command, List<Expression>> _commands;
 
-        public DefaultDataLoader()
+        public RelmDefaultDataLoader()
         {
             InitialSetup();
         }
 
-        public DefaultDataLoader(RelmContextOptionsBuilder contextOptionsBuilder)
+        public RelmDefaultDataLoader(RelmContextOptionsBuilder contextOptionsBuilder)
         {
             this._contextOptionsBuilder = contextOptionsBuilder;
          

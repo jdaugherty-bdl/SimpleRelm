@@ -1,4 +1,6 @@
-﻿using SimpleRelm.Interfaces;
+﻿using SimpleRelm.Attributes;
+using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.RelmInternal.Helpers.Operations;
@@ -11,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.Tests.TestModels
 {
-    internal class DataLoaderTestModelDataLoader : DefaultDataLoader<DataLoaderTestModel>
+    internal class DataLoaderTestModelDataLoader : RelmDefaultDataLoader<DataLoaderTestModel>
     {
         internal override string _tableName => "DUMMY NAME";
 

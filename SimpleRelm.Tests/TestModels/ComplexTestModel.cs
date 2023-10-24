@@ -25,6 +25,9 @@ namespace SimpleRelm.Tests.TestModels
 
         [RelmDataLoader(typeof(TestFieldBooleanFieldLoader))]
         public virtual bool? TestFieldBoolean { get; set; }
+
+        [RelmDataLoader(typeof(TestFieldBooleansFieldLoader))]
+        public virtual ICollection<bool>? TestFieldBooleans { get; set; }
         
         /********************* FOR TESTING REFERENCES *******************************/
 

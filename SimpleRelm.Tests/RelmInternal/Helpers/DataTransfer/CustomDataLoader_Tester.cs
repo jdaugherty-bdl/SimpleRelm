@@ -1,5 +1,6 @@
 ﻿using Moq;
 using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.Tests.TestModels;
 using System;
@@ -23,18 +24,20 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.DataTransfer
                 {
                     InternalId = "ID1",
                     TestFieldBoolean = null,
+                    TestFieldBooleans = null,
                 },
                 new ComplexTestModel
                 {
                     InternalId = "ID2",
                     TestFieldBoolean = null,
+                    TestFieldBooleans = null,
                 },
             };
 
             context = new ComplexTestContext("name=SimpleRelmMySql");
 
             // create dummy data loaders for dummy data to be placed in both relevant data sets
-            var modelDataLoader = new Mock<DefaultDataLoader<ComplexTestModel>>(); // { CallBase = true };
+            var modelDataLoader = new Mock<RelmDefaultDataLoader<ComplexTestModel>>(); // { CallBase = true };
 
             // make sure GetLoadData() calls base so LastExecutedCommands (required for references) gets populated
             modelDataLoader.Setup(x => x._tableName).Returns("DUMMY NAME");
@@ -45,7 +48,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.DataTransfer
         }
 
         [Fact]
-        public void FieldLoaderAttribute_DefaultRelmKey_UsedToResolveProperty_IsSuccessful()
+        public void FieldLoaderAttribute_DefaultRelmKey_UsedToResolveProperty_SingleReturn()
         {
             // Arrange & Act
             context.ComplexTestModels!.Load();
@@ -56,6 +59,31 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.DataTransfer
 
             Assert.True(firstModel?.TestFieldBoolean);
             Assert.False(secondModel?.TestFieldBoolean);
+        }
+
+        [Fact]
+        public void FieldLoaderAttribute_DefaultRelmKey_UsedToResolveProperty_ListReturn()
+        {
+            // Arrange & Act
+            context.ComplexTestModels!.Load();
+
+            // Assert
+            var firstModel = context.ComplexTestModels.First();
+            var secondModel = context.ComplexTestModels.Skip(1).First();
+
+            Assert.Equal(4, firstModel?.TestFieldBooleans?.Count);
+            Assert.Equal(4, secondModel?.TestFieldBooleans?.Count);
+
+            // true, false, true, false
+            Assert.True(firstModel?.TestFieldBooleans?.FirstOrDefault());
+            Assert.False(firstModel?.TestFieldBooleans?.Skip(1).FirstOrDefault());
+            Assert.True(firstModel?.TestFieldBooleans?.Skip(2).FirstOrDefault());
+            Assert.False(firstModel?.TestFieldBooleans?.Skip(3).FirstOrDefault());
+
+            Assert.True(secondModel?.TestFieldBooleans?.FirstOrDefault());
+            Assert.False(secondModel?.TestFieldBooleans?.Skip(1).FirstOrDefault());
+            Assert.True(secondModel?.TestFieldBooleans?.Skip(2).FirstOrDefault());
+            Assert.False(secondModel?.TestFieldBooleans?.Skip(3).FirstOrDefault());
         }
 
         [Fact]

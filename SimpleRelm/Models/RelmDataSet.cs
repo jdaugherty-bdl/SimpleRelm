@@ -185,6 +185,11 @@ namespace SimpleRelm.Models
                 // execute all field loaders
                 foreach (var fieldLoader in _fieldDataLoaders)
                 {
+                    // check if the field is a collection, if it is call GetFieldData the returns a list of objects, otherwise GetFieldData that return a single object
+
+
+
+
                     var fieldData = fieldLoader.GetFieldData(_items.Select(x => x.GetType().GetProperty(referenceKey.Name).GetValue(x)).ToList());
 
                     foreach (var item in _items)

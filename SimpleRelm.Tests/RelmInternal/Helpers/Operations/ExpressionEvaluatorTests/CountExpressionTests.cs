@@ -1,5 +1,6 @@
 ﻿using Moq;
 using SimpleRelm.Attributes;
+using SimpleRelm.Models;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.RelmInternal.Helpers.Operations;
 using SimpleRelm.Tests.TestModels;
@@ -29,7 +30,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             context = new ComplexTestContext("name=SimpleRelmMySql");
 
             // create dummy data loaders for dummy data to be placed in both relevant data sets
-            var modelDataLoader = new Mock<DefaultDataLoader<ComplexTestModel>>(); // { CallBase = true };
+            var modelDataLoader = new Mock<RelmDefaultDataLoader<ComplexTestModel>>(); // { CallBase = true };
 
             // make sure GetLoadData() calls base so LastExecutedCommands (required for references) gets populated
             modelDataLoader.Setup(x => x._tableName).Returns("DUMMY NAME");
