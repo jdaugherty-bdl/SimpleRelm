@@ -316,7 +316,7 @@ namespace SimpleRelm.Models
         {
             PropertyInfo[] foreignKeyProperties = default;
             PropertyInfo navigationProperty = default;
-            List<object[]> itemPrimaryKeys = default;
+            List<Tuple<PropertyInfo, List<object>>> itemPrimaryKeys = default;
 
             var referenceProperty = member as MemberExpression
                 ?? throw new InvalidOperationException("Collection must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
@@ -341,11 +341,19 @@ namespace SimpleRelm.Models
             var referenceKeys = GetReferenceKeys(principalReslolutionForeignKey?.LocalKeys);
 
             // go through all items in the current data set and collect all relmkey values
+            /*
             itemPrimaryKeys = _items
                 .Select(x => x.GetType().GetProperties().Intersect(referenceKeys)?.Select(y => y.GetValue(x)).ToArray())
                 .Distinct()
                 .ToList();
+            */
+            itemPrimaryKeys = typeof(T)
+                    .GetProperties()
+                    .Intersect(referenceKeys)
+                    .Select(x => new Tuple<PropertyInfo, List<object>>(x,  _items.Select(y => y.GetType().GetProperty(x.Name, x.PropertyType).GetValue(y)).ToList()))
+                    .ToList();
 
+            //if ((itemPrimaryKeys?.Count ?? 0) <= 0)
             if (itemPrimaryKeys == null)
                 throw new Exception("No primary keys found.");
 
@@ -426,15 +434,13 @@ namespace SimpleRelm.Models
             // Generate a Func<> type based on the generic type argument for use below
             var funcType = typeof(Func<,>).MakeGenericType(referenceType, typeof(bool));
 
-            // get the property named by dalForeignKey from the type defined in genericTypeArgument and create a MemberExpression from it
-            var parameter = Expression.Parameter(referenceType, "x");
-            var memberExpression = Expression.Property(parameter, foreignKeyProperties.FirstOrDefault().Name)
-                ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
-
             // look up the Contains method on the itemForeignKeys type, then make a generic method with the memberExpression type
+            /*
             var containsMethod = itemPrimaryKeys
                 .GetType()
                 .GetMethod(nameof(List<object>.Contains));
+            */
+            var containsMethod = typeof(List<object>).GetMethod(nameof(List<object>.Contains));
 
             // Get the "Where" method from the data set
             var whereMethod = dataSet
@@ -443,9 +449,54 @@ namespace SimpleRelm.Models
                 .Where(m => m.Name == nameof(RelmDataSet<T>.Where))
                 .First();
 
+            // get the property named by dalForeignKey from the type defined in genericTypeArgument and create a MemberExpression from it
+            var parameter = Expression.Parameter(referenceType, "x");
+
+            /*
+            BinaryExpression andExpression;
+            foreach (var itemPrimaryKey in itemPrimaryKeys)
+            {
+                for (var i = 0; i < itemPrimaryKey.Count; i++)
+                {
+                    var memberExpression = Expression.Property(parameter, foreignKeyProperties[i].Name)
+                        ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
+                    var containsExpression = Expression.Call(Expression.Constant(itemPrimaryKeys[i].Values), containsMethod, memberExpression);
+
+                    andExpressions.Add(Expression.AndAlso(containsExpression, Expression.Lambda(funcType, containsExpression, parameter)));
+                }
+
+                var orExpression = andExpressions.Aggregate(Expression.OrElse);
+            }
+            */
+            var containsExpressions = new List<MethodCallExpression>();
+            for (var i = 0; i < itemPrimaryKeys.Count; i++)
+            {
+                var memberExpression = Expression.Property(parameter, foreignKeyProperties[i].Name)
+                        ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
+                containsExpressions.Add(Expression.Call(Expression.Constant(itemPrimaryKeys[i].Item2), containsMethod, memberExpression));
+            }
+
+            BinaryExpression andExpression = null;
+            if (containsExpressions.Count > 1)
+            {
+                for (var i = 1; i < containsExpressions.Count; i++)
+                {
+                    if (i == 1)
+                        andExpression = Expression.AndAlso(containsExpressions[i-1], containsExpressions[i]);
+                    else
+                        andExpression = Expression.AndAlso(andExpression, containsExpressions[i]);
+                }
+            }
+
             // Apply the "Where" and "Load" methods
-            var containsExpression = Expression.Call(Expression.Constant(itemPrimaryKeys), containsMethod, memberExpression);
-            var filteredDataSetContains = whereMethod.Invoke(dataSet, new object[] { Expression.Lambda(funcType, containsExpression, parameter) });
+            //var filteredDataSetContains = whereMethod.Invoke(dataSet, new object[] { Expression.Lambda(funcType, containsExpression, parameter) });
+            LambdaExpression containsLambda;
+            if (andExpression == null)
+                containsLambda = Expression.Lambda(funcType, containsExpressions.FirstOrDefault(), parameter);
+            else
+                containsLambda = Expression.Lambda(funcType, andExpression, parameter);
+
+            var filteredDataSetContains = whereMethod.Invoke(dataSet, new object[] { containsLambda });
             var collectionItemsContains = dataSet.GetType().GetMethod(nameof(Load)).Invoke(filteredDataSetContains, null);
 
             // use a foreach loop to convert collectionItemsContains to a dictionary where the key is the foreign key and the object is the item
@@ -459,7 +510,8 @@ namespace SimpleRelm.Models
             {
                 var targetObjectForeignKeyValues = foreignKeyProperties.Select(x => x.GetValue(item)).ToArray();
 
-                if (!collectionItems.Contains(targetObjectForeignKeyValues))
+                //if (!collectionItems.Contains(targetObjectForeignKeyValues))
+                if (collectionItems.Keys.Cast<object[]>().FirstOrDefault(x => x.Select((y, i) => targetObjectForeignKeyValues[i] == y).All(y => y)) == null)
                 {
                     collectionItems.Add(targetObjectForeignKeyValues, default);
 
@@ -473,7 +525,8 @@ namespace SimpleRelm.Models
                 }
 
                 if (isCollection)
-                    ((IList)collectionItems[targetObjectForeignKeyValues]).Add(item);
+                    //((IList)collectionItems[targetObjectForeignKeyValues]).Add(item);
+                    ((IList)collectionItems[collectionItems.Keys.Cast<object[]>().FirstOrDefault(x => x.Select((y, i) => targetObjectForeignKeyValues[i] == y).All(y => y))]).Add(item);
                 else
                     collectionItems[targetObjectForeignKeyValues] = item;
             }
@@ -481,12 +534,24 @@ namespace SimpleRelm.Models
             // loop through each item in _items and add the related item to the collection
             foreach (var item in _items)
             {
-                var foreignKeyValue = item.GetType().GetProperties().Where(x => referenceKeys.Contains(x)).Select(x => x.GetValue(item)).ToArray();
-                
-                var collectionItem = collectionItems[foreignKeyValue];
-                var collectionProperty = referenceProperty.Member as PropertyInfo;
+                var foreignKeyValues = item.GetType().GetProperties().Where(x => referenceKeys.Contains(x)).Select(x => x.GetValue(item)).ToArray();
 
+                /*
+                var collectionItem = collectionItems[foreignKeyValues];
+                
+                var collectionProperty = referenceProperty.Member as PropertyInfo;
                 collectionProperty.SetValue(item, collectionItem);
+                */
+                foreach (DictionaryEntry entry in collectionItems)
+                {
+                    // note: all keys should be in the same order as the foreign key values here
+                    if (((object[])entry.Key).Select((x, i) => foreignKeyValues[i] == x).All(x => x))
+                    {
+                        (referenceProperty.Member as PropertyInfo).SetValue(item, entry.Value);
+
+                        break;
+                    }
+                }
             }
         }
 

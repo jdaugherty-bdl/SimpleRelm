@@ -37,5 +37,12 @@ namespace SimpleRelm.RelmInternal.Extensions
         {
             return BaseObjects.Select(x => x.GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties));
         }
+
+        public static KeyValuePair<TKey, TValue> GetEntry<TKey, TValue>
+            (this IDictionary<TKey, TValue> dictionary,
+             TKey key)
+        {
+            return new KeyValuePair<TKey, TValue>(key, dictionary[key]);
+        }
     }
 }

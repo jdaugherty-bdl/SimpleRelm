@@ -15,8 +15,12 @@ namespace SimpleRelm.Attributes
 
         public RelmForeignKey(string ForeignKeyProperty, string LocalKeyProperty = null, string OrderByProperty = null)
         {
-            this.ForeignKeys = new string[] { ForeignKeyProperty };
-            this.LocalKeys = new string[] { LocalKeyProperty };
+            if (ForeignKeyProperty != null)
+                this.ForeignKeys = new string[] { ForeignKeyProperty };
+
+            if (LocalKeyProperty != null)
+                this.LocalKeys = new string[] { LocalKeyProperty };
+
             this.OrderBy = OrderByProperty;
         }
 
