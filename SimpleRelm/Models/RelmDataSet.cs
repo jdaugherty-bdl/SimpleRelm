@@ -1,4 +1,5 @@
-﻿using SimpleRelm.Attributes;
+﻿using MoreLinq;
+using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
 using SimpleRelm.RelmInternal.Extensions;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
@@ -169,18 +170,18 @@ namespace SimpleRelm.Models
 
                     //if (fieldLoader.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IRelmFieldLoader)))
                     //if (fieldLoader.GetInterfaces().Any(x => x == typeof(IRelmFieldLoader)))
-                    {
+                    //{
                         //var fieldType = fieldLoader.GetInterfaces().First(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IRelmFieldLoader)).GetGenericArguments().First();
 
                         //if (!_fieldDataLoaders.ContainsKey(field.Name))
                         //_fieldDataLoaders.Add(field.Name, (IRelmFieldLoader<object>)Activator.CreateInstance(fieldLoader.IsGenericTypeDefinition ? fieldLoader.MakeGenericType(fieldType) : fieldLoader)); // as IRelmFieldLoader<object>);
                         //_fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(fieldLoader.IsGenericTypeDefinition ? fieldLoader.MakeGenericType(fieldType) : fieldLoader, new object[] { field.Name }));
                         _fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(fieldLoader, new object[] { field.Name }));
-                    }
+                    //}
                 }
 
                 // find all fields that have the RelmKey
-                var referenceKey = GetReferenceKeys(null);
+                var referenceKeys = GetReferenceKeys((string[])null);
 
                 // execute all field loaders
                 foreach (var fieldLoader in _fieldDataLoaders)
@@ -190,14 +191,50 @@ namespace SimpleRelm.Models
 
 
 
-                    var fieldData = fieldLoader.GetFieldData(_items.Select(x => x.GetType().GetProperty(referenceKey.Name).GetValue(x)).ToList());
+                    //var fieldData = fieldLoader.GetFieldData(_items.Select(x => x.GetType().GetProperty(referenceKey.Name).GetValue(x)).ToList());
+                    var fieldData = fieldLoader.GetFieldData(_items.Select(x => x.GetType().GetProperties().Intersect(referenceKeys).Select(y => y.GetValue(x)).ToArray()).ToList());
 
                     foreach (var item in _items)
                     {
-                        var itemValue = item.GetType().GetProperty(referenceKey.Name).GetValue(item);
+                        //var itemValue = item.GetType().GetProperty(referenceKeys.Name).GetValue(item);
+                        var itemValues = item.GetType().GetProperties().Intersect(referenceKeys).Select(y => y.GetValue(item)).ToArray();
 
-                        if (fieldData.ContainsKey(itemValue))
-                            item.GetType().GetProperty(fieldLoader.FieldName).SetValue(item, fieldData[itemValue]);
+                        //if (fieldData.ContainsKey(itemValues))
+                        if (fieldData.Keys.Any(x => x.All(y => itemValues.Contains(y))))
+                        {
+                            var fieldValue = fieldData.FirstOrDefault(x => x.Key.All(y => itemValues.Contains(y))).Value;
+
+                            /*
+                            //item.GetType().GetProperty(fieldLoader.FieldName).SetValue(item, fieldData[itemValues]);
+                            var setField = item.GetType().GetProperty(fieldLoader.FieldName);
+                            var xlist = (fieldValue as IEnumerable)?.Cast<object>()?.ToList();
+                            setField.SetValue(item, xlist ?? fieldValue);
+                            */
+                            var setField = item.GetType().GetProperty(fieldLoader.FieldName);
+                            if (setField != null && setField.PropertyType.IsGenericType && setField.PropertyType.GetGenericTypeDefinition() == typeof(ICollection<>))
+                            {
+                                var genericType = setField.PropertyType.GetGenericArguments()[0];
+
+                                if (fieldValue is IEnumerable)
+                                {
+                                    var xlist = (fieldValue as IEnumerable)?.Cast<object>()?.ToList();
+                                    var castMethod = typeof(Enumerable).GetMethod(nameof(Enumerable.Cast)).MakeGenericMethod(genericType);
+                                    var toListMethod = typeof(Enumerable).GetMethod(nameof(Enumerable.ToList)).MakeGenericMethod(genericType);
+                                    var castedList = toListMethod.Invoke(null, new object[] { castMethod.Invoke(null, new object[] { xlist }) });
+
+                                    setField.SetValue(item, castedList);
+                                }
+                                else
+                                {
+                                    setField.SetValue(item, fieldValue);
+                                }
+                            }
+                            else
+                            {
+                                // Handle cases where setField is not a List<T> or is null
+                                setField?.SetValue(item, fieldValue);
+                            }
+                        }
                     }
                 }
 
@@ -279,7 +316,7 @@ namespace SimpleRelm.Models
         {
             PropertyInfo[] foreignKeyProperties = default;
             PropertyInfo navigationProperty = default;
-            List<object> itemPrimaryKeys = default;
+            List<object[]> itemPrimaryKeys = default;
 
             var referenceProperty = member as MemberExpression
                 ?? throw new InvalidOperationException("Collection must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
@@ -301,11 +338,11 @@ namespace SimpleRelm.Models
             var principalReslolutionForeignKey = referenceProperty.Member.GetCustomAttribute<RelmForeignKey>();
 
             // get all RelmKeys on the main object
-            var referenceKey = GetReferenceKey(principalReslolutionForeignKey?.LocalKey);
+            var referenceKeys = GetReferenceKeys(principalReslolutionForeignKey?.LocalKeys);
 
             // go through all items in the current data set and collect all relmkey values
             itemPrimaryKeys = _items
-                .Select(x => x.GetType().GetProperty(referenceKey.Name)?.GetValue(x))
+                .Select(x => x.GetType().GetProperties().Intersect(referenceKeys)?.Select(y => y.GetValue(x)).ToArray())
                 .Distinct()
                 .ToList();
 
@@ -326,55 +363,56 @@ namespace SimpleRelm.Models
 
             // make a list of all targetProperties that are of type T
             var targetPropertiesOfTypeT = targetProperties
-                .Where(x => x.PropertyType == typeof(T))
-                .ToDictionary(x => x, x => x);
+                .Where(x => x.PropertyType == typeof(T) || x.PropertyType.GetGenericArguments().Contains(typeof(T)))
+                .ToList();
 
             if (principalReslolutionForeignKey == null)
             {
                 // dependent property has foreign key attribute
 
-                var foreignKeyProperties = targetProperties
+                var foreignKeyProps = targetProperties
                     .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null)
-                    .ToList();
+                    .ToArray();
 
-                var foreignKeyValues = foreignKeyProperties
-                    .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>().ForeignKey);
+                var foreignKeyValues = foreignKeyProps
+                    .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>().ForeignKeys);
 
-                // foreign key property on the dependent property
                 // navigation property on the dependent property
                 var foreignKeyInfo = targetPropertiesOfTypeT
-                    .Keys
                     .Intersect(foreignKeyValues.Keys)
                     .Select(x => new
                     {
-                        ForeignKey = targetProperties.FirstOrDefault(y => y.Name == foreignKeyValues[x]),
+                        ForeignKeys = targetProperties.Where(y => foreignKeyValues[x].Contains(y.Name)).ToArray(), // .FirstOrDefault(y => y.Key.Name == foreignKeyValues[x])
                         NavigationProperty = x,
                     })
                     .FirstOrDefault()
 
                     ??
 
-                    foreignKeyProperties
+                    // foreign key property on the dependent property
+                    foreignKeyProps
                     .Select(x => new
                     {
-                        ForeignKey = x,
+                        ForeignKeys = new PropertyInfo[] { x },
                         NavigationProperty = targetPropertiesOfTypeT
-                            .FirstOrDefault(y => y.Key.Name == foreignKeyValues[x])
-                            .Value,
+                            //.FirstOrDefault(y => y.Key.Name == foreignKeyValues[x])
+                            .FirstOrDefault(y => foreignKeyValues[x].Contains(y.Name))
+                            //.Value,
                     })
-                    .FirstOrDefault();
+                    .FirstOrDefault()
 
-                if (foreignKeyInfo == null)
+                    ??
+
                     throw new NullReferenceException("No foreign key info found.");
 
-                foreignKeyProperties = foreignKeyInfo.ForeignKey;
+                foreignKeyProperties = foreignKeyInfo.ForeignKeys;
                 navigationProperty = foreignKeyInfo.NavigationProperty;
             }
             else
             {
                 // get the primary entity's foreign key property
-                foreignKeyProperties = targetProperties.FirstOrDefault(x => x.Name == principalReslolutionForeignKey.ForeignKey);
-                navigationProperty = targetPropertiesOfTypeT.Values.FirstOrDefault();
+                foreignKeyProperties = targetProperties.Where(x => principalReslolutionForeignKey.ForeignKeys.Contains(x.Name)).ToArray();
+                navigationProperty = targetPropertiesOfTypeT.FirstOrDefault(); //.Values.FirstOrDefault();
             }
 
             // if foreignKeyProperty is null, throw an exception
@@ -390,7 +428,7 @@ namespace SimpleRelm.Models
 
             // get the property named by dalForeignKey from the type defined in genericTypeArgument and create a MemberExpression from it
             var parameter = Expression.Parameter(referenceType, "x");
-            var memberExpression = Expression.Property(parameter, foreignKeyProperties.Name)
+            var memberExpression = Expression.Property(parameter, foreignKeyProperties.FirstOrDefault().Name)
                 ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
 
             // look up the Contains method on the itemForeignKeys type, then make a generic method with the memberExpression type
@@ -413,20 +451,20 @@ namespace SimpleRelm.Models
             // use a foreach loop to convert collectionItemsContains to a dictionary where the key is the foreign key and the object is the item
             IDictionary collectionItems;
             if (isCollection)
-                collectionItems = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(typeof(object), typeof(List<>).MakeGenericType(referenceType)));
+                collectionItems = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(typeof(object).MakeArrayType(), typeof(List<>).MakeGenericType(referenceType)));
             else
-                collectionItems = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(typeof(object), referenceType));
+                collectionItems = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(typeof(object).MakeArrayType(), referenceType));
 
             foreach (var item in (IEnumerable)dataSet)
             {
-                var targetObjectForeignKeyValue = foreignKeyProperties.GetValue(item);
+                var targetObjectForeignKeyValues = foreignKeyProperties.Select(x => x.GetValue(item)).ToArray();
 
-                if (!collectionItems.Contains(targetObjectForeignKeyValue))
+                if (!collectionItems.Contains(targetObjectForeignKeyValues))
                 {
-                    collectionItems.Add(targetObjectForeignKeyValue, default);
+                    collectionItems.Add(targetObjectForeignKeyValues, default);
 
                     if (isCollection)
-                        collectionItems[targetObjectForeignKeyValue] = Activator.CreateInstance(typeof(List<>).MakeGenericType(referenceType));
+                        collectionItems[targetObjectForeignKeyValues] = Activator.CreateInstance(typeof(List<>).MakeGenericType(referenceType));
                 }
                 else if (!isCollection)
                 {
@@ -435,15 +473,15 @@ namespace SimpleRelm.Models
                 }
 
                 if (isCollection)
-                    ((IList)collectionItems[targetObjectForeignKeyValue]).Add(item);
+                    ((IList)collectionItems[targetObjectForeignKeyValues]).Add(item);
                 else
-                    collectionItems[targetObjectForeignKeyValue] = item;
+                    collectionItems[targetObjectForeignKeyValues] = item;
             }
 
             // loop through each item in _items and add the related item to the collection
             foreach (var item in _items)
             {
-                var foreignKeyValue = item.GetType().GetProperty(referenceKey.Name).GetValue(item);
+                var foreignKeyValue = item.GetType().GetProperties().Where(x => referenceKeys.Contains(x)).Select(x => x.GetValue(item)).ToArray();
                 
                 var collectionItem = collectionItems[foreignKeyValue];
                 var collectionProperty = referenceProperty.Member as PropertyInfo;
@@ -654,19 +692,26 @@ namespace SimpleRelm.Models
         /// </summary>
         /// <param name="localKeyNames"></param>
         /// <returns></returns>
+        private PropertyInfo GetReferenceKeys(string localKeyNames)
+        {
+            return GetReferenceKeys(new string[] { localKeyNames })?.FirstOrDefault();
+        }
+
         private PropertyInfo[] GetReferenceKeys(string[] localKeyNames)
         {
             PropertyInfo[] referenceKeys;
             //if (!string.IsNullOrWhiteSpace(localKeyNames))
             if ((localKeyNames?.Length ?? 0) > 0)
-                referenceKeys = typeof(T).GetProperties().Where(x => localKeyNames == x.Name).FirstOrDefault();
+                referenceKeys = typeof(T).GetProperties().Where(x => localKeyNames.Contains(x.Name)).ToArray();
             else
             {
-                var referenceRelmKeys = typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmKey>() != null).ToList();
+                var referenceRelmKeys = typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmKey>() != null).ToArray();
 
-                referenceKeys = referenceRelmKeys.FirstOrDefault();
+                referenceKeys = referenceRelmKeys; //.FirstOrDefault();
+                /*
                 if (referenceRelmKeys.Count > 1)
                     referenceKeys = referenceRelmKeys.FirstOrDefault(x => x.Name != nameof(RelmModel.InternalId));
+                */
             }
 
             return referenceKeys;

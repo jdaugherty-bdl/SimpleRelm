@@ -46,9 +46,9 @@ namespace SimpleRelm.Tests.TestModels
         public virtual ComplexReferenceObject_PrincipalEntity? ComplexReferenceObject_PrincipalEntityItem { get; set; }
 
         /**** PRIMARY ENTITY, LOCAL KEY ****/
-        [RelmForeignKey(nameof(ComplexReferenceObject_PrincipalEntity.ComplexTestModelLocalKey), LocalKey = nameof(ComplexReferenceObjectLocalKey))]
+        [RelmForeignKey(nameof(ComplexReferenceObject_PrincipalEntity.ComplexTestModelLocalKey), nameof(ComplexReferenceObjectLocalKey))]
         public virtual ICollection<ComplexReferenceObject_PrincipalEntity>? ComplexReferenceObject_PrincipalEntities_LocalKeys { get; set; }
-        [RelmForeignKey(nameof(ComplexReferenceObject_PrincipalEntity.ComplexTestModelLocalKey), LocalKey = nameof(ComplexReferenceObjectLocalKey))]
+        [RelmForeignKey(nameof(ComplexReferenceObject_PrincipalEntity.ComplexTestModelLocalKey), nameof(ComplexReferenceObjectLocalKey))]
         public virtual ComplexReferenceObject_PrincipalEntity? ComplexReferenceObject_PrincipalEntity_LocalKey { get; set; }
 
         /**** INVALID REFERENCE ****/

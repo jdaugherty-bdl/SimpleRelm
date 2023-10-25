@@ -17,11 +17,11 @@ namespace SimpleRelm.Tests.TestModels
             _fieldName = fieldName;
         }
 
-        public virtual Dictionary<S, object> GetFieldData<S>(ICollection<S> keyData) where S : notnull
+        public virtual Dictionary<S[], object> GetFieldData<S>(ICollection<S[]> keyData) where S : notnull
         {
             return keyData
                 .Select((x, i) => new { Key = x, Value = i })
-                .ToDictionary(x => x.Key, x => (object)Enumerable.Range(0, 3).Select(y => y % 2 == 0));
+                .ToDictionary(x => x.Key, x => (object)Enumerable.Range(0, 4).Select(y => y % 2 == 0));
         }
     }
 }
