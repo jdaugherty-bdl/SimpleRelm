@@ -11,6 +11,7 @@ using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Routing;
@@ -316,7 +317,7 @@ namespace SimpleRelm.Models
         {
             PropertyInfo[] foreignKeyProperties = default;
             PropertyInfo navigationProperty = default;
-            List<Tuple<PropertyInfo, List<object>>> itemPrimaryKeys = default;
+            List<List<Tuple<PropertyInfo, object>>> itemPrimaryKeys = default;
 
             var referenceProperty = member as MemberExpression
                 ?? throw new InvalidOperationException("Collection must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
@@ -347,11 +348,21 @@ namespace SimpleRelm.Models
                 .Distinct()
                 .ToList();
             */
+            /*
             itemPrimaryKeys = typeof(T)
                     .GetProperties()
                     .Intersect(referenceKeys)
                     .Select(x => new Tuple<PropertyInfo, List<object>>(x,  _items.Select(y => y.GetType().GetProperty(x.Name, x.PropertyType).GetValue(y)).ToList()))
                     .ToList();
+            */
+            itemPrimaryKeys = _items
+                .Select(x => x
+                    .GetType()
+                    .GetProperties()
+                    .Intersect(referenceKeys)
+                    .Select(y => new Tuple<PropertyInfo, object>(y, y.GetValue(x)))
+                    .ToList())
+                .ToList();
 
             //if ((itemPrimaryKeys?.Count ?? 0) <= 0)
             if (itemPrimaryKeys == null)
@@ -379,11 +390,32 @@ namespace SimpleRelm.Models
                 // dependent property has foreign key attribute
 
                 var foreignKeyProps = targetProperties
-                    .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null)
+                    .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null && x.PropertyType == typeof(T))
                     .ToArray();
 
                 var foreignKeyValues = foreignKeyProps
                     .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>().ForeignKeys);
+
+                var localKeyValues = foreignKeyProps
+                    .Where(x => (x.GetCustomAttribute<RelmForeignKey>().LocalKeys?.Length ?? 0) > 0)
+                    .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>().LocalKeys);
+
+                if (localKeyValues.Count > 0)
+                {
+                    referenceKeys = GetReferenceKeys(principalReslolutionForeignKey?.LocalKeys);
+
+                    itemPrimaryKeys = _items
+                        .Select(x => x
+                            .GetType()
+                            .GetProperties()
+                            .Intersect(referenceKeys)
+                            .Select(y => new Tuple<PropertyInfo, object>(y, y.GetValue(x)))
+                            .ToList())
+                        .ToList();
+
+                    if (itemPrimaryKeys == null)
+                        throw new Exception("No primary keys found.");
+                }
 
                 // navigation property on the dependent property
                 var foreignKeyInfo = targetPropertiesOfTypeT
@@ -468,33 +500,127 @@ namespace SimpleRelm.Models
                 var orExpression = andExpressions.Aggregate(Expression.OrElse);
             }
             */
-            var containsExpressions = new List<MethodCallExpression>();
-            for (var i = 0; i < itemPrimaryKeys.Count; i++)
+            /*
+            List<LambdaExpression> containsLambda = new List<LambdaExpression>();
+            foreach (var itemPrimaryKey in itemPrimaryKeys)
             {
-                var memberExpression = Expression.Property(parameter, foreignKeyProperties[i].Name)
-                        ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
-                containsExpressions.Add(Expression.Call(Expression.Constant(itemPrimaryKeys[i].Item2), containsMethod, memberExpression));
-            }
-
-            BinaryExpression andExpression = null;
-            if (containsExpressions.Count > 1)
-            {
-                for (var i = 1; i < containsExpressions.Count; i++)
+                //var containsExpressions = new List<MethodCallExpression>();
+                var containsExpressions = new List<Expression>();
+                for (var i = 0; i < itemPrimaryKey.Count; i++)
                 {
-                    if (i == 1)
-                        andExpression = Expression.AndAlso(containsExpressions[i-1], containsExpressions[i]);
-                    else
-                        andExpression = Expression.AndAlso(andExpression, containsExpressions[i]);
+                    var memberExpression = Expression.Property(parameter, foreignKeyProperties[i].Name)
+                            ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
+                    //containsExpressions.Add(Expression.Call(Expression.Constant(itemPrimaryKey[i].Item2), containsMethod, memberExpression));
+                    containsExpressions.Add(Expression.Equal(Expression.Constant(itemPrimaryKey[i].Item2), memberExpression));
+                }
+
+                BinaryExpression andExpression = null;
+                if (containsExpressions.Count > 1)
+                {
+                    for (var i = 1; i < containsExpressions.Count; i++)
+                    {
+                        if (i == 1)
+                            andExpression = Expression.AndAlso(containsExpressions[i - 1], containsExpressions[i]);
+                        else
+                            andExpression = Expression.AndAlso(andExpression, containsExpressions[i]);
+                    }
                 }
             }
 
             // Apply the "Where" and "Load" methods
             //var filteredDataSetContains = whereMethod.Invoke(dataSet, new object[] { Expression.Lambda(funcType, containsExpression, parameter) });
-            LambdaExpression containsLambda;
             if (andExpression == null)
-                containsLambda = Expression.Lambda(funcType, containsExpressions.FirstOrDefault(), parameter);
+                containsLambda.Add(Expression.Lambda(funcType, containsExpressions.FirstOrDefault(), parameter));
             else
-                containsLambda = Expression.Lambda(funcType, andExpression, parameter);
+                containsLambda.Add(Expression.Lambda(funcType, andExpression, parameter));
+            */
+            //var orParameters = new List<List<BinaryExpression>>();
+            BinaryExpression orExpression = null;
+            foreach (var itemPrimaryKey in itemPrimaryKeys)
+            {
+                //var andParameters = new List<BinaryExpression>();
+                BinaryExpression andExpression = null;
+                for (var i = 0; i < itemPrimaryKey.Count; i ++)
+                {
+                    var memberExpression = Expression.Property(parameter, foreignKeyProperties[i].Name)
+                        ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
+
+                    //andParameters.Add(Expression.Equal(Expression.Constant(itemPrimaryKey[i].Item2), memberExpression));
+                    var equalExpression = Expression.Equal(Expression.Constant(itemPrimaryKey[i].Item2), memberExpression);
+
+                    if (andExpression == null)
+                        andExpression = equalExpression;
+                    else
+                        andExpression = Expression.AndAlso(andExpression, equalExpression);
+                }
+
+                /*
+                //orParameters.Add(andParameters);
+                var andExpression = andParameters.FirstOrDefault();
+                if (andParameters.Count > 1)
+                {
+                    for (var i = 1; i < andParameters.Count; i++)
+                    {
+                        if (i == 1)
+                            andExpression = Expression.AndAlso(andParameters[i - 1], andParameters[i]);
+                        else
+                            andExpression = Expression.AndAlso(andExpression, andParameters[i]);
+                    }
+                }
+
+                if (orParameters.Count > 1)
+                {
+                    if (orExpression == null)
+                        orExpression = andExpression;
+                    else
+                        orExpression = Expression.OrElse(orExpression, andExpression);
+                }
+                else
+                    orExpression = andExpression;
+                */
+                if (orExpression == null)
+                    orExpression = andExpression;
+                else
+                    orExpression = Expression.OrElse(orExpression, andExpression);
+            }
+
+            /*
+            foreach (var andParameters in orParameters)
+            {
+                BinaryExpression andExpression = andParameters.FirstOrDefault();
+                if (andParameters.Count > 1)
+                {
+                    for (var i = 1; i < andParameters.Count; i++)
+                    {
+                        if (i == 1)
+                            andExpression = Expression.AndAlso(andParameters[i - 1], andParameters[i]);
+                        else
+                            andExpression = Expression.AndAlso(andExpression, andParameters[i]);
+                    }
+                }
+
+                if (orParameters.Count > 1)
+                {
+                    if (orExpression == null)
+                        orExpression = andExpression;
+                    else
+                        orExpression = Expression.OrElse(orExpression, andExpression);
+                }
+                else
+                    orExpression = andExpression;
+            }
+            */
+            /*
+            LambdaExpression containsLambda = null;
+            if (orExpression == null)
+                containsLambda.Add(Expression.Lambda(funcType, containsExpressions.FirstOrDefault(), parameter));
+            else
+                containsLambda.Add(Expression.Lambda(funcType, orExpression, parameter));
+            */
+            var containsLambda = Expression.Lambda(funcType, orExpression, parameter);
+
+            if (containsLambda == null)
+                throw new Exception("No contains lambda expression found.");
 
             var filteredDataSetContains = whereMethod.Invoke(dataSet, new object[] { containsLambda });
             var collectionItemsContains = dataSet.GetType().GetMethod(nameof(Load)).Invoke(filteredDataSetContains, null);

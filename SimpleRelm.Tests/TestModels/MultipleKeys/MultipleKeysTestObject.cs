@@ -1,4 +1,5 @@
 ﻿using SimpleRelm.Attributes;
+using SimpleRelm.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace SimpleRelm.Tests.TestModels.MultipleKeys
 {
     [RelmDatabase("test_database")]
     [RelmTable("nothing_table")]
-    public class MultipleKeysTestObject
+    public class MultipleKeysTestObject : RelmModel
     {
         public string? MultipleKeysReferenceObjectLocalKey1 { get; set; }
         public string? MultipleKeysReferenceObjectLocalKey2 { get; set; }

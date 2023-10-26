@@ -16,8 +16,13 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
     {
         private ComplexTestContext context;
 
-        public Reference_Tester() 
+        public Reference_Tester()
         {
+            context = SetupContext(true);
+        }
+
+        private ComplexTestContext SetupContext(bool haveTwoRoots = true)
+        { 
             // dummy data
             var mockComplexTestModels = new List<ComplexTestModel>
             {
@@ -40,9 +45,12 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                     TestColumnNoAttributeArguments = null,
                     TestFieldBoolean = null,
                 },
-                new ComplexTestModel 
-                { 
-                    InternalId = "ID2", 
+            };
+
+            if (haveTwoRoots)
+                mockComplexTestModels.Add(new ComplexTestModel
+                {
+                    InternalId = "ID2",
                     ComplexReferenceObjectLocalKey = "LOCALKEY2",
                     ComplexReferenceObjects = null,
                     ComplexReferenceObject = null,
@@ -58,8 +66,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                     TestColumnInternalId = null,
                     TestColumnNoAttributeArguments = null,
                     TestFieldBoolean = null,
-                },
-            };
+                });
 
             context = new ComplexTestContext("name=SimpleRelmMySql");
 
@@ -72,6 +79,29 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
             modelDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexTestModels);
             
             context.ComplexTestModels!.SetDataLoader(modelDataLoader.Object);
+
+            return context;
+        }
+
+        private void SetupSingleReturnReferenceDataLoader(bool addSecondId, bool haveTwoRoots)
+        {
+            var mockComplexReferenceObjects = new List<ComplexReferenceObject>
+            {
+                new ComplexReferenceObject { ComplexTestModelInternalId = "ID1", TestModel = null },
+            };
+
+            if (haveTwoRoots)
+                mockComplexReferenceObjects.Add(new ComplexReferenceObject { ComplexTestModelInternalId = "ID2", TestModel = null });
+
+            if (addSecondId)
+                mockComplexReferenceObjects.Add(new ComplexReferenceObject { ComplexTestModelInternalId = "ID1", TestModel = null });
+
+            var referenceDataLoader = new Mock<RelmDefaultDataLoader<ComplexReferenceObject>>();
+            referenceDataLoader.Setup(x => x._tableName).Returns("nothing_table");
+            referenceDataLoader.Setup(x => x.GetLoadData()).CallBase();
+            referenceDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexReferenceObjects);
+
+            context.ComplexReferenceObjects!.SetDataLoader(referenceDataLoader.Object);
         }
 
         private void SetupReferenceDataLoader(bool addSecondId)
@@ -161,7 +191,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
         }
 
         [Fact]
-        public void Reference_LoadsReferenceObjectsCorrectly()
+        public void Reference_LoadsForeignKeyObjectsCorrectly()
         {
             // Arrange
             SetupReferenceDataLoader(true);
@@ -188,10 +218,55 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
         }
 
         [Fact]
-        public void Reference_LoadsReferenceObjectCorrectly()
+        public void Reference_LoadsForeignKeyObjectCorrectly()
         {
             // Arrange
             SetupReferenceDataLoader(false);
+
+            // Act
+            context.ComplexTestModels!.Reference(x => x.ComplexReferenceObject).Load();
+
+            // Assert
+            var firstModel = context.ComplexTestModels.First();
+
+            Assert.NotNull(firstModel.ComplexReferenceObject);
+            Assert.Equal(firstModel.InternalId, firstModel?.ComplexReferenceObject?.ComplexTestModelInternalId);
+        }
+
+        [Fact]
+        public void Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn()
+        {
+            // Arrange
+            SetupContext(true);
+            SetupSingleReturnReferenceDataLoader(true, true);
+
+            // Act
+            context.ComplexTestModels!.Reference(x => x.ComplexReferenceObjects).Load();
+
+            // Assert
+            var firstModel = context.ComplexTestModels.First();
+            var secondModel = context.ComplexTestModels.Skip(1).First();
+
+            Assert.NotNull(firstModel?.ComplexReferenceObjects);
+            Assert.NotNull(secondModel?.ComplexReferenceObjects);
+
+            Assert.True(firstModel.ComplexReferenceObjects.Any());
+            Assert.True(secondModel.ComplexReferenceObjects.Any());
+
+            Assert.Equal(2, firstModel.ComplexReferenceObjects.Count);
+            Assert.Equal(1, secondModel.ComplexReferenceObjects.Count);
+
+            Assert.Equal(firstModel.InternalId, firstModel.ComplexReferenceObjects?.FirstOrDefault()?.ComplexTestModelInternalId);
+            Assert.Equal(firstModel.InternalId, firstModel.ComplexReferenceObjects?.Skip(1).FirstOrDefault()?.ComplexTestModelInternalId);
+            Assert.Equal(secondModel.InternalId, secondModel.ComplexReferenceObjects?.FirstOrDefault()?.ComplexTestModelInternalId);
+        }
+
+        [Fact]
+        public void Reference_LoadsForeignKeyObjectCorrectly_SingleReturn()
+        {
+            // Arrange
+            SetupContext(false);
+            SetupSingleReturnReferenceDataLoader(false, false);
 
             // Act
             context.ComplexTestModels!.Reference(x => x.ComplexReferenceObject).Load();
