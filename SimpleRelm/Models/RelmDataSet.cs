@@ -405,7 +405,7 @@ namespace SimpleRelm.Models
                         .ToArray();
 
                     navigationProps = targetProperties
-                        .Where(x => foreignKeyProps.Select(y => y.GetCustomAttribute<RelmForeignKey>()).Contains(x))
+                        .Where(x => foreignKeyProps.Select(y => y.GetCustomAttribute<RelmForeignKey>().ForeignKeys.Contains(x.Name)).Any())
                         .ToArray();
 
                 }
