@@ -11,24 +11,25 @@ namespace SimpleRelm.Attributes
     {
         public string[] ForeignKeys { get; set; } = default;
         public string[] LocalKeys { get; set; } = default;
-        public string OrderBy { get; set; } = default;
+        public string[] OrderBy { get; set; } = default;
 
-        public RelmForeignKey(string ForeignKeyProperty, string LocalKeyProperty = null, string OrderByProperty = null)
+        public RelmForeignKey(string ForeignKey = null, string LocalKey = null, string OrderBy = null)
         {
-            if (ForeignKeyProperty != null)
-                this.ForeignKeys = new string[] { ForeignKeyProperty };
+            if (ForeignKey != null)
+                this.ForeignKeys = new string[] { ForeignKey };
 
-            if (LocalKeyProperty != null)
-                this.LocalKeys = new string[] { LocalKeyProperty };
+            if (LocalKey != null)
+                this.LocalKeys = new string[] { LocalKey };
 
-            this.OrderBy = OrderByProperty;
+            if (OrderBy != null) 
+                this.OrderBy = new string[] { OrderBy };
         }
 
-        public RelmForeignKey(string[] ForeignKeyProperties, string[] LocalKeyProperties = null, string OrderByProperty = null)
+        public RelmForeignKey(string[] ForeignKeys = null, string[] LocalKeys = null, string[] OrderBy = null)
         {
-            this.ForeignKeys = ForeignKeyProperties;
-            this.LocalKeys = LocalKeyProperties;
-            this.OrderBy = OrderByProperty;
+            this.ForeignKeys = ForeignKeys;
+            this.LocalKeys = LocalKeys;
+            this.OrderBy = OrderBy;
         }
     }
 }

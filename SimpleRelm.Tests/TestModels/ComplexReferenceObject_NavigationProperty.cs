@@ -16,7 +16,7 @@ namespace SimpleRelm.Tests.TestModels
         public string? ComplexTestModelInternalId { get; set; }
 
         [RelmColumn]
-        [RelmForeignKey(nameof(ComplexTestModelInternalId))]
+        [RelmForeignKey(LocalKey: nameof(ComplexTestModelInternalId))]
         public ComplexTestModel? TestModel { get; set; }
     }
 }

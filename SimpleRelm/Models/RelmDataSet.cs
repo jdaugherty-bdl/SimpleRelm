@@ -389,9 +389,26 @@ namespace SimpleRelm.Models
             {
                 // dependent property has foreign key attribute
 
+                // check if navigation or foreign key
                 var foreignKeyProps = targetProperties
                     .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null && x.PropertyType == typeof(T))
+                    //.Where(x => x.GetCustomAttribute<RelmForeignKey>() != null && (x.PropertyType == typeof(T) || (x.GetCustomAttribute<RelmForeignKey>()?.LocalKeys?.Intersect(targetPropertiesOfTypeT.Select(y => y.Name)).Any() ?? false)))
                     .ToArray();
+
+                var navigationProps = foreignKeyProps;
+
+                // is foreign key
+                if (foreignKeyProps.Length <= 0)
+                {
+                    foreignKeyProps = targetProperties
+                        .Where(x => x.GetCustomAttribute<RelmForeignKey>()?.LocalKeys?.Intersect(targetPropertiesOfTypeT.Select(y => y.Name)).Any() ?? false)
+                        .ToArray();
+
+                    navigationProps = targetProperties
+                        .Where(x => foreignKeyProps.Select(y => y.GetCustomAttribute<RelmForeignKey>()).Contains(x))
+                        .ToArray();
+
+                }
 
                 var foreignKeyValues = foreignKeyProps
                     .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>().ForeignKeys);
