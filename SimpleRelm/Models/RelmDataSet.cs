@@ -389,27 +389,175 @@ namespace SimpleRelm.Models
             {
                 // dependent property has foreign key attribute
 
+
+                // get all properties on target that have a RelmForeignKey attribute, segment by LocalKeys, make dictionary with LocalKeys as keys
+                var targetForeignKeyDecorators = targetProperties
+                    .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null)
+                    .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>())
+                    .Segment((prev, next, i) => !prev.Value.LocalKeys.All(x => next.Value.LocalKeys.Contains(x)))
+                    .ToDictionary(x => x.FirstOrDefault().Value.LocalKeys, x => x.ToDictionary(y => y.Key, y => y.Value.ForeignKeys));
+
+                // get intersection between each list in that list and targetPropertiesOfTypeT
+                var navigationProps = targetPropertiesOfTypeT
+                    .Where(x => targetForeignKeyDecorators.Any(y => y.Key.Contains(x.Name)))
+                    .ToList();
+
+                if (navigationProps.Count > 1)
+                    throw new Exception("Multiple navigation properties found.");
+
+                if (navigationProps.Count == 0)
+                {
+                    // we're using navigation properties
+                    navigationProps = targetPropertiesOfTypeT
+                        .Where(x => targetForeignKeyDecorators.Any(y => y.Value.ContainsKey(x)))
+                        .ToList();
+
+                    foreignKeyProperties = targetForeignKeyDecorators
+                        .Select(x => targetProperties.Where(y => x.Key.Contains(y.Name)).ToArray())
+                        .FirstOrDefault();
+
+                    referenceKeys = GetReferenceKeys(targetForeignKeyDecorators
+                        .SelectMany(x => x.Value.Select(y => y.Value).ToArray())
+                        .FirstOrDefault());
+
+                    itemPrimaryKeys = _items
+                        .Select(x => x
+                            .GetType()
+                            .GetProperties()
+                            .Intersect(referenceKeys)
+                            .Select(y => new Tuple<PropertyInfo, object>(y, y.GetValue(x)))
+                            .ToList())
+                        .ToList();
+                }
+                else
+                {
+                    // we're using foreign key properties
+                    foreignKeyProperties = targetForeignKeyDecorators
+                        .Select(x => x.Value.Keys.ToArray())
+                        .FirstOrDefault();
+
+                    var fff = targetForeignKeyDecorators
+                        .SelectMany(x => x.Value.Select(y => y.Value).ToArray())
+                        .ToArray();
+
+                    //if (fff.All(x => x == null))
+                    {
+                        referenceKeys = GetReferenceKeys(targetForeignKeyDecorators
+                            .SelectMany(x => x.Value.SelectMany(y => y.Value).ToArray())
+                            .ToArray());
+
+                        itemPrimaryKeys = _items
+                            .Select(x => x
+                                .GetType()
+                                .GetProperties()
+                                .Intersect(referenceKeys)
+                                .Select(y => new Tuple<PropertyInfo, object>(y, y.GetValue(x)))
+                                .ToList())
+                            .ToList();
+                    }
+                }
+
+                navigationProperty = navigationProps.FirstOrDefault();
+
+                /*
+                var navProps = targetForeignKeyDecorators
+                    .Where(x => x.Key.Intersect(navigationProps.Select(y => y.Name)).Any())
+                    .ToDictionary(x => x.Key, x => x.Value);
+
+                var forProps = targetForeignKeyDecorators
+                    .ExceptBy(navProps, x => x.Key)
+                    .ToDictionary(x => x.Key, x => x.Value);
+
+                foreach (var unfilteredForeignKey in targetForeignKeyDecorators)
+                {
+                    // separate unfiltered into nav props and foreign key props
+                    var navProps = unfilteredForeignKey
+                    var foreignKeyProps = unfilteredForeignKey.Value.LocalKeys
+                        .Select(x => targetProperties.FirstOrDefault(y => y.Name == x))
+                        .Where(x => x != null)
+                        .ToList();
+                }
+                */
+                /*
+                // if the intersection is not empty, then we're using foreign key processing
+                if (navigationProps.Count > 0)
+                {
+                    var foreignKeysIndicated = unfilteredForeignKeys
+                        .ToDictionary(x => x.Key, x => typeof(T)
+                            .GetProperties()
+                            .Where(y => x.Value.Any(z => z.ForeignKeys?.Contains(y.Name) ?? false))
+                            .ToList())
+                        .Where(x => x.Value.Count > 0)
+                        .ToDictionary(x => x.Key, x => x.Value);
+
+                    var localKeysIndicated = unfilteredForeignKeys
+                        .ToDictionary(x => x.Key, x => targetPropertiesOfTypeT
+                            .Where(y => x.Value.Any(z => z.LocalKeys?.Contains(y.Name) ?? false))
+                            .ToList())
+                        .Where(x => x.Value.Count > 0)
+                        .ToDictionary(x => x.Key, x => x.Value);
+
+                    navigationProps = targetPropertiesOfTypeT
+                        .Where(x => localKeysIndicated.SelectMany(y => y.Value).Any(y => y.Name == x.Name))
+                        .ToList();
+
+                    navigationProperty = navigationProps.FirstOrDefault();
+                    foreignKeyProperties = foreignKeysIndicated.SelectMany(x => x.Value).ToArray();
+
+                    if (foreignKeysIndicated.Count > 0)
+                    {
+                        referenceKeys = GetReferenceKeys(foreignKeysIndicated.Values.SelectMany(x => x.Select(y => y.Name)).ToArray());
+                    }
+                }
+                */
+                /*
+                // if the intersection is not empty, then we're using navigation property processing
+
                 // check if navigation or foreign key
                 var foreignKeyProps = targetProperties
-                    .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null && x.PropertyType == typeof(T))
-                    //.Where(x => x.GetCustomAttribute<RelmForeignKey>() != null && (x.PropertyType == typeof(T) || (x.GetCustomAttribute<RelmForeignKey>()?.LocalKeys?.Intersect(targetPropertiesOfTypeT.Select(y => y.Name)).Any() ?? false)))
+                    .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null) // && x.PropertyType == typeof(T))
                     .ToArray();
+                */
+                /*
 
-                var navigationProps = foreignKeyProps;
+                //var navigationProp = foreignKeyProperties.FirstOrDefault(x => x.PropertyType == typeof(T));
 
                 // is foreign key
-                if (foreignKeyProps.Length <= 0)
+                if (navigationProp == null)
                 {
-                    foreignKeyProps = targetProperties
+                    var navigationProps = targetPropertiesOfTypeT
+                        .Where(x => foreignKeyProperties x.Name)
+                }
+                */
+                /*
+                if (!foreignKeyProperties.Contains(navigationProperty))
+                {
+                    foreignKeyProperties = targetProperties
                         .Where(x => x.GetCustomAttribute<RelmForeignKey>()?.LocalKeys?.Intersect(targetPropertiesOfTypeT.Select(y => y.Name)).Any() ?? false)
                         .ToArray();
 
-                    navigationProps = targetProperties
-                        .Where(x => foreignKeyProps.Select(y => y.GetCustomAttribute<RelmForeignKey>().ForeignKeys.Contains(x.Name)).Any())
-                        .ToArray();
-
+                    navigationProperty = targetPropertiesOfTypeT
+                        .FirstOrDefault(y => foreignKeyProperties.Any(x => x.GetCustomAttribute<RelmForeignKey>().LocalKeys.Contains(y.Name)));
                 }
 
+                if (foreignKeyProperties.Any(x => x.GetCustomAttribute<RelmForeignKey>()?.ForeignKeys != null))
+                {
+                    referenceKeys = GetReferenceKeys(principalReslolutionForeignKey?.LocalKeys);
+
+                    itemPrimaryKeys = _items
+                        .Select(x => x
+                            .GetType()
+                            .GetProperties()
+                            .Intersect(referenceKeys)
+                            .Select(y => new Tuple<PropertyInfo, object>(y, y.GetValue(x)))
+                            .ToList())
+                        .ToList();
+
+                    if (itemPrimaryKeys == null)
+                        throw new Exception("No primary keys found.");
+                }
+                */
+                /*
                 var foreignKeyValues = foreignKeyProps
                     .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>().ForeignKeys);
 
@@ -464,6 +612,7 @@ namespace SimpleRelm.Models
 
                 foreignKeyProperties = foreignKeyInfo.ForeignKeys;
                 navigationProperty = foreignKeyInfo.NavigationProperty;
+                */
             }
             else
             {
@@ -479,6 +628,9 @@ namespace SimpleRelm.Models
             // if navigationProperty is null, throw an exception
             if (navigationProperty == null)
                 throw new MemberAccessException("Property referenced by RelmForeignKey attribute could not be found.");
+
+            if (itemPrimaryKeys == null)
+                throw new Exception("No primary keys found.");
 
             // Generate a Func<> type based on the generic type argument for use below
             var funcType = typeof(Func<,>).MakeGenericType(referenceType, typeof(bool));

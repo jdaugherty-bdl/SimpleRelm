@@ -1,0 +1,21 @@
+﻿using SimpleRelm.Attributes;
+using SimpleRelm.Models;
+using SimpleRelm.Tests.TestModels.MultipleKeys;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+{
+    [RelmDatabase("test_database")]
+    [RelmTable("nothing_table")]
+    public class NonDefaultForeignKeysReferenceObject_ForeignKey : RelmModel
+    {
+        [RelmForeignKey(nameof(NonDefaultForeignKeysTestObject.NonDefaultForeignKeysReferenceObjectLocalKey), nameof(NonDefaultForeignKeysTestObject_Reference))]
+        public string? ReferenceKey { get; set; }
+
+        public NonDefaultForeignKeysTestObject? NonDefaultForeignKeysTestObject_Reference { get; set; }
+    }
+}

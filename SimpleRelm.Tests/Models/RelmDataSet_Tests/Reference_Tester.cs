@@ -187,7 +187,8 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
             SetupReferenceDataLoader(false);
 
             // Act & Assert
-            Assert.Throws<NullReferenceException>(() => context.ComplexTestModels!.Reference(x => x.SimpleReferenceObjects).Load());
+            var exception = Assert.Throws<MemberAccessException>(() => context.ComplexTestModels!.Reference(x => x.SimpleReferenceObjects).Load());
+            Assert.Equal("Property referenced by RelmForeignKey attribute could not be found.", exception.Message);
         }
 
         [Fact]
