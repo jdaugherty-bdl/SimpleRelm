@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
 {
-    public class Reference_Tester
+    public class Reference__BasicDefault_Tester
     {
         private ComplexTestContext context;
 
-        public Reference_Tester()
+        public Reference__BasicDefault_Tester()
         {
             context = SetupContext(true);
         }
