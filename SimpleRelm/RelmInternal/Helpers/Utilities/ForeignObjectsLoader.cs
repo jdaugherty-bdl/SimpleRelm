@@ -18,6 +18,10 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
         private ICollection<T> _items;
         private readonly IRelmContext _currentContext;
 
+        internal ForeignObjectsLoader()
+        {
+        }
+
         internal ForeignObjectsLoader(ICollection<T> items, IRelmContext relmContext)
         {
             _items = items;
@@ -37,6 +41,11 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
         /// <exception cref="Exception">Thrown if there's an exception.</exception>
         internal void LoadForeignObjects(Expression member)
         {
+            if (_items == null)
+                throw new InvalidOperationException("Items collection is null.");
+            if (_currentContext == null)
+                throw new InvalidOperationException("Current context is null.");
+
             PropertyInfo[] foreignKeyProperties = default;
             PropertyInfo navigationProperty = default;
             List<List<Tuple<PropertyInfo, object>>> itemPrimaryKeys = default;

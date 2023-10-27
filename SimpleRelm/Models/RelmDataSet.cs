@@ -170,7 +170,7 @@ namespace SimpleRelm.Models
                 }
 
                 // find all fields that have the RelmKey
-                var referenceKeys = new ForeignObjectsLoader<T>(_items, _currentContext).GetReferenceKeys((string[])null);
+                var referenceKeys = new ForeignObjectsLoader<T>().GetReferenceKeys((string[])null);
 
                 // execute all field loaders
                 foreach (var fieldLoader in _fieldDataLoaders)
