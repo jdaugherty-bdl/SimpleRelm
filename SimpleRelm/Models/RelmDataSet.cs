@@ -440,21 +440,18 @@ namespace SimpleRelm.Models
                         .SelectMany(x => x.Value.Select(y => y.Value).ToArray())
                         .ToArray();
 
-                    //if (fff.All(x => x == null))
-                    {
-                        referenceKeys = GetReferenceKeys(targetForeignKeyDecorators
-                            .SelectMany(x => x.Value.SelectMany(y => y.Value).ToArray())
-                            .ToArray());
+                    referenceKeys = GetReferenceKeys(targetForeignKeyDecorators
+                        .SelectMany(x => x.Value.SelectMany(y => y.Value ?? new string[] {}).ToArray())
+                        .ToArray());
 
-                        itemPrimaryKeys = _items
-                            .Select(x => x
-                                .GetType()
-                                .GetProperties()
-                                .Intersect(referenceKeys)
-                                .Select(y => new Tuple<PropertyInfo, object>(y, y.GetValue(x)))
-                                .ToList())
-                            .ToList();
-                    }
+                    itemPrimaryKeys = _items
+                        .Select(x => x
+                            .GetType()
+                            .GetProperties()
+                            .Intersect(referenceKeys)
+                            .Select(y => new Tuple<PropertyInfo, object>(y, y.GetValue(x)))
+                            .ToList())
+                        .ToList();
                 }
 
                 navigationProperty = navigationProps.FirstOrDefault();
