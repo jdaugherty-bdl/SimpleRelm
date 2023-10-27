@@ -100,6 +100,7 @@
     <Compile Include="RelmInternal\Helpers\Operations\TableOperationsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\CoreUtilities.cs" />
     <Compile Include="Interfaces\IRelmDataLoader.cs" />
+    <Compile Include="RelmInternal\Helpers\Utilities\ForeignObjectsLoader.cs" />
     <Compile Include="RelmInternal\Models\DALPropertyType_MySQL.cs" />
     <Compile Include="RelmInternal\Models\DALPropertyType_ODBC.cs" />
     <Compile Include="RelmInternal\Models\DALTableRowDescriptor.cs" />
