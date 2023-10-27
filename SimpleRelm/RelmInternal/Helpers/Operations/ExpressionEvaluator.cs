@@ -16,7 +16,6 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         {
             Where,
             Reference,
-            Collection,
             OrderBy,
             OrderByDescending,
             Set,

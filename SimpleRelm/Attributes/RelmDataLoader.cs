@@ -10,12 +10,25 @@ namespace SimpleRelm.Attributes
     public class RelmDataLoader : Attribute
     {
         public Type LoaderType { get; set; } = default;
-        public string KeyField { get; set; } = default;
+        public string[] KeyFields { get; set; } = default;
 
-        public RelmDataLoader(Type LoaderType, string KeyField = null)
+        public RelmDataLoader(Type LoaderType)
         {
             this.LoaderType = LoaderType;
-            this.KeyField = KeyField;
+        }
+
+        public RelmDataLoader(Type LoaderType, string KeyField)
+        {
+            this.LoaderType = LoaderType;
+
+            if (KeyField != null)
+                this.KeyFields = new string[] { KeyField };
+        }
+
+        public RelmDataLoader(Type LoaderType, string[] KeyFields)
+        {
+            this.LoaderType = LoaderType;
+            this.KeyFields = KeyFields;
         }
     }
 }

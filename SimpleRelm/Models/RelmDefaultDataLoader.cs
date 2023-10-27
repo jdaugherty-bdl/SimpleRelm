@@ -192,8 +192,6 @@ namespace SimpleRelm.Models
 
             if (queryPieces.ContainsKey(Command.Reference))
                 findQuery += string.Join("\n", queryPieces[Command.Reference]);
-            if (queryPieces.ContainsKey(Command.Collection))
-                findQuery += string.Join("\n", queryPieces[Command.Collection]);
 
             if (queryPieces.ContainsKey(Command.Where))
                 findQuery += string.Join("\n", queryPieces[Command.Where]);

@@ -91,13 +91,6 @@ namespace SimpleRelm.Models
             return this;
         }
 
-        public IRelmDataSet<T> Collection(Expression<Func<T, object>> predicate)
-        {
-            _dataLoader.AddExpression(Command.Collection, predicate.Body);
-
-            return this;
-        }
-
         public T Find(int ItemId)
         {
             return Where(x => x.Id == ItemId).FirstOrDefault();
@@ -166,16 +159,16 @@ namespace SimpleRelm.Models
                     if (_fieldDataLoaders.HasFieldLoader(field.Name))
                         continue;
 
-                    _fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(field.GetCustomAttribute<RelmDataLoader>().LoaderType, new object[] { field.Name }));
+                    _fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(field.GetCustomAttribute<RelmDataLoader>().LoaderType, new object[] { field.Name, field.GetCustomAttribute<RelmDataLoader>().KeyFields }));
                 }
-
-                // find all fields that have the RelmKey
-                var referenceKeys = new ForeignObjectsLoader<T>().GetReferenceKeys((string[])null);
 
                 // execute all field loaders
                 foreach (var fieldLoader in _fieldDataLoaders)
                 {
                     // check if the field is a collection, if it is call GetFieldData the returns a list of objects, otherwise GetFieldData that return a single object
+
+                    // find all fields that have the RelmKey
+                    var referenceKeys = new ForeignObjectsLoader<T>().GetReferenceKeys(fieldLoader.KeyFields);
 
                     var fieldData = fieldLoader.GetFieldData(_items.Select(x => x.GetType().GetProperties().Intersect(referenceKeys).Select(y => y.GetValue(x)).ToArray()).ToList());
 
@@ -218,10 +211,6 @@ namespace SimpleRelm.Models
                 // load all references
                 if (_dataLoader.LastCommandsExecuted?.ContainsKey(Command.Reference) ?? false)
                     LoadReference();
-
-                // load all collections
-                if (_dataLoader.LastCommandsExecuted?.ContainsKey(Command.Collection) ?? false)
-                    LoadCollection();
             }
 
             return _items;
@@ -254,31 +243,6 @@ namespace SimpleRelm.Models
             foreach (var reference in _dataLoader.LastCommandsExecuted[Command.Reference])
             {
                 objectsLoader.LoadForeignObjects(reference);
-            }
-        }
-
-        /// <summary>
-        /// Loads related collections into the current data set based on foreign key attributes.
-        /// </summary>
-        /// <remarks>
-        /// Uses reflection to dynamically generate the queries and collect the data for these collections.
-        /// This method assumes that each "collection" refers to a property that is a collection (e.g., ICollection<T>).
-        /// 
-        /// The process involves the following steps:
-        /// - Validate that the property representing the collection conforms to expected types.
-        /// - Locate a property in the related type that is marked with the DALForeignKey attribute, which indicates a foreign key relationship.
-        /// - Generate a WHERE clause based on the foreign key relationship to filter the collection.
-        /// - Execute the query and fill the property in the current data set with the loaded items.
-        /// </remarks>
-        /// <exception cref="InvalidOperationException">Thrown if any of the validations or assumptions fail.</exception>
-        /// <exception cref="Exception">General exception for unexpected issues, such as a failure to find attributes or properties.</exception>
-        private void LoadCollection()
-        {
-            var objectsLoader = new ForeignObjectsLoader<T>(_items, _currentContext);
-
-            foreach (var collection in _dataLoader.LastCommandsExecuted[Command.Collection])
-            {
-                objectsLoader.LoadForeignObjects(collection);
             }
         }
 

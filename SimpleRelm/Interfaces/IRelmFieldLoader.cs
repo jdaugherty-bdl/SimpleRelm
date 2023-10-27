@@ -9,6 +9,7 @@ namespace SimpleRelm.Interfaces
     public interface IRelmFieldLoader
     {
         string FieldName { get; }
+        string[] KeyFields { get; }
         Dictionary<S[], object> GetFieldData<S>(ICollection<S[]> keyData);
     }
 }

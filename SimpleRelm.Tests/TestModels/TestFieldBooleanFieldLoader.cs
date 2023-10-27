@@ -13,10 +13,13 @@ namespace SimpleRelm.Tests.TestModels
     {
         private readonly string? _fieldName;
         public string? FieldName => _fieldName;
+        private readonly string[]? _keyFields;
+        public string[]? KeyFields => _keyFields;
 
-        public TestFieldBooleanFieldLoader(string fieldName)
+        public TestFieldBooleanFieldLoader(string fieldName, string[]? keyFields = null)
         {
             _fieldName = fieldName;
+            _keyFields = keyFields;
         }
 
         public virtual Dictionary<S[], object> GetFieldData<S>(ICollection<S[]> keyData) where S : notnull
