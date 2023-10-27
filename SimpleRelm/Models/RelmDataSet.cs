@@ -165,13 +165,12 @@ namespace SimpleRelm.Models
                 // execute all field loaders
                 foreach (var fieldLoader in _fieldDataLoaders)
                 {
-                    // check if the field is a collection, if it is call GetFieldData the returns a list of objects, otherwise GetFieldData that return a single object
-
-                    // find all fields that have the RelmKey
                     var referenceKeys = new ForeignObjectsLoader<T>().GetReferenceKeys(fieldLoader.KeyFields);
 
+                    // get relevant data for items in the current data set all at once to reduce number of database calls
                     var fieldData = fieldLoader.GetFieldData(_items.Select(x => x.GetType().GetProperties().Intersect(referenceKeys).Select(y => y.GetValue(x)).ToArray()).ToList());
 
+                    // set the relevant field value on all items in the current data set
                     foreach (var item in _items)
                     {
                         var itemValues = item.GetType().GetProperties().Intersect(referenceKeys).Select(y => y.GetValue(item)).ToArray();
