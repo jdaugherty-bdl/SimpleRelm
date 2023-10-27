@@ -160,25 +160,12 @@ namespace SimpleRelm.Models
             if (_items?.Any() ?? false)
             {
                 // find all fields marked with a RelmFieldLoader attribute that have a type derived from IRelmFieldLoader<> and add them to the list of field loaders as long as they are not already there
-                //foreach (var field in typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmDataLoader>() != null))
                 foreach (var field in typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmDataLoader>()?.LoaderType?.GetInterfaces()?.Any(y => y == typeof(IRelmFieldLoader)) ?? false))
                 {
-                    //if (_fieldDataLoaders.ContainsKey(field.Name))
                     if (_fieldDataLoaders.HasFieldLoader(field.Name))
                         continue;
 
-                    var fieldLoader = field.GetCustomAttribute<RelmDataLoader>().LoaderType;
-
-                    //if (fieldLoader.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IRelmFieldLoader)))
-                    //if (fieldLoader.GetInterfaces().Any(x => x == typeof(IRelmFieldLoader)))
-                    //{
-                        //var fieldType = fieldLoader.GetInterfaces().First(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IRelmFieldLoader)).GetGenericArguments().First();
-
-                        //if (!_fieldDataLoaders.ContainsKey(field.Name))
-                        //_fieldDataLoaders.Add(field.Name, (IRelmFieldLoader<object>)Activator.CreateInstance(fieldLoader.IsGenericTypeDefinition ? fieldLoader.MakeGenericType(fieldType) : fieldLoader)); // as IRelmFieldLoader<object>);
-                        //_fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(fieldLoader.IsGenericTypeDefinition ? fieldLoader.MakeGenericType(fieldType) : fieldLoader, new object[] { field.Name }));
-                        _fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(fieldLoader, new object[] { field.Name }));
-                    //}
+                    _fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(field.GetCustomAttribute<RelmDataLoader>().LoaderType, new object[] { field.Name }));
                 }
 
                 // find all fields that have the RelmKey
@@ -189,28 +176,16 @@ namespace SimpleRelm.Models
                 {
                     // check if the field is a collection, if it is call GetFieldData the returns a list of objects, otherwise GetFieldData that return a single object
 
-
-
-
-                    //var fieldData = fieldLoader.GetFieldData(_items.Select(x => x.GetType().GetProperty(referenceKey.Name).GetValue(x)).ToList());
                     var fieldData = fieldLoader.GetFieldData(_items.Select(x => x.GetType().GetProperties().Intersect(referenceKeys).Select(y => y.GetValue(x)).ToArray()).ToList());
 
                     foreach (var item in _items)
                     {
-                        //var itemValue = item.GetType().GetProperty(referenceKeys.Name).GetValue(item);
                         var itemValues = item.GetType().GetProperties().Intersect(referenceKeys).Select(y => y.GetValue(item)).ToArray();
 
-                        //if (fieldData.ContainsKey(itemValues))
                         if (fieldData.Keys.Any(x => x.All(y => itemValues.Contains(y))))
                         {
                             var fieldValue = fieldData.FirstOrDefault(x => x.Key.All(y => itemValues.Contains(y))).Value;
 
-                            /*
-                            //item.GetType().GetProperty(fieldLoader.FieldName).SetValue(item, fieldData[itemValues]);
-                            var setField = item.GetType().GetProperty(fieldLoader.FieldName);
-                            var xlist = (fieldValue as IEnumerable)?.Cast<object>()?.ToList();
-                            setField.SetValue(item, xlist ?? fieldValue);
-                            */
                             var setField = item.GetType().GetProperty(fieldLoader.FieldName);
                             if (setField != null && setField.PropertyType.IsGenericType && setField.PropertyType.GetGenericTypeDefinition() == typeof(ICollection<>))
                             {
@@ -342,19 +317,6 @@ namespace SimpleRelm.Models
             var referenceKeys = GetReferenceKeys(principalReslolutionForeignKey?.LocalKeys);
 
             // go through all items in the current data set and collect all relmkey values
-            /*
-            itemPrimaryKeys = _items
-                .Select(x => x.GetType().GetProperties().Intersect(referenceKeys)?.Select(y => y.GetValue(x)).ToArray())
-                .Distinct()
-                .ToList();
-            */
-            /*
-            itemPrimaryKeys = typeof(T)
-                    .GetProperties()
-                    .Intersect(referenceKeys)
-                    .Select(x => new Tuple<PropertyInfo, List<object>>(x,  _items.Select(y => y.GetType().GetProperty(x.Name, x.PropertyType).GetValue(y)).ToList()))
-                    .ToList();
-            */
             itemPrimaryKeys = _items
                 .Select(x => x
                     .GetType()
@@ -387,7 +349,7 @@ namespace SimpleRelm.Models
 
             if (principalReslolutionForeignKey == null)
             {
-                // dependent property has foreign key attribute
+                // dependent property has foreign key attribute/navigation property
 
 
                 // get all properties on target that have a RelmForeignKey attribute, segment by LocalKeys, make dictionary with LocalKeys as keys
@@ -455,161 +417,6 @@ namespace SimpleRelm.Models
                 }
 
                 navigationProperty = navigationProps.FirstOrDefault();
-
-                /*
-                var navProps = targetForeignKeyDecorators
-                    .Where(x => x.Key.Intersect(navigationProps.Select(y => y.Name)).Any())
-                    .ToDictionary(x => x.Key, x => x.Value);
-
-                var forProps = targetForeignKeyDecorators
-                    .ExceptBy(navProps, x => x.Key)
-                    .ToDictionary(x => x.Key, x => x.Value);
-
-                foreach (var unfilteredForeignKey in targetForeignKeyDecorators)
-                {
-                    // separate unfiltered into nav props and foreign key props
-                    var navProps = unfilteredForeignKey
-                    var foreignKeyProps = unfilteredForeignKey.Value.LocalKeys
-                        .Select(x => targetProperties.FirstOrDefault(y => y.Name == x))
-                        .Where(x => x != null)
-                        .ToList();
-                }
-                */
-                /*
-                // if the intersection is not empty, then we're using foreign key processing
-                if (navigationProps.Count > 0)
-                {
-                    var foreignKeysIndicated = unfilteredForeignKeys
-                        .ToDictionary(x => x.Key, x => typeof(T)
-                            .GetProperties()
-                            .Where(y => x.Value.Any(z => z.ForeignKeys?.Contains(y.Name) ?? false))
-                            .ToList())
-                        .Where(x => x.Value.Count > 0)
-                        .ToDictionary(x => x.Key, x => x.Value);
-
-                    var localKeysIndicated = unfilteredForeignKeys
-                        .ToDictionary(x => x.Key, x => targetPropertiesOfTypeT
-                            .Where(y => x.Value.Any(z => z.LocalKeys?.Contains(y.Name) ?? false))
-                            .ToList())
-                        .Where(x => x.Value.Count > 0)
-                        .ToDictionary(x => x.Key, x => x.Value);
-
-                    navigationProps = targetPropertiesOfTypeT
-                        .Where(x => localKeysIndicated.SelectMany(y => y.Value).Any(y => y.Name == x.Name))
-                        .ToList();
-
-                    navigationProperty = navigationProps.FirstOrDefault();
-                    foreignKeyProperties = foreignKeysIndicated.SelectMany(x => x.Value).ToArray();
-
-                    if (foreignKeysIndicated.Count > 0)
-                    {
-                        referenceKeys = GetReferenceKeys(foreignKeysIndicated.Values.SelectMany(x => x.Select(y => y.Name)).ToArray());
-                    }
-                }
-                */
-                /*
-                // if the intersection is not empty, then we're using navigation property processing
-
-                // check if navigation or foreign key
-                var foreignKeyProps = targetProperties
-                    .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null) // && x.PropertyType == typeof(T))
-                    .ToArray();
-                */
-                /*
-
-                //var navigationProp = foreignKeyProperties.FirstOrDefault(x => x.PropertyType == typeof(T));
-
-                // is foreign key
-                if (navigationProp == null)
-                {
-                    var navigationProps = targetPropertiesOfTypeT
-                        .Where(x => foreignKeyProperties x.Name)
-                }
-                */
-                /*
-                if (!foreignKeyProperties.Contains(navigationProperty))
-                {
-                    foreignKeyProperties = targetProperties
-                        .Where(x => x.GetCustomAttribute<RelmForeignKey>()?.LocalKeys?.Intersect(targetPropertiesOfTypeT.Select(y => y.Name)).Any() ?? false)
-                        .ToArray();
-
-                    navigationProperty = targetPropertiesOfTypeT
-                        .FirstOrDefault(y => foreignKeyProperties.Any(x => x.GetCustomAttribute<RelmForeignKey>().LocalKeys.Contains(y.Name)));
-                }
-
-                if (foreignKeyProperties.Any(x => x.GetCustomAttribute<RelmForeignKey>()?.ForeignKeys != null))
-                {
-                    referenceKeys = GetReferenceKeys(principalReslolutionForeignKey?.LocalKeys);
-
-                    itemPrimaryKeys = _items
-                        .Select(x => x
-                            .GetType()
-                            .GetProperties()
-                            .Intersect(referenceKeys)
-                            .Select(y => new Tuple<PropertyInfo, object>(y, y.GetValue(x)))
-                            .ToList())
-                        .ToList();
-
-                    if (itemPrimaryKeys == null)
-                        throw new Exception("No primary keys found.");
-                }
-                */
-                /*
-                var foreignKeyValues = foreignKeyProps
-                    .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>().ForeignKeys);
-
-                var localKeyValues = foreignKeyProps
-                    .Where(x => (x.GetCustomAttribute<RelmForeignKey>().LocalKeys?.Length ?? 0) > 0)
-                    .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>().LocalKeys);
-
-                if (localKeyValues.Count > 0)
-                {
-                    referenceKeys = GetReferenceKeys(principalReslolutionForeignKey?.LocalKeys);
-
-                    itemPrimaryKeys = _items
-                        .Select(x => x
-                            .GetType()
-                            .GetProperties()
-                            .Intersect(referenceKeys)
-                            .Select(y => new Tuple<PropertyInfo, object>(y, y.GetValue(x)))
-                            .ToList())
-                        .ToList();
-
-                    if (itemPrimaryKeys == null)
-                        throw new Exception("No primary keys found.");
-                }
-
-                // navigation property on the dependent property
-                var foreignKeyInfo = targetPropertiesOfTypeT
-                    .Intersect(foreignKeyValues.Keys)
-                    .Select(x => new
-                    {
-                        ForeignKeys = targetProperties.Where(y => foreignKeyValues[x].Contains(y.Name)).ToArray(), // .FirstOrDefault(y => y.Key.Name == foreignKeyValues[x])
-                        NavigationProperty = x,
-                    })
-                    .FirstOrDefault()
-
-                    ??
-
-                    // foreign key property on the dependent property
-                    foreignKeyProps
-                    .Select(x => new
-                    {
-                        ForeignKeys = new PropertyInfo[] { x },
-                        NavigationProperty = targetPropertiesOfTypeT
-                            //.FirstOrDefault(y => y.Key.Name == foreignKeyValues[x])
-                            .FirstOrDefault(y => foreignKeyValues[x].Contains(y.Name))
-                            //.Value,
-                    })
-                    .FirstOrDefault()
-
-                    ??
-
-                    throw new NullReferenceException("No foreign key info found.");
-
-                foreignKeyProperties = foreignKeyInfo.ForeignKeys;
-                navigationProperty = foreignKeyInfo.NavigationProperty;
-                */
             }
             else
             {
@@ -633,11 +440,6 @@ namespace SimpleRelm.Models
             var funcType = typeof(Func<,>).MakeGenericType(referenceType, typeof(bool));
 
             // look up the Contains method on the itemForeignKeys type, then make a generic method with the memberExpression type
-            /*
-            var containsMethod = itemPrimaryKeys
-                .GetType()
-                .GetMethod(nameof(List<object>.Contains));
-            */
             var containsMethod = typeof(List<object>).GetMethod(nameof(List<object>.Contains));
 
             // Get the "Where" method from the data set
@@ -650,68 +452,15 @@ namespace SimpleRelm.Models
             // get the property named by dalForeignKey from the type defined in genericTypeArgument and create a MemberExpression from it
             var parameter = Expression.Parameter(referenceType, "x");
 
-            /*
-            BinaryExpression andExpression;
-            foreach (var itemPrimaryKey in itemPrimaryKeys)
-            {
-                for (var i = 0; i < itemPrimaryKey.Count; i++)
-                {
-                    var memberExpression = Expression.Property(parameter, foreignKeyProperties[i].Name)
-                        ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
-                    var containsExpression = Expression.Call(Expression.Constant(itemPrimaryKeys[i].Values), containsMethod, memberExpression);
-
-                    andExpressions.Add(Expression.AndAlso(containsExpression, Expression.Lambda(funcType, containsExpression, parameter)));
-                }
-
-                var orExpression = andExpressions.Aggregate(Expression.OrElse);
-            }
-            */
-            /*
-            List<LambdaExpression> containsLambda = new List<LambdaExpression>();
-            foreach (var itemPrimaryKey in itemPrimaryKeys)
-            {
-                //var containsExpressions = new List<MethodCallExpression>();
-                var containsExpressions = new List<Expression>();
-                for (var i = 0; i < itemPrimaryKey.Count; i++)
-                {
-                    var memberExpression = Expression.Property(parameter, foreignKeyProperties[i].Name)
-                            ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
-                    //containsExpressions.Add(Expression.Call(Expression.Constant(itemPrimaryKey[i].Item2), containsMethod, memberExpression));
-                    containsExpressions.Add(Expression.Equal(Expression.Constant(itemPrimaryKey[i].Item2), memberExpression));
-                }
-
-                BinaryExpression andExpression = null;
-                if (containsExpressions.Count > 1)
-                {
-                    for (var i = 1; i < containsExpressions.Count; i++)
-                    {
-                        if (i == 1)
-                            andExpression = Expression.AndAlso(containsExpressions[i - 1], containsExpressions[i]);
-                        else
-                            andExpression = Expression.AndAlso(andExpression, containsExpressions[i]);
-                    }
-                }
-            }
-
-            // Apply the "Where" and "Load" methods
-            //var filteredDataSetContains = whereMethod.Invoke(dataSet, new object[] { Expression.Lambda(funcType, containsExpression, parameter) });
-            if (andExpression == null)
-                containsLambda.Add(Expression.Lambda(funcType, containsExpressions.FirstOrDefault(), parameter));
-            else
-                containsLambda.Add(Expression.Lambda(funcType, andExpression, parameter));
-            */
-            //var orParameters = new List<List<BinaryExpression>>();
             BinaryExpression orExpression = null;
             foreach (var itemPrimaryKey in itemPrimaryKeys)
             {
-                //var andParameters = new List<BinaryExpression>();
                 BinaryExpression andExpression = null;
                 for (var i = 0; i < itemPrimaryKey.Count; i ++)
                 {
                     var memberExpression = Expression.Property(parameter, foreignKeyProperties[i].Name)
                         ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
 
-                    //andParameters.Add(Expression.Equal(Expression.Constant(itemPrimaryKey[i].Item2), memberExpression));
                     var equalExpression = Expression.Equal(Expression.Constant(itemPrimaryKey[i].Item2), memberExpression);
 
                     if (andExpression == null)
@@ -720,69 +469,12 @@ namespace SimpleRelm.Models
                         andExpression = Expression.AndAlso(andExpression, equalExpression);
                 }
 
-                /*
-                //orParameters.Add(andParameters);
-                var andExpression = andParameters.FirstOrDefault();
-                if (andParameters.Count > 1)
-                {
-                    for (var i = 1; i < andParameters.Count; i++)
-                    {
-                        if (i == 1)
-                            andExpression = Expression.AndAlso(andParameters[i - 1], andParameters[i]);
-                        else
-                            andExpression = Expression.AndAlso(andExpression, andParameters[i]);
-                    }
-                }
-
-                if (orParameters.Count > 1)
-                {
-                    if (orExpression == null)
-                        orExpression = andExpression;
-                    else
-                        orExpression = Expression.OrElse(orExpression, andExpression);
-                }
-                else
-                    orExpression = andExpression;
-                */
                 if (orExpression == null)
                     orExpression = andExpression;
                 else
                     orExpression = Expression.OrElse(orExpression, andExpression);
             }
 
-            /*
-            foreach (var andParameters in orParameters)
-            {
-                BinaryExpression andExpression = andParameters.FirstOrDefault();
-                if (andParameters.Count > 1)
-                {
-                    for (var i = 1; i < andParameters.Count; i++)
-                    {
-                        if (i == 1)
-                            andExpression = Expression.AndAlso(andParameters[i - 1], andParameters[i]);
-                        else
-                            andExpression = Expression.AndAlso(andExpression, andParameters[i]);
-                    }
-                }
-
-                if (orParameters.Count > 1)
-                {
-                    if (orExpression == null)
-                        orExpression = andExpression;
-                    else
-                        orExpression = Expression.OrElse(orExpression, andExpression);
-                }
-                else
-                    orExpression = andExpression;
-            }
-            */
-            /*
-            LambdaExpression containsLambda = null;
-            if (orExpression == null)
-                containsLambda.Add(Expression.Lambda(funcType, containsExpressions.FirstOrDefault(), parameter));
-            else
-                containsLambda.Add(Expression.Lambda(funcType, orExpression, parameter));
-            */
             var containsLambda = Expression.Lambda(funcType, orExpression, parameter);
 
             if (containsLambda == null)
@@ -802,7 +494,6 @@ namespace SimpleRelm.Models
             {
                 var targetObjectForeignKeyValues = foreignKeyProperties.Select(x => x.GetValue(item)).ToArray();
 
-                //if (!collectionItems.Contains(targetObjectForeignKeyValues))
                 if (collectionItems.Keys.Cast<object[]>().FirstOrDefault(x => x.Select((y, i) => targetObjectForeignKeyValues[i] == y).All(y => y)) == null)
                 {
                     collectionItems.Add(targetObjectForeignKeyValues, default);
@@ -817,7 +508,6 @@ namespace SimpleRelm.Models
                 }
 
                 if (isCollection)
-                    //((IList)collectionItems[targetObjectForeignKeyValues]).Add(item);
                     ((IList)collectionItems[collectionItems.Keys.Cast<object[]>().FirstOrDefault(x => x.Select((y, i) => targetObjectForeignKeyValues[i] == y).All(y => y))]).Add(item);
                 else
                     collectionItems[targetObjectForeignKeyValues] = item;
@@ -828,12 +518,6 @@ namespace SimpleRelm.Models
             {
                 var foreignKeyValues = item.GetType().GetProperties().Where(x => referenceKeys.Contains(x)).Select(x => x.GetValue(item)).ToArray();
 
-                /*
-                var collectionItem = collectionItems[foreignKeyValues];
-                
-                var collectionProperty = referenceProperty.Member as PropertyInfo;
-                collectionProperty.SetValue(item, collectionItem);
-                */
                 foreach (DictionaryEntry entry in collectionItems)
                 {
                     // note: all keys should be in the same order as the foreign key values here
