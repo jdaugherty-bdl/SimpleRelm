@@ -103,23 +103,22 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                 .Where(x => x.PropertyType == typeof(T) || x.PropertyType.GetGenericArguments().Contains(typeof(T)))
                 .ToList();
 
+            // dependent entity has foreign key attribute/navigation property instead of principal entity
             if (principalReslolutionForeignKey == null)
             {
-                // dependent property has foreign key attribute/navigation property
-
-
-                // get all properties on target that have a RelmForeignKey attribute, segment by LocalKeys, make dictionary with LocalKeys as keys
+                // get all properties on target that have a RelmForeignKey attribute and make dictionary with LocalKeys as keys
                 var targetForeignKeyDecorators = targetProperties
                     .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null)
                     .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>())
                     .Segment((prev, next, i) => !prev.Value.LocalKeys.All(x => next.Value.LocalKeys.Contains(x)))
                     .ToDictionary(x => x.FirstOrDefault().Value.LocalKeys, x => x.ToDictionary(y => y.Key, y => y.Value.ForeignKeys));
 
-                // get intersection between each list in that list and targetPropertiesOfTypeT
+                // find any navigation properties that are the same type as this data set
                 var navigationProps = targetPropertiesOfTypeT
                     .Where(x => targetForeignKeyDecorators.Any(y => y.Key.Contains(x.Name)))
                     .ToList();
 
+                // TODO: allow multiple navigation properties on target class
                 if (navigationProps.Count > 1)
                     throw new Exception("Multiple navigation properties found.");
 
@@ -154,10 +153,6 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                         .Select(x => x.Value.Keys.ToArray())
                         .FirstOrDefault();
 
-                    var fff = targetForeignKeyDecorators
-                        .SelectMany(x => x.Value.Select(y => y.Value).ToArray())
-                        .ToArray();
-
                     referenceKeys = GetReferenceKeys(targetForeignKeyDecorators
                         .SelectMany(x => x.Value.SelectMany(y => y.Value ?? new string[] { }).ToArray())
                         .ToArray());
@@ -176,36 +171,35 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             }
             else
             {
-                // get the primary entity's foreign key property
+                // get the principal entity's foreign key property
                 foreignKeyProperties = targetProperties.Where(x => principalReslolutionForeignKey.ForeignKeys.Contains(x.Name)).ToArray();
                 navigationProperty = targetPropertiesOfTypeT.FirstOrDefault(); //.Values.FirstOrDefault();
             }
 
-            // if foreignKeyProperty is null, throw an exception
-            if (foreignKeyProperties == null)
-                throw new MemberAccessException("Property referenced by RelmForeignKey attribute could not be found.");
+            // check required variables have something in them
 
-            // if navigationProperty is null, throw an exception
+            if ((foreignKeyProperties?.Length ?? 0) > 0)
+                throw new MemberAccessException("Foreign key referenced by RelmForeignKey attribute could not be found.");
+
             if (navigationProperty == null)
-                throw new MemberAccessException("Property referenced by RelmForeignKey attribute could not be found.");
+                throw new MemberAccessException("Navigation property referenced by RelmForeignKey attribute could not be found.");
 
-            if (itemPrimaryKeys == null)
+            if ((itemPrimaryKeys?.Count ?? 0) > 0)
                 throw new Exception("No primary keys found.");
 
-            // Generate a Func<> type based on the generic type argument for use below
+            if ((referenceKeys?.Length ?? 0) > 0)
+                throw new Exception("No reference keys found.");
+
+            // create a Relm expression tree to execute on the where method of the target data set, handles compound keys
+
             var funcType = typeof(Func<,>).MakeGenericType(referenceType, typeof(bool));
-
-            // look up the Contains method on the itemForeignKeys type, then make a generic method with the memberExpression type
             var containsMethod = typeof(List<object>).GetMethod(nameof(List<object>.Contains));
-
-            // Get the "Where" method from the data set
             var whereMethod = dataSet
                 .GetType()
                 .GetMethods()
                 .Where(m => m.Name == nameof(RelmDataSet<T>.Where))
                 .First();
 
-            // get the property named by dalForeignKey from the type defined in genericTypeArgument and create a MemberExpression from it
             var parameter = Expression.Parameter(referenceType, "x");
 
             BinaryExpression orExpression = null;
@@ -231,10 +225,8 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                     orExpression = Expression.OrElse(orExpression, andExpression);
             }
 
-            var containsLambda = Expression.Lambda(funcType, orExpression, parameter);
-
-            if (containsLambda == null)
-                throw new Exception("No contains lambda expression found.");
+            var containsLambda = Expression.Lambda(funcType, orExpression, parameter) 
+                ?? throw new Exception("No contains lambda expression found.");
 
             var filteredDataSetContains = whereMethod.Invoke(dataSet, new object[] { containsLambda });
             var collectionItemsContains = dataSet.GetType().GetMethod(nameof(RelmDataSet<T>.Load)).Invoke(filteredDataSetContains, null);
