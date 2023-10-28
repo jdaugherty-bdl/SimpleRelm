@@ -100,6 +100,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
             // make a list of all targetProperties that are of type T
             var targetPropertiesOfTypeT = targetProperties
+                //.Where(x => x.PropertyType == typeof(T) || x.PropertyType.GetGenericArguments().Contains(typeof(T)))
                 .Where(x => x.PropertyType == typeof(T) || x.PropertyType.GetGenericArguments().Contains(typeof(T)))
                 .ToList();
 
@@ -178,16 +179,16 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
             // check required variables have something in them
 
-            if ((foreignKeyProperties?.Length ?? 0) > 0)
+            if ((foreignKeyProperties?.Length ?? 0) <= 0)
                 throw new MemberAccessException("Foreign key referenced by RelmForeignKey attribute could not be found.");
 
             if (navigationProperty == null)
                 throw new MemberAccessException("Navigation property referenced by RelmForeignKey attribute could not be found.");
 
-            if ((itemPrimaryKeys?.Count ?? 0) > 0)
+            if ((itemPrimaryKeys?.Count ?? 0) <= 0)
                 throw new Exception("No primary keys found.");
 
-            if ((referenceKeys?.Length ?? 0) > 0)
+            if ((referenceKeys?.Length ?? 0) <= 0)
                 throw new Exception("No reference keys found.");
 
             // create a Relm expression tree to execute on the where method of the target data set, handles compound keys

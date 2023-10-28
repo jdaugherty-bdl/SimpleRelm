@@ -54,7 +54,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Where, new List<Expression> { containsCall }), queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE  FIND_IN_SET(a.`test_column_InternalId`, @_TestColumnInternalId_) ", result);
+            Assert.Equal(" WHERE ( FIND_IN_SET(a.`test_column_InternalId`, @_TestColumnInternalId_) )", result);
         }
 
         [Fact]

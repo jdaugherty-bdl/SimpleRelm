@@ -13,6 +13,7 @@ namespace SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
     [RelmTable("nothing_table")]
     public class NonDefaultForeignKeysReferenceObject_ForeignKey : RelmModel
     {
+        [RelmColumn]
         [RelmForeignKey(nameof(NonDefaultForeignKeysTestObject.NonDefaultForeignKeysReferenceObjectLocalKey), nameof(NonDefaultForeignKeysTestObject_Reference))]
         public string? ReferenceKey { get; set; }
 
