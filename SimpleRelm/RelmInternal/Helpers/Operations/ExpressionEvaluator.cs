@@ -92,14 +92,31 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                             : " AND ")
                         : " WHERE ";
 
-                var binaryExpression = command.Item1 as BinaryExpression;
+                if (command.Item1 is BinaryExpression binaryExpression)
+                {
+                    if (binaryExpression.Left is BinaryExpression subBinaryExpressionLeft)
+                    {
+                        findQuery += " (";
+                        findQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionLeft, command.Item2) }), QueryParameters, GiveCommandPrefix: false);
+                        findQuery += ")";
+                    }
+                    if (binaryExpression.Right is BinaryExpression subBinaryExpressionRight)
+                    {
+                        findQuery += " (";
+                        findQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionRight, command.Item2) }), QueryParameters, GiveCommandPrefix: false);
+                        findQuery += ")";
+                    }
+                }
 
-                if (binaryExpression?.Left is MemberExpression memberExpression && (binaryExpression?.Right is ConstantExpression || binaryExpression?.Right is MemberExpression || binaryExpression?.Right is UnaryExpression || binaryExpression?.Right is NewExpression || binaryExpression?.Right is MethodCallExpression))
+                /*
+                var binaryExpression2 = command.Item1 as BinaryExpression;
+
+                if (binaryExpression2?.Left is MemberExpression memberExpression && (binaryExpression2?.Right is ConstantExpression || binaryExpression2?.Right is MemberExpression || binaryExpression2?.Right is UnaryExpression || binaryExpression2?.Right is NewExpression || binaryExpression2?.Right is MethodCallExpression))
                 {
                     var parameterName = GenerateParameterName(memberExpression.Member.Name, QueryParameters);
-                    var parameterValue = ExpressionUtilities.GetValue(binaryExpression.Right);
+                    var parameterValue = ExpressionUtilities.GetValue(binaryExpression2.Right);
 
-                    QueryParameters.Add(parameterName, binaryExpression.Left.Type == typeof(bool)
+                    QueryParameters.Add(parameterName, binaryExpression2.Left.Type == typeof(bool)
                         ? ((bool)parameterValue ? 1 : 0)
                         : parameterValue);
 
@@ -112,7 +129,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                     findQuery += "` ";
 
                     //findQuery += binaryExpression.NodeType == ExpressionType.Equal ? "=" : "<>";
-                    switch (binaryExpression.NodeType)
+                    switch (binaryExpression2.NodeType)
                     {
                         case ExpressionType.Equal:
                             findQuery += "=";
@@ -138,11 +155,11 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                     findQuery += parameterName;
                     findQuery += " ";
                 }
-                else if (binaryExpression?.Left is BinaryExpression subBinaryExpressionLeft && binaryExpression?.Right is BinaryExpression subBinaryExpressionRight)
+                else if (binaryExpression2?.Left is BinaryExpression subBinaryExpressionLeft && binaryExpression2?.Right is BinaryExpression subBinaryExpressionRight)
                 {
                     findQuery += " (";
                     findQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionLeft, command.Item2) }), QueryParameters, GiveCommandPrefix: false);
-                    findQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionRight, command.Item2) }), QueryParameters, NodeType: binaryExpression.NodeType);
+                    findQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionRight, command.Item2) }), QueryParameters, NodeType: binaryExpression2.NodeType);
                     findQuery += ")";
                 }
                 else if (command.Item1 is MethodCallExpression methodCall)
@@ -245,6 +262,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
                     QueryParameters.Add(parameterName, parameterValue);
                 }
+                */
 
                 HasWhere = true;
             }

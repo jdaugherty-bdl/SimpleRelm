@@ -39,7 +39,6 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 
             // Assert
             Assert.Equal(" WHERE  a.`Id` = @_Id_ ", result);
-
             Assert.Equal(queryParameters["@_Id_"], 3L);
         }
 
@@ -54,7 +53,6 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 
             // Assert
             Assert.Equal(" WHERE  a.`InternalId` = @_InternalId_ ", result);
-
             Assert.Equal(queryParameters["@_InternalId_"], "00000000-0000-0000-0000-000000000000");
         }
 
@@ -69,7 +67,6 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 
             // Assert
             Assert.Equal(" WHERE  a.`Create_Date` = @_CreateDate_ ", result);
-
             Assert.Equal(queryParameters["@_CreateDate_"], new DateTime(2021, 1, 1));
         }
 
@@ -84,7 +81,6 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 
             // Assert
             Assert.Equal(" WHERE  a.`Active` = @_Active_ ", result);
-
             Assert.Equal(queryParameters["@_Active_"], 1);
         }
 
@@ -105,7 +101,6 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 
             // Assert
             Assert.Equal(" WHERE  FIND_IN_SET(a.`InternalId`, @_InternalId_) ", result);
-
             Assert.Equal(queryParameters["@_InternalId_"], "00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000001");
         }
 
@@ -138,17 +133,16 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 
             // Assert
             Assert.Equal(" WHERE  a.`Create_Date` >= @_CreateDate_ ", result);
-
             Assert.Equal(queryParameters["@_CreateDate_"], new DateTime(2021, 1, 1));
         }
 
         [Fact]
         public void TestExpressionEvaluatorWhere_MethodCallExpression()
         {
+            // Arrange
             var originalDate = new DateTime(2021, 1, 1);
             var expectedDate = originalDate.AddMinutes(-15);
 
-            // Arrange
             predicate = x => x.CreateDate >= originalDate.AddMinutes(-15); // make originalDate.AddMinutes instead of expectedDate so we get a MethodCallExpression
 
             // Act
@@ -156,8 +150,29 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 
             // Assert
             Assert.Equal(" WHERE  a.`Create_Date` >= @_CreateDate_ ", result);
-
             Assert.Equal(queryParameters["@_CreateDate_"], expectedDate);
+        }
+
+        [Fact]
+        public void TestExpressionEvaluatorWhere_CompoundBuild()
+        {
+            // Arrange
+            var expectedIds = new List<ComplexTestModel>
+            { 
+                new ComplexTestModel { Id = 1 },
+                new ComplexTestModel { Id = 2 },
+                new ComplexTestModel { Id = 3 },
+                new ComplexTestModel { Id = 4 },
+            };
+
+            predicate = x => expectedIds.Select(y => y.Id).Contains(x.Id) && !string.IsNullOrWhiteSpace(x.TestColumnInternalId);
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Where, new List<Expression> { predicate }), queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE  FIND_IN_SET(a.`Id`, @_Id_) AND Test_Column_InternalId IS NOT NULL ", result);
+            Assert.Equal(queryParameters["@_Id_"], "1,2,3,4");
         }
     }
 }
