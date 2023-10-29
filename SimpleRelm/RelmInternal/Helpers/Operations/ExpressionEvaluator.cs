@@ -3,8 +3,10 @@ using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -110,44 +112,68 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                     var currentAlias = default(string);
                     var parameterValue = default(object);
 
-                    // if left is a binary, evaluate recursively, otherwise get the parameter name and value
-                    var leftBinaryQuery = string.Empty;
-                    if (binaryExpression.Left is BinaryExpression subBinaryExpressionLeft)
-                        leftBinaryQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionLeft, command.Item2) }), queryParameters, giveCommandPrefix: false);
-
-                    // if right is a binary, evaluate recursively, otherwise get the parameter name and value
-                    var rightBinaryQuery = string.Empty;
-                    if (binaryExpression.Right is BinaryExpression subBinaryExpressionRight)
-                        rightBinaryQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionRight, command.Item2) }), queryParameters, nodeType: binaryExpression.NodeType);
-                    
                     if (binaryExpression.Left is MemberExpression memberExpressionLeft)
                     {
-                        fieldName = memberExpressionLeft.Member.Name;
-                        parameterName = GenerateParameterName(memberExpressionLeft.Member.Name, queryParameters);
+                        if (memberExpressionLeft.Expression.NodeType == ExpressionType.Constant)
+                            parameterValue = ResolveParameter(memberExpressionLeft, queryParameters, parameterName);
+                        else
+                        {
+                            fieldName = memberExpressionLeft.Member.Name;
+                            parameterName = GenerateParameterName(memberExpressionLeft.Member.Name, queryParameters);
 
-                        currentAlias = GetTableAlias(((RelmTable)memberExpressionLeft.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+                            currentAlias = GetTableAlias(((RelmTable)memberExpressionLeft.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+                        }
                     }
 
                     if (binaryExpression.Right is MemberExpression memberExpressionRight)
                     {
-                        fieldName = memberExpressionRight.Member.Name;
-                        parameterName = GenerateParameterName(memberExpressionRight.Member.Name, queryParameters);
+                        if (memberExpressionRight.Expression.NodeType == ExpressionType.Constant)
+                            parameterValue = ResolveParameter(memberExpressionRight, queryParameters, parameterName);
+                        else
+                        {
+                            fieldName = memberExpressionRight.Member.Name;
+                            parameterName = GenerateParameterName(memberExpressionRight.Member.Name, queryParameters);
 
-                        currentAlias = GetTableAlias(((RelmTable)memberExpressionRight.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+                            currentAlias = GetTableAlias(((RelmTable)memberExpressionRight.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+                        }
+                    }
+
+                    // if left is a binary, evaluate recursively, otherwise get the parameter name and value
+                    var leftBinaryQuery = string.Empty;
+                    if (binaryExpression.Left is BinaryExpression subBinaryExpressionLeft)
+                        leftBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionLeft, command.Item2) }), queryParameters, giveCommandPrefix: false);
+                    else if (binaryExpression.Left is MethodCallExpression methodCallExpressionLeft)
+                    {
+                        // if straight method call with no member expressions, then it's a constant value, otherwise run full resolve
+                        if (!methodCallExpressionLeft.Arguments.Any(x => x is MemberExpression))
+                            parameterValue = ResolveParameter(methodCallExpressionLeft, queryParameters, parameterName);
+                        else
+                            leftBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(methodCallExpressionLeft, command.Item2) }), queryParameters, giveCommandPrefix: false);
+                    }
+
+                    // if right is a binary, evaluate recursively, otherwise get the parameter name and value
+                    var rightBinaryQuery = string.Empty;
+                    if (binaryExpression.Right is BinaryExpression subBinaryExpressionRight)
+                        rightBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionRight, command.Item2) }), queryParameters, nodeType: binaryExpression.NodeType);
+                    else if (binaryExpression.Right is MethodCallExpression methodCallExpressionRight)
+                    {
+                        // if straight method call with no member expressions, then it's a constant value, otherwise run full resolve
+                        if (!methodCallExpressionRight.Arguments.Any(x => x is MemberExpression))
+                            parameterValue = ResolveParameter(methodCallExpressionRight, queryParameters, parameterName);
+                        else
+                            rightBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(methodCallExpressionRight, command.Item2) }), queryParameters, giveCommandPrefix: false, nodeType: binaryExpression.NodeType);
                     }
 
                     if (binaryExpression.Left is UnaryExpression
                         || binaryExpression.Left is NewExpression
-                        || binaryExpression.Left is ConstantExpression
-                        || binaryExpression.Left is MethodCallExpression)
+                        || binaryExpression.Left is ConstantExpression)
                     {
                         parameterValue = ResolveParameter(binaryExpression.Left, queryParameters, parameterName);
                     }
 
                     if (binaryExpression.Right is UnaryExpression
                         || binaryExpression.Right is NewExpression
-                        || binaryExpression.Right is ConstantExpression
-                        || binaryExpression.Right is MethodCallExpression)
+                        || binaryExpression.Right is ConstantExpression)
                     {
                         parameterValue = ResolveParameter(binaryExpression.Right, queryParameters, parameterName);
                     }
@@ -199,10 +225,12 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 else if (command.Item1 is MethodCallExpression methodCall)
                 {
                     var referencedMember = methodCall.Arguments.LastOrDefault(x => x is MemberExpression) as MemberExpression;
-                    var parameterName = GenerateParameterName(referencedMember.Member.Name, queryParameters);
+                    var parameterName = referencedMember == null ? default : GenerateParameterName(referencedMember.Member.Name, queryParameters);
                     var parameterValues = methodCall
                         .Arguments
                         .Select(x => x is MemberExpression ? null : ExpressionUtilities.GetValue(x))
+                        .Where(x => x != null)
+                        .Select(x => x is IEnumerable enumerable ? enumerable.Cast<object>().ToList() : x)
                         .ToList();
 
                     var parameterValue = default(object);
@@ -215,7 +243,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                             if (!UnderscoreProperties.ContainsKey(referencedMember.Member.Name))
                                 throw new Exception($"No field named '{referencedMember.Member.Name}' with attribute [RelmColumn] found.");
 
-                            parameterValue = parameterValues.FirstOrDefault(x => x != null);
+                            parameterValue = parameterValues.FirstOrDefault();
 
                             if (methodCall.Object.Type == typeof(string))
                             {
@@ -274,7 +302,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
                             var parameterValueList = new List<object>();
 
-                            foreach (var parameter in parameterValues.Where(x => x != null))
+                            foreach (var parameter in parameterValues)
                             {
                                 if (parameter is IEnumerable<object> parameterList)
                                     parameterValueList.AddRange(parameterList);

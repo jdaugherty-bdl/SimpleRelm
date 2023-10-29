@@ -210,15 +210,15 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             };
             var expectedInternalId = "00000000-0000-0000-0000-000000000000";
 
-            predicate = x => expectedIds.Select(y => y.Id).Contains(x.Id) && x.TestColumnInternalId != expectedInternalId;
+            predicate = x => expectedIds.Select(y => y.Id).Contains(x.Id) && x.TestColumnNoAttributeArguments != expectedInternalId;
 
             // Act
             var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Where, new List<Expression> { predicate }), queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( FIND_IN_SET(a.`Id`, @_Id_) AND Test_Column_InternalId <> @_Test_Column_InternalId_ )", result);
-            Assert.Equal(string.Join(",", expectedIds), queryParameters["@_Id_"]);
-            Assert.Equal(expectedInternalId, queryParameters["@_Test_Column_InternalId_"]);
+            Assert.Equal(" WHERE ( FIND_IN_SET(a.`Id`, @_Id_)    AND  a.`Test_Column_No_Attribute_Arguments` <> @_TestColumnNoAttributeArguments_ )", result);
+            Assert.Equal(string.Join(",", expectedIds.Select(x => x.Id)), string.Join(",", queryParameters["@_Id_"]));
+            Assert.Equal(expectedInternalId, queryParameters["@_TestColumnNoAttributeArguments_"]);
         }
     }
 }
