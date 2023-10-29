@@ -29,7 +29,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         }
 
         [Fact]
-        public void TestExpressionEvaluatorWhere_Equalities_Equals_Int()
+        public void TestExpressionEvaluatorWhere_Equalities_Equals_Int_Constant()
         {
             // Arrange
             predicate = x => x.Id == 3L;
@@ -43,7 +43,22 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         }
 
         [Fact]
-        public void TestExpressionEvaluatorWhere_Equalities_Equals_String()
+        public void TestExpressionEvaluatorWhere_Equalities_Equals_Int_Variable()
+        {
+            // Arrange
+            var id = 3L;
+            predicate = x => x.Id == id;
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Where, new List<Expression> { predicate }), queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE ( a.`Id` = @_Id_ )", result);
+            Assert.Equal(id, queryParameters["@_Id_"]);
+        }
+
+        [Fact]
+        public void TestExpressionEvaluatorWhere_Equalities_Equals_String_Constant()
         {
             // Arrange
             predicate = x => x.InternalId == "00000000-0000-0000-0000-000000000000";
@@ -54,6 +69,21 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             // Assert
             Assert.Equal(" WHERE ( a.`InternalId` = @_InternalId_ )", result);
             Assert.Equal("00000000-0000-0000-0000-000000000000", queryParameters["@_InternalId_"]);
+        }
+
+        [Fact]
+        public void TestExpressionEvaluatorWhere_Equalities_Equals_String_Variable()
+        {
+            // Arrange
+            var internalId = "00000000-0000-0000-0000-000000000000";
+            predicate = x => x.InternalId == internalId;
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Where, new List<Expression> { predicate }), queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE ( a.`InternalId` = @_InternalId_ )", result);
+            Assert.Equal(internalId, queryParameters["@_InternalId_"]);
         }
 
         [Fact]
