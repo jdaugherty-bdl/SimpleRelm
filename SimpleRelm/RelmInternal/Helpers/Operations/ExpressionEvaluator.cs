@@ -112,6 +112,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                     var currentAlias = default(string);
                     var parameterValue = default(object);
 
+                    // NOTE: Very important to keep the order of these if statements, as the left and right are used in the next if statements
+
+                    // get parameter names and values
                     if (binaryExpression.Left is MemberExpression memberExpressionLeft)
                     {
                         if (memberExpressionLeft.Expression.NodeType == ExpressionType.Constant)
@@ -164,6 +167,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                             rightBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(methodCallExpressionRight, command.Item2) }), queryParameters, giveCommandPrefix: false, nodeType: binaryExpression.NodeType);
                     }
 
+                    // resolve all other parameters not already resolved
                     if (binaryExpression.Left is UnaryExpression
                         || binaryExpression.Left is NewExpression
                         || binaryExpression.Left is ConstantExpression)
