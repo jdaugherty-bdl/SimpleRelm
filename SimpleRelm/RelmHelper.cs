@@ -16,6 +16,8 @@ using SimpleRelm.RelmInternal.Helpers.Connections;
 using System.Configuration;
 using System.IO;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
+using SimpleRelm.Models;
+using System.Linq.Expressions;
 
 namespace SimpleRelm
 {
@@ -528,5 +530,8 @@ namespace SimpleRelm
         /// <returns>An object with a type of <typeparamref name="T"/></returns>
         public static T StandardConnectionWrapper<T>(Enum ConnectionType, Func<MySqlConnection, MySqlTransaction, T> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
             => StandardConnectionHelper.StandardConnectionWrapper<T>(ConnectionType, ActionWrapper, ExceptionHandler);
+
+        public static T LoadForeignKey<T>(T target, Expression<Func<T, object>> predicate) where T : RelmModel, new()
+            => new ForeignKeyLoader<T>(target).LoadMyForeignKey(predicate);
     }
 }

@@ -1,4 +1,4 @@
-﻿using SimpleRelm.RelmInternal.Extensions;
+﻿using SimpleRelm.Extensions;
 using SimpleRelm.Tests.TestModels;
 using System;
 using System.Collections.Generic;

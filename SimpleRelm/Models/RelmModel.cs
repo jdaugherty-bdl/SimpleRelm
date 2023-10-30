@@ -5,11 +5,13 @@ using SimpleRelm.Extensions;
 using SimpleRelm.Interfaces;
 using SimpleRelm.RelmInternal.Extensions;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence;
+using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -339,6 +341,11 @@ namespace SimpleRelm.Models
         public RelmModel Duplicate()
         {
             return (RelmModel)this.MemberwiseClone();
+        }
+
+        public RelmModel LoadForeignKey(Expression<Func<RelmModel, object>> predicate)
+        {
+            return new ForeignKeyLoader<RelmModel>(this).LoadMyForeignKey(predicate);
         }
     }
 }
