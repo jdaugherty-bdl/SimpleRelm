@@ -11,19 +11,19 @@ namespace SimpleRelm.RelmInternal.Extensions
 {
     public static class ListExtensions
     {
-        public static int WriteToDatabase<T>(this ICollection<T> DbModelData, Enum ConnectionStringType) where T : IRelmModel
+        public static int WriteToDatabase<T>(this ICollection<T> DbModelData, Enum ConnectionStringType, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 100, string DatabaseName = null) where T : IRelmModel
         {
-            return DataOutputOperations.BulkTableWrite<T>(ConnectionStringType, DbModelData);
+            return DataOutputOperations.BulkTableWrite<T>(ConnectionStringType, DbModelData, TableName, ForceType, AllowUserVariables, BatchSize, DatabaseName);
         }
 
-        public static int WriteToDatabase<T>(this ICollection<T> DbModelData, MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null) where T : IRelmModel
+        public static int WriteToDatabase<T>(this ICollection<T> DbModelData, MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 100, string DatabaseName = null) where T : IRelmModel
         {
-            return DataOutputOperations.BulkTableWrite<T>(ExistingConnection, DbModelData, SqlTransaction: SqlTransaction);
+            return DataOutputOperations.BulkTableWrite<T>(ExistingConnection, DbModelData, TableName, SqlTransaction: SqlTransaction, ForceType, BatchSize, DatabaseName);
         }
 
-        public static int WriteToDatabase<T>(this ICollection<T> DbModelData, IRelmContext relmContext)
+        public static int WriteToDatabase<T>(this ICollection<T> DbModelData, IRelmContext relmContext, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 100, string DatabaseName = null)
         {
-            return DataOutputOperations.BulkTableWrite<T>(relmContext.ContextOptions.DatabaseConnection, DbModelData, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction);
+            return DataOutputOperations.BulkTableWrite<T>(relmContext.ContextOptions.DatabaseConnection, DbModelData, TableName, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType, BatchSize, DatabaseName);
         }
 
         public static ICollection<T> FlattenTreeObject<T>(this ICollection<T> EnumerableList, Func<T, ICollection<T>> GetChildrenFunction)
