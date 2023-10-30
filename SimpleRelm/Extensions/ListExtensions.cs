@@ -11,17 +11,22 @@ namespace SimpleRelm.RelmInternal.Extensions
 {
     public static class ListExtensions
     {
-        public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, Enum ConnectionStringType) where T : IRelmModel
+        public static int WriteToDatabase<T>(this ICollection<T> DbModelData, Enum ConnectionStringType) where T : IRelmModel
         {
             return DataOutputOperations.BulkTableWrite<T>(ConnectionStringType, DbModelData);
         }
 
-        public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null) where T : IRelmModel
+        public static int WriteToDatabase<T>(this ICollection<T> DbModelData, MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null) where T : IRelmModel
         {
             return DataOutputOperations.BulkTableWrite<T>(ExistingConnection, DbModelData, SqlTransaction: SqlTransaction);
         }
 
-        public static IEnumerable<T> FlattenTreeObject<T>(this IEnumerable<T> EnumerableList, Func<T, IEnumerable<T>> GetChildrenFunction)
+        public static int WriteToDatabase<T>(this ICollection<T> DbModelData, IRelmContext relmContext)
+        {
+            return DataOutputOperations.BulkTableWrite<T>(relmContext.ContextOptions.DatabaseConnection, DbModelData, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction);
+        }
+
+        public static ICollection<T> FlattenTreeObject<T>(this ICollection<T> EnumerableList, Func<T, ICollection<T>> GetChildrenFunction)
         {
             return EnumerableList
                 .SelectMany(enumerableItem =>
@@ -30,12 +35,13 @@ namespace SimpleRelm.RelmInternal.Extensions
                     .Concat(GetChildrenFunction(enumerableItem)
                         ?.FlattenTreeObject(GetChildrenFunction)
                         ??
-                        Enumerable.Empty<T>()));
+                        Enumerable.Empty<T>()))
+                .ToList();
         }
 
-        public static IEnumerable<dynamic> GenerateDTO<T>(this IEnumerable<T> BaseObjects, IEnumerable<string> IncludeProperties = null, IEnumerable<string> ExcludeProperties = null) where T : IRelmModel
+        public static ICollection<dynamic> GenerateDTO<T>(this ICollection<T> BaseObjects, ICollection<string> IncludeProperties = null, ICollection<string> ExcludeProperties = null) where T : IRelmModel
         {
-            return BaseObjects.Select(x => x.GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties));
+            return BaseObjects.Select(x => x.GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties)).ToList();
         }
 
         public static KeyValuePair<TKey, TValue> GetEntry<TKey, TValue>

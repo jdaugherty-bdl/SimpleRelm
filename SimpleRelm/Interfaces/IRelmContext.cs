@@ -19,5 +19,7 @@ namespace SimpleRelm.Interfaces
         IRelmDataSet<T> GetDataSetType<T>(bool throwException) where T : IRelmModel, new();
         IRelmDataSetBase GetDataSetType(Type dataSetType);
         IRelmDataSetBase GetDataSetType(Type dataSetType, bool throwException);
+
+        void CommitTransaction();
     }
 }

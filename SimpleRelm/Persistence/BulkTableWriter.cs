@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using SimpleRelm.Attributes;
+using SimpleRelm.Interfaces;
 using SimpleRelm.RelmInternal.Extensions;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.RelmInternal.Models;
@@ -58,6 +59,13 @@ namespace SimpleRelm.Persistence
         internal BulkTableWriter(MySqlConnection ExistingConnection, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
         {
             this.ExistingConnection = ExistingConnection;
+
+            CommonSetup(InsertQuery, UseTransaction, ThrowException, SqlTransaction, false);
+        }
+
+        internal BulkTableWriter(IRelmContext relmContext, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = false)
+        {
+            this.ExistingConnection = relmContext.ContextOptions.DatabaseConnection;
 
             CommonSetup(InsertQuery, UseTransaction, ThrowException, SqlTransaction, false);
         }

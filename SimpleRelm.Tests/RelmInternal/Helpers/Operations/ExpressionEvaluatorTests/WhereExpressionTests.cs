@@ -228,7 +228,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         }
 
         [Fact]
-        public void TestExpressionEvaluatorWhere_CompoundBuild()
+        public void TestExpressionEvaluatorWhere_CompoundBuild_NotEquals()
         {
             // Arrange
             var expectedIds = new List<ComplexTestModel>
@@ -249,6 +249,50 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             Assert.Equal(" WHERE ( FIND_IN_SET(a.`Id`, @_Id_)    AND  a.`Test_Column_No_Attribute_Arguments` <> @_TestColumnNoAttributeArguments_ )", result);
             Assert.Equal(string.Join(",", expectedIds.Select(x => x.Id)), string.Join(",", queryParameters["@_Id_"]));
             Assert.Equal(expectedInternalId, queryParameters["@_TestColumnNoAttributeArguments_"]);
+        }
+
+        [Fact]
+        public void TestExpressionEvaluatorWhere_CompoundBuild_Select_NotNull()
+        {
+            // Arrange
+            var expectedIds = new List<ComplexTestModel>
+            { 
+                new ComplexTestModel { Id = 1 },
+                new ComplexTestModel { Id = 2 },
+                new ComplexTestModel { Id = 3 },
+                new ComplexTestModel { Id = 4 },
+            };
+
+            predicate = x => expectedIds.Select(y => y.Id).Contains(x.Id) && !string.IsNullOrWhiteSpace(x.TestColumnNoAttributeArguments);
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Where, new List<Expression> { predicate }), queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE ( FIND_IN_SET(a.`Id`, @_Id_)    AND  a.`Test_Column_No_Attribute_Arguments` IS NOT NULL )", result);
+            Assert.Equal(string.Join(",", expectedIds.Select(x => x.Id)), string.Join(",", queryParameters["@_Id_"]));
+        }
+
+        [Fact]
+        public void TestExpressionEvaluatorWhere_CompoundBuild_NotNull_Select()
+        {
+            // Arrange
+            var expectedIds = new List<ComplexTestModel>
+            { 
+                new ComplexTestModel { Id = 1 },
+                new ComplexTestModel { Id = 2 },
+                new ComplexTestModel { Id = 3 },
+                new ComplexTestModel { Id = 4 },
+            };
+
+            predicate = x => !string.IsNullOrWhiteSpace(x.TestColumnNoAttributeArguments) && expectedIds.Select(y => y.Id).Contains(x.Id);
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Where, new List<Expression> { predicate }), queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE ( a.`Test_Column_No_Attribute_Arguments` IS NOT NULL    AND  FIND_IN_SET(a.`Id`, @_Id_) )", result);
+            Assert.Equal(string.Join(",", expectedIds.Select(x => x.Id)), string.Join(",", queryParameters["@_Id_"]));
         }
     }
 }
