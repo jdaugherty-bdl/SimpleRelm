@@ -24,5 +24,8 @@ namespace SimpleRelm.Models
 
         [RelmColumn]
         public IRelmMember Member { get; set; }
+
+        public RelmModelApartment() : base() { }
+        public RelmModelApartment(DataRow ModelData, string AlternateTableName = null) : base(ModelData, AlternateTableName: AlternateTableName) { }
     }
 }

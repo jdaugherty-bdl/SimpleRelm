@@ -96,6 +96,7 @@
     <Compile Include="RelmInternal\Helpers\Operations\DataNamingHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\ExpressionEvaluator.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\FieldLoaderRegistry.cs" />
+    <Compile Include="RelmInternal\Helpers\Utilities\AssemblyHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\ExpressionUtilities.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\TableOperationsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\CoreUtilities.cs" />

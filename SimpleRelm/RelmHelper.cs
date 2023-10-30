@@ -13,6 +13,9 @@ using SimpleRelm.Interfaces;
 using SimpleRelm.Interfaces.Resolvers;
 using SimpleRelm.RelmInternal.Resolvers;
 using SimpleRelm.RelmInternal.Helpers.Connections;
+using System.Configuration;
+using System.IO;
+using SimpleRelm.RelmInternal.Helpers.Utilities;
 
 namespace SimpleRelm
 {
@@ -37,6 +40,16 @@ namespace SimpleRelm
             => DatabaseWorkHelper.HasError;
 
         public static IRelmContext CurrentContext { get; set; }
+
+        public static string RootLoggingDirectory
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings.AllKeys.Contains("EnergyStarQpx_LoggingDir")
+                    ? ConfigurationManager.AppSettings["EnergyStarQpx_LoggingDir"]
+                    : Path.GetDirectoryName((new Uri(AssemblyHelper.GetEntryAssembly().CodeBase)).AbsolutePath); // Assembly.GetExecutingAssembly()
+            }
+        }
 
         //***************** Connections *****************//
 
@@ -489,7 +502,6 @@ namespace SimpleRelm
         public static void StandardConnectionWrapper(Enum ConnectionType, Action<MySqlConnection, MySqlTransaction> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
             => StandardConnectionHelper.StandardConnectionWrapper(ConnectionType, ActionWrapper, ExceptionHandler);
 
-        /*
         /// <summary>
         /// Performs a supplied action as wrapped in an auto-generated connection & transaction
         /// </summary>
@@ -506,7 +518,6 @@ namespace SimpleRelm
         /// <returns>An object with a type of <typeparamref name="T"/></returns>
         public static T StandardConnectionWrapper<T>(Func<MySqlConnection, MySqlTransaction, T> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
             => StandardConnectionHelper.StandardConnectionWrapper<T>(ActionWrapper, ExceptionHandler);
-        */
 
         /// <summary>
         /// Performs a supplied action as wrapped in an auto-generated connection & transaction

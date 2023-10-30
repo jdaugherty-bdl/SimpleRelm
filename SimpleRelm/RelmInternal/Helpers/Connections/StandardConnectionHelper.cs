@@ -23,7 +23,6 @@ namespace SimpleRelm.RelmInternal.Helpers.Connections
                 }, ExceptionHandler: ExceptionHandler);
         }
 
-        /*
         public static void StandardConnectionWrapper(Action<MySqlConnection, MySqlTransaction> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
         {
             StandardConnectionWrapper((conn, transaction) =>
@@ -42,9 +41,8 @@ namespace SimpleRelm.RelmInternal.Helpers.Connections
         /// <returns>An object with a type of <typeparamref name="T"/></returns>
         public static T StandardConnectionWrapper<T>(Func<MySqlConnection, MySqlTransaction, T> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
         {
-            return StandardConnectionWrapper((Enum)0, ActionWrapper, ExceptionHandler: ExceptionHandler);
+            return StandardConnectionWrapper((Enum)(object)0, ActionWrapper, ExceptionHandler: ExceptionHandler);
         }
-        */
 
         /// <summary>
         /// Performs a supplied action as wrapped in an auto-generated connection & transaction
