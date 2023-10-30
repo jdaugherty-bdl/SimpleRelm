@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleRelm.RelmInternal.Extensions
+namespace SimpleRelm.Extensions
 {
     public static class ListExtensions
     {
