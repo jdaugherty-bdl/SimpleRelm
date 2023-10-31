@@ -22,7 +22,7 @@ using static SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator;
 
 namespace SimpleRelm.Models
 {
-    public class RelmDataSet<T> : ICollection<T>, IRelmDataSet<T> where T : RelmModel, new()
+    public class RelmDataSet<T> : ICollection<T>, IRelmDataSet<T> where T : IRelmModel, new()
     {
         public bool Modified { get; set; }
 

@@ -531,7 +531,7 @@ namespace SimpleRelm
         public static T StandardConnectionWrapper<T>(Enum ConnectionType, Func<MySqlConnection, MySqlTransaction, T> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
             => StandardConnectionHelper.StandardConnectionWrapper<T>(ConnectionType, ActionWrapper, ExceptionHandler);
 
-        public static T LoadForeignKey<T>(T target, Expression<Func<T, object>> predicate) where T : RelmModel, new()
+        public static T LoadForeignKey<T, R>(T target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
             => new ForeignKeyLoader<T>(target).LoadMyForeignKey(predicate);
     }
 }

@@ -29,9 +29,9 @@ namespace SimpleRelm.Extensions
             return DataOutputOperations.BulkTableWrite<T>(relmContext.ContextOptions.DatabaseConnection, DbModelData, TableName, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType, BatchSize, DatabaseName);
         }
 
-        public static T LoadForeignKeys<T>(this IEnumerable<T> DbModelData, Expression<Func<T, object>> predicate) where T : IRelmModel
+        public static T LoadForeignKeys<T>(this IEnumerable<T> DbModelData, Expression<Func<T, object>> predicate) where T : IRelmModel, new()
         {
-            return new ForeignKeyLoader<IEnumerable<T>>(DbModelData).LoadMyForeignKey(predicate);
+            return new ForeignKeyLoader<T>(DbModelData.ToList()).LoadMyForeignKey(predicate);
         }
 
         public static ICollection<T> FlattenTreeObject<T>(this IEnumerable<T> EnumerableList, Func<T, ICollection<T>> GetChildrenFunction)

@@ -1,4 +1,5 @@
-﻿using SimpleRelm.Interfaces;
+﻿using MySql.Data.MySqlClient;
+using SimpleRelm.Interfaces;
 using SimpleRelm.Models;
 using SimpleRelm.Options;
 using SimpleRelm.Tests.Interfaces;
@@ -14,6 +15,7 @@ namespace SimpleRelm.Tests.TestModels
     {
         public ComplexTestContext(string? connectionString) : base(connectionString, autoOpenConnection: false) { }
         public ComplexTestContext(RelmContextOptionsBuilder? options) : base(options, autoOpenConnection: false) { }
+        public ComplexTestContext(MySqlConnection connection, bool autoOpenConnection = true, bool autoOpenTransaction = false) : base(connection, autoOpenConnection, autoOpenTransaction) { }
 
         public virtual IRelmDataSet<ComplexTestModel>? ComplexTestModels { get; set; }
         public virtual IRelmDataSet<ComplexReferenceObject>? ComplexReferenceObjects { get; set; }
