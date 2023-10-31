@@ -1,4 +1,5 @@
 ﻿using SimpleRelm.Models;
+using SimpleRelm.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,15 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
     internal class ForeignKeyLoader<T> where T : RelmModel, new()
     {
         private readonly ICollection<T> targetObjects;
+        private readonly RelmContextOptionsBuilder contextOptionsBuilder;
 
-        public ForeignKeyLoader(T targetObject) 
+        public ForeignKeyLoader(T targetObject, RelmContextOptionsBuilder relmContextOptionsBuilder) 
         {
             this.targetObjects = new[] { targetObject };
+            contextOptionsBuilder = relmContextOptionsBuilder;
         }
 
-        public ForeignKeyLoader(ICollection<T> targetObjects)
+        public ForeignKeyLoader(ICollection<T> targetObjects, )
         {
             this.targetObjects = targetObjects;
         }

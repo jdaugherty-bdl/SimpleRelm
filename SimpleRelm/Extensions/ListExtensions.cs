@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Models;
+using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
@@ -29,9 +30,9 @@ namespace SimpleRelm.Extensions
             return DataOutputOperations.BulkTableWrite<T>(relmContext.ContextOptions.DatabaseConnection, DbModelData, TableName, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType, BatchSize, DatabaseName);
         }
 
-        public static T LoadForeignKeys<T>(this IEnumerable<T> DbModelData, Expression<Func<T, object>> predicate) where T : IRelmModel
+        public static T LoadForeignKeys<T>(this IEnumerable<T> DbModelData, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, object>> predicate) where T : IRelmModel
         {
-            return new ForeignKeyLoader<IEnumerable<T>>(DbModelData).LoadMyForeignKey(predicate);
+            return new ForeignKeyLoader<IEnumerable<T>>(DbModelData, ).LoadMyForeignKey(predicate);
         }
 
         public static ICollection<T> FlattenTreeObject<T>(this IEnumerable<T> EnumerableList, Func<T, ICollection<T>> GetChildrenFunction)
