@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.RelmInternal.Helpers.Utilities
 {
-    internal class ForeignObjectsLoader<T> where T : RelmModel, new()
+    internal class ForeignObjectsLoader<T> where T : IRelmModel, new()
     {
         private ICollection<T> _items;
         private readonly IRelmContext _currentContext;
@@ -65,6 +65,8 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                 if (!typeof(ICollection<>).MakeGenericType(referenceType).IsAssignableFrom(referenceProperty.Type))
                     throw new InvalidOperationException($"Reference property type must be compatible with ICollection<{referenceType}>.");
             }
+            else if (referenceType.IsGenericType)
+                referenceType = referenceType.GetGenericArguments().FirstOrDefault();
 
             // if foreign key attribute on the current item's property, then we have principal resolution
             var principalReslolutionForeignKey = referenceProperty.Member.GetCustomAttribute<RelmForeignKey>();
