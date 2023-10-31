@@ -13,6 +13,7 @@ namespace SimpleRelm.Tests.TestModels
 {
     public class ComplexTestContext : RelmContext, IRelmContext_TESTING
     {
+        public ComplexTestContext() : base("name=SimpleRelmMySql", autoOpenConnection: false) { }
         public ComplexTestContext(string? connectionString) : base(connectionString, autoOpenConnection: false) { }
         public ComplexTestContext(RelmContextOptionsBuilder? options) : base(options, autoOpenConnection: false) { }
         public ComplexTestContext(MySqlConnection connection, bool autoOpenConnection = true, bool autoOpenTransaction = false) : base(connection, autoOpenConnection, autoOpenTransaction) { }

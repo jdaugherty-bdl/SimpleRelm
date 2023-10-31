@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
+using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Models;
+using SimpleRelm.Options;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,18 +19,21 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
     internal class ForeignKeyLoader<T> where T : IRelmModel, new()
     {
         private readonly ICollection<T> targetObjects;
+        private readonly RelmContextOptionsBuilder contextOptions;
 
-        public ForeignKeyLoader(T targetObject) 
+        public ForeignKeyLoader(T targetObject, RelmContextOptionsBuilder contextOptions) 
         {
             this.targetObjects = new[] { targetObject };
+            this.contextOptions = contextOptions;
         }
 
-        public ForeignKeyLoader(ICollection<T> targetObjects)
+        public ForeignKeyLoader(ICollection<T> targetObjects, RelmContextOptionsBuilder contextOptions)
         {
             this.targetObjects = targetObjects;
+            this.contextOptions = contextOptions;
         }
 
-        public T LoadMyForeignKey<R>(Expression<Func<T, R>> predicate)
+        public ICollection<T> LoadMyForeignKey<R>(Expression<Func<T, R>> predicate)
         {
             // get all types in the context assembly and look for one that inherits from RelmContext
             var relevantContext = Assembly
@@ -45,13 +50,31 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             var relevantProperty = relevantDataSet.PropertyType.GetGenericArguments().FirstOrDefault().GetProperties().FirstOrDefault(x => x.PropertyType == typeof(T))
                 ?? relevantDataSet.PropertyType.GetGenericArguments().FirstOrDefault().GetProperties().FirstOrDefault(x => x.PropertyType.GenericTypeArguments.Any(y => y == typeof(T)));
 
-            var currentContext = (IRelmContext)Activator.CreateInstance(relevantContext, new object[] { new MySqlConnection(), false, false });
+            var currentContext = (IRelmContext)Activator.CreateInstance(relevantContext, new object[] { contextOptions });
 
-            var objectsLoader = new ForeignObjectsLoader<T>(targetObjects, currentContext);
 
-            objectsLoader.LoadForeignObjects(predicate.Body);
+            var member = predicate.Body;
+            var referenceProperty = member as MemberExpression
+                ?? throw new InvalidOperationException("Collection must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
 
-            return new T();
+            var referenceType = referenceProperty.Type;
+            var dataLoaderAttribute = referenceProperty.Member.GetCustomAttribute<RelmDataLoader>();
+
+            if (dataLoaderAttribute != null)
+            {
+                var currentDataSet = relevantContext.GetProperty(relevantDataSet.Name, typeof(IRelmDataSet<T>));
+                var ddd = (IRelmDataSet<T>)relevantDataSet.GetValue(currentContext);
+
+                var mmm = ddd.Load();
+            }
+            else
+            {
+                var objectsLoader = new ForeignObjectsLoader<T>(targetObjects, currentContext);
+
+                objectsLoader.LoadForeignObjects(predicate.Body);
+            }
+
+            return new T[] { };
         }
     }
 }

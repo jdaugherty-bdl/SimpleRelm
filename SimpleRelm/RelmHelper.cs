@@ -18,6 +18,7 @@ using System.IO;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using SimpleRelm.Models;
 using System.Linq.Expressions;
+using SimpleRelm.Options;
 
 namespace SimpleRelm
 {
@@ -531,7 +532,28 @@ namespace SimpleRelm
         public static T StandardConnectionWrapper<T>(Enum ConnectionType, Func<MySqlConnection, MySqlTransaction, T> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
             => StandardConnectionHelper.StandardConnectionWrapper<T>(ConnectionType, ActionWrapper, ExceptionHandler);
 
-        public static T LoadForeignKey<T, R>(T target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
-            => new ForeignKeyLoader<T>(target).LoadMyForeignKey(predicate);
+        /// <summary>
+        /// Loads the results of a foreign key or data loader field into the relevant properties of the supplied target.
+        /// </summary>
+        /// <typeparam name="T">A RelmModel object type to load the data for.</typeparam>
+        /// <typeparam name="R">The field type of the target property.</typeparam>
+        /// <param name="relmContextOptionsBuilder">The connection options to use when retrieving data.</param>
+        /// <param name="target">The object to load the data onto.</param>
+        /// <param name="predicate">A member expression indicating which field to load independently.</param>
+        /// <returns>The target object with the relevant data loaded.</returns>
+        public static T LoadForeignKey<T, R>(RelmContextOptionsBuilder relmContextOptionsBuilder, T target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
+            => new ForeignKeyLoader<T>(target, relmContextOptionsBuilder).LoadMyForeignKey(predicate).FirstOrDefault();
+
+        /// <summary>
+        /// Loads the results of a foreign key or data loader field into the relevant properties of the supplied target.
+        /// </summary>
+        /// <typeparam name="T">A RelmModel object type to load the data for.</typeparam>
+        /// <typeparam name="R">The field type of the target property.</typeparam>
+        /// <param name="relmContextOptionsBuilder">The connection options to use when retrieving data.</param>
+        /// <param name="target">An ICollection of objects to load the data onto.</param>
+        /// <param name="predicate">A member expression indicating which field to load independently.</param>
+        /// <returns>The ICollection of target objects with the relevant data loaded.</returns>
+        public static ICollection<T> LoadForeignKey<T, R>(RelmContextOptionsBuilder relmContextOptionsBuilder, ICollection<T> target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
+            => new ForeignKeyLoader<T>(target, relmContextOptionsBuilder).LoadMyForeignKey(predicate);
     }
 }
