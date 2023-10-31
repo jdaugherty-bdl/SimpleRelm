@@ -1,4 +1,5 @@
-﻿using SimpleRelm.Tests.TestModels;
+﻿using SimpleRelm.Options;
+using SimpleRelm.Tests.TestModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,10 @@ namespace SimpleRelm.Tests
             };
 
             // Act
-            var ddd = RelmHelper.LoadForeignKey(complexTestModel, x => x.TestFieldBoolean);
+            var ddd = RelmHelper.LoadForeignKey(null, complexTestModel, x => x.TestFieldBoolean);
 
             // Assert
+            Assert.True(complexTestModel.TestFieldBoolean);
         }
     }
 }

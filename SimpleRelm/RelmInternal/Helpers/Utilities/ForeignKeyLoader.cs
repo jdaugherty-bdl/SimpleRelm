@@ -3,6 +3,7 @@ using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Models;
 using SimpleRelm.Options;
+using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -33,9 +34,16 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             this.contextOptions = contextOptions;
         }
 
-        public ICollection<T> LoadMyForeignKey<R>(Expression<Func<T, R>> predicate)
+        internal ICollection<T> LoadForeignKey<R>(Expression<Func<T, R>> predicate)
         {
             // get all types in the context assembly and look for one that inherits from RelmContext
+            var member = predicate.Body;
+            var referenceProperty = member as MemberExpression
+                ?? throw new InvalidOperationException("Collection or property must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
+
+            var referenceType = referenceProperty.Type;
+            var dataLoaderAttribute = referenceProperty.Member.GetCustomAttribute<RelmDataLoader>();
+
             var relevantContext = Assembly
                 .GetAssembly(typeof(T))
                 .GetTypes()
@@ -53,28 +61,11 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             var currentContext = (IRelmContext)Activator.CreateInstance(relevantContext, new object[] { contextOptions });
 
 
-            var member = predicate.Body;
-            var referenceProperty = member as MemberExpression
-                ?? throw new InvalidOperationException("Collection must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
+            var objectsLoader = new ForeignObjectsLoader<T>(targetObjects, currentContext);
 
-            var referenceType = referenceProperty.Type;
-            var dataLoaderAttribute = referenceProperty.Member.GetCustomAttribute<RelmDataLoader>();
+            objectsLoader.LoadForeignObjects(predicate.Body);
 
-            if (dataLoaderAttribute != null)
-            {
-                var currentDataSet = relevantContext.GetProperty(relevantDataSet.Name, typeof(IRelmDataSet<T>));
-                var ddd = (IRelmDataSet<T>)relevantDataSet.GetValue(currentContext);
-
-                var mmm = ddd.Load();
-            }
-            else
-            {
-                var objectsLoader = new ForeignObjectsLoader<T>(targetObjects, currentContext);
-
-                objectsLoader.LoadForeignObjects(predicate.Body);
-            }
-
-            return new T[] { };
+            return targetObjects;
         }
     }
 }

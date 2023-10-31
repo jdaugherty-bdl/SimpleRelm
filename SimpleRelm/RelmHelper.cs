@@ -542,7 +542,7 @@ namespace SimpleRelm
         /// <param name="predicate">A member expression indicating which field to load independently.</param>
         /// <returns>The target object with the relevant data loaded.</returns>
         public static T LoadForeignKey<T, R>(RelmContextOptionsBuilder relmContextOptionsBuilder, T target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
-            => new ForeignKeyLoader<T>(target, relmContextOptionsBuilder).LoadMyForeignKey(predicate).FirstOrDefault();
+            => new ForeignKeyLoader<T>(target, relmContextOptionsBuilder).LoadForeignKey(predicate).FirstOrDefault();
 
         /// <summary>
         /// Loads the results of a foreign key or data loader field into the relevant properties of the supplied target.
@@ -554,6 +554,12 @@ namespace SimpleRelm
         /// <param name="predicate">A member expression indicating which field to load independently.</param>
         /// <returns>The ICollection of target objects with the relevant data loaded.</returns>
         public static ICollection<T> LoadForeignKey<T, R>(RelmContextOptionsBuilder relmContextOptionsBuilder, ICollection<T> target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
-            => new ForeignKeyLoader<T>(target, relmContextOptionsBuilder).LoadMyForeignKey(predicate);
+            => new ForeignKeyLoader<T>(target, relmContextOptionsBuilder).LoadForeignKey(predicate);
+
+        public static T LoadField<T, R>(T target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
+            => new DataLoaderHelper<T>(target).LoadField(predicate).FirstOrDefault();
+
+        public static ICollection<T> LoadField<T, R>(ICollection<T> target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
+            => new DataLoaderHelper<T>(target).LoadField(predicate);
     }
 }

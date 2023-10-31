@@ -2,6 +2,7 @@
 using SimpleRelm.Interfaces;
 using SimpleRelm.Models;
 using SimpleRelm.Options;
+using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
@@ -30,9 +31,14 @@ namespace SimpleRelm.Extensions
             return DataOutputOperations.BulkTableWrite<T>(relmContext.ContextOptions.DatabaseConnection, DbModelData, TableName, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType, BatchSize, DatabaseName);
         }
 
-        public static T LoadForeignKeys<T>(this IEnumerable<T> DbModelData, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, object>> predicate) where T : IRelmModel
+        public static ICollection<T> LoadForeignKeys<T, R>(this ICollection<T> DbModelData, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
         {
-            return new ForeignKeyLoader<IEnumerable<T>>(DbModelData, ).LoadMyForeignKey(predicate);
+            return new ForeignKeyLoader<T>(DbModelData, relmContextOptionsBuilder).LoadForeignKey(predicate);
+        }
+
+        public static ICollection<T> LoadFields<T, R>(this ICollection<T> DbModelData, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
+        {
+            return new DataLoaderHelper<T>(DbModelData).LoadField(predicate);
         }
 
         public static ICollection<T> FlattenTreeObject<T>(this IEnumerable<T> EnumerableList, Func<T, ICollection<T>> GetChildrenFunction)

@@ -164,8 +164,12 @@ namespace SimpleRelm.Models
                 }
 
                 // execute all field loaders
+                var fieldHelper = new FieldLoaderHelper<T>(_items);
                 foreach (var fieldLoader in _fieldDataLoaders)
                 {
+                    fieldHelper.LoadData(fieldLoader);
+                }
+                /*
                     var referenceKeys = new ForeignObjectsLoader<T>().GetReferenceKeys(fieldLoader.KeyFields);
 
                     // get relevant data for items in the current data set all at once to reduce number of database calls
@@ -207,6 +211,7 @@ namespace SimpleRelm.Models
                         }
                     }
                 }
+                */
 
                 // load all references
                 if (_dataLoader.LastCommandsExecuted?.ContainsKey(Command.Reference) ?? false)

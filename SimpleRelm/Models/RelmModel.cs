@@ -3,7 +3,9 @@ using Newtonsoft.Json;
 using SimpleRelm.Attributes;
 using SimpleRelm.Extensions;
 using SimpleRelm.Interfaces;
+using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Extensions;
+using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
@@ -343,9 +345,18 @@ namespace SimpleRelm.Models
             return (RelmModel)this.MemberwiseClone();
         }
 
-        public RelmModel LoadForeignKey(Expression<Func<RelmModel, object>> predicate)
+        public RelmModel LoadForeignKey<S>(RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<RelmModel, S>> predicate)
         {
-            return new ForeignKeyLoader<RelmModel>(this).LoadMyForeignKey(predicate);
+            return new ForeignKeyLoader<RelmModel>(this, relmContextOptionsBuilder)
+                .LoadForeignKey(predicate)
+                ?.FirstOrDefault();
+        }
+
+        public RelmModel LoadField<S>(Expression<Func<RelmModel, S>> predicate)
+        {
+            return new DataLoaderHelper<RelmModel>(this)
+                .LoadField(predicate)
+                ?.FirstOrDefault();
         }
     }
 }
