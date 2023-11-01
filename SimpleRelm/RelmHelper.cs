@@ -541,7 +541,7 @@ namespace SimpleRelm
         /// <param name="target">The object to load the data onto.</param>
         /// <param name="predicate">A member expression indicating which field to load independently.</param>
         /// <returns>The target object with the relevant data loaded.</returns>
-        public static T LoadForeignKey<T, R>(RelmContextOptionsBuilder relmContextOptionsBuilder, T target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
+        public static T LoadForeignKeyField<T, R>(RelmContextOptionsBuilder relmContextOptionsBuilder, T target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
             => new ForeignKeyLoader<T>(target, relmContextOptionsBuilder).LoadForeignKey(predicate).FirstOrDefault();
 
         /// <summary>
@@ -553,13 +553,13 @@ namespace SimpleRelm
         /// <param name="target">An ICollection of objects to load the data onto.</param>
         /// <param name="predicate">A member expression indicating which field to load independently.</param>
         /// <returns>The ICollection of target objects with the relevant data loaded.</returns>
-        public static ICollection<T> LoadForeignKey<T, R>(RelmContextOptionsBuilder relmContextOptionsBuilder, ICollection<T> target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
+        public static ICollection<T> LoadForeignKeyField<T, R>(RelmContextOptionsBuilder relmContextOptionsBuilder, ICollection<T> target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
             => new ForeignKeyLoader<T>(target, relmContextOptionsBuilder).LoadForeignKey(predicate);
 
-        public static T LoadField<T, R>(T target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
+        public static T LoadDataLoaderField<T, R>(T target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
             => new DataLoaderHelper<T>(target).LoadField(predicate).FirstOrDefault();
 
-        public static ICollection<T> LoadField<T, R>(ICollection<T> target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
+        public static ICollection<T> LoadDataLoaderField<T, R>(ICollection<T> target, Expression<Func<T, R>> predicate) where T : RelmModel, new()
             => new DataLoaderHelper<T>(target).LoadField(predicate);
     }
 }

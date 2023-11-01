@@ -20,9 +20,12 @@ namespace SimpleRelm.Tests
             };
 
             // Act
-            var ddd = RelmHelper.LoadForeignKey(null, complexTestModel, x => x.TestFieldBoolean);
+            RelmHelper.LoadDataLoaderField(complexTestModel, x => x.TestFieldBoolean);
+
+            //complexTestModel.LoadDataLoaderField(x => x.TestFieldBoolean);
 
             // Assert
+            Assert.NotNull(complexTestModel.TestFieldBoolean);
             Assert.True(complexTestModel.TestFieldBoolean);
         }
     }

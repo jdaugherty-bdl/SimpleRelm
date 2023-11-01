@@ -345,18 +345,34 @@ namespace SimpleRelm.Models
             return (RelmModel)this.MemberwiseClone();
         }
 
-        public RelmModel LoadForeignKey<S>(RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<RelmModel, S>> predicate)
+        public IRelmModel LoadForeignKeyField<S>(RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<IRelmModel, S>> predicate)
         {
-            return new ForeignKeyLoader<RelmModel>(this, relmContextOptionsBuilder)
+            /*
+            //public T LoadForeignKeyField<T, S>(RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new()
+            return new ForeignKeyLoader<T>(this, relmContextOptionsBuilder)
                 .LoadForeignKey(predicate)
                 ?.FirstOrDefault();
+            */
+            var loaderType = typeof(ForeignKeyLoader<>).MakeGenericType(this.GetType());
+            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { this, relmContextOptionsBuilder });
+            var loaderResult = loaderType.GetMethod(nameof(ForeignKeyLoader<RelmModel>.LoadForeignKey)).Invoke(loaderInstance, new object[] { predicate });
+
+            return ((ICollection<IRelmModel>)loaderResult).FirstOrDefault();
         }
 
-        public RelmModel LoadField<S>(Expression<Func<RelmModel, S>> predicate)
+        public IRelmModel LoadDataLoaderField<S>(Expression<Func<IRelmModel, S>> predicate)
         {
-            return new DataLoaderHelper<RelmModel>(this)
+            /*
+            //public T LoadDataLoaderField<T, S>(Expression<Func<T, S>> predicate) where T : IRelmModel, new()
+            return new DataLoaderHelper<T>(this)
                 .LoadField(predicate)
                 ?.FirstOrDefault();
+            */
+            var loaderType = typeof(DataLoaderHelper<>).MakeGenericType(this.GetType());
+            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { this });
+            var loaderResult = loaderType.GetMethod(nameof(DataLoaderHelper<RelmModel>.LoadField)).Invoke(loaderInstance, new object[] { predicate });
+
+            return ((ICollection<IRelmModel>)loaderResult).FirstOrDefault();
         }
     }
 }

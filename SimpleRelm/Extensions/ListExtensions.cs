@@ -31,12 +31,12 @@ namespace SimpleRelm.Extensions
             return DataOutputOperations.BulkTableWrite<T>(relmContext.ContextOptions.DatabaseConnection, DbModelData, TableName, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType, BatchSize, DatabaseName);
         }
 
-        public static ICollection<T> LoadForeignKeys<T, R>(this ICollection<T> DbModelData, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
+        public static ICollection<T> LoadForeignKeyField<T, R>(this ICollection<T> DbModelData, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
         {
             return new ForeignKeyLoader<T>(DbModelData, relmContextOptionsBuilder).LoadForeignKey(predicate);
         }
 
-        public static ICollection<T> LoadFields<T, R>(this ICollection<T> DbModelData, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
+        public static ICollection<T> LoadDataLoaderField<T, R>(this ICollection<T> DbModelData, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
         {
             return new DataLoaderHelper<T>(DbModelData).LoadField(predicate);
         }
