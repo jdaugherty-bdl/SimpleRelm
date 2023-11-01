@@ -345,6 +345,7 @@ namespace SimpleRelm.Models
             return (RelmModel)this.MemberwiseClone();
         }
 
+        /*
         public IRelmModel LoadForeignKeyField<S>(RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<IRelmModel, S>> predicate)
         {
             /*
@@ -352,7 +353,7 @@ namespace SimpleRelm.Models
             return new ForeignKeyLoader<T>(this, relmContextOptionsBuilder)
                 .LoadForeignKey(predicate)
                 ?.FirstOrDefault();
-            */
+            * /
             var loaderType = typeof(ForeignKeyLoader<>).MakeGenericType(this.GetType());
             var loaderInstance = Activator.CreateInstance(loaderType, new object[] { this, relmContextOptionsBuilder });
             var loaderResult = loaderType.GetMethod(nameof(ForeignKeyLoader<RelmModel>.LoadForeignKey)).Invoke(loaderInstance, new object[] { predicate });
@@ -367,12 +368,13 @@ namespace SimpleRelm.Models
             return new DataLoaderHelper<T>(this)
                 .LoadField(predicate)
                 ?.FirstOrDefault();
-            */
+            * /
             var loaderType = typeof(DataLoaderHelper<>).MakeGenericType(this.GetType());
             var loaderInstance = Activator.CreateInstance(loaderType, new object[] { this });
             var loaderResult = loaderType.GetMethod(nameof(DataLoaderHelper<RelmModel>.LoadField)).Invoke(loaderInstance, new object[] { predicate });
 
             return ((ICollection<IRelmModel>)loaderResult).FirstOrDefault();
         }
+        */
     }
 }
