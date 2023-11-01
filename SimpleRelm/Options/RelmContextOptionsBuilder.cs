@@ -184,6 +184,18 @@ namespace SimpleRelm.Options
 
                 return true;
             }
+            else if (_optionsBuilderType == OptionsBuilderTypes.OpenConnection)
+            {
+                if (DatabaseConnection == null)
+                {
+                    if (throwExceptions)
+                        throw new ArgumentNullException(nameof(DatabaseConnection), "Database connection cannot be null.");
+                    else
+                        return false;
+                }
+
+                return true;
+            }
             else if (_optionsBuilderType == OptionsBuilderTypes.ConnectionString)
             {
                 if (string.IsNullOrEmpty(DatabaseServer))

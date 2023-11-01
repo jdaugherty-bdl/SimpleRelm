@@ -10,6 +10,7 @@ using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
@@ -34,7 +35,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             this.contextOptions = contextOptions;
         }
 
-        internal ICollection<T> LoadForeignKey<R>(Expression<Func<T, R>> predicate)
+        internal ICollection<T> LoadForeignKey<R>(Expression<Func<T, R>> predicate, IRelmDataLoader<T> customDataLoader = null)
         {
             // get all types in the context assembly and look for one that inherits from RelmContext
             var member = predicate.Body;
@@ -60,6 +61,19 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
             var currentContext = (IRelmContext)Activator.CreateInstance(relevantContext, new object[] { contextOptions });
 
+            if (customDataLoader != null)
+            {
+                var foreignDataSet = relevantContext.GetProperties().FirstOrDefault(x => x.PropertyType == typeof(IRelmDataSet<>).MakeGenericType(predicate.ReturnType));
+
+                relevantDataSet
+                    .PropertyType
+                    .GetMethod(nameof(IRelmDataSet<T>.SetDataLoader))
+                    .Invoke(relevantDataSet.GetValue(currentContext), new object[] { customDataLoader });
+                /*
+                currentContext.SetDataLoader(customDataLoader);
+                context.ComplexTestModels!.SetDataLoader(modelDataLoader.Object);
+                */
+            }
 
             var objectsLoader = new ForeignObjectsLoader<T>(targetObjects, currentContext);
 

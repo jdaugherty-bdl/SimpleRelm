@@ -169,49 +169,6 @@ namespace SimpleRelm.Models
                 {
                     fieldHelper.LoadData(fieldLoader);
                 }
-                /*
-                    var referenceKeys = new ForeignObjectsLoader<T>().GetReferenceKeys(fieldLoader.KeyFields);
-
-                    // get relevant data for items in the current data set all at once to reduce number of database calls
-                    var fieldData = fieldLoader.GetFieldData(_items.Select(x => x.GetType().GetProperties().Intersect(referenceKeys).Select(y => y.GetValue(x)).ToArray()).ToList());
-
-                    // set the relevant field value on all items in the current data set
-                    foreach (var item in _items)
-                    {
-                        var itemValues = item.GetType().GetProperties().Intersect(referenceKeys).Select(y => y.GetValue(item)).ToArray();
-
-                        if (fieldData.Keys.Any(x => x.All(y => itemValues.Contains(y))))
-                        {
-                            var fieldValue = fieldData.FirstOrDefault(x => x.Key.All(y => itemValues.Contains(y))).Value;
-
-                            var setField = item.GetType().GetProperty(fieldLoader.FieldName);
-                            if (setField != null && setField.PropertyType.IsGenericType && setField.PropertyType.GetGenericTypeDefinition() == typeof(ICollection<>))
-                            {
-                                var genericType = setField.PropertyType.GetGenericArguments()[0];
-
-                                if (fieldValue is IEnumerable)
-                                {
-                                    var xlist = (fieldValue as IEnumerable)?.Cast<object>()?.ToList();
-                                    var castMethod = typeof(Enumerable).GetMethod(nameof(Enumerable.Cast)).MakeGenericMethod(genericType);
-                                    var toListMethod = typeof(Enumerable).GetMethod(nameof(Enumerable.ToList)).MakeGenericMethod(genericType);
-                                    var castedList = toListMethod.Invoke(null, new object[] { castMethod.Invoke(null, new object[] { xlist }) });
-
-                                    setField.SetValue(item, castedList);
-                                }
-                                else
-                                {
-                                    setField.SetValue(item, fieldValue);
-                                }
-                            }
-                            else
-                            {
-                                // Handle cases where setField is not a List<T> or is null
-                                setField?.SetValue(item, fieldValue);
-                            }
-                        }
-                    }
-                }
-                */
 
                 // load all references
                 if (_dataLoader.LastCommandsExecuted?.ContainsKey(Command.Reference) ?? false)
