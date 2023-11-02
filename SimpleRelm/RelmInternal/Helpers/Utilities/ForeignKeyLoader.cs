@@ -63,7 +63,11 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
             if (customDataLoader != null)
             {
-                var foreignDataSet = relevantContext.GetProperties().FirstOrDefault(x => x.PropertyType == typeof(IRelmDataSet<>).MakeGenericType(predicate.ReturnType));
+                var returnType = predicate.ReturnType;
+                if (returnType.IsGenericType && returnType.GetGenericTypeDefinition() == typeof(ICollection<>))
+                    returnType = returnType.GetGenericArguments()[0];
+
+                var foreignDataSet = relevantContext.GetProperties().FirstOrDefault(x => x.PropertyType == typeof(IRelmDataSet<>).MakeGenericType(returnType));
 
                 foreignDataSet
                     .PropertyType
