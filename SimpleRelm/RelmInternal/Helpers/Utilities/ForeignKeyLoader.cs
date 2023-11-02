@@ -35,7 +35,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             this.contextOptions = contextOptions;
         }
 
-        internal ICollection<T> LoadForeignKey<R>(Expression<Func<T, R>> predicate, IRelmDataLoader<T> customDataLoader = null)
+        internal ICollection<T> LoadForeignKey<R, S>(Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader = null) where S : IRelmModel, new()
         {
             // get all types in the context assembly and look for one that inherits from RelmContext
             var member = predicate.Body;
@@ -65,10 +65,10 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             {
                 var foreignDataSet = relevantContext.GetProperties().FirstOrDefault(x => x.PropertyType == typeof(IRelmDataSet<>).MakeGenericType(predicate.ReturnType));
 
-                relevantDataSet
+                foreignDataSet
                     .PropertyType
                     .GetMethod(nameof(IRelmDataSet<T>.SetDataLoader))
-                    .Invoke(relevantDataSet.GetValue(currentContext), new object[] { customDataLoader });
+                    .Invoke(foreignDataSet.GetValue(currentContext), new object[] { customDataLoader });
                 /*
                 currentContext.SetDataLoader(customDataLoader);
                 context.ComplexTestModels!.SetDataLoader(modelDataLoader.Object);

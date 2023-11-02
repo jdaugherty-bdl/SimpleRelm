@@ -31,9 +31,9 @@ namespace SimpleRelm.Extensions
             return DataOutputOperations.BulkTableWrite<T>(relmContext.ContextOptions.DatabaseConnection, DbModelData, TableName, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType, BatchSize, DatabaseName);
         }
 
-        public static ICollection<T> LoadForeignKeyField<T, R>(this ICollection<T> DbModelData, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
+        public static ICollection<T> LoadForeignKeyField<T, R, S>(this ICollection<T> DbModelData, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader = null) where T : IRelmModel, new() where S : IRelmModel, new()
         {
-            return new ForeignKeyLoader<T>(DbModelData, relmContextOptionsBuilder).LoadForeignKey(predicate);
+            return new ForeignKeyLoader<T>(DbModelData, relmContextOptionsBuilder).LoadForeignKey(predicate, customDataLoader);
         }
 
         public static ICollection<T> LoadDataLoaderField<T, R>(this ICollection<T> DbModelData, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
