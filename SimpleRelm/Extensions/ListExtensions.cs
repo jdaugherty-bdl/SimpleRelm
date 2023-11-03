@@ -54,9 +54,9 @@ namespace SimpleRelm.Extensions
                 .ToList();
         }
 
-        public static ICollection<dynamic> GenerateDTO<T>(this IEnumerable<T> BaseObjects, ICollection<string> IncludeProperties = null, ICollection<string> ExcludeProperties = null) where T : IRelmModel
+        public static ICollection<dynamic> GenerateDTO<T>(this IEnumerable<T> BaseObjects, ICollection<string> IncludeProperties = null, ICollection<string> ExcludeProperties = null, string SourceObjectName = null, Func<IRelmModel, Dictionary<string, object>> GetAdditionalObjectProperties = null) where T : IRelmModel
         {
-            return BaseObjects.Select(x => x.GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties)).ToList();
+            return BaseObjects.Select(x => x.GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties, SourceObjectName: SourceObjectName, GetAdditionalObjectProperties: GetAdditionalObjectProperties)).ToList();
         }
 
         public static KeyValuePair<TKey, TValue> GetEntry<TKey, TValue>

@@ -52,7 +52,12 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
         internal static IEnumerable<T> GetDataObjects<T>(MySqlConnection ExistingConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null) where T : IRelmModel
         {
-            return RefinedResultsHelper.GetDataTable(ExistingConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: SqlTransaction)
+            return GetDataObjects<T>(RefinedResultsHelper.GetDataTable(ExistingConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: SqlTransaction));
+        }
+
+        internal static IEnumerable<T> GetDataObjects<T>(DataTable existingData) where T : IRelmModel
+        {
+            return existingData
                 .AsEnumerable()
                 .Select(x => x == null
                     ? default

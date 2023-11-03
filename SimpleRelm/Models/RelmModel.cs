@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using SimpleRelm.Attributes;
 using SimpleRelm.Extensions;
 using SimpleRelm.Interfaces;
+using SimpleRelm.Models.EventArguments;
 using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Extensions;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
@@ -22,6 +23,8 @@ namespace SimpleRelm.Models
 {
     public class RelmModel : IRelmModel
     {
+        public event EventHandler<DtoEventArgs> DtoTypeProcessor;
+
         [RelmColumn(PrimaryKey: true, Autonumber: true, IsNullable: false)]
         public long? Id { get; set; }
 
@@ -68,12 +71,27 @@ namespace SimpleRelm.Models
             ResetCoreAttributes();
         }
 
-        public RelmModel(RelmModel FromModel)
+        public RelmModel(IRelmModel fromModel)
         {
-            this.Active = FromModel?.Active ?? false;
-            this.InternalId = FromModel?.InternalId;
-            this.CreateDate = FromModel?.CreateDate ?? default;
-            this.LastUpdated = FromModel?.LastUpdated ?? default;
+            // surface copy all properties from the FromModel to this one
+            if (fromModel == null)
+                throw new ArgumentNullException(nameof(fromModel));
+
+            var sourceType = fromModel.GetType();
+            var targetType = this.GetType();
+
+            var sourceProperties = sourceType.GetProperties();
+            var targetProperties = targetType.GetProperties();
+
+            var targetList = targetProperties
+                .ToDictionary(x => x, x => sourceProperties.FirstOrDefault(y => y.Name == x.Name && x.CanWrite))
+                .Where(x => x.Value != null)
+                .ToList();
+
+            foreach (var target in targetList)
+            {
+                target.Key.SetValue(this, target.Value.GetValue(fromModel));
+            }
         }
 
         /// <summary>
@@ -95,14 +113,12 @@ namespace SimpleRelm.Models
             // match up all properties to columns using underscore names and populate matches with data from the row
             foreach (var underscoreName in GetUnderscoreProperties())
             {
-                //TODO: replace Contains(underscoreName.Key) both places below with "IndexOf(underscoreName.Key, StringComparison.InvariantCultureIgnoreCase) >= 0"? Not sure if we care about case.
-
                 // first do the default column names
-                if (ModelData.Table.Columns.Contains(underscoreName.Key) && !(ModelData[underscoreName.Key] is DBNull) && underscoreName.Value.Item2.SetMethod != null)
+                if (ModelData.Table.Columns.IndexOf(underscoreName.Key) >= 0 && !(ModelData[underscoreName.Key] is DBNull) && underscoreName.Value.Item2.SetMethod != null)
                     underscoreName.Value.Item2.SetValue(this, GetValueData(underscoreName.Key, underscoreName.Value.Item2.PropertyType, ModelData));
 
                 // then do the alternate table names
-                if (ModelData.Table.Columns.Contains($"{underscoreName.Key}_{alternateTableName}") && !(ModelData[$"{underscoreName.Key}_{alternateTableName}"] is DBNull) && underscoreName.Value.Item2.SetMethod != null)
+                if (ModelData.Table.Columns.IndexOf($"{underscoreName.Key}_{alternateTableName}") >= 0 && !(ModelData[$"{underscoreName.Key}_{alternateTableName}"] is DBNull) && underscoreName.Value.Item2.SetMethod != null)
                     underscoreName.Value.Item2.SetValue(this, GetValueData($"{underscoreName.Key}_{alternateTableName}", underscoreName.Value.Item2.PropertyType, ModelData));
             }
 
@@ -220,6 +236,7 @@ namespace SimpleRelm.Models
         public dynamic GenerateDTO(IEnumerable<string> IncludeProperties = null, IEnumerable<string> ExcludeProperties = null, string SourceObjectName = null, Func<IRelmModel, Dictionary<string, object>> GetAdditionalObjectProperties = null, int Iteration = 0)
         {
             var baseRef = this;
+            var baseRefType = this.GetType();
 
             var namespaceIterations = baseRef
                 .GetType()
@@ -231,9 +248,12 @@ namespace SimpleRelm.Models
                 ??
                 Enumerable.Empty<string>();
 
+            var invocationTypeList = DtoTypeProcessor
+                ?.GetInvocationList()
+                .ToDictionary(x => x.GetMethodInfo().GetGenericArguments().FirstOrDefault(), x => x);
+
             // get object properties, if any are DALBaseModels marked with DALTransferProperty then GenerateDTO() on those recursively, otherwise just return the value. if there are any IEnumerables, DTO each item in the enumerable.
-            return (ExpandoObject)baseRef
-                .GetType()
+            return (ExpandoObject)baseRefType
                 .GetRuntimeProperties()
                 .Select(x => new KeyValuePair<PropertyInfo, IEnumerable<string>>(x, namespaceIterations
                     .Select((y, index) => string.Join(".", namespaceIterations.Skip(index).Append(x.Name)))
@@ -303,6 +323,26 @@ namespace SimpleRelm.Models
                                     .Contains(typeof(RelmModel))
                                 ? ((RelmModel)property.GetValue(baseRef))?.GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties, SourceObjectName: string.Join(".", new List<string> { SourceObjectName, property.Name }.Where(y => !string.IsNullOrWhiteSpace(y))), GetAdditionalObjectProperties: GetAdditionalObjectProperties, Iteration: Iteration + 1)
                                 : property.GetValue(baseRef));
+                        }
+
+                        if (invocationTypeList?.ContainsKey(baseRefType) ?? false)
+                        {
+                            var additionalProperties = new DtoEventArgs();
+
+                            invocationTypeList[baseRefType].DynamicInvoke(this, additionalProperties);
+
+                            var filteredProperties = additionalProperties
+                                .AdditionalObjectProperties
+                                ?.Where(x => !seed.ContainsKey(x.Key) && !(ExcludeProperties?.Contains(x.Key) ?? false))
+                                .ToList();
+
+                            if (filteredProperties != null)
+                            {
+                                foreach (var filteredProperty in filteredProperties)
+                                {
+                                    seed.Add(filteredProperty);
+                                }
+                            }
                         }
 
                         if (Iteration == 0 && GetAdditionalObjectProperties != null)

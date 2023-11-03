@@ -258,6 +258,9 @@ namespace SimpleRelm
         public static IEnumerable<T> GetDataObjects<T>(MySqlConnection EstablishedConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null) where T : IRelmModel, new()
             => ObjectResultsHelper.GetDataObjects<T>(EstablishedConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction);
 
+        public static IEnumerable<T> GetDataObjects<T>(DataTable existingData) where T : IRelmModel, new()
+            => ObjectResultsHelper.GetDataObjects<T>(existingData);
+
         /// <summary>
         /// Query the database for a single column of data and return as a list of the supplied type.
         /// </summary>
