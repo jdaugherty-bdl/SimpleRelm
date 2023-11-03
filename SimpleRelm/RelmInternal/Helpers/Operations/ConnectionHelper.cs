@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Interfaces.Resolvers;
+using SimpleRelm.RelmInternal.Helpers.Utilities;
 using SimpleRelm.RelmInternal.Resolvers;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,10 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 .GetAssemblies()
                 .Where(x => x
                     .GetCustomAttributes(true)
-                    .Any(y => y is AssemblyCompanyAttribute attribute && !attribute.Company.StartsWith("Microsoft", StringComparison.InvariantCultureIgnoreCase)))
+                    .Any(y => y is AssemblyCompanyAttribute attribute
+                        && !attribute.Company.StartsWith("Microsoft", StringComparison.InvariantCultureIgnoreCase)
+                        && !x.FullName.StartsWith("log4net", StringComparison.InvariantCultureIgnoreCase)
+                        && !attribute.Company.StartsWith("Umbraco", StringComparison.InvariantCultureIgnoreCase)))
                 .SelectMany(x => x
                     .GetModules()
                     .SelectMany(y => y
