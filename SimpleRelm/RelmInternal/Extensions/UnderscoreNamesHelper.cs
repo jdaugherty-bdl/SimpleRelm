@@ -30,7 +30,8 @@ namespace SimpleRelm.RelmInternal.Extensions
             var convertableList = convertableProperties
                 .ToDictionary(x => x.Name.StartsWith("InternalId")
                         ? x.Name
-                        : Regex.Replace(x.Name, UppercaseSearchPattern, ReplacePattern),
+                        : (x.GetCustomAttribute<RelmColumn>().ColumnName
+                            ?? Regex.Replace(x.Name, UppercaseSearchPattern, ReplacePattern)),
                     x => new Tuple<string, PropertyInfo>(x.Name, x))
                 .Select(x => new KeyValuePair<string, Tuple<string, PropertyInfo>>(ForceLowerCase
                         ? x.Key.ToLower().Replace("internalid", "InternalId")
