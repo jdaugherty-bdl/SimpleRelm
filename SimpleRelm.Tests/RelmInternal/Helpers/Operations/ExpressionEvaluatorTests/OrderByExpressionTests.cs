@@ -135,6 +135,36 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         }
 
         [Fact]
+        public void TestOrderByQuery_Ascending_TripleOperand()
+        {
+            // Arrange
+            predicate = x => x.Id;
+            Expression<Func<ComplexTestModel, object>>? predicate2 = x => x.InternalId;
+            Expression<Func<ComplexTestModel, object>>? predicate3 = x => x.TestColumnInternalId;
+
+            // Act
+            var result = evaluator.EvaluateOrderBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.OrderBy, new List<Expression> { predicate.Body, predicate2.Body, predicate3.Body }), false);
+
+            // Assert
+            Assert.Equal("  ORDER BY a.`Id`  ASC , a.`InternalId`  ASC , a.`test_column_InternalId`  ASC ", result);
+        }
+
+        [Fact]
+        public void TestOrderByQuery_Descending_TripleOperand()
+        {
+            // Arrange
+            predicate = x => x.Id;
+            Expression<Func<ComplexTestModel, object>>? predicate2 = x => x.InternalId;
+            Expression<Func<ComplexTestModel, object>>? predicate3 = x => x.TestColumnInternalId;
+
+            // Act
+            var result = evaluator.EvaluateOrderBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.OrderBy, new List<Expression> { predicate.Body, predicate2.Body, predicate3.Body }), true);
+
+            // Assert
+            Assert.Equal("  ORDER BY a.`Id`  DESC , a.`InternalId`  DESC , a.`test_column_InternalId`  DESC ", result);
+        }
+
+        [Fact]
         public void TestOrderByQuery_TwoOrderBys_BothAscending()
         {
             // Arrange

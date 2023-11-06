@@ -41,22 +41,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         }
 
         [Fact]
-        public void TestGroupByQuery_TwoGroupBys_SingleOperand()
-        {
-            // Arrange
-            predicate = x => x.Id;
-            Expression<Func<ComplexTestModel, object>> predicate2 = x => x.InternalId;
-
-            // Act
-            var result = evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.GroupBy, new List<Expression> { predicate.Body }));
-            result += evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.GroupBy, new List<Expression> { predicate2.Body }));
-
-            // Assert
-            Assert.Equal("  GROUP BY a.`Id`  , a.`InternalId` ", result);
-        }
-
-        [Fact]
-        public void TestGroupByQuery_DoubleOperand()
+        public void TestGroupByQuery_PropertyArray_2Elements()
         {
             // Arrange
             predicate = x => new object[] { x.Id, x.InternalId };
@@ -69,7 +54,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         }
 
         [Fact]
-        public void TestGroupByQuery_TripleOperand()
+        public void TestGroupByQuery_PropertyArray_3Elements()
         {
             // Arrange
             predicate = x => new object[] { x.Id, x.InternalId, x.TestColumnInternalId };
@@ -79,6 +64,50 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 
             // Assert
             Assert.Equal("   GROUP BY a.`Id` , a.`InternalId` , a.`test_column_InternalId` ", result);
+        }
+
+        [Fact]
+        public void TestGroupByQuery_DoubleOperand()
+        {
+            // Arrange
+            predicate = x => x.Id;
+            Expression<Func<ComplexTestModel, object>>? predicate2 = x => x.InternalId;
+
+            // Act
+            var result = evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.GroupBy, new List<Expression> { predicate.Body, predicate2.Body }));
+
+            // Assert
+            Assert.Equal("  GROUP BY a.`Id` , a.`InternalId` ", result);
+        }
+
+        [Fact]
+        public void TestGroupByQuery_TripleOperand()
+        {
+            // Arrange
+            predicate = x => x.Id;
+            Expression<Func<ComplexTestModel, object>>? predicate2 = x => x.InternalId;
+            Expression<Func<ComplexTestModel, object>>? predicate3 = x => x.TestColumnInternalId;
+
+            // Act
+            var result = evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.GroupBy, new List<Expression> { predicate.Body, predicate2.Body, predicate3.Body }));
+
+            // Assert
+            Assert.Equal("  GROUP BY a.`Id` , a.`InternalId` , a.`test_column_InternalId` ", result);
+        }
+
+        [Fact]
+        public void TestGroupByQuery_TwoGroupBys_SingleOperand()
+        {
+            // Arrange
+            predicate = x => x.Id;
+            Expression<Func<ComplexTestModel, object>> predicate2 = x => x.InternalId;
+
+            // Act
+            var result = evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.GroupBy, new List<Expression> { predicate.Body }));
+            result += evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.GroupBy, new List<Expression> { predicate2.Body }));
+
+            // Assert
+            Assert.Equal("  GROUP BY a.`Id`  , a.`InternalId` ", result);
         }
     }
 }
