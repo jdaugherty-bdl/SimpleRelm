@@ -19,6 +19,7 @@ namespace SimpleRelm.Models
         public Dictionary<Command, List<Expression>> LastCommandsExecuted { get; set; }
 
         // this is marked as internal to facilitate unit testing only
+        // get the table name from the DALTable attribute of T
         internal virtual string TableName => typeof(T).GetCustomAttribute<RelmTable>(false)?.TableName;
 
         private readonly RelmContextOptionsBuilder _contextOptionsBuilder;
@@ -42,31 +43,24 @@ namespace SimpleRelm.Models
 
         private void InitialSetup()
         { 
-            // get the table name from the DALTable attribute of T
-            //_tableName = typeof(T).GetCustomAttribute<RelmTable>(false)?.TableName;
-
-            if (string.IsNullOrWhiteSpace(TableName))
-                throw new Exception($"RelmTable attribute not found on type {typeof(T).Name}");
-
             if (_contextOptionsBuilder == null)
-            {
                 _columnRegistry = new DatabaseColumnRegistry<T>();
-            }
             else
             {
                 if (_contextOptionsBuilder.OptionsBuilderType == RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
                     _columnRegistry = new DatabaseColumnRegistry<T>(_contextOptionsBuilder.DatabaseConnection);
                 else
                     _columnRegistry = new DatabaseColumnRegistry<T>(_contextOptionsBuilder.ConnectionStringType);
-
-                if (_contextOptionsBuilder.CanOpenConnection)
-                    _columnRegistry.ReadDatabaseDescriptions(TableName);
             }
+
+            if ((_contextOptionsBuilder?.CanOpenConnection ?? false) && !string.IsNullOrWhiteSpace(TableName))
+                _columnRegistry.ReadDatabaseDescriptions(TableName);
 
             // get a list of all class property names surrounded by ` quotes separated by commas
             _fullPropertySelectList = string.Join(", ", (_columnRegistry.HasDatabaseColumns
                 ? _columnRegistry.DatabaseColumns
-                : _columnRegistry.PropertyColumns).Select(p => $"a.`{p.Value.Item1}`"));
+                : _columnRegistry.PropertyColumns)
+                    .Select(p => $"a.`{p.Value.Item1}`"));
         }
 
         public bool HasUnderscoreProperty(string PropertyKey) => _columnRegistry.PropertyColumns?.ContainsKey(PropertyKey) ?? false;
@@ -137,6 +131,9 @@ namespace SimpleRelm.Models
 
         private string BuildQuery(string QueryPredicate, Dictionary<string, object> FindOptions, bool isSelect)
         {
+            if (string.IsNullOrWhiteSpace(TableName))
+                throw new Exception($"RelmTable attribute not found on type {typeof(T).Name}");
+
             // hardcode first table alias to 'a', and inject that into the expression evaluator
             var expressionEvaluator = new ExpressionEvaluator(TableName, _columnRegistry.PropertyColumns.ToDictionary(x => x.Key, x => x.Value.Item1), UsedTableAliases: new Dictionary<string, string> { [TableName] = "a" });
 
