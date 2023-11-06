@@ -214,7 +214,17 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                     var memberExpression = Expression.Property(parameter, foreignKeyProperties[i].Name)
                         ?? throw new Exception("Property referenced by RelmForeignKey attribute could not be found.");
 
-                    var equalExpression = Expression.Equal(Expression.Constant(itemPrimaryKey[i].Item2), memberExpression);
+                    Expression constantExpression = Expression.Constant(itemPrimaryKey[i].Item2);
+
+                    // check that types of constantExpression and memberExpression are compatible be placed in an Expression.Equal statement together
+                    /*
+                    if (!constantExpression.Type.IsAssignableFrom(memberExpression.Type) && !memberExpression.Type.IsAssignableFrom(constantExpression.Type))
+                        throw new InvalidOperationException("Incompatible types in the comparison.");
+                    */
+                    if (memberExpression.Type != constantExpression.Type)
+                        constantExpression = Expression.Convert(constantExpression, memberExpression.Type);
+
+                    var equalExpression = Expression.Equal(constantExpression, memberExpression);
 
                     if (andExpression == null)
                         andExpression = equalExpression;
@@ -245,7 +255,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             {
                 var targetObjectForeignKeyValues = foreignKeyProperties.Select(x => x.GetValue(item)).ToArray();
 
-                if (collectionItems.Keys.Cast<object[]>().FirstOrDefault(x => x.Select((y, i) => targetObjectForeignKeyValues[i] == y).All(y => y)) == null)
+                if (collectionItems.Keys.Cast<object[]>().FirstOrDefault(x => x.Select((y, i) => ForeignKeyComparer.Compare(targetObjectForeignKeyValues[i], y)).All(y => y)) == null)
                 {
                     collectionItems.Add(targetObjectForeignKeyValues, default);
 
@@ -259,7 +269,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                 }
 
                 if (isCollection)
-                    ((IList)collectionItems[collectionItems.Keys.Cast<object[]>().FirstOrDefault(x => x.Select((y, i) => targetObjectForeignKeyValues[i] == y).All(y => y))]).Add(item);
+                    ((IList)collectionItems[collectionItems.Keys.Cast<object[]>().FirstOrDefault(x => x.Select((y, i) => ForeignKeyComparer.Compare(targetObjectForeignKeyValues[i], y)).All(y => y))]).Add(item);
                 else
                     collectionItems[targetObjectForeignKeyValues] = item;
             }
@@ -272,7 +282,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                 foreach (DictionaryEntry entry in collectionItems)
                 {
                     // note: all keys should be in the same order as the foreign key values here
-                    if (((object[])entry.Key).Select((x, i) => foreignKeyValues[i] == x).All(x => x))
+                    if (((object[])entry.Key).Select((x, i) => ForeignKeyComparer.Compare(foreignKeyValues[i], x)).All(x => x))
                     {
                         (referenceProperty.Member as PropertyInfo).SetValue(item, entry.Value);
 

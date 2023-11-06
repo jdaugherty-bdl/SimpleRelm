@@ -49,7 +49,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
             var modelDataLoader = new Mock<RelmDefaultDataLoader<NonDefaultForeignKeysTestObject>>(); // { CallBase = true };
 
             // make sure GetLoadData() calls base so LastExecutedCommands (required for references) gets populated
-            modelDataLoader.Setup(x => x._tableName).Returns("nothing_table");
+            modelDataLoader.Setup(x => x.TableName).Returns("nothing_table");
             modelDataLoader.Setup(x => x.GetLoadData()).CallBase();
             modelDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexTestModels);
 
@@ -68,7 +68,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                 mockComplexReferenceObjects_ForeignKey.Add(new NonDefaultForeignKeysReferenceObject_ForeignKey { ReferenceKey = "LOCALKEY1", NonDefaultForeignKeysTestObject_Reference = null });
 
             var referenceDataLoader = new Mock<RelmDefaultDataLoader<NonDefaultForeignKeysReferenceObject_ForeignKey>>();
-            referenceDataLoader.Setup(x => x._tableName).Returns("nothing_table");
+            referenceDataLoader.Setup(x => x.TableName).Returns("nothing_table");
             referenceDataLoader.Setup(x => x.GetLoadData()).CallBase();
             referenceDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexReferenceObjects_ForeignKey);
 
@@ -87,7 +87,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                 mockComplexReferenceObjects_Navigation.Add(new NonDefaultForeignKeysReferenceObject_NavigationProperty { ReferenceKey = "LOCALKEY1", NonDefaultForeignKeysTestObject_Reference = null });
 
             var navigationDataLoader = new Mock<RelmDefaultDataLoader<NonDefaultForeignKeysReferenceObject_NavigationProperty>>();
-            navigationDataLoader.Setup(x => x._tableName).Returns("nothing_table");
+            navigationDataLoader.Setup(x => x.TableName).Returns("nothing_table");
             navigationDataLoader.Setup(x => x.GetLoadData()).CallBase();
             navigationDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexReferenceObjects_Navigation);
 
@@ -106,7 +106,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                 mockComplexReferenceObjects_Principal.Add(new NonDefaultForeignKeysReferenceObject_PrincipalEntity { ReferenceKey = "LOCALKEY1", NonDefaultForeignKeysTestObject_Reference = null });
 
             var principalDataLoader = new Mock<RelmDefaultDataLoader<NonDefaultForeignKeysReferenceObject_PrincipalEntity>>();
-            principalDataLoader.Setup(x => x._tableName).Returns("nothing_table");
+            principalDataLoader.Setup(x => x.TableName).Returns("nothing_table");
             principalDataLoader.Setup(x => x.GetLoadData()).CallBase();
             principalDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexReferenceObjects_Principal);
 

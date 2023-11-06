@@ -36,6 +36,8 @@ namespace SimpleRelm.Options
         private Enum _connectionStringType;
         public Enum ConnectionStringType => _connectionStringType;
 
+        internal bool CanOpenConnection { get; set; } = true;
+
         public RelmContextOptionsBuilder() { }
 
         public RelmContextOptionsBuilder(string connectionString)

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -50,6 +51,15 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                         .ToArray());
         }
 
+        internal static Func<T> CreateCreatorExpression<T>()
+        {
+            var constructor = GetConstructorsRecursively(typeof(T))
+                .FirstOrDefault(x => x.GetParameters().Length == 0);
+
+            var constExpression = Expression.Lambda<Func<T>>(Expression.New(constructor));
+            return constExpression.Compile();
+        }
+
         /// <summary>
         /// Creates a labmda expression to instantiate objects of type T which take two constructor parameters.
         /// </summary>
@@ -60,11 +70,22 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
         internal static Func<TArg1, TArg2, T> CreateCreatorExpression<TArg1, TArg2, T>()
         {
             //TODO: make this allow a variable number of TArgs
+            var typeList = new Type[] { typeof(TArg1), typeof(TArg2) };
 
             // Lambda Expressions are much faster than Activator.CreateInstance when creating more than one object due to Expression caching
 
             // get object constructor
-            var constructor = typeof(T).GetConstructor(new Type[] { typeof(TArg1), typeof(TArg2) });
+            //var constructor = typeof(T).GetConstructor(new Type[] { typeof(TArg1), typeof(TArg2) });
+            var constructor = typeof(T).GetConstructor(typeList);
+            /*
+            var constructor = GetConstructorsRecursively(typeof(T))
+                .Where(x => x
+                    .GetParameters()
+                    .Select(y => y.ParameterType)
+                    .Intersect(typeList)
+                    .Any())
+                .FirstOrDefault();
+            */
 
             // define individual parameters
             var parameterList = new ParameterExpression[]
@@ -110,6 +131,24 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
             // compile the expression
             return creatorExpression.Compile();
+        }
+
+        internal static List<ConstructorInfo> GetConstructorsRecursively(Type type)
+        {
+            List<ConstructorInfo> allConstructors = new List<ConstructorInfo>();
+
+            if (type == null)
+                return allConstructors;
+
+            // Get the constructors of the current type and add them to the list
+            ConstructorInfo[] constructors = type.GetConstructors();
+            allConstructors.AddRange(constructors);
+
+            // Recursively get the constructors of the base type and add them to the list
+            List<ConstructorInfo> baseTypeConstructors = GetConstructorsRecursively(type.BaseType);
+            allConstructors.AddRange(baseTypeConstructors);
+
+            return allConstructors;
         }
     }
 }

@@ -40,7 +40,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.DataTransfer
             var modelDataLoader = new Mock<RelmDefaultDataLoader<ComplexTestModel>>(); // { CallBase = true };
 
             // make sure GetLoadData() calls base so LastExecutedCommands (required for references) gets populated
-            modelDataLoader.Setup(x => x._tableName).Returns("DUMMY NAME");
+            modelDataLoader.Setup(x => x.TableName).Returns("DUMMY NAME");
             modelDataLoader.Setup(x => x.GetLoadData()).CallBase();
             modelDataLoader.Setup(x => x.PullData(It.IsAny<string>(), It.IsAny<Dictionary<string, object>>())).Returns(mockComplexTestModels);
 

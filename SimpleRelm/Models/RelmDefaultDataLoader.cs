@@ -4,6 +4,7 @@ using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Helpers.Operations;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -17,13 +18,13 @@ namespace SimpleRelm.Models
     {
         public Dictionary<Command, List<Expression>> LastCommandsExecuted { get; set; }
 
-        // this is internal to facilitate unit testing only
-        internal virtual string _tableName => typeof(T).GetCustomAttribute<RelmTable>(false)?.TableName;
+        // this is marked as internal to facilitate unit testing only
+        internal virtual string TableName => typeof(T).GetCustomAttribute<RelmTable>(false)?.TableName;
 
         private readonly RelmContextOptionsBuilder _contextOptionsBuilder;
 
         private string _fullPropertySelectList;
-        private Dictionary<string, string> _underscoreProperties;
+        private DatabaseColumnRegistry<T> _columnRegistry;
 
         private Dictionary<Command, List<Expression>> _commands;
 
@@ -44,18 +45,31 @@ namespace SimpleRelm.Models
             // get the table name from the DALTable attribute of T
             //_tableName = typeof(T).GetCustomAttribute<RelmTable>(false)?.TableName;
 
-            if (string.IsNullOrWhiteSpace(_tableName))
+            if (string.IsNullOrWhiteSpace(TableName))
                 throw new Exception($"RelmTable attribute not found on type {typeof(T).Name}");
 
-            // get a list of all properties on T that are marked with the DALResolvable attribute
-            _underscoreProperties = DataNamingHelper.GetUnderscoreProperties<T>(true).ToDictionary(x => x.Value.Item1, x => x.Key);
+            if (_contextOptionsBuilder == null)
+            {
+                _columnRegistry = new DatabaseColumnRegistry<T>();
+            }
+            else
+            {
+                if (_contextOptionsBuilder.OptionsBuilderType == RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
+                    _columnRegistry = new DatabaseColumnRegistry<T>(_contextOptionsBuilder.DatabaseConnection);
+                else
+                    _columnRegistry = new DatabaseColumnRegistry<T>(_contextOptionsBuilder.ConnectionStringType);
+
+                if (_contextOptionsBuilder.CanOpenConnection)
+                    _columnRegistry.ReadDatabaseDescriptions(TableName);
+            }
 
             // get a list of all class property names surrounded by ` quotes separated by commas
-            _fullPropertySelectList = string.Join(", ", _underscoreProperties.Select(p => $"a.`{p.Value}`"));
+            _fullPropertySelectList = string.Join(", ", (_columnRegistry.HasDatabaseColumns
+                ? _columnRegistry.DatabaseColumns
+                : _columnRegistry.PropertyColumns).Select(p => $"a.`{p.Value.Item1}`"));
         }
 
-
-        public bool HasUnderscoreProperty(string PropertyKey) => _underscoreProperties?.ContainsKey(PropertyKey) ?? false;
+        public bool HasUnderscoreProperty(string PropertyKey) => _columnRegistry.PropertyColumns?.ContainsKey(PropertyKey) ?? false;
 
         public void AddExpression(Command command, Expression expression)
         {
@@ -124,7 +138,7 @@ namespace SimpleRelm.Models
         private string BuildQuery(string QueryPredicate, Dictionary<string, object> FindOptions, bool isSelect)
         {
             // hardcode first table alias to 'a', and inject that into the expression evaluator
-            var expressionEvaluator = new ExpressionEvaluator(_tableName, _underscoreProperties, UsedTableAliases: new Dictionary<string, string> { [_tableName] = "a" });
+            var expressionEvaluator = new ExpressionEvaluator(TableName, _columnRegistry.PropertyColumns.ToDictionary(x => x.Key, x => x.Value.Item1), UsedTableAliases: new Dictionary<string, string> { [TableName] = "a" });
 
             // evaluate all the pieces of the query
             var queryPieces = new Dictionary<Command, List<string>>();
@@ -188,7 +202,7 @@ namespace SimpleRelm.Models
 
             if (isSelect)
                 findQuery += " FROM ";
-            findQuery += $" `{_tableName}` a "; // hardcode first table alias to 'a'
+            findQuery += $" `{TableName}` a "; // hardcode first table alias to 'a'
 
             if (queryPieces.ContainsKey(Command.Reference))
                 findQuery += string.Join("\n", queryPieces[Command.Reference]);

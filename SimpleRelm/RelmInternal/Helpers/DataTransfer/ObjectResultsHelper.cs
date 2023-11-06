@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -57,13 +58,22 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
         internal static IEnumerable<T> GetDataObjects<T>(DataTable existingData) where T : IRelmModel
         {
+            /*
+            var allConstructors = CoreUtilities.GetConstructorsRecursively(typeof(T));
+            var dataRowConstructor = allConstructors.FirstOrDefault(x => x.GetParameters().Any(y => y.ParameterType == typeof(DataRow)))
+                ?? throw new MethodAccessException($"No constructor receiving type DataRow found on type: [{typeof(T).FullName}]");
+            */
             return existingData
                 .AsEnumerable()
                 .Select(x => x == null
                     ? default
-                    : (typeof(T).GetConstructors().Any(y => y.GetParameters().Length > 2)
+                    /*
+                    //: (typeof(T).GetConstructors().Any(y => y.GetParameters().Length > 2)
+                    : (dataRowConstructor.GetParameters().Length == 4
                         ? CoreUtilities.CreateCreatorExpression<DataRow, string, bool, bool, T>()(x, null, false, false)
                         : CoreUtilities.CreateCreatorExpression<DataRow, string, T>()(x, null)));
+                    */
+                    : (T)CoreUtilities.CreateCreatorExpression<T>()().ResetWithData(x, null));
         }
     }
 }

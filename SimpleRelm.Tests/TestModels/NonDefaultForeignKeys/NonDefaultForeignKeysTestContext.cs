@@ -25,5 +25,10 @@ namespace SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
         {
             base.SetDataSet(dataSet);
         }
+
+        public override void OnConfigure(RelmContextOptionsBuilder OptionsBuilder)
+        {
+            OptionsBuilder.CanOpenConnection = false;
+        }
     }
 }

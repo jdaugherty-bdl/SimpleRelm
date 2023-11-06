@@ -15,7 +15,7 @@ namespace SimpleRelm.Tests.TestModels
 {
     internal class DataLoaderTestModelDataLoader : RelmDefaultDataLoader<DataLoaderTestModel>
     {
-        internal override string _tableName => "DUMMY NAME";
+        internal override string TableName => "DUMMY NAME";
 
         public DataLoaderTestModelDataLoader(RelmContextOptionsBuilder contextOptionsBuilder) : base(contextOptionsBuilder) { }
 

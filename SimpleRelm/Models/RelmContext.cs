@@ -15,6 +15,8 @@ namespace SimpleRelm.Models
 {
     public class RelmContext : IDisposable, IRelmContext
     {
+        public virtual void OnConfigure(RelmContextOptionsBuilder OptionsBuilder) { }
+
         public RelmContextOptionsBuilder ContextOptions { get; private set; }
 
         private IEnumerable<PropertyInfo> _attachedProperties;
@@ -140,8 +142,6 @@ namespace SimpleRelm.Models
                 _attachedDataSets.Add(dataSet);
             }
         }
-
-        public virtual void OnConfigure(RelmContextOptionsBuilder OptionsBuilder) { }
 
         public void StartConnection(bool autoOpenTransaction = false)
         {

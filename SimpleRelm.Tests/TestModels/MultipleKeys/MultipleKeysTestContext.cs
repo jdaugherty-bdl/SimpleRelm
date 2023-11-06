@@ -24,5 +24,10 @@ namespace SimpleRelm.Tests.TestModels.MultipleKeys
         {
             base.SetDataSet(dataSet);
         }
+
+        public override void OnConfigure(RelmContextOptionsBuilder OptionsBuilder)
+        {
+            OptionsBuilder.CanOpenConnection = false;
+        }
     }
 }

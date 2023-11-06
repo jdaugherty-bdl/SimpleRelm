@@ -26,5 +26,10 @@ namespace SimpleRelm.RelmInternal.Models
         public string Default { get; set; }
         [RelmColumn]
         public string Extra { get; set; }
+
+        public string TableName { get; set; }
+        public bool IsPrimaryKey { get; set; }
+        public bool IsAutoIncrement { get; set; }
+        public bool IsUniqueConstraint { get; set; }
     }
 }
