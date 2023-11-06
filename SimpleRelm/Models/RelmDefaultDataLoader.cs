@@ -163,7 +163,7 @@ namespace SimpleRelm.Models
                             queryPieces[command.Key].Add(expressionEvaluator.EvaluateLimit(command));
                             break;
                         case Command.GroupBy:
-                            queryPieces[command.Key].Add(expressionEvaluator.EvaluateGroupBy(command, FindOptions));
+                            queryPieces[command.Key].Add(expressionEvaluator.EvaluateGroupBy(command));
                             break;
                         case Command.DistinctBy:
                             queryPieces[command.Key].Add(expressionEvaluator.EvaluateDistinctBy(command));

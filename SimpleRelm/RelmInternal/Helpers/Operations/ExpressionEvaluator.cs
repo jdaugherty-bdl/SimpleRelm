@@ -29,6 +29,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
         private bool HasWhere = false;
         private bool HasOrderBy = false;
+        private bool HasGroupBy = false;
 
         private readonly Dictionary<string, string> UnderscoreProperties;
         private readonly Dictionary<string, string> UsedTableAliases;
@@ -374,42 +375,6 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             return findQuery;
         }
 
-        public string EvaluateOrderBy(KeyValuePair<Command, List<Expression>> CommandExpression, bool IsDescending)
-        {
-            var findQuery = " ";
-
-            foreach (var commandExpression in CommandExpression.Value)
-            {
-                MemberExpression methodOperand;
-                if (commandExpression is MemberExpression methodCall)
-                    methodOperand = methodCall;
-                else if (commandExpression is UnaryExpression unaryExpression)
-                    methodOperand = unaryExpression.Operand as MemberExpression;
-                else
-                    throw new InvalidCastException();
-
-                var currentAlias = GetTableAlias(((RelmTable)methodOperand.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
-
-                if (!HasOrderBy)
-                {
-                    findQuery += $" ORDER BY ";
-
-                    HasOrderBy = true;
-                }
-                else
-                    findQuery += ", ";
-
-                findQuery += currentAlias;
-                findQuery += ".`";
-                findQuery += UnderscoreProperties[methodOperand.Member.Name];
-                findQuery += "` ";
-
-                findQuery += IsDescending ? " DESC " : " ASC ";
-            }
-
-            return findQuery;
-        }
-
         public string EvaluateSet(KeyValuePair<Command, List<Expression>> CommandExpression, Dictionary<string, object> QueryParameters)
         {
             var setLines = new List<string>();
@@ -464,15 +429,65 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             return findQuery;
         }
 
-        public string EvaluateGroupBy(KeyValuePair<Command, List<Expression>> CommandExpression, Dictionary<string, object> QueryParameters, bool GiveCommandPrefix = true)
+        private string EvaluatePostProcessor(List<Expression> commandExpressionValues, bool? isDescending = null)
         {
-            var findQuery = string.Empty;
+            var findQuery = " ";
 
-            var groupBy = CommandExpression.Value;
+            foreach (var commandExpression in commandExpressionValues)
+            {
+                MemberExpression methodOperand = default;
+                if (commandExpression is MemberExpression methodCall)
+                    methodOperand = methodCall;
+                else if (commandExpression is UnaryExpression unaryExpression)
+                    methodOperand = unaryExpression.Operand as MemberExpression;
 
-            findQuery += $" GROUP BY ";
+                if (methodOperand == default)
+                {
+                    if (commandExpression is NewArrayExpression arrayExpression)
+                        findQuery += EvaluatePostProcessor(arrayExpression.Expressions.ToList(), isDescending);
+                    else
+                        throw new InvalidCastException();
+                }
+                else
+                {
+                    var currentAlias = GetTableAlias(((RelmTable)methodOperand.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+                    if (!(isDescending.HasValue ? HasOrderBy : HasGroupBy))
+                    {
+                        findQuery += $" ";
+                        findQuery += isDescending.HasValue ? "ORDER" : "GROUP";
+                        findQuery += $" BY ";
+
+                        if (isDescending.HasValue)
+                            HasOrderBy = true;
+                        else
+                            HasGroupBy = true;
+                    }
+                    else
+                        findQuery += ", ";
+
+                    findQuery += currentAlias;
+                    findQuery += ".`";
+                    findQuery += UnderscoreProperties[methodOperand.Member.Name];
+                    findQuery += "` ";
+
+                    if (isDescending.HasValue)
+                        findQuery += isDescending.Value ? " DESC " : " ASC ";
+                }
+            }
 
             return findQuery;
+
+        }
+
+        public string EvaluateOrderBy(KeyValuePair<Command, List<Expression>> CommandExpression, bool IsDescending)
+        {
+            return EvaluatePostProcessor(CommandExpression.Value, IsDescending);
+        }
+
+        public string EvaluateGroupBy(KeyValuePair<Command, List<Expression>> CommandExpression)
+        {
+            return EvaluatePostProcessor(CommandExpression.Value);
         }
 
         public string EvaluateCount(KeyValuePair<Command, List<Expression>> CommandExpression)
