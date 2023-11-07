@@ -56,15 +56,15 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
         private string GenerateParameterName(string FieldName, Dictionary<string, object> QueryParameters)
         {
+            var duplicateCount = 0;
             var parameterName = $"@_{FieldName}_";
 
+            while (QueryParameters.ContainsKey($"{parameterName}{++duplicateCount}_")) ;
+
+            parameterName = $"{parameterName}{duplicateCount}_";
+            
             if (QueryParameters.ContainsKey(parameterName))
             {
-                var duplicateCount = 0;
-
-                while (QueryParameters.ContainsKey($"{parameterName}{duplicateCount++}")) ;
-
-                parameterName += duplicateCount.ToString() + "_";
             }
 
             return parameterName;
