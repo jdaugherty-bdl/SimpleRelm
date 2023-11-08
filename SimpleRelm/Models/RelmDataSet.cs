@@ -32,7 +32,7 @@ namespace SimpleRelm.Models
         private readonly IRelmContext _currentContext;
         private IRelmDataLoader<T> _dataLoader;
         //private Dictionary<string, IRelmFieldLoader<object>> _fieldDataLoaders;
-        private FieldLoaderRegistry _fieldDataLoaders;
+        private readonly FieldLoaderRegistry _fieldDataLoaders;
 
         private ICollection<T> _items;
 
@@ -92,6 +92,16 @@ namespace SimpleRelm.Models
             return this;
         }
 
+        public IRelmDataSet<T> Reference(Expression<Func<T, object>> predicate, Expression<Func<T, object>> additionalConstraints = null)
+        {
+            var referenceExpression = _dataLoader.AddExpression(Command.Reference, predicate.Body);
+
+            if (additionalConstraints != null)
+                referenceExpression.AddAdditionalCommand(Command.Reference, additionalConstraints.Body);
+
+            return this;
+        }
+
         public T Find(int ItemId)
         {
             return Where(x => x.Id == ItemId).FirstOrDefault();
@@ -131,22 +141,6 @@ namespace SimpleRelm.Models
 
             return _items.FirstOrDefault();
         }
-
-        /*
-        public int Count()
-        {
-
-        }
-
-        public int Count(Expression<Func<T, bool>> predicate)
-        {
-            _dataLoader.AddExpression(Command.Count, predicate.Body);
-
-            _items = Load();
-
-            return _items.Count();
-        }
-        */
 
         public ICollection<T> Load()
         {
@@ -271,7 +265,6 @@ namespace SimpleRelm.Models
         public IRelmDataSet<T> DistinctBy(Expression<Func<T, object>> predicate)
         {
             _dataLoader.AddSingleExpression(Command.DistinctBy, predicate.Body);
-            //_dataLoader.AddExpression(Command.Collection, predicate.Body);
 
             return this;
         }
@@ -387,15 +380,6 @@ namespace SimpleRelm.Models
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            /*
-            // Validate the input array and index
-            if (array == null)
-                throw new ArgumentNullException(nameof(array), "The array cannot be null.");
-            if (arrayIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(arrayIndex), "The starting array index cannot be negative.");
-            if (array.Length - arrayIndex < (_items?.Count ?? 0))
-                throw new ArgumentException("The destination array has fewer elements than the collection.");
-            */
             // Copy items
             _items?.CopyTo(array, arrayIndex);
         }

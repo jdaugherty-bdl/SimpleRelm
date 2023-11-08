@@ -14,6 +14,7 @@ namespace SimpleRelm.Interfaces
         IRelmDataLoader<T> SetDataLoader(IRelmDataLoader<T> dataLoader);
         IRelmDataSet<T> Where(Expression<Func<T, bool>> predicate);
         IRelmDataSet<T> Reference(Expression<Func<T, object>> predicate);
+        IRelmDataSet<T> Reference(Expression<Func<T, object>> predicate, Expression<Func<T, object>> additionalConstraints);
         T Find(int ItemId);
         T Find(string ItemInternalId);
         T FirstOrDefault();

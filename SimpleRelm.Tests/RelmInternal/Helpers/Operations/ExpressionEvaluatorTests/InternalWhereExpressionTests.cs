@@ -1,4 +1,6 @@
 ﻿using SimpleRelm.Attributes;
+using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using SimpleRelm.RelmInternal.Helpers.Operations;
 using SimpleRelm.Tests.TestModels;
 using System;
@@ -51,10 +53,13 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var containsCall = Expression.Lambda(funcType, containsExpression, parameter);
 
             // Act
-            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Where, new List<Expression> { containsCall }), queryParameters);
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
+                    ExpressionEvaluator.Command.Where, 
+                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Where, containsCall) })
+                , queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( FIND_IN_SET(a.`test_column_InternalId`, @_TestColumnInternalId_) )", result);
+            Assert.Equal(" WHERE ( FIND_IN_SET(a.`test_column_InternalId`, @_TestColumnInternalId_1_) )", result);
         }
 
         [Fact]
@@ -80,10 +85,13 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var containsCall = Expression.Lambda(funcType, containsExpression, parameter);
 
             // Act
-            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Where, new List<Expression> { containsCall }), queryParameters);
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
+                    ExpressionEvaluator.Command.Where,
+                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Where, containsCall) })
+                , queryParameters);
 
             // Assert
-            Assert.Equal(queryParameters["@_TestColumnInternalId_"], "00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000001");
+            Assert.Equal(queryParameters["@_TestColumnInternalId_1_"], "00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000001");
         }
     }
 }

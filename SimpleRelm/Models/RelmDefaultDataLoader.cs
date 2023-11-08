@@ -16,7 +16,7 @@ namespace SimpleRelm.Models
 {
     public class RelmDefaultDataLoader<T> : IRelmDataLoader<T> where T : IRelmModel, new()
     {
-        public Dictionary<Command, List<Expression>> LastCommandsExecuted { get; set; }
+        public Dictionary<Command, List<IRelmExecutionCommand>> LastCommandsExecuted { get; set; }
 
         // this is marked as internal to facilitate unit testing only
         // get the table name from the DALTable attribute of T
@@ -27,7 +27,8 @@ namespace SimpleRelm.Models
         private string _fullPropertySelectList;
         private DatabaseColumnRegistry<T> _columnRegistry;
 
-        private Dictionary<Command, List<Expression>> _commands;
+        //private Dictionary<Command, List<Expression>> _commands;
+        private Dictionary<Command, List<IRelmExecutionCommand>> _commands;
 
         public RelmDefaultDataLoader()
         {
@@ -65,28 +66,45 @@ namespace SimpleRelm.Models
 
         public bool HasUnderscoreProperty(string PropertyKey) => _columnRegistry.PropertyColumns?.ContainsKey(PropertyKey) ?? false;
 
-        public void AddExpression(Command command, Expression expression)
+        public IRelmExecutionCommand AddExpression(Command command, Expression expression)
         {
-            PrewarmQuery(command).Add(expression);
+            //PrewarmQuery(command).Add(expression);
+            var newExecution = new RelmExecutionCommand(command, expression);
+
+            PrewarmQuery(command).Add(newExecution);
+
+            return newExecution;
         }
 
-        public void AddSingleExpression(Command command, Expression expression)
+        public IRelmExecutionCommand AddSingleExpression(Command command, Expression expression)
         {
             var expressions = PrewarmQuery(command);
 
             if (expressions.Count == 0)
                 expressions.Add(null);
 
-            expressions[0] = expression;
+            //expressions[0] = expression;
+            expressions[0] = new RelmExecutionCommand(command, expression);
+
+            return expressions[0];
         }
 
-        private List<Expression> PrewarmQuery(Command PredicateCommand)
+        private List<IRelmExecutionCommand> PrewarmQuery(Command PredicateCommand)
         {
+            /*
             if (_commands == null)
                 _commands = new Dictionary<Command, List<Expression>>();
 
             if (!_commands.ContainsKey(PredicateCommand))
                 _commands.Add(PredicateCommand, new List<Expression>());
+
+            return _commands[PredicateCommand];
+            */
+            if (_commands == null)
+                _commands = new Dictionary<Command, List<IRelmExecutionCommand>>();
+
+            if (!_commands.ContainsKey(PredicateCommand))
+                _commands.Add(PredicateCommand, new List<IRelmExecutionCommand>());
 
             return _commands[PredicateCommand];
         }

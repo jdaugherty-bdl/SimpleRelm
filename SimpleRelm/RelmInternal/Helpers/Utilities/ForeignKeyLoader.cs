@@ -82,7 +82,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
             var objectsLoader = new ForeignObjectsLoader<T>(targetObjects, currentContext);
 
-            objectsLoader.LoadForeignObjects(predicate.Body);
+            objectsLoader.LoadForeignObjects(new RelmExecutionCommand(Command.Reference, predicate.Body));
 
             return targetObjects;
         }

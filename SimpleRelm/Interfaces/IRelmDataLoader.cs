@@ -11,12 +11,12 @@ namespace SimpleRelm.Interfaces
 {
     public interface IRelmDataLoader<T>
     {
-        Dictionary<Command, List<Expression>> LastCommandsExecuted { get; set; }
+        Dictionary<Command, List<IRelmExecutionCommand>> LastCommandsExecuted { get; set; }
 
         ICollection<T> GetLoadData();
         int WriteData();
-        void AddExpression(Command command, Expression expression);
-        void AddSingleExpression(Command command, Expression expression);
+        IRelmExecutionCommand AddExpression(Command command, Expression expression);
+        IRelmExecutionCommand AddSingleExpression(Command command, Expression expression);
         bool HasUnderscoreProperty(string PropertyKey);
     }
 }

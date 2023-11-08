@@ -39,7 +39,8 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
         /// <exception cref="InvalidOperationException">Thrown if there's an invalid operation.</exception>
         /// <exception cref="MemberAccessException">Thrown if there's an invalid member.</exception>
         /// <exception cref="Exception">Thrown if there's an exception.</exception>
-        internal void LoadForeignObjects(Expression member)
+        //internal void LoadForeignObjects(Expression member)
+        internal void LoadForeignObjects(IRelmExecutionCommand member)
         {
             if (_items == null)
                 throw new InvalidOperationException("Items collection is null.");
@@ -50,7 +51,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             PropertyInfo navigationProperty = default;
             List<List<Tuple<PropertyInfo, object>>> itemPrimaryKeys = default;
 
-            var referenceProperty = member as MemberExpression
+            var referenceProperty = member.InitialExpression as MemberExpression
                 ?? throw new InvalidOperationException("Collection must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
 
             var referenceType = referenceProperty.Type;
@@ -217,10 +218,6 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                     Expression constantExpression = Expression.Constant(itemPrimaryKey[i].Item2);
 
                     // check that types of constantExpression and memberExpression are compatible be placed in an Expression.Equal statement together
-                    /*
-                    if (!constantExpression.Type.IsAssignableFrom(memberExpression.Type) && !memberExpression.Type.IsAssignableFrom(constantExpression.Type))
-                        throw new InvalidOperationException("Incompatible types in the comparison.");
-                    */
                     if (memberExpression.Type != constantExpression.Type)
                         constantExpression = Expression.Convert(constantExpression, memberExpression.Type);
 
@@ -236,6 +233,12 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                     orExpression = andExpression;
                 else
                     orExpression = Expression.OrElse(orExpression, andExpression);
+            }
+
+            // add any additional constraints
+            if (member.AdditionalCommandCount > 0)
+            {
+
             }
 
             var containsLambda = Expression.Lambda(funcType, orExpression, parameter) 

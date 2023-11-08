@@ -1,4 +1,6 @@
 ﻿using SimpleRelm.Attributes;
+using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
 using System.Collections;
@@ -62,20 +64,20 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             while (QueryParameters.ContainsKey($"{parameterName}{++duplicateCount}_")) ;
 
             parameterName = $"{parameterName}{duplicateCount}_";
-            
+
             if (QueryParameters.ContainsKey(parameterName))
-            {
-            }
+                throw new AccessViolationException($"Key {parameterName} already exists.");
 
             return parameterName;
         }
 
-        public string EvaluateWhere(KeyValuePair<Command, List<Expression>> CommandExpression, Dictionary<string, object> QueryParameters, bool GiveCommandPrefix = true, ExpressionType NodeType = ExpressionType.And)
+        //public string EvaluateWhere(KeyValuePair<Command, List<Expression>> CommandExpression, Dictionary<string, object> QueryParameters, bool GiveCommandPrefix = true, ExpressionType NodeType = ExpressionType.And)
+        public string EvaluateWhere(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression, Dictionary<string, object> QueryParameters, bool GiveCommandPrefix = true, ExpressionType NodeType = ExpressionType.And)
         {
             var expression = new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(
                 CommandExpression.Key,
                 CommandExpression.Value
-                    .Select(x => new Tuple<Expression, ICollection<ParameterExpression>>(((LambdaExpression)x).Body, ((LambdaExpression)x).Parameters))
+                    .Select(x => new Tuple<Expression, ICollection<ParameterExpression>>(((LambdaExpression)x.InitialExpression).Body, ((LambdaExpression)x.InitialExpression).Parameters))
                     .ToList());
 
             return EvaluateWhereExpression(expression, QueryParameters, giveCommandPrefix: GiveCommandPrefix, nodeType: NodeType) + ")";
@@ -375,12 +377,13 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             return findQuery;
         }
 
-        public string EvaluateSet(KeyValuePair<Command, List<Expression>> CommandExpression, Dictionary<string, object> QueryParameters)
+        //public string EvaluateSet(KeyValuePair<Command, List<Expression>> CommandExpression, Dictionary<string, object> QueryParameters)
+        public string EvaluateSet(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression, Dictionary<string, object> QueryParameters)
         {
             var setLines = new List<string>();
 
             var set = CommandExpression.Value.FirstOrDefault();
-            var currentAlias = GetTableAlias(((RelmTable)set.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+            var currentAlias = GetTableAlias(((RelmTable)set.InitialExpression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
 
             if (set is MemberExpression memberAssignment)
             {
@@ -399,7 +402,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
                 QueryParameters.Add(parameterName, parameterValue);
             }
-            else if (set is MemberInitExpression memberInit)
+            else if (set.InitialExpression is MemberInitExpression memberInit)
             {
                 foreach (var binding in memberInit.Bindings)
                 {
@@ -429,22 +432,27 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             return findQuery;
         }
 
-        private string EvaluatePostProcessor(List<Expression> commandExpressionValues, bool? isDescending = null)
+        private string EvaluatePostProcessor(List<IRelmExecutionCommand> commandExpressionValues, bool? isDescending = null)
         {
             var findQuery = " ";
 
             foreach (var commandExpression in commandExpressionValues)
             {
                 MemberExpression methodOperand = default;
-                if (commandExpression is MemberExpression methodCall)
+                if (commandExpression.InitialExpression is MemberExpression methodCall)
                     methodOperand = methodCall;
-                else if (commandExpression is UnaryExpression unaryExpression)
+                else if (commandExpression.InitialExpression is UnaryExpression unaryExpression)
                     methodOperand = unaryExpression.Operand as MemberExpression;
 
                 if (methodOperand == default)
                 {
-                    if (commandExpression is NewArrayExpression arrayExpression)
-                        findQuery += EvaluatePostProcessor(arrayExpression.Expressions.ToList(), isDescending);
+                    if (commandExpression.InitialExpression is NewArrayExpression arrayExpression)
+                        findQuery += EvaluatePostProcessor(arrayExpression
+                                .Expressions
+                                .Select(x => new RelmExecutionCommand(commandExpression.InitialCommand, x))
+                                .Cast<IRelmExecutionCommand>()
+                                .ToList()
+                            , isDescending);
                     else
                         throw new InvalidCastException();
                 }
@@ -480,17 +488,20 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
         }
 
-        public string EvaluateOrderBy(KeyValuePair<Command, List<Expression>> CommandExpression, bool IsDescending)
+        //public string EvaluateOrderBy(KeyValuePair<Command, List<Expression>> CommandExpression, bool IsDescending)
+        public string EvaluateOrderBy(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression, bool IsDescending)
         {
             return EvaluatePostProcessor(CommandExpression.Value, IsDescending);
         }
 
-        public string EvaluateGroupBy(KeyValuePair<Command, List<Expression>> CommandExpression)
+        //public string EvaluateGroupBy(KeyValuePair<Command, List<Expression>> CommandExpression)
+        public string EvaluateGroupBy(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression)
         {
             return EvaluatePostProcessor(CommandExpression.Value);
         }
 
-        public string EvaluateCount(KeyValuePair<Command, List<Expression>> CommandExpression)
+        //public string EvaluateCount(KeyValuePair<Command, List<Expression>> CommandExpression)
+        public string EvaluateCount(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression)
         {
             var findQuery = string.Empty;
 
@@ -501,17 +512,19 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             return findQuery;
         }
 
-        public string EvaluateLimit(KeyValuePair<Command, List<Expression>> CommandExpression)
+        //public string EvaluateLimit(KeyValuePair<Command, List<Expression>> CommandExpression)
+        public string EvaluateLimit(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression)
         {
             return $" LIMIT {(CommandExpression.Value[0] as ConstantExpression).Value} ";
         }
 
-        public string EvaluateDistinctBy(KeyValuePair<Command, List<Expression>> CommandExpression)
+        //public string EvaluateDistinctBy(KeyValuePair<Command, List<Expression>> CommandExpression)
+        public string EvaluateDistinctBy(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression)
         {
             MemberExpression methodOperand;
-            if (CommandExpression.Value[0] is MemberExpression methodCall)
+            if (CommandExpression.Value[0].InitialExpression is MemberExpression methodCall)
                 methodOperand = methodCall;
-            else if (CommandExpression.Value[0] is UnaryExpression unaryExpression)
+            else if (CommandExpression.Value[0].InitialExpression is UnaryExpression unaryExpression)
                 methodOperand = unaryExpression.Operand as MemberExpression;
             else
                 throw new InvalidCastException();

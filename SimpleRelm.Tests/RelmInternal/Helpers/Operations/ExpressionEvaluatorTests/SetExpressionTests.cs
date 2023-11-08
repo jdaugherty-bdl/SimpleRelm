@@ -1,4 +1,6 @@
 ﻿using SimpleRelm.Attributes;
+using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using SimpleRelm.RelmInternal.Helpers.Operations;
 using SimpleRelm.Tests.TestModels;
 using System;
@@ -35,12 +37,15 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => new ComplexTestModel { TestColumnInternalId = "TEST_VALUE" };
 
             // Act
-            var result = evaluator.EvaluateSet(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Set, new List<Expression> { predicate.Body }), queryParameters);
+            var result = evaluator.EvaluateSet(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
+                    ExpressionEvaluator.Command.Set, 
+                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Set, predicate.Body) })
+                , queryParameters);
 
             // Assert
-            Assert.Equal(" SET  a.`test_column_InternalId` = @_TestColumnInternalId_  ", result);
+            Assert.Equal(" SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_  ", result);
 
-            Assert.Equal(queryParameters["@_TestColumnInternalId_"], "TEST_VALUE");
+            Assert.Equal(queryParameters["@_TestColumnInternalId_1_"], "TEST_VALUE");
         }
 
         [Fact]
@@ -50,12 +55,15 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => new ComplexTestModel { Active = false };
 
             // Act
-            var result = evaluator.EvaluateSet(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Set, new List<Expression> { predicate.Body }), queryParameters);
+            var result = evaluator.EvaluateSet(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
+                    ExpressionEvaluator.Command.Set, 
+                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Set, predicate.Body) })
+                , queryParameters);
 
             // Assert
-            Assert.Equal(" SET  a.`Active` = @_Active_  ", result);
+            Assert.Equal(" SET  a.`Active` = @_Active_1_  ", result);
 
-            Assert.Equal(queryParameters["@_Active_"], false);
+            Assert.Equal(queryParameters["@_Active_1_"], false);
         }
 
         [Fact]
@@ -65,7 +73,10 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => new ComplexTestModel();
 
             // Act & Assert
-            Assert.Throws<NotSupportedException>(() => evaluator.EvaluateSet(new KeyValuePair<ExpressionEvaluator.Command, List<Expression>>(ExpressionEvaluator.Command.Set, new List<Expression> { predicate.Body }), queryParameters));
+            Assert.Throws<NotSupportedException>(() => evaluator.EvaluateSet(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
+                    ExpressionEvaluator.Command.Set, 
+                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Set, predicate.Body) })
+                , queryParameters));
         }
     }
 }
