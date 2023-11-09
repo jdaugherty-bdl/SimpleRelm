@@ -1,4 +1,5 @@
 ﻿using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
 using System.Collections;
@@ -27,7 +28,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         {
             // find all fields marked with a RelmFieldLoader attribute that have a type derived from IRelmFieldLoader<> and add them to the list of field loaders as long as they are not already there
             // execute all field loaders
-            var referenceKeys = new ForeignObjectsLoader<T>().GetReferenceKeys(fieldLoader.KeyFields);
+            var referenceKeys = new RelmExecutionCommand().GetReferenceKeys<T>(fieldLoader.KeyFields);
 
             // get relevant data for items in the current data set all at once to reduce number of database calls
             var fieldData = fieldLoader.GetFieldData(targetObjects.Select(x => x.GetType().GetProperties().Intersect(referenceKeys).Select(y => y.GetValue(x)).ToArray()).ToList());

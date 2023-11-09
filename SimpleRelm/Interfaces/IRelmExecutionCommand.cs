@@ -18,6 +18,6 @@ namespace SimpleRelm.Interfaces
 
         RelmExecutionCommand AddAdditionalCommand(Command command, Expression expression);
         List<RelmExecutionCommand> GetAdditionalCommands();
-
+        ForeignKeyNavigationOptions GetForeignKeyNavigationOptions<T>(ICollection<T> _items);
     }
 }

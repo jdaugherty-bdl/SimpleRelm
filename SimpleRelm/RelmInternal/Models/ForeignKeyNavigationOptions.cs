@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MoreLinq;
+using SimpleRelm.Attributes;
+using SimpleRelm.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -8,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.RelmInternal.Models
 {
-    internal class ForeignKeyNavigationOptions
+    public class ForeignKeyNavigationOptions
     {
         public PropertyInfo[] ForeignKeyProperties { get; set; } = default;
         public PropertyInfo NavigationProperty { get; set; } = default;
