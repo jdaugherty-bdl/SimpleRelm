@@ -30,9 +30,9 @@ namespace SimpleRelm.Models
             return this;
         }
 
-        public IEnumerator<RelmExecutionCommand> GetAdditionalCommands()
+        public List<RelmExecutionCommand> GetAdditionalCommands()
         {
-            return _additionalCommands.GetEnumerator();
+            return _additionalCommands;
         }
     }
 }

@@ -94,10 +94,16 @@ namespace SimpleRelm.Models
 
         public IRelmDataSet<T> Reference(Expression<Func<T, object>> predicate, Expression<Func<T, object>> additionalConstraints = null)
         {
+            return Reference(predicate, new Expression<Func<T, object>>[] { additionalConstraints });
+        }
+
+        public IRelmDataSet<T> Reference(Expression<Func<T, object>> predicate, ICollection<Expression<Func<T, object>>> additionalConstraints = null)
+        {
             var referenceExpression = _dataLoader.AddExpression(Command.Reference, predicate.Body);
 
             if (additionalConstraints != null)
-                referenceExpression.AddAdditionalCommand(Command.Reference, additionalConstraints.Body);
+                foreach (var additionalConstraint in additionalConstraints)
+                    referenceExpression.AddAdditionalCommand(Command.Reference, additionalConstraint.Body);
 
             return this;
         }

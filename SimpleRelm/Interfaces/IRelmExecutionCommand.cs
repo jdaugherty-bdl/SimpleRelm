@@ -17,7 +17,7 @@ namespace SimpleRelm.Interfaces
         int AdditionalCommandCount { get; }
 
         RelmExecutionCommand AddAdditionalCommand(Command command, Expression expression);
-        IEnumerator<RelmExecutionCommand> GetAdditionalCommands();
+        List<RelmExecutionCommand> GetAdditionalCommands();
 
     }
 }

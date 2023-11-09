@@ -270,6 +270,10 @@ namespace SimpleRelm.Models
 
             if (dataSetProperty == null && throwException)
             {
+                var ddd = GetType().GetProperties().Select(x => x.PropertyType).ToList();
+                var mmm = ddd.Select(x => x.IsGenericType ? x.GetGenericTypeDefinition() : default).ToList();
+                var ggg = ddd.Select(x => x.IsGenericType ? x.GetGenericArguments() : default).ToList();
+
                 throw new InvalidOperationException($"No DALDataSet property with type {dataSetType.Name} found on the current object.");
             }
 
