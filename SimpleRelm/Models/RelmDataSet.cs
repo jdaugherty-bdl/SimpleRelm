@@ -85,19 +85,32 @@ namespace SimpleRelm.Models
             return this;
         }
 
-        public IRelmDataSet<T> Reference(Expression<Func<T, object>> predicate)
+        public IRelmDataSet<T> Reference<S>(Expression<Func<T, S>> predicate)
         {
-            _dataLoader.AddExpression(Command.Reference, predicate.Body);
-
-            return this;
+            return Reference(predicate, (ICollection<Expression<Func<S, object>>>)null);
         }
 
-        public IRelmDataSet<T> Reference(Expression<Func<T, object>> predicate, Expression<Func<T, object>> additionalConstraints = null)
+        public IRelmDataSet<T> Reference<S>(Expression<Func<T, ICollection<S>>> predicate, Expression<Func<S, object>> additionalConstraints)
         {
-            return Reference(predicate, new Expression<Func<T, object>>[] { additionalConstraints });
+            return Reference(predicate, new Expression<Func<S, object>>[] { additionalConstraints });
         }
 
-        public IRelmDataSet<T> Reference(Expression<Func<T, object>> predicate, ICollection<Expression<Func<T, object>>> additionalConstraints = null)
+        public IRelmDataSet<T> Reference<S>(Expression<Func<T, S>> predicate, Expression<Func<S, object>> additionalConstraints)
+        {
+            return Reference(predicate, new Expression<Func<S, object>>[] { additionalConstraints });
+        }
+
+        public IRelmDataSet<T> Reference<S>(Expression<Func<T, ICollection<S>>> predicate, ICollection<Expression<Func<S, object>>> additionalConstraints)
+        {
+            return InternalReference(predicate, additionalConstraints);
+        }
+
+        public IRelmDataSet<T> Reference<S>(Expression<Func<T, S>> predicate, ICollection<Expression<Func<S, object>>> additionalConstraints)
+        {
+            return InternalReference(predicate, additionalConstraints);
+        }
+
+        private IRelmDataSet<T> InternalReference<S>(LambdaExpression predicate, ICollection<Expression<Func<S, object>>> additionalConstraints)
         {
             var referenceExpression = _dataLoader.AddExpression(Command.Reference, predicate.Body);
 

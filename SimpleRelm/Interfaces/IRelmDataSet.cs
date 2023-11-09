@@ -13,8 +13,11 @@ namespace SimpleRelm.Interfaces
         IRelmFieldLoader SetFieldLoader(string fieldName, IRelmFieldLoader dataLoader);
         IRelmDataLoader<T> SetDataLoader(IRelmDataLoader<T> dataLoader);
         IRelmDataSet<T> Where(Expression<Func<T, bool>> predicate);
-        IRelmDataSet<T> Reference(Expression<Func<T, object>> predicate);
-        IRelmDataSet<T> Reference(Expression<Func<T, object>> predicate, Expression<Func<T, object>> additionalConstraints);
+        IRelmDataSet<T> Reference<S>(Expression<Func<T, S>> predicate);
+        IRelmDataSet<T> Reference<S>(Expression<Func<T, S>> predicate, Expression<Func<S, object>> additionalConstraints);
+        IRelmDataSet<T> Reference<S>(Expression<Func<T, ICollection<S>>> predicate, Expression<Func<S, object>> additionalConstraints);
+        IRelmDataSet<T> Reference<S>(Expression<Func<T, S>> predicate, ICollection<Expression<Func<S, object>>> additionalConstraints);
+        IRelmDataSet<T> Reference<S>(Expression<Func<T, ICollection<S>>> predicate, ICollection<Expression<Func<S, object>>> additionalConstraints);
         T Find(int ItemId);
         T Find(string ItemInternalId);
         T FirstOrDefault();
