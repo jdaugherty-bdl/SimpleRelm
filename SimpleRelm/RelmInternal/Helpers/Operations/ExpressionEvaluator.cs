@@ -83,9 +83,12 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             return EvaluateWhereExpression(expression, QueryParameters, giveCommandPrefix: GiveCommandPrefix, nodeType: NodeType) + ")";
         }
 
-        private object ResolveParameter(Expression resolvableExpression, Dictionary<string, object> queryParameters, string parameterName)
+        private object ResolveParameter(Expression resolvableExpression, Dictionary<string, object> queryParameters, string parameterName, bool asStringValue = false)
         {
             var parameterValue = ExpressionUtilities.GetValue(resolvableExpression);
+
+            if (asStringValue)
+                parameterValue = parameterValue.ToString();
 
             queryParameters.Add(parameterName, resolvableExpression.Type == typeof(bool)
                 ? ((bool)parameterValue ? 1 : 0)
@@ -118,6 +121,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                     var parameterName = default(string);
                     var currentAlias = default(string);
                     var parameterValue = default(object);
+                    var enumType = default(Type);
 
                     // NOTE: Very important to keep the order of these if statements, as the result are used in the next if statements
 
@@ -133,9 +137,6 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
                             currentAlias = GetTableAlias(((RelmTable)memberExpressionLeft.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
                         }
-                        /*
-                        (currentAlias, fieldName, parameterName, parameterValue) = ResolveMemberExpression(memberExpressionLeft, queryParameters, parameterName);
-                        */
                     }
 
                     if (binaryExpression.Right is MemberExpression memberExpressionRight)
@@ -149,13 +150,55 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
                             currentAlias = GetTableAlias(((RelmTable)memberExpressionRight.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
                         }
-                        /*
-                        (currentAlias, fieldName, parameterName, parameterValue) = ResolveMemberExpression(memberExpressionRight, queryParameters, parameterName);
-                        */
+                    }
+
+                    var leftBinaryQuery = string.Empty;
+                    if (binaryExpression.Left is UnaryExpression unaryExpressionLeft)
+                    {
+                        if (unaryExpressionLeft.Operand is MethodCallExpression)
+                            leftBinaryQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(unaryExpressionLeft.Operand, command.Item2) }), queryParameters, giveCommandPrefix: false, nodeType: unaryExpressionLeft.NodeType);
+                        else if (unaryExpressionLeft.NodeType == ExpressionType.Convert && unaryExpressionLeft.Operand.Type.IsEnum && unaryExpressionLeft.Operand is MemberExpression memberExpression)
+                        {
+                            if (memberExpression.Expression.NodeType == ExpressionType.Parameter)
+                            {
+                                fieldName = memberExpression.Member.Name;
+                                parameterName = GenerateParameterName(memberExpression.Member.Name, queryParameters);
+
+                                currentAlias = GetTableAlias(((RelmTable)memberExpression.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+                                enumType = memberExpression.Type;
+                            }
+                            else
+                                parameterValue = ResolveParameter(memberExpression, queryParameters, parameterName, true); // convert all enum parameters to string representations
+                        }
+                        else
+                            parameterValue = ResolveParameter(binaryExpression.Left, queryParameters, parameterName);
+                    }
+
+                    var rightBinaryQuery = string.Empty;
+                    if (binaryExpression.Right is UnaryExpression unaryExpressionRight)
+                    {
+                        if (unaryExpressionRight.Operand is MethodCallExpression)
+                            rightBinaryQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(unaryExpressionRight.Operand, command.Item2) }), queryParameters, nodeType: unaryExpressionRight.NodeType);
+                        else if (unaryExpressionRight.NodeType == ExpressionType.Convert && unaryExpressionRight.Operand.Type.IsEnum && unaryExpressionRight.Operand is MemberExpression memberExpression)
+                        {
+                            if (memberExpression.Expression.NodeType == ExpressionType.Parameter)
+                            {
+                                fieldName = memberExpression.Member.Name;
+                                parameterName = GenerateParameterName(memberExpression.Member.Name, queryParameters);
+
+                                currentAlias = GetTableAlias(((RelmTable)memberExpression.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+                                enumType = memberExpression.Type;
+                            }
+                            else
+                                parameterValue = ResolveParameter(memberExpression, queryParameters, parameterName, true); // convert all enum parameters to string representations
+                        }
+                        else
+                            parameterValue = ResolveParameter(binaryExpression.Right, queryParameters, parameterName);
                     }
 
                     // evaluate binary and method expressions recursively, otherwise get the parameter name and value
-                    var leftBinaryQuery = string.Empty;
                     if (binaryExpression.Left is BinaryExpression subBinaryExpressionLeft)
                         leftBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionLeft, command.Item2) }), queryParameters, giveCommandPrefix: false);
                     else if (binaryExpression.Left is MethodCallExpression methodCallExpressionLeft)
@@ -167,7 +210,6 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                             leftBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(methodCallExpressionLeft, command.Item2) }), queryParameters, giveCommandPrefix: false);
                     }
 
-                    var rightBinaryQuery = string.Empty;
                     if (binaryExpression.Right is BinaryExpression subBinaryExpressionRight)
                         rightBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionRight, command.Item2) }), queryParameters, nodeType: binaryExpression.NodeType);
                     else if (binaryExpression.Right is MethodCallExpression methodCallExpressionRight)
@@ -179,24 +221,32 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                     }
 
                     // resolve all other parameters not already resolved
-                    if (binaryExpression.Left is UnaryExpression
-                        || binaryExpression.Left is NewExpression
-                        || binaryExpression.Left is ConstantExpression)
+                    if (binaryExpression.Left is NewExpression || binaryExpression.Left is ConstantExpression)
                     {
-                        if (binaryExpression.Left is UnaryExpression unaryExpressionLeft && unaryExpressionLeft.Operand is MethodCallExpression)
-                            leftBinaryQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(unaryExpressionLeft.Operand, command.Item2) }), queryParameters, giveCommandPrefix: false, nodeType: unaryExpressionLeft.NodeType);
-                        else
-                            parameterValue = ResolveParameter(binaryExpression.Left, queryParameters, parameterName);
+                        parameterValue = ResolveParameter(binaryExpression.Left, queryParameters, parameterName);
+
+                        if (enumType != null)
+                        {
+                            // Convert parameterValue to the specified enum type
+                            if (parameterValue is int intValue)
+                                parameterValue = Enum.ToObject(enumType, intValue).ToString();
+
+                            queryParameters[parameterName] = parameterValue;
+                        }
                     }
 
-                    if (binaryExpression.Right is UnaryExpression
-                        || binaryExpression.Right is NewExpression
-                        || binaryExpression.Right is ConstantExpression)
+                    if (binaryExpression.Right is NewExpression || binaryExpression.Right is ConstantExpression)
                     {
-                        if (binaryExpression.Right is UnaryExpression unaryExpressionRight && unaryExpressionRight.Operand is MethodCallExpression)
-                            rightBinaryQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(unaryExpressionRight.Operand, command.Item2) }), queryParameters, nodeType: unaryExpressionRight.NodeType);
-                        else
-                            parameterValue = ResolveParameter(binaryExpression.Right, queryParameters, parameterName);
+                        parameterValue = ResolveParameter(binaryExpression.Right, queryParameters, parameterName);
+
+                        if (enumType != null)
+                        {
+                            // Convert parameterValue to the specified enum type
+                            if (parameterValue is int intValue)
+                                parameterValue = Enum.ToObject(enumType, intValue).ToString();
+
+                            queryParameters[parameterName] = parameterValue;
+                        }
                     }
 
                     // build the query

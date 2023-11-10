@@ -11,6 +11,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static SimpleRelm.Tests.TestModels.ComplexTestModel;
 
 namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTests
 {
@@ -343,6 +344,36 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             // Assert
             Assert.Equal(" WHERE ( a.`Test_Column_No_Attribute_Arguments` IS NOT NULL    AND  FIND_IN_SET(a.`Id`, @_Id_1_) )", result);
             Assert.Equal(string.Join(",", expectedIds.Select(x => x.Id)), string.Join(",", queryParameters["@_Id_1_"]));
+        }
+
+        [Fact]
+        public void TestExpressionEvaluatorWhere_CompareEnumWithVariable_Select()
+        {
+            // Arrange
+            var whereType = WhereTypes.WhereType1;
+
+            predicate = x => x.WhereTypeProperty == whereType;
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(ExpressionEvaluator.Command.Where, new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Where, predicate) }), queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE ( a.`Where_Type_Property` = @_WhereTypeProperty_1_ )", result);
+            Assert.Equal(whereType.ToString(), queryParameters["@_WhereTypeProperty_1_"]);
+        }
+
+        [Fact]
+        public void TestExpressionEvaluatorWhere_CompareEnumWithConstant_Select()
+        {
+            // Arrange
+            predicate = x => x.WhereTypeProperty == WhereTypes.WhereType1;
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(ExpressionEvaluator.Command.Where, new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Where, predicate) }), queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE ( a.`Where_Type_Property` = @_WhereTypeProperty_1_ )", result);
+            Assert.Equal(WhereTypes.WhereType1.ToString(), queryParameters["@_WhereTypeProperty_1_"]);
         }
     }
 }

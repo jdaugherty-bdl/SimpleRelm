@@ -12,12 +12,21 @@ namespace SimpleRelm.Tests.TestModels
     [RelmTable("nothing_table")]
     public class ComplexTestModel : RelmModel
     {
+        public enum WhereTypes
+        {
+            WhereType1,
+            WhereType2,
+            WhereType3
+        }
+
         [RelmColumn(ColumnName: "test_column_InternalId", ColumnSize: 255, IsNullable: false, PrimaryKey: false, Autonumber: true, Unique: true, DefaultValue: "DEFAULTVALUE", Index: "INDEX", IndexDescending: true, AllowDataTruncation: true, Virtual: true)]
         public string? TestColumnInternalId { get; set; }
         [RelmColumn(ColumnName: "test_column_id", ColumnSize: 255, IsNullable: false, PrimaryKey: false, Autonumber: true, Unique: true, DefaultValue: "DEFAULTVALUE", Index: "INDEX", IndexDescending: true, AllowDataTruncation: true, Virtual: true)]
         public int TestColumnId { get; set; }
         [RelmColumn]
         public string? TestColumnNoAttributeArguments { get; set; }
+        [RelmColumn]
+        public WhereTypes WhereTypeProperty { get; set; }
 
         public string? ComplexReferenceObjectLocalKey { get; set; }
         
