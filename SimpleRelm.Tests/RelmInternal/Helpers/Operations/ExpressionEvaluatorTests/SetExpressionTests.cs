@@ -31,7 +31,26 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         }
 
         [Fact]
-        public void TestExpressionEvaluatorSet_String()
+        public void TestExpressionEvaluatorSet_MultipleFields_ReturnsProperSql()
+        {
+            // Arrange
+            predicate = x => new ComplexTestModel { TestColumnInternalId = "TEST_VALUE", TestColumnId = 1 };
+
+            // Act
+            var result = evaluator.EvaluateSet(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
+                    ExpressionEvaluator.Command.Set, 
+                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Set, predicate.Body) })
+                , queryParameters);
+
+            // Assert
+            Assert.Equal(" SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_ , a.`test_column_id` = @_TestColumnId_1_  ON DUPLICATE KEY UPDATE test_column_InternalId=VALUES(test_column_InternalId),test_column_id=VALUES(test_column_id) ", result);
+
+            Assert.Equal("TEST_VALUE", queryParameters["@_TestColumnInternalId_1_"]);
+            Assert.Equal(1, queryParameters["@_TestColumnId_1_"]);
+        }
+
+        [Fact]
+        public void TestExpressionEvaluatorSet_String_ReturnsProperSql()
         {
             // Arrange
             predicate = x => new ComplexTestModel { TestColumnInternalId = "TEST_VALUE" };
@@ -43,13 +62,39 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
                 , queryParameters);
 
             // Assert
-            Assert.Equal(" SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_  ", result);
+            Assert.Equal(" SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_  ON DUPLICATE KEY UPDATE test_column_InternalId=VALUES(test_column_InternalId) ", result);
 
-            Assert.Equal(queryParameters["@_TestColumnInternalId_1_"], "TEST_VALUE");
+            Assert.Equal("TEST_VALUE", queryParameters["@_TestColumnInternalId_1_"]);
         }
 
         [Fact]
-        public void TestExpressionEvaluatorSet_Bool()
+        public void TestExpressionEvaluatorSet_SetWithWhere_ReturnsProperSql()
+        {
+            // Arrange
+            Expression<Func<ComplexTestModel, bool>>? wherePredicate = x => x.Active == false;
+            predicate = x => new ComplexTestModel { TestColumnInternalId = "TEST_VALUE" };
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
+                    ExpressionEvaluator.Command.Where,
+                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Where, wherePredicate) })
+                , queryParameters);
+
+            result += evaluator.EvaluateSet(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
+                    ExpressionEvaluator.Command.Set,
+                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Set, predicate.Body) })
+                , queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE ( a.`Active` = @_Active_1_ ) SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_  ON DUPLICATE KEY UPDATE test_column_InternalId=VALUES(test_column_InternalId) ", result);
+
+            Assert.IsType<int>(queryParameters["@_Active_1_"]);
+            Assert.Equal(0, (int)queryParameters["@_Active_1_"]);
+            Assert.Equal("TEST_VALUE", queryParameters["@_TestColumnInternalId_1_"]);
+        }
+
+        [Fact]
+        public void TestExpressionEvaluatorSet_Bool_ReturnsProperSql()
         {
             // Arrange
             predicate = x => new ComplexTestModel { Active = false };
@@ -61,9 +106,9 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
                 , queryParameters);
 
             // Assert
-            Assert.Equal(" SET  a.`Active` = @_Active_1_  ", result);
+            Assert.Equal(" SET  a.`Active` = @_Active_1_  ON DUPLICATE KEY UPDATE Active=VALUES(Active) ", result);
 
-            Assert.Equal(queryParameters["@_Active_1_"], false);
+            Assert.Equal(false, queryParameters["@_Active_1_"]);
         }
 
         [Fact]

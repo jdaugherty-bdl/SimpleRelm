@@ -431,6 +431,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         public string EvaluateSet(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression, Dictionary<string, object> QueryParameters)
         {
             var setLines = new List<string>();
+            var usedColumns = new List<string>();
 
             var set = CommandExpression.Value.FirstOrDefault();
             var currentAlias = GetTableAlias(((RelmTable)set.InitialExpression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
@@ -439,11 +440,12 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             {
                 var parameterName = GenerateParameterName(memberAssignment.Member.Name, QueryParameters);
                 var parameterValue = ExpressionUtilities.GetValue(memberAssignment.Expression);
+                var columnName = UnderscoreProperties[memberAssignment.Member.Name];
 
                 var queryLine = " ";
                 queryLine += currentAlias;
                 queryLine += ".`";
-                queryLine += UnderscoreProperties[memberAssignment.Member.Name];
+                queryLine += columnName;
                 queryLine += "` = ";
                 queryLine += parameterName;
                 queryLine += " ";
@@ -451,6 +453,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 setLines.Add(queryLine);
 
                 QueryParameters.Add(parameterName, parameterValue);
+                usedColumns.Add(columnName);
             }
             else if (set.InitialExpression is MemberInitExpression memberInit)
             {
@@ -458,11 +461,12 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 {
                     var parameterName = GenerateParameterName(binding.Member.Name, QueryParameters);
                     var parameterValue = ExpressionUtilities.GetValue(((MemberAssignment)binding).Expression);
+                    var columnName = UnderscoreProperties[binding.Member.Name];
 
                     var queryLine = " ";
                     queryLine += currentAlias;
                     queryLine += ".`";
-                    queryLine += UnderscoreProperties[binding.Member.Name];
+                    queryLine += columnName;
                     queryLine += "` = ";
                     queryLine += parameterName;
                     queryLine += " ";
@@ -470,13 +474,16 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                     setLines.Add(queryLine);
 
                     QueryParameters.Add(parameterName, parameterValue);
+                    usedColumns.Add(columnName);
                 }
             }
             else
                 throw new NotSupportedException();
 
             var findQuery = " SET ";
-            findQuery += string.Join(", ", setLines);
+            findQuery += string.Join(",", setLines);
+            findQuery += " ON DUPLICATE KEY UPDATE ";
+            findQuery += string.Join(",", usedColumns.Select(x => $"{x}=VALUES({x})"));
             findQuery += " ";
 
             return findQuery;
