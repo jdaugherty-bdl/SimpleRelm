@@ -161,6 +161,13 @@ namespace SimpleRelm.Models
             return _items.FirstOrDefault();
         }
 
+        public IRelmDataSet<T> LoadAsDataSet()
+        {
+            Load();
+
+            return this;
+        }
+
         public ICollection<T> Load()
         {
             _items = _dataLoader.GetLoadData();

@@ -25,6 +25,7 @@ namespace SimpleRelm.Interfaces
         T FirstOrDefault(Expression<Func<T, bool>> predicate);
         T FirstOrDefault(Expression<Func<T, bool>> predicate, bool LoadItems);
         ICollection<T> Load();
+        IRelmDataSet<T> LoadAsDataSet();
         int Write();
         IRelmDataSet<T> Entry(T Item);
         IRelmDataSet<T> Entry(T Item, bool Persist = true);
