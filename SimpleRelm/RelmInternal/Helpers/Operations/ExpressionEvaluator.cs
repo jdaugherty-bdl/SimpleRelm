@@ -572,7 +572,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         //public string EvaluateLimit(KeyValuePair<Command, List<Expression>> CommandExpression)
         public string EvaluateLimit(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression)
         {
-            return $" LIMIT {(CommandExpression.Value[0] as ConstantExpression).Value} ";
+            return $" LIMIT {(CommandExpression.Value[0].InitialExpression as ConstantExpression).Value} ";
         }
 
         //public string EvaluateDistinctBy(KeyValuePair<Command, List<Expression>> CommandExpression)
