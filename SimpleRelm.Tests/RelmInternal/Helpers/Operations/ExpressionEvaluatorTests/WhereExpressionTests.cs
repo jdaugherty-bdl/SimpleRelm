@@ -375,5 +375,49 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             Assert.Equal(" WHERE ( a.`Where_Type_Property` = @_WhereTypeProperty_1_ )", result);
             Assert.Equal(WhereTypes.WhereType1.ToString(), queryParameters["@_WhereTypeProperty_1_"]);
         }
+
+        [Fact]
+        public void TestExpressionEvaluatorWhere_CallExpressionRight_Select()
+        {
+            // Arrange
+            var compareModels = new ComplexTestModel[]
+            {
+                new ComplexTestModel { Id = 0, InternalId = "TEST1" },
+                new ComplexTestModel { Id = 1, InternalId = "TEST2" }
+            }
+            .ToDictionary(x => x.Id ?? 0, x => x);
+            var modelCount = 0;
+
+            predicate = x => x.InternalId == compareModels[modelCount].InternalId;
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(ExpressionEvaluator.Command.Where, new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Where, predicate) }), queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE ( a.`InternalId` = @_InternalId_1_ )", result);
+            Assert.Equal(compareModels[modelCount].InternalId, queryParameters["@_InternalId_1_"]);
+        }
+
+        [Fact]
+        public void TestExpressionEvaluatorWhere_CallExpressionLeft_Select()
+        {
+            // Arrange
+            var compareModels = new ComplexTestModel[]
+            {
+                new ComplexTestModel { Id = 0, InternalId = "TEST1" },
+                new ComplexTestModel { Id = 1, InternalId = "TEST2" }
+            }
+            .ToDictionary(x => x.Id ?? 0, x => x);
+            var modelCount = 0;
+
+            predicate = x => compareModels[modelCount].InternalId == x.InternalId;
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(ExpressionEvaluator.Command.Where, new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Where, predicate) }), queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE ( a.`InternalId` = @_InternalId_1_ )", result);
+            Assert.Equal(compareModels[modelCount].InternalId, queryParameters["@_InternalId_1_"]);
+        }
     }
 }
