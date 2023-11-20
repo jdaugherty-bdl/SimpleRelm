@@ -101,7 +101,10 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                 .First();
 
             var filteredDataSetContains = whereMethod.Invoke(dataSet, new object[] { containsLambda });
-            var collectionItemsContains = dataSet.GetType().GetMethod(nameof(RelmDataSet<T>.Load)).Invoke(filteredDataSetContains, null);
+            var collectionItemsContains = dataSet.GetType()
+                .GetMethods()
+                .FirstOrDefault(x => x.Name == nameof(RelmDataSet<T>.Load) && x.GetParameters().Length == 1)
+                .Invoke(filteredDataSetContains, new object[] { true });
 
             // use a foreach loop to convert collectionItemsContains to a dictionary where the key is the foreign key and the object is the item
             var collectionItems = (IDictionary)Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(typeof(object).MakeArrayType(), navigationOptions.ReferenceProperty.Type));

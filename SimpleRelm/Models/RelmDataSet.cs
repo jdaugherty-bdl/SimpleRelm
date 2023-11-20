@@ -170,24 +170,32 @@ namespace SimpleRelm.Models
 
         public ICollection<T> Load()
         {
+            return Load(true);
+        }
+
+        public ICollection<T> Load(bool loadDataLoaders)
+        {
             _items = _dataLoader.GetLoadData();
 
             if (_items?.Any() ?? false)
             {
-                // find all fields marked with a RelmFieldLoader attribute that have a type derived from IRelmFieldLoader<> and add them to the list of field loaders as long as they are not already there
-                foreach (var field in typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmDataLoader>()?.LoaderType?.GetInterfaces()?.Any(y => y == typeof(IRelmFieldLoader)) ?? false))
+                if (loadDataLoaders)
                 {
-                    if (_fieldDataLoaders.HasFieldLoader(field.Name))
-                        continue;
+                    // find all fields marked with a RelmFieldLoader attribute that have a type derived from IRelmFieldLoader<> and add them to the list of field loaders as long as they are not already there
+                    foreach (var field in typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmDataLoader>()?.LoaderType?.GetInterfaces()?.Any(y => y == typeof(IRelmFieldLoader)) ?? false))
+                    {
+                        if (_fieldDataLoaders.HasFieldLoader(field.Name))
+                            continue;
 
-                    _fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(field.GetCustomAttribute<RelmDataLoader>().LoaderType, new object[] { field.Name, field.GetCustomAttribute<RelmDataLoader>().KeyFields }));
-                }
+                        _fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(field.GetCustomAttribute<RelmDataLoader>().LoaderType, new object[] { field.Name, field.GetCustomAttribute<RelmDataLoader>().KeyFields }));
+                    }
 
-                // execute all field loaders
-                var fieldHelper = new FieldLoaderHelper<T>(_items);
-                foreach (var fieldLoader in _fieldDataLoaders)
-                {
-                    fieldHelper.LoadData(fieldLoader);
+                    // execute all field loaders
+                    var fieldHelper = new FieldLoaderHelper<T>(_items);
+                    foreach (var fieldLoader in _fieldDataLoaders)
+                    {
+                        fieldHelper.LoadData(fieldLoader);
+                    }
                 }
 
                 // load all references

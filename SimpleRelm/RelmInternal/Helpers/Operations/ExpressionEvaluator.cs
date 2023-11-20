@@ -339,12 +339,12 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                             findQuery += parameterName;
                             findQuery += " ";
                         }
-                        else if (methodCall.Object is ConstantExpression expressedConstant)
+                        else if (methodCall.Object is ConstantExpression || methodCall.Object is MethodCallExpression)
                         {
                             if (!UnderscoreProperties.ContainsKey(referencedMember.Member.Name))
                                 throw new Exception($"No field named '{referencedMember.Member.Name}' with attribute [RelmColumn] found.");
 
-                            var constantValue = ExpressionUtilities.GetValue(expressedConstant);
+                            var constantValue = ExpressionUtilities.GetValue(methodCall.Object);
 
                             // if constant value is an enumerable, then string join all values and add single quotes around everything, otherwise just get the value with single quotes
                             if (constantValue is IEnumerable constantValues)
