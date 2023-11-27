@@ -18,7 +18,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 {
     internal class ForeignObjectsLoader<T> where T : IRelmModel, new()
     {
-        private ICollection<T> _items;
+        private readonly ICollection<T> _items;
         private readonly IRelmContext _currentContext;
 
         internal ForeignObjectsLoader()

@@ -294,14 +294,36 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 }
                 else if (command.Item1 is MethodCallExpression methodCall)
                 {
+                    //((MemberExpression)((MethodCallExpression)((Expression<Func<object[], bool>>)methodCall.Arguments[1]).Body).Arguments[1]).Expression == command.Item2.FirstOrDefault()
                     var referencedMember = methodCall.Arguments.LastOrDefault(x => x is MemberExpression) as MemberExpression;
+                    //var referencedMember = ExpressionUtilities.GetReferencedMember(command);
                     var parameterName = referencedMember == null ? default : GenerateParameterName(referencedMember.Member.Name, queryParameters);
-                    var parameterValues = methodCall
+
+                    var parameterValues1 = methodCall
+                    //var parameterValues = methodCall
                         .Arguments
                         .Select(x => x is MemberExpression ? null : ExpressionUtilities.GetValue(x))
+                        .ToList()
+                        ;
+                    /*
+                    var parameterValues1 = new List<object>();
+
+                    foreach (var arg in methodCall.Arguments)
+                    {
+                        if (arg is MemberExpression)
+                            parameterValues1.Add(ExpressionUtilities.GetValue(arg));
+                    }
+                    */
+
+                    var parameterValues = parameterValues1
                         .Where(x => x != null)
                         .Select(x => x is IEnumerable enumerable ? enumerable.Cast<object>().ToList() : x)
                         .ToList();
+
+                    /*
+                    var parVal1 = ExpressionUtilities.GetReferencedValues(methodCall);
+                    parameterValues = parVal1;
+                    */
 
                     var parameterValue = default(object);
                     var currentAlias = default(string);

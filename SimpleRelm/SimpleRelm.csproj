@@ -90,6 +90,8 @@
     <Compile Include="RelmInternal\Extensions\UnderscoreNamesHelper.cs" />
     <Compile Include="RelmInternal\GlobalEnums.cs" />
     <Compile Include="RelmInternal\Helpers\Connections\StandardConnectionHelper.cs" />
+    <Compile Include="RelmInternal\Helpers\CustomVisitors\CustomMethodCallVisitor.cs" />
+    <Compile Include="RelmInternal\Helpers\CustomVisitors\CustomParameterVisitor.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\DatabaseWorkHelper.cs" />
     <Compile Include="Models\RelmDefaultDataLoader.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\DataLoaderHelper.cs" />

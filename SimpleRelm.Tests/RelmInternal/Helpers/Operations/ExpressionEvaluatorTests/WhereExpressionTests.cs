@@ -297,6 +297,37 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         }
 
         [Fact]
+        public void TestExpressionEvaluatorWhere_CompoundBuildWithMultipleLayers_NotEquals()
+        {
+            // Arrange
+            var keyData = new List<long[]>
+            {
+                new long[] { 2 },
+            };
+            var expectedIds = new List<ComplexTestModel>
+            { 
+                new ComplexTestModel { InternalId = "1" },
+                new ComplexTestModel { InternalId = "2" },
+                new ComplexTestModel { InternalId = "3" },
+                new ComplexTestModel { InternalId = "4" },
+            };
+            var expectedInternalId = "00000000-0000-0000-0000-000000000000";
+
+            predicate = x => keyData.All(y => y.Select(z => z.ToString()).ToList().Contains(x.InternalId)); //  expectedIds.Select(y => y.Id).Contains(x.Id) && x.TestColumnNoAttributeArguments != expectedInternalId;
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
+                    ExpressionEvaluator.Command.Where,
+                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Where, predicate) })
+                , queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE ( FIND_IN_SET(a.`Id`, @_Id_1_)    AND  a.`Test_Column_No_Attribute_Arguments` <> @_TestColumnNoAttributeArguments_1_ )", result);
+            Assert.Equal(string.Join(",", expectedIds.Select(x => x.Id)), string.Join(",", queryParameters["@_Id_1_"]));
+            Assert.Equal(expectedInternalId, queryParameters["@_TestColumnNoAttributeArguments_1_"]);
+        }
+
+        [Fact]
         public void TestExpressionEvaluatorWhere_CompoundBuild_Select_NotNull()
         {
             // Arrange
@@ -408,7 +439,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
                 new ComplexTestModel { Id = 1, InternalId = "TEST2" }
             }
             .ToDictionary(x => x.Id ?? 0, x => x);
-            var modelCount = 0;
+            var modelCount = 0L;
 
             predicate = x => compareModels[modelCount].InternalId == x.InternalId;
 
