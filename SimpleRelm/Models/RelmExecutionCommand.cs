@@ -88,12 +88,17 @@ namespace SimpleRelm.Models
             // dependent entity has foreign key attribute/navigation property instead of principal entity
             if (principalReslolutionForeignKey == null)
             {
+                var defaultLocalKeys = targetProperties
+                    .Where(x => x.GetCustomAttribute<RelmKey>() != null)
+                    .Select(x => x.Name)
+                    .ToArray();
+
                 // get all properties on target that have a RelmForeignKey attribute and make dictionary with LocalKeys as keys
                 var targetForeignKeyDecorators = targetProperties
                     .Where(x => x.GetCustomAttribute<RelmForeignKey>() != null)
                     .ToDictionary(x => x, x => x.GetCustomAttribute<RelmForeignKey>())
-                    .Segment((prev, next, i) => !prev.Value.LocalKeys.All(x => next.Value.LocalKeys.Contains(x)))
-                    .ToDictionary(x => x.FirstOrDefault().Value.LocalKeys, x => x.ToDictionary(y => y.Key, y => y.Value.ForeignKeys));
+                    .Segment((prev, next, i) => !(prev.Value.LocalKeys ?? defaultLocalKeys).All(x => (next.Value.LocalKeys ?? defaultLocalKeys).Contains(x)))
+                    .ToDictionary(x => x.FirstOrDefault().Value.LocalKeys ?? defaultLocalKeys, x => x.ToDictionary(y => y.Key, y => y.Value.ForeignKeys));
 
                 // find any navigation properties that are the same type as this data set
                 var navigationProps = targetPropertiesOfTypeT
@@ -107,10 +112,11 @@ namespace SimpleRelm.Models
                 if (navigationProps.Count == 0)
                 {
                     // we're using navigation properties
+                    /*
                     navigationProps = targetPropertiesOfTypeT
                         .Where(x => targetForeignKeyDecorators.Any(y => y.Value.ContainsKey(x)))
                         .ToList();
-
+                    */
                     navigationOptions.ForeignKeyProperties = targetForeignKeyDecorators
                         .Select(x => targetProperties.Where(y => x.Key.Contains(y.Name)).ToArray())
                         .FirstOrDefault();
@@ -149,21 +155,22 @@ namespace SimpleRelm.Models
                         .ToList();
                 }
 
-                navigationOptions.NavigationProperty = navigationProps.FirstOrDefault();
+                //navigationOptions.NavigationProperty = navigationProps.FirstOrDefault();
             }
             else
             {
                 // get the principal entity's foreign key property
                 navigationOptions.ForeignKeyProperties = targetProperties.Where(x => principalReslolutionForeignKey.ForeignKeys.Contains(x.Name)).ToArray();
-                navigationOptions.NavigationProperty = targetPropertiesOfTypeT.FirstOrDefault(); //.Values.FirstOrDefault();
+                //navigationOptions.NavigationProperty = targetPropertiesOfTypeT.FirstOrDefault(); //.Values.FirstOrDefault();
             }
 
             // check required variables have something in them
             if ((navigationOptions.ForeignKeyProperties?.Length ?? 0) <= 0)
                 throw new MemberAccessException("Foreign key referenced by RelmForeignKey attribute could not be found.");
-
+            /*
             if (navigationOptions.NavigationProperty == null)
                 throw new MemberAccessException("Navigation property referenced by RelmForeignKey attribute could not be found.");
+            */
 
             if ((navigationOptions.ItemPrimaryKeys?.Count ?? 0) <= 0)
                 throw new Exception("No primary keys found.");

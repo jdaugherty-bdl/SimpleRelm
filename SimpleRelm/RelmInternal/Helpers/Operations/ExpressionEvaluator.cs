@@ -136,10 +136,10 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                     // NOTE: the order of these if statements is VERY important, as the results of each are used in subsequent if statements
 
                     // get parameter names
-                    if (binaryExpression.Left is MemberExpression memberExpressionLeft && !(memberExpressionLeft.Expression.NodeType == ExpressionType.Constant || memberExpressionLeft.Expression.NodeType == ExpressionType.Call))
+                    if (binaryExpression.Left is MemberExpression memberExpressionLeft && memberExpressionLeft.Expression.NodeType == ExpressionType.Parameter) // !(memberExpressionLeft.Expression.NodeType == ExpressionType.Constant || memberExpressionLeft.Expression.NodeType == ExpressionType.Call || memberExpressionLeft.Expression.NodeType == ExpressionType.MemberAccess))
                         (fieldName, parameterName, currentAlias) = GetNamesAndAliases(memberExpressionLeft, queryParameters);
 
-                    if (binaryExpression.Right is MemberExpression memberExpressionRight && !(memberExpressionRight.Expression.NodeType == ExpressionType.Constant || memberExpressionRight.Expression.NodeType == ExpressionType.Call))
+                    if (binaryExpression.Right is MemberExpression memberExpressionRight && memberExpressionRight.Expression.NodeType == ExpressionType.Parameter) // !(memberExpressionRight.Expression.NodeType == ExpressionType.Constant || memberExpressionRight.Expression.NodeType == ExpressionType.Call || memberExpressionRight.Expression.NodeType == ExpressionType.MemberAccess))
                         (fieldName, parameterName, currentAlias) = GetNamesAndAliases(memberExpressionRight, queryParameters);
 
                     var leftBinaryQuery = string.Empty;
@@ -169,10 +169,10 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                     }
 
                     // get parameter values
-                    if (binaryExpression.Left is MemberExpression memberExpressionLeft1 && (memberExpressionLeft1.Expression.NodeType == ExpressionType.Constant || memberExpressionLeft1.Expression.NodeType == ExpressionType.Call))
+                    if (binaryExpression.Left is MemberExpression memberExpressionLeft1 && memberExpressionLeft1.Expression.NodeType != ExpressionType.Parameter) // (memberExpressionLeft1.Expression.NodeType == ExpressionType.Constant || memberExpressionLeft1.Expression.NodeType == ExpressionType.Call))
                         parameterValue = ResolveParameter(memberExpressionLeft1, queryParameters, parameterName);
 
-                    if (binaryExpression.Right is MemberExpression memberExpressionRight1 && (memberExpressionRight1.Expression.NodeType == ExpressionType.Constant || memberExpressionRight1.Expression.NodeType == ExpressionType.Call))
+                    if (binaryExpression.Right is MemberExpression memberExpressionRight1 && memberExpressionRight1.Expression.NodeType != ExpressionType.Parameter) // (memberExpressionRight1.Expression.NodeType == ExpressionType.Constant || memberExpressionRight1.Expression.NodeType == ExpressionType.Call))
                         parameterValue = ResolveParameter(memberExpressionRight1, queryParameters, parameterName);
 
                     if (binaryExpression.Left is UnaryExpression unaryExpressionLeft1 && !(unaryExpressionLeft1.Operand is MethodCallExpression))
@@ -294,33 +294,48 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 }
                 else if (command.Item1 is MethodCallExpression methodCall)
                 {
-                    //((MemberExpression)((MethodCallExpression)((Expression<Func<object[], bool>>)methodCall.Arguments[1]).Body).Arguments[1]).Expression == command.Item2.FirstOrDefault()
-                    var referencedMember = methodCall.Arguments.LastOrDefault(x => x is MemberExpression) as MemberExpression;
-                    //var referencedMember = ExpressionUtilities.GetReferencedMember(command);
+                    var referencedMember = ExpressionUtilities.GetReferencedMember(command);
                     var parameterName = referencedMember == null ? default : GenerateParameterName(referencedMember.Member.Name, queryParameters);
 
+                    /*
                     var parameterValues1 = methodCall
                     //var parameterValues = methodCall
                         .Arguments
-                        .Select(x => x is MemberExpression ? null : ExpressionUtilities.GetValue(x))
+                        //.Select(x => x is MemberExpression ? default : ExpressionUtilities.GetValue(x))
+                        .Select(x => x.NodeType == ExpressionType.Call ? ExpressionUtilities.GetValue(x) : default)
                         .ToList()
                         ;
-                    /*
-                    var parameterValues1 = new List<object>();
+                    */
+                    var parameterValues = new List<object>();
 
                     foreach (var arg in methodCall.Arguments)
                     {
-                        if (arg is MemberExpression)
-                            parameterValues1.Add(ExpressionUtilities.GetValue(arg));
-                    }
-                    */
+                        if (arg != referencedMember)
+                        {
+                            //if (arg is MemberExpression)
+                            if (arg.NodeType == ExpressionType.Call || (arg is MemberExpression memberExpression && memberExpression.Expression.NodeType == ExpressionType.Constant))
+                            {
+                                var vals = ExpressionUtilities.GetValue(arg);
 
+                                parameterValues.Add(vals is IEnumerable enumerable ? enumerable.Cast<object>() : vals);
+                            }
+                            else if (arg.NodeType == ExpressionType.Lambda)
+                            {
+                                var paraValues = parameterValues;
+
+                                var ddd = ExpressionUtilities.ModifyLambdaExpression((LambdaExpression)arg, paraValues is IEnumerable enumerable ? enumerable.Cast<object>().ToList() : paraValues);
+
+                                // TODO: remove used parameter value from parameterValues
+                            }
+                        }
+                    }
+
+                    /*
                     var parameterValues = parameterValues1
                         .Where(x => x != null)
                         .Select(x => x is IEnumerable enumerable ? enumerable.Cast<object>().ToList() : x)
                         .ToList();
 
-                    /*
                     var parVal1 = ExpressionUtilities.GetReferencedValues(methodCall);
                     parameterValues = parVal1;
                     */
@@ -434,7 +449,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                             findQuery += " NULL ";
                         }
                         else
-                            throw new NotSupportedException();
+                            throw new NotSupportedException($"Specified method is not supported: [{methodCall.Method.Name}]");
                     }
 
                     queryParameters.Add(parameterName, parameterValue);

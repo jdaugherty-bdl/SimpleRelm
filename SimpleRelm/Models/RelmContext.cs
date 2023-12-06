@@ -10,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace SimpleRelm.Models
 {
@@ -159,7 +160,7 @@ namespace SimpleRelm.Models
         {
             if ((ContextOptions?.DatabaseConnection?.State ?? System.Data.ConnectionState.Closed) != System.Data.ConnectionState.Closed)
             {
-                if (commitTransaction)
+                if (commitTransaction && Transaction.Current?.TransactionInformation?.Status == TransactionStatus.Active)
                     ContextOptions.DatabaseTransaction?.Commit();
 
                 ContextOptions.DatabaseConnection.Close();
@@ -274,7 +275,8 @@ namespace SimpleRelm.Models
                 var mmm = ddd.Select(x => x.IsGenericType ? x.GetGenericTypeDefinition() : default).ToList();
                 var ggg = ddd.Select(x => x.IsGenericType ? x.GetGenericArguments() : default).ToList();
 
-                throw new InvalidOperationException($"No DALDataSet property with type {dataSetType.Name} found on the current object.");
+                //throw new InvalidOperationException($"No RelmDataSet property with type [{dataSetType.Name}] found on the current object.");
+                throw new InvalidOperationException($"No RelmDataSet with generic type [{dataSetType.Name}] found in context [{this.GetType().Name}].");
             }
 
             return dataSetProperty?.GetValue(this) as IRelmDataSetBase;

@@ -19,13 +19,11 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             //return GetValue(expression, null, true);
         }
 
-        /*
-        public static object GetValue(Expression expression, List<object> argumentValues)
+        public static object GetValueWithArguments(Expression expression, List<object> argumentValues)
         {
             //return GetValue(expression, argumentValues, true);
             return getValue(expression, true, argumentValues);
         }
-        */
 
         public static object GetValueWithoutCompiling(Expression expression)
         {
@@ -188,38 +186,43 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
         public static MemberExpression GetReferencedMember(Tuple<Expression, ICollection<ParameterExpression>> command)
         {
-            if (!(command.Item1 is MethodCallExpression methodCall))
-                return null;
+            //if (!(command.Item1 is MethodCallExpression methodCall))
+            //    return null;
 
-            return GetReferencedMember(methodCall, command.Item2.FirstOrDefault());
+            //return GetReferencedMember(methodCall, command.Item2.FirstOrDefault());
+            return GetReferencedMember((MethodCallExpression)command.Item1, command.Item2.FirstOrDefault());
         }
 
         public static MemberExpression GetReferencedMember(MethodCallExpression methodCall, ParameterExpression parameter)
         {
             var referencedMember = methodCall.Arguments.LastOrDefault(x => x is MemberExpression) as MemberExpression;
-            foreach (var arg in methodCall.Arguments)
+
+            if ((referencedMember?.Expression?.NodeType ?? ExpressionType.Not) != ExpressionType.Parameter)
             {
-                if (arg is MemberExpression memberExpression && memberExpression.Expression == parameter)
+                foreach (var arg in methodCall.Arguments)
                 {
-                    referencedMember = memberExpression;
-
-                    break;
-                }
-                else if (arg is MethodCallExpression methodCallExpression)
-                {
-                    referencedMember = GetReferencedMember(methodCallExpression, parameter);
-
-                    if (referencedMember != null)
-                        break;
-                }
-                else if (arg is LambdaExpression lambdaExpression)
-                {
-                    if (lambdaExpression.Body is MethodCallExpression method)
+                    if (arg is MemberExpression memberExpression && memberExpression.Expression == parameter)
                     {
-                        referencedMember = GetReferencedMember(method, parameter);
+                        referencedMember = memberExpression;
+
+                        break;
+                    }
+                    else if (arg is MethodCallExpression methodCallExpression)
+                    {
+                        referencedMember = GetReferencedMember(methodCallExpression, parameter);
 
                         if (referencedMember != null)
                             break;
+                    }
+                    else if (arg is LambdaExpression lambdaExpression)
+                    {
+                        if (lambdaExpression.Body is MethodCallExpression method)
+                        {
+                            referencedMember = GetReferencedMember(method, parameter);
+
+                            if (referencedMember != null)
+                                break;
+                        }
                     }
                 }
             }
@@ -266,7 +269,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                 throw new NotSupportedException();
         }
 
-        private static LambdaExpression ModifyLambdaExpression(LambdaExpression lambdaExpression, List<object> evaluatedArgs)
+        public static LambdaExpression ModifyLambdaExpression(LambdaExpression lambdaExpression, List<object> evaluatedArgs)
         {
             // Check if the lambda expression needs to be modified based on evaluatedArgs
             // This could involve checking for specific patterns or types of references in the expression body

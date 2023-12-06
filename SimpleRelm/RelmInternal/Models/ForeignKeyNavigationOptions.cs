@@ -14,7 +14,7 @@ namespace SimpleRelm.RelmInternal.Models
     public class ForeignKeyNavigationOptions
     {
         public PropertyInfo[] ForeignKeyProperties { get; set; } = default;
-        public PropertyInfo NavigationProperty { get; set; } = default;
+        //public PropertyInfo NavigationProperty { get; set; } = default;
         public List<List<Tuple<PropertyInfo, object>>> ItemPrimaryKeys { get; set; } = default;
         public PropertyInfo[] ReferenceKeys { get; set; } = default;
 

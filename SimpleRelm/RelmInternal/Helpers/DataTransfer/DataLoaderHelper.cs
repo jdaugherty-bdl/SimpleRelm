@@ -34,7 +34,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
                 ?? throw new InvalidOperationException("Collection or property must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
 
             var dataLoaderAttribute = referenceProperty.Member.GetCustomAttribute<RelmDataLoader>()
-                ?? throw new MemberAccessException("The property or collection you are trying to load does not have a RelmDataLoader attribute.");
+                ?? throw new MemberAccessException($"The property or collection [{referenceProperty.Member.Name}] on type [{referenceProperty.Expression.Type.Name}] does not have a RelmDataLoader attribute.");
 
             var fieldLoader = (IRelmFieldLoader)Activator.CreateInstance(dataLoaderAttribute.LoaderType, new object[] { referenceProperty.Member.Name, dataLoaderAttribute.KeyFields });
 

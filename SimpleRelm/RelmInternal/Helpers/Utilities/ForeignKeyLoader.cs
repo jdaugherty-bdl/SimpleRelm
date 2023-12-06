@@ -25,12 +25,18 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
         public ForeignKeyLoader(T targetObject, RelmContextOptionsBuilder contextOptions) 
         {
-            this.targetObjects = new[] { targetObject };
+            if (targetObject == null)
+                throw new ArgumentNullException(nameof(targetObject));
+
+            this.targetObjects =  new[] { targetObject };
             this.contextOptions = contextOptions;
         }
 
         public ForeignKeyLoader(ICollection<T> targetObjects, RelmContextOptionsBuilder contextOptions)
         {
+            if (targetObjects == null)
+                throw new ArgumentNullException(nameof(targetObjects));
+
             this.targetObjects = targetObjects;
             this.contextOptions = contextOptions;
         }
@@ -84,7 +90,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                 ?? throw new InvalidOperationException("Collection or property must be represented by a lambda expression in the form of 'x => x.PropertyName'.");
 
             var referenceType = referenceProperty.Type;
-            var dataLoaderAttribute = referenceProperty.Member.GetCustomAttribute<RelmDataLoader>();
+            
+            if (referenceProperty.Member.GetCustomAttribute<RelmDataLoader>() != null)
+                throw new CustomAttributeFormatException($"Field [{referenceType.Name}] is a Data Loader field, not a Foreign Key field");
 
             var relevantContext = Assembly
                 .GetAssembly(typeof(T))

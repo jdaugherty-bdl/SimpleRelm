@@ -91,7 +91,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
             // Find the DALDataSet with the same generic type as referenceType and create a new one
             var dataSet = dataSetMethod.Invoke(_currentContext, new object[] { navigationOptions.ReferenceType }) //as IRelmDataSetBase
-                ?? throw new InvalidOperationException($"RelmDataSet with generic type {navigationOptions.ReferenceProperty.Type.Name} not found.");
+                ?? throw new InvalidOperationException($"No RelmDataSet with generic type [{navigationOptions.ReferenceProperty.Type.Name}] found in context [{_currentContext.GetType().Name}].");
 
             var containsMethod = typeof(List<object>).GetMethod(nameof(List<object>.Contains));
             var whereMethod = dataSet

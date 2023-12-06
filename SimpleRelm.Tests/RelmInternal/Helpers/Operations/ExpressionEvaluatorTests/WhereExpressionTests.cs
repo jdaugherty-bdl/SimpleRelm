@@ -313,7 +313,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             };
             var expectedInternalId = "00000000-0000-0000-0000-000000000000";
 
-            predicate = x => keyData.All(y => y.Select(z => z.ToString()).ToList().Contains(x.InternalId)); //  expectedIds.Select(y => y.Id).Contains(x.Id) && x.TestColumnNoAttributeArguments != expectedInternalId;
+            predicate = x => keyData.All(y => y.Select(z => z.ToString()).ToList().Contains(x.InternalId));
 
             // Act
             var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
