@@ -52,8 +52,8 @@ namespace SimpleRelm.Tests.Models.RelmModel_Tests
             // Assert
             Assert.NotNull(exception?.InnerException?.InnerException?.InnerException);
             Assert.IsType<TargetInvocationException>(exception);
-            Assert.IsType<TargetInvocationException>(exception.InnerException);
-            Assert.IsType<Exception>(exception.InnerException.InnerException);
+            Assert.IsType<Exception>(exception.InnerException);
+            Assert.IsType<MySqlException>(exception.InnerException.InnerException);
             Assert.IsType<MySqlException>(exception.InnerException.InnerException.InnerException);
         }
 
