@@ -213,9 +213,8 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                         */
                         if (methodCallExpressionLeft.Arguments.Count > 1)
                             leftBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(methodCallExpressionLeft, command.Item2) }), queryParameters, giveCommandPrefix: false);
-                        else if (methodCallExpressionLeft.Object != null)
+                        else
                             parameterValue = ResolveParameter(methodCallExpressionLeft, queryParameters, parameterName);
-
                     }
 
                     if (binaryExpression.Right is BinaryExpression subBinaryExpressionRight)
@@ -230,7 +229,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                         */
                         if (methodCallExpressionRight.Arguments.Count > 1)
                             rightBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(methodCallExpressionRight, command.Item2) }), queryParameters, nodeType: binaryExpression.NodeType);
-                        else if (methodCallExpressionRight.Object != null)
+                        else
                             parameterValue = ResolveParameter(methodCallExpressionRight, queryParameters, parameterName);
                     }
 

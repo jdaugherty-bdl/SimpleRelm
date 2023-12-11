@@ -272,6 +272,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 
             // Assert
             Assert.Equal(" WHERE ( a.`InternalId` = @_InternalId_1_ )", result);
+            Assert.Equal(submissionIds.FirstOrDefault(), queryParameters["@_InternalId_1_"]);
         }
 
         [Fact]
