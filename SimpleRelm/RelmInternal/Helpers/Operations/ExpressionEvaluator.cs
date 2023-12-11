@@ -136,16 +136,17 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                     // NOTE: the order of these if statements is VERY important, as the results of each are used in subsequent if statements
 
                     // get parameter names
-                    if (binaryExpression.Left is MemberExpression memberExpressionLeft && memberExpressionLeft.Expression.NodeType == ExpressionType.Parameter) // !(memberExpressionLeft.Expression.NodeType == ExpressionType.Constant || memberExpressionLeft.Expression.NodeType == ExpressionType.Call || memberExpressionLeft.Expression.NodeType == ExpressionType.MemberAccess))
+                    if (binaryExpression.Left is MemberExpression memberExpressionLeft && memberExpressionLeft.NodeType == ExpressionType.MemberAccess && memberExpressionLeft.Expression.NodeType == ExpressionType.Parameter) // !(memberExpressionLeft.Expression.NodeType == ExpressionType.Constant || memberExpressionLeft.Expression.NodeType == ExpressionType.Call || memberExpressionLeft.Expression.NodeType == ExpressionType.MemberAccess))
                         (fieldName, parameterName, currentAlias) = GetNamesAndAliases(memberExpressionLeft, queryParameters);
 
-                    if (binaryExpression.Right is MemberExpression memberExpressionRight && memberExpressionRight.Expression.NodeType == ExpressionType.Parameter) // !(memberExpressionRight.Expression.NodeType == ExpressionType.Constant || memberExpressionRight.Expression.NodeType == ExpressionType.Call || memberExpressionRight.Expression.NodeType == ExpressionType.MemberAccess))
+                    if (binaryExpression.Right is MemberExpression memberExpressionRight && memberExpressionRight.NodeType == ExpressionType.MemberAccess && memberExpressionRight.Expression.NodeType == ExpressionType.Parameter) // !(memberExpressionRight.Expression.NodeType == ExpressionType.Constant || memberExpressionRight.Expression.NodeType == ExpressionType.Call || memberExpressionRight.Expression.NodeType == ExpressionType.MemberAccess))
                         (fieldName, parameterName, currentAlias) = GetNamesAndAliases(memberExpressionRight, queryParameters);
 
                     var leftBinaryQuery = string.Empty;
                     if (binaryExpression.Left is UnaryExpression unaryExpressionLeft)
                     {
-                        if (unaryExpressionLeft.Operand is MethodCallExpression)
+                        //if (unaryExpressionLeft.Operand is MethodCallExpression)
+                        if (unaryExpressionLeft.Operand.NodeType == ExpressionType.Call)
                             leftBinaryQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(unaryExpressionLeft.Operand, command.Item2) }), queryParameters, giveCommandPrefix: false, nodeType: unaryExpressionLeft.NodeType);
                         else if (unaryExpressionLeft.NodeType == ExpressionType.Convert && unaryExpressionLeft.Operand.Type.IsEnum && unaryExpressionLeft.Operand is MemberExpression memberExpression && memberExpression.Expression.NodeType == ExpressionType.Parameter)
                         {
@@ -158,7 +159,8 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                     var rightBinaryQuery = string.Empty;
                     if (binaryExpression.Right is UnaryExpression unaryExpressionRight)
                     {
-                        if (unaryExpressionRight.Operand is MethodCallExpression)
+                        //if (unaryExpressionRight.Operand is MethodCallExpression)
+                        if (unaryExpressionRight.Operand.NodeType == ExpressionType.Call)
                             rightBinaryQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(unaryExpressionRight.Operand, command.Item2) }), queryParameters, nodeType: unaryExpressionRight.NodeType);
                         else if (unaryExpressionRight.NodeType == ExpressionType.Convert && unaryExpressionRight.Operand.Type.IsEnum && unaryExpressionRight.Operand is MemberExpression memberExpression && memberExpression.Expression.NodeType == ExpressionType.Parameter)
                         {
@@ -202,21 +204,34 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                         leftBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionLeft, command.Item2) }), queryParameters, giveCommandPrefix: false);
                     else if (binaryExpression.Left is MethodCallExpression methodCallExpressionLeft)
                     {
-                        // if straight method call with no member expressions, then it's a constant value, otherwise run full resolve
+                        // if more than one argument, then recurse on the method call, if method call has object, resolve 
+                        /*
                         if (!methodCallExpressionLeft.Arguments.Any(x => x is MemberExpression))
                             parameterValue = ResolveParameter(methodCallExpressionLeft, queryParameters, parameterName);
                         else
                             leftBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(methodCallExpressionLeft, command.Item2) }), queryParameters, giveCommandPrefix: false);
+                        */
+                        if (methodCallExpressionLeft.Arguments.Count > 1)
+                            leftBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(methodCallExpressionLeft, command.Item2) }), queryParameters, giveCommandPrefix: false);
+                        else if (methodCallExpressionLeft.Object != null)
+                            parameterValue = ResolveParameter(methodCallExpressionLeft, queryParameters, parameterName);
+
                     }
 
                     if (binaryExpression.Right is BinaryExpression subBinaryExpressionRight)
                         rightBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(subBinaryExpressionRight, command.Item2) }), queryParameters, nodeType: binaryExpression.NodeType);
                     else if (binaryExpression.Right is MethodCallExpression methodCallExpressionRight)
                     {
+                        /*
                         if (!methodCallExpressionRight.Arguments.Any(x => x is MemberExpression))
                             parameterValue = ResolveParameter(methodCallExpressionRight, queryParameters, parameterName);
                         else
                             rightBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(methodCallExpressionRight, command.Item2) }), queryParameters, nodeType: binaryExpression.NodeType);
+                        */
+                        if (methodCallExpressionRight.Arguments.Count > 1)
+                            rightBinaryQuery = EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(methodCallExpressionRight, command.Item2) }), queryParameters, nodeType: binaryExpression.NodeType);
+                        else if (methodCallExpressionRight.Object != null)
+                            parameterValue = ResolveParameter(methodCallExpressionRight, queryParameters, parameterName);
                     }
 
                     // resolve all other parameters not already resolved
