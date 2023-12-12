@@ -308,169 +308,187 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 }
                 else if (command.Item1 is MethodCallExpression methodCall)
                 {
-                    var referencedMember = ExpressionUtilities.GetReferencedMember(command);
-                    var parameterName = referencedMember == null ? default : GenerateParameterName(referencedMember.Member.Name, queryParameters);
+                    //if (methodCall.Arguments.Count > 1)
+                    //{
+                    //    EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(methodCall.Arguments[0], command.Item2) }), queryParameters, giveCommandPrefix: false);
 
-                    /*
-                    var parameterValues1 = methodCall
-                    //var parameterValues = methodCall
-                        .Arguments
-                        //.Select(x => x is MemberExpression ? default : ExpressionUtilities.GetValue(x))
-                        .Select(x => x.NodeType == ExpressionType.Call ? ExpressionUtilities.GetValue(x) : default)
-                        .ToList()
-                        ;
-                    */
-                    var parameterValues = new List<object>();
+                    //    var ddd = queryParameters["TESTEXPRESSION1"];
+                    //    queryParameters.Remove("TESTEXPRESSION1");
 
-                    foreach (var arg in methodCall.Arguments)
+                    //    command.Item2.Add(Expression.Parameter(ddd.GetType(), "y"));
+                        
+                    //    EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(methodCall.Arguments[1], command.Item2) }), queryParameters, giveCommandPrefix: false);
+                    //}
+                    //else
                     {
-                        if (arg != referencedMember)
+                        var referencedMember = ExpressionUtilities.GetReferencedMember(command);
+                        var parameterName = referencedMember == null ? default : GenerateParameterName(referencedMember.Member.Name, queryParameters);
+
+                        /*
+                        var parameterValues1 = methodCall
+                        //var parameterValues = methodCall
+                            .Arguments
+                            //.Select(x => x is MemberExpression ? default : ExpressionUtilities.GetValue(x))
+                            .Select(x => x.NodeType == ExpressionType.Call ? ExpressionUtilities.GetValue(x) : default)
+                            .ToList()
+                            ;
+                        */
+                        var parameterValues = new List<object>();
+
+                        foreach (var arg in methodCall.Arguments)
                         {
-                            //if (arg is MemberExpression)
-                            if (arg.NodeType == ExpressionType.Call || (arg is MemberExpression memberExpression && memberExpression.Expression.NodeType == ExpressionType.Constant))
+                            if (arg != referencedMember)
                             {
-                                var vals = ExpressionUtilities.GetValue(arg);
+                                //if (arg is MemberExpression)
+                                if (arg.NodeType == ExpressionType.Call || (arg is MemberExpression memberExpression && memberExpression.Expression.NodeType == ExpressionType.Constant))
+                                {
+                                    var vals = ExpressionUtilities.GetValue(arg);
 
-                                parameterValues.Add(vals is IEnumerable enumerable ? enumerable.Cast<object>() : vals);
-                            }
-                            else if (arg.NodeType == ExpressionType.Lambda)
-                            {
-                                var paraValues = parameterValues;
+                                    parameterValues.Add(vals is IEnumerable enumerable ? enumerable.Cast<object>() : vals);
+                                }
+                                else if (arg.NodeType == ExpressionType.Lambda)
+                                {
+                                    var paraValues = parameterValues;
 
-                                var ddd = ExpressionUtilities.ModifyLambdaExpression((LambdaExpression)arg, paraValues is IEnumerable enumerable ? enumerable.Cast<object>().ToList() : paraValues);
+                                    var ddd = ExpressionUtilities.ModifyLambdaExpression((LambdaExpression)arg, paraValues is IEnumerable enumerable ? enumerable.Cast<object>().ToList() : paraValues);
 
-                                // TODO: remove used parameter value from parameterValues
+                                    // TODO: remove used parameter value from parameterValues
+                                }
                             }
                         }
-                    }
 
-                    /*
-                    var parameterValues = parameterValues1
-                        .Where(x => x != null)
-                        .Select(x => x is IEnumerable enumerable ? enumerable.Cast<object>().ToList() : x)
-                        .ToList();
+                        /*
+                        var parameterValues = parameterValues1
+                            .Where(x => x != null)
+                            .Select(x => x is IEnumerable enumerable ? enumerable.Cast<object>().ToList() : x)
+                            .ToList();
 
-                    var parVal1 = ExpressionUtilities.GetReferencedValues(methodCall);
-                    parameterValues = parVal1;
-                    */
+                        var parVal1 = ExpressionUtilities.GetReferencedValues(methodCall);
+                        parameterValues = parVal1;
+                        */
 
-                    var parameterValue = default(object);
-                    var currentAlias = default(string);
+                        var parameterValue = default(object);
+                        var currentAlias = default(string);
 
-                    if (methodCall.Object != null)
-                    {
-                        if (methodCall.Object is MemberExpression expressedMember)
+                        if (methodCall.Object != null)
                         {
-                            if (!UnderscoreProperties.ContainsKey(referencedMember.Member.Name))
-                                throw new Exception($"No field named '{referencedMember.Member.Name}' with attribute [RelmColumn] found.");
-
-                            parameterValue = parameterValues.FirstOrDefault();
-
-                            if (methodCall.Object.Type == typeof(string))
+                            if (methodCall.Object is MemberExpression expressedMember)
                             {
-                                if (methodCall.Method.Name == nameof(string.Contains))
-                                    parameterValue = $"%{parameterValue}%";
-                                else if (methodCall.Method.Name == nameof(string.StartsWith))
-                                    parameterValue = $"{parameterValue}%";
-                                else if (methodCall.Method.Name == nameof(string.EndsWith))
-                                    parameterValue = $"%{parameterValue}";
+                                if (!UnderscoreProperties.ContainsKey(referencedMember.Member.Name))
+                                    throw new Exception($"No field named '{referencedMember.Member.Name}' with attribute [RelmColumn] found.");
+
+                                parameterValue = parameterValues.FirstOrDefault();
+
+                                if (methodCall.Object.Type == typeof(string))
+                                {
+                                    if (methodCall.Method.Name == nameof(string.Contains))
+                                        parameterValue = $"%{parameterValue}%";
+                                    else if (methodCall.Method.Name == nameof(string.StartsWith))
+                                        parameterValue = $"{parameterValue}%";
+                                    else if (methodCall.Method.Name == nameof(string.EndsWith))
+                                        parameterValue = $"%{parameterValue}";
+                                    else
+                                        throw new NotSupportedException();
+                                }
+
+                                currentAlias = GetTableAlias(((RelmTable)expressedMember.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+                                findQuery += " ";
+                                findQuery += currentAlias;
+                                findQuery += ".`";
+                                findQuery += UnderscoreProperties[referencedMember.Member.Name];
+                                findQuery += "` ";
+                                findQuery += (parameterValue is string parVal && parVal.Contains('%')) ? "LIKE" : "=";
+                                findQuery += " ";
+                                findQuery += parameterName;
+                                findQuery += " ";
+                            }
+                            else if (methodCall.Object is ConstantExpression || methodCall.Object is MethodCallExpression)
+                            {
+                                if (!UnderscoreProperties.ContainsKey(referencedMember.Member.Name))
+                                    throw new Exception($"No field named '{referencedMember.Member.Name}' with attribute [RelmColumn] found.");
+
+                                var constantValue = ExpressionUtilities.GetValue(methodCall.Object);
+
+                                // if constant value is an enumerable, then string join all values and add single quotes around everything, otherwise just get the value with single quotes
+                                if (constantValue is IEnumerable constantValues)
+                                    parameterValue = string.Join(",", constantValues.Cast<object>());
                                 else
-                                    throw new NotSupportedException();
+                                    parameterValue = constantValue.ToString();
+
+                                currentAlias = GetTableAlias(((RelmTable)referencedMember.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+                                findQuery += " FIND_IN_SET(";
+                                findQuery += currentAlias;
+                                findQuery += ".`";
+                                findQuery += UnderscoreProperties[referencedMember.Member.Name];
+                                findQuery += "`, ";
+                                findQuery += parameterName;
+                                findQuery += ") ";
                             }
-
-                            currentAlias = GetTableAlias(((RelmTable)expressedMember.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
-
-                            findQuery += " ";
-                            findQuery += currentAlias;
-                            findQuery += ".`";
-                            findQuery += UnderscoreProperties[referencedMember.Member.Name];
-                            findQuery += "` ";
-                            findQuery += (parameterValue is string parVal && parVal.Contains('%')) ? "LIKE" : "=";
-                            findQuery += " ";
-                            findQuery += parameterName;
-                            findQuery += " ";
-                        }
-                        else if (methodCall.Object is ConstantExpression || methodCall.Object is MethodCallExpression)
-                        {
-                            if (!UnderscoreProperties.ContainsKey(referencedMember.Member.Name))
-                                throw new Exception($"No field named '{referencedMember.Member.Name}' with attribute [RelmColumn] found.");
-
-                            var constantValue = ExpressionUtilities.GetValue(methodCall.Object);
-
-                            // if constant value is an enumerable, then string join all values and add single quotes around everything, otherwise just get the value with single quotes
-                            if (constantValue is IEnumerable constantValues)
-                                parameterValue = string.Join(",", constantValues.Cast<object>());
-                            else
-                                parameterValue = constantValue.ToString();
-
-                            currentAlias = GetTableAlias(((RelmTable)referencedMember.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
-
-                            findQuery += " FIND_IN_SET(";
-                            findQuery += currentAlias;
-                            findQuery += ".`";
-                            findQuery += UnderscoreProperties[referencedMember.Member.Name];
-                            findQuery += "`, ";
-                            findQuery += parameterName;
-                            findQuery += ") ";
-                        }
-                    }
-                    else
-                    {
-                        if (methodCall.Method.Name == nameof(Enumerable.Contains))
-                        {
-                            if (!UnderscoreProperties.ContainsKey(referencedMember.Member.Name))
-                                throw new Exception($"No field named '{referencedMember.Member.Name}' with attribute [RelmColumn] found.");
-
-                            var parameterValueList = new List<object>();
-
-                            foreach (var parameter in parameterValues)
-                            {
-                                if (parameter is IEnumerable<object> parameterList)
-                                    parameterValueList.AddRange(parameterList);
-                                else
-                                    parameterValueList.Add(parameter);
-                            }
-
-                            parameterValue = string.Join(",", parameterValueList);
-
-                            currentAlias = GetTableAlias(((RelmTable)referencedMember.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
-
-                            findQuery += " FIND_IN_SET(";
-                            findQuery += currentAlias;
-                            findQuery += ".`";
-                            findQuery += UnderscoreProperties[referencedMember.Member.Name];
-                            findQuery += "`, ";
-                            findQuery += parameterName;
-                            findQuery += ") ";
-                        }
-                        else if (methodCall.Method.Name == nameof(string.IsNullOrEmpty) || methodCall.Method.Name == nameof(string.IsNullOrWhiteSpace))
-                        {
-                            if (!UnderscoreProperties.ContainsKey(referencedMember.Member.Name))
-                                throw new Exception($"No field named '{referencedMember.Member.Name}' with attribute [RelmColumn] found.");
-
-                            currentAlias = GetTableAlias(((RelmTable)referencedMember.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
-
-                            findQuery += " ";
-                            findQuery += currentAlias;
-                            findQuery += ".`";
-                            findQuery += UnderscoreProperties[referencedMember.Member.Name];
-                            findQuery += "` ";
-                            findQuery += "IS";
-
-                            if (nodeType == ExpressionType.Not)
-                                findQuery += " NOT";
-
-                            findQuery += " NULL ";
                         }
                         else
-                            throw new NotSupportedException($"Specified method is not supported: [{methodCall.Method.Name}]");
-                    }
+                        {
+                            if (methodCall.Method.Name == nameof(Enumerable.Contains))
+                            {
+                                if (!UnderscoreProperties.ContainsKey(referencedMember.Member.Name))
+                                    throw new Exception($"No field named '{referencedMember.Member.Name}' with attribute [RelmColumn] found.");
 
-                    queryParameters.Add(parameterName, parameterValue);
+                                var parameterValueList = new List<object>();
+
+                                foreach (var parameter in parameterValues)
+                                {
+                                    if (parameter is IEnumerable<object> parameterList)
+                                        parameterValueList.AddRange(parameterList);
+                                    else
+                                        parameterValueList.Add(parameter);
+                                }
+
+                                parameterValue = string.Join(",", parameterValueList);
+
+                                currentAlias = GetTableAlias(((RelmTable)referencedMember.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+                                findQuery += " FIND_IN_SET(";
+                                findQuery += currentAlias;
+                                findQuery += ".`";
+                                findQuery += UnderscoreProperties[referencedMember.Member.Name];
+                                findQuery += "`, ";
+                                findQuery += parameterName;
+                                findQuery += ") ";
+                            }
+                            else if (methodCall.Method.Name == nameof(string.IsNullOrEmpty) || methodCall.Method.Name == nameof(string.IsNullOrWhiteSpace))
+                            {
+                                if (!UnderscoreProperties.ContainsKey(referencedMember.Member.Name))
+                                    throw new Exception($"No field named '{referencedMember.Member.Name}' with attribute [RelmColumn] found.");
+
+                                currentAlias = GetTableAlias(((RelmTable)referencedMember.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+                                findQuery += " ";
+                                findQuery += currentAlias;
+                                findQuery += ".`";
+                                findQuery += UnderscoreProperties[referencedMember.Member.Name];
+                                findQuery += "` ";
+                                findQuery += "IS";
+
+                                if (nodeType == ExpressionType.Not)
+                                    findQuery += " NOT";
+
+                                findQuery += " NULL ";
+                            }
+                            else
+                                throw new NotSupportedException($"Specified method is not supported: [{methodCall.Method.Name}]");
+                        }
+
+                        queryParameters.Add(parameterName, parameterValue);
+                    }
                 }
                 else if (command.Item1 is UnaryExpression unaryExpression)
                 {
                     findQuery += EvaluateWhereExpression(new KeyValuePair<Command, List<Tuple<Expression, ICollection<ParameterExpression>>>>(Command.Where, new List<Tuple<Expression, ICollection<ParameterExpression>>> { new Tuple<Expression, ICollection<ParameterExpression>>(unaryExpression.Operand, command.Item2) }), queryParameters, giveCommandPrefix: false, nodeType: unaryExpression.NodeType);
+                }
+                else if (command.Item1 is MemberExpression memberExpression1)
+                {
+                    var parameterValue = ResolveParameter(memberExpression1, queryParameters, "TESTEXPRESSION1");
                 }
             }
 
