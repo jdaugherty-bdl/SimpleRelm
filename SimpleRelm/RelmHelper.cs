@@ -509,22 +509,22 @@ namespace SimpleRelm
         public static void StandardConnectionWrapper(Enum ConnectionType, Action<MySqlConnection, MySqlTransaction> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
             => StandardConnectionHelper.StandardConnectionWrapper(ConnectionType, ActionWrapper, ExceptionHandler);
 
-        /// <summary>
-        /// Performs a supplied action as wrapped in an auto-generated connection & transaction
-        /// </summary>
-        /// <param name="ActionWrapper">A function that takes in a connection and transaction, and returns a type <typeparamref name="T"/></param>
-        /// <param name="ExceptionHandler"></param>
-        public static void StandardConnectionWrapper(Action<MySqlConnection, MySqlTransaction> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
-            => StandardConnectionHelper.StandardConnectionWrapper(ActionWrapper, ExceptionHandler);
+        ///// <summary>
+        ///// Performs a supplied action as wrapped in an auto-generated connection & transaction
+        ///// </summary>
+        ///// <param name="ActionWrapper">A function that takes in a connection and transaction, and returns a type <typeparamref name="T"/></param>
+        ///// <param name="ExceptionHandler"></param>
+        //public static void StandardConnectionWrapper(Action<MySqlConnection, MySqlTransaction> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
+        //    => StandardConnectionHelper.StandardConnectionWrapper(ActionWrapper, ExceptionHandler);
 
-        /// <summary>
-        /// Performs a supplied action as wrapped in an auto-generated connection & transaction
-        /// </summary>
-        /// <typeparam name="T">Return type of the action</typeparam>
-        /// <param name="ActionWrapper">A function that takes in a connection and transaction, and returns a type <typeparamref name="T"/></param>
-        /// <returns>An object with a type of <typeparamref name="T"/></returns>
-        public static T StandardConnectionWrapper<T>(Func<MySqlConnection, MySqlTransaction, T> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
-            => StandardConnectionHelper.StandardConnectionWrapper<T>(ActionWrapper, ExceptionHandler);
+        ///// <summary>
+        ///// Performs a supplied action as wrapped in an auto-generated connection & transaction
+        ///// </summary>
+        ///// <typeparam name="T">Return type of the action</typeparam>
+        ///// <param name="ActionWrapper">A function that takes in a connection and transaction, and returns a type <typeparamref name="T"/></param>
+        ///// <returns>An object with a type of <typeparamref name="T"/></returns>
+        //public static T StandardConnectionWrapper<T>(Func<MySqlConnection, MySqlTransaction, T> ActionWrapper, Action<Exception, string> ExceptionHandler = null)
+        //    => StandardConnectionHelper.StandardConnectionWrapper<T>(ActionWrapper, ExceptionHandler);
 
         /// <summary>
         /// Performs a supplied action as wrapped in an auto-generated connection & transaction
