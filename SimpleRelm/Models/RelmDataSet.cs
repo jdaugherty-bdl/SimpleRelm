@@ -158,7 +158,10 @@ namespace SimpleRelm.Models
                 _items = Load();
             }
 
-            return _items.FirstOrDefault();
+            if (_items == null)
+                return default;
+            else
+                return _items.FirstOrDefault();
         }
 
         public IRelmDataSet<T> LoadAsDataSet()
@@ -404,7 +407,7 @@ namespace SimpleRelm.Models
 
         public void Clear()
         {
-            _items.Clear();
+            _items?.Clear();
         }
 
         public bool Contains(T item)

@@ -23,6 +23,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             OrderBy,
             OrderByDescending,
             Set,
+            SetPostfix,
             GroupBy,
             Limit,
             DistinctBy,
@@ -495,18 +496,36 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             return findQuery;
         }
 
-        //public string EvaluateSet(KeyValuePair<Command, List<Expression>> CommandExpression, Dictionary<string, object> QueryParameters)
-        public string EvaluateSet(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression, Dictionary<string, object> QueryParameters)
+        public Tuple<string, string> EvaluateInsertInto(KeyValuePair<Command, List<IRelmExecutionCommand>> commandExpression, Dictionary<string, object> queryParameters)
         {
             var setLines = new List<string>();
             var usedColumns = new List<string>();
 
-            var set = CommandExpression.Value.FirstOrDefault();
+            var set = commandExpression.Value.FirstOrDefault();
+            var currentAlias = GetTableAlias(((RelmTable)set.InitialExpression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+            var queryPrefix = " INSERT INTO ";
+            queryPrefix += string.Join(",", setLines);
+            queryPrefix += " ";
+
+            var queryPostfix = " ON DUPLICATE KEY UPDATE ";
+            queryPostfix += string.Join(",", usedColumns.Select(x => $"{x}=VALUES({x})"));
+            queryPostfix += " ";
+
+            return new Tuple<string, string>(queryPrefix, queryPostfix);
+        }
+
+        public string EvaluateSet(KeyValuePair<Command, List<IRelmExecutionCommand>> commandExpression, Dictionary<string, object> queryParameters)
+        {
+            var setLines = new List<string>();
+            var usedColumns = new List<string>();
+
+            var set = commandExpression.Value.FirstOrDefault();
             var currentAlias = GetTableAlias(((RelmTable)set.InitialExpression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
 
             if (set is MemberExpression memberAssignment)
             {
-                var parameterName = GenerateParameterName(memberAssignment.Member.Name, QueryParameters);
+                var parameterName = GenerateParameterName(memberAssignment.Member.Name, queryParameters);
                 var parameterValue = ExpressionUtilities.GetValue(memberAssignment.Expression);
                 var columnName = UnderscoreProperties[memberAssignment.Member.Name];
 
@@ -520,14 +539,14 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
                 setLines.Add(queryLine);
 
-                QueryParameters.Add(parameterName, parameterValue);
+                queryParameters.Add(parameterName, parameterValue);
                 usedColumns.Add(columnName);
             }
             else if (set.InitialExpression is MemberInitExpression memberInit)
             {
                 foreach (var binding in memberInit.Bindings)
                 {
-                    var parameterName = GenerateParameterName(binding.Member.Name, QueryParameters);
+                    var parameterName = GenerateParameterName(binding.Member.Name, queryParameters);
                     var parameterValue = ExpressionUtilities.GetValue(((MemberAssignment)binding).Expression);
                     var columnName = UnderscoreProperties[binding.Member.Name];
 
@@ -541,7 +560,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
                     setLines.Add(queryLine);
 
-                    QueryParameters.Add(parameterName, parameterValue);
+                    queryParameters.Add(parameterName, parameterValue);
                     usedColumns.Add(columnName);
                 }
             }
@@ -550,8 +569,6 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
             var findQuery = " SET ";
             findQuery += string.Join(",", setLines);
-            findQuery += " ON DUPLICATE KEY UPDATE ";
-            findQuery += string.Join(",", usedColumns.Select(x => $"{x}=VALUES({x})"));
             findQuery += " ";
 
             return findQuery;

@@ -43,7 +43,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
                 , queryParameters);
 
             // Assert
-            Assert.Equal(" SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_ , a.`test_column_id` = @_TestColumnId_1_  ON DUPLICATE KEY UPDATE test_column_InternalId=VALUES(test_column_InternalId),test_column_id=VALUES(test_column_id) ", result);
+            Assert.Equal(" SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_ , a.`test_column_id` = @_TestColumnId_1_  ", result);
 
             Assert.Equal("TEST_VALUE", queryParameters["@_TestColumnInternalId_1_"]);
             Assert.Equal(1, queryParameters["@_TestColumnId_1_"]);
@@ -62,7 +62,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
                 , queryParameters);
 
             // Assert
-            Assert.Equal(" SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_  ON DUPLICATE KEY UPDATE test_column_InternalId=VALUES(test_column_InternalId) ", result);
+            Assert.Equal(" SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_  ", result);
 
             Assert.Equal("TEST_VALUE", queryParameters["@_TestColumnInternalId_1_"]);
         }
@@ -86,7 +86,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
                 , queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( a.`Active` = @_Active_1_ ) SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_  ON DUPLICATE KEY UPDATE test_column_InternalId=VALUES(test_column_InternalId) ", result);
+            Assert.Equal(" WHERE ( a.`Active` = @_Active_1_ ) SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_  ", result);
 
             Assert.IsType<int>(queryParameters["@_Active_1_"]);
             Assert.Equal(0, (int)queryParameters["@_Active_1_"]);
@@ -106,7 +106,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
                 , queryParameters);
 
             // Assert
-            Assert.Equal(" SET  a.`Active` = @_Active_1_  ON DUPLICATE KEY UPDATE Active=VALUES(Active) ", result);
+            Assert.Equal(" SET  a.`Active` = @_Active_1_  ", result);
 
             Assert.Equal(false, queryParameters["@_Active_1_"]);
         }
