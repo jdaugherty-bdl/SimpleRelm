@@ -151,7 +151,7 @@ namespace SimpleRelm.Extensions
         public static T LoadDataLoaderField<T, S>(this T inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
         {
             var loaderType = typeof(DataLoaderHelper<>).MakeGenericType(typeof(T));
-            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { inputModel, relmContextOptionsBuilder });
+            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { inputModel });
 
             var loaderMethod = loaderType
                 .GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
@@ -172,7 +172,7 @@ namespace SimpleRelm.Extensions
         public static ICollection<T> LoadDataLoaderField<T, S>(this ICollection<T> inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
         {
             var loaderType = typeof(DataLoaderHelper<>).MakeGenericType(typeof(T));
-            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { inputModel, relmContextOptionsBuilder });
+            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { inputModel });
 
             var loaderMethod = loaderType
                 .GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
@@ -182,8 +182,10 @@ namespace SimpleRelm.Extensions
                         .Any(y => y.ParameterType
                             .GetGenericArguments()
                             .Any(z => z.GetGenericArguments()
-                                .Any(aa => aa.IsGenericType && aa.GetGenericTypeDefinition() == typeof(ICollection<>)))))
-                .FirstOrDefault();
+                                //.Any(aa => aa.IsGenericType && aa.GetGenericTypeDefinition() == typeof(ICollection<>)))))
+                                .All(aa => !aa.IsGenericType))))
+                .FirstOrDefault()
+                .MakeGenericMethod(typeof(S));
 
             var loaderResult = loaderMethod.Invoke(loaderInstance, new object[] { predicate });
 
