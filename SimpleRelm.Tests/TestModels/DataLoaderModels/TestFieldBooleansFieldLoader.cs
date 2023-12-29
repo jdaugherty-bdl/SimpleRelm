@@ -1,22 +1,20 @@
 ﻿using SimpleRelm.Interfaces;
-using SimpleRelm.RelmInternal.Helpers.Operations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleRelm.Tests.TestModels
+namespace SimpleRelm.Tests.TestModels.DataLoaderModels
 {
-    public class TestFieldBooleanFieldLoader : IRelmFieldLoader
+    public class TestFieldBooleansFieldLoader : IRelmFieldLoader
     {
         private readonly string? _fieldName;
         public string? FieldName => _fieldName;
         private readonly string[]? _keyFields;
         public string[]? KeyFields => _keyFields;
 
-        public TestFieldBooleanFieldLoader(string fieldName, string[]? keyFields = null)
+        public TestFieldBooleansFieldLoader(string fieldName, string[]? keyFields = null)
         {
             _fieldName = fieldName;
             _keyFields = keyFields;
@@ -26,7 +24,7 @@ namespace SimpleRelm.Tests.TestModels
         {
             return keyData
                 .Select((x, i) => new { Key = x, Value = i })
-                .ToDictionary(x => x.Key, x => (object)(x.Value % 2 == 0));
+                .ToDictionary(x => x.Key, x => (object)Enumerable.Range(0, 4).Select(y => y % 2 == 0));
         }
     }
 }

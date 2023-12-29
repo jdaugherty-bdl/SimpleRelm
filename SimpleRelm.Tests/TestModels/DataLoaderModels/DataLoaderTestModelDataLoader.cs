@@ -11,7 +11,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleRelm.Tests.TestModels
+namespace SimpleRelm.Tests.TestModels.DataLoaderModels
 {
     internal class DataLoaderTestModelDataLoader : RelmDefaultDataLoader<DataLoaderTestModel>
     {
