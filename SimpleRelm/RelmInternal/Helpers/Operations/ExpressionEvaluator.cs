@@ -430,7 +430,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                         }
                         else
                         {
-                            if (methodCall.Method.Name == nameof(Enumerable.Contains))
+                            if (methodCall.Method.Name == nameof(Enumerable.Contains) || methodCall.Method.Name == nameof(Enumerable.Any))
                             {
                                 if (!UnderscoreProperties.ContainsKey(referencedMember.Member.Name))
                                     throw new Exception($"No field named '{referencedMember.Member.Name}' with attribute [RelmColumn] found.");

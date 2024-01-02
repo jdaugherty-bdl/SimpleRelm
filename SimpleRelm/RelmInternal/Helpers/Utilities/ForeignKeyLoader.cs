@@ -94,6 +94,8 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             if (referenceProperty.Member.GetCustomAttribute<RelmDataLoader>() != null)
                 throw new CustomAttributeFormatException($"Field [{referenceType.Name}] is a Data Loader field, not a Foreign Key field");
 
+            var dddd = Assembly.GetAssembly(typeof(T)).GetTypes().Where(x => x.BaseType == typeof(RelmContext)).ToList();
+
             var relevantContext = Assembly
                 .GetAssembly(typeof(T))
                 .GetTypes()
