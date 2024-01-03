@@ -23,6 +23,8 @@ namespace SimpleRelm.Models
         private IEnumerable<PropertyInfo> _attachedProperties;
         private List<object> _attachedDataSets;
 
+        private bool localOpen = false;
+
         public RelmContext(RelmContextOptionsBuilder optionsBuilder, bool autoOpenConnection = true, bool autoOpenTransaction = false)
         {
             ContextOptions = optionsBuilder ?? throw new ArgumentNullException(nameof(optionsBuilder), "RelmContextOptionsBuilder cannot be null.");
@@ -150,7 +152,11 @@ namespace SimpleRelm.Models
                 throw new InvalidOperationException("Cannot open a non-existent database connection.");
 
             if (ContextOptions.DatabaseConnection.State == System.Data.ConnectionState.Closed)
+            {
                 ContextOptions.DatabaseConnection.Open();
+
+                localOpen = true;
+            }
 
             if (autoOpenTransaction && ContextOptions.DatabaseConnection.State == System.Data.ConnectionState.Open)
                 ContextOptions.SetDatabaseTransaction(ContextOptions.DatabaseConnection.BeginTransaction());
@@ -163,7 +169,12 @@ namespace SimpleRelm.Models
                 if (commitTransaction && Transaction.Current?.TransactionInformation?.Status == TransactionStatus.Active)
                     ContextOptions.DatabaseTransaction?.Commit();
 
-                ContextOptions.DatabaseConnection.Close();
+                if (localOpen)
+                {
+                    ContextOptions.DatabaseConnection.Close();
+
+                    localOpen = false;
+                }
             }
         }
 
