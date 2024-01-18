@@ -37,6 +37,11 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             }
         }
 
+        internal static T GetDataObject<T>(IRelmContext CurrentContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
+        {
+            return GetDataObject<T>(CurrentContext.ContextOptions.DatabaseConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: CurrentContext.ContextOptions.DatabaseTransaction);
+        }
+
         internal static T GetDataObject<T>(MySqlConnection ExistingConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null) where T : IRelmModel
         {
             return GetDataObjects<T>(ExistingConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: SqlTransaction)
@@ -49,6 +54,11 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             {
                 return GetDataObjects<T>(conn, QueryString, Parameters: Parameters, ThrowException: ThrowException);
             }
+        }
+
+        internal static IEnumerable<T> GetDataObjects<T>(IRelmContext CurrentContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
+        {
+            return GetDataObjects<T>(CurrentContext.ContextOptions.DatabaseConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: CurrentContext.ContextOptions.DatabaseTransaction);
         }
 
         internal static IEnumerable<T> GetDataObjects<T>(MySqlConnection ExistingConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null) where T : IRelmModel

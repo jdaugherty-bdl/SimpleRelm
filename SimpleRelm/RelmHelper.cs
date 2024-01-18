@@ -219,6 +219,9 @@ namespace SimpleRelm
         public static T GetDataObject<T>(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel, new()
             => ObjectResultsHelper.GetDataObject<T>(ConfigConnectionString, QueryString, Parameters: Parameters, ThrowException: ThrowException, AllowUserVariables: AllowUserVariables);
 
+        public static T GetDataObject<T>(IRelmContext CurrentContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel, new()
+            => ObjectResultsHelper.GetDataObject<T>(CurrentContext, QueryString, Parameters: Parameters, ThrowException: ThrowException, AllowUserVariables: AllowUserVariables);
+
         /// <summary>
         /// Query the database for a single row that returns as a single object of the supplied type.
         /// </summary>
@@ -257,6 +260,9 @@ namespace SimpleRelm
         /// <returns>A list of objects populated with the requested data.</returns>
         public static IEnumerable<T> GetDataObjects<T>(MySqlConnection EstablishedConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null) where T : IRelmModel, new()
             => ObjectResultsHelper.GetDataObjects<T>(EstablishedConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction);
+
+        public static IEnumerable<T> GetDataObjects<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null) where T : IRelmModel, new()
+            => ObjectResultsHelper.GetDataObjects<T>(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
 
         public static IEnumerable<T> GetDataObjects<T>(DataTable existingData) where T : IRelmModel, new()
             => ObjectResultsHelper.GetDataObjects<T>(existingData);
