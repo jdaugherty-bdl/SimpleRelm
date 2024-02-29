@@ -488,5 +488,63 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             Assert.Equal(" WHERE ( a.`InternalId` = @_InternalId_1_ )", result);
             Assert.Equal(compareModels[modelCount].InternalId, queryParameters["@_InternalId_1_"]);
         }
+
+        [Fact]
+        public void TestExpressionEvaluatorWhere_AnyTwoComparisons()
+        {
+            var objectList = new List<ComplexTestModel>
+            {
+                new ComplexTestModel { TestColumnInternalId = "00000000-0000-0000-0000-000000000000", TestColumnNoAttributeArguments = "0" },
+                new ComplexTestModel { TestColumnInternalId = "00000000-0000-0000-0000-000000000001", TestColumnNoAttributeArguments = "1" }
+            };
+
+            var objectCompareList = new string[][]
+            {
+                new string[] { "00000000-0000-0000-0000-000000000001", "1" }
+            };
+
+            // Arrange
+            predicate = x => objectCompareList.Any(y => x.TestColumnInternalId == y[0] && x.TestColumnNoAttributeArguments == y[1]);
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
+                    ExpressionEvaluator.Command.Where,
+                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Where, predicate) })
+                , queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE ( FIND_IN_SET(a.`InternalId`, @_InternalId_1_) )", result);
+            Assert.Equal("00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000001", queryParameters["@_InternalId_1_"]);
+        }
+
+        [Fact]
+        public void TestExpressionEvaluatorWhere_AnyTwoComparisons_Hack()
+        {
+            var objectList = new List<ComplexTestModel>
+            {
+                new ComplexTestModel { TestColumnInternalId = "00000000-0000-0000-0000-000000000000", TestColumnNoAttributeArguments = "0" },
+                new ComplexTestModel { TestColumnInternalId = "00000000-0000-0000-0000-000000000001", TestColumnNoAttributeArguments = "1" }
+            };
+
+            var objectCompareList = new string[][]
+            {
+                new string[] { "00000000-0000-0000-0000-000000000001", "1" }
+            };
+
+            var objectCompareListKeys = objectCompareList.Select(x => string.Join(string.Empty, x)).ToArray();
+
+            // Arrange
+            predicate = x => objectCompareListKeys.Contains(x.TestColumnInternalId + x.TestColumnNoAttributeArguments);
+
+            // Act
+            var result = evaluator.EvaluateWhere(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
+                    ExpressionEvaluator.Command.Where,
+                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Where, predicate) })
+                , queryParameters);
+
+            // Assert
+            Assert.Equal(" WHERE ( FIND_IN_SET(a.`InternalId`, @_InternalId_1_) )", result);
+            Assert.Equal("00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000001", queryParameters["@_InternalId_1_"]);
+        }
     }
 }
