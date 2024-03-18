@@ -289,7 +289,7 @@ namespace SimpleRelm.Models
                             seed.Add(property.Name,
                                 ((IEnumerable<RelmModel>)property
                                     .GetValue(baseRef))
-                                    .Select(x => x.GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties, SourceObjectName: string.Join(".", new List<string> { SourceObjectName, property.Name }.Where(y => !string.IsNullOrWhiteSpace(y))), GetAdditionalObjectProperties: GetAdditionalObjectProperties, Iteration: Iteration + 1)));
+                                    ?.Select(x => x.GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties, SourceObjectName: string.Join(".", new List<string> { SourceObjectName, property.Name }.Where(y => !string.IsNullOrWhiteSpace(y))), GetAdditionalObjectProperties: GetAdditionalObjectProperties, Iteration: Iteration + 1)));
                         }
                         else
                         {
