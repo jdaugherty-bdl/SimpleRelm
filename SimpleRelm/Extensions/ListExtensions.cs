@@ -16,19 +16,19 @@ namespace SimpleRelm.Extensions
 {
     public static class ListExtensions
     {
-        public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, Enum ConnectionStringType, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 100, string DatabaseName = null) where T : IRelmModel
+        public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, Enum ConnectionStringType, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false) where T : IRelmModel
         {
-            return DataOutputOperations.BulkTableWrite<T>(ConnectionStringType, DbModelData, TableName, ForceType, AllowUserVariables, BatchSize, DatabaseName);
+            return DataOutputOperations.BulkTableWrite<T>(ConnectionStringType, DbModelData, TableName, ForceType, AllowUserVariables: AllowUserVariables, BatchSize, DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns);
         }
 
-        public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 100, string DatabaseName = null) where T : IRelmModel
+        public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false) where T : IRelmModel
         {
-            return DataOutputOperations.BulkTableWrite<T>(ExistingConnection, DbModelData, TableName, SqlTransaction: SqlTransaction, ForceType, BatchSize, DatabaseName);
+            return DataOutputOperations.BulkTableWrite<T>(ExistingConnection, DbModelData, TableName, SqlTransaction: SqlTransaction, ForceType, BatchSize, DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns);
         }
 
-        public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, IRelmContext relmContext, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 100, string DatabaseName = null)
+        public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, IRelmContext relmContext, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false)
         {
-            return DataOutputOperations.BulkTableWrite<T>(relmContext.ContextOptions.DatabaseConnection, DbModelData, TableName, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType, BatchSize, DatabaseName);
+            return DataOutputOperations.BulkTableWrite<T>(relmContext.ContextOptions.DatabaseConnection, DbModelData, TableName, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType, BatchSize, DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns);
         }
 
         public static ICollection<T> LoadForeignKeyField<T, R, S>(this ICollection<T> DbModelData, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()

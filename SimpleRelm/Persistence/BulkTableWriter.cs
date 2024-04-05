@@ -28,6 +28,7 @@ namespace SimpleRelm.Persistence
         private bool WriteWithTransaction; // awkward name here so we can use the nice name for the set method below
         private bool ShouldThrowException; // awkward name here so we can use the nice name for the set method below
         private bool ShouldAllowUserVariables; // awkward name here so we can use the nice name for the set method below
+        private bool ShouldAllowAutoIncrementColumns;
 
         private Dictionary<string, Tuple<MySqlDbType, int, string, string>> _tableColumns;
         private Dictionary<string, Tuple<MySqlDbType, int, string, string>> TableColumns => _tableColumns = _tableColumns ?? new Dictionary<string, Tuple<MySqlDbType, int, string, string>>();
@@ -48,34 +49,35 @@ namespace SimpleRelm.Persistence
         }
 
         // start with a connection string enum
-        internal BulkTableWriter(Enum ConfigConnectionString, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = false, bool AllowUserVariables = false)
+        internal BulkTableWriter(Enum ConfigConnectionString, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = false, bool AllowUserVariables = false, bool AllowAutoIncrementColumns = false)
         {
             this.ConfigConnectionString = ConfigConnectionString;
 
-            CommonSetup(InsertQuery, UseTransaction, ThrowException, null, AllowUserVariables);
+            CommonSetup(InsertQuery, UseTransaction, ThrowException, null, AllowUserVariables, AllowAutoIncrementColumns);
         }
 
         // start wtih an already opened connection
-        internal BulkTableWriter(MySqlConnection ExistingConnection, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
+        internal BulkTableWriter(MySqlConnection ExistingConnection, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null, bool AllowAutoIncrementColumns = false)
         {
             this.ExistingConnection = ExistingConnection;
 
-            CommonSetup(InsertQuery, UseTransaction, ThrowException, SqlTransaction, false);
+            CommonSetup(InsertQuery, UseTransaction, ThrowException, SqlTransaction, false, AllowAutoIncrementColumns);
         }
 
-        internal BulkTableWriter(IRelmContext relmContext, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = false)
+        internal BulkTableWriter(IRelmContext relmContext, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = false, bool AllowAutoIncrementColumns = false)
         {
             this.ExistingConnection = relmContext.ContextOptions.DatabaseConnection;
 
-            CommonSetup(InsertQuery, UseTransaction, ThrowException, SqlTransaction, false);
+            CommonSetup(InsertQuery, UseTransaction, ThrowException, SqlTransaction, false, AllowAutoIncrementColumns);
         }
 
-        private void CommonSetup(string InsertQuery, bool UseTransaction, bool ThrowException, MySqlTransaction SqlTransaction, bool AllowUserVariables)
+        private void CommonSetup(string InsertQuery, bool UseTransaction, bool ThrowException, MySqlTransaction SqlTransaction, bool AllowUserVariables, bool AllowAutoIncrementColumns)
         {
             this.InsertQuery = InsertQuery;
             this.WriteWithTransaction = UseTransaction;
             this.ShouldThrowException = ThrowException;
             this.ShouldAllowUserVariables = AllowUserVariables;
+            this.ShouldAllowAutoIncrementColumns = AllowAutoIncrementColumns;
             this.SqlTransaction = SqlTransaction;
 
             SetupBatchSize();
@@ -176,7 +178,7 @@ namespace SimpleRelm.Persistence
 
                 // use all column for insert EXCEPT autonumber fields and the boilerplate create_date and last_updated columns
                 var insertColumns = currentTableDetails
-                    .Where(x => !x.Extra.Contains("auto_increment") && !new string[] { "create_date", "last_updated" }.Contains(x.Field));
+                    .Where(x => (ShouldAllowAutoIncrementColumns || (!ShouldAllowAutoIncrementColumns && !x.Extra.Contains("auto_increment"))) && !new string[] { "create_date", "last_updated" }.Contains(x.Field));
 
                 // don't update primary key or unique columns on duplicate key as it's unnecessary
                 var updateColumns = insertColumns
@@ -421,6 +423,13 @@ namespace SimpleRelm.Persistence
         public BulkTableWriter<T> AllowUserVariables(bool AllowUserVariables)
         {
             this.ShouldAllowUserVariables = AllowUserVariables;
+
+            return this;
+        }
+
+        public BulkTableWriter<T> AllowAutoIncrementColumns(bool AllowAutoIncrementColumns)
+        {
+            this.ShouldAllowAutoIncrementColumns = AllowAutoIncrementColumns;
 
             return this;
         }

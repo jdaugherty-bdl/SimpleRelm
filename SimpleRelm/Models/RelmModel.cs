@@ -175,9 +175,9 @@ namespace SimpleRelm.Models
         /// <param name="connectionStringType">Type of connection to use.</param>
         /// <param name="batchSize">The number of items to write out to the database per batch.</param>
         /// <returns>The number of rows written to the database.</returns>
-        public int WriteToDatabase(Enum connectionStringType, int batchSize = 100)
+        public int WriteToDatabase(Enum connectionStringType, int batchSize = 100, bool AllowAutoIncrementColumns = false)
         {
-            return DataOutputOperations.BulkTableWrite(connectionStringType, this, ForceType: this.GetType(), BatchSize: batchSize);
+            return DataOutputOperations.BulkTableWrite(connectionStringType, this, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns);
         }
 
         /// <summary>
@@ -186,9 +186,9 @@ namespace SimpleRelm.Models
         /// <param name="relmContext">An IRelmContext object with open connection and transaction.</param>
         /// <param name="batchSize">The number of items to write out to the database per batch.</param>
         /// <returns>The number of rows written to the database.</returns>
-        public int WriteToDatabase(IRelmContext relmContext, int batchSize = 100)
+        public int WriteToDatabase(IRelmContext relmContext, int batchSize = 100, bool AllowAutoIncrementColumns = false)
         {
-            return DataOutputOperations.BulkTableWrite(relmContext.ContextOptions.DatabaseConnection, this, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType: this.GetType(), BatchSize: batchSize);
+            return DataOutputOperations.BulkTableWrite(relmContext.ContextOptions.DatabaseConnection, this, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns);
         }
 
         /// <summary>
@@ -198,9 +198,9 @@ namespace SimpleRelm.Models
         /// <param name="SqlTransaction">An optional transaction to write to the database under.</param>
         /// <param name="batchSize">The number of items to write out to the database per batch.</param>
         /// <returns>The number of rows written to the database.</returns>
-        public int WriteToDatabase(MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null, int BatchSize = 100)
+        public int WriteToDatabase(MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false)
         {
-            return DataOutputOperations.BulkTableWrite(ExistingConnection, this, SqlTransaction: SqlTransaction, ForceType: this.GetType(), BatchSize: BatchSize);
+            return DataOutputOperations.BulkTableWrite(ExistingConnection, this, SqlTransaction: SqlTransaction, ForceType: this.GetType(), BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns);
         }
 
         public T CopyFromSource<T>(T source) where T : RelmModel, new()
