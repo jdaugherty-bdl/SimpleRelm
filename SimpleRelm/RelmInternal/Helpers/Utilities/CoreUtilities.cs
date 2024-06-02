@@ -24,6 +24,8 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                 return ScalaraValue.ToString();
             else if (typeof(T) == typeof(int))
                 return int.TryParse(ScalaraValue.ToString(), out int scalar) ? scalar : default;
+            else if (typeof(T) == typeof(int?))
+                return int.TryParse(ScalaraValue.ToString(), out int scalar) ? (int?)scalar : null;
             else if (typeof(T) == typeof(long))
                 return long.TryParse(ScalaraValue.ToString(), out long scalar) ? scalar : default;
             else if (typeof(T) == typeof(decimal))
