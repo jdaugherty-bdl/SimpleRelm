@@ -75,7 +75,12 @@ namespace SimpleRelm.RelmInternal.Helpers.Connections
                 }
                 catch (Exception ex)
                 {
-                    transaction.Rollback();
+                    // swallow the exception if one happens because sometimes the ActionWrapper lambda can commit/rollback the transaction on their own
+                    try
+                    {
+                        transaction.Rollback();
+                    }
+                    catch { }
 
                     ExceptionHandler?.Invoke(ex, ex.Message);
 
