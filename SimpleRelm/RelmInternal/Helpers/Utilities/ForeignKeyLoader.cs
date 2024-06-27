@@ -83,6 +83,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
         private ICollection<T> LoadForeignKeyInternal<R, S>(Expression predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where R : IRelmModel, new() where S : IRelmModel, new()
         {
+            if ((targetObjects?.Count ?? 0) == 0)
+                return null;
+
             // get all types in the context assembly and look for one that inherits from RelmContext
             //var member = predicate.Body;
             var member = (predicate as Expression<Func<T, R>>)?.Body ?? (predicate as Expression<Func<T, ICollection<R>>>)?.Body;
@@ -93,8 +96,6 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             
             if (referenceProperty.Member.GetCustomAttribute<RelmDataLoader>() != null)
                 throw new CustomAttributeFormatException($"Field [{referenceType.Name}] is a Data Loader field, not a Foreign Key field");
-
-            var dddd = Assembly.GetAssembly(typeof(T)).GetTypes().Where(x => x.BaseType == typeof(RelmContext)).ToList();
 
             var relevantContext = Assembly
                 .GetAssembly(typeof(T))
