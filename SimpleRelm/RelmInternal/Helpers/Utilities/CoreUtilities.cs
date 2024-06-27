@@ -16,28 +16,30 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
         // message for the "no DALResolvable attributes" exception
         internal static string NoDalPropertyAttributeError => "Cannot find any table properties in class, try adding a 'DALResolvable' attribute.";
 
-        internal static object ConvertScalar<T>(object ScalaraValue)
+        internal static object ConvertScalar<T>(object scalarValue)
         {
-            if (ScalaraValue == null || ScalaraValue is DBNull)
+            if (scalarValue == null || scalarValue is DBNull)
                 return default(T);
             else if (typeof(T) == typeof(string))
-                return ScalaraValue.ToString();
+                return scalarValue.ToString();
             else if (typeof(T) == typeof(int))
-                return int.TryParse(ScalaraValue.ToString(), out int scalar) ? scalar : default;
+                return int.TryParse(scalarValue.ToString(), out int scalar) ? scalar : default;
             else if (typeof(T) == typeof(int?))
-                return int.TryParse(ScalaraValue.ToString(), out int scalar) ? (int?)scalar : null;
+                return int.TryParse(scalarValue.ToString(), out int scalar) ? (int?)scalar : null;
             else if (typeof(T) == typeof(long))
-                return long.TryParse(ScalaraValue.ToString(), out long scalar) ? scalar : default;
+                return long.TryParse(scalarValue.ToString(), out long scalar) ? scalar : default;
             else if (typeof(T) == typeof(decimal))
-                return decimal.TryParse(ScalaraValue.ToString(), out decimal scalar) ? scalar : default;
+                return decimal.TryParse(scalarValue.ToString(), out decimal scalar) ? scalar : default;
             else if (typeof(T) == typeof(float))
-                return float.TryParse(ScalaraValue.ToString(), out float scalar) ? scalar : default;
+                return float.TryParse(scalarValue.ToString(), out float scalar) ? scalar : default;
             else if (typeof(T) == typeof(bool))
-                return !(ScalaraValue.ToString() == "0");
+                return !(scalarValue.ToString() == "0");
             else if (typeof(T) == typeof(DateTime))
-                return DateTime.TryParse(ScalaraValue.ToString(), out DateTime scalar) ? scalar : default;
+                return DateTime.TryParse(scalarValue.ToString(), out DateTime scalar) ? scalar : default;
+            else if (typeof(T).IsEnum)
+                return (T)Enum.Parse(typeof(T), scalarValue.ToString(), true);
             else
-                return (T)ScalaraValue;
+                return (T)scalarValue;
         }
 
         internal static void AddAllParameters(this MySqlParameterCollection CommandParameters, Dictionary<string, object> Parameters)
