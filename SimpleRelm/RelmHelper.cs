@@ -305,8 +305,8 @@ namespace SimpleRelm
         /// <param name="ThrowException">Throw exception or cache in LastExecutionException and continue.</param>
         /// <param name="AllowUserVariables">Will allow special user variables (variables start with "@") to be defined in the query that will be eventually executed.</param>
         /// <returns>An object to used to write data to the database.</returns>
-        public static BulkTableWriter<T> GetBulkTableWriter<T>(Enum ConfigConnectionString, string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, bool AllowUserVariables = false, bool AllowAutoIncrementColumns = false)
-            => DataOutputOperations.GetBulkTableWriter<T>(ConfigConnectionString, InsertQuery: InsertQuery, UseTransaction: UseTransaction, ThrowException: ThrowException, AllowUserVariables: AllowUserVariables);
+        public static BulkTableWriter<T> GetBulkTableWriter<T>(Enum ConfigConnectionString, string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, bool AllowUserVariables = false, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false)
+            => DataOutputOperations.GetBulkTableWriter<T>(ConfigConnectionString, InsertQuery: InsertQuery, UseTransaction: UseTransaction, ThrowException: ThrowException, AllowUserVariables: AllowUserVariables, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns);
 
         /// <summary>
         /// Gets a partially configured BulkTableWriter objects which can then be used to write data to the database.
@@ -318,8 +318,8 @@ namespace SimpleRelm
         /// <param name="UseTransaction">Indicate whether to write all the data in a single transaction.</param>
         /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
         /// <returns>An object to used to write data to the database.</returns>
-        public static BulkTableWriter<T> GetBulkTableWriter<T>(MySqlConnection EstablishedConnection, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = true, MySqlTransaction SqlTransaction = null, bool AllowAutoIncrementColumns = false)
-            => DataOutputOperations.GetBulkTableWriter<T>(EstablishedConnection, InsertQuery: InsertQuery, UseTransaction: UseTransaction, ThrowException: ThrowException, SqlTransaction: SqlTransaction);
+        public static BulkTableWriter<T> GetBulkTableWriter<T>(MySqlConnection EstablishedConnection, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = true, MySqlTransaction SqlTransaction = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false)
+            => DataOutputOperations.GetBulkTableWriter<T>(EstablishedConnection, InsertQuery: InsertQuery, UseTransaction: UseTransaction, ThrowException: ThrowException, SqlTransaction: SqlTransaction, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns);
 
         /// <summary>
         /// Writes out a single object to the database using a combination of supplied parameters and class attributes.
@@ -331,8 +331,8 @@ namespace SimpleRelm
         /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
         /// <param name="ForceType">Force a type other than the specified one to be used when auto-retrieving the table name from the DALTable attribute.</param>
         /// <returns>The total number of rows written to the database.</returns>
-        public static int BulkTableWrite<T>(MySqlConnection EstablishedConnection, T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false)
-            => DataOutputOperations.BulkTableWrite<T>(EstablishedConnection, SourceData, TableName, SqlTransaction, ForceType, BatchSize: BatchSize);
+        public static int BulkTableWrite<T>(MySqlConnection EstablishedConnection, T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false)
+            => DataOutputOperations.BulkTableWrite<T>(EstablishedConnection, SourceData, TableName, SqlTransaction, ForceType, BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns);
 
         /// <summary>
         /// Writes out a list of objects to the database using a combination of supplied parameters and class attributes.
@@ -344,8 +344,8 @@ namespace SimpleRelm
         /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
         /// <param name="ForceType">Force a type other than the specified one to be used when auto-retrieving the table name from the DALTable attribute.</param>
         /// <returns>The total number of rows written to the database.</returns>
-        public static int BulkTableWrite<T>(MySqlConnection EstablishedConnection, IEnumerable<T> SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false)
-            => DataOutputOperations.BulkTableWrite<T>(EstablishedConnection, SourceData, TableName, SqlTransaction, ForceType, BatchSize: BatchSize);
+        public static int BulkTableWrite<T>(MySqlConnection EstablishedConnection, IEnumerable<T> SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false)
+            => DataOutputOperations.BulkTableWrite<T>(EstablishedConnection, SourceData, TableName, SqlTransaction, ForceType, BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns);
 
         /// <summary>
         /// Writes out a single object to the database using a combination of supplied parameters and class attributes.
@@ -356,8 +356,8 @@ namespace SimpleRelm
         /// <param name="TableName">The name of the table to write to. If none is supplied, DALHelper attempts to get it from the DALTable attribute.</param>
         /// <param name="ForceType">Force a type other than the specified one to be used when auto-retrieving the table name from the DALTable attribute.</param>
         /// <returns>The total number of rows written to the database.</returns>
-        public static int BulkTableWrite<T>(Enum ConfigConnectionString, T SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false)
-            => DataOutputOperations.BulkTableWrite<T>(ConfigConnectionString, SourceData, TableName, ForceType, BatchSize: BatchSize);
+        public static int BulkTableWrite<T>(Enum ConfigConnectionString, T SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false)
+            => DataOutputOperations.BulkTableWrite<T>(ConfigConnectionString, SourceData, TableName, ForceType, BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns);
 
         /// <summary>
         /// Writes out a list of objects to the database using a combination of supplied parameters and class attributes.
@@ -368,8 +368,8 @@ namespace SimpleRelm
         /// <param name="TableName">The name of the table to write to. If none is supplied, DALHelper attempts to get it from the DALTable attribute.</param>
         /// <param name="ForceType">Force a type other than the specified one to be used when auto-retrieving the table name from the DALTable attribute.</param>
         /// <returns>The total number of rows written to the database.</returns>
-        public static int BulkTableWrite<T>(Enum ConfigConnectionString, IEnumerable<T> SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false)
-            => DataOutputOperations.BulkTableWrite<T>(ConfigConnectionString, SourceData, TableName, ForceType, BatchSize: BatchSize);
+        public static int BulkTableWrite<T>(Enum ConfigConnectionString, IEnumerable<T> SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false)
+            => DataOutputOperations.BulkTableWrite<T>(ConfigConnectionString, SourceData, TableName, ForceType, BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns);
 
         //***************** Core functions *****************//
 
