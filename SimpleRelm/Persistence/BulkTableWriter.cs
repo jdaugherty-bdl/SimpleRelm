@@ -202,7 +202,7 @@ namespace SimpleRelm.Persistence
                     newQuery.Append(string.Join(",", insertColumns.Select(x => $"@{x.Field}")));
                     newQuery.Append(") ");
                     newQuery.Append("ON DUPLICATE KEY UPDATE ");
-                    newQuery.Append(string.Join(",", insertColumns.Where(x => !x.Key.Contains("PRI") && !x.Key.Contains("UNI")).Select(x => $"`{x.Field}` = VALUES(`{x.Field}`)"))); // don't update primary key or unique columns on duplicate key as it's unnecessary
+                    newQuery.Append(string.Join(",", updateColumns.Select(x => $"`{x.Field}` = VALUES(`{x.Field}`)"))); // don't update primary key or unique columns on duplicate key as it's unnecessary
                     newQuery.Append(";");
 
                     SetInsertQuery(newQuery.ToString());
