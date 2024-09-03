@@ -117,10 +117,11 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 // used when calling recursive
                 if (giveCommandPrefix)
                 {
+                    // TODO: fix bug where multiple OrElse statements produce incorrect parentheses when coupled with an And statement
                     findQuery += HasWhere
                         ? (nodeType == ExpressionType.Or || nodeType == ExpressionType.OrElse
                             ? " ) OR ( "
-                            : " AND ")
+                            : " ) AND ( ")
                         : " WHERE (";
                 
                     HasWhere = true;
