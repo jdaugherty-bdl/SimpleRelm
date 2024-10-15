@@ -159,6 +159,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         /// <param name="ActionCallback">Customized function to execute when connected to the database</param>
         /// <param name="ThrowException">Throw exception or swallow and return default(T)</param>
         /// <param name="UseTransaction">Specify whether to use a transaction for this call</param>
+        /// <param name="SqlTransaction">An existing SQL transaction</param>
         /// <returns>Data of any type T</returns>
         internal static T DoDatabaseWork<T>(MySqlConnection EstablishedConnection, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
         {
