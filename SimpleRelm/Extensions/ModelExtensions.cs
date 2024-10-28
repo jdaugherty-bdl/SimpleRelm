@@ -15,103 +15,42 @@ namespace SimpleRelm.Extensions
 {
     public static class ModelExtensions
     {
-        /*
-        public static T LoadForeignKeyField<T, S>(this T inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
-        {
-            var loaderType = typeof(ForeignKeyLoader<>).MakeGenericType(typeof(T));
-            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { inputModel, relmContextOptionsBuilder });
+        /// <summary>
+        /// Loads the results of a foreign key or data loader field into the relevant properties of the supplied target.
+        /// </summary>
+        /// <typeparam name="T">A RelmModel object type to load the data for.</typeparam>
+        /// <typeparam name="R">The field type of the target property.</typeparam>
+        /// <typeparam name="S"></typeparam>
+        /// <param name="relmContextOptionsBuilder">The connection options to use when retrieving data.</param>
+        /// <param name="target">The object to load the data onto.</param>
+        /// <param name="predicate">A member expression indicating which field to load independently.</param>
+        /// <param name="customDataLoader"></param>
+        /// <param name="additionalConstraints"></param>
+        /// <returns>The target object with the relevant data loaded.</returns>
+        public static T LoadForeignKeyField<T, R, S>(this T target, IRelmContext relmContext, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, customDataLoader, additionalConstraints);
 
-            var loaderMethodGeneric = loaderType
-                .GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
-                .Where(x => x.Name == nameof(ForeignKeyLoader<T>.LoadForeignKey) 
-                    && x.GetParameters().Length == 1 
-                    && x.GetParameters()
-                        .Any(y => y.ParameterType
-                            .GetGenericArguments()
-                            .Any(z => z.GetGenericArguments()
-                                .All(aa => !aa.IsGenericType))))
-                .FirstOrDefault();
+        public static T LoadForeignKeyField<T, R, S>(this T target, IRelmContext relmContext, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, customDataLoader);
 
-            var loaderMethod = loaderMethodGeneric.MakeGenericMethod(typeof(S));
+        public static T LoadForeignKeyField<T, R>(this T target, IRelmContext relmContext, Expression<Func<T, R>> predicate, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, additionalConstraints);
 
-            var loaderResult = loaderMethod.Invoke(loaderInstance, new object[] { predicate });
+        public static T LoadForeignKeyField<T, R>(this T target, IRelmContext relmContext, Expression<Func<T, R>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate);
 
-            return ((ICollection<T>)loaderResult).FirstOrDefault();
-        }
+        public static T LoadForeignKeyField<T, R, S>(this T target, IRelmContext relmContext, Expression<Func<T, ICollection<R>>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, customDataLoader, additionalConstraints);
 
-        public static T LoadForeignKeyField<T, S, R>(this T inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate, IRelmDataLoader<R> customDataLoader) where T : IRelmModel, new() where S : IRelmModel, new()
-        {
-            var loaderType = typeof(ForeignKeyLoader<>).MakeGenericType(typeof(T));
-            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { inputModel, relmContextOptionsBuilder });
+        public static T LoadForeignKeyField<T, R, S>(this T target, IRelmContext relmContext, Expression<Func<T, ICollection<R>>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, customDataLoader);
 
-            var loaderMethodGeneric = loaderType
-                .GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
-                .Where(x => x.Name == nameof(ForeignKeyLoader<T>.LoadForeignKey)
-                    && x.GetParameters().Length == 2
-                    && x.GetParameters()
-                        .Any(y => y.ParameterType.IsGenericType && y.ParameterType.GetGenericTypeDefinition() == typeof(IRelmDataLoader<>)))
-                .Where(x => x.GetParameters()
-                    .All(y => y.ParameterType.GetGenericTypeDefinition() == typeof(IRelmDataLoader<>)
-                        || y.ParameterType
-                            .GetGenericArguments()
-                            .Where(z => z.GetGenericTypeDefinition() == typeof(Func<,>))
-                            .Any(z => z.GetGenericArguments().All(aa => !aa.IsGenericType))))
-                .FirstOrDefault();
+        public static T LoadForeignKeyField<T, R>(this T target, IRelmContext relmContext, Expression<Func<T, ICollection<R>>> predicate, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, additionalConstraints);
 
-            var loaderMethod = loaderMethodGeneric.MakeGenericMethod(typeof(S), typeof(R));
+        public static T LoadForeignKeyField<T, R>(this T target, IRelmContext relmContext, Expression<Func<T, ICollection<R>>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate);
 
-            var loaderResult = loaderMethod.Invoke(loaderInstance, new object[] { predicate, customDataLoader });
-
-            return ((ICollection<T>)loaderResult).FirstOrDefault();
-        }
-
-        public static T LoadForeignKeyField<T, S, R>(this T inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, ICollection<S>>> predicate, IRelmDataLoader<R> customDataLoader) where T : IRelmModel, new() where S : IRelmModel, new()
-        {
-            var loaderType = typeof(ForeignKeyLoader<>).MakeGenericType(typeof(T));
-            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { inputModel, relmContextOptionsBuilder });
-
-            var loaderMethodGeneric = loaderType
-                .GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
-                .Where(x => x.Name == nameof(ForeignKeyLoader<T>.LoadForeignKey)
-                    && x.GetParameters().Length == 2
-                    && x.GetParameters()
-                        .Any(y => y.ParameterType.IsGenericType && y.ParameterType.GetGenericTypeDefinition() == typeof(IRelmDataLoader<>)))
-                .Where(x => x.GetParameters()
-                    .All(y => y.ParameterType.GetGenericTypeDefinition() == typeof(IRelmDataLoader<>)
-                        || y.ParameterType
-                            .GetGenericArguments()
-                            .Where(z => z.GetGenericTypeDefinition() == typeof(Func<,>))
-                            .Any(z => z.GetGenericArguments().Any(aa => aa.IsGenericType && aa.GetGenericTypeDefinition() == typeof(ICollection<>)))))
-                .FirstOrDefault();
-
-            var loaderMethod = loaderMethodGeneric.MakeGenericMethod(typeof(S), typeof(R));
-
-            var loaderResult = loaderMethod.Invoke(loaderInstance, new object[] { predicate, customDataLoader });
-
-            return ((ICollection<T>)loaderResult).FirstOrDefault();
-        }
-
-        public static ICollection<T> LoadForeignKeyField<T, S>(this ICollection<T> inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
-        {
-            var loaderType = typeof(ForeignKeyLoader<>).MakeGenericType(typeof(T));
-            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { inputModel, relmContextOptionsBuilder });
-
-            var loaderMethod = loaderType
-                .GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
-                .Where(x => x.Name == nameof(ForeignKeyLoader<T>.LoadForeignKey) 
-                    && x.GetParameters().Length == 1 
-                    && x.GetParameters()
-                        .Any(y => y.ParameterType
-                            .GetGenericArguments()
-                            .Any(z => z.GetGenericArguments()
-                                .Any(aa => aa.IsGenericType && aa.GetGenericTypeDefinition() == typeof(ICollection<>)))))
-                .FirstOrDefault();
-
-            var loaderResult = loaderMethod.Invoke(loaderInstance, new object[] { predicate });
-
-            return (ICollection<T>)loaderResult;
-        }
-        */
         /// <summary>
         /// Loads the results of a foreign key or data loader field into the relevant properties of the supplied target.
         /// </summary>
