@@ -152,6 +152,9 @@ namespace SimpleRelm.Models
             else if (PropertyValueType == typeof(TimeSpan) && ModelData[UnderscoreKey].GetType() == typeof(string))
                 valueData = TimeSpan.TryParse(ModelData[UnderscoreKey].ToString(), out TimeSpan _timeSpanData) ? _timeSpanData : default;
 
+            else if (PropertyValueType == typeof(char) && ModelData[UnderscoreKey].GetType() == typeof(string))
+                valueData = ModelData[UnderscoreKey].ToString()?[0];
+
             // if none of those are true, then we have some serialized JSON data, so deserialize it
             else
                 valueData = JsonConvert.DeserializeObject(ModelData[UnderscoreKey].ToString(), PropertyValueType);
