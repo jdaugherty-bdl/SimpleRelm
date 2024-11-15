@@ -282,11 +282,12 @@ namespace SimpleRelm.Models
 
             if (dataSetProperty == null && throwException)
             {
-                var ddd = GetType().GetProperties().Select(x => x.PropertyType).ToList();
-                var mmm = ddd.Select(x => x.IsGenericType ? x.GetGenericTypeDefinition() : default).ToList();
-                var ggg = ddd.Select(x => x.IsGenericType ? x.GetGenericArguments() : default).ToList();
+#if DEBUG
+                var currentPropertyTypes_DEBUG = this.GetType().GetProperties().Select(x => x.PropertyType).ToList();
+                var currentGenericTypes_DEBUG = currentPropertyTypes_DEBUG.Select(x => x.IsGenericType ? x.GetGenericTypeDefinition() : default).ToList();
+                var currentGenericArguments_DEBUG = currentPropertyTypes_DEBUG.Select(x => x.IsGenericType ? x.GetGenericArguments() : default).ToList();
+#endif
 
-                //throw new InvalidOperationException($"No RelmDataSet property with type [{dataSetType.Name}] found on the current object.");
                 throw new InvalidOperationException($"No RelmDataSet with generic type [{dataSetType.Name}] found in context [{this.GetType().Name}].");
             }
 
