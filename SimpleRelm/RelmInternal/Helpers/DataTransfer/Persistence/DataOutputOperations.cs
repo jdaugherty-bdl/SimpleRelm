@@ -1,11 +1,14 @@
 ﻿using MySql.Data.MySqlClient;
 using SimpleRelm.Attributes;
+using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using SimpleRelm.Persistence;
 using SimpleRelm.RelmInternal.Helpers.Operations;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -30,7 +33,12 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence
 
         internal static BulkTableWriter<T> GetBulkTableWriter<T>(MySqlConnection ExistingConnection, string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, MySqlTransaction SqlTransaction = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
         {
-            return new BulkTableWriter<T>(ExistingConnection, InsertQuery: InsertQuery, ThrowException: ThrowException, UseTransaction: UseTransaction || SqlTransaction != null, SqlTransaction: SqlTransaction, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+            return GetBulkTableWriter<T>(new RelmContext(ExistingConnection, SqlTransaction), InsertQuery: InsertQuery, UseTransaction: UseTransaction, ThrowException: ThrowException, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+        }
+
+        internal static BulkTableWriter<T> GetBulkTableWriter<T>(IRelmContext relmContext, string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        {
+            return new BulkTableWriter<T>(relmContext, InsertQuery: InsertQuery, ThrowException: ThrowException, UseTransaction: UseTransaction || relmContext.ContextOptions.DatabaseTransaction != null, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
         }
 
         internal static int BulkTableWrite<T>(Enum ConfigConnectionString, T SourceData, string TableName = null, Type ForceType = null, bool AllowUserVariables = false, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
@@ -52,12 +60,17 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence
         //TODO: make each BulkTableWrite below chain up to a single BulkTableWrite that then calls GetBulkTableWriter
         internal static int BulkTableWrite<T>(MySqlConnection ExistingConnection, T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
         {
-            var rowsUpdated = GetBulkTableWriter<T>(ExistingConnection)
+            return BulkTableWrite<T>(new RelmContext(ExistingConnection, SqlTransaction), SourceData, TableName: TableName, ForceType: ForceType, BatchSize: BatchSize, DatabaseName: DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+        }
+
+        internal static int BulkTableWrite<T>(IRelmContext relmContext, T SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        {
+            var rowsUpdated = GetBulkTableWriter<T>(relmContext)
                 .SetTableName(TableName ?? (ForceType ?? typeof(T)).GetCustomAttribute<RelmTable>()?.TableName ?? throw new CustomAttributeFormatException(CoreUtilities.NoDalTableAttributeError))
                 .SetDatabaseName(DatabaseName ?? (ForceType ?? typeof(T)).GetCustomAttribute<RelmDatabase>()?.DatabaseName)
                 .SetSourceData(SourceData)
                 .UseTransaction(true)
-                .SetTransaction(SqlTransaction)
+                //.SetTransaction(SqlTransaction)
                 .SetBatchSize(BatchSize)
                 .AllowAutoIncrementColumns(AllowAutoIncrementColumns)
                 .AllowPrimaryKeyColumns(AllowPrimaryKeyColumns)
@@ -69,12 +82,17 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence
 
         internal static int BulkTableWrite<T>(MySqlConnection ExistingConnection, IEnumerable<T> SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
         {
-            var rowsUpdated = GetBulkTableWriter<T>(ExistingConnection)
+            return BulkTableWrite<T>(new RelmContext(ExistingConnection, SqlTransaction), SourceData, TableName: TableName, ForceType: ForceType, BatchSize: BatchSize, DatabaseName: DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+        }
+
+        internal static int BulkTableWrite<T>(IRelmContext relmContext, IEnumerable<T> SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        {
+            var rowsUpdated = GetBulkTableWriter<T>(relmContext)
                 .SetTableName(TableName ?? (ForceType ?? typeof(T)).GetCustomAttribute<RelmTable>()?.TableName ?? throw new CustomAttributeFormatException(CoreUtilities.NoDalTableAttributeError))
                 .SetDatabaseName(DatabaseName ?? (ForceType ?? typeof(T)).GetCustomAttribute<RelmDatabase>()?.DatabaseName)
                 .SetSourceData(SourceData)
                 .UseTransaction(true)
-                .SetTransaction(SqlTransaction)
+                //.SetTransaction(SqlTransaction)
                 .SetBatchSize(BatchSize)
                 .AllowAutoIncrementColumns(AllowAutoIncrementColumns)
                 .AllowPrimaryKeyColumns(AllowPrimaryKeyColumns)

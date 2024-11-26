@@ -157,6 +157,19 @@ namespace SimpleRelm
             => RefinedResultsHelper.GetScalar<T>(EstablishedConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: SqlTransaction);
 
         /// <summary>
+        /// Query the database to get a single value.
+        /// </summary>
+        /// <typeparam name="T">The data return type.</typeparam>
+        /// <param name="EstablishedConnection">An open and established connection to a MySQL database.</param>
+        /// <param name="QueryString">The full SQL query string to be used to retrieve the value requested.</param>
+        /// <param name="Parameters">Named parameters for the query.</param>
+        /// <param name="ThrowException">Throw exception or cache in LastExecutionException and continue.</param>
+        /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
+        /// <returns>Single value returned as the specified type.</returns>
+        public static T GetScalar<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
+            => RefinedResultsHelper.GetScalar<T>(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+
+        /// <summary>
         /// Query the database to get a single row. If multiple rows are returned by the query, only the first is returned.
         /// </summary>
         /// <param name="ConfigConnectionString">An enum type to reference a connection string defined in web.config.</param>
@@ -322,6 +335,19 @@ namespace SimpleRelm
             => DataOutputOperations.GetBulkTableWriter<T>(EstablishedConnection, InsertQuery: InsertQuery, UseTransaction: UseTransaction, ThrowException: ThrowException, SqlTransaction: SqlTransaction, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
 
         /// <summary>
+        /// Gets a partially configured BulkTableWriter objects which can then be used to write data to the database.
+        /// </summary>
+        /// <typeparam name="T">The type of object to write.</typeparam>
+        /// <param name="EstablishedConnection">An open and established connection to a MySQL database.</param>
+        /// <param name="InsertQuery">The full SQL query to be run on each row insert.</param>
+        /// <param name="ThrowException">Throw exception or cache in LastExecutionException and continue.</param>
+        /// <param name="UseTransaction">Indicate whether to write all the data in a single transaction.</param>
+        /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
+        /// <returns>An object to used to write data to the database.</returns>
+        internal static BulkTableWriter<T> GetBulkTableWriter<T>(IRelmContext relmContext, string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+            => DataOutputOperations.GetBulkTableWriter<T>(relmContext, InsertQuery: InsertQuery, UseTransaction: UseTransaction, ThrowException: ThrowException, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+
+        /// <summary>
         /// Writes out a single object to the database using a combination of supplied parameters and class attributes.
         /// </summary>
         /// <typeparam name="T">The type of object to write.</typeparam>
@@ -335,6 +361,19 @@ namespace SimpleRelm
             => DataOutputOperations.BulkTableWrite<T>(EstablishedConnection, SourceData, TableName, SqlTransaction, ForceType, BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
 
         /// <summary>
+        /// Writes out a single object to the database using a combination of supplied parameters and class attributes.
+        /// </summary>
+        /// <typeparam name="T">The type of object to write.</typeparam>
+        /// <param name="EstablishedConnection">An open and established connection to a MySQL database.</param>
+        /// <param name="SourceData">The object to write out to the database.</param>
+        /// <param name="TableName">The name of the table to write to. If none is supplied, DALHelper attempts to get it from the DALTable attribute.</param>
+        /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
+        /// <param name="ForceType">Force a type other than the specified one to be used when auto-retrieving the table name from the DALTable attribute.</param>
+        /// <returns>The total number of rows written to the database.</returns>
+        public static int BulkTableWrite<T>(IRelmContext relmContext, T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+            => DataOutputOperations.BulkTableWrite<T>(relmContext, SourceData, TableName, ForceType, BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+
+        /// <summary>
         /// Writes out a list of objects to the database using a combination of supplied parameters and class attributes.
         /// </summary>
         /// <typeparam name="T">The type of object to write.</typeparam>
@@ -346,6 +385,19 @@ namespace SimpleRelm
         /// <returns>The total number of rows written to the database.</returns>
         public static int BulkTableWrite<T>(MySqlConnection EstablishedConnection, IEnumerable<T> SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
             => DataOutputOperations.BulkTableWrite<T>(EstablishedConnection, SourceData, TableName, SqlTransaction, ForceType, BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+
+        /// <summary>
+        /// Writes out a list of objects to the database using a combination of supplied parameters and class attributes.
+        /// </summary>
+        /// <typeparam name="T">The type of object to write.</typeparam>
+        /// <param name="EstablishedConnection">An open and established connection to a MySQL database.</param>
+        /// <param name="SourceData">The list of objects to write out to the database.</param>
+        /// <param name="TableName">The name of the table to write to. If none is supplied, DALHelper attempts to get it from the DALTable attribute.</param>
+        /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
+        /// <param name="ForceType">Force a type other than the specified one to be used when auto-retrieving the table name from the DALTable attribute.</param>
+        /// <returns>The total number of rows written to the database.</returns>
+        public static int BulkTableWrite<T>(IRelmContext relmContext, IEnumerable<T> SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+            => DataOutputOperations.BulkTableWrite<T>(relmContext, SourceData, TableName, ForceType, BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
 
         /// <summary>
         /// Writes out a single object to the database using a combination of supplied parameters and class attributes.
@@ -399,6 +451,18 @@ namespace SimpleRelm
             => DatabaseWorkHelper.DoDatabaseWork(EstablishedConnection, QueryString, Parameters, ThrowException, UseTransaction, SqlTransaction);
 
         /// <summary>
+        /// Execute a non-returning query on the database with the specified parameters.
+        /// </summary>
+        /// <param name="EstablishedConnection">An open and established connection to a MySQL database.</param>
+        /// <param name="QueryString">The full SQL query string to be used when executing the command.</param>
+        /// <param name="Parameters">Named parameters for the query.</param>
+        /// <param name="ThrowException">Throw exception or cache in LastExecutionException and continue.</param>
+        /// <param name="UseTransaction">Indicate whether to write all the data in a single transaction.</param>
+        /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
+        public static void DoDatabaseWork(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
+            => DatabaseWorkHelper.DoDatabaseWork(relmContext, QueryString, Parameters, ThrowException, UseTransaction);
+
+        /// <summary>
         /// Execute a query on the database and return the number of rows affected.
         /// </summary>
         /// <typeparam name="T">Return type - only accepts String or Int</typeparam>
@@ -424,6 +488,20 @@ namespace SimpleRelm
         /// <returns>Number of rows affected.</returns>
         public static T DoDatabaseWork<T>(MySqlConnection EstablishedConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
          => DatabaseWorkHelper.DoDatabaseWork<T>(EstablishedConnection, QueryString, Parameters, ThrowException, UseTransaction, SqlTransaction);
+
+        /// <summary>
+        /// Execute a query on the database and return the number of rows affected.
+        /// </summary>
+        /// <typeparam name="T">Return type - only accepts String or Int</typeparam>
+        /// <param name="EstablishedConnection">An open and established connection to a MySQL database.</param>
+        /// <param name="QueryString">The full SQL query string to be used when executing the command.</param>
+        /// <param name="Parameters">Dictionary of named parameters</param>
+        /// <param name="ThrowException">Throw exception or cache in LastExecutionException and continue.</param>
+        /// <param name="UseTransaction">Indicate whether to write all the data in a single transaction.</param>
+        /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
+        /// <returns>Number of rows affected.</returns>
+        public static T DoDatabaseWork<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
+         => DatabaseWorkHelper.DoDatabaseWork<T>(relmContext, QueryString, Parameters, ThrowException, UseTransaction);
 
         /// <summary>
         /// Execute a query on the database using the provided function without returning a value.

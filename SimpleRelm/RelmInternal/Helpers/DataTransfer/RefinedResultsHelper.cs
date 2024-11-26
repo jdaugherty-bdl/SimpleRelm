@@ -1,4 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
+using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using SimpleRelm.RelmInternal.Helpers.Operations;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
@@ -43,7 +45,12 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         /// <returns>Single value of type T</returns>
         internal static T GetScalar<T>(MySqlConnection EstablishedConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
         {
-            return DatabaseWorkHelper.DoDatabaseWork<T>(EstablishedConnection, QueryString,
+            return GetScalar<T>(new RelmContext(EstablishedConnection, SqlTransaction), QueryString, Parameters, ThrowException: ThrowException);
+        }
+
+        internal static T GetScalar<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
+        {
+            return DatabaseWorkHelper.DoDatabaseWork<T>(relmContext, QueryString,
                 (cmd) =>
                 {
                     cmd.Parameters.AddAllParameters(Parameters);
@@ -52,7 +59,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
                     return CoreUtilities.ConvertScalar<T>(scalarResult);
                 },
-                ThrowException: ThrowException, UseTransaction: SqlTransaction != null, SqlTransaction: SqlTransaction);
+                ThrowException: ThrowException, UseTransaction: SqlTransaction != null);
         }
 
         internal static DataRow GetDataRow(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false)

@@ -81,7 +81,7 @@ namespace SimpleRelm.Options
 
         public void SetDatabaseTransaction(MySqlTransaction transaction)
         {
-            DatabaseTransaction = transaction ?? throw new ArgumentNullException("Transaction cannot be null.", nameof(transaction));
+            DatabaseTransaction = transaction; // ?? throw new ArgumentNullException("Transaction cannot be null.", nameof(transaction));
 
             _optionsBuilderType = OptionsBuilderTypes.OpenConnection;
         }

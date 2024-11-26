@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using SimpleRelm.RelmInternal.Extensions;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.RelmInternal.Models;
@@ -38,6 +39,7 @@ namespace SimpleRelm.Persistence
         private int BatchSize;
         private IEnumerable<T> SourceData;
         private MySqlTransaction SqlTransaction;
+        private IRelmContext ExistingContext;
 
         // local objects
         private readonly MySqlConnection ExistingConnection;
@@ -62,6 +64,7 @@ namespace SimpleRelm.Persistence
         internal BulkTableWriter(MySqlConnection ExistingConnection, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
         {
             this.ExistingConnection = ExistingConnection;
+            this.ExistingContext = new RelmContext(ExistingConnection, SqlTransaction);
 
             CommonSetup(InsertQuery, UseTransaction, ThrowException, SqlTransaction, false, AllowAutoIncrementColumns, AllowPrimaryKeyColumns, AllowUniqueColumns);
         }
@@ -69,6 +72,8 @@ namespace SimpleRelm.Persistence
         internal BulkTableWriter(IRelmContext relmContext, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = false, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
         {
             this.ExistingConnection = relmContext.ContextOptions.DatabaseConnection;
+            this.SqlTransaction = relmContext.ContextOptions.DatabaseTransaction;
+            this.ExistingContext = relmContext;
 
             CommonSetup(InsertQuery, UseTransaction, ThrowException, SqlTransaction, false, AllowAutoIncrementColumns, AllowPrimaryKeyColumns, AllowUniqueColumns);
         }
@@ -127,7 +132,9 @@ namespace SimpleRelm.Persistence
             {
                 CreateOutputDataTable(DataTableFunction, i);
 
-                if (ExistingConnection != null)
+                if (ExistingContext != null)
+                    recordsInserted += DatabaseWorkHelper.DoDatabaseWork<int>(ExistingContext, InsertQuery, CommonDatabaseWork, UseTransaction: WriteWithTransaction, ThrowException: ShouldThrowException);
+                else if (ExistingConnection != null)
                     recordsInserted += DatabaseWorkHelper.DoDatabaseWork<int>(ExistingConnection, InsertQuery, CommonDatabaseWork, UseTransaction: WriteWithTransaction, ThrowException: ShouldThrowException, SqlTransaction: SqlTransaction);
                 else
                     recordsInserted += DatabaseWorkHelper.DoDatabaseWork<int>(ConfigConnectionString, InsertQuery, CommonDatabaseWork, UseTransaction: WriteWithTransaction, ThrowException: ShouldThrowException, AllowUserVariables: ShouldAllowUserVariables);
