@@ -46,6 +46,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
         private string GetTableAlias(string PropertyName)
         {
+            if (string.IsNullOrWhiteSpace(PropertyName))
+                return null;
+
             if (UsedTableAliases.ContainsKey(PropertyName))
                 return UsedTableAliases[PropertyName];
 
@@ -104,6 +107,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             var parameterName = GenerateParameterName(memberExpression.Member.Name, queryParameters);
 
             var currentAlias = GetTableAlias(((RelmTable)memberExpression.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+            if (string.IsNullOrWhiteSpace(currentAlias))
+                throw new TypeAccessException($"Could not find 'RelmTable' custom attribute on type: [{memberExpression.Expression.Type.FullName}]");
 
             return new Tuple<string, string, string>(fieldName, parameterName, currentAlias);
         }
@@ -395,6 +401,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
                                 currentAlias = GetTableAlias(((RelmTable)expressedMember.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
 
+                                if (string.IsNullOrWhiteSpace(currentAlias))
+                                    throw new TypeAccessException($"Could not find 'RelmTable' custom attribute on type: [{expressedMember.Expression.Type.FullName}]");
+
                                 findQuery += " ";
                                 findQuery += currentAlias;
                                 findQuery += ".`";
@@ -419,6 +428,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                                     parameterValue = constantValue.ToString();
 
                                 currentAlias = GetTableAlias(((RelmTable)referencedMember.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+                                if (string.IsNullOrWhiteSpace(currentAlias))
+                                    throw new TypeAccessException($"Could not find 'RelmTable' custom attribute on type: [{referencedMember.Expression.Type.FullName}]");
 
                                 findQuery += " FIND_IN_SET(";
                                 findQuery += currentAlias;
@@ -450,6 +462,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
                                 currentAlias = GetTableAlias(((RelmTable)referencedMember.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
 
+                                if (string.IsNullOrWhiteSpace(currentAlias))
+                                    throw new TypeAccessException($"Could not find 'RelmTable' custom attribute on type: [{referencedMember.Expression.Type.FullName}]");
+
                                 findQuery += " FIND_IN_SET(";
                                 findQuery += currentAlias;
                                 findQuery += ".`";
@@ -464,6 +479,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                                     throw new Exception($"No field named '{referencedMember.Member.Name}' with attribute [RelmColumn] found.");
 
                                 currentAlias = GetTableAlias(((RelmTable)referencedMember.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+                                if (string.IsNullOrWhiteSpace(currentAlias))
+                                    throw new TypeAccessException($"Could not find 'RelmTable' custom attribute on type: [{referencedMember.Expression.Type.FullName}]");
 
                                 findQuery += " ";
                                 findQuery += currentAlias;
@@ -505,6 +523,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             var set = commandExpression.Value.FirstOrDefault();
             var currentAlias = GetTableAlias(((RelmTable)set.InitialExpression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
 
+            if (string.IsNullOrWhiteSpace(currentAlias))
+                throw new TypeAccessException($"Could not find 'RelmTable' custom attribute on type: [{set.InitialExpression.Type.FullName}]");
+
             var queryPrefix = " INSERT INTO ";
             queryPrefix += string.Join(",", setLines);
             queryPrefix += " ";
@@ -523,6 +544,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
             var set = commandExpression.Value.FirstOrDefault();
             var currentAlias = GetTableAlias(((RelmTable)set.InitialExpression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+            if (string.IsNullOrWhiteSpace(currentAlias))
+                throw new TypeAccessException($"Could not find 'RelmTable' custom attribute on type: [{set.InitialExpression.Type.FullName}]");
 
             if (set is MemberExpression memberAssignment)
             {
@@ -603,6 +627,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 {
                     var currentAlias = GetTableAlias(((RelmTable)methodOperand.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
 
+                    if (string.IsNullOrWhiteSpace(currentAlias))
+                        throw new TypeAccessException($"Could not find 'RelmTable' custom attribute on type: [{methodOperand.Expression.Type.FullName}]");
+
                     if (!(isDescending.HasValue ? HasOrderBy : HasGroupBy))
                     {
                         findQuery += $" ";
@@ -673,6 +700,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 throw new InvalidCastException();
 
             var currentAlias = GetTableAlias(((RelmTable)methodOperand.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+            if (string.IsNullOrWhiteSpace(currentAlias))
+                throw new TypeAccessException($"Could not find 'RelmTable' custom attribute on type: [{methodOperand.Expression.Type.FullName}]");
 
             var findQuery = $" DISTINCT ";
             findQuery += currentAlias;
