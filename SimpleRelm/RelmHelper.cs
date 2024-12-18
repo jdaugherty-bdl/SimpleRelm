@@ -217,6 +217,18 @@ namespace SimpleRelm
         public static DataTable GetDataTable(MySqlConnection EstablishedConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
             => RefinedResultsHelper.GetDataTable(EstablishedConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: SqlTransaction);
 
+        /// <summary>
+        /// Query the database for a full table.
+        /// </summary>
+        /// <param name="EstablishedConnection">An open and established connection to a MySQL database.</param>
+        /// <param name="QueryString">The full SQL query string to be used to retrieve the value requested.</param>
+        /// <param name="Parameters">Named parameters for the query.</param>
+        /// <param name="ThrowException">Throw exception or cache in LastExecutionException and continue.</param>
+        /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
+        /// <returns>A full DataTable with requested data.</returns>
+        public static DataTable GetDataTable(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
+            => RefinedResultsHelper.GetDataTable(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+
         //***************** Object results *****************//
 
         /// <summary>

@@ -95,7 +95,12 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
         internal static DataTable GetDataTable(MySqlConnection EstablishedConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
         {
-            return DatabaseWorkHelper.DoDatabaseWork<DataTable>(EstablishedConnection, QueryString,
+            return GetDataTable(new RelmContext(EstablishedConnection, SqlTransaction), QueryString, Parameters, ThrowException: ThrowException);
+        }
+
+        internal static DataTable GetDataTable(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
+        {
+            return DatabaseWorkHelper.DoDatabaseWork<DataTable>(relmContext, QueryString,
                 (cmd) =>
                 {
                     cmd.Parameters.AddAllParameters(Parameters);
@@ -110,7 +115,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
                         return outputTable;
                     }
-                }, ThrowException: ThrowException, UseTransaction: SqlTransaction != null, SqlTransaction: SqlTransaction);
+                }, ThrowException: ThrowException, UseTransaction: relmContext.ContextOptions.DatabaseTransaction != null);
         }
     }
 }
