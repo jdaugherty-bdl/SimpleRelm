@@ -9,8 +9,8 @@ namespace SimpleRelm.Interfaces.Resolvers
 {
     public interface IRelmResolver_MySQL : IRelmResolverBase
     {
-        new MySqlConnectionStringBuilder GetConnectionBuilderFromType(Enum ConnectionType);
-        new MySqlConnectionStringBuilder GetConnectionBuilderFromName(string ConnectionString);
+        MySqlConnectionStringBuilder GetConnectionBuilderFromType(Enum ConnectionType);
+        MySqlConnectionStringBuilder GetConnectionBuilderFromName(string ConnectionString);
         MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionString(string connectionString);
     }
 }
