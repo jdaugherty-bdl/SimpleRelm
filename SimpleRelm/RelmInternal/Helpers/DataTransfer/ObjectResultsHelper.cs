@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using SimpleRelm.RelmInternal.Helpers.Operations;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
@@ -24,7 +25,14 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
         internal static IEnumerable<T> GetDataList<T>(MySqlConnection ExistingConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
         {
-            return RefinedResultsHelper.GetDataTable(ExistingConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: SqlTransaction)
+            var relmContext = new RelmContext(ExistingConnection, SqlTransaction);
+
+            return GetDataList<T>(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+        }
+
+        internal static IEnumerable<T> GetDataList<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
+        {
+            return RefinedResultsHelper.GetDataTable(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException)
                 .AsEnumerable()
                 .Select(x => (T)CoreUtilities.ConvertScalar<T>(x[0]));
         }

@@ -318,6 +318,9 @@ namespace SimpleRelm
         public static IEnumerable<T> GetDataList<T>(MySqlConnection EstablishedConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null) //where T : DALBaseModel
             => ObjectResultsHelper.GetDataList<T>(EstablishedConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: SqlTransaction);
 
+        public static IEnumerable<T> GetDataList<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true) //where T : DALBaseModel
+            => ObjectResultsHelper.GetDataList<T>(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+
         //***************** Table write functions *****************//
 
         /// <summary>
