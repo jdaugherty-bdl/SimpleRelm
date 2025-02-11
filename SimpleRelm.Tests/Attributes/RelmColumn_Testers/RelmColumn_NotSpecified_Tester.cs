@@ -90,5 +90,32 @@ namespace SimpleRelm.Tests.Attributes.RelmColumn_Testers
         {
             Assert.False(relmColumnAttribute?.Virtual);
         }
+
+        [Fact]
+        public void RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Null_When_Not_Specified()
+        {
+            Assert.Null(relmColumnAttribute?.CompoundColumnSize);
+        }
+
+        [Fact]
+        public void RelmColumn_ComplexTestModel_Has_Attribute_Present()
+        {
+            Assert.NotNull(relmColumnAttribute);
+        }
+
+        [Fact]
+        public void RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property()
+        {
+            var complexTestModel = new ComplexTestModel();
+            var complexTestModelType = complexTestModel.GetType();
+            var otherProperty = complexTestModelType.GetProperty(nameof(ComplexTestModel.TestFieldBoolean));
+
+            var otherPropertyAttribute = otherProperty
+                .GetCustomAttributes(typeof(RelmColumn), true)
+                .Cast<RelmColumn>()
+                .FirstOrDefault();
+
+            Assert.Null(otherPropertyAttribute);
+        }
     }
 }
