@@ -193,6 +193,13 @@ namespace SimpleRelm.Models
             ContextOptions.SetDatabaseTransaction(null);
         }
 
+        public void RollbackTransactions()
+        {
+            ContextOptions.DatabaseTransaction?.Rollback();
+
+            ContextOptions.SetDatabaseTransaction(null);
+        }
+
         public void Dispose()
         {
             // Implement full disposable pattern
