@@ -28,7 +28,7 @@ namespace SimpleRelm.Extensions
 
         public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, IRelmContext relmContext, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
         {
-            return DataOutputOperations.BulkTableWrite<T>(relmContext.ContextOptions.DatabaseConnection, DbModelData, TableName, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction, ForceType, BatchSize, DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+            return DataOutputOperations.BulkTableWrite<T>(relmContext, DbModelData, TableName, ForceType, BatchSize, DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
         }
 
         public static ICollection<T> LoadForeignKeyField<T, R, S>(this ICollection<T> DbModelData, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
