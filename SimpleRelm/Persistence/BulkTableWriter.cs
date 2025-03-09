@@ -183,9 +183,13 @@ namespace SimpleRelm.Persistence
                     throw new ArgumentNullException("Error auto-populating Bulk Table Writer call: table name not defined");
 
                 // pull the table details from the database
-                var currentTableDetails = (ExistingConnection != null)
-                    ? RelmHelper.GetDataObjects<DALTableRowDescriptor>(ExistingConnection, $"DESCRIBE {(string.IsNullOrWhiteSpace(DatabaseName) ? string.Empty : $"{DatabaseName}.")}{TableName}")
-                    : RelmHelper.GetDataObjects<DALTableRowDescriptor>(ConfigConnectionString, $"DESCRIBE {(string.IsNullOrWhiteSpace(DatabaseName) ? string.Empty : $"{DatabaseName}.")}{TableName}");
+                List<DALTableRowDescriptor> currentTableDetails = null;
+                if (ExistingContext != null)
+                    currentTableDetails = RelmHelper.GetDataObjects<DALTableRowDescriptor>(ExistingContext, $"DESCRIBE {(string.IsNullOrWhiteSpace(DatabaseName) ? string.Empty : $"{DatabaseName}.")}{TableName}").ToList();
+                else if (ExistingConnection != null)
+                    currentTableDetails = RelmHelper.GetDataObjects<DALTableRowDescriptor>(ExistingConnection, $"DESCRIBE {(string.IsNullOrWhiteSpace(DatabaseName) ? string.Empty : $"{DatabaseName}.")}{TableName}").ToList();
+                else
+                    currentTableDetails = RelmHelper.GetDataObjects<DALTableRowDescriptor>(ConfigConnectionString, $"DESCRIBE {(string.IsNullOrWhiteSpace(DatabaseName) ? string.Empty : $"{DatabaseName}.")}{TableName}").ToList();
 
                 // use all column for insert EXCEPT autonumber fields and the boilerplate create_date and last_updated columns
                 var insertColumns = currentTableDetails
