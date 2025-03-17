@@ -32,7 +32,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                 return decimal.TryParse(scalarValue.ToString(), out decimal scalar) ? scalar : default;
             else if (typeof(T) == typeof(float))
                 return float.TryParse(scalarValue.ToString(), out float scalar) ? scalar : default;
-            else if (typeof(T) == typeof(bool) && scalarValue.GetType() == typeof(string))
+            else if (typeof(T) == typeof(bool) && new[] { typeof(string), typeof(int), typeof(long) }.Contains(scalarValue.GetType()))
                 return !(scalarValue.ToString() == "0");
             else if (typeof(T) == typeof(DateTime))
                 return DateTime.TryParse(scalarValue.ToString(), out DateTime scalar) ? scalar : default;
