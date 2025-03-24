@@ -127,6 +127,8 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
                     if (typeof(T) == typeof(string))
                         return executionWork.ToString();
+                    else if (typeof(T) == typeof(bool))
+                        return executionWork > 0;
                     else if (typeof(T) == typeof(int))
                         return executionWork;
                     else
