@@ -39,65 +39,6 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                             .Any(a => a == typeof(IRelmResolver_MySQL)))))
                 .FirstOrDefault();
 
-            /*
-            var ddd = AppDomain
-                .CurrentDomain
-                .GetAssemblies()
-                .Where(x => x
-                    .GetCustomAttributes(true)
-                    .Any(y => y is AssemblyCompanyAttribute attribute
-                        && !x.FullName.StartsWith("log4net", StringComparison.InvariantCultureIgnoreCase)
-                        && !x.FullName.StartsWith("Newtonsoft.Json", StringComparison.InvariantCultureIgnoreCase)
-                        && !attribute.Company.StartsWith("Oracle", StringComparison.InvariantCultureIgnoreCase)
-                        && !attribute.Company.StartsWith("Microsoft", StringComparison.InvariantCultureIgnoreCase)
-                        && !attribute.Company.StartsWith("Umbraco", StringComparison.InvariantCultureIgnoreCase)))
-                .ToList();
-            var ddd = AppDomain
-                .CurrentDomain
-                .GetAssemblies()
-                .Where(x => x
-                    .GetCustomAttributes(true)
-                    .Any(y => y is AssemblyCompanyAttribute attribute
-                        && (attribute.Company.StartsWith("BV", StringComparison.InvariantCultureIgnoreCase)
-                            || attribute.Company.StartsWith("Bureau Veritas", StringComparison.InvariantCultureIgnoreCase)
-                            || attribute.Company.StartsWith("Bureau-Veritas", StringComparison.InvariantCultureIgnoreCase))))
-                .ToList();
-
-            var e1 = ddd.Select(x => x.GetModules()).ToList();
-            var e11 = e1[0][0].GetTypes();
-            var e12 = e1[1][0].GetTypes();
-            var e13 = e1[2][0].GetTypes();
-            var e11 = Assembly.LoadFrom(ddd[0].Location).GetModules();
-            var e12 = Assembly.LoadFrom(ddd[1].Location).GetModules();
-            var e13 = Assembly.LoadFrom(ddd[2].Location).GetModules();
-            var e2 = ddd.Select(x => Assembly.LoadFrom(x.Location).GetModules().SelectMany(y => y.GetTypes()).ToList()).ToList();
-            var eee = ddd.Select(x => x.GetModules().Select(y => y?.GetTypes()?.Select(z => z?.GetInterfaces())?.ToList())?.ToList())?.ToList();
-
-            // if the standard way didn't work, do a little detective work (may not work 100% of the time)
-            var clientDalResolverType =
-                entryAssembly
-                ??
-                AppDomain
-                .CurrentDomain
-                .GetAssemblies()
-                .Where(x => x
-                    .GetCustomAttributes(true)
-                    .Any(y => y is AssemblyCompanyAttribute attribute
-                        && !attribute.Company.StartsWith("Microsoft", StringComparison.InvariantCultureIgnoreCase)
-                        && !x.FullName.StartsWith("log4net", StringComparison.InvariantCultureIgnoreCase)
-                        && !attribute.Company.StartsWith("Umbraco", StringComparison.InvariantCultureIgnoreCase)))
-                .SelectMany(x => x
-                    .GetModules()
-                    .SelectMany(y => y?
-                        .GetTypes()?
-                        .Where(z => z?
-                            .GetInterfaces()?
-                            .Any(a => a == typeof(IRelmResolver_MySQL))
-                            ??
-                            false)))
-                .FirstOrDefault();
-            */
-
             // if the standard way didn't work, do a little detective work (may not work 100% of the time)
             var clientDalResolverType =
                 entryAssembly
