@@ -25,49 +25,49 @@ namespace SimpleRelm.Models
 
         private bool localOpen = false;
 
-        public RelmContext(RelmContextOptionsBuilder optionsBuilder, bool autoOpenConnection = true, bool autoOpenTransaction = false)
+        public RelmContext(RelmContextOptionsBuilder optionsBuilder, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false)
         {
             ContextOptions = optionsBuilder ?? throw new ArgumentNullException(nameof(optionsBuilder), "RelmContextOptionsBuilder cannot be null.");
 
             ContextOptions.ValidateAllSettings();
 
-            InitializeContext(autoOpenConnection, autoOpenTransaction);
+            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables);
         }
 
-        public RelmContext(Enum connectionStringType, bool autoOpenConnection = true, bool autoOpenTransaction = false)
+        public RelmContext(Enum connectionStringType, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false)
         {
             // set the options and allow user to override
             ContextOptions = new RelmContextOptionsBuilder(connectionStringType);
 
-            InitializeContext(autoOpenConnection, autoOpenTransaction);
+            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables);
         }
 
-        public RelmContext(string connectionDetails, bool autoOpenConnection = true, bool autoOpenTransaction = false)
+        public RelmContext(string connectionDetails, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false)
         {
             // set the options and allow user to override
             ContextOptions = new RelmContextOptionsBuilder(connectionDetails);
 
-            InitializeContext(autoOpenConnection, autoOpenTransaction);
+            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables);
         }
 
-        public RelmContext(MySqlConnection connection, bool autoOpenConnection = true, bool autoOpenTransaction = false)
+        public RelmContext(MySqlConnection connection, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false)
         {
             ContextOptions = new RelmContextOptionsBuilder(connection);
 
-            InitializeContext(autoOpenConnection, autoOpenTransaction);
+            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables);
         }
 
-        public RelmContext(MySqlConnection connection, MySqlTransaction transaction, bool autoOpenConnection = true)
+        public RelmContext(MySqlConnection connection, MySqlTransaction transaction, bool autoOpenConnection = true, bool allowUserVariables = false)
         {
             ContextOptions = new RelmContextOptionsBuilder(connection, transaction);
 
-            InitializeContext(autoOpenConnection, false);
+            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: false, allowUserVariables: allowUserVariables);
         }
 
-        private void InitializeContext(bool autoOpenConnection = true, bool autoOpenTransaction = false)
+        private void InitializeContext(bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false)
         {
             if (ContextOptions.DatabaseConnection == null)
-                ContextOptions.SetDatabaseConnection(RelmHelper.GetConnectionFromConnectionString(ContextOptions.DatabaseConnectionString));
+                ContextOptions.SetDatabaseConnection(RelmHelper.GetConnectionFromConnectionString(ContextOptions.DatabaseConnectionString, allowUserVariables: allowUserVariables));
 
             if (autoOpenConnection && ContextOptions.DatabaseConnection != null)
                 StartConnection(autoOpenTransaction);
