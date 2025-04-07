@@ -85,6 +85,20 @@ namespace SimpleRelm.Models
             // find any properties that are DALDataSet<T>
             _attachedProperties = this.GetType().GetProperties().Where(x => x.PropertyType.IsGenericType && x.PropertyType.GetGenericTypeDefinition() == typeof(IRelmDataSet<>));
 
+            var tableNames = _attachedProperties
+                .Select(attachedProperty => (attachedProperty.PropertyType.GetGenericArguments()[0].GetCustomAttribute<RelmTable>(false)?.TableName, attachedProperty))
+                .Where(x => !string.IsNullOrWhiteSpace(x.TableName))
+                .ToList();
+
+            var currentDatabaseTables = RelmHelper.GetDataList<string>(this, "SHOW TABLES;")
+                .ToList();
+
+            // don't initialize the data sets if the table name is not in the current database
+            _attachedProperties = tableNames
+                .Where(x => currentDatabaseTables.Contains(x.TableName))
+                .Select(x => x.attachedProperty)
+                .ToList();
+
             // instantiate each item in the DALDataSet<T> properties
             foreach (var attachedProperty in _attachedProperties)
             {
