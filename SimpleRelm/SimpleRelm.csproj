@@ -113,6 +113,7 @@
     <Compile Include="RelmInternal\Helpers\Operations\TableOperationsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\CoreUtilities.cs" />
     <Compile Include="Interfaces\IRelmDataLoader.cs" />
+    <Compile Include="RelmInternal\Helpers\Utilities\FastActivatorHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\ForeignKeyComparer.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\ForeignKeyLoader.cs" />
     <Compile Include="RelmInternal\Helpers\Utilities\ForeignObjectsLoader.cs" />

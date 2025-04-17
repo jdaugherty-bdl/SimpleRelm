@@ -6,6 +6,7 @@ using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
@@ -111,7 +112,10 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             var relevantProperty = relevantDataSet.PropertyType.GetGenericArguments().FirstOrDefault().GetProperties().FirstOrDefault(x => x.PropertyType == typeof(T))
                 ?? relevantDataSet.PropertyType.GetGenericArguments().FirstOrDefault().GetProperties().FirstOrDefault(x => x.PropertyType.GenericTypeArguments.Any(y => y == typeof(T)));
 
-            var currentContext = (IRelmContext)Activator.CreateInstance(relevantContext, new object[] { contextOptions });
+            //var currentContext = (IRelmContext)Activator.CreateInstance(relevantContext, new object[] { contextOptions });
+            var contextConstructor = relevantContext.GetConstructor(new Type[] { typeof(RelmContextOptionsBuilder) });
+            var contextActivator = FastActivatorHelper.GetActivator<IRelmContext>(contextConstructor);
+            var currentContext = contextActivator(contextOptions);
 
             if (customDataLoader != null)
             {

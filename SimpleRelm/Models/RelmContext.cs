@@ -114,6 +114,7 @@ namespace SimpleRelm.Models
                 else
                     dalDataLoader = Activator.CreateInstance(classDataLoader.LoaderType, new object[] { ContextOptions });
 
+                // create a new instance of the DALDataSet<T> and pass the data loader
                 var dalDataSet = Activator.CreateInstance(typeof(RelmDataSet<>).MakeGenericType(dalDataSetType), new object[] { this, dalDataLoader });
 
                 attachedProperty.SetValue(this, dalDataSet);
