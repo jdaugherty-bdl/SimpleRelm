@@ -101,6 +101,7 @@
     <Compile Include="RelmInternal\Helpers\DataTransfer\Persistence\DataOutputOperations.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\RefinedResultsHelper.cs" />
     <Compile Include="RelmInternal\Helpers\DataTransfer\RowIdentityHelper.cs" />
+    <Compile Include="RelmInternal\Helpers\EqualityComparers\JsonConverterAttributeEqualityComparer.cs" />
     <Compile Include="RelmInternal\Helpers\Expressions\ExpressionVisitor.cs" />
     <Compile Include="RelmInternal\Helpers\Expressions\VisitExpressions.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\ConnectionHelper.cs" />

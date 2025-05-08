@@ -1,23 +1,22 @@
-﻿using MySql.Data.MySqlClient;
+﻿
+using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SimpleRelm.Attributes;
 using SimpleRelm.Extensions;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Models.EventArguments;
 using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Extensions;
-using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence;
-using SimpleRelm.RelmInternal.Helpers.Utilities;
+using SimpleRelm.RelmInternal.Helpers.EqualityComparers;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
+using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleRelm.Models
 {
@@ -110,16 +109,37 @@ namespace SimpleRelm.Models
 
             ResetCoreAttributes();
 
+            var underscoreProperties = GetUnderscoreProperties();
+            var jsonConverters = underscoreProperties
+                .Select(x => x.Value.Item2.GetCustomAttribute<JsonConverterAttribute>())
+                .Where(x => x != null)
+                .Distinct(new JsonConverterAttributeEqualityComparer())
+                .Select(x => (JsonConverter)Activator.CreateInstance(x.ConverterType, x.ConverterParameters))
+                .ToArray();
+
             // match up all properties to columns using underscore names and populate matches with data from the row
-            foreach (var underscoreName in GetUnderscoreProperties())
+            foreach (var underscoreName in underscoreProperties)
             {
                 // first do the default column names
                 if (ModelData.Table.Columns.IndexOf(underscoreName.Key) >= 0 && !(ModelData[underscoreName.Key] is DBNull) && underscoreName.Value.Item2.SetMethod != null)
-                    underscoreName.Value.Item2.SetValue(this, GetValueData(underscoreName.Key, underscoreName.Value.Item2.PropertyType, ModelData));
+                {
+                    var ddd = ModelData[underscoreName.Key].ToString();
+                    var jsonConverter = underscoreName.Value.Item2.GetCustomAttribute<JsonConverterAttribute>();
+                    if (jsonConverter == null)
+                        underscoreName.Value.Item2.SetValue(this, GetValueData(underscoreName.Key, underscoreName.Value.Item2.PropertyType, ModelData));
+                    else
+                        underscoreName.Value.Item2.SetValue(this, JsonConvert.DeserializeObject($"'{ModelData[underscoreName.Key]}'", underscoreName.Value.Item2.PropertyType, new JsonSerializerSettings { Converters = jsonConverters }));
+                }
 
                 // then do the alternate table names
                 if (ModelData.Table.Columns.IndexOf($"{underscoreName.Key}_{alternateTableName}") >= 0 && !(ModelData[$"{underscoreName.Key}_{alternateTableName}"] is DBNull) && underscoreName.Value.Item2.SetMethod != null)
-                    underscoreName.Value.Item2.SetValue(this, GetValueData($"{underscoreName.Key}_{alternateTableName}", underscoreName.Value.Item2.PropertyType, ModelData));
+                {
+                    var jsonConverter = underscoreName.Value.Item2.GetCustomAttribute<JsonConverterAttribute>();
+                    if (jsonConverter == null)
+                        underscoreName.Value.Item2.SetValue(this, GetValueData($"{underscoreName.Key}_{alternateTableName}", underscoreName.Value.Item2.PropertyType, ModelData));
+                    else
+                        underscoreName.Value.Item2.SetValue(this, JsonConvert.DeserializeObject($"'{ModelData[$"{underscoreName.Key}_{alternateTableName}"]}'", underscoreName.Value.Item2.PropertyType, new JsonSerializerSettings { Converters = jsonConverters }));
+                }
             }
 
             return this;
