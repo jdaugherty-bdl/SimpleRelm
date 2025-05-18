@@ -123,7 +123,6 @@ namespace SimpleRelm.Models
                 // first do the default column names
                 if (ModelData.Table.Columns.IndexOf(underscoreName.Key) >= 0 && !(ModelData[underscoreName.Key] is DBNull) && underscoreName.Value.Item2.SetMethod != null)
                 {
-                    var ddd = ModelData[underscoreName.Key].ToString();
                     var jsonConverter = underscoreName.Value.Item2.GetCustomAttribute<JsonConverterAttribute>();
                     if (jsonConverter == null)
                         underscoreName.Value.Item2.SetValue(this, GetValueData(underscoreName.Key, underscoreName.Value.Item2.PropertyType, ModelData));
