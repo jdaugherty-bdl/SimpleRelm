@@ -87,6 +87,7 @@ namespace SimpleRelm.Extensions
         public static T LoadForeignKeyField<T, R>(this T target, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, ICollection<R>>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()
             => new ForeignKeyLoader<T>(target, relmContextOptionsBuilder).LoadForeignKey(predicate).FirstOrDefault();
 
+        /*
         public static T LoadDataLoaderField<T, S>(this T inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
         {
             var loaderType = typeof(DataLoaderHelper<>).MakeGenericType(typeof(T));
@@ -127,6 +128,84 @@ namespace SimpleRelm.Extensions
                 .MakeGenericMethod(typeof(S));
 
             var loaderResult = loaderMethod.Invoke(loaderInstance, new object[] { predicate });
+
+            return (ICollection<T>)loaderResult;
+        }
+        public static T LoadDataLoaderField<T, S>(this T inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
+        {
+            var loaderType = typeof(DataLoaderHelper<>).MakeGenericType(typeof(T));
+            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { inputModel });
+
+            var loaderMethod = loaderType
+                .GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
+                .Where(x => x.Name == nameof(DataLoaderHelper<T>.LoadField) 
+                    && x.GetParameters().Length == 1 
+                    && x.GetParameters()
+                        .Any(y => y.ParameterType
+                            .GetGenericArguments()
+                            .Any(z => z.GetGenericArguments()
+                                .All(aa => !aa.IsGenericType))))
+                .FirstOrDefault();
+
+            var loaderResult = loaderMethod.Invoke(loaderInstance, new object[] { predicate });
+
+            return ((ICollection<T>)loaderResult).FirstOrDefault();
+        }
+
+        public static ICollection<T> LoadDataLoaderField<T, S>(this ICollection<T> inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
+        {
+            var loaderType = typeof(DataLoaderHelper<>).MakeGenericType(typeof(T));
+            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { inputModel });
+
+            // First find the LoadField method
+            var loaderMethod = loaderType
+                .GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
+                .Where(x => x.Name == nameof(DataLoaderHelper<T>.LoadField) && x.IsGenericMethod)
+                .FirstOrDefault();
+
+            if (loaderMethod == null)
+            {
+                throw new InvalidOperationException($"Could not find LoadField method on {loaderType.Name}");
+            }
+
+            // Then make it generic with the type parameter
+            var genericLoaderMethod = loaderMethod.MakeGenericMethod(typeof(S));
+
+            var loaderResult = genericLoaderMethod.Invoke(loaderInstance, new object[] { predicate });
+
+            return (ICollection<T>)loaderResult;
+        }
+        */
+        public static T LoadDataLoaderField<T, S>(this T inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
+        {
+            var loaderType = typeof(DataLoaderHelper<>).MakeGenericType(typeof(T));
+            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { inputModel });
+
+            // Get the generic method definition
+            var methodInfo = loaderType.GetMethod("LoadField", BindingFlags.Instance | BindingFlags.NonPublic) 
+                ?? throw new InvalidOperationException($"Could not find LoadField method on {loaderType.Name}");
+
+            // Create a constructed generic method with the S type parameter
+            var genericMethod = methodInfo.MakeGenericMethod(typeof(S));
+
+            var loaderResult = genericMethod.Invoke(loaderInstance, new object[] { predicate });
+
+            return ((ICollection<T>)loaderResult).FirstOrDefault();
+        }
+
+        public static ICollection<T> LoadDataLoaderField<T, S>(this ICollection<T> inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
+        {
+            var loaderType = typeof(DataLoaderHelper<>).MakeGenericType(typeof(T));
+            var loaderInstance = Activator.CreateInstance(loaderType, new object[] { inputModel });
+
+            // Get the generic method definition
+            var methodInfo = loaderType.GetMethod("LoadField", BindingFlags.Instance | BindingFlags.NonPublic)
+                ?? throw new InvalidOperationException($"Could not find LoadField method on {loaderType.Name}");
+
+            // Create a constructed generic method
+            var genericMethod = methodInfo.MakeGenericMethod(typeof(S));
+
+            var loaderResult = genericMethod.Invoke(loaderInstance, new object[] { predicate });
 
             return (ICollection<T>)loaderResult;
         }

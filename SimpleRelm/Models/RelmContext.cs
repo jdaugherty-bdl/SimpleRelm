@@ -23,7 +23,8 @@ namespace SimpleRelm.Models
         private IEnumerable<PropertyInfo> _attachedProperties;
         private List<object> _attachedDataSets;
 
-        private bool localOpen = false;
+        private bool localOpenConnection = false;
+        private bool localOpenTransaction = false;
 
         public RelmContext(RelmContextOptionsBuilder optionsBuilder, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false)
         {
@@ -69,7 +70,7 @@ namespace SimpleRelm.Models
             if (ContextOptions.DatabaseConnection == null)
                 ContextOptions.SetDatabaseConnection(RelmHelper.GetConnectionFromConnectionString(ContextOptions.DatabaseConnectionString, allowUserVariables: allowUserVariables));
 
-            if (autoOpenConnection && ContextOptions.DatabaseConnection != null)
+            if ((autoOpenConnection || autoOpenTransaction) && ContextOptions.DatabaseConnection != null)
                 StartConnection(autoOpenTransaction);
 
             _attachedDataSets = new List<object>();
@@ -170,25 +171,33 @@ namespace SimpleRelm.Models
             {
                 ContextOptions.DatabaseConnection.Open();
 
-                localOpen = true;
+                localOpenConnection = true;
             }
 
             if (autoOpenTransaction && ContextOptions.DatabaseConnection.State == System.Data.ConnectionState.Open)
+            {
                 ContextOptions.SetDatabaseTransaction(ContextOptions.DatabaseConnection.BeginTransaction());
+
+                localOpenTransaction = true;
+            }
         }
 
         public void EndConnection(bool commitTransaction = true)
         {
             if ((ContextOptions?.DatabaseConnection?.State ?? System.Data.ConnectionState.Closed) != System.Data.ConnectionState.Closed)
             {
-                if (commitTransaction && Transaction.Current?.TransactionInformation?.Status == TransactionStatus.Active)
+                if (commitTransaction && localOpenTransaction) // Transaction.Current?.TransactionInformation?.Status == TransactionStatus.Active)
+                {
                     ContextOptions.DatabaseTransaction?.Commit();
 
-                if (localOpen)
+                    localOpenTransaction = false;
+                }
+
+                if (localOpenConnection)
                 {
                     ContextOptions.DatabaseConnection.Close();
 
-                    localOpen = false;
+                    localOpenConnection = false;
                 }
             }
         }
