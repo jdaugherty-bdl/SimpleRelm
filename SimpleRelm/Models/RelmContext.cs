@@ -14,6 +14,8 @@ using System.Transactions;
 
 namespace SimpleRelm.Models
 {
+    //TODO: implement the following signature: var listee = relmContext.Get<CS_Listee>("000-000-000-000"); // will get from tabled defined in CS_Listee with internal id of "000-000-000-000"
+
     public class RelmContext : IDisposable, IRelmContext
     {
         public virtual void OnConfigure(RelmContextOptionsBuilder OptionsBuilder) { }
