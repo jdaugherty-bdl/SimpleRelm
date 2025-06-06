@@ -95,7 +95,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
         internal static DataTable GetDataTable(MySqlConnection EstablishedConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
         {
-            return GetDataTable(new RelmContext(EstablishedConnection, SqlTransaction), QueryString, Parameters, ThrowException: ThrowException);
+            return GetDataTable(new RelmQuickContext(EstablishedConnection, SqlTransaction), QueryString, Parameters, ThrowException: ThrowException);
         }
 
         internal static DataTable GetDataTable(IRelmQuickContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)

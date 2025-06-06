@@ -17,6 +17,7 @@ namespace SimpleRelm.Models
         public RelmContextOptionsBuilder ContextOptions { get; private set; }
 
         private IEnumerable<PropertyInfo> _attachedProperties;
+        private List<string> _currentDatabaseTables;
 
         private bool localOpenConnection = false;
         private bool localOpenTransaction = false;
@@ -156,15 +157,18 @@ namespace SimpleRelm.Models
                     .Where(x => !string.IsNullOrWhiteSpace(x.TableName))
                     .ToList();
 
-                var currentDatabaseTables = RelmHelper.GetDataList<string>(this, "SHOW TABLES;")
+                _currentDatabaseTables = RelmHelper.GetDataList<string>(this, "SHOW TABLES;")
                     .ToList();
 
                 // don't initialize the data sets if the table name is not in the current database
                 _attachedProperties = tableNames
-                    .Where(x => currentDatabaseTables.Contains(x.TableName))
+                    .Where(x => _currentDatabaseTables.Contains(x.TableName))
                     .Select(x => x.prop)
                     .ToList();
             }
+
+            if (!_currentDatabaseTables.Contains(RelmHelper.GetDalTable<T>()))
+                throw new InvalidOperationException($"Table for type {typeof(T).Name} [{RelmHelper.GetDalTable<T>()}] does not exist in the current database.");
 
             var attachedProperty = _attachedProperties.FirstOrDefault(x => x.PropertyType.GetGenericArguments().Any(y => y == typeof(T)))
                 ?? _attachedProperties.FirstOrDefault(x => x.PropertyType.GetGenericArguments().Any(y => y.IsAssignableFrom(typeof(T))))
