@@ -176,7 +176,12 @@ namespace SimpleRelm.Models
 
             // if none of those are true, then we have some serialized JSON data, so deserialize it
             else
-                valueData = JsonConvert.DeserializeObject(ModelData[UnderscoreKey].ToString(), PropertyValueType);
+            {
+                if (ModelData[UnderscoreKey] is DBNull)
+                    valueData = null;
+                else
+                    valueData = JsonConvert.DeserializeObject(ModelData[UnderscoreKey].ToString(), PropertyValueType);
+            }
 
             return valueData;
         }
