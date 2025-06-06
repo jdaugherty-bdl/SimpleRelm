@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Models;
+using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Helpers.Operations;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
@@ -116,6 +117,28 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             return DoDatabaseWork<T>(new RelmContext(EstablishedConnection, SqlTransaction), QueryString, Parameters: Parameters, ThrowException: ThrowException, UseTransaction: UseTransaction);
         }
 
+        internal static T DoDatabaseWork<T>(IRelmQuickContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false)
+        {
+            return DoDatabaseWork<T>(relmContext, QueryString,
+                (cmd) =>
+                {
+                    cmd.Parameters.AddAllParameters(Parameters);
+
+                    var executionWork = cmd.ExecuteNonQuery();
+
+                    if (typeof(T) == typeof(string))
+                        return executionWork.ToString();
+                    else if (typeof(T) == typeof(bool))
+                        return executionWork > 0;
+                    else if (typeof(T) == typeof(int))
+                        return executionWork;
+                    else
+                        return default;
+                },
+                //ThrowException: ThrowException, UseTransaction: UseTransaction || SqlTransaction != null, SqlTransaction: SqlTransaction);
+                ThrowException: ThrowException, UseTransaction: UseTransaction || relmContext.ContextOptions.DatabaseTransaction != null);
+        }
+
         internal static T DoDatabaseWork<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false)
         {
             return DoDatabaseWork<T>(relmContext, QueryString,
@@ -200,6 +223,16 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
         internal static T DoDatabaseWork<T>(IRelmContext relmContext, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
         {
+            return DoDatabaseWork<T>(relmContext.ContextOptions, QueryString, ActionCallback, ThrowException: ThrowException, UseTransaction: UseTransaction || relmContext.ContextOptions.DatabaseTransaction != null);
+        }
+
+        internal static T DoDatabaseWork<T>(IRelmQuickContext relmContext, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
+        {
+            return DoDatabaseWork<T>(relmContext.ContextOptions, QueryString, ActionCallback, ThrowException: ThrowException, UseTransaction: UseTransaction || relmContext.ContextOptions.DatabaseTransaction != null);
+        }
+
+        internal static T DoDatabaseWork<T>(RelmContextOptionsBuilder contextOptions, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
+        {
             var internalOpen = false; // indicates whether the connection was already open or not
             var openedNewTransaction = false; // indicates whether a new transaction was created here or not
             //var currentTransaction = SqlTransaction; // preload current transaction
@@ -211,25 +244,25 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             {
                 // if the connection isn't open, then open it and record that we did that
                 //if (EstablishedConnection.State != ConnectionState.Open)
-                if (relmContext.ContextOptions.DatabaseConnection.State != ConnectionState.Open)
+                if (contextOptions.DatabaseConnection.State != ConnectionState.Open)
                 {
                     //EstablishedConnection.Open();
-                    relmContext.ContextOptions.DatabaseConnection.Open();
+                    contextOptions.DatabaseConnection.Open();
                     internalOpen = true;
                 }
 
                 // if the caller wants to use transactions but they didn't provide one, create a new one
                 //if (UseTransaction && SqlTransaction == null)
-                if (UseTransaction && relmContext.ContextOptions.DatabaseTransaction == null)
+                if (UseTransaction && contextOptions.DatabaseTransaction == null)
                 {
                     //currentTransaction = EstablishedConnection.BeginTransaction();
-                    relmContext.ContextOptions.SetDatabaseTransaction(relmContext.ContextOptions.DatabaseConnection.BeginTransaction());
+                    contextOptions.SetDatabaseTransaction(contextOptions.DatabaseConnection.BeginTransaction());
                     openedNewTransaction = true;
                 }
 
                 // execute the SQL
                 //using (var cmd = new MySqlCommand(QueryString, EstablishedConnection))
-                using (var cmd = new MySqlCommand(QueryString, relmContext.ContextOptions.DatabaseConnection, relmContext.ContextOptions.DatabaseTransaction))
+                using (var cmd = new MySqlCommand(QueryString, contextOptions.DatabaseConnection, contextOptions.DatabaseTransaction))
                 {
                     cmd.CommandTimeout = int.MaxValue;
 
@@ -239,7 +272,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
                     // if we opened the transaction here, just commit it because we're going to be closing it right away
                     if (openedNewTransaction)
                         //currentTransaction?.Commit();
-                        relmContext.ContextOptions.DatabaseTransaction?.Commit();
+                        contextOptions.DatabaseTransaction?.Commit();
 
                     return result;
                 }
@@ -249,7 +282,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
                 // there was an error, roll back the transaction
                 if (UseTransaction)
                     //currentTransaction?.Rollback();
-                    relmContext.ContextOptions.DatabaseTransaction?.Rollback();
+                    contextOptions.DatabaseTransaction?.Rollback();
 
                 // if we want exceptions to be thrown, rethrow the current one, otherwise just record the error
                 if (ThrowException)
@@ -266,7 +299,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
                 // there was an error, roll back the transaction
                 if (UseTransaction)
                     //currentTransaction?.Rollback();
-                    relmContext.ContextOptions.DatabaseTransaction?.Rollback();
+                    contextOptions.DatabaseTransaction?.Rollback();
 
                 // if we want exceptions to be thrown, rethrow the current one, otherwise just record the error
                 if (ThrowException)
@@ -285,8 +318,8 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
                 if (internalOpen && EstablishedConnection.State == ConnectionState.Open)
                     EstablishedConnection.Close();
                 */
-                if (internalOpen && relmContext.ContextOptions.DatabaseConnection.State == ConnectionState.Open)
-                    relmContext.ContextOptions.DatabaseConnection.Close();
+                if (internalOpen && contextOptions.DatabaseConnection.State == ConnectionState.Open)
+                    contextOptions.DatabaseConnection.Close();
             }
         }
     }

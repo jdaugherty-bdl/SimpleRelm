@@ -37,6 +37,13 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
                 .Select(x => (T)CoreUtilities.ConvertScalar<T>(x[0]));
         }
 
+        internal static IEnumerable<T> GetDataList<T>(IRelmQuickContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
+        {
+            return RefinedResultsHelper.GetDataTable(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException)
+                .AsEnumerable()
+                .Select(x => (T)CoreUtilities.ConvertScalar<T>(x[0]));
+        }
+
         internal static T GetDataObject<T>(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
         {
             using (var conn = ConnectionHelper.GetConnectionFromType(ConfigConnectionString, AllowUserVariables))

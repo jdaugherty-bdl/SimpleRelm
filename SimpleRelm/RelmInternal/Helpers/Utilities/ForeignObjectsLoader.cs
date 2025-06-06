@@ -20,9 +20,16 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
     {
         private readonly ICollection<T> _items;
         private readonly IRelmContext _currentContext;
+        private readonly IRelmQuickContext _currentQuickContext;
 
         internal ForeignObjectsLoader()
         {
+        }
+
+        internal ForeignObjectsLoader(ICollection<T> items, IRelmQuickContext relmContext)
+        {
+            _items = items;
+            _currentQuickContext = relmContext;
         }
 
         internal ForeignObjectsLoader(ICollection<T> items, IRelmContext relmContext)
@@ -85,13 +92,28 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
         internal IDictionary GetCollectionItems(LambdaExpression containsLambda, ForeignKeyNavigationOptions navigationOptions)
         {
-            // Instantiate a new DALContext of the same type as CurrentContext so we can load the data we need without modifying anything in our context
-            var dataSetMethod = _currentContext.GetType().GetMethod(nameof(_currentContext.GetDataSetType), new[] { typeof(Type) })
-                ?? throw new InvalidOperationException("Method not found.");
+            object dataSet = null;
+            if (_currentContext == null)
+            {
+                // Instantiate a new DALContext of the same type as CurrentContext so we can load the data we need without modifying anything in our context
+                var dataSetMethod = _currentQuickContext.GetType().GetMethod(nameof(_currentQuickContext.GetDataSetType), new[] { typeof(Type) })
+                    ?? throw new InvalidOperationException("Method not found.");
 
-            // Find the DALDataSet with the same generic type as referenceType and create a new one
-            var dataSet = dataSetMethod.Invoke(_currentContext, new object[] { navigationOptions.ReferenceType }) //as IRelmDataSetBase
-                ?? throw new InvalidOperationException($"No RelmDataSet with generic type [{navigationOptions.ReferenceProperty.Type.Name}] found in context [{_currentContext.GetType().Name}].");
+                // Find the DALDataSet with the same generic type as referenceType and create a new one
+                dataSet = dataSetMethod.Invoke(_currentQuickContext, new object[] { navigationOptions.ReferenceType }); //as IRelmDataSetBase
+            }
+            else
+            {
+                // Instantiate a new DALContext of the same type as CurrentContext so we can load the data we need without modifying anything in our context
+                var dataSetMethod = _currentContext.GetType().GetMethod(nameof(_currentContext.GetDataSetType), new[] { typeof(Type) })
+                    ?? throw new InvalidOperationException("Method not found.");
+
+                // Find the DALDataSet with the same generic type as referenceType and create a new one
+                dataSet = dataSetMethod.Invoke(_currentContext, new object[] { navigationOptions.ReferenceType }); //as IRelmDataSetBase
+            }
+                
+            if (dataSet == null)
+                throw new InvalidOperationException($"No RelmDataSet with generic type [{navigationOptions.ReferenceProperty.Type.Name}] found in context [{_currentContext.GetType().Name}].");
 
             var containsMethod = typeof(List<object>).GetMethod(nameof(List<object>.Contains));
             var whereMethod = dataSet
@@ -151,8 +173,13 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
         {
             if (_items == null)
                 throw new InvalidOperationException("Items collection is null.");
-            if (_currentContext == null)
-                throw new InvalidOperationException("Current context is null.");
+            if (_currentContext == null && _currentQuickContext == null)
+            {
+                if (_currentContext == null)
+                    throw new InvalidOperationException("Current context is null.");
+                else
+                    throw new InvalidOperationException("Current quick context is null.");
+            }
 
             var navigationOptions = member.GetForeignKeyNavigationOptions(_items);
             var containsLambda = BuildLogicExpression(member, navigationOptions);

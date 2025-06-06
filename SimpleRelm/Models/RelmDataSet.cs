@@ -30,15 +30,29 @@ namespace SimpleRelm.Models
         public bool IsReadOnly => _items?.IsReadOnly ?? true;
 
         private readonly IRelmContext _currentContext;
+        private readonly IRelmQuickContext _currentQuickContext;
         private IRelmDataLoader<T> _dataLoader;
         //private Dictionary<string, IRelmFieldLoader<object>> _fieldDataLoaders;
-        private readonly FieldLoaderRegistry _fieldDataLoaders;
+        private FieldLoaderRegistry _fieldDataLoaders;
 
         private ICollection<T> _items;
+
+        public RelmDataSet(IRelmQuickContext currentContext, IRelmDataLoader<T> dataLoader)
+        {
+            _currentQuickContext = currentContext ?? throw new ArgumentNullException(nameof(currentContext));
+
+            SetupDataSet(dataLoader);
+        }
 
         public RelmDataSet(IRelmContext currentContext, IRelmDataLoader<T> dataLoader)
         {
             _currentContext = currentContext ?? throw new ArgumentNullException(nameof(currentContext));
+
+            SetupDataSet(dataLoader);
+        }
+
+        private void SetupDataSet(IRelmDataLoader<T> dataLoader)
+        { 
             _dataLoader = dataLoader ?? throw new ArgumentNullException(nameof(dataLoader));
 
             //_fieldDataLoaders = new Dictionary<string, IRelmFieldLoader<object>>();
@@ -322,10 +336,11 @@ namespace SimpleRelm.Models
         public int Save()
         {
             int rowsUpdated;
-            if (_currentContext.ContextOptions.OptionsBuilderType == Options.RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
-                rowsUpdated = _items.WriteToDatabase(_currentContext.ContextOptions.DatabaseConnection, SqlTransaction: _currentContext.ContextOptions.DatabaseTransaction);
+            var contextOptions = _currentContext?.ContextOptions ?? _currentQuickContext?.ContextOptions;
+            if (contextOptions.OptionsBuilderType == Options.RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
+                rowsUpdated = _items.WriteToDatabase(contextOptions.DatabaseConnection, SqlTransaction: contextOptions.DatabaseTransaction);
             else
-                rowsUpdated = _items.WriteToDatabase(_currentContext.ContextOptions.ConnectionStringType);
+                rowsUpdated = _items.WriteToDatabase(contextOptions.ConnectionStringType);
 
             Modified = false;
 
@@ -374,10 +389,11 @@ namespace SimpleRelm.Models
             // If persisting is necessary, write to database
             if (Persist)
             {
-                if (_currentContext.ContextOptions.OptionsBuilderType == Options.RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
-                    return _items.WriteToDatabase(_currentContext.ContextOptions.DatabaseConnection, SqlTransaction: _currentContext.ContextOptions.DatabaseTransaction);
+                var contextOptions = _currentContext?.ContextOptions ?? _currentQuickContext?.ContextOptions;
+                if (contextOptions.OptionsBuilderType == Options.RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)
+                    return _items.WriteToDatabase(contextOptions.DatabaseConnection, SqlTransaction: contextOptions.DatabaseTransaction);
                 else
-                    return item.WriteToDatabase(_currentContext.ContextOptions.ConnectionStringType);
+                    return item.WriteToDatabase(contextOptions.ConnectionStringType);
             }
             else
                 Modified = true;
