@@ -43,9 +43,11 @@ namespace SimpleRelm.Models
         }
 
         private void InitialSetup()
-        { 
+        {
             if (_contextOptionsBuilder == null)
+            {
                 _columnRegistry = new DatabaseColumnRegistry<T>();
+            }
             else
             {
                 if (_contextOptionsBuilder.OptionsBuilderType == RelmContextOptionsBuilder.OptionsBuilderTypes.OpenConnection)

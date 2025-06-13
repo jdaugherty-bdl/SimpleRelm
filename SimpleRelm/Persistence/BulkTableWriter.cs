@@ -40,6 +40,7 @@ namespace SimpleRelm.Persistence
         private IEnumerable<T> SourceData;
         private MySqlTransaction SqlTransaction;
         private IRelmContext ExistingContext;
+        private IRelmQuickContext ExistingQuickContext;
 
         // local objects
         private readonly MySqlConnection ExistingConnection;
@@ -65,6 +66,16 @@ namespace SimpleRelm.Persistence
         {
             this.ExistingConnection = ExistingConnection;
             this.ExistingContext = new RelmContext(ExistingConnection, SqlTransaction);
+            this.ExistingQuickContext = new RelmQuickContext(ExistingConnection, SqlTransaction);
+
+            CommonSetup(InsertQuery, UseTransaction, ThrowException, SqlTransaction, false, AllowAutoIncrementColumns, AllowPrimaryKeyColumns, AllowUniqueColumns);
+        }
+
+        internal BulkTableWriter(IRelmQuickContext relmContext, string InsertQuery = null, bool ThrowException = true, bool UseTransaction = false, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        {
+            this.ExistingConnection = relmContext.ContextOptions.DatabaseConnection;
+            this.SqlTransaction = relmContext.ContextOptions.DatabaseTransaction;
+            this.ExistingQuickContext = relmContext;
 
             CommonSetup(InsertQuery, UseTransaction, ThrowException, SqlTransaction, false, AllowAutoIncrementColumns, AllowPrimaryKeyColumns, AllowUniqueColumns);
         }
@@ -132,7 +143,9 @@ namespace SimpleRelm.Persistence
             {
                 CreateOutputDataTable(DataTableFunction, i);
 
-                if (ExistingContext != null)
+                if (ExistingQuickContext != null)
+                    recordsInserted += DatabaseWorkHelper.DoDatabaseWork<int>(ExistingQuickContext, InsertQuery, CommonDatabaseWork, UseTransaction: WriteWithTransaction, ThrowException: ShouldThrowException);
+                else if (ExistingContext != null)
                     recordsInserted += DatabaseWorkHelper.DoDatabaseWork<int>(ExistingContext, InsertQuery, CommonDatabaseWork, UseTransaction: WriteWithTransaction, ThrowException: ShouldThrowException);
                 else if (ExistingConnection != null)
                     recordsInserted += DatabaseWorkHelper.DoDatabaseWork<int>(ExistingConnection, InsertQuery, CommonDatabaseWork, UseTransaction: WriteWithTransaction, ThrowException: ShouldThrowException, SqlTransaction: SqlTransaction);
@@ -184,7 +197,9 @@ namespace SimpleRelm.Persistence
 
                 // pull the table details from the database
                 List<DALTableRowDescriptor> currentTableDetails = null;
-                if (ExistingContext != null)
+                if (ExistingQuickContext != null)
+                    currentTableDetails = RelmHelper.GetDataObjects<DALTableRowDescriptor>(ExistingQuickContext, $"DESCRIBE {(string.IsNullOrWhiteSpace(DatabaseName) ? string.Empty : $"{DatabaseName}.")}{TableName}").ToList();
+                else if (ExistingContext != null)
                     currentTableDetails = RelmHelper.GetDataObjects<DALTableRowDescriptor>(ExistingContext, $"DESCRIBE {(string.IsNullOrWhiteSpace(DatabaseName) ? string.Empty : $"{DatabaseName}.")}{TableName}").ToList();
                 else if (ExistingConnection != null)
                     currentTableDetails = RelmHelper.GetDataObjects<DALTableRowDescriptor>(ExistingConnection, $"DESCRIBE {(string.IsNullOrWhiteSpace(DatabaseName) ? string.Empty : $"{DatabaseName}.")}{TableName}").ToList();

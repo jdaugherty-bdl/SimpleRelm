@@ -218,6 +218,11 @@ namespace SimpleRelm.Models
             return DataOutputOperations.BulkTableWrite(relmContext, this, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
         }
 
+        public int WriteToDatabase(IRelmQuickContext relmContext, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        {
+            return DataOutputOperations.BulkTableWrite(relmContext, this, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+        }
+
         public int WriteToDatabase(RelmContextOptionsBuilder relmContextOptions, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
         {
             return DataOutputOperations.BulkTableWrite(new RelmContext(relmContextOptions), this, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);

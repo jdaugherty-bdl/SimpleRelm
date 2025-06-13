@@ -26,6 +26,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         internal static IRelmResolver_MySQL GetResolverInstance()
         {
             // try to get the resolver the standard way
+            /*
             var entryAssembly = AppDomain
                 .CurrentDomain
                 .GetAssemblies()
@@ -38,8 +39,48 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                             .GetInterfaces()
                             .Any(a => a == typeof(IRelmResolver_MySQL)))))
                 .FirstOrDefault();
+            Console.WriteLine($"entryAssembly = {string.Join(",", AppDomain.CurrentDomain.GetAssemblies().Where(x => !string.IsNullOrWhiteSpace(x.EntryPoint?.Name)).Select(x => x?.FullName))}");
+            */
+            Type entryAssembly = null;
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            foreach (var assembly in assemblies)
+            {
+                if (assembly.IsDynamic)
+                    continue;
+                
+                if (string.IsNullOrWhiteSpace(assembly.EntryPoint?.Name))
+                    continue;
+
+                var modules = assembly.GetModules();
+                foreach (var module in modules) 
+                {
+                    var types = module.GetTypes();
+                    foreach (var type in types)
+                    {
+                        var interfaces = type.GetInterfaces();
+                        foreach (var resolverInterface in interfaces)
+                        {
+                            if (resolverInterface == typeof(IRelmResolver_MySQL))
+                            {
+                                entryAssembly = type;
+                                break;
+                            }
+                        }
+
+                        if (entryAssembly != null)
+                            break;
+                    }
+
+                    if (entryAssembly != null)
+                        break;
+                }
+
+                if (entryAssembly != null)
+                    break;
+            }
 
             // if the standard way didn't work, do a little detective work (may not work 100% of the time)
+            /*
             var clientDalResolverType =
                 entryAssembly
                 ??
@@ -62,6 +103,64 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                             ??
                             false)))
                 .FirstOrDefault();
+            Console.WriteLine($"clientDalResolverType");
+            */
+            var clientDalResolverType = entryAssembly;
+            foreach (var assembly in assemblies)
+            {
+                var customAttributes = assembly.GetCustomAttributes(true);
+                var hasAttributes = customAttributes.Any(y => y is AssemblyCompanyAttribute attribute
+                        && (attribute.Company.StartsWith("BV", StringComparison.InvariantCultureIgnoreCase)
+                            || attribute.Company.StartsWith("Bureau Veritas", StringComparison.InvariantCultureIgnoreCase)
+                            || attribute.Company.StartsWith("Bureau-Veritas", StringComparison.InvariantCultureIgnoreCase)));
+
+                if (!hasAttributes)
+                    continue;
+
+                var modules = assembly.GetModules();
+                foreach (var module in modules) 
+                {
+                    try
+                    {
+                        var types = module.GetTypes();
+                        foreach (var type in types)
+                        {
+                            var interfaces = type.GetInterfaces();
+                            foreach (var resolverInterface in interfaces)
+                            {
+                                if (resolverInterface == typeof(IRelmResolver_MySQL))
+                                {
+                                    clientDalResolverType = type;
+                                    break;
+                                }
+                            }
+                        
+                            if (clientDalResolverType != null)
+                                break;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error getting types from module: {ex.Message}\n{ex.StackTrace}");
+                        
+                        if (ex is ReflectionTypeLoadException)
+                        {
+                            var typeLoadException = ex as ReflectionTypeLoadException;
+                            var loaderExceptions = typeLoadException.LoaderExceptions;
+                            foreach (var loaderException in loaderExceptions)
+                                Console.WriteLine($"Loader exception: {loaderException.Message}\n{loaderException.StackTrace}");
+                        }
+
+                        throw ex;
+                    }
+                    
+                    if (clientDalResolverType != null)
+                        break;
+                }
+
+                if (clientDalResolverType != null)
+                    break;
+            }
 
             // if a resolver is found use that, otherwise use the simple default resolver
             if (clientDalResolverType != null)

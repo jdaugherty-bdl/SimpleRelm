@@ -7,6 +7,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SimpleRelm.Options
@@ -278,7 +279,10 @@ namespace SimpleRelm.Options
             {
                 SetNamedConnection(connectionOptions["name"]);
 
-                SetDatabaseConnectionString(RelmHelper.GetConnectionBuilderFromName(connectionOptions["name"]).ConnectionString);
+                var connectionBuilder = RelmHelper.GetConnectionBuilderFromName(connectionOptions["name"]);
+                var connectionString = connectionBuilder?.ConnectionString;
+
+                SetDatabaseConnectionString(connectionString);
             }
             else
             {

@@ -6,6 +6,7 @@ using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -71,14 +72,19 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             }
         }
 
-        internal static IEnumerable<T> GetDataObjects<T>(IRelmContext CurrentContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
-        {
-            return GetDataObjects<T>(CurrentContext.ContextOptions.DatabaseConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: CurrentContext.ContextOptions.DatabaseTransaction);
-        }
-
         internal static IEnumerable<T> GetDataObjects<T>(MySqlConnection ExistingConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null) where T : IRelmModel
         {
             return GetDataObjects<T>(RefinedResultsHelper.GetDataTable(ExistingConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: SqlTransaction));
+        }
+
+        internal static IEnumerable<T> GetDataObjects<T>(IRelmQuickContext CurrentContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
+        {
+            return GetDataObjects<T>(RefinedResultsHelper.GetDataTable(CurrentContext, QueryString, Parameters: Parameters, ThrowException: ThrowException));
+        }
+
+        internal static IEnumerable<T> GetDataObjects<T>(IRelmContext CurrentContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
+        {
+            return GetDataObjects<T>(RefinedResultsHelper.GetDataTable(CurrentContext, QueryString, Parameters: Parameters, ThrowException: ThrowException));
         }
 
         internal static IEnumerable<T> GetDataObjects<T>(DataTable existingData) where T : IRelmModel

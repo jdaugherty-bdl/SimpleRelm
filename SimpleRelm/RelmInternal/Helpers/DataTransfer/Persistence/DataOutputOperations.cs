@@ -36,6 +36,11 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence
             return GetBulkTableWriter<T>(new RelmContext(ExistingConnection, SqlTransaction), InsertQuery: InsertQuery, UseTransaction: UseTransaction, ThrowException: ThrowException, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
         }
 
+        internal static BulkTableWriter<T> GetBulkTableWriter<T>(IRelmQuickContext relmContext, string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        {
+            return new BulkTableWriter<T>(relmContext, InsertQuery: InsertQuery, ThrowException: ThrowException, UseTransaction: UseTransaction || relmContext.ContextOptions.DatabaseTransaction != null, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+        }
+
         internal static BulkTableWriter<T> GetBulkTableWriter<T>(IRelmContext relmContext, string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
         {
             return new BulkTableWriter<T>(relmContext, InsertQuery: InsertQuery, ThrowException: ThrowException, UseTransaction: UseTransaction || relmContext.ContextOptions.DatabaseTransaction != null, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
@@ -63,9 +68,19 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence
             return BulkTableWrite<T>(new RelmContext(ExistingConnection, SqlTransaction), SourceData, TableName: TableName, ForceType: ForceType, BatchSize: BatchSize, DatabaseName: DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
         }
 
+        internal static int BulkTableWrite<T>(IRelmQuickContext relmContext, T SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        {
+            return BulkTableWriteStatic<T>(GetBulkTableWriter<T>(relmContext), SourceData, TableName: TableName, ForceType: ForceType, BatchSize: BatchSize, DatabaseName: DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+        }
+
         internal static int BulkTableWrite<T>(IRelmContext relmContext, T SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
         {
-            var rowsUpdated = GetBulkTableWriter<T>(relmContext)
+            return BulkTableWriteStatic<T>(GetBulkTableWriter<T>(relmContext), SourceData, TableName: TableName, ForceType: ForceType, BatchSize: BatchSize, DatabaseName: DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+        }
+
+        private static int BulkTableWriteStatic<T>(BulkTableWriter<T> tableWriter, T SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        {
+            var rowsUpdated = tableWriter
                 .SetTableName(TableName ?? (ForceType ?? typeof(T)).GetCustomAttribute<RelmTable>()?.TableName ?? throw new CustomAttributeFormatException(CoreUtilities.NoDalTableAttributeError))
                 .SetDatabaseName(DatabaseName ?? (ForceType ?? typeof(T)).GetCustomAttribute<RelmDatabase>()?.DatabaseName)
                 .SetSourceData(SourceData)
@@ -85,9 +100,19 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence
             return BulkTableWrite<T>(new RelmContext(ExistingConnection, SqlTransaction), SourceData, TableName: TableName, ForceType: ForceType, BatchSize: BatchSize, DatabaseName: DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
         }
 
+        internal static int BulkTableWrite<T>(IRelmQuickContext relmContext, IEnumerable<T> SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        {
+            return BulkTableWriteStatic<T>(GetBulkTableWriter<T>(relmContext), SourceData, TableName: TableName, ForceType: ForceType, BatchSize: BatchSize, DatabaseName: DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+        }
+
         internal static int BulkTableWrite<T>(IRelmContext relmContext, IEnumerable<T> SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
         {
-            var rowsUpdated = GetBulkTableWriter<T>(relmContext)
+            return BulkTableWriteStatic(GetBulkTableWriter<T>(relmContext), SourceData, TableName: TableName, ForceType: ForceType, BatchSize: BatchSize, DatabaseName: DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+        }
+
+        internal static int BulkTableWriteStatic<T>(BulkTableWriter<T> tableWriter, IEnumerable<T> SourceData, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        {
+            var rowsUpdated = tableWriter
                 .SetTableName(TableName ?? (ForceType ?? typeof(T)).GetCustomAttribute<RelmTable>()?.TableName ?? throw new CustomAttributeFormatException(CoreUtilities.NoDalTableAttributeError))
                 .SetDatabaseName(DatabaseName ?? (ForceType ?? typeof(T)).GetCustomAttribute<RelmDatabase>()?.DatabaseName)
                 .SetSourceData(SourceData)

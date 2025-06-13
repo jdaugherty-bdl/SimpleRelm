@@ -29,16 +29,43 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
         public static List<KeyValuePair<string, Tuple<string, PropertyInfo>>> GetUnderscoreProperties<T>(bool GetOnlyDbResolvables = true, bool GetOnlyNonVirtualColumns = true)
         {
-            return GetUnderscoreProperties(typeof(T), GetOnlyDbResolvables, GetOnlyNonVirtualColumns: GetOnlyNonVirtualColumns);
+            return GetUnderscoreProperties(typeof(T), GetOnlyDbResolvables: GetOnlyDbResolvables, GetOnlyNonVirtualColumns: GetOnlyNonVirtualColumns);
         }
 
         public static List<KeyValuePair<string, Tuple<string, PropertyInfo>>> GetUnderscoreProperties(Type TargetType, bool GetOnlyDbResolvables = true, bool GetOnlyNonVirtualColumns = true)
         {
             // get all properties marked with the DALResolvable attribute
+            /*
             var convertableProperties = TargetType
                 .GetProperties()
                 .Where(x => !GetOnlyDbResolvables || x.GetCustomAttributes(true).Any(y => y.GetType() == typeof(RelmColumn) && (!GetOnlyNonVirtualColumns || (GetOnlyNonVirtualColumns && !((RelmColumn)y).Virtual))))
                 .ToList();
+            */
+            var convertableProperties = new List<PropertyInfo>();
+            foreach (var x in TargetType.GetProperties())
+            {
+                var customAttributes = x.GetCustomAttributes(true);
+                var addItem = !GetOnlyDbResolvables;
+                if (!addItem)
+                {
+                    foreach (var customAttribute in customAttributes)
+                    {
+                        var attributeType = customAttribute.GetType();
+                        if (attributeType == typeof(RelmColumn))
+                        {
+                            var relmColumn = (RelmColumn)customAttribute;
+                            if (!GetOnlyNonVirtualColumns || (GetOnlyNonVirtualColumns && !relmColumn.Virtual))
+                            {
+                                addItem = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (addItem)
+                    convertableProperties.Add(x);
+            }
 
             // get the underscore names of all properties, add "_#" to the end of duplicate property names
             var underscoreNames = convertableProperties

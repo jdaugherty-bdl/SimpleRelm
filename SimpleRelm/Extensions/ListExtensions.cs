@@ -26,6 +26,11 @@ namespace SimpleRelm.Extensions
             return DataOutputOperations.BulkTableWrite<T>(ExistingConnection, DbModelData, TableName, SqlTransaction: SqlTransaction, ForceType, BatchSize, DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
         }
 
+        public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, IRelmQuickContext relmContext, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        {
+            return DataOutputOperations.BulkTableWrite<T>(relmContext, DbModelData, TableName, ForceType, BatchSize, DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+        }
+
         public static int WriteToDatabase<T>(this IEnumerable<T> DbModelData, IRelmContext relmContext, string TableName = null, Type ForceType = null, int BatchSize = 100, string DatabaseName = null, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
         {
             return DataOutputOperations.BulkTableWrite<T>(relmContext, DbModelData, TableName, ForceType, BatchSize, DatabaseName, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);

@@ -112,10 +112,17 @@ namespace SimpleRelm.Models
                 object dalDataLoader = null;
                 var classDataLoader = dalDataSetType.GetCustomAttribute<RelmDataLoader>(true);
 
-                if (classDataLoader == null)
-                    dalDataLoader = Activator.CreateInstance(typeof(RelmDefaultDataLoader<>).MakeGenericType(dalDataSetType), new object[] { ContextOptions });
-                else
-                    dalDataLoader = Activator.CreateInstance(classDataLoader.LoaderType, new object[] { ContextOptions });
+                try
+                {
+                    if (classDataLoader?.LoaderType == null)
+                        dalDataLoader = Activator.CreateInstance(typeof(RelmDefaultDataLoader<>).MakeGenericType(dalDataSetType), new object[] { ContextOptions });
+                    else
+                        dalDataLoader = Activator.CreateInstance(classDataLoader.LoaderType, new object[] { ContextOptions });
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidOperationException($"Error creating data loader of type [{classDataLoader?.LoaderType?.FullName}] for dataset [{dalDataSetType.Name}]", ex);
+                }
 
                 // create a new instance of the DALDataSet<T> and pass the data loader
                 var dalDataSet = Activator.CreateInstance(typeof(RelmDataSet<>).MakeGenericType(dalDataSetType), new object[] { this, dalDataLoader });
