@@ -204,7 +204,7 @@ namespace SimpleRelm.Models
                         if (_fieldDataLoaders.HasFieldLoader(field.Name))
                             continue;
 
-                        _fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(field.GetCustomAttribute<RelmDataLoader>().LoaderType, new object[] { field.Name, field.GetCustomAttribute<RelmDataLoader>().KeyFields }));
+                        _fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(field.GetCustomAttribute<RelmDataLoader>().LoaderType, new object[] { _currentContext, field.Name, field.GetCustomAttribute<RelmDataLoader>().KeyFields }));
                     }
 
                     // execute all field loaders

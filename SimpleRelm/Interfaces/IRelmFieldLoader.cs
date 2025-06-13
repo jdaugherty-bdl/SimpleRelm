@@ -10,6 +10,7 @@ namespace SimpleRelm.Interfaces
     {
         string FieldName { get; }
         string[] KeyFields { get; }
+        IRelmContext RelmContext { get; }
         Dictionary<S[], object> GetFieldData<S>(ICollection<S[]> keyData);
     }
 }

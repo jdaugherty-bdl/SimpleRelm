@@ -56,9 +56,9 @@ namespace SimpleRelm.Extensions
             return new ForeignKeyLoader<T>(DbModelData, relmContextOptionsBuilder).LoadForeignKey(predicate);
         }
 
-        public static ICollection<T> LoadDataLoaderField<T, R>(this ICollection<T> DbModelData, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
+        public static ICollection<T> LoadDataLoaderField<T, R>(this ICollection<T> DbModelData, IRelmContext relmContext, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
         {
-            return new DataLoaderHelper<T>(DbModelData).LoadField(predicate);
+            return new DataLoaderHelper<T>(relmContext, DbModelData).LoadField(predicate);
         }
 
         public static ICollection<T> FlattenTreeObject<T>(this IEnumerable<T> EnumerableList, Func<T, ICollection<T>> GetChildrenFunction)

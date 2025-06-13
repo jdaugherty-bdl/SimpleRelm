@@ -17,15 +17,18 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
     internal class DataLoaderHelper<T> where T : IRelmModel, new()
     {
         private readonly ICollection<T> targetObjects;
+        private readonly IRelmContext relmContext;
 
-        public DataLoaderHelper(T targetObject)
+        public DataLoaderHelper(IRelmContext relmContext, T targetObject)
         {
             this.targetObjects = new[] { targetObject };
+            this.relmContext = relmContext;
         }
 
-        public DataLoaderHelper(ICollection<T> targetObjects)
+        public DataLoaderHelper(IRelmContext relmContext, ICollection<T> targetObjects)
         {
             this.targetObjects = targetObjects;
+            this.relmContext = relmContext;
         }
 
         internal ICollection<T> LoadField<R>(Expression<Func<T, R>> predicate)
@@ -36,7 +39,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             var dataLoaderAttribute = referenceProperty.Member.GetCustomAttribute<RelmDataLoader>()
                 ?? throw new MemberAccessException($"The property or collection [{referenceProperty.Member.Name}] on type [{referenceProperty.Expression.Type.Name}] does not have a RelmDataLoader attribute.");
 
-            var fieldLoader = (IRelmFieldLoader)Activator.CreateInstance(dataLoaderAttribute.LoaderType, new object[] { referenceProperty.Member.Name, dataLoaderAttribute.KeyFields });
+            var fieldLoader = (IRelmFieldLoader)Activator.CreateInstance(dataLoaderAttribute.LoaderType, new object[] { relmContext, referenceProperty.Member.Name, dataLoaderAttribute.KeyFields });
 
             new FieldLoaderHelper<T>(targetObjects).LoadData(fieldLoader);
 

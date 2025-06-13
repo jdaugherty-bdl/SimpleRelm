@@ -718,10 +718,10 @@ namespace SimpleRelm
         /// <param name="target"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static T LoadDataLoaderField<T, R>(T target, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
-            => new DataLoaderHelper<T>(target).LoadField(predicate).FirstOrDefault();
+        public static T LoadDataLoaderField<T, R>(IRelmContext relmContext, T target, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
+            => new DataLoaderHelper<T>(relmContext, target).LoadField(predicate).FirstOrDefault();
 
-        public static ICollection<T> LoadDataLoaderField<T, R>(ICollection<T> target, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
-            => new DataLoaderHelper<T>(target).LoadField(predicate);
+        public static ICollection<T> LoadDataLoaderField<T, R>(IRelmContext relmContext, ICollection<T> target, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
+            => new DataLoaderHelper<T>(relmContext, target).LoadField(predicate);
     }
 }
