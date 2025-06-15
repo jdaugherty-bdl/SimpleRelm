@@ -71,7 +71,7 @@
     <Compile Include="Interfaces\IRelmMember.cs" />
     <Compile Include="Interfaces\IRelmModel.cs" />
     <Compile Include="Interfaces\IRelmModelApartment.cs" />
-    <Compile Include="Interfaces\IRelmQuickContext.cs" />
+    <Compile Include="Interfaces\QuickContext\IRelmQuickContext.cs" />
     <Compile Include="Interfaces\Resolvers\IRelmResolverBase.cs" />
     <Compile Include="Interfaces\Resolvers\IRelmResolver_MySQL.cs" />
     <Compile Include="Interfaces\IRelmDataSet.cs" />
