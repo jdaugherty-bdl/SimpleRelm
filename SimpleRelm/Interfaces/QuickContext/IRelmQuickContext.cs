@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleRelm.Interfaces.QuickContext
+namespace SimpleRelm.Interfaces.RelmQuick
 {
     public interface IRelmQuickContext
     {
