@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using SimpleRelm.Attributes;
 using SimpleRelm.Extensions;
 using SimpleRelm.Interfaces;
+using SimpleRelm.Interfaces.RelmQuick;
 using SimpleRelm.Models.EventArguments;
 using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Extensions;

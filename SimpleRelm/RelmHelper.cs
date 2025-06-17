@@ -20,6 +20,7 @@ using SimpleRelm.Models;
 using System.Linq.Expressions;
 using SimpleRelm.Options;
 using SimpleRelm.Attributes;
+using SimpleRelm.Interfaces.RelmQuick;
 
 namespace SimpleRelm
 {

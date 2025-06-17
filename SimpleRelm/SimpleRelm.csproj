@@ -68,10 +68,12 @@
     <Compile Include="Interfaces\IRelmContext.cs" />
     <Compile Include="Interfaces\IRelmExecutionCommand.cs" />
     <Compile Include="Interfaces\IRelmFieldLoader.cs" />
+    <Compile Include="Interfaces\IRelmFieldLoaderBase.cs" />
     <Compile Include="Interfaces\IRelmMember.cs" />
     <Compile Include="Interfaces\IRelmModel.cs" />
     <Compile Include="Interfaces\IRelmModelApartment.cs" />
     <Compile Include="Interfaces\RelmQuick\IRelmQuickContext.cs" />
+    <Compile Include="Interfaces\RelmQuick\IRelmQuickFieldLoader.cs" />
     <Compile Include="Interfaces\Resolvers\IRelmResolverBase.cs" />
     <Compile Include="Interfaces\Resolvers\IRelmResolver_MySQL.cs" />
     <Compile Include="Interfaces\IRelmDataSet.cs" />

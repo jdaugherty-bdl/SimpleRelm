@@ -2,6 +2,7 @@
 using SimpleRelm.Attributes;
 using SimpleRelm.Extensions;
 using SimpleRelm.Interfaces;
+using SimpleRelm.Interfaces.RelmQuick;
 using SimpleRelm.RelmInternal.Extensions;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.RelmInternal.Helpers.Operations;
@@ -32,8 +33,8 @@ namespace SimpleRelm.Models
         private readonly IRelmContext _currentContext;
         private readonly IRelmQuickContext _currentQuickContext;
         private IRelmDataLoader<T> _dataLoader;
-        //private Dictionary<string, IRelmFieldLoader<object>> _fieldDataLoaders;
-        private FieldLoaderRegistry _fieldDataLoaders;
+        private FieldLoaderRegistry<IRelmFieldLoader> _fieldDataLoaders;
+        private FieldLoaderRegistry<IRelmQuickFieldLoader> _fieldDataLoadersQuick;
 
         private ICollection<T> _items;
 
@@ -55,8 +56,8 @@ namespace SimpleRelm.Models
         { 
             _dataLoader = dataLoader ?? throw new ArgumentNullException(nameof(dataLoader));
 
-            //_fieldDataLoaders = new Dictionary<string, IRelmFieldLoader<object>>();
-            _fieldDataLoaders = new FieldLoaderRegistry();
+            _fieldDataLoaders = new FieldLoaderRegistry<IRelmFieldLoader>();
+            _fieldDataLoadersQuick = new FieldLoaderRegistry<IRelmQuickFieldLoader>();
 
             Modified = false;
         }
@@ -78,6 +79,14 @@ namespace SimpleRelm.Models
                 throw new ArgumentException($"The field {fieldName} does not exist on the model {typeof(T).Name}");
 
             return _fieldDataLoaders.RegisterFieldLoader(fieldName, dataLoader);
+        }
+
+        public IRelmQuickFieldLoader SetFieldLoader(string fieldName, IRelmQuickFieldLoader dataLoader)
+        {
+            if (!typeof(T).GetProperties().Any(x => x.Name == fieldName))
+                throw new ArgumentException($"The field {fieldName} does not exist on the model {typeof(T).Name}");
+
+            return _fieldDataLoadersQuick.RegisterFieldLoader(fieldName, dataLoader);
         }
 
         public IRelmDataLoader<T> SetDataLoader(IRelmDataLoader<T> dataLoader)
@@ -199,17 +208,56 @@ namespace SimpleRelm.Models
                 if (loadDataLoaders)
                 {
                     // find all fields marked with a RelmFieldLoader attribute that have a type derived from IRelmFieldLoader<> and add them to the list of field loaders as long as they are not already there
-                    foreach (var field in typeof(T).GetProperties().Where(x => x.GetCustomAttribute<RelmDataLoader>()?.LoaderType?.GetInterfaces()?.Any(y => y == typeof(IRelmFieldLoader)) ?? false))
+                    /*
+                    var fieldLoaders = typeof(T)
+                        .GetProperties()
+                        .Where(x => x.GetCustomAttribute<RelmDataLoader>()?.LoaderType?.GetInterfaces()?.Any(y => y == (_currentContext == null ? typeof(IRelmQuickFieldLoader) : typeof(IRelmFieldLoader))) ?? false)
+                        .ToList();
+                    */
+                    /*
+                    var fieldLoaders = typeof(T)
+                        .GetProperties()
+                        .Where(x => x.GetCustomAttributes<RelmDataLoader>()?.Any(y => y.LoaderType?.GetInterface(_currentContext == null ? nameof(IRelmQuickFieldLoader) : nameof(IRelmFieldLoader)) != null) ?? false)
+                        .ToList();
+                    */
+                    var relevantContextName = _currentContext == null ? nameof(IRelmQuickFieldLoader) : nameof(IRelmFieldLoader);
+                    var fieldLoaders = new List<PropertyInfo>();
+                    var loaderProperties = typeof(T).GetProperties();
+                    foreach (var property in loaderProperties)
                     {
-                        if (_fieldDataLoaders.HasFieldLoader(field.Name))
+                        var dataLoaderAttributes = property.GetCustomAttributes<RelmDataLoader>();
+                        if (dataLoaderAttributes?.Any() ?? false)
+                        {
+                            foreach (var dataLoaderAttribute in dataLoaderAttributes)
+                            {
+                                if (dataLoaderAttribute.LoaderType.GetInterface(relevantContextName) != null)
+                                {
+                                    fieldLoaders.Add(property);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    foreach (var field in fieldLoaders)
+                    {
+                        if (_fieldDataLoaders.HasFieldLoader(field.Name) || _fieldDataLoadersQuick.HasFieldLoader(field.Name))
                             continue;
 
-                        _fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(field.GetCustomAttribute<RelmDataLoader>().LoaderType, new object[] { _currentContext, field.Name, field.GetCustomAttribute<RelmDataLoader>().KeyFields }));
+                        var dataLoaderAttribute = field.GetCustomAttributes<RelmDataLoader>().FirstOrDefault(x => x.LoaderType.GetInterfaces().FirstOrDefault(y => y.Name == relevantContextName) != null);
+                        if (_currentQuickContext != null)
+                            _fieldDataLoadersQuick.RegisterFieldLoader(field.Name, (IRelmQuickFieldLoader)Activator.CreateInstance(dataLoaderAttribute.LoaderType, new object[] { _currentQuickContext, field.Name, dataLoaderAttribute.KeyFields }));
+                        if (_currentContext != null)
+                            _fieldDataLoaders.RegisterFieldLoader(field.Name, (IRelmFieldLoader)Activator.CreateInstance(dataLoaderAttribute.LoaderType, new object[] { _currentContext, field.Name, dataLoaderAttribute.KeyFields }));
                     }
 
                     // execute all field loaders
                     var fieldHelper = new FieldLoaderHelper<T>(_items);
                     foreach (var fieldLoader in _fieldDataLoaders)
+                    {
+                        fieldHelper.LoadData(fieldLoader);
+                    }
+                    foreach (var fieldLoader in _fieldDataLoadersQuick)
                     {
                         fieldHelper.LoadData(fieldLoader);
                     }
@@ -245,7 +293,9 @@ namespace SimpleRelm.Models
         /// <exception cref="Exception">General exception for unexpected issues, such as a failure to find attributes or properties.</exception>
         private void LoadReference()
         {
-            var objectsLoader = new ForeignObjectsLoader<T>(_items, _currentContext);
+            var objectsLoader = _currentContext == null
+                ? new ForeignObjectsLoader<T>(_items, _currentQuickContext)
+                : new ForeignObjectsLoader<T>(_items, _currentContext);
 
             foreach (var reference in _dataLoader.LastCommandsExecuted[Command.Reference])
             {

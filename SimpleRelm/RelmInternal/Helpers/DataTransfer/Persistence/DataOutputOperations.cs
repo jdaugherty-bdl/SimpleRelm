@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
+using SimpleRelm.Interfaces.RelmQuick;
 using SimpleRelm.Models;
 using SimpleRelm.Persistence;
 using SimpleRelm.RelmInternal.Helpers.Operations;

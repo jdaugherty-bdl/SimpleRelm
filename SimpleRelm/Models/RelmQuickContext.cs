@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
+using SimpleRelm.Interfaces.RelmQuick;
 using SimpleRelm.Options;
 using System;
 using System.Collections.Generic;
@@ -138,12 +139,22 @@ namespace SimpleRelm.Models
             }
         }
 
-        public IRelmDataSet<T> GetDataSet<T>() where T : RelmModel, new()
+        public IRelmDataSet<T> GetDataSet<T>() where T : IRelmModel, new()
         {
             return GetDataSet<T>(false); // auto-initialize
         }
 
-        public IRelmDataSet<T> GetDataSet<T>(bool throwException) where T : RelmModel, new()
+        public IRelmDataSet<T> GetDataSet<T>(bool throwException) where T : IRelmModel, new()
+        {
+            return GetDataSet(typeof(T), throwException) as IRelmDataSet<T>;
+        }
+
+        public IRelmDataSetBase GetDataSet(Type dataSetType)
+        {
+            return GetDataSet(dataSetType, false); // auto-initialize
+        }
+
+        public IRelmDataSetBase GetDataSet(Type dataSetType, bool throwException)
         {
             if ((_attachedProperties?.Count() ?? 0) == 0)
             {
@@ -167,6 +178,7 @@ namespace SimpleRelm.Models
                     .ToList();
             }
 
+            /*
             if (!_currentDatabaseTables.Contains(RelmHelper.GetDalTable<T>()))
                 throw new InvalidOperationException($"Table for type {typeof(T).Name} [{RelmHelper.GetDalTable<T>()}] does not exist in the current database.");
 
@@ -192,6 +204,36 @@ namespace SimpleRelm.Models
                 dataSet = Activator.CreateInstance(typeof(RelmDataSet<>).MakeGenericType(typeof(T)), new object[] { this, dalDataLoader }) as IRelmDataSet<T>;
                 if (dataSet == null)
                     throw new InvalidOperationException($"Failed to create DataSet for type {typeof(T).Name}.");
+
+                attachedProperty.SetValue(this, dataSet);
+            }
+            */
+            if (!_currentDatabaseTables.Contains(RelmHelper.GetDalTable(dataSetType)))
+                throw new InvalidOperationException($"Table for type {dataSetType.Name} [{RelmHelper.GetDalTable(dataSetType)}] does not exist in the current database.");
+
+            var attachedProperty = _attachedProperties.FirstOrDefault(x => x.PropertyType.GetGenericArguments().Any(y => y == dataSetType))
+                ?? _attachedProperties.FirstOrDefault(x => x.PropertyType.GetGenericArguments().Any(y => y.IsAssignableFrom(dataSetType)))
+                ?? throw new InvalidOperationException($"No attached property found for type {dataSetType.Name}.");
+
+            //var dataSet = Convert.ChangeType(attachedProperty.GetValue(this), typeof(IRelmDataSet<>).MakeGenericType(dataSetType)) as IRelmDataSetBase;
+            var dataSet = attachedProperty.GetValue(this) as IRelmDataSetBase;
+            if (dataSet == null)
+            {
+                if (throwException)
+                    throw new InvalidOperationException($"DataSet for type {dataSetType.Name} is not initialized.");
+
+                // create a default data loader for the generic type argument then create a dataset and pass the data loader
+                object dalDataLoader = null;
+                var classDataLoader = dataSetType.GetCustomAttribute<RelmDataLoader>(true);
+                if (classDataLoader == null)
+                    dalDataLoader = Activator.CreateInstance(typeof(RelmDefaultDataLoader<>).MakeGenericType(dataSetType), new object[] { ContextOptions });
+                else
+                    dalDataLoader = Activator.CreateInstance(classDataLoader.LoaderType, new object[] { ContextOptions });
+
+                // create a new instance of the DALDataSet<T> and pass the data loader
+                dataSet = Activator.CreateInstance(typeof(RelmDataSet<>).MakeGenericType(dataSetType), new object[] { this, dalDataLoader }) as IRelmDataSetBase;
+                if (dataSet == null)
+                    throw new InvalidOperationException($"Failed to create DataSet for type {dataSetType.Name}.");
 
                 attachedProperty.SetValue(this, dataSet);
             }
@@ -270,7 +312,7 @@ namespace SimpleRelm.Models
             return dataSetProperty?.GetValue(this) as IRelmDataSetBase;
         }
 
-        public ICollection<T> Get<T>() where T : RelmModel, new()
+        public ICollection<T> Get<T>() where T : IRelmModel, new()
         {
             var dataSet = GetDataSet<T>()
                 ?? throw new InvalidOperationException($"DataSet for type {typeof(T).Name} is not initialized.");
@@ -278,7 +320,17 @@ namespace SimpleRelm.Models
             return dataSet.Load();
         }
 
-        public ICollection<T> Get<T>(Expression<Func<T, bool>> predicate) where T : RelmModel, new()
+        public ICollection<T> Get<T>(Expression<Func<T, bool>> predicate) where T : IRelmModel, new()
+        {
+            return Where(predicate).Load();
+        }
+
+        public T FirstOrDefault<T>(Expression<Func<T, bool>> predicate) where T : IRelmModel, new()
+        {
+            return Get(predicate).FirstOrDefault();
+        }
+
+        public IRelmDataSet<T> Where<T>(Expression<Func<T, bool>> predicate) where T : IRelmModel, new()
         {
             if (predicate == null)
                 throw new ArgumentNullException(nameof(predicate), "Predicate cannot be null.");
@@ -286,7 +338,18 @@ namespace SimpleRelm.Models
             var dataSet = GetDataSet<T>()
                 ?? throw new InvalidOperationException($"DataSet for type {typeof(T).Name} is not initialized.");
 
-            return dataSet.Where(predicate).Load();
+            return dataSet.Where(predicate);
+        }
+
+        public ICollection<T> Run<T>(string query, Dictionary<string, object> parameters = null) where T : IRelmModel, new()
+        {
+            if (string.IsNullOrWhiteSpace(query))
+                throw new ArgumentNullException(nameof(query), "Query cannot be null or empty.");
+
+            var runResults = RelmHelper.GetDataObjects<T>(this, query, parameters)
+                .ToList();
+
+            return runResults;
         }
     }
 }

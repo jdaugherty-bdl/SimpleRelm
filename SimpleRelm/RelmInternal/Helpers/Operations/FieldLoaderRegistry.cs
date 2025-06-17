@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.RelmInternal.Helpers.Operations
 {
-    internal class FieldLoaderRegistry : IEnumerable<IRelmFieldLoader>
+    internal class FieldLoaderRegistry<T> : IEnumerable<T>
     {
-        private readonly Dictionary<string, IRelmFieldLoader> _fieldDataLoaders = new Dictionary<string, IRelmFieldLoader>();
+        private readonly Dictionary<string, T> _fieldDataLoaders = new Dictionary<string, T>();
 
-        public IEnumerator<IRelmFieldLoader> GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
             return _fieldDataLoaders.Values?.GetEnumerator();
         }
@@ -40,7 +40,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         /// <param name="loader">The loader implementation to register, or null to remove.</param>
         /// <returns>The field loader that was successfully registered, or null if one was removed.</returns>
         /// <exception cref="ArgumentException">Throws when passing a null loader with an invalid field name.</exception>
-        public IRelmFieldLoader RegisterFieldLoader(string fieldName, IRelmFieldLoader loader)
+        public T RegisterFieldLoader(string fieldName, T loader)
         {
             if (loader == null)
             {
@@ -49,7 +49,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 else
                     throw new ArgumentException($"The field {fieldName} does not have a data loader set");
 
-                return null;
+                return default;
             }
             else
             {
@@ -67,7 +67,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         /// </summary>
         /// <param name="fieldName">The field name to get the loader for.</param>
         /// <returns>The loader for the provided field name, or null if none exists.</returns>
-        public IRelmFieldLoader GetFieldLoader(string fieldName)
+        public T GetFieldLoader(string fieldName)
         {
             _fieldDataLoaders.TryGetValue(fieldName, out var loader);
 

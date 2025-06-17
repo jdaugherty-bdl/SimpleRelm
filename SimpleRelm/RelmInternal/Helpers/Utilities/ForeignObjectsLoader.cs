@@ -1,6 +1,7 @@
 ﻿using MoreLinq;
 using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
+using SimpleRelm.Interfaces.RelmQuick;
 using SimpleRelm.Models;
 using SimpleRelm.RelmInternal.Models;
 using System;
@@ -182,6 +183,9 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             }
 
             var navigationOptions = member.GetForeignKeyNavigationOptions(_items);
+
+            _currentQuickContext?.GetDataSet(navigationOptions.ReferenceType);
+
             var containsLambda = BuildLogicExpression(member, navigationOptions);
             var collectionItems = GetCollectionItems(containsLambda, navigationOptions);
 

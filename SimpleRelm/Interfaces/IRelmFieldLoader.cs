@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.Interfaces
 {
-    public interface IRelmFieldLoader
+    public interface IRelmFieldLoader : IRelmFieldLoaderBase
     {
-        string FieldName { get; }
-        string[] KeyFields { get; }
         IRelmContext RelmContext { get; }
-        Dictionary<S[], object> GetFieldData<S>(ICollection<S[]> keyData);
     }
 }
