@@ -189,30 +189,31 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             return DALResolver?.GetConnectionBuilderFromConnectionString(connectionString);
         }
 
-        internal static MySqlConnection GetConnectionFromName(string connectionName, bool allowUserVariables = false)
+        internal static MySqlConnection GetConnectionFromName(string connectionName, bool allowUserVariables = false, bool convertZeroDateTime = false)
         {
             var connectionBuilder = GetConnectionBuilderFromName(connectionName);
 
-            return GetConnection(connectionBuilder, allowUserVariables);
+            return GetConnection(connectionBuilder, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime);
         }
 
-        internal static MySqlConnection GetConnectionFromType(Enum connectionType, bool allowUserVariables = false)
+        internal static MySqlConnection GetConnectionFromType(Enum connectionType, bool allowUserVariables = false, bool convertZeroDateTime = false)
         {
             var connectionBuilder = GetConnectionBuilderFromType(connectionType);
 
-            return GetConnection(connectionBuilder, allowUserVariables);
+            return GetConnection(connectionBuilder, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime);
         }
 
-        internal static MySqlConnection GetConnectionFromConnectionString(string connectionString, bool allowUserVariables = false)
+        internal static MySqlConnection GetConnectionFromConnectionString(string connectionString, bool allowUserVariables = false, bool convertZeroDateTime = false)
         {
             var connectionBuilder = GetConnectionBuilderFromConnectionString(connectionString);
 
-            return GetConnection(connectionBuilder, allowUserVariables);
+            return GetConnection(connectionBuilder, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime);
         }
 
-        private static MySqlConnection GetConnection(MySqlConnectionStringBuilder connectionBuilder, bool allowUserVariables = false)
+        private static MySqlConnection GetConnection(MySqlConnectionStringBuilder connectionBuilder, bool allowUserVariables = false, bool convertZeroDateTime = false)
         { 
-            connectionBuilder.ConvertZeroDateTime = true;
+            if (convertZeroDateTime)
+                connectionBuilder.ConvertZeroDateTime = true;
 
             if (allowUserVariables)
                 connectionBuilder.AllowUserVariables = true;
