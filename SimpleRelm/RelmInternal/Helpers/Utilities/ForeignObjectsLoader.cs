@@ -1,4 +1,5 @@
 ﻿using MoreLinq;
+using Newtonsoft.Json;
 using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Interfaces.RelmQuick;
@@ -146,7 +147,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                 else if (!navigationOptions.IsCollection)
                 {
                     // if the collectionItems already contains the key and it's not a collection, throw an exception
-                    throw new Exception("Collection already contains an item with the same foreign key.");
+                    throw new Exception($"Collection already contains an item with the same foreign key: collectionItems [{JsonConvert.SerializeObject(collectionItems)}], targetObjectForeignKeyValues: [{JsonConvert.SerializeObject(targetObjectForeignKeyValues)}]: nav options: [{JsonConvert.SerializeObject(navigationOptions)}].");
                 }
 
                 if (navigationOptions.IsCollection)
