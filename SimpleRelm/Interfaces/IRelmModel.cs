@@ -17,7 +17,7 @@ namespace SimpleRelm.Interfaces
         string InternalId { get; set; }
         DateTime CreateDate { get; set; }
         DateTime LastUpdated { get; set; }
-        IRelmModel ResetCoreAttributes(bool NullInternalId = false);
+        IRelmModel ResetCoreAttributes(bool nullInternalId = false, bool resetCreateDate = true);
         IRelmModel ResetWithData(DataRow ModelData, string AlternateTableName = null);
         List<KeyValuePair<string, Tuple<string, PropertyInfo>>> GetUnderscoreProperties(bool GetOnlyDbResolvables = true);
         int WriteToDatabase(Enum ConnectionStringType, int BatchSize = 10, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false);

@@ -42,25 +42,20 @@ namespace SimpleRelm.Models
         [RelmColumn(IsNullable: false, DefaultValue: "CURRENT_TIMESTAMP")]
         public DateTime LastUpdated { get; set; }
 
-        /*
-        // The regular expression search and replace strings to turn "CapitalCase" property names into "underscore_case" column names
-        public static string UnderscoreSearchPattern => @"(?<!_|^|Internal)([A-Z])";
-        public static string UnderscoreReplacePattern => @"_$1";
-        */
-
         /// <summary>
         /// Resets every property to its default value
         /// </summary>
-        public IRelmModel ResetCoreAttributes(bool NullInternalId = false)
+        public IRelmModel ResetCoreAttributes(bool nullInternalId = false, bool resetCreateDate = true)
         {
             Active = true;
 
-            if (NullInternalId)
+            if (nullInternalId)
                 InternalId = null;
             else
                 InternalId = Guid.NewGuid().ToString();
 
-            CreateDate = DateTime.Now;
+            if (resetCreateDate)
+                CreateDate = DateTime.Now;
             LastUpdated = CreateDate;
 
             return this;
@@ -323,6 +318,15 @@ namespace SimpleRelm.Models
                                     ? null
                                     : new Type[] { x.BaseType })
                                 .Contains(typeof(RelmModel)))
+                        /*
+                        var isEnumerable = property.PropertyType.GetInterfaces().Any(y => y.IsGenericType && y.GetGenericTypeDefinition() == typeof(IEnumerable<>));
+                        var isRelmModel = property
+                            .PropertyType
+                            .GenericTypeArguments
+                            .FlattenTreeObject(x => string.IsNullOrWhiteSpace(x?.BaseType?.Name) ? null : new Type[] { x.BaseType })
+                            .Contains(typeof(RelmModel));
+                        if (isEnumerable && isRelmModel)
+                        */
                         {
                             seed.Add(property.Name,
                                 ((IEnumerable<RelmModel>)property
@@ -361,6 +365,23 @@ namespace SimpleRelm.Models
                                     .Contains(typeof(RelmModel))
                                 ? ((RelmModel)property.GetValue(baseRef))?.GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties, SourceObjectName: string.Join(".", new List<string> { SourceObjectName, property.Name }.Where(y => !string.IsNullOrWhiteSpace(y))), GetAdditionalObjectProperties: GetAdditionalObjectProperties, Iteration: Iteration + 1)
                                 : property.GetValue(baseRef));
+                            var isRelmDto = property.PropertyType?.GetRuntimeProperties()?.Any(x => x.GetCustomAttribute<RelmDto>() != null) ?? false;
+                            var isBaseModel = new Type[] { property.PropertyType }
+                                .FlattenTreeObject(x => string.IsNullOrWhiteSpace(x?.BaseType?.Name) ? null : new Type[] { x.BaseType })
+                                .Contains(typeof(RelmModel));
+                            /*
+                            if (isRelmDto && isBaseModel)
+                            {
+                                // if the property is a RelmDto and a RelmModel, then call GenerateDTO on it recursively
+                                seed.Add(property.Name, ((RelmModel)property.GetValue(baseRef))
+                                    .GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties, SourceObjectName: string.Join(".", new List<string> { SourceObjectName, property.Name }.Where(y => !string.IsNullOrWhiteSpace(y))), GetAdditionalObjectProperties: GetAdditionalObjectProperties, Iteration: Iteration + 1));
+                            }
+                            else
+                            {
+                                // if the property is a RelmDto, but not a RelmModel, then just return the value as is
+                                seed.Add(property.Name, property.GetValue(baseRef));
+                            }
+                            */
                         }
 
                         if (invocationTypeList?.ContainsKey(baseRefType) ?? false)
