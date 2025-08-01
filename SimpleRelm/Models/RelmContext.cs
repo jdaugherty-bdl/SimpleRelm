@@ -28,55 +28,55 @@ namespace SimpleRelm.Models
         private bool localOpenConnection = false;
         private bool localOpenTransaction = false;
 
-        public RelmContext(IRelmContext relmContext, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false)
+        public RelmContext(IRelmContext relmContext, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
         {
             if (relmContext == null)
                 throw new ArgumentNullException(nameof(relmContext), "RelmContext cannot be null.");
             ContextOptions = relmContext.ContextOptions ?? throw new ArgumentNullException(nameof(relmContext.ContextOptions), "RelmContextOptionsBuilder cannot be null.");
             ContextOptions.ValidateAllSettings();
-            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime);
+            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
         }
 
-        public RelmContext(RelmContextOptionsBuilder optionsBuilder, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false)
+        public RelmContext(RelmContextOptionsBuilder optionsBuilder, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
         {
             ContextOptions = optionsBuilder ?? throw new ArgumentNullException(nameof(optionsBuilder), "RelmContextOptionsBuilder cannot be null.");
             ContextOptions.ValidateAllSettings();
-            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime);
+            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
         }
 
-        public RelmContext(Enum connectionStringType, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false)
+        public RelmContext(Enum connectionStringType, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
         {
             // set the options and allow user to override
             ContextOptions = new RelmContextOptionsBuilder(connectionStringType);
-            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime);
+            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
         }
 
-        public RelmContext(string connectionDetails, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false)
+        public RelmContext(string connectionDetails, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
         {
             // set the options and allow user to override
             ContextOptions = new RelmContextOptionsBuilder(connectionDetails);
-            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime);
+            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
         }
 
-        public RelmContext(MySqlConnection connection, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false)
+        public RelmContext(MySqlConnection connection, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
         {
             ContextOptions = new RelmContextOptionsBuilder(connection);
-            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime);
+            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
         }
 
-        public RelmContext(MySqlConnection connection, MySqlTransaction transaction, bool autoOpenConnection = true, bool allowUserVariables = false, bool convertZeroDateTime = false)
+        public RelmContext(MySqlConnection connection, MySqlTransaction transaction, bool autoOpenConnection = true, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
         {
             ContextOptions = new RelmContextOptionsBuilder(connection, transaction);
-            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: false, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime);
+            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: false, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
         }
 
-        private void InitializeContext(bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false)
+        private void InitializeContext(bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
         {
             if (ContextOptions.DatabaseConnection == null)
-                ContextOptions.SetDatabaseConnection(RelmHelper.GetConnectionFromConnectionString(ContextOptions.DatabaseConnectionString, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime));
+                ContextOptions.SetDatabaseConnection(RelmHelper.GetConnectionFromConnectionString(ContextOptions.DatabaseConnectionString, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds));
 
             if ((autoOpenConnection || autoOpenTransaction) && ContextOptions.DatabaseConnection != null)
-                StartConnection(autoOpenTransaction);
+                StartConnection(autoOpenTransaction: autoOpenTransaction, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
 
             _attachedDataSets = new List<object>();
 
@@ -174,7 +174,7 @@ namespace SimpleRelm.Models
             }
         }
 
-        public void StartConnection(bool autoOpenTransaction = false)
+        public void StartConnection(bool autoOpenTransaction = false, int lockWaitTimeoutSeconds = 0)
         {
             if (ContextOptions.DatabaseConnection == null)
                 throw new InvalidOperationException("Cannot open a non-existent database connection.");
@@ -184,6 +184,20 @@ namespace SimpleRelm.Models
                 ContextOptions.DatabaseConnection.Open();
 
                 localOpenConnection = true;
+
+                if (lockWaitTimeoutSeconds > 0)
+                {
+                    // For true lock wait timeout, we need to execute a command immediately after opening
+                    using (var cmd = ContextOptions.DatabaseConnection.CreateCommand())
+                    {
+                        cmd.CommandText = $"SET SESSION innodb_lock_wait_timeout = {lockWaitTimeoutSeconds}";
+                        cmd.ExecuteNonQuery();
+            
+                        // Also set transaction isolation level to help with locks
+                        cmd.CommandText = "SET SESSION transaction_isolation = 'READ-COMMITTED'";
+                        cmd.ExecuteNonQuery();
+                    }
+                }
             }
 
             if (autoOpenTransaction && ContextOptions.DatabaseConnection.State == System.Data.ConnectionState.Open)
@@ -198,7 +212,7 @@ namespace SimpleRelm.Models
         {
             if ((ContextOptions?.DatabaseConnection?.State ?? System.Data.ConnectionState.Closed) != System.Data.ConnectionState.Closed)
             {
-                if (commitTransaction && localOpenTransaction) // Transaction.Current?.TransactionInformation?.Status == TransactionStatus.Active)
+                if (commitTransaction && localOpenTransaction)
                 {
                     ContextOptions.DatabaseTransaction?.Commit();
 
@@ -231,6 +245,7 @@ namespace SimpleRelm.Models
         {
             ContextOptions.DatabaseTransaction?.Commit();
 
+            localOpenTransaction = false;
             ContextOptions.SetDatabaseTransaction(null);
         }
 
@@ -238,6 +253,7 @@ namespace SimpleRelm.Models
         {
             ContextOptions.DatabaseTransaction?.Rollback();
 
+            localOpenTransaction = false;
             ContextOptions.SetDatabaseTransaction(null);
         }
 

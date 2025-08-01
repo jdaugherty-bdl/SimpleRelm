@@ -88,8 +88,8 @@ namespace SimpleRelm
         /// <param name="connectionType">An enum type to reference a connection string defined in web.config.</param>
         /// <param name="allowUserVariables">Will allow special user variables (variables start with "@") to be defined in the query that will be eventually executed.</param>
         /// <returns>An unopened MySQL connection.</returns>
-        public static MySqlConnection GetConnectionFromType(Enum connectionType, bool allowUserVariables = false, bool convertZeroDateTime = false)
-            => ConnectionHelper.GetConnectionFromType(connectionType, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime);
+        public static MySqlConnection GetConnectionFromType(Enum connectionType, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
+            => ConnectionHelper.GetConnectionFromType(connectionType, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
 
         /// <summary>
         /// Gets an unopened MySQL connection given a resolvable connection string type.
@@ -97,8 +97,8 @@ namespace SimpleRelm
         /// <param name="connectionName">An enum type to reference a connection string defined in web.config.</param>
         /// <param name="allowUserVariables">Will allow special user variables (variables start with "@") to be defined in the query that will be eventually executed.</param>
         /// <returns>An unopened MySQL connection.</returns>
-        public static MySqlConnection GetConnectionFromName(string connectionName, bool allowUserVariables = false, bool convertZeroDateTime = false)
-            => ConnectionHelper.GetConnectionFromName(connectionName, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime);
+        public static MySqlConnection GetConnectionFromName(string connectionName, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
+            => ConnectionHelper.GetConnectionFromName(connectionName, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
 
         /// <summary>
         /// Gets an unopened MySQL connection given a resolvable connection string type.
@@ -106,8 +106,8 @@ namespace SimpleRelm
         /// <param name="connectionString">An enum type to reference a connection string defined in web.config.</param>
         /// <param name="allowUserVariables">Will allow special user variables (variables start with "@") to be defined in the query that will be eventually executed.</param>
         /// <returns>An unopened MySQL connection.</returns>
-        public static MySqlConnection GetConnectionFromConnectionString(string connectionString, bool allowUserVariables = false, bool convertZeroDateTime = false)
-            => ConnectionHelper.GetConnectionFromConnectionString(connectionString, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime);
+        public static MySqlConnection GetConnectionFromConnectionString(string connectionString, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
+            => ConnectionHelper.GetConnectionFromConnectionString(connectionString, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
 
         //***************** Identity functions *****************//
 

@@ -63,6 +63,7 @@
     <Compile Include="Attributes\RelmForeignKey.cs" />
     <Compile Include="Attributes\RelmKey.cs" />
     <Compile Include="Attributes\RelmTable.cs" />
+    <Compile Include="Extensions\DbContextExtensions.cs" />
     <Compile Include="Extensions\ModelExtensions.cs" />
     <Compile Include="Interfaces\IRelmDataSetBase.cs" />
     <Compile Include="Interfaces\IRelmContext.cs" />

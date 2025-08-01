@@ -198,9 +198,9 @@ namespace SimpleRelm.Models
         /// <param name="connectionStringType">Type of connection to use.</param>
         /// <param name="batchSize">The number of items to write out to the database per batch.</param>
         /// <returns>The number of rows written to the database.</returns>
-        public int WriteToDatabase(Enum connectionStringType, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        public int WriteToDatabase(Enum connectionStringType, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false, bool AllowAutoDateColumns = false)
         {
-            return DataOutputOperations.BulkTableWrite(connectionStringType, this, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+            return DataOutputOperations.BulkTableWrite(connectionStringType, this, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns, AllowAutoDateColumns: AllowAutoDateColumns);
         }
 
         /// <summary>
@@ -209,19 +209,19 @@ namespace SimpleRelm.Models
         /// <param name="relmContext">An IRelmContext object with open connection and transaction.</param>
         /// <param name="batchSize">The number of items to write out to the database per batch.</param>
         /// <returns>The number of rows written to the database.</returns>
-        public int WriteToDatabase(IRelmContext relmContext, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        public int WriteToDatabase(IRelmContext relmContext, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false, bool AllowAutoDateColumns = false)
         {
-            return DataOutputOperations.BulkTableWrite(relmContext, this, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+            return DataOutputOperations.BulkTableWrite(relmContext, this, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns, AllowAutoDateColumns: AllowAutoDateColumns);
         }
 
-        public int WriteToDatabase(IRelmQuickContext relmContext, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        public int WriteToDatabase(IRelmQuickContext relmContext, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false, bool AllowAutoDateColumns = false)
         {
-            return DataOutputOperations.BulkTableWrite(relmContext, this, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+            return DataOutputOperations.BulkTableWrite(relmContext, this, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns, AllowAutoDateColumns: AllowAutoDateColumns);
         }
 
-        public int WriteToDatabase(RelmContextOptionsBuilder relmContextOptions, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        public int WriteToDatabase(RelmContextOptionsBuilder relmContextOptions, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false, bool AllowAutoDateColumns = false)
         {
-            return DataOutputOperations.BulkTableWrite(new RelmContext(relmContextOptions), this, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+            return DataOutputOperations.BulkTableWrite(new RelmContext(relmContextOptions), this, ForceType: this.GetType(), BatchSize: batchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns, AllowAutoDateColumns: AllowAutoDateColumns);
         }
 
         /// <summary>
@@ -231,9 +231,9 @@ namespace SimpleRelm.Models
         /// <param name="SqlTransaction">An optional transaction to write to the database under.</param>
         /// <param name="batchSize">The number of items to write out to the database per batch.</param>
         /// <returns>The number of rows written to the database.</returns>
-        public int WriteToDatabase(MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        public int WriteToDatabase(MySqlConnection ExistingConnection, MySqlTransaction SqlTransaction = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false, bool AllowAutoDateColumns = false)
         {
-            return DataOutputOperations.BulkTableWrite(ExistingConnection, this, SqlTransaction: SqlTransaction, ForceType: this.GetType(), BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+            return DataOutputOperations.BulkTableWrite(ExistingConnection, this, SqlTransaction: SqlTransaction, ForceType: this.GetType(), BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns, AllowAutoDateColumns: AllowAutoDateColumns);
         }
 
         public T CopyFromSource<T>(T source) where T : RelmModel, new()
