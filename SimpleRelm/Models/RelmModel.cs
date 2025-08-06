@@ -9,14 +9,17 @@ using SimpleRelm.Interfaces.RelmQuick;
 using SimpleRelm.Models.EventArguments;
 using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Extensions;
+using SimpleRelm.RelmInternal.Helpers.DataTransfer;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence;
 using SimpleRelm.RelmInternal.Helpers.EqualityComparers;
+using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 
 namespace SimpleRelm.Models
@@ -362,14 +365,17 @@ namespace SimpleRelm.Models
                                 &&
                                 new Type[] { property.PropertyType }
                                     .FlattenTreeObject(x => string.IsNullOrWhiteSpace(x?.BaseType?.Name) ? null : new Type[] { x.BaseType })
-                                    .Contains(typeof(RelmModel))
+                                    .Contains(typeof(RelmModel)
+                                )
                                 ? ((RelmModel)property.GetValue(baseRef))?.GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties, SourceObjectName: string.Join(".", new List<string> { SourceObjectName, property.Name }.Where(y => !string.IsNullOrWhiteSpace(y))), GetAdditionalObjectProperties: GetAdditionalObjectProperties, Iteration: Iteration + 1)
-                                : property.GetValue(baseRef));
+                                : (property.PropertyType.BaseType == typeof(Enum)
+                                    ? property.GetValue(baseRef).ToString()
+                                    : property.GetValue(baseRef)));
+                            /* FOR DEBUGGING
                             var isRelmDto = property.PropertyType?.GetRuntimeProperties()?.Any(x => x.GetCustomAttribute<RelmDto>() != null) ?? false;
                             var isBaseModel = new Type[] { property.PropertyType }
                                 .FlattenTreeObject(x => string.IsNullOrWhiteSpace(x?.BaseType?.Name) ? null : new Type[] { x.BaseType })
                                 .Contains(typeof(RelmModel));
-                            /*
                             if (isRelmDto && isBaseModel)
                             {
                                 // if the property is a RelmDto and a RelmModel, then call GenerateDTO on it recursively
