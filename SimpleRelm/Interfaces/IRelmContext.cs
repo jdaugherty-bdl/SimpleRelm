@@ -21,5 +21,6 @@ namespace SimpleRelm.Interfaces
         IRelmDataSetBase GetDataSetType(Type dataSetType, bool throwException);
 
         void CommitTransaction();
+        void RollbackTransactions();
     }
 }
