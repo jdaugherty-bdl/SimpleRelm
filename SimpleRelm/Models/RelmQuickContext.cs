@@ -89,12 +89,15 @@ namespace SimpleRelm.Models
 
             if (disposing)
             {
-                foreach (var attachedProperty in _attachedProperties)
+                if ((_attachedProperties?.Count() ?? 0) > 0)
                 {
-                    if (attachedProperty.GetValue(this) is IDisposable disposable)
-                        disposable.Dispose();
-                    else
-                        attachedProperty.SetValue(this, default);
+                    foreach (var attachedProperty in _attachedProperties)
+                    {
+                        if (attachedProperty.GetValue(this) is IDisposable disposable)
+                            disposable.Dispose();
+                        else
+                            attachedProperty.SetValue(this, default);
+                    }
                 }
             }
         }
