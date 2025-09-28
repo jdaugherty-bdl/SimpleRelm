@@ -1,4 +1,5 @@
 ﻿using SimpleRelm.Interfaces;
+using SimpleRelm.Interfaces.RelmQuick;
 using SimpleRelm.Models;
 using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Helpers.DataTransfer;
@@ -49,6 +50,34 @@ namespace SimpleRelm.Extensions
             => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, additionalConstraints);
 
         public static T LoadForeignKeyField<T, R>(this T target, IRelmContext relmContext, Expression<Func<T, ICollection<R>>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate);
+
+
+
+
+
+        public static T LoadForeignKeyField<T, R, S>(this T target, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, customDataLoader, additionalConstraints);
+
+        public static T LoadForeignKeyField<T, R, S>(this T target, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, customDataLoader);
+
+        public static T LoadForeignKeyField<T, R>(this T target, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, additionalConstraints);
+
+        public static T LoadForeignKeyField<T, R>(this T target, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate);
+
+        public static T LoadForeignKeyField<T, R, S>(this T target, IRelmQuickContext relmContext, Expression<Func<T, ICollection<R>>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, customDataLoader, additionalConstraints);
+
+        public static T LoadForeignKeyField<T, R, S>(this T target, IRelmQuickContext relmContext, Expression<Func<T, ICollection<R>>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, customDataLoader);
+
+        public static T LoadForeignKeyField<T, R>(this T target, IRelmQuickContext relmContext, Expression<Func<T, ICollection<R>>> predicate, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new()
+            => LoadForeignKeyField(target, relmContext.ContextOptions, predicate, additionalConstraints);
+
+        public static T LoadForeignKeyField<T, R>(this T target, IRelmQuickContext relmContext, Expression<Func<T, ICollection<R>>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()
             => LoadForeignKeyField(target, relmContext.ContextOptions, predicate);
 
         /// <summary>

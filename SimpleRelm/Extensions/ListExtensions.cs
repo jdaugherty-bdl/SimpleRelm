@@ -82,6 +82,46 @@ namespace SimpleRelm.Extensions
             return new ForeignKeyLoader<T>(DbModelData, relmContextOptionsBuilder).LoadForeignKey(predicate, customDataLoader, additionalConstraints);
         }
 
+        public static ICollection<T> LoadForeignKeyField<T, R, S>(this ICollection<T> DbModelData, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
+        {
+            return new ForeignKeyLoader<T>(DbModelData, relmContext.ContextOptions).LoadForeignKey(predicate, customDataLoader, additionalConstraints);
+        }
+
+        public static ICollection<T> LoadForeignKeyField<T, R, S>(this ICollection<T> DbModelData, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
+        {
+            return new ForeignKeyLoader<T>(DbModelData, relmContext.ContextOptions).LoadForeignKey(predicate, customDataLoader);
+        }
+
+        public static ICollection<T> LoadForeignKeyField<T, R>(this ICollection<T> DbModelData, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new()
+        {
+            return new ForeignKeyLoader<T>(DbModelData, relmContext.ContextOptions).LoadForeignKey(predicate, additionalConstraints);
+        }
+
+        public static ICollection<T> LoadForeignKeyField<T, R, S>(this ICollection<T> DbModelData, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()
+        {
+            return new ForeignKeyLoader<T>(DbModelData, relmContext.ContextOptions).LoadForeignKey(predicate);
+        }
+
+        public static ICollection<T> LoadForeignKeyField<T, R, S>(this ICollection<T> DbModelData, IRelmQuickContext relmContext, Expression<Func<T, ICollection<R>>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
+        {
+            return new ForeignKeyLoader<T>(DbModelData, relmContext.ContextOptions).LoadForeignKey(predicate, customDataLoader, additionalConstraints);
+        }
+
+        public static ICollection<T> LoadForeignKeyField<T, R, S>(this ICollection<T> DbModelData, IRelmQuickContext relmContext, Expression<Func<T, ICollection<R>>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
+        {
+            return new ForeignKeyLoader<T>(DbModelData, relmContext.ContextOptions).LoadForeignKey(predicate, customDataLoader);
+        }
+
+        public static ICollection<T> LoadForeignKeyField<T, R>(this ICollection<T> DbModelData, IRelmQuickContext relmContext, Expression<Func<T, ICollection<R>>> predicate, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new()
+        {
+            return new ForeignKeyLoader<T>(DbModelData, relmContext.ContextOptions).LoadForeignKey(predicate, additionalConstraints);
+        }
+        
+        public static ICollection<T> LoadForeignKeyField<T, R>(this ICollection<T> target, IRelmQuickContext relmContext, Expression<Func<T, ICollection<R>>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()
+        {
+            return new ForeignKeyLoader<T>(target, relmContext.ContextOptions).LoadForeignKey(predicate);
+        }
+
         public static ICollection<T> LoadForeignKeyField<T, R, S>(this ICollection<T> DbModelData, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()
         {
             return new ForeignKeyLoader<T>(DbModelData, relmContextOptionsBuilder).LoadForeignKey(predicate, customDataLoader);
