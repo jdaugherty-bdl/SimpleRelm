@@ -24,7 +24,10 @@ namespace SimpleRelm.Interfaces.RelmQuick
         IRelmDataSet<T> GetDataSetType<T>(bool throwException) where T : IRelmModel, new();
         IRelmDataSetBase GetDataSetType(Type dataSetType);
         IRelmDataSetBase GetDataSetType(Type dataSetType, bool throwException);
-        ICollection<T> Get<T>() where T : IRelmModel, new();
-        ICollection<T> Get<T>(Expression<Func<T, bool>> predicate) where T : IRelmModel, new();
+        ICollection<T> Get<T>(bool loadDataLoaders = false) where T : IRelmModel, new();
+        ICollection<T> Get<T>(Expression<Func<T, bool>> predicate, bool loadDataLoaders = false) where T : IRelmModel, new();
+        T FirstOrDefault<T>(Expression<Func<T, bool>> predicate, bool loadDataLoaders = false) where T : IRelmModel, new();
+        IRelmDataSet<T> Where<T>(Expression<Func<T, bool>> predicate) where T : IRelmModel, new();
+        ICollection<T> Run<T>(string query, Dictionary<string, object> parameters = null) where T : IRelmModel, new();
     }
 }

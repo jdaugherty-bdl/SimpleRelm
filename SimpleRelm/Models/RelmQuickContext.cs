@@ -315,22 +315,22 @@ namespace SimpleRelm.Models
             return dataSetProperty?.GetValue(this) as IRelmDataSetBase;
         }
 
-        public ICollection<T> Get<T>() where T : IRelmModel, new()
+        public ICollection<T> Get<T>(bool loadDataLoaders = false) where T : IRelmModel, new()
         {
             var dataSet = GetDataSet<T>()
                 ?? throw new InvalidOperationException($"DataSet for type {typeof(T).Name} is not initialized.");
 
-            return dataSet.Load();
+            return dataSet.Load(loadDataLoaders: loadDataLoaders);
         }
 
-        public ICollection<T> Get<T>(Expression<Func<T, bool>> predicate) where T : IRelmModel, new()
+        public ICollection<T> Get<T>(Expression<Func<T, bool>> predicate, bool loadDataLoaders = false) where T : IRelmModel, new()
         {
-            return Where(predicate).Load();
+            return Where(predicate).Load(loadDataLoaders: loadDataLoaders);
         }
 
-        public T FirstOrDefault<T>(Expression<Func<T, bool>> predicate) where T : IRelmModel, new()
+        public T FirstOrDefault<T>(Expression<Func<T, bool>> predicate, bool loadDataLoaders = false) where T : IRelmModel, new()
         {
-            return Get(predicate).FirstOrDefault();
+            return Get(predicate, loadDataLoaders: loadDataLoaders).FirstOrDefault();
         }
 
         public IRelmDataSet<T> Where<T>(Expression<Func<T, bool>> predicate) where T : IRelmModel, new()

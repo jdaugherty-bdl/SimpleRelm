@@ -55,10 +55,10 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
                 ?? throw new MemberAccessException($"The property or collection [{referenceProperty.Member.Name}] on type [{referenceProperty.Expression.Type.Name}] does not have a RelmDataLoader attribute.");
 
             var fieldLoader = relmContext == null
-                ? (IRelmFieldLoader)Activator.CreateInstance(dataLoaderAttribute.LoaderType, new object[] { relmQuickContext, referenceProperty.Member.Name, dataLoaderAttribute.KeyFields })
-                : (IRelmFieldLoader)Activator.CreateInstance(dataLoaderAttribute.LoaderType, new object[] { relmContext, referenceProperty.Member.Name, dataLoaderAttribute.KeyFields });
+                ? Activator.CreateInstance(dataLoaderAttribute.LoaderType, new object[] { relmQuickContext, referenceProperty.Member.Name, dataLoaderAttribute.KeyFields })
+                : Activator.CreateInstance(dataLoaderAttribute.LoaderType, new object[] { relmContext, referenceProperty.Member.Name, dataLoaderAttribute.KeyFields });
 
-            new FieldLoaderHelper<T>(targetObjects).LoadData(fieldLoader);
+            new FieldLoaderHelper<T>(targetObjects).LoadData((IRelmFieldLoaderBase)fieldLoader);
 
             return targetObjects;
         }
