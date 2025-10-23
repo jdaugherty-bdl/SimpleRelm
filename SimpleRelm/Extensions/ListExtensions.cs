@@ -150,6 +150,11 @@ namespace SimpleRelm.Extensions
             return new DataLoaderHelper<T>(relmContext, DbModelData).LoadField(predicate);
         }
 
+        public static ICollection<T> LoadDataLoaderField<T, R>(this ICollection<T> DbModelData, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
+        {
+            return new DataLoaderHelper<T>(relmContext, DbModelData).LoadField(predicate);
+        }
+
         public static ICollection<T> FlattenTreeObject<T>(this IEnumerable<T> EnumerableList, Func<T, ICollection<T>> GetChildrenFunction)
         {
             return EnumerableList
