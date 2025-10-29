@@ -524,6 +524,8 @@ namespace SimpleRelm
         /// <returns>Number of rows affected.</returns>
         public static T DoDatabaseWork<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
          => DatabaseWorkHelper.DoDatabaseWork<T>(relmContext, QueryString, Parameters, ThrowException, UseTransaction);
+        public static T DoDatabaseWork<T>(IRelmQuickContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
+         => DatabaseWorkHelper.DoDatabaseWork<T>(relmContext, QueryString, Parameters, ThrowException, UseTransaction);
 
         /// <summary>
         /// Execute a query on the database using the provided function without returning a value.
