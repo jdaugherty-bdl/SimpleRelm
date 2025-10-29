@@ -12,6 +12,9 @@ namespace SimpleRelm.Interfaces.RelmQuick
     {
         RelmContextOptionsBuilder ContextOptions { get; }
 
+        void CommitTransaction();
+        void RollbackTransactions();
+
         void StartConnection(bool autoOpenTransaction = false);
         void EndConnection(bool commitTransaction = true);
         bool HasDataSet<T>(bool throwException = true) where T : IRelmModel, new();

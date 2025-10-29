@@ -102,6 +102,22 @@ namespace SimpleRelm.Models
             }
         }
 
+        public void CommitTransaction()
+        {
+            ContextOptions.DatabaseTransaction?.Commit();
+
+            localOpenTransaction = false;
+            ContextOptions.SetDatabaseTransaction(null);
+        }
+
+        public void RollbackTransactions()
+        {
+            ContextOptions.DatabaseTransaction?.Rollback();
+
+            localOpenTransaction = false;
+            ContextOptions.SetDatabaseTransaction(null);
+        }
+
         public void StartConnection(bool autoOpenTransaction = false)
         {
             if (ContextOptions.DatabaseConnection == null)
