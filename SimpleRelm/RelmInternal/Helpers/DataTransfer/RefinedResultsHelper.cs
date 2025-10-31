@@ -54,13 +54,28 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             return DatabaseWorkHelper.DoDatabaseWork<T>(relmContext, QueryString,
                 (cmd) =>
                 {
-                    cmd.Parameters.AddAllParameters(Parameters);
-
-                    var scalarResult = cmd.ExecuteScalar();
-
-                    return CoreUtilities.ConvertScalar<T>(scalarResult);
+                    return RunScalarCommand<T>(cmd, Parameters);
                 },
                 ThrowException: ThrowException, UseTransaction: SqlTransaction != null);
+        }
+
+        internal static T GetScalar<T>(IRelmQuickContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
+        {
+            return DatabaseWorkHelper.DoDatabaseWork<T>(relmContext, QueryString,
+                (cmd) =>
+                {
+                    return RunScalarCommand<T>(cmd, Parameters);
+                },
+                ThrowException: ThrowException, UseTransaction: SqlTransaction != null);
+        }
+
+        private static object RunScalarCommand<T>(MySqlCommand cmd, Dictionary<string, object> Parameters = null)
+        {
+            cmd.Parameters.AddAllParameters(Parameters);
+
+            var scalarResult = cmd.ExecuteScalar();
+
+            return CoreUtilities.ConvertScalar<T>(scalarResult);
         }
 
         internal static DataRow GetDataRow(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false)

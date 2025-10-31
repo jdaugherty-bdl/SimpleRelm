@@ -169,6 +169,8 @@ namespace SimpleRelm
         /// <returns>Single value returned as the specified type.</returns>
         public static T GetScalar<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
             => RefinedResultsHelper.GetScalar<T>(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+        public static T GetScalar<T>(IRelmQuickContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
+            => RefinedResultsHelper.GetScalar<T>(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
 
         /// <summary>
         /// Query the database to get a single row. If multiple rows are returned by the query, only the first is returned.
