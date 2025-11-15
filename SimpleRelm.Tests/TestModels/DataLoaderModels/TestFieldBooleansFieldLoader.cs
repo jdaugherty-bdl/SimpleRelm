@@ -14,6 +14,8 @@ namespace SimpleRelm.Tests.TestModels.DataLoaderModels
         private readonly string[]? _keyFields;
         public string[]? KeyFields => _keyFields;
 
+        public IRelmContext RelmContext => throw new NotImplementedException();
+
         public TestFieldBooleansFieldLoader(string fieldName, string[]? keyFields = null)
         {
             _fieldName = fieldName;
