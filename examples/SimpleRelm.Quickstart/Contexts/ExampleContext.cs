@@ -2,6 +2,7 @@
 using SimpleRelm.Interfaces;
 using SimpleRelm.Models;
 using SimpleRelm.Options;
+using SimpleRelm.Quickstart.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -18,5 +19,8 @@ namespace SimpleRelm.Quickstart.Contexts
         public ExampleContext(MySqlConnection connection, MySqlTransaction transaction) : base(connection: connection, transaction) { }
         public ExampleContext(RelmContextOptionsBuilder builder) : base(builder) { }
         public ExampleContext(IRelmContext relmContext) : base(relmContext) { }
+
+        public IRelmDataSet<ExampleModel> ExampleModels { get; set; }
+        public IRelmDataSet<ExampleGroup> ExampleGroups { get; set; }
     }
 }

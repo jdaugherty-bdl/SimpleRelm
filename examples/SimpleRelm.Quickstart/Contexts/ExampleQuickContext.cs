@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
+using SimpleRelm.Interfaces;
 using SimpleRelm.Models;
 using SimpleRelm.Options;
+using SimpleRelm.Quickstart.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +17,8 @@ namespace SimpleRelm.Quickstart.Contexts
         public ExampleQuickContext(Enum connectionStringType, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0) : base(connectionStringType, autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds) { }
         public ExampleQuickContext(MySqlConnection connection, MySqlTransaction transaction, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0) : base(connection: connection, transaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds) { }
         public ExampleQuickContext(RelmContextOptionsBuilder builder, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0) : base(builder, autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds) { }
+
+        public IRelmDataSet<ExampleModel> ExampleModels { get; set; }
+        public IRelmDataSet<ExampleGroup> ExampleGroups { get; set; }
     }
 }
