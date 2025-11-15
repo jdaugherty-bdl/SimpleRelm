@@ -3,8 +3,12 @@ using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Interfaces.RelmQuick;
 using SimpleRelm.Options;
+using SimpleRelm.Persistence;
+using SimpleRelm.RelmInternal.Helpers.DataTransfer;
+using SimpleRelm.RelmInternal.Helpers.DataTransfer.Persistence;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -370,5 +374,47 @@ namespace SimpleRelm.Models
 
             return runResults;
         }
+
+        public string GetLastInsertId()
+            => RowIdentityHelper.GetLastInsertId(this);
+
+        public string GetIdFromInternalId(string Table, string InternalId)
+            => RowIdentityHelper.GetIdFromInternalId(this, Table, InternalId);
+
+        public DataRow GetDataRow(string query, Dictionary<string, object> parameters = null, bool throwException = true)
+            => RefinedResultsHelper.GetDataRow(this, query, parameters, ThrowException: throwException);
+
+        public DataTable GetDataTable(string query, Dictionary<string, object> parameters = null, bool throwException = true)
+            => RefinedResultsHelper.GetDataTable(this, query, parameters, ThrowException: throwException);
+
+        public T GetDataObject<T>(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true) where T : IRelmModel, new()
+            => ObjectResultsHelper.GetDataObject<T>(this, QueryString, Parameters, ThrowException: ThrowException);
+
+        public IEnumerable<T> GetDataObjects<T>(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true) where T : IRelmModel, new()
+            => ObjectResultsHelper.GetDataObjects<T>(this, QueryString, Parameters, ThrowException: ThrowException);
+
+        public IEnumerable<T> GetDataList<T>(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
+            => ObjectResultsHelper.GetDataList<T>(this, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+
+        public T GetScalar<T>(string query, Dictionary<string, object> parameters = null, bool throwException = true)
+            => RefinedResultsHelper.GetScalar<T>(this, query, Parameters: parameters, ThrowException: throwException);
+
+        public BulkTableWriter<T> GetBulkTableWriter<T>(string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+            => DataOutputOperations.GetBulkTableWriter<T>(this, InsertQuery: InsertQuery, UseTransaction: UseTransaction, ThrowException: ThrowException, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+
+        public int BulkTableWrite<T>(T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+            => DataOutputOperations.BulkTableWrite<T>(this, SourceData, TableName, ForceType, BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+
+        public void DoDatabaseWork(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false)
+            => DatabaseWorkHelper.DoDatabaseWork(this, QueryString, Parameters, ThrowException: ThrowException, UseTransaction: UseTransaction);
+
+        public T DoDatabaseWork<T>(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false)
+         => DatabaseWorkHelper.DoDatabaseWork<T>(this, QueryString, Parameters, ThrowException, UseTransaction);
+
+        public void DoDatabaseWork(string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
+            => DatabaseWorkHelper.DoDatabaseWork(this, QueryString, ActionCallback, ThrowException, UseTransaction);
+
+        public T DoDatabaseWork<T>(string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
+            => DatabaseWorkHelper.DoDatabaseWork<T>(this, QueryString, ActionCallback, ThrowException, UseTransaction);
     }
 }

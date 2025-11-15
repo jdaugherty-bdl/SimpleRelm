@@ -118,6 +118,10 @@ namespace SimpleRelm
         /// <returns>A string representation of the ID.</returns>
         public static string GetLastInsertId(Enum ConfigConnectionString)
             => RowIdentityHelper.GetLastInsertId(ConfigConnectionString);
+        public static string GetLastInsertId(IRelmContext relmContext)
+            => RowIdentityHelper.GetLastInsertId(relmContext);
+        public static string GetLastInsertId(IRelmQuickContext relmQuickContext)
+            => RowIdentityHelper.GetLastInsertId(relmQuickContext);
 
         /// <summary>
         /// Converts an InternalId to an autonumbered row ID.
@@ -128,6 +132,10 @@ namespace SimpleRelm
         /// <returns>ID of the row matching the InternalId.</returns>
         public static string GetIdFromInternalId(Enum ConfigConnectionString, string Table, string InternalId)
             => RowIdentityHelper.GetIdFromInternalId(ConfigConnectionString, Table, InternalId);
+        public static string GetIdFromInternalId(IRelmContext relmContext, string Table, string InternalId)
+            => RowIdentityHelper.GetIdFromInternalId(relmContext, Table, InternalId);
+        public static string GetIdFromInternalId(IRelmQuickContext relmQuickContext, string Table, string InternalId)
+            => RowIdentityHelper.GetIdFromInternalId(relmQuickContext, Table, InternalId);
 
         //***************** Refined results *****************//
 
@@ -169,8 +177,8 @@ namespace SimpleRelm
         /// <returns>Single value returned as the specified type.</returns>
         public static T GetScalar<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
             => RefinedResultsHelper.GetScalar<T>(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
-        public static T GetScalar<T>(IRelmQuickContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
-            => RefinedResultsHelper.GetScalar<T>(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+        public static T GetScalar<T>(IRelmQuickContext relmQuickContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null)
+            => RefinedResultsHelper.GetScalar<T>(relmQuickContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
 
         /// <summary>
         /// Query the database to get a single row. If multiple rows are returned by the query, only the first is returned.
@@ -183,6 +191,12 @@ namespace SimpleRelm
         /// <returns>One row of data.</returns>
         public static DataRow GetDataRow(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false)
             => RefinedResultsHelper.GetDataRow(ConfigConnectionString, QueryString, Parameters: Parameters, ThrowException: ThrowException, AllowUserVariables: AllowUserVariables);
+
+        public static DataRow GetDataRow(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
+            => RefinedResultsHelper.GetDataRow(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+
+        public static DataRow GetDataRow(IRelmQuickContext relmQuickContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
+            => RefinedResultsHelper.GetDataRow(relmQuickContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
 
         /// <summary>
         /// Query the database to get a single row. If multiple rows are returned by the query, only the first is returned.
@@ -231,6 +245,8 @@ namespace SimpleRelm
         /// <returns>A full DataTable with requested data.</returns>
         public static DataTable GetDataTable(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
             => RefinedResultsHelper.GetDataTable(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+        public static DataTable GetDataTable(IRelmQuickContext relmQuickContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
+            => RefinedResultsHelper.GetDataTable(relmQuickContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
 
         //***************** Object results *****************//
 
@@ -247,8 +263,11 @@ namespace SimpleRelm
         public static T GetDataObject<T>(Enum ConfigConnectionString, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel, new()
             => ObjectResultsHelper.GetDataObject<T>(ConfigConnectionString, QueryString, Parameters: Parameters, ThrowException: ThrowException, AllowUserVariables: AllowUserVariables);
 
-        public static T GetDataObject<T>(IRelmContext CurrentContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel, new()
-            => ObjectResultsHelper.GetDataObject<T>(CurrentContext, QueryString, Parameters: Parameters, ThrowException: ThrowException, AllowUserVariables: AllowUserVariables);
+        public static T GetDataObject<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel, new()
+            => ObjectResultsHelper.GetDataObject<T>(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException, AllowUserVariables: AllowUserVariables);
+
+        public static T GetDataObject<T>(IRelmQuickContext relmQuickContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel, new()
+            => ObjectResultsHelper.GetDataObject<T>(relmQuickContext, QueryString, Parameters: Parameters, ThrowException: ThrowException, AllowUserVariables: AllowUserVariables);
 
         /// <summary>
         /// Query the database for a single row that returns as a single object of the supplied type.
@@ -368,8 +387,10 @@ namespace SimpleRelm
         /// <param name="UseTransaction">Indicate whether to write all the data in a single transaction.</param>
         /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
         /// <returns>An object to used to write data to the database.</returns>
-        internal static BulkTableWriter<T> GetBulkTableWriter<T>(IRelmContext relmContext, string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+        public static BulkTableWriter<T> GetBulkTableWriter<T>(IRelmContext relmContext, string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
             => DataOutputOperations.GetBulkTableWriter<T>(relmContext, InsertQuery: InsertQuery, UseTransaction: UseTransaction, ThrowException: ThrowException, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+        public static BulkTableWriter<T> GetBulkTableWriter<T>(IRelmQuickContext relmQuickContext, string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+            => DataOutputOperations.GetBulkTableWriter<T>(relmQuickContext, InsertQuery: InsertQuery, UseTransaction: UseTransaction, ThrowException: ThrowException, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
 
         /// <summary>
         /// Writes out a single object to the database using a combination of supplied parameters and class attributes.
@@ -396,6 +417,8 @@ namespace SimpleRelm
         /// <returns>The total number of rows written to the database.</returns>
         public static int BulkTableWrite<T>(IRelmContext relmContext, T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
             => DataOutputOperations.BulkTableWrite<T>(relmContext, SourceData, TableName, ForceType, BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+        public static int BulkTableWrite<T>(IRelmQuickContext relmQuickContext, T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
+            => DataOutputOperations.BulkTableWrite<T>(relmQuickContext, SourceData, TableName, ForceType, BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
 
         /// <summary>
         /// Writes out a list of objects to the database using a combination of supplied parameters and class attributes.
@@ -483,8 +506,10 @@ namespace SimpleRelm
         /// <param name="ThrowException">Throw exception or cache in LastExecutionException and continue.</param>
         /// <param name="UseTransaction">Indicate whether to write all the data in a single transaction.</param>
         /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
-        public static void DoDatabaseWork(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
-            => DatabaseWorkHelper.DoDatabaseWork(relmContext, QueryString, Parameters, ThrowException, UseTransaction);
+        public static void DoDatabaseWork(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false)
+            => DatabaseWorkHelper.DoDatabaseWork(relmContext, QueryString, Parameters, ThrowException: ThrowException, UseTransaction: UseTransaction);
+        public static void DoDatabaseWork(IRelmQuickContext relmQuickContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false)
+            => DatabaseWorkHelper.DoDatabaseWork(relmQuickContext, QueryString, Parameters, ThrowException: ThrowException, UseTransaction: UseTransaction);
 
         /// <summary>
         /// Execute a query on the database and return the number of rows affected.
@@ -524,10 +549,10 @@ namespace SimpleRelm
         /// <param name="UseTransaction">Indicate whether to write all the data in a single transaction.</param>
         /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
         /// <returns>Number of rows affected.</returns>
-        public static T DoDatabaseWork<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
+        public static T DoDatabaseWork<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false)
          => DatabaseWorkHelper.DoDatabaseWork<T>(relmContext, QueryString, Parameters, ThrowException, UseTransaction);
-        public static T DoDatabaseWork<T>(IRelmQuickContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
-         => DatabaseWorkHelper.DoDatabaseWork<T>(relmContext, QueryString, Parameters, ThrowException, UseTransaction);
+        public static T DoDatabaseWork<T>(IRelmQuickContext relmQuickContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false)
+         => DatabaseWorkHelper.DoDatabaseWork<T>(relmQuickContext, QueryString, Parameters, ThrowException, UseTransaction);
 
         /// <summary>
         /// Execute a query on the database using the provided function without returning a value.
@@ -553,6 +578,12 @@ namespace SimpleRelm
         /// <param name="SqlTransaction">Supply an existing transaction for use in this operation.</param>
         public static void DoDatabaseWork(MySqlConnection EstablishedConnection, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
             => DatabaseWorkHelper.DoDatabaseWork(EstablishedConnection, QueryString, ActionCallback, ThrowException, UseTransaction, SqlTransaction);
+
+        public static void DoDatabaseWork(IRelmContext relmContext, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
+            => DatabaseWorkHelper.DoDatabaseWork(relmContext, QueryString, ActionCallback, ThrowException, UseTransaction);
+
+        public static void DoDatabaseWork(IRelmQuickContext relmQuickContext, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
+            => DatabaseWorkHelper.DoDatabaseWork(relmQuickContext, QueryString, ActionCallback, ThrowException, UseTransaction);
 
         /// <summary>
         /// Execute a query on the database using the provided function, returning value of of the specified type.
@@ -582,6 +613,12 @@ namespace SimpleRelm
         public static T DoDatabaseWork<T>(MySqlConnection EstablishedConnection, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false, MySqlTransaction SqlTransaction = null)
             => DatabaseWorkHelper.DoDatabaseWork<T>(EstablishedConnection, QueryString, ActionCallback, ThrowException, UseTransaction, SqlTransaction);
 
+        public static T DoDatabaseWork<T>(IRelmContext relmContext, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
+            => DatabaseWorkHelper.DoDatabaseWork<T>(relmContext, QueryString, ActionCallback, ThrowException, UseTransaction);
+
+        public static T DoDatabaseWork<T>(IRelmQuickContext relmQuickContext, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
+            => DatabaseWorkHelper.DoDatabaseWork<T>(relmQuickContext, QueryString, ActionCallback, ThrowException, UseTransaction);
+
         //***************** Table operations *****************//
         /*
 		public static bool TruncateTable<T>(Enum ConnectionStringType, string TableName = null, Type ForceType = null)
@@ -601,14 +638,19 @@ namespace SimpleRelm
         /// </summary>
         /// <typeparam name="T">The standard DALHelper object type to get the table name from.</typeparam>
         /// <returns>The table name, if found</returns>
-        public static string GetDalTable<T>() where T : IRelmModel, new() => TableOperationsHelper.GetDalTable<T>();
+        public static string GetDalTable<T>() where T : IRelmModel, new() 
+            => TableOperationsHelper.GetDalTable<T>();
 
         /// <summary>
         /// Gets the DALTable attribute from any standard DALHelper object, assuming the attribute has been specified.
         /// </summary>
         /// <param name="DalObjectType">The standard DALHelper object type to get the table name from.</param>
         /// <returns>The table name, if found</returns>
-        public static string GetDalTable(Type DalObjectType) => TableOperationsHelper.GetDalTable(DalObjectType);
+        public static string GetDalTable(Type DalObjectType) 
+            => TableOperationsHelper.GetDalTable(DalObjectType);
+
+        public static string GetColumnName<T>(Expression<Func<T, object>> predicate) where T : IRelmModel
+            => TableOperationsHelper.GetColumnName(predicate);
 
         /// <summary>
         /// Performs a supplied action as wrapped in an auto-generated connection & transaction

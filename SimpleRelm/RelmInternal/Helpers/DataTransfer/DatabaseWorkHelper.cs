@@ -84,6 +84,17 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
                 },
                 ThrowException: ThrowException, UseTransaction: UseTransaction || relmContext.ContextOptions.DatabaseTransaction != null);
         }
+        internal static void DoDatabaseWork(IRelmQuickContext relmQuickContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false)
+        {
+            DoDatabaseWork<int>(relmQuickContext, QueryString,
+                (cmd) =>
+                {
+                    cmd.Parameters.AddAllParameters(Parameters);
+
+                    return cmd.ExecuteNonQuery();
+                },
+                ThrowException: ThrowException, UseTransaction: UseTransaction || relmQuickContext.ContextOptions.DatabaseTransaction != null);
+        }
 
         /// <summary>
         /// Execute a non-query on the database and return the number of rows affected
@@ -188,6 +199,16 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             DoDatabaseWork<object>(EstablishedConnection, QueryString, ActionCallback, ThrowException: ThrowException, UseTransaction: UseTransaction || SqlTransaction != null, SqlTransaction: SqlTransaction);
         }
 
+        internal static void DoDatabaseWork(IRelmContext relmContext, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
+        {
+            DoDatabaseWork<object>(relmContext, QueryString, ActionCallback, ThrowException: ThrowException, UseTransaction: UseTransaction || relmContext.ContextOptions.DatabaseTransaction != null);
+        }
+
+        internal static void DoDatabaseWork(IRelmQuickContext relmQuickContext, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
+        {
+            DoDatabaseWork<object>(relmQuickContext, QueryString, ActionCallback, ThrowException: ThrowException, UseTransaction: UseTransaction || relmQuickContext.ContextOptions.DatabaseTransaction != null);
+        }
+
         /// <summary>
         /// Execute a query on the database using the provided function, returning value of type T
         /// </summary>
@@ -227,9 +248,9 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             return DoDatabaseWork<T>(relmContext.ContextOptions, QueryString, ActionCallback, ThrowException: ThrowException, UseTransaction: UseTransaction || relmContext.ContextOptions.DatabaseTransaction != null);
         }
 
-        internal static T DoDatabaseWork<T>(IRelmQuickContext relmContext, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
+        internal static T DoDatabaseWork<T>(IRelmQuickContext relmQuickContext, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
         {
-            return DoDatabaseWork<T>(relmContext.ContextOptions, QueryString, ActionCallback, ThrowException: ThrowException, UseTransaction: UseTransaction || relmContext.ContextOptions.DatabaseTransaction != null);
+            return DoDatabaseWork<T>(relmQuickContext.ContextOptions, QueryString, ActionCallback, ThrowException: ThrowException, UseTransaction: UseTransaction || relmQuickContext.ContextOptions.DatabaseTransaction != null);
         }
 
         internal static T DoDatabaseWork<T>(RelmContextOptionsBuilder contextOptions, string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)

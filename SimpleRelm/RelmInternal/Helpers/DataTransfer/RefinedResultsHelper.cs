@@ -93,6 +93,20 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             return intermediate.Rows.Count > 0 ? intermediate.Rows[0] : null;
         }
 
+        internal static DataRow GetDataRow(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
+        {
+            var intermediate = GetDataTable(relmContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+
+            return intermediate.Rows.Count > 0 ? intermediate.Rows[0] : null;
+        }
+
+        internal static DataRow GetDataRow(IRelmQuickContext relmQuickContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
+        {
+            var intermediate = GetDataTable(relmQuickContext, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+
+            return intermediate.Rows.Count > 0 ? intermediate.Rows[0] : null;
+        }
+
         /// <summary>
         /// Query the database and return a table object
         /// </summary>
@@ -114,9 +128,9 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             return GetDataTable(new RelmQuickContext(EstablishedConnection, SqlTransaction), QueryString, Parameters, ThrowException: ThrowException);
         }
 
-        internal static DataTable GetDataTable(IRelmQuickContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
+        internal static DataTable GetDataTable(IRelmQuickContext relmQuickContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
         {
-            return DatabaseWorkHelper.DoDatabaseWork<DataTable>(relmContext, QueryString,
+            return DatabaseWorkHelper.DoDatabaseWork<DataTable>(relmQuickContext, QueryString,
                 (cmd) =>
                 {
                     cmd.Parameters.AddAllParameters(Parameters);
@@ -131,7 +145,7 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
 
                         return outputTable;
                     }
-                }, ThrowException: ThrowException, UseTransaction: relmContext.ContextOptions.DatabaseTransaction != null);
+                }, ThrowException: ThrowException, UseTransaction: relmQuickContext.ContextOptions.DatabaseTransaction != null);
         }
 
         internal static DataTable GetDataTable(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)

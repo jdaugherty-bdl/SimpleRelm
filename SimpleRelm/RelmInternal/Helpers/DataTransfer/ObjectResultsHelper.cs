@@ -54,9 +54,14 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             }
         }
 
-        internal static T GetDataObject<T>(IRelmContext CurrentContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
+        internal static T GetDataObject<T>(IRelmContext relmContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
         {
-            return GetDataObject<T>(CurrentContext.ContextOptions.DatabaseConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: CurrentContext.ContextOptions.DatabaseTransaction);
+            return GetDataObject<T>(relmContext.ContextOptions.DatabaseConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: relmContext.ContextOptions.DatabaseTransaction);
+        }
+
+        internal static T GetDataObject<T>(IRelmQuickContext relmQuickContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
+        {
+            return GetDataObject<T>(relmQuickContext.ContextOptions.DatabaseConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: relmQuickContext.ContextOptions.DatabaseTransaction);
         }
 
         internal static T GetDataObject<T>(MySqlConnection ExistingConnection, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, MySqlTransaction SqlTransaction = null) where T : IRelmModel
@@ -78,12 +83,12 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             return GetDataObjects<T>(RefinedResultsHelper.GetDataTable(ExistingConnection, QueryString, Parameters: Parameters, ThrowException: ThrowException, SqlTransaction: SqlTransaction));
         }
 
-        internal static IEnumerable<T> GetDataObjects<T>(IRelmQuickContext CurrentContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
+        internal static IEnumerable<T> GetDataObjects<T>(IRelmQuickContext CurrentContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true) where T : IRelmModel
         {
             return GetDataObjects<T>(RefinedResultsHelper.GetDataTable(CurrentContext, QueryString, Parameters: Parameters, ThrowException: ThrowException));
         }
 
-        internal static IEnumerable<T> GetDataObjects<T>(IRelmContext CurrentContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool AllowUserVariables = false) where T : IRelmModel
+        internal static IEnumerable<T> GetDataObjects<T>(IRelmContext CurrentContext, string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true) where T : IRelmModel
         {
             return GetDataObjects<T>(RefinedResultsHelper.GetDataTable(CurrentContext, QueryString, Parameters: Parameters, ThrowException: ThrowException));
         }

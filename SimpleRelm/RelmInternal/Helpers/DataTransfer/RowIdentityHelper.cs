@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SimpleRelm.Interfaces;
+using SimpleRelm.Interfaces.RelmQuick;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +20,16 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
             return RefinedResultsHelper.GetScalar<string>(ConfigConnectionString, "SELECT LAST_INSERT_ID();");
         }
 
+        internal static string GetLastInsertId(IRelmContext relmContext)
+        {
+            return RefinedResultsHelper.GetScalar<string>(relmContext, "SELECT LAST_INSERT_ID();");
+        }
+
+        internal static string GetLastInsertId(IRelmQuickContext relmQuickContext)
+        {
+            return RefinedResultsHelper.GetScalar<string>(relmQuickContext, "SELECT LAST_INSERT_ID();");
+        }
+
         /// <summary>
         /// Converts an InternalId to an autonumbered row ID.
         /// </summary>
@@ -28,6 +40,16 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         internal static string GetIdFromInternalId(Enum ConfigConnectionString, string Table, string InternalId)
         {
             return RefinedResultsHelper.GetScalar<string>(ConfigConnectionString, $"SELECT ID FROM {Table} WHERE InternalId = @InternalId", new Dictionary<string, object> { { "@InternalId", InternalId } });
+        }
+
+        internal static string GetIdFromInternalId(IRelmContext relmContext, string Table, string InternalId)
+        {
+            return RefinedResultsHelper.GetScalar<string>(relmContext, $"SELECT ID FROM {Table} WHERE InternalId = @InternalId", new Dictionary<string, object> { { "@InternalId", InternalId } });
+        }
+
+        internal static string GetIdFromInternalId(IRelmQuickContext relmQuickContext, string Table, string InternalId)
+        {
+            return RefinedResultsHelper.GetScalar<string>(relmQuickContext, $"SELECT ID FROM {Table} WHERE InternalId = @InternalId", new Dictionary<string, object> { { "@InternalId", InternalId } });
         }
     }
 }

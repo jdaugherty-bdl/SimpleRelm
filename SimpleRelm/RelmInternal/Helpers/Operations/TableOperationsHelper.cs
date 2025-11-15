@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -147,6 +148,20 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         internal static string GetDalTable(Type DalObjectType)
         {
             return DalObjectType.GetCustomAttribute<RelmTable>()?.TableName;
+        }
+
+        internal static string GetColumnName<T>(Expression<Func<T, object>> predicate) where T : IRelmModel
+        {
+            var member = predicate.Body as MemberExpression 
+                ?? throw new ArgumentException("Predicate must be a member expression");
+
+            var propertyInfo = member.Member as PropertyInfo 
+                ?? throw new ArgumentException("Predicate must be a property expression");
+
+            var relmColumnAttribute = propertyInfo.GetCustomAttribute<RelmColumn>();
+            return relmColumnAttribute == null
+                ? throw new CustomAttributeFormatException(CoreUtilities.NoDalPropertyAttributeError)
+                : relmColumnAttribute.ColumnName;
         }
     }
 }
