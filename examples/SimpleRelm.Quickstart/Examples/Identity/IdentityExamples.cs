@@ -1,5 +1,6 @@
 ﻿using SimpleRelm.Interfaces;
 using SimpleRelm.Interfaces.RelmQuick;
+using SimpleRelm.Quickstart.Contexts;
 using SimpleRelm.Quickstart.Models;
 using System;
 using System.Collections.Generic;
@@ -11,32 +12,32 @@ namespace SimpleRelm.Quickstart.Examples.Identity
 {
     internal class IdentityExamples
     {
-        internal void RunExamples(IRelmContext relmContext)
+        internal void RunExamples(ExampleContext exampleContext)
         {
             // Example usage to get the last inserted ID
-            var lastInsertId = RelmHelper.GetLastInsertId(relmContext);
-            lastInsertId = relmContext.GetLastInsertId();
+            var lastInsertId = RelmHelper.GetLastInsertId(exampleContext);
+            lastInsertId = exampleContext.GetLastInsertId();
 
             // Example usage to get ID from InternalId
             var tableName = RelmHelper.GetDalTable<ExampleModel>();
             var internalId = "some-guid-value";
 
-            var idFromInternalId = RelmHelper.GetIdFromInternalId(relmContext, tableName, internalId);
-            idFromInternalId = relmContext.GetIdFromInternalId(tableName, internalId);
+            var idFromInternalId = RelmHelper.GetIdFromInternalId(exampleContext, tableName, internalId);
+            idFromInternalId = exampleContext.GetIdFromInternalId(tableName, internalId);
         }
 
-        internal void RunExamples(IRelmQuickContext relmQuickContext)
+        internal void RunExamples(ExampleQuickContext exampleQuickContext)
         {
             // Example usage to get the last inserted ID
-            var lastInsertId = RelmHelper.GetLastInsertId(relmQuickContext);
-            lastInsertId = relmQuickContext.GetLastInsertId();
+            var lastInsertId = RelmHelper.GetLastInsertId(exampleQuickContext);
+            lastInsertId = exampleQuickContext.GetLastInsertId();
 
             // Example usage to get ID from InternalId
             var tableName = RelmHelper.GetDalTable<ExampleModel>();
             var internalId = "some-guid-value";
 
-            var idFromInternalId = RelmHelper.GetIdFromInternalId(relmQuickContext, tableName, internalId);
-            idFromInternalId = relmQuickContext.GetIdFromInternalId(tableName, internalId);
+            var idFromInternalId = RelmHelper.GetIdFromInternalId(exampleQuickContext, tableName, internalId);
+            idFromInternalId = exampleQuickContext.GetIdFromInternalId(tableName, internalId);
         }
     }
 }

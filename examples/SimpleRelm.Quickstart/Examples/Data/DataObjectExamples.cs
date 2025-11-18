@@ -1,6 +1,7 @@
 ﻿using SimpleRelm.Extensions;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Interfaces.RelmQuick;
+using SimpleRelm.Quickstart.Contexts;
 using SimpleRelm.Quickstart.Models;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,14 @@ namespace SimpleRelm.Quickstart.Examples.Data
 {
     internal class DataObjectExamples
     {
-        internal void RunExamples(IRelmContext relmContext)
+        internal void RunExamples(ExampleContext exampleContext)
         {
             // Example usage to get a DataObject using query only
             var queryOnly = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()}
                 LIMIT 1;";
 
-            var dataObjectOnly = RelmHelper.GetDataObject<ExampleModel>(relmContext, queryOnly, ThrowException: true);
-            dataObjectOnly = relmContext.GetDataObject<ExampleModel>(queryOnly, ThrowException: true);
+            var dataObjectOnly = RelmHelper.GetDataObject<ExampleModel>(exampleContext, queryOnly, throwException: true);
+            dataObjectOnly = exampleContext.GetDataObject<ExampleModel>(queryOnly, ThrowException: true);
 
             // Example usage to get a DataObject using query and parameters
             var parametersQuery = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -31,14 +32,14 @@ namespace SimpleRelm.Quickstart.Examples.Data
                 { "@guid_value", "some-guid-value" }
             };
 
-            var dataObject = RelmHelper.GetDataObject<ExampleModel>(relmContext, parametersQuery, Parameters: exampleParameters, ThrowException: true);
-            dataObject = relmContext.GetDataObject<ExampleModel>(parametersQuery, Parameters: exampleParameters, ThrowException: true);
+            var dataObject = RelmHelper.GetDataObject<ExampleModel>(exampleContext, parametersQuery, parameters: exampleParameters, throwException: true);
+            dataObject = exampleContext.GetDataObject<ExampleModel>(parametersQuery, Parameters: exampleParameters, ThrowException: true);
 
             // Example usage to get multiple DataObjects using query only
             var multipleQueryOnly = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()}
                 LIMIT 10;";
-            var dataObjectsOnly = RelmHelper.GetDataObjects<ExampleModel>(relmContext, multipleQueryOnly, ThrowException: true);
-            dataObjectsOnly = relmContext.GetDataObjects<ExampleModel>(multipleQueryOnly, ThrowException: true);
+            var dataObjectsOnly = RelmHelper.GetDataObjects<ExampleModel>(exampleContext, multipleQueryOnly, throwException: true);
+            dataObjectsOnly = exampleContext.GetDataObjects<ExampleModel>(multipleQueryOnly, ThrowException: true);
 
             // Example usage to get multiple DataObjects using query and parameters
             var multipleParametersQuery = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -50,18 +51,18 @@ namespace SimpleRelm.Quickstart.Examples.Data
                 { "@some_value", 12345 }
             };
 
-            var dataObjects = RelmHelper.GetDataObjects<ExampleModel>(relmContext, multipleParametersQuery, Parameters: multipleExampleParameters, ThrowException: true);
-            dataObjects = relmContext.GetDataObjects<ExampleModel>(multipleParametersQuery, Parameters: multipleExampleParameters, ThrowException: true);
+            var dataObjects = RelmHelper.GetDataObjects<ExampleModel>(exampleContext, multipleParametersQuery, parameters: multipleExampleParameters, throwException: true);
+            dataObjects = exampleContext.GetDataObjects<ExampleModel>(multipleParametersQuery, Parameters: multipleExampleParameters, ThrowException: true);
         }
 
-        internal void RunExamples(IRelmQuickContext relmQuickContext)
+        internal void RunExamples(ExampleQuickContext exampleQuickContext)
         {
             // Example usage to get a DataObject using query only
             var queryOnly = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()}
                 LIMIT 1;";
 
-            var dataObjectOnly = RelmHelper.GetDataObject<ExampleModel>(relmQuickContext, queryOnly, ThrowException: true);
-            dataObjectOnly = relmQuickContext.GetDataObject<ExampleModel>(queryOnly, ThrowException: true);
+            var dataObjectOnly = RelmHelper.GetDataObject<ExampleModel>(exampleQuickContext, queryOnly, throwException: true);
+            dataObjectOnly = exampleQuickContext.GetDataObject<ExampleModel>(queryOnly, ThrowException: true);
 
             // Example usage to get a DataObject using query and parameters
             var parametersQuery = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -73,15 +74,15 @@ namespace SimpleRelm.Quickstart.Examples.Data
                 { "@guid_value", "some-guid-value" }
             };
 
-            var dataObject = RelmHelper.GetDataObject<ExampleModel>(relmQuickContext, parametersQuery, Parameters: exampleParameters, ThrowException: true);
-            dataObject = relmQuickContext.GetDataObject<ExampleModel>(parametersQuery, Parameters: exampleParameters, ThrowException: true);
+            var dataObject = RelmHelper.GetDataObject<ExampleModel>(exampleQuickContext, parametersQuery, parameters: exampleParameters, throwException: true);
+            dataObject = exampleQuickContext.GetDataObject<ExampleModel>(parametersQuery, Parameters: exampleParameters, ThrowException: true);
 
             // Example usage to get multiple DataObjects using query only
             var multipleQueryOnly = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()}
                 LIMIT 10;";
 
-            var dataObjectsOnly = RelmHelper.GetDataObjects<ExampleModel>(relmQuickContext, multipleQueryOnly, ThrowException: true);
-            dataObjectsOnly = relmQuickContext.GetDataObjects<ExampleModel>(multipleQueryOnly, ThrowException: true);
+            var dataObjectsOnly = RelmHelper.GetDataObjects<ExampleModel>(exampleQuickContext, multipleQueryOnly, throwException: true);
+            dataObjectsOnly = exampleQuickContext.GetDataObjects<ExampleModel>(multipleQueryOnly, ThrowException: true);
 
             // Example usage to get multiple DataObjects using query and parameters
             var multipleParametersQuery = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -93,8 +94,8 @@ namespace SimpleRelm.Quickstart.Examples.Data
                 { "@some_value", 12345 }
             };
 
-            var dataObjects = RelmHelper.GetDataObjects<ExampleModel>(relmQuickContext, multipleParametersQuery, Parameters: multipleExampleParameters, ThrowException: true);
-            dataObjects = relmQuickContext.GetDataObjects<ExampleModel>(multipleParametersQuery, Parameters: multipleExampleParameters, ThrowException: true);
+            var dataObjects = RelmHelper.GetDataObjects<ExampleModel>(exampleQuickContext, multipleParametersQuery, parameters: multipleExampleParameters, throwException: true);
+            dataObjects = exampleQuickContext.GetDataObjects<ExampleModel>(multipleParametersQuery, Parameters: multipleExampleParameters, ThrowException: true);
         }
     }
 }

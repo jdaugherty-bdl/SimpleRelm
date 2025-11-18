@@ -12,9 +12,10 @@ namespace SimpleRelm.Quickstart.Models
     internal class ExampleGroup : RelmModel
     {
         [RelmColumn]
+        [RelmDto]
         public string GroupName { get; set; } // Column: group_name
 
-        [RelmForeignKey(ForeignKey: nameof(ExampleModel.GroupInternalId), LocalKey: nameof(InternalId))]
+        [RelmForeignKey(foreignKey: nameof(ExampleModel.GroupInternalId), localKey: nameof(InternalId))]
         public virtual ICollection<ExampleModel> ExampleModels { get; set; }
     }
 }

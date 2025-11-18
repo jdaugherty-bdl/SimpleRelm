@@ -19,7 +19,7 @@ namespace SimpleRelm.Quickstart.Examples.Connections
                     // For example, you can execute a command here
 
                     return true;
-                }, ExceptionHandler: (exception, st) =>
+                }, exceptionHandler: (exception, st) =>
                 {
                     // Handle exceptions as needed
                     Console.WriteLine($"An error occurred: {exception.Message}");
@@ -33,7 +33,7 @@ namespace SimpleRelm.Quickstart.Examples.Connections
                     // For example, you can execute a command here
 
                     return 1;
-                }, ExceptionHandler: (exception, st) =>
+                }, exceptionHandler: (exception, st) =>
                 {
                     // Handle exceptions as needed
                     Console.WriteLine($"An error occurred: {exception.Message}");

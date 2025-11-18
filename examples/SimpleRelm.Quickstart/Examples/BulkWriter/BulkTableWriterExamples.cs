@@ -1,5 +1,6 @@
 ﻿using SimpleRelm.Interfaces;
 using SimpleRelm.Interfaces.RelmQuick;
+using SimpleRelm.Quickstart.Contexts;
 using SimpleRelm.Quickstart.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace SimpleRelm.Quickstart.Examples.BulkWriter
 {
     internal class BulkTableWriterExamples
     {
-        internal void RunExamples(IRelmContext relmContext)
+        internal void RunExamples(ExampleContext exampleContext)
         {
             // Example usage to create a BulkTableWriter with all parameters
             var insertQuery = $@"INSERT INTO {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -28,13 +29,13 @@ namespace SimpleRelm.Quickstart.Examples.BulkWriter
                 { "@value3", "ijkl" }
             };
 
-            var bulkWriter = RelmHelper.GetBulkTableWriter<ExampleModel>(relmContext, InsertQuery: insertQuery, UseTransaction: true, ThrowException: true, AllowAutoIncrementColumns: false, AllowPrimaryKeyColumns: false, AllowUniqueColumns: false);
-            bulkWriter = relmContext.GetBulkTableWriter<ExampleModel>(InsertQuery: insertQuery, UseTransaction: true, ThrowException: true, AllowAutoIncrementColumns: false, AllowPrimaryKeyColumns: false, AllowUniqueColumns: false);
+            var bulkWriter = RelmHelper.GetBulkTableWriter<ExampleModel>(exampleContext, insertQuery: insertQuery, useTransaction: true, throwException: true, allowAutoIncrementColumns: false, allowPrimaryKeyColumns: false, allowUniqueColumns: false);
+            bulkWriter = exampleContext.GetBulkTableWriter<ExampleModel>(InsertQuery: insertQuery, UseTransaction: true, ThrowException: true, AllowAutoIncrementColumns: false, AllowPrimaryKeyColumns: false, AllowUniqueColumns: false);
 
             var rowsUpdated = bulkWriter.Write();
         }
 
-        internal void RunExamples(IRelmQuickContext relmQuickContext)
+        internal void RunExamples(ExampleQuickContext exampleQuickContext)
         {
             // Example usage to create a BulkTableWriter with all parameters
             var insertQuery = $@"INSERT INTO {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -51,8 +52,8 @@ namespace SimpleRelm.Quickstart.Examples.BulkWriter
                 { "@value3", "ijkl" }
             };
 
-            var bulkWriter = RelmHelper.GetBulkTableWriter<ExampleModel>(relmQuickContext, InsertQuery: insertQuery, UseTransaction: true, ThrowException: true, AllowAutoIncrementColumns: false, AllowPrimaryKeyColumns: false, AllowUniqueColumns: false);
-            bulkWriter = relmQuickContext.GetBulkTableWriter<ExampleModel>(InsertQuery: insertQuery, UseTransaction: true, ThrowException: true, AllowAutoIncrementColumns: false, AllowPrimaryKeyColumns: false, AllowUniqueColumns: false);
+            var bulkWriter = RelmHelper.GetBulkTableWriter<ExampleModel>(exampleQuickContext, insertQuery: insertQuery, useTransaction: true, throwException: true, allowAutoIncrementColumns: false, allowPrimaryKeyColumns: false, allowUniqueColumns: false);
+            bulkWriter = exampleQuickContext.GetBulkTableWriter<ExampleModel>(InsertQuery: insertQuery, UseTransaction: true, ThrowException: true, AllowAutoIncrementColumns: false, AllowPrimaryKeyColumns: false, AllowUniqueColumns: false);
 
             var rowsUpdated = bulkWriter.Write();
         }

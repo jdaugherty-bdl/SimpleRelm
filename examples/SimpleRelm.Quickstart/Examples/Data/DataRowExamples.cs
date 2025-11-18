@@ -1,5 +1,6 @@
 ﻿using SimpleRelm.Interfaces;
 using SimpleRelm.Interfaces.RelmQuick;
+using SimpleRelm.Quickstart.Contexts;
 using SimpleRelm.Quickstart.Models;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,14 @@ namespace SimpleRelm.Quickstart.Examples.Data
 {
     internal class DataRowExamples
     {
-        internal void RunExamples(IRelmContext relmContext)
+        internal void RunExamples(ExampleContext exampleContext)
         {
             // Example usage to get a DataRow using query only
             var queryOnly = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()} 
                 LIMIT 1;";
 
-            var dataRowOnly = RelmHelper.GetDataRow(relmContext, queryOnly, ThrowException: true);
-            dataRowOnly = relmContext.GetDataRow(queryOnly, ThrowException: true);
+            var dataRowOnly = RelmHelper.GetDataRow(exampleContext, queryOnly, throwException: true);
+            dataRowOnly = exampleContext.GetDataRow(queryOnly, throwException: true);
 
             // Example usage to get a DataRow using query and parameters
             var parametersQuery = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -30,18 +31,18 @@ namespace SimpleRelm.Quickstart.Examples.Data
                 { "@guid_value", "some-guid-value" }
             };
 
-            var dataRow = RelmHelper.GetDataRow(relmContext, parametersQuery, Parameters: exampleParameters, ThrowException: true);
-            dataRow = relmContext.GetDataRow(parametersQuery, Parameters: exampleParameters, ThrowException: true);
+            var dataRow = RelmHelper.GetDataRow(exampleContext, parametersQuery, parameters: exampleParameters, throwException: true);
+            dataRow = exampleContext.GetDataRow(parametersQuery, parameters: exampleParameters, throwException: true);
         }
 
-        internal void RunExamples(IRelmQuickContext relmQuickContext)
+        internal void RunExamples(ExampleQuickContext exampleQuickContext)
         {
             // Example usage to get a DataRow using query only
             var queryOnly = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()} 
                 LIMIT 1;";
 
-            var dataRowOnly = RelmHelper.GetDataRow(relmQuickContext, queryOnly, ThrowException: true);
-            dataRowOnly = relmQuickContext.GetDataRow(queryOnly, ThrowException: true);
+            var dataRowOnly = RelmHelper.GetDataRow(exampleQuickContext, queryOnly, throwException: true);
+            dataRowOnly = exampleQuickContext.GetDataRow(queryOnly, throwException: true);
 
             // Example usage to get a DataRow using query and parameters
             var parametersQuery = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -53,8 +54,8 @@ namespace SimpleRelm.Quickstart.Examples.Data
                 { "@guid_value", "some-guid-value" }
             };
 
-            var dataRow = RelmHelper.GetDataRow(relmQuickContext, parametersQuery, Parameters: exampleParameters, ThrowException: true);
-            dataRow = relmQuickContext.GetDataRow(parametersQuery, Parameters: exampleParameters, ThrowException: true);
+            var dataRow = RelmHelper.GetDataRow(exampleQuickContext, parametersQuery, parameters: exampleParameters, throwException: true);
+            dataRow = exampleQuickContext.GetDataRow(parametersQuery, parameters: exampleParameters, throwException: true);
         }
     }
 }

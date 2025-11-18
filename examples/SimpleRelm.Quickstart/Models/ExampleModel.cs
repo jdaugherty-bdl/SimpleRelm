@@ -1,5 +1,6 @@
 ﻿using SimpleRelm.Attributes;
 using SimpleRelm.Models;
+using SimpleRelm.Quickstart.FieldLoaders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,18 +13,35 @@ namespace SimpleRelm.Quickstart.Models
     internal class ExampleModel : RelmModel
     {
         [RelmColumn]
+        [RelmDto]
         public string GroupInternalId { get; set; } // Column: group_InternalId
 
         [RelmColumn]
+        [RelmDto]
         public string ModelName { get; set; } // Column: model_name
 
         [RelmColumn]
+        [RelmDto]
         public int ModelIndex { get; set; } // Column: model_index
 
         [RelmColumn("bool_column")]
+        [RelmDto]
         public bool IsBoolColumn { get; set; } // Column: bool_column
 
-        [RelmForeignKey(ForeignKey: nameof(ExampleGroup.InternalId), LocalKey: nameof(GroupInternalId))]
+        [RelmColumn]
+        [RelmDto]
+        public string SuperceededByInternalId { get; set; }
+
+        [RelmDto]
+        [RelmDataLoader(typeof(IsModificationFieldLoaderQuick), keyField: nameof(InternalId))]
+        [RelmDataLoader(typeof(IsModificationFieldLoader), keyField: nameof(InternalId))]
+        public virtual bool IsModification { get; set; }
+
+
+        [RelmForeignKey(foreignKey: nameof(ExampleGroup.InternalId), localKey: nameof(GroupInternalId))]
         public virtual ExampleGroup Group { get; set; }
+
+        [RelmForeignKey(foreignKey: nameof(ExampleModel.InternalId), localKey: nameof(SuperceededByInternalId))]
+        public virtual ExampleModel SuperceededBy { get; set; }
     }
 }
