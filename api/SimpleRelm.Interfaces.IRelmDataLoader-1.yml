@@ -25,14 +25,20 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmDataLoader
     path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-    startLine: 12
+    startLine: 17
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Defines methods and properties for loading, writing, and managing data, as well as executing commands with
+
+    associated expressions.
+  example: []
   syntax:
     content: public interface IRelmDataLoader<T>
     typeParameters:
     - id: T
+      description: The type of data managed by the loader.
     content.vb: Public Interface IRelmDataLoader(Of T)
   nameWithType.vb: IRelmDataLoader(Of T)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataLoader(Of T)
@@ -55,10 +61,15 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LastCommandsExecuted
     path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-    startLine: 14
+    startLine: 24
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets or sets the collection of the most recently executed commands and their associated execution details.
+  remarks: >-
+    This property provides a record of the last executed commands along with their
+        execution details.  It can be used to analyze or inspect the history of command executions.
+  example: []
   syntax:
     content: Dictionary<Commands.Command, List<IRelmExecutionCommand>> LastCommandsExecuted { get; set; }
     parameters: []
@@ -86,14 +97,22 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetLoadData
     path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-    startLine: 16
+    startLine: 33
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves a collection of data items of type <code class="typeparamref">T</code>.
+  remarks: >-
+    The returned collection contains the data items that are to be loaded.  The
+        collection may be empty if no data is available.
+  example: []
   syntax:
     content: ICollection<T> GetLoadData()
     return:
       type: System.Collections.Generic.ICollection{{T}}
+      description: >-
+        A collection of data items of type <code class="typeparamref">T</code>. The collection will be empty if no data is
+            available.
     content.vb: Function GetLoadData() As ICollection(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataLoader`1.GetLoadData*
   nameWithType.vb: IRelmDataLoader(Of T).GetLoadData()
@@ -116,14 +135,17 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteData
     path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-    startLine: 17
+    startLine: 39
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Writes data to the underlying storage and returns the number of rows written.
+  example: []
   syntax:
     content: int WriteData()
     return:
       type: System.Int32
+      description: The number of rows successfully written to the storage.
     content.vb: Function WriteData() As Integer
   overload: SimpleRelm.Interfaces.IRelmDataLoader`1.WriteData*
   nameWithType.vb: IRelmDataLoader(Of T).WriteData()
@@ -146,19 +168,24 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddExpression
     path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-    startLine: 18
+    startLine: 47
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Adds an expression to the specified command and returns the resulting execution command.
+  example: []
   syntax:
     content: IRelmExecutionCommand AddExpression(Commands.Command command, Expression expression)
     parameters:
     - id: command
       type: SimpleRelm.Enums.Commands.Command
+      description: The command to which the expression will be added. Cannot be null.
     - id: expression
       type: System.Linq.Expressions.Expression
+      description: The expression to add to the command. Cannot be null.
     return:
       type: SimpleRelm.Interfaces.IRelmExecutionCommand
+      description: An <xref href="SimpleRelm.Interfaces.IRelmExecutionCommand" data-throw-if-not-resolved="false"></xref> representing the updated execution command with the added expression.
     content.vb: Function AddExpression(command As Commands.Command, expression As Expression) As IRelmExecutionCommand
   overload: SimpleRelm.Interfaces.IRelmDataLoader`1.AddExpression*
   nameWithType.vb: IRelmDataLoader(Of T).AddExpression(Commands.Command, Expression)
@@ -181,19 +208,24 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddSingleExpression
     path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-    startLine: 19
+    startLine: 55
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Adds a single expression to the specified command and returns the resulting execution command.
+  example: []
   syntax:
     content: IRelmExecutionCommand AddSingleExpression(Commands.Command command, Expression expression)
     parameters:
     - id: command
       type: SimpleRelm.Enums.Commands.Command
+      description: The command to which the expression will be added. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     - id: expression
       type: System.Linq.Expressions.Expression
+      description: The expression to add to the command. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     return:
       type: SimpleRelm.Interfaces.IRelmExecutionCommand
+      description: An <xref href="SimpleRelm.Interfaces.IRelmExecutionCommand" data-throw-if-not-resolved="false"></xref> representing the updated command with the added expression.
     content.vb: Function AddSingleExpression(command As Commands.Command, expression As Expression) As IRelmExecutionCommand
   overload: SimpleRelm.Interfaces.IRelmDataLoader`1.AddSingleExpression*
   nameWithType.vb: IRelmDataLoader(Of T).AddSingleExpression(Commands.Command, Expression)
@@ -216,18 +248,22 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: HasUnderscoreProperty
     path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-    startLine: 20
+    startLine: 63
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Determines whether the specified property key contains an underscore.
+  example: []
   syntax:
-    content: bool HasUnderscoreProperty(string PropertyKey)
+    content: bool HasUnderscoreProperty(string propertyKey)
     parameters:
-    - id: PropertyKey
+    - id: propertyKey
       type: System.String
+      description: The property key to check. Cannot be null or empty.
     return:
       type: System.Boolean
-    content.vb: Function HasUnderscoreProperty(PropertyKey As String) As Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the property key contains at least one underscore; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Function HasUnderscoreProperty(propertyKey As String) As Boolean
   overload: SimpleRelm.Interfaces.IRelmDataLoader`1.HasUnderscoreProperty*
   nameWithType.vb: IRelmDataLoader(Of T).HasUnderscoreProperty(String)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataLoader(Of T).HasUnderscoreProperty(String)
@@ -490,6 +526,13 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: SimpleRelm.Interfaces.IRelmExecutionCommand
+  commentId: T:SimpleRelm.Interfaces.IRelmExecutionCommand
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmExecutionCommand.html
+  name: IRelmExecutionCommand
+  nameWithType: IRelmExecutionCommand
+  fullName: SimpleRelm.Interfaces.IRelmExecutionCommand
 - uid: SimpleRelm.Interfaces.IRelmDataLoader`1.AddExpression*
   commentId: Overload:SimpleRelm.Interfaces.IRelmDataLoader`1.AddExpression
   href: SimpleRelm.Interfaces.IRelmDataLoader-1.html#SimpleRelm_Interfaces_IRelmDataLoader_1_AddExpression_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression_
@@ -529,13 +572,6 @@ references:
   name: Expression
   nameWithType: Expression
   fullName: System.Linq.Expressions.Expression
-- uid: SimpleRelm.Interfaces.IRelmExecutionCommand
-  commentId: T:SimpleRelm.Interfaces.IRelmExecutionCommand
-  parent: SimpleRelm.Interfaces
-  href: SimpleRelm.Interfaces.IRelmExecutionCommand.html
-  name: IRelmExecutionCommand
-  nameWithType: IRelmExecutionCommand
-  fullName: SimpleRelm.Interfaces.IRelmExecutionCommand
 - uid: SimpleRelm.Enums
   commentId: N:SimpleRelm.Enums
   href: SimpleRelm.html

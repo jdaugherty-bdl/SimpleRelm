@@ -64,14 +64,29 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmDataSet
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 26
+    startLine: 38
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: >-
+    Represents a dataset that provides functionality for managing, querying, and persisting a collection of entities
+
+    of type <code class="typeparamref">T</code>.
+  remarks: >-
+    The <xref href="SimpleRelm.Models.RelmDataSet%601" data-throw-if-not-resolved="false"></xref> class provides a flexible API for working with collections
+        of entities, including support for filtering,  ordering, grouping, and managing relationships between entities.
+        It integrates with a data loader to dynamically load and persist data  as needed. The dataset also supports
+        deferred execution for query operations, ensuring efficient data handling.  This class is designed to work
+        within the context of a relational data management system, leveraging the provided context and data loader  to
+        manage the lifecycle and scope of the dataset.
+  example: []
   syntax:
     content: 'public class RelmDataSet<T> : IRelmDataSet<T>, ICollection<T>, IEnumerable<T>, IEnumerable, IRelmDataSetBase where T : IRelmModel, new()'
     typeParameters:
     - id: T
+      description: >-
+        The type of the entities in the dataset. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a parameterless
+            constructor.
     content.vb: Public Class RelmDataSet(Of T As {IRelmModel, New}) Implements IRelmDataSet(Of T), ICollection(Of T), IEnumerable(Of T), IEnumerable, IRelmDataSetBase
   inheritance:
   - System.Object
@@ -102,18 +117,18 @@ items:
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{{T},{R}}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
+  - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},{R}}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},{R}}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
-  - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{{T},{R}}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{{T},{R}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{{T},{R}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
-  - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{{T},{R}}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{{T},{R}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{{T},{R}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
-  - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},{R}}})
+  - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}})
+  - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},{R}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},{R}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
   - System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{{T},{S}}})
@@ -146,10 +161,12 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Modified
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 28
+    startLine: 43
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Gets or sets a value indicating whether the object has been modified.
+  example: []
   syntax:
     content: public bool Modified { get; set; }
     parameters: []
@@ -177,18 +194,17 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Count
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 30
+    startLine: 48
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
-  summary: Gets the number of elements contained in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+  summary: Gets the number of items in the collection.
   example: []
   syntax:
     content: public int Count { get; }
     parameters: []
     return:
       type: System.Int32
-      description: The number of elements contained in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public ReadOnly Property Count As Integer
   overload: SimpleRelm.Models.RelmDataSet`1.Count*
   implements:
@@ -213,58 +229,23 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IsReadOnly
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 31
+    startLine: 53
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
-  summary: Gets a value indicating whether the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only.
+  summary: Gets a value indicating whether the collection is read-only.
   example: []
   syntax:
     content: public bool IsReadOnly { get; }
     parameters: []
     return:
       type: System.Boolean
-      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     content.vb: Public ReadOnly Property IsReadOnly As Boolean
   overload: SimpleRelm.Models.RelmDataSet`1.IsReadOnly*
   implements:
   - System.Collections.Generic.ICollection{{T}}.IsReadOnly
   nameWithType.vb: RelmDataSet(Of T).IsReadOnly
   fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).IsReadOnly
-- uid: SimpleRelm.Models.RelmDataSet`1.#ctor(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,SimpleRelm.Interfaces.IRelmDataLoader{`0})
-  commentId: M:SimpleRelm.Models.RelmDataSet`1.#ctor(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,SimpleRelm.Interfaces.IRelmDataLoader{`0})
-  id: '#ctor(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,SimpleRelm.Interfaces.IRelmDataLoader{`0})'
-  parent: SimpleRelm.Models.RelmDataSet`1
-  langs:
-  - csharp
-  - vb
-  name: RelmDataSet(IRelmQuickContext, IRelmDataLoader<T>)
-  nameWithType: RelmDataSet<T>.RelmDataSet(IRelmQuickContext, IRelmDataLoader<T>)
-  fullName: SimpleRelm.Models.RelmDataSet<T>.RelmDataSet(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, SimpleRelm.Interfaces.IRelmDataLoader<T>)
-  type: Constructor
-  source:
-    remote:
-      path: SimpleRelm/Models/RelmDataSet.cs
-      branch: master
-      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
-    id: .ctor
-    path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 41
-  assemblies:
-  - SimpleRelm
-  namespace: SimpleRelm.Models
-  syntax:
-    content: public RelmDataSet(IRelmQuickContext currentContext, IRelmDataLoader<T> dataLoader)
-    parameters:
-    - id: currentContext
-      type: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
-    - id: dataLoader
-      type: SimpleRelm.Interfaces.IRelmDataLoader{{T}}
-    content.vb: Public Sub New(currentContext As IRelmQuickContext, dataLoader As IRelmDataLoader(Of T))
-  overload: SimpleRelm.Models.RelmDataSet`1.#ctor*
-  nameWithType.vb: RelmDataSet(Of T).New(IRelmQuickContext, IRelmDataLoader(Of T))
-  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).New(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, SimpleRelm.Interfaces.IRelmDataLoader(Of T))
-  name.vb: New(IRelmQuickContext, IRelmDataLoader(Of T))
 - uid: SimpleRelm.Models.RelmDataSet`1.#ctor(SimpleRelm.Interfaces.IRelmContext,SimpleRelm.Interfaces.IRelmDataLoader{`0})
   commentId: M:SimpleRelm.Models.RelmDataSet`1.#ctor(SimpleRelm.Interfaces.IRelmContext,SimpleRelm.Interfaces.IRelmDataLoader{`0})
   id: '#ctor(SimpleRelm.Interfaces.IRelmContext,SimpleRelm.Interfaces.IRelmDataLoader{`0})'
@@ -283,22 +264,78 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 48
+    startLine: 71
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: >-
+    Initializes a new instance of the <xref href="SimpleRelm.Models.RelmDataSet%601" data-throw-if-not-resolved="false"></xref> class with the specified context and data
+
+    loader.
+  example: []
   syntax:
     content: public RelmDataSet(IRelmContext currentContext, IRelmDataLoader<T> dataLoader)
     parameters:
     - id: currentContext
       type: SimpleRelm.Interfaces.IRelmContext
+      description: The current context used to manage the lifecycle and scope of the dataset. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     - id: dataLoader
       type: SimpleRelm.Interfaces.IRelmDataLoader{{T}}
+      description: The data loader responsible for loading and managing the data for the dataset. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     content.vb: Public Sub New(currentContext As IRelmContext, dataLoader As IRelmDataLoader(Of T))
   overload: SimpleRelm.Models.RelmDataSet`1.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">currentContext</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
   nameWithType.vb: RelmDataSet(Of T).New(IRelmContext, IRelmDataLoader(Of T))
   fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).New(SimpleRelm.Interfaces.IRelmContext, SimpleRelm.Interfaces.IRelmDataLoader(Of T))
   name.vb: New(IRelmContext, IRelmDataLoader(Of T))
+- uid: SimpleRelm.Models.RelmDataSet`1.#ctor(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,SimpleRelm.Interfaces.IRelmDataLoader{`0})
+  commentId: M:SimpleRelm.Models.RelmDataSet`1.#ctor(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,SimpleRelm.Interfaces.IRelmDataLoader{`0})
+  id: '#ctor(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,SimpleRelm.Interfaces.IRelmDataLoader{`0})'
+  parent: SimpleRelm.Models.RelmDataSet`1
+  langs:
+  - csharp
+  - vb
+  name: RelmDataSet(IRelmQuickContext, IRelmDataLoader<T>)
+  nameWithType: RelmDataSet<T>.RelmDataSet(IRelmQuickContext, IRelmDataLoader<T>)
+  fullName: SimpleRelm.Models.RelmDataSet<T>.RelmDataSet(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, SimpleRelm.Interfaces.IRelmDataLoader<T>)
+  type: Constructor
+  source:
+    remote:
+      path: SimpleRelm/Models/RelmDataSet.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: .ctor
+    path: SimpleRelm/Models/RelmDataSet.cs
+    startLine: 85
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Models
+  summary: >-
+    Initializes a new instance of the <xref href="SimpleRelm.Models.RelmDataSet%601" data-throw-if-not-resolved="false"></xref> class with the specified context and data
+
+    loader.
+  example: []
+  syntax:
+    content: public RelmDataSet(IRelmQuickContext currentContext, IRelmDataLoader<T> dataLoader)
+    parameters:
+    - id: currentContext
+      type: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+      description: The current quick context used to manage the dataset's operational scope. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+    - id: dataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{T}}
+      description: The data loader responsible for loading and managing the dataset's data. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+    content.vb: Public Sub New(currentContext As IRelmQuickContext, dataLoader As IRelmDataLoader(Of T))
+  overload: SimpleRelm.Models.RelmDataSet`1.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">currentContext</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+  nameWithType.vb: RelmDataSet(Of T).New(IRelmQuickContext, IRelmDataLoader(Of T))
+  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).New(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, SimpleRelm.Interfaces.IRelmDataLoader(Of T))
+  name.vb: New(IRelmQuickContext, IRelmDataLoader(Of T))
 - uid: SimpleRelm.Models.RelmDataSet`1.GetEnumerator
   commentId: M:SimpleRelm.Models.RelmDataSet`1.GetEnumerator
   id: GetEnumerator
@@ -317,7 +354,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetEnumerator
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 71
+    startLine: 108
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -355,7 +392,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetFieldLoader
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 100
+    startLine: 137
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -405,7 +442,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetFieldLoader
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 119
+    startLine: 156
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -453,7 +490,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDataLoader
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 132
+    startLine: 169
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -493,7 +530,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Where
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 154
+    startLine: 196
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -540,7 +577,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 169
+    startLine: 211
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -586,7 +623,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 185
+    startLine: 227
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -640,22 +677,33 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 190
+    startLine: 243
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Creates a reference to a related dataset based on the specified predicate and additional constraints.
+  remarks: >-
+    This method allows you to define a reference to a related dataset by specifying a
+        predicate for the relationship  and additional constraints to further filter the related data. Use this
+        method when you need to reference a related  dataset with specific filtering criteria.
   example: []
   syntax:
     content: public IRelmDataSet<T> Reference<S>(Expression<Func<T, S>> predicate, Expression<Func<S, object>> additionalConstraints)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},{S}}}
+      description: An expression that specifies the relationship between the current entity and the related entity.
     - id: additionalConstraints
       type: System.Linq.Expressions.Expression{System.Func{{S},System.Object}}
+      description: An expression that defines additional constraints to apply to the related entity.
     typeParameters:
     - id: S
+      description: The type of the related entity being referenced.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: >-
+        An <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> representing the related dataset that matches the specified predicate and
+            constraints.
     content.vb: Public Function Reference(Of S)(predicate As Expression(Of Func(Of T, S)), additionalConstraints As Expression(Of Func(Of S, Object))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.Reference*
   implements:
@@ -681,22 +729,35 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 195
+    startLine: 260
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: >-
+    Configures a reference navigation property for the current entity, allowing additional constraints to be
+
+    applied.
+  remarks: >-
+    This method is typically used to define relationships between entities and apply
+        additional filtering or constraints on the related entities. The <code class="paramref">predicate</code> parameter
+        identifies the navigation property, while the <code class="paramref">additionalConstraints</code> parameter allows
+        specifying further conditions on the related entities.
   example: []
   syntax:
     content: public IRelmDataSet<T> Reference<S>(Expression<Func<T, ICollection<S>>> predicate, ICollection<Expression<Func<S, object>>> additionalConstraints)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{S}}}}
+      description: An expression that specifies the collection navigation property to configure.
     - id: additionalConstraints
       type: System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{{S},System.Object}}}
+      description: A collection of expressions representing additional constraints to apply to the related entities.
     typeParameters:
     - id: S
+      description: The type of the related entity in the collection.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: An <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> representing the configured reference navigation property.
     content.vb: Public Function Reference(Of S)(predicate As Expression(Of Func(Of T, ICollection(Of S))), additionalConstraints As ICollection(Of Expression(Of Func(Of S, Object)))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.Reference*
   implements:
@@ -722,22 +783,29 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 200
+    startLine: 273
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Creates a reference to a related dataset based on the specified predicate and additional constraints.
   example: []
   syntax:
     content: public IRelmDataSet<T> Reference<S>(Expression<Func<T, S>> predicate, ICollection<Expression<Func<S, object>>> additionalConstraints)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},{S}}}
+      description: An expression that specifies the relationship between the current entity and the related entity.
     - id: additionalConstraints
       type: System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{{S},System.Object}}}
+      description: A collection of expressions that define additional constraints to apply to the related dataset.
     typeParameters:
     - id: S
+      description: The type of the related entity being referenced.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: >-
+        An <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> representing the related dataset that matches the specified predicate and
+            constraints.
     content.vb: Public Function Reference(Of S)(predicate As Expression(Of Func(Of T, S)), additionalConstraints As ICollection(Of Expression(Of Func(Of S, Object)))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.Reference*
   implements:
@@ -763,19 +831,25 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Find
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 216
+    startLine: 304
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Finds and returns the first item with the specified identifier.
+  remarks: >-
+    This method searches for an item based on its <code>Id</code> property. If multiple items 
+        share the same identifier, only the first match is returned.
   example: []
   syntax:
-    content: public T Find(int ItemId)
+    content: public T Find(int id)
     parameters:
-    - id: ItemId
+    - id: id
       type: System.Int32
+      description: The unique identifier of the item to find.
     return:
       type: '{T}'
-    content.vb: Public Function Find(ItemId As Integer) As T
+      description: The first item that matches the specified identifier, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>  if no such item is found.
+    content.vb: Public Function Find(id As Integer) As T
   overload: SimpleRelm.Models.RelmDataSet`1.Find*
   implements:
   - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Find(System.Int32)
@@ -800,19 +874,24 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Find
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 221
+    startLine: 315
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Finds and returns the first element in the collection that matches the specified internal identifier.
   example: []
   syntax:
-    content: public T Find(string ItemInternalId)
+    content: public T Find(string InternalId)
     parameters:
-    - id: ItemInternalId
+    - id: InternalId
       type: System.String
+      description: The internal identifier to search for. Cannot be null.
     return:
       type: '{T}'
-    content.vb: Public Function Find(ItemInternalId As String) As T
+      description: >-
+        The first element that matches the specified internal identifier, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if no match is
+            found.
+    content.vb: Public Function Find(InternalId As String) As T
   overload: SimpleRelm.Models.RelmDataSet`1.Find*
   implements:
   - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Find(System.String)
@@ -837,15 +916,23 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 226
+    startLine: 328
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Returns the first element of the sequence, or the default value for the type if the sequence is empty.
+  remarks: >-
+    This method retrieves the first element of the sequence. If the sequence contains no
+        elements,  it returns the default value for the type <code class="typeparamref">T</code> (e.g., <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>
+        for reference types,  or the default zero value for value types).
   example: []
   syntax:
     content: public T FirstOrDefault()
     return:
       type: '{T}'
+      description: >-
+        The first element of the sequence, or the default value for the type <code class="typeparamref">T</code> if the
+            sequence is empty.
     content.vb: Public Function FirstOrDefault() As T
   overload: SimpleRelm.Models.RelmDataSet`1.FirstOrDefault*
   implements:
@@ -870,18 +957,26 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 231
+    startLine: 341
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Returns the first element of the collection, or the default value for the type if the collection is empty.
+  remarks: >-
+    If <code class="paramref">loadItems</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the method ensures that
+        items are loaded into the collection before attempting to retrieve the first element.
   example: []
   syntax:
     content: public T FirstOrDefault(bool loadItems)
     parameters:
     - id: loadItems
       type: System.Boolean
+      description: A value indicating whether to load items into the collection before retrieving the first element.
     return:
       type: '{T}'
+      description: >-
+        The first element of the collection if it contains any elements; otherwise, the default value for the type
+            <code class="typeparamref">T</code>.
     content.vb: Public Function FirstOrDefault(loadItems As Boolean) As T
   overload: SimpleRelm.Models.RelmDataSet`1.FirstOrDefault*
   implements:
@@ -907,18 +1002,26 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 236
+    startLine: 353
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: >-
+    Loads items from the database using the existing predicate conditions and then returns the first element of a sequence that satisfies 
+
+    the specified condition,  or the default value for the type if no such element is found.
   example: []
   syntax:
     content: public T FirstOrDefault(Expression<Func<T, bool>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+      description: A function to test each element for a condition. The function must not be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     return:
       type: '{T}'
+      description: >-
+        The first element in the sequence that satisfies the condition defined by <code class="paramref">predicate</code>,  or
+            the default value of type <code class="typeparamref">T</code> if no such element is found.
     content.vb: Public Function FirstOrDefault(predicate As Expression(Of Func(Of T, Boolean))) As T
   overload: SimpleRelm.Models.RelmDataSet`1.FirstOrDefault*
   implements:
@@ -944,20 +1047,38 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 241
+    startLine: 372
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: >-
+    Retrieves the first element of a sequence that satisfies the specified condition,  or a default value if no
+
+    such element is found.
+  remarks: >-
+    If <code class="paramref">loadItems</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the method loads the items
+        and applies the condition specified by <code class="paramref">predicate</code>. If <code class="paramref">loadItems</code>  is
+        <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>, the method evaluates the condition on the existing items.
   example: []
   syntax:
     content: public T FirstOrDefault(Expression<Func<T, bool>> predicate, bool loadItems)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+      description: >-
+        An expression that defines the condition to test each element for. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>,  no condition
+            is applied.
     - id: loadItems
       type: System.Boolean
+      description: >-
+        A value indicating whether to load the items from the database using the existing predicate conditions before 
+            evaluating the condition.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>,
+            the items are loaded from the database; otherwise, the method operates on the existing items.
     return:
       type: '{T}'
+      description: >-
+        The first element that satisfies the condition defined by <code class="paramref">predicate</code>,  or the default
+            value of type <code class="typeparamref">T</code> if no such element is found.
     content.vb: Public Function FirstOrDefault(predicate As Expression(Of Func(Of T, Boolean)), loadItems As Boolean) As T
   overload: SimpleRelm.Models.RelmDataSet`1.FirstOrDefault*
   implements:
@@ -983,15 +1104,20 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadAsDataSet
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 259
+    startLine: 396
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Loads the current data and returns it as a dataset.
+  remarks: >-
+    This method ensures that the data is loaded before returning the dataset.  It can be
+        used to retrieve the data in its current state for further processing or querying.
   example: []
   syntax:
     content: public IRelmDataSet<T> LoadAsDataSet()
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: An <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> representing the loaded dataset.
     content.vb: Public Function LoadAsDataSet() As IRelmDataSet(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.LoadAsDataSet*
   implements:
@@ -1016,15 +1142,22 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Load
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 266
+    startLine: 410
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Loads a collection of items of type <code class="typeparamref">T</code>.
+  remarks: >-
+    This method retrieves the items and returns them as a collection.  By default, it
+        includes all items unless specified otherwise in an overload.
   example: []
   syntax:
     content: public ICollection<T> Load()
     return:
       type: System.Collections.Generic.ICollection{{T}}
+      description: >-
+        A collection of items of type <code class="typeparamref">T</code>. The collection may be empty if no items are
+            available.
     content.vb: Public Function Load() As ICollection(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.Load*
   implements:
@@ -1049,18 +1182,30 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Load
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 271
+    startLine: 428
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Loads the data for the current context and optionally initializes and executes field loaders.
+  remarks: >-
+    If <code class="paramref">loadDataLoaders</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the method
+        identifies properties in the type <code class="typeparamref">T</code> that are marked with the <xref href="SimpleRelm.Attributes.RelmDataLoader" data-throw-if-not-resolved="false"></xref> attribute and initializes field loaders for them. These field loaders are then
+        executed to load additional data related to the fields.  If the data loader has executed commands related to
+        references, the method also loads all references associated with the data.
   example: []
   syntax:
     content: public ICollection<T> Load(bool loadDataLoaders)
     parameters:
     - id: loadDataLoaders
       type: System.Boolean
+      description: >-
+        A value indicating whether to initialize and execute field loaders for properties marked with the <xref href="SimpleRelm.Attributes.RelmDataLoader" data-throw-if-not-resolved="false"></xref> attribute. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, field loaders are registered and executed;
+            otherwise, only the data is loaded.
     return:
       type: System.Collections.Generic.ICollection{{T}}
+      description: >-
+        A collection of items of type <code class="typeparamref">T</code> representing the loaded data. The collection will be
+            empty if no data is available.
     content.vb: Public Function Load(loadDataLoaders As Boolean) As ICollection(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.Load*
   implements:
@@ -1086,15 +1231,17 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Write
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 343
+    startLine: 492
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Writes data using the underlying data loader.
   example: []
   syntax:
     content: public int Write()
     return:
       type: System.Int32
+      description: The number of records successfully written.
     content.vb: Public Function Write() As Integer
   overload: SimpleRelm.Models.RelmDataSet`1.Write*
   implements:
@@ -1119,18 +1266,24 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Entry
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 375
+    startLine: 531
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Clears the current dataset, then adds the specified item to the dataset and marks the dataset as modified.
+  remarks: >-
+    The item is added to the cleared dataset without persisting the change. The dataset's state
+        is marked as modified.
   example: []
   syntax:
     content: public IRelmDataSet<T> Entry(T Item)
     parameters:
     - id: Item
       type: '{T}'
+      description: The item to be added to the dataset. Cannot be null.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: The current dataset instance, allowing for method chaining.
     content.vb: Public Function Entry(Item As T) As IRelmDataSet(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.Entry*
   implements:
@@ -1155,20 +1308,27 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Entry
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 387
+    startLine: 550
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Clears the current dataset, then adds the specified item to the dataset and optionally persists it.
+  remarks: >-
+    This method modifies the dataset by clearing then adding the specified item and marks the dataset
+        as modified.  If <code class="paramref">Persist</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the item will be persisted.
   example: []
   syntax:
     content: public IRelmDataSet<T> Entry(T Item, bool Persist = true)
     parameters:
     - id: Item
       type: '{T}'
+      description: The item to add to the dataset. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     - id: Persist
       type: System.Boolean
+      description: A value indicating whether the item should be persisted.  The default value is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: The current dataset instance with the added item.
     content.vb: Public Function Entry(Item As T, Persist As Boolean = True) As IRelmDataSet(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.Entry*
   implements:
@@ -1194,18 +1354,24 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OrderBy
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 400
+    startLine: 568
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Orders the elements in the dataset based on the specified key selector.
+  remarks: >-
+    This method modifies the query to include an "ORDER BY" clause based on the provided
+        key selector. The ordering is applied in ascending order by default.
   example: []
   syntax:
     content: public IRelmDataSet<T> OrderBy(Expression<Func<T, object>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Object}}
+      description: An expression that specifies the key to order the elements by. The key is derived from the dataset elements.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: A dataset with the elements ordered according to the specified key.
     content.vb: Public Function OrderBy(predicate As Expression(Of Func(Of T, Object))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.OrderBy*
   implements:
@@ -1231,18 +1397,26 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OrderByDescending
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 407
+    startLine: 584
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Orders the elements of the dataset in descending order based on the specified key.
+  remarks: >-
+    This method modifies the query by appending an "ORDER BY DESC" clause using the
+        specified key. The ordering is applied to the dataset when the query is executed.
   example: []
   syntax:
     content: public IRelmDataSet<T> OrderByDescending(Expression<Func<T, object>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Object}}
+      description: >-
+        An expression that specifies the key to use for ordering the elements.  The key is derived from the property
+            or computed value defined in the expression.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: A dataset with the elements ordered in descending order based on the specified key.
     content.vb: Public Function OrderByDescending(predicate As Expression(Of Func(Of T, Object))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.OrderByDescending*
   implements:
@@ -1268,18 +1442,26 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Set
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 414
+    startLine: 600
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Updates a single column's value in the dataset based on the specified expression.
+  remarks: >-
+    This method modifies the dataset by applying the specified update expression.  The
+        changes are not persisted until the dataset is committed.
   example: []
   syntax:
     content: public IRelmDataSet<T> Set(Expression<Func<T, T>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},{T}}}
+      description: >-
+        An expression that specifies the column to update and the value to assign.  The expression must be in the
+            form of a lambda, such as <code>x =&gt; x.Property = value</code>.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: The current dataset instance, allowing for method chaining.
     content.vb: Public Function [Set](predicate As Expression(Of Func(Of T, T))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.Set*
   implements:
@@ -1305,18 +1487,25 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GroupBy
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 421
+    startLine: 616
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Groups the elements of the dataset based on the specified key selector.
+  remarks: >-
+    The grouping is applied to the underlying query, modifying the dataset to reflect the
+        grouping operation. This method does not execute the query; it only adds the grouping condition to the query
+        definition.
   example: []
   syntax:
     content: public IRelmDataSet<T> GroupBy(Expression<Func<T, object>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Object}}
+      description: An expression that specifies the key to group by. The key is derived from the elements of the dataset.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: A dataset grouped by the specified key.
     content.vb: Public Function GroupBy(predicate As Expression(Of Func(Of T, Object))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.GroupBy*
   implements:
@@ -1342,19 +1531,22 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Limit
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 428
+    startLine: 629
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Limits the number of results returned by the dataset to the specified count.
   example: []
   syntax:
-    content: public IRelmDataSet<T> Limit(int LimitCount)
+    content: public IRelmDataSet<T> Limit(int limitCount)
     parameters:
-    - id: LimitCount
+    - id: limitCount
       type: System.Int32
+      description: The maximum number of results to include in the dataset. Must be a non-negative integer.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
-    content.vb: Public Function Limit(LimitCount As Integer) As IRelmDataSet(Of T)
+      description: The current dataset instance with the applied limit, allowing for further query chaining.
+    content.vb: Public Function Limit(limitCount As Integer) As IRelmDataSet(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.Limit*
   implements:
   - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Limit(System.Int32)
@@ -1379,18 +1571,27 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DistinctBy
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 435
+    startLine: 645
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Filters the dataset to include only distinct elements based on the specified key selector.
+  remarks: >-
+    This method modifies the current dataset by adding a distinct operation to the query.
+        The distinctness is determined by the value of the key selected by the <code class="paramref">predicate</code>
+        expression.
   example: []
   syntax:
     content: public IRelmDataSet<T> DistinctBy(Expression<Func<T, object>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Object}}
+      description: >-
+        An expression that specifies the key used to determine distinct elements. The key is derived from the
+            properties of the dataset elements.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: A dataset containing only distinct elements based on the specified key.
     content.vb: Public Function DistinctBy(predicate As Expression(Of Func(Of T, Object))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Models.RelmDataSet`1.DistinctBy*
   implements:
@@ -1416,18 +1617,30 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Save
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 442
+    startLine: 663
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: >-
+    Saves the specified item to the collection. If an item with the same internal identifier  already exists, it
+
+    is replaced; otherwise, the item is added to the collection.
+  remarks: >-
+    This method ensures that the collection does not contain duplicate items based on
+        their  internal identifiers. If an item with the same identifier already exists, it is replaced  with the
+        new item. Otherwise, the item is added to the collection, and the operation is  persisted.
   example: []
   syntax:
     content: public int Save(T Item)
     parameters:
     - id: Item
       type: '{T}'
+      description: The item to save. The item must have a valid internal identifier.
     return:
       type: System.Int32
+      description: >-
+        An integer representing the result of the save operation. The exact meaning of the return  value depends on
+            the underlying implementation of the save or add operation.
     content.vb: Public Function Save(Item As T) As Integer
   overload: SimpleRelm.Models.RelmDataSet`1.Save*
   implements:
@@ -1452,15 +1665,22 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Save
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 455
+    startLine: 684
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Saves the current items to the database and returns the number of rows updated.
+  remarks: >-
+    The method determines the database connection settings based on the current context
+        options. If the context options specify an open connection, the method uses the provided database connection
+        and transaction. Otherwise, it uses the connection string type to establish the connection. After the save
+        operation, the <xref href="SimpleRelm.Models.RelmDataSet%601.Modified" data-throw-if-not-resolved="false"></xref> property is set to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
   example: []
   syntax:
     content: public int Save()
     return:
       type: System.Int32
+      description: The number of rows updated in the database.
     content.vb: Public Function Save() As Integer
   overload: SimpleRelm.Models.RelmDataSet`1.Save*
   implements:
@@ -1485,18 +1705,23 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: New
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 469
+    startLine: 704
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Creates a new blank instance of the object, with an option to persist it.
   example: []
   syntax:
     content: public T New(bool Persist = true)
     parameters:
     - id: Persist
       type: System.Boolean
+      description: >-
+        A value indicating whether the new instance should be persisted.  <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> to persist the
+            instance; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     return:
       type: '{T}'
+      description: A new instance of the object.
     content.vb: Public Function [New](Persist As Boolean = True) As T
   overload: SimpleRelm.Models.RelmDataSet`1.New*
   implements:
@@ -1522,20 +1747,33 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: New
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 474
+    startLine: 721
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: >-
+    Creates a new instance of the specified type <code class="typeparamref">T</code> and initializes its properties based
+
+    on the provided dynamic parameters.
+  remarks: >-
+    This method uses reflection to set the properties of the new instance. Ensure that
+        the property names in <code class="paramref">NewObjectParameters</code> match the expected property names of
+        <code class="typeparamref">T</code>.
   example: []
   syntax:
     content: public T New(dynamic NewObjectParameters, bool Persist = true)
     parameters:
     - id: NewObjectParameters
       type: dynamic
+      description: >-
+        A dynamic object containing property names and values to initialize the new instance.  Only properties
+            matching the keys in the underscore properties of <code class="typeparamref">T</code> will be set.
     - id: Persist
       type: System.Boolean
+      description: A boolean value indicating whether the newly created object should be persisted.  The default value is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>.
     return:
       type: '{T}'
+      description: A new instance of <code class="typeparamref">T</code> with its properties initialized based on the provided parameters.
     content.vb: Public Function [New](NewObjectParameters As Object, Persist As Boolean = True) As T
   overload: SimpleRelm.Models.RelmDataSet`1.New*
   implements:
@@ -1561,18 +1799,21 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 495
+    startLine: 753
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Adds the specified item to the collection and persists the change.
   example: []
   syntax:
     content: public int Add(T item)
     parameters:
     - id: item
       type: '{T}'
+      description: The item to add to the collection. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     return:
       type: System.Int32
+      description: The index at which the item was added.
     content.vb: Public Function Add(item As T) As Integer
   overload: SimpleRelm.Models.RelmDataSet`1.Add*
   implements:
@@ -1597,20 +1838,33 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 500
+    startLine: 771
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Adds the specified item to the collection and optionally persists it to the database.
+  remarks: >-
+    If <code class="paramref">Persist</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the method writes the item
+        to the database  using the current database context. The database connection and transaction details are
+        determined  by the context options. If <code class="paramref">Persist</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>, the
+        collection's  state is marked as modified.
   example: []
   syntax:
     content: public int Add(T item, bool Persist)
     parameters:
     - id: item
       type: '{T}'
+      description: The item to add to the collection.
     - id: Persist
       type: System.Boolean
+      description: >-
+        A value indicating whether the item should be persisted to the database.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the
+            item is written to the database; otherwise, it is only added to the collection.
     return:
       type: System.Int32
+      description: >-
+        An integer indicating the result of the operation. Returns 1 if the item is added to the collection  without
+            persistence, or the result of the database write operation if <code class="paramref">Persist</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>.
     content.vb: Public Function Add(item As T, Persist As Boolean) As Integer
   overload: SimpleRelm.Models.RelmDataSet`1.Add*
   implements:
@@ -1636,18 +1890,21 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 523
+    startLine: 799
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Adds the specified collection of items to the current instance and persists the change.
   example: []
   syntax:
     content: public int Add(ICollection<T> items)
     parameters:
     - id: items
       type: System.Collections.Generic.ICollection{{T}}
+      description: The collection of items to add. Cannot be null.
     return:
       type: System.Int32
+      description: The number of items successfully added.
     content.vb: Public Function Add(items As ICollection(Of T)) As Integer
   overload: SimpleRelm.Models.RelmDataSet`1.Add*
   implements:
@@ -1673,20 +1930,26 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 528
+    startLine: 813
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Adds a collection of items to the current instance and optionally persists the changes.
   example: []
   syntax:
     content: public int Add(ICollection<T> items, bool Persist)
     parameters:
     - id: items
       type: System.Collections.Generic.ICollection{{T}}
+      description: The collection of items to add. Cannot be null.
     - id: Persist
       type: System.Boolean
+      description: A value indicating whether the changes should be persisted after adding the items. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the method persists the changes and returns the result of the save operation. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>, the method only adds the items and returns the count of items added.
     return:
       type: System.Int32
+      description: >-
+        The number of items added if <code class="paramref">Persist</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>,  or the result of the
+            save operation if <code class="paramref">Persist</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>.
     content.vb: Public Function Add(items As ICollection(Of T), Persist As Boolean) As Integer
   overload: SimpleRelm.Models.RelmDataSet`1.Add*
   implements:
@@ -1712,20 +1975,19 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Clear
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 543
+    startLine: 833
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
-  summary: Removes all items from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+  summary: Removes all items from the collection.
+  remarks: >-
+    After calling this method, the collection will be empty. If the collection is already
+        empty, this method has no effect.
   example: []
   syntax:
     content: public void Clear()
     content.vb: Public Sub Clear()
   overload: SimpleRelm.Models.RelmDataSet`1.Clear*
-  exceptions:
-  - type: System.NotSupportedException
-    commentId: T:System.NotSupportedException
-    description: The <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only.
   implements:
   - System.Collections.Generic.ICollection{{T}}.Clear
   nameWithType.vb: RelmDataSet(Of T).Clear()
@@ -1748,21 +2010,22 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Contains
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 548
+    startLine: 844
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
-  summary: Determines whether the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> contains a specific value.
+  summary: Determines whether the collection contains the specified item.
+  remarks: If the collection is null, this method returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
   example: []
   syntax:
     content: public bool Contains(T item)
     parameters:
     - id: item
       type: '{T}'
-      description: The object to locate in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+      description: The item to locate in the collection.
     return:
       type: System.Boolean
-      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> is found in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified item is found in the collection; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     content.vb: Public Function Contains(item As T) As Boolean
   overload: SimpleRelm.Models.RelmDataSet`1.Contains*
   implements:
@@ -1787,33 +2050,28 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: CopyTo
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 553
+    startLine: 857
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
-  summary: Copies the elements of the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> to an <xref href="System.Array" data-throw-if-not-resolved="false"></xref>, starting at a particular <xref href="System.Array" data-throw-if-not-resolved="false"></xref> index.
+  summary: Copies the elements of the collection to the specified array, starting at the specified index.
+  remarks: >-
+    This method copies the elements in the same order they are enumerated by the
+        collection.
   example: []
   syntax:
     content: public void CopyTo(T[] array, int arrayIndex)
     parameters:
     - id: array
       type: '{T}[]'
-      description: The one-dimensional <xref href="System.Array" data-throw-if-not-resolved="false"></xref> that is the destination of the elements copied from <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>. The <xref href="System.Array" data-throw-if-not-resolved="false"></xref> must have zero-based indexing.
+      description: >-
+        The one-dimensional array that is the destination of the elements copied from the collection. The array must
+            have zero-based indexing.
     - id: arrayIndex
       type: System.Int32
-      description: The zero-based index in <code class="paramref">array</code> at which copying begins.
+      description: The zero-based index in the <code class="paramref">array</code> at which copying begins.
     content.vb: Public Sub CopyTo(array As T(), arrayIndex As Integer)
   overload: SimpleRelm.Models.RelmDataSet`1.CopyTo*
-  exceptions:
-  - type: System.ArgumentNullException
-    commentId: T:System.ArgumentNullException
-    description: <code class="paramref">array</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
-  - type: System.ArgumentOutOfRangeException
-    commentId: T:System.ArgumentOutOfRangeException
-    description: <code class="paramref">arrayIndex</code> is less than 0.
-  - type: System.ArgumentException
-    commentId: T:System.ArgumentException
-    description: The number of elements in the source <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is greater than the available space from <code class="paramref">arrayIndex</code> to the end of the destination <code class="paramref">array</code>.
   implements:
   - System.Collections.Generic.ICollection{{T}}.CopyTo({T}[],System.Int32)
   nameWithType.vb: RelmDataSet(Of T).CopyTo(T(), Integer)
@@ -1837,32 +2095,62 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Remove
     path: SimpleRelm/Models/RelmDataSet.cs
-    startLine: 559
+    startLine: 869
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
-  summary: Removes the first occurrence of a specific object from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+  summary: Removes the specified item from the collection.
   example: []
   syntax:
     content: public bool Remove(T item)
     parameters:
     - id: item
       type: '{T}'
-      description: The object to remove from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+      description: The item to remove from the collection.
     return:
       type: System.Boolean
-      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> was successfully removed from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if <code class="paramref">item</code> is not found in the original <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+      description: >-
+        <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the item was successfully removed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. Returns
+            <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if the item was not found in the collection or if the collection is null.
     content.vb: Public Function Remove(item As T) As Boolean
   overload: SimpleRelm.Models.RelmDataSet`1.Remove*
-  exceptions:
-  - type: System.NotSupportedException
-    commentId: T:System.NotSupportedException
-    description: The <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only.
   implements:
   - System.Collections.Generic.ICollection{{T}}.Remove({T})
   nameWithType.vb: RelmDataSet(Of T).Remove(T)
   fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Remove(T)
 references:
+- uid: SimpleRelm.Models.RelmDataSet`1
+  commentId: T:SimpleRelm.Models.RelmDataSet`1
+  href: SimpleRelm.Models.RelmDataSet-1.html
+  name: RelmDataSet<T>
+  nameWithType: RelmDataSet<T>
+  fullName: SimpleRelm.Models.RelmDataSet<T>
+  nameWithType.vb: RelmDataSet(Of T)
+  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T)
+  name.vb: RelmDataSet(Of T)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmDataSet`1
+    name: RelmDataSet
+    href: SimpleRelm.Models.RelmDataSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmDataSet`1
+    name: RelmDataSet
+    href: SimpleRelm.Models.RelmDataSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmModel
+  commentId: T:SimpleRelm.Interfaces.IRelmModel
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmModel.html
+  name: IRelmModel
+  nameWithType: IRelmModel
+  fullName: SimpleRelm.Interfaces.IRelmModel
 - uid: SimpleRelm.Models
   commentId: N:SimpleRelm.Models
   href: SimpleRelm.html
@@ -3765,6 +4053,109 @@ references:
   - name: )
   - name: )
   - name: )
+- uid: System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},{R}}})
+  commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  parent: SimpleRelm.Extensions.ListExtensions
+  definition: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___
+  name: LoadForeignKeyField<T, R>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, R>>)
+  nameWithType: ListExtensions.LoadForeignKeyField<T, R>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, R>>)
+  fullName: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField<T, R>(System.Collections.Generic.ICollection<T>, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, R>>)
+  nameWithType.vb: ListExtensions.LoadForeignKeyField(Of T, R)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, R)))
+  fullName.vb: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField(Of T, R)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, R)))
+  name.vb: LoadForeignKeyField(Of T, R)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, R)))
+  spec.csharp:
+  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(System.Collections.Generic.ICollection{`0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{`0,``1}})
+    name: LoadForeignKeyField
+    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Options.RelmContextOptionsBuilder
+    name: RelmContextOptionsBuilder
+    href: SimpleRelm.Options.RelmContextOptionsBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(System.Collections.Generic.ICollection{`0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{`0,``1}})
+    name: LoadForeignKeyField
+    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Options.RelmContextOptionsBuilder
+    name: RelmContextOptionsBuilder
+    href: SimpleRelm.Options.RelmContextOptionsBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: )
+  - name: )
+  - name: )
 - uid: System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},{R}}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
   commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
   parent: SimpleRelm.Extensions.ListExtensions
@@ -4239,115 +4630,6 @@ references:
     name: Object
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-  - name: )
-  - name: )
-- uid: System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{{T},{R}}})
-  commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-  parent: SimpleRelm.Extensions.ListExtensions
-  definition: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-  href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___
-  name: LoadForeignKeyField<T, R, S>(ICollection<T>, IRelmContext, Expression<Func<T, R>>)
-  nameWithType: ListExtensions.LoadForeignKeyField<T, R, S>(ICollection<T>, IRelmContext, Expression<Func<T, R>>)
-  fullName: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField<T, R, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression<System.Func<T, R>>)
-  nameWithType.vb: ListExtensions.LoadForeignKeyField(Of T, R, S)(ICollection(Of T), IRelmContext, Expression(Of Func(Of T, R)))
-  fullName.vb: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField(Of T, R, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression(Of System.Func(Of T, R)))
-  name.vb: LoadForeignKeyField(Of T, R, S)(ICollection(Of T), IRelmContext, Expression(Of Func(Of T, R)))
-  spec.csharp:
-  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{`0},SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{`0,``1}})
-    name: LoadForeignKeyField
-    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___
-  - name: <
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: ','
-  - name: " "
-  - name: S
-  - name: '>'
-  - name: (
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: <
-  - name: T
-  - name: '>'
-  - name: ','
-  - name: " "
-  - uid: SimpleRelm.Interfaces.IRelmContext
-    name: IRelmContext
-    href: SimpleRelm.Interfaces.IRelmContext.html
-  - name: ','
-  - name: " "
-  - uid: System.Linq.Expressions.Expression`1
-    name: Expression
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
-  - name: <
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: <
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: '>'
-  - name: '>'
-  - name: )
-  spec.vb:
-  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{`0},SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{`0,``1}})
-    name: LoadForeignKeyField
-    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: ','
-  - name: " "
-  - name: S
-  - name: )
-  - name: (
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: ','
-  - name: " "
-  - uid: SimpleRelm.Interfaces.IRelmContext
-    name: IRelmContext
-    href: SimpleRelm.Interfaces.IRelmContext.html
-  - name: ','
-  - name: " "
-  - uid: System.Linq.Expressions.Expression`1
-    name: Expression
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
   - name: )
   - name: )
   - name: )
@@ -4979,115 +5261,6 @@ references:
   - name: )
   - name: )
   - name: )
-- uid: System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{{T},{R}}})
-  commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-  parent: SimpleRelm.Extensions.ListExtensions
-  definition: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-  href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___
-  name: LoadForeignKeyField<T, R, S>(ICollection<T>, IRelmQuickContext, Expression<Func<T, R>>)
-  nameWithType: ListExtensions.LoadForeignKeyField<T, R, S>(ICollection<T>, IRelmQuickContext, Expression<Func<T, R>>)
-  fullName: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField<T, R, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression<System.Func<T, R>>)
-  nameWithType.vb: ListExtensions.LoadForeignKeyField(Of T, R, S)(ICollection(Of T), IRelmQuickContext, Expression(Of Func(Of T, R)))
-  fullName.vb: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField(Of T, R, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression(Of System.Func(Of T, R)))
-  name.vb: LoadForeignKeyField(Of T, R, S)(ICollection(Of T), IRelmQuickContext, Expression(Of Func(Of T, R)))
-  spec.csharp:
-  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{`0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{`0,``1}})
-    name: LoadForeignKeyField
-    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___
-  - name: <
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: ','
-  - name: " "
-  - name: S
-  - name: '>'
-  - name: (
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: <
-  - name: T
-  - name: '>'
-  - name: ','
-  - name: " "
-  - uid: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
-    name: IRelmQuickContext
-    href: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext.html
-  - name: ','
-  - name: " "
-  - uid: System.Linq.Expressions.Expression`1
-    name: Expression
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
-  - name: <
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: <
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: '>'
-  - name: '>'
-  - name: )
-  spec.vb:
-  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{`0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{`0,``1}})
-    name: LoadForeignKeyField
-    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: ','
-  - name: " "
-  - name: S
-  - name: )
-  - name: (
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: ','
-  - name: " "
-  - uid: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
-    name: IRelmQuickContext
-    href: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext.html
-  - name: ','
-  - name: " "
-  - uid: System.Linq.Expressions.Expression`1
-    name: Expression
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: )
-  - name: )
-  - name: )
 - uid: System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{{T},{R}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}})
   commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
   parent: SimpleRelm.Extensions.ListExtensions
@@ -5388,21 +5561,21 @@ references:
   - name: )
   - name: )
   - name: )
-- uid: System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},{R}}})
-  commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+- uid: System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}})
+  commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
   parent: SimpleRelm.Extensions.ListExtensions
-  definition: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-  href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___
-  name: LoadForeignKeyField<T, R, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, R>>)
-  nameWithType: ListExtensions.LoadForeignKeyField<T, R, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, R>>)
-  fullName: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField<T, R, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, R>>)
-  nameWithType.vb: ListExtensions.LoadForeignKeyField(Of T, R, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, R)))
-  fullName.vb: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField(Of T, R, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, R)))
-  name.vb: LoadForeignKeyField(Of T, R, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, R)))
+  definition: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__
+  name: LoadForeignKeyField<T, R, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>)
+  nameWithType: ListExtensions.LoadForeignKeyField<T, R, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>)
+  fullName: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField<T, R, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, SimpleRelm.Interfaces.IRelmDataLoader<S>)
+  nameWithType.vb: ListExtensions.LoadForeignKeyField(Of T, R, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S))
+  fullName.vb: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField(Of T, R, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), SimpleRelm.Interfaces.IRelmDataLoader(Of S))
+  name.vb: LoadForeignKeyField(Of T, R, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S))
   spec.csharp:
-  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{`0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{`0,``1}})
+  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{`0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
     name: LoadForeignKeyField
-    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___
+    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__
   - name: <
   - name: T
   - name: ','
@@ -5440,14 +5613,190 @@ references:
   - name: T
   - name: ','
   - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
   - name: R
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: <
+  - name: S
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{`0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+    name: LoadForeignKeyField
+    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: ','
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Options.RelmContextOptionsBuilder
+    name: RelmContextOptionsBuilder
+    href: SimpleRelm.Options.RelmContextOptionsBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: R
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.ICollection{`0}.SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
+  commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  parent: SimpleRelm.Extensions.ListExtensions
+  definition: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__System_Linq_Expressions_Expression_System_Func___1_System_Object___
+  name: LoadForeignKeyField<T, R, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  nameWithType: ListExtensions.LoadForeignKeyField<T, R, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField<T, R, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, SimpleRelm.Interfaces.IRelmDataLoader<S>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  nameWithType.vb: ListExtensions.LoadForeignKeyField(Of T, R, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField(Of T, R, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), SimpleRelm.Interfaces.IRelmDataLoader(Of S), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{`0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+    name: LoadForeignKeyField
+    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__System_Linq_Expressions_Expression_System_Func___1_System_Object___
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: ','
+  - name: " "
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Options.RelmContextOptionsBuilder
+    name: RelmContextOptionsBuilder
+    href: SimpleRelm.Options.RelmContextOptionsBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: R
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: <
+  - name: S
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: R
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
   - name: '>'
   - name: '>'
   - name: )
   spec.vb:
-  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{`0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{`0,``1}})
+  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{`0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
     name: LoadForeignKeyField
-    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___
+    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__System_Linq_Expressions_Expression_System_Func___1_System_Object___
   - name: (
   - name: Of
   - name: " "
@@ -5493,7 +5842,50 @@ references:
   - name: T
   - name: ','
   - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
   - name: R
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: R
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
   - name: )
   - name: )
@@ -7002,6 +7394,28 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
+- uid: SimpleRelm.Interfaces
+  commentId: N:SimpleRelm.Interfaces
+  href: SimpleRelm.html
+  name: SimpleRelm.Interfaces
+  nameWithType: SimpleRelm.Interfaces
+  fullName: SimpleRelm.Interfaces
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Interfaces.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Interfaces.html
 - uid: System
   commentId: N:System
   isExternal: true
@@ -7035,28 +7449,6 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: SimpleRelm.Interfaces
-  commentId: N:SimpleRelm.Interfaces
-  href: SimpleRelm.html
-  name: SimpleRelm.Interfaces
-  nameWithType: SimpleRelm.Interfaces
-  fullName: SimpleRelm.Interfaces
-  spec.csharp:
-  - uid: SimpleRelm
-    name: SimpleRelm
-    href: SimpleRelm.html
-  - name: .
-  - uid: SimpleRelm.Interfaces
-    name: Interfaces
-    href: SimpleRelm.Interfaces.html
-  spec.vb:
-  - uid: SimpleRelm
-    name: SimpleRelm
-    href: SimpleRelm.html
-  - name: .
-  - uid: SimpleRelm.Interfaces
-    name: Interfaces
-    href: SimpleRelm.Interfaces.html
 - uid: System.Collections.Generic.ICollection`1
   commentId: T:System.Collections.Generic.ICollection`1
   isExternal: true
@@ -8722,6 +9114,108 @@ references:
   - name: )
   - name: )
   - name: )
+- uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  isExternal: true
+  href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___
+  name: LoadForeignKeyField<T, R>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, R>>)
+  nameWithType: ListExtensions.LoadForeignKeyField<T, R>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, R>>)
+  fullName: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField<T, R>(System.Collections.Generic.ICollection<T>, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, R>>)
+  nameWithType.vb: ListExtensions.LoadForeignKeyField(Of T, R)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, R)))
+  fullName.vb: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField(Of T, R)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, R)))
+  name.vb: LoadForeignKeyField(Of T, R)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, R)))
+  spec.csharp:
+  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+    name: LoadForeignKeyField
+    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Options.RelmContextOptionsBuilder
+    name: RelmContextOptionsBuilder
+    href: SimpleRelm.Options.RelmContextOptionsBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+    name: LoadForeignKeyField
+    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Options.RelmContextOptionsBuilder
+    name: RelmContextOptionsBuilder
+    href: SimpleRelm.Options.RelmContextOptionsBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: )
+  - name: )
+  - name: )
 - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
   commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
   isExternal: true
@@ -9193,114 +9687,6 @@ references:
     name: Object
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-  - name: )
-  - name: )
-- uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-  commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-  isExternal: true
-  href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___
-  name: LoadForeignKeyField<T, R, S>(ICollection<T>, IRelmContext, Expression<Func<T, R>>)
-  nameWithType: ListExtensions.LoadForeignKeyField<T, R, S>(ICollection<T>, IRelmContext, Expression<Func<T, R>>)
-  fullName: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField<T, R, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression<System.Func<T, R>>)
-  nameWithType.vb: ListExtensions.LoadForeignKeyField(Of T, R, S)(ICollection(Of T), IRelmContext, Expression(Of Func(Of T, R)))
-  fullName.vb: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField(Of T, R, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression(Of System.Func(Of T, R)))
-  name.vb: LoadForeignKeyField(Of T, R, S)(ICollection(Of T), IRelmContext, Expression(Of Func(Of T, R)))
-  spec.csharp:
-  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-    name: LoadForeignKeyField
-    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___
-  - name: <
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: ','
-  - name: " "
-  - name: S
-  - name: '>'
-  - name: (
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: <
-  - name: T
-  - name: '>'
-  - name: ','
-  - name: " "
-  - uid: SimpleRelm.Interfaces.IRelmContext
-    name: IRelmContext
-    href: SimpleRelm.Interfaces.IRelmContext.html
-  - name: ','
-  - name: " "
-  - uid: System.Linq.Expressions.Expression`1
-    name: Expression
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
-  - name: <
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: <
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: '>'
-  - name: '>'
-  - name: )
-  spec.vb:
-  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-    name: LoadForeignKeyField
-    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: ','
-  - name: " "
-  - name: S
-  - name: )
-  - name: (
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: ','
-  - name: " "
-  - uid: SimpleRelm.Interfaces.IRelmContext
-    name: IRelmContext
-    href: SimpleRelm.Interfaces.IRelmContext.html
-  - name: ','
-  - name: " "
-  - uid: System.Linq.Expressions.Expression`1
-    name: Expression
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
   - name: )
   - name: )
   - name: )
@@ -9928,114 +10314,6 @@ references:
   - name: )
   - name: )
   - name: )
-- uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-  commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-  isExternal: true
-  href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___
-  name: LoadForeignKeyField<T, R, S>(ICollection<T>, IRelmQuickContext, Expression<Func<T, R>>)
-  nameWithType: ListExtensions.LoadForeignKeyField<T, R, S>(ICollection<T>, IRelmQuickContext, Expression<Func<T, R>>)
-  fullName: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField<T, R, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression<System.Func<T, R>>)
-  nameWithType.vb: ListExtensions.LoadForeignKeyField(Of T, R, S)(ICollection(Of T), IRelmQuickContext, Expression(Of Func(Of T, R)))
-  fullName.vb: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField(Of T, R, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression(Of System.Func(Of T, R)))
-  name.vb: LoadForeignKeyField(Of T, R, S)(ICollection(Of T), IRelmQuickContext, Expression(Of Func(Of T, R)))
-  spec.csharp:
-  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-    name: LoadForeignKeyField
-    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___
-  - name: <
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: ','
-  - name: " "
-  - name: S
-  - name: '>'
-  - name: (
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: <
-  - name: T
-  - name: '>'
-  - name: ','
-  - name: " "
-  - uid: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
-    name: IRelmQuickContext
-    href: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext.html
-  - name: ','
-  - name: " "
-  - uid: System.Linq.Expressions.Expression`1
-    name: Expression
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
-  - name: <
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: <
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: '>'
-  - name: '>'
-  - name: )
-  spec.vb:
-  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-    name: LoadForeignKeyField
-    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: ','
-  - name: " "
-  - name: S
-  - name: )
-  - name: (
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: ','
-  - name: " "
-  - uid: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
-    name: IRelmQuickContext
-    href: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext.html
-  - name: ','
-  - name: " "
-  - uid: System.Linq.Expressions.Expression`1
-    name: Expression
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: ','
-  - name: " "
-  - name: R
-  - name: )
-  - name: )
-  - name: )
 - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
   commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
   isExternal: true
@@ -10334,20 +10612,20 @@ references:
   - name: )
   - name: )
   - name: )
-- uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
-  commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+- uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
   isExternal: true
-  href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___
-  name: LoadForeignKeyField<T, R, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, R>>)
-  nameWithType: ListExtensions.LoadForeignKeyField<T, R, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, R>>)
-  fullName: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField<T, R, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, R>>)
-  nameWithType.vb: ListExtensions.LoadForeignKeyField(Of T, R, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, R)))
-  fullName.vb: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField(Of T, R, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, R)))
-  name.vb: LoadForeignKeyField(Of T, R, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, R)))
+  href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__
+  name: LoadForeignKeyField<T, R, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>)
+  nameWithType: ListExtensions.LoadForeignKeyField<T, R, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>)
+  fullName: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField<T, R, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, SimpleRelm.Interfaces.IRelmDataLoader<S>)
+  nameWithType.vb: ListExtensions.LoadForeignKeyField(Of T, R, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S))
+  fullName.vb: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField(Of T, R, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), SimpleRelm.Interfaces.IRelmDataLoader(Of S))
+  name.vb: LoadForeignKeyField(Of T, R, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S))
   spec.csharp:
-  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
     name: LoadForeignKeyField
-    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___
+    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__
   - name: <
   - name: T
   - name: ','
@@ -10385,14 +10663,189 @@ references:
   - name: T
   - name: ','
   - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
   - name: R
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: <
+  - name: S
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+    name: LoadForeignKeyField
+    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: ','
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Options.RelmContextOptionsBuilder
+    name: RelmContextOptionsBuilder
+    href: SimpleRelm.Options.RelmContextOptionsBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: R
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+- uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExternal: true
+  href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__System_Linq_Expressions_Expression_System_Func___1_System_Object___
+  name: LoadForeignKeyField<T, R, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  nameWithType: ListExtensions.LoadForeignKeyField<T, R, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField<T, R, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, SimpleRelm.Interfaces.IRelmDataLoader<S>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  nameWithType.vb: ListExtensions.LoadForeignKeyField(Of T, R, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField(Of T, R, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), SimpleRelm.Interfaces.IRelmDataLoader(Of S), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+    name: LoadForeignKeyField
+    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__System_Linq_Expressions_Expression_System_Func___1_System_Object___
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: ','
+  - name: " "
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Options.RelmContextOptionsBuilder
+    name: RelmContextOptionsBuilder
+    href: SimpleRelm.Options.RelmContextOptionsBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: R
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: <
+  - name: S
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: R
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
   - name: '>'
   - name: '>'
   - name: )
   spec.vb:
-  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  - uid: SimpleRelm.Extensions.ListExtensions.LoadForeignKeyField``3(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
     name: LoadForeignKeyField
-    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___
+    href: SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__System_Linq_Expressions_Expression_System_Func___1_System_Object___
   - name: (
   - name: Of
   - name: " "
@@ -10438,7 +10891,50 @@ references:
   - name: T
   - name: ','
   - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
   - name: R
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: R
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
   - name: )
   - name: )
@@ -12049,22 +12545,29 @@ references:
   fullName: System.Collections.Generic.ICollection<T>.IsReadOnly
   nameWithType.vb: ICollection(Of T).IsReadOnly
   fullName.vb: System.Collections.Generic.ICollection(Of T).IsReadOnly
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
 - uid: SimpleRelm.Models.RelmDataSet`1.#ctor*
   commentId: Overload:SimpleRelm.Models.RelmDataSet`1.#ctor
-  href: SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1__ctor_SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_SimpleRelm_Interfaces_IRelmDataLoader__0__
+  href: SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1__ctor_SimpleRelm_Interfaces_IRelmContext_SimpleRelm_Interfaces_IRelmDataLoader__0__
   name: RelmDataSet
   nameWithType: RelmDataSet<T>.RelmDataSet
   fullName: SimpleRelm.Models.RelmDataSet<T>.RelmDataSet
   nameWithType.vb: RelmDataSet(Of T).New
   fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).New
   name.vb: New
-- uid: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
-  commentId: T:SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
-  parent: SimpleRelm.Interfaces.RelmQuick
-  href: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext.html
-  name: IRelmQuickContext
-  nameWithType: IRelmQuickContext
-  fullName: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+- uid: SimpleRelm.Interfaces.IRelmContext
+  commentId: T:SimpleRelm.Interfaces.IRelmContext
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmContext.html
+  name: IRelmContext
+  nameWithType: IRelmContext
+  fullName: SimpleRelm.Interfaces.IRelmContext
 - uid: SimpleRelm.Interfaces.IRelmDataLoader{{T}}
   commentId: T:SimpleRelm.Interfaces.IRelmDataLoader{``0}
   parent: SimpleRelm.Interfaces
@@ -12092,6 +12595,38 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+  commentId: T:SimpleRelm.Interfaces.IRelmDataLoader`1
+  href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  name: IRelmDataLoader<T>
+  nameWithType: IRelmDataLoader<T>
+  fullName: SimpleRelm.Interfaces.IRelmDataLoader<T>
+  nameWithType.vb: IRelmDataLoader(Of T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataLoader(Of T)
+  name.vb: IRelmDataLoader(Of T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+  commentId: T:SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+  parent: SimpleRelm.Interfaces.RelmQuick
+  href: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext.html
+  name: IRelmQuickContext
+  nameWithType: IRelmQuickContext
+  fullName: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
 - uid: SimpleRelm.Interfaces.RelmQuick
   commentId: N:SimpleRelm.Interfaces.RelmQuick
   href: SimpleRelm.html
@@ -12122,38 +12657,6 @@ references:
   - uid: SimpleRelm.Interfaces.RelmQuick
     name: RelmQuick
     href: SimpleRelm.Interfaces.RelmQuick.html
-- uid: SimpleRelm.Interfaces.IRelmDataLoader`1
-  commentId: T:SimpleRelm.Interfaces.IRelmDataLoader`1
-  href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
-  name: IRelmDataLoader<T>
-  nameWithType: IRelmDataLoader<T>
-  fullName: SimpleRelm.Interfaces.IRelmDataLoader<T>
-  nameWithType.vb: IRelmDataLoader(Of T)
-  fullName.vb: SimpleRelm.Interfaces.IRelmDataLoader(Of T)
-  name.vb: IRelmDataLoader(Of T)
-  spec.csharp:
-  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
-    name: IRelmDataLoader
-    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
-    name: IRelmDataLoader
-    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-- uid: SimpleRelm.Interfaces.IRelmContext
-  commentId: T:SimpleRelm.Interfaces.IRelmContext
-  parent: SimpleRelm.Interfaces
-  href: SimpleRelm.Interfaces.IRelmContext.html
-  name: IRelmContext
-  nameWithType: IRelmContext
-  fullName: SimpleRelm.Interfaces.IRelmContext
 - uid: SimpleRelm.Models.RelmDataSet`1.GetEnumerator*
   commentId: Overload:SimpleRelm.Models.RelmDataSet`1.GetEnumerator
   href: SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_GetEnumerator
@@ -12541,7 +13044,7 @@ references:
   - name: )
   - name: )
 - uid: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
-  commentId: T:System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}
   parent: System.Linq.Expressions
   definition: System.Linq.Expressions.Expression`1
   href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
@@ -14746,6 +15249,12 @@ references:
     href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load
   - name: (
   - name: )
+- uid: SimpleRelm.Attributes.RelmDataLoader
+  commentId: T:SimpleRelm.Attributes.RelmDataLoader
+  href: SimpleRelm.Attributes.RelmDataLoader.html
+  name: RelmDataLoader
+  nameWithType: RelmDataLoader
+  fullName: SimpleRelm.Attributes.RelmDataLoader
 - uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Load(System.Boolean)
   commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Load(System.Boolean)
   parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
@@ -15884,6 +16393,14 @@ references:
   - name: (
   - name: T
   - name: )
+- uid: SimpleRelm.Models.RelmDataSet`1.Modified
+  commentId: P:SimpleRelm.Models.RelmDataSet`1.Modified
+  href: SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_Modified
+  name: Modified
+  nameWithType: RelmDataSet<T>.Modified
+  fullName: SimpleRelm.Models.RelmDataSet<T>.Modified
+  nameWithType.vb: RelmDataSet(Of T).Modified
+  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Modified
 - uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Save
   commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Save
   parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
@@ -16386,13 +16903,6 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
-- uid: System.NotSupportedException
-  commentId: T:System.NotSupportedException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.notsupportedexception
-  name: NotSupportedException
-  nameWithType: NotSupportedException
-  fullName: System.NotSupportedException
 - uid: SimpleRelm.Models.RelmDataSet`1.Clear*
   commentId: Overload:SimpleRelm.Models.RelmDataSet`1.Clear
   href: SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_Clear
@@ -16507,27 +17017,6 @@ references:
   - name: (
   - name: T
   - name: )
-- uid: System.Array
-  commentId: T:System.Array
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.array
-  name: Array
-  nameWithType: Array
-  fullName: System.Array
-- uid: System.ArgumentNullException
-  commentId: T:System.ArgumentNullException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
-  name: ArgumentNullException
-  nameWithType: ArgumentNullException
-  fullName: System.ArgumentNullException
-- uid: System.ArgumentOutOfRangeException
-  commentId: T:System.ArgumentOutOfRangeException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
-  name: ArgumentOutOfRangeException
-  nameWithType: ArgumentOutOfRangeException
-  fullName: System.ArgumentOutOfRangeException
 - uid: SimpleRelm.Models.RelmDataSet`1.CopyTo*
   commentId: Overload:SimpleRelm.Models.RelmDataSet`1.CopyTo
   href: SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_CopyTo__0___System_Int32_

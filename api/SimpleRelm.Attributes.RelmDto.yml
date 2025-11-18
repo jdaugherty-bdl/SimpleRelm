@@ -19,10 +19,19 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmDto
     path: SimpleRelm/Attributes/RelmDto.cs
-    startLine: 8
+    startLine: 15
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: >-
+    Specifies that the associated property or struct is part of a Data Transfer Object (DTO)  used for communication
+
+    between application layers or services.
+  remarks: >-
+    This attribute is intended to annotate properties or structs that are part of a DTO, 
+        providing metadata for tools or frameworks that process or validate DTOs. It can be  applied to properties or
+        structs to indicate their role in data transfer scenarios.
+  example: []
   syntax:
     content: >-
       [AttributeUsage(AttributeTargets.Struct|AttributeTargets.Property)]

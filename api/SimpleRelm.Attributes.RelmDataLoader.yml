@@ -24,10 +24,16 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmDataLoader
     path: SimpleRelm/Attributes/RelmDataLoader.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: Specifies metadata for associating a data loader with a property, struct, or class.
+  remarks: >-
+    This attribute is used to define the type of a data loader and the key fields that the loader
+        uses to identify or retrieve data. It can be applied to properties, structs, or classes, and supports multiple
+        usages on the same target.
+  example: []
   syntax:
     content: >-
       [AttributeUsage(AttributeTargets.Class|AttributeTargets.Struct|AttributeTargets.Property, AllowMultiple = true)]
@@ -113,10 +119,15 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoaderType
     path: SimpleRelm/Attributes/RelmDataLoader.cs
-    startLine: 11
+    startLine: 22
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: Gets or sets the type of the loader used to process data or resources.
+  remarks: >-
+    The specified type is expected to define the behavior for loading data or resources.
+        Ensure  that the type is compatible with the intended usage context.
+  example: []
   syntax:
     content: public Type LoaderType { get; set; }
     parameters: []
@@ -142,10 +153,16 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: KeyFields
     path: SimpleRelm/Attributes/RelmDataLoader.cs
-    startLine: 12
+    startLine: 30
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: Gets or sets the collection of key field names used to uniquely identify an entity.
+  remarks: >-
+    Key fields are typically used to identify unique records in a dataset or entity.
+        Ensure that the field names provided correspond to valid and unique identifiers within the context of the
+        entity.
+  example: []
   syntax:
     content: public string[] KeyFields { get; set; }
     parameters: []
@@ -171,16 +188,19 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: SimpleRelm/Attributes/RelmDataLoader.cs
-    startLine: 14
+    startLine: 36
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: Initializes a new instance of the <xref href="SimpleRelm.Attributes.RelmDataLoader" data-throw-if-not-resolved="false"></xref> class with the specified loader type.
+  example: []
   syntax:
-    content: public RelmDataLoader(Type LoaderType)
+    content: public RelmDataLoader(Type loaderType)
     parameters:
-    - id: LoaderType
+    - id: loaderType
       type: System.Type
-    content.vb: Public Sub New(LoaderType As Type)
+      description: The type of the loader to be used. This parameter cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+    content.vb: Public Sub New(loaderType As Type)
   overload: SimpleRelm.Attributes.RelmDataLoader.#ctor*
   nameWithType.vb: RelmDataLoader.New(Type)
   fullName.vb: SimpleRelm.Attributes.RelmDataLoader.New(System.Type)
@@ -203,18 +223,30 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: SimpleRelm/Attributes/RelmDataLoader.cs
-    startLine: 19
+    startLine: 50
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: >-
+    Initializes a new instance of the <xref href="SimpleRelm.Attributes.RelmDataLoader" data-throw-if-not-resolved="false"></xref> class with the specified loader type and key
+
+    field.
+  remarks: >-
+    If <code class="paramref">keyField</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>, the <xref href="SimpleRelm.Attributes.RelmDataLoader.KeyFields" data-throw-if-not-resolved="false"></xref>
+        property will remain uninitialized.
+  example: []
   syntax:
-    content: public RelmDataLoader(Type LoaderType, string KeyField)
+    content: public RelmDataLoader(Type loaderType, string keyField)
     parameters:
-    - id: LoaderType
+    - id: loaderType
       type: System.Type
-    - id: KeyField
+      description: The type of the loader used to process data. This parameter cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+    - id: keyField
       type: System.String
-    content.vb: Public Sub New(LoaderType As Type, KeyField As String)
+      description: >-
+        The name of the key field used to identify data. If not <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>, it will be added as the sole
+            key field.
+    content.vb: Public Sub New(loaderType As Type, keyField As String)
   overload: SimpleRelm.Attributes.RelmDataLoader.#ctor*
   nameWithType.vb: RelmDataLoader.New(Type, String)
   fullName.vb: SimpleRelm.Attributes.RelmDataLoader.New(System.Type, String)
@@ -237,18 +269,29 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: SimpleRelm/Attributes/RelmDataLoader.cs
-    startLine: 27
+    startLine: 66
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: >-
+    Initializes a new instance of the <xref href="SimpleRelm.Attributes.RelmDataLoader" data-throw-if-not-resolved="false"></xref> class with the specified loader type and key
+
+    fields.
+  example: []
   syntax:
-    content: public RelmDataLoader(Type LoaderType, string[] KeyFields)
+    content: public RelmDataLoader(Type loaderType, string[] keyFields)
     parameters:
-    - id: LoaderType
+    - id: loaderType
       type: System.Type
-    - id: KeyFields
+      description: >-
+        The type of the loader used to process the data. This must be a valid <xref href="System.Type" data-throw-if-not-resolved="false"></xref> representing the
+            loader implementation.
+    - id: keyFields
       type: System.String[]
-    content.vb: Public Sub New(LoaderType As Type, KeyFields As String())
+      description: >-
+        An array of strings representing the key fields used to identify or process the data. This array cannot be
+            null and must contain at least one element.
+    content.vb: Public Sub New(loaderType As Type, keyFields As String())
   overload: SimpleRelm.Attributes.RelmDataLoader.#ctor*
   nameWithType.vb: RelmDataLoader.New(Type, String())
   fullName.vb: SimpleRelm.Attributes.RelmDataLoader.New(System.Type, String())
@@ -2158,6 +2201,12 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: (
   - name: )
+- uid: SimpleRelm.Attributes.RelmDataLoader
+  commentId: T:SimpleRelm.Attributes.RelmDataLoader
+  href: SimpleRelm.Attributes.RelmDataLoader.html
+  name: RelmDataLoader
+  nameWithType: RelmDataLoader
+  fullName: SimpleRelm.Attributes.RelmDataLoader
 - uid: SimpleRelm.Attributes.RelmDataLoader.#ctor*
   commentId: Overload:SimpleRelm.Attributes.RelmDataLoader.#ctor
   href: SimpleRelm.Attributes.RelmDataLoader.html#SimpleRelm_Attributes_RelmDataLoader__ctor_System_Type_
@@ -2167,6 +2216,12 @@ references:
   nameWithType.vb: RelmDataLoader.New
   fullName.vb: SimpleRelm.Attributes.RelmDataLoader.New
   name.vb: New
+- uid: SimpleRelm.Attributes.RelmDataLoader.KeyFields
+  commentId: P:SimpleRelm.Attributes.RelmDataLoader.KeyFields
+  href: SimpleRelm.Attributes.RelmDataLoader.html#SimpleRelm_Attributes_RelmDataLoader_KeyFields
+  name: KeyFields
+  nameWithType: RelmDataLoader.KeyFields
+  fullName: SimpleRelm.Attributes.RelmDataLoader.KeyFields
 - uid: System.String
   commentId: T:System.String
   parent: System

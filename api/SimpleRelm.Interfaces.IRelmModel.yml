@@ -32,10 +32,21 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmModel
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 13
+    startLine: 22
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Defines the contract for a Relm-compatible model, providing properties and methods for managing entity state,
+
+    database interactions, and data transfer object (DTO) generation.
+  remarks: >-
+    This interface is designed to represent a database entity with common attributes such as
+        identifiers, timestamps, and active state. It also includes methods for resetting attributes, writing data to
+        the database, and generating dynamic DTOs. Implementations of this interface are expected to handle
+        database-specific operations and provide fine-grained control over column constraints during write
+        operations.
+  example: []
   syntax:
     content: public interface IRelmModel
     content.vb: Public Interface IRelmModel
@@ -57,7 +68,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Id
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 19
+    startLine: 28
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
@@ -89,7 +100,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Active
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 24
+    startLine: 33
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
@@ -120,7 +131,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: InternalId
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 31
+    startLine: 40
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
@@ -154,7 +165,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: CreateDate
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 36
+    startLine: 45
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
@@ -185,7 +196,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LastUpdated
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 41
+    startLine: 50
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
@@ -216,7 +227,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ResetCoreAttributes
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 52
+    startLine: 61
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
@@ -258,7 +269,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ResetWithData
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 61
+    startLine: 70
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
@@ -301,7 +312,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetUnderscoreProperties
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 71
+    startLine: 80
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
@@ -343,7 +354,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 90
+    startLine: 99
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
@@ -401,7 +412,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 109
+    startLine: 118
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
@@ -467,7 +478,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 128
+    startLine: 137
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
@@ -533,7 +544,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 149
+    startLine: 158
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
@@ -597,7 +608,7 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GenerateDTO
     path: SimpleRelm/Interfaces/IRelmModel.cs
-    startLine: 169
+    startLine: 178
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces

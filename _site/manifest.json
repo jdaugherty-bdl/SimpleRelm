@@ -32,7 +32,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Attributes.RelmColumn",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Attributes.RelmColumn.yml\" sourcestartlinenumber=\"1\">Specifies metadata for a database column, including its name, size, constraints, and other properties.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -46,7 +46,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Attributes.RelmDataLoader",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Attributes.RelmDataLoader.yml\" sourcestartlinenumber=\"1\">Specifies metadata for associating a data loader with a property, struct, or class.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -60,7 +60,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Attributes.RelmDatabase",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Attributes.RelmDatabase.yml\" sourcestartlinenumber=\"1\">Specifies that a class or struct represents a database entity and associates it with a database name.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -74,7 +74,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Attributes.RelmDto",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Attributes.RelmDto.yml\" sourcestartlinenumber=\"1\">Specifies that the associated property or struct is part of a Data Transfer Object (DTO)  used for communication\nbetween application layers or services.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -88,7 +88,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Attributes.RelmForeignKey",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Attributes.RelmForeignKey.yml\" sourcestartlinenumber=\"1\">Specifies a foreign key relationship for a property or struct in a data model.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -102,7 +102,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Attributes.RelmKey",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Attributes.RelmKey.yml\" sourcestartlinenumber=\"1\">Specifies that the associated property or struct is a key used for identifying or referencing entities.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -116,7 +116,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Attributes.RelmTable",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Attributes.RelmTable.yml\" sourcestartlinenumber=\"1\">Specifies that a class or struct represents a table in a relational database and provides the name of the table.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -214,7 +214,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Extensions.DbContextExtensions",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Extensions.DbContextExtensions.yml\" sourcestartlinenumber=\"1\">Provides extension methods for configuring and interacting with database contexts.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -228,7 +228,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Extensions.ListExtensions",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Extensions.ListExtensions.yml\" sourcestartlinenumber=\"1\">Provides a set of extension methods for performing database operations,  loading related data, and manipulating\ncollections in the context of  relational models.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -312,7 +312,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.IRelmDataLoader<T>",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.IRelmDataLoader-1.yml\" sourcestartlinenumber=\"1\">Defines methods and properties for loading, writing, and managing data, as well as executing commands with\nassociated expressions.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -410,7 +410,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.IRelmModel",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.IRelmModel.yml\" sourcestartlinenumber=\"1\">Defines the contract for a Relm-compatible model, providing properties and methods for managing entity state,\ndatabase interactions, and data transfer object (DTO) generation.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -438,7 +438,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext.yml\" sourcestartlinenumber=\"1\">Defines a context for interacting with a Relm database, providing methods for managing connections,\ntransactions, and data operations. This interface supports querying, data manipulation, and bulk operations\nwhile ensuring proper resource management.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -592,7 +592,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Models.RelmDataSet<T>",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Models.RelmDataSet-1.yml\" sourcestartlinenumber=\"1\">Represents a dataset that provides functionality for managing, querying, and persisting a collection of entities\nof type <code class=\"typeparamref\">T</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -606,7 +606,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Models.RelmDefaultDataLoader<T>",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Models.RelmDefaultDataLoader-1.yml\" sourcestartlinenumber=\"1\">Provides a default implementation of the <xref href=\"SimpleRelm.Interfaces.IRelmDataLoader%601\" data-throw-if-not-resolved=\"false\"></xref> interface for loading, querying, and\nwriting data for a specified model type. This class is designed to work with models that implement the <xref href=\"SimpleRelm.Interfaces.IRelmModel\" data-throw-if-not-resolved=\"false\"></xref> interface.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -634,7 +634,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Models.RelmModel",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Models.RelmModel.yml\" sourcestartlinenumber=\"1\">Represents a base model for entities in the Relm framework, providing core attributes and functionality for data\nmanipulation, database operations, and DTO generation.</p>\n"
     },
     {
       "type": "ManagedReference",

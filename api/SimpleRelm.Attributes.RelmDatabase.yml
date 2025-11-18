@@ -21,10 +21,15 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmDatabase
     path: SimpleRelm/Attributes/RelmDatabase.cs
-    startLine: 8
+    startLine: 13
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: Specifies that a class or struct represents a database entity and associates it with a database name.
+  remarks: >-
+    This attribute is used to annotate classes or structs that correspond to database entities. 
+        The <xref href="SimpleRelm.Attributes.RelmDatabase.DatabaseName" data-throw-if-not-resolved="false"></xref> property specifies the name of the database associated with the entity.
+  example: []
   syntax:
     content: >-
       [AttributeUsage(AttributeTargets.Class|AttributeTargets.Struct)]
@@ -105,12 +110,14 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseName
     path: SimpleRelm/Attributes/RelmDatabase.cs
-    startLine: 13
+    startLine: 19
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: Gets or sets the name of the database.
+  example: []
   syntax:
-    content: public string DatabaseName { get; set; }
+    content: public string DatabaseName { get; }
     parameters: []
     return:
       type: System.String
@@ -134,21 +141,34 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: SimpleRelm/Attributes/RelmDatabase.cs
-    startLine: 19
+    startLine: 26
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: Initializes a new instance of the <xref href="SimpleRelm.Attributes.RelmDatabase" data-throw-if-not-resolved="false"></xref> class with the specified database name.
+  example: []
   syntax:
-    content: public RelmDatabase(string TableName)
+    content: public RelmDatabase(string databaseName)
     parameters:
-    - id: TableName
+    - id: databaseName
       type: System.String
-    content.vb: Public Sub New(TableName As String)
+      description: The name of the database. This value cannot be null, empty, or consist only of white-space characters.
+    content.vb: Public Sub New(databaseName As String)
   overload: SimpleRelm.Attributes.RelmDatabase.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">databaseName</code> is null, empty, or consists only of white-space characters.
   nameWithType.vb: RelmDatabase.New(String)
   fullName.vb: SimpleRelm.Attributes.RelmDatabase.New(String)
   name.vb: New(String)
 references:
+- uid: SimpleRelm.Attributes.RelmDatabase.DatabaseName
+  commentId: P:SimpleRelm.Attributes.RelmDatabase.DatabaseName
+  href: SimpleRelm.Attributes.RelmDatabase.html#SimpleRelm_Attributes_RelmDatabase_DatabaseName
+  name: DatabaseName
+  nameWithType: RelmDatabase.DatabaseName
+  fullName: SimpleRelm.Attributes.RelmDatabase.DatabaseName
 - uid: SimpleRelm.Attributes
   commentId: N:SimpleRelm.Attributes
   href: SimpleRelm.html
@@ -2003,6 +2023,19 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: SimpleRelm.Attributes.RelmDatabase
+  commentId: T:SimpleRelm.Attributes.RelmDatabase
+  href: SimpleRelm.Attributes.RelmDatabase.html
+  name: RelmDatabase
+  nameWithType: RelmDatabase
+  fullName: SimpleRelm.Attributes.RelmDatabase
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
 - uid: SimpleRelm.Attributes.RelmDatabase.#ctor*
   commentId: Overload:SimpleRelm.Attributes.RelmDatabase.#ctor
   href: SimpleRelm.Attributes.RelmDatabase.html#SimpleRelm_Attributes_RelmDatabase__ctor_System_String_

@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class RelmDataLoader | SimpleRelm ">
       
-      
+      <meta name="description" content="Specifies metadata for associating a data loader with a property, struct, or class.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="SimpleRelm_Attributes_RelmDataLoader" data-uid="SimpleRelm.Attributes.RelmDataLoader" class="text-break">
-Class RelmDataLoader  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L9"><i class="bi bi-code-slash"></i></a>
+Class RelmDataLoader  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Class RelmDataLoader  <a class="header-action link-secondary" title="View source
   <dl><dt>Assembly</dt><dd>SimpleRelm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Specifies metadata for associating a data loader with a property, struct, or class.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -259,6 +260,11 @@ public class RelmDataLoader : Attribute, _Attribute</code></pre>
 
 
 
+  <h2 id="SimpleRelm_Attributes_RelmDataLoader_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This attribute is used to define the type of a data loader and the key fields that the loader
+uses to identify or retrieve data. It can be applied to properties, structs, or classes, and supports multiple
+usages on the same target.</p>
+</div>
 
 
   <h2 class="section" id="constructors">Constructors
@@ -269,20 +275,22 @@ public class RelmDataLoader : Attribute, _Attribute</code></pre>
 
   <h3 id="SimpleRelm_Attributes_RelmDataLoader__ctor_System_Type_" data-uid="SimpleRelm.Attributes.RelmDataLoader.#ctor(System.Type)">
   RelmDataLoader(Type)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SimpleRelm.Attributes.RelmDataLoader.html">RelmDataLoader</a> class with the specified loader type.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RelmDataLoader(Type LoaderType)</code></pre>
+    <pre><code class="lang-csharp hljs">public RelmDataLoader(Type loaderType)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>LoaderType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
-    <dd></dd>
+    <dt><code>loaderType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd><p>The type of the loader to be used. This parameter cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
   </dl>
 
 
@@ -300,22 +308,27 @@ public class RelmDataLoader : Attribute, _Attribute</code></pre>
 
   <h3 id="SimpleRelm_Attributes_RelmDataLoader__ctor_System_Type_System_String_" data-uid="SimpleRelm.Attributes.RelmDataLoader.#ctor(System.Type,System.String)">
   RelmDataLoader(Type, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SimpleRelm.Attributes.RelmDataLoader.html">RelmDataLoader</a> class with the specified loader type and key
+field.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RelmDataLoader(Type LoaderType, string KeyField)</code></pre>
+    <pre><code class="lang-csharp hljs">public RelmDataLoader(Type loaderType, string keyField)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>LoaderType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
-    <dd></dd>
-    <dt><code>KeyField</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dt><code>loaderType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd><p>The type of the loader used to process data. This parameter cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+    <dt><code>keyField</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the key field used to identify data. If not <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>, it will be added as the sole
+key field.</p>
+</dd>
   </dl>
 
 
@@ -325,6 +338,10 @@ public class RelmDataLoader : Attribute, _Attribute</code></pre>
 
 
 
+  <h4 class="section" id="SimpleRelm_Attributes_RelmDataLoader__ctor_System_Type_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If <code class="paramref">keyField</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>, the <a class="xref" href="SimpleRelm.Attributes.RelmDataLoader.html#SimpleRelm_Attributes_RelmDataLoader_KeyFields">KeyFields</a>
+property will remain uninitialized.</p>
+</div>
 
 
 
@@ -333,22 +350,28 @@ public class RelmDataLoader : Attribute, _Attribute</code></pre>
 
   <h3 id="SimpleRelm_Attributes_RelmDataLoader__ctor_System_Type_System_String___" data-uid="SimpleRelm.Attributes.RelmDataLoader.#ctor(System.Type,System.String[])">
   RelmDataLoader(Type, string[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SimpleRelm.Attributes.RelmDataLoader.html">RelmDataLoader</a> class with the specified loader type and key
+fields.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RelmDataLoader(Type LoaderType, string[] KeyFields)</code></pre>
+    <pre><code class="lang-csharp hljs">public RelmDataLoader(Type loaderType, string[] keyFields)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>LoaderType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
-    <dd></dd>
-    <dt><code>KeyFields</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
+    <dt><code>loaderType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd><p>The type of the loader used to process the data. This must be a valid <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a> representing the
+loader implementation.</p>
+</dd>
+    <dt><code>keyFields</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>An array of strings representing the key fields used to identify or process the data. This array cannot be
+null and must contain at least one element.</p>
+</dd>
   </dl>
 
 
@@ -370,10 +393,11 @@ public class RelmDataLoader : Attribute, _Attribute</code></pre>
 
   <h3 id="SimpleRelm_Attributes_RelmDataLoader_KeyFields" data-uid="SimpleRelm.Attributes.RelmDataLoader.KeyFields">
   KeyFields
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the collection of key field names used to uniquely identify an entity.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -393,6 +417,11 @@ public class RelmDataLoader : Attribute, _Attribute</code></pre>
 
 
 
+  <h4 class="section" id="SimpleRelm_Attributes_RelmDataLoader_KeyFields_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Key fields are typically used to identify unique records in a dataset or entity.
+Ensure that the field names provided correspond to valid and unique identifiers within the context of the
+entity.</p>
+</div>
 
 
 
@@ -401,10 +430,11 @@ public class RelmDataLoader : Attribute, _Attribute</code></pre>
 
   <h3 id="SimpleRelm_Attributes_RelmDataLoader_LoaderType" data-uid="SimpleRelm.Attributes.RelmDataLoader.LoaderType">
   LoaderType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the type of the loader used to process data or resources.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -424,6 +454,10 @@ public class RelmDataLoader : Attribute, _Attribute</code></pre>
 
 
 
+  <h4 class="section" id="SimpleRelm_Attributes_RelmDataLoader_LoaderType_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The specified type is expected to define the behavior for loading data or resources.
+Ensure  that the type is compatible with the intended usage context.</p>
+</div>
 
 
 
@@ -432,7 +466,7 @@ public class RelmDataLoader : Attribute, _Attribute</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L9" class="edit-link">Edit this page</a>
+          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmDataLoader.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 

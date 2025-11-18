@@ -4,8 +4,7 @@ items:
   commentId: T:SimpleRelm.Attributes.RelmKey
   id: RelmKey
   parent: SimpleRelm.Attributes
-  children:
-  - SimpleRelm.Attributes.RelmKey.#ctor
+  children: []
   langs:
   - csharp
   - vb
@@ -20,19 +19,25 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmKey
     path: SimpleRelm/Attributes/RelmKey.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: Specifies that the associated property or struct is a key used for identifying or referencing entities.
+  remarks: >-
+    This attribute can be applied to properties or structs to indicate their role as a key in a
+        relational or entity-based context. It is primarily used for metadata purposes and does not enforce any behavior
+        at runtime.
+  example: []
   syntax:
     content: >-
       [AttributeUsage(AttributeTargets.Struct|AttributeTargets.Property)]
 
-      public class RelmKey : Attribute, _Attribute
+      public sealed class RelmKey : Attribute, _Attribute
     content.vb: >-
       <AttributeUsage(AttributeTargets.StructOrAttributeTargets.Property)>
 
-      Public Class RelmKey Inherits Attribute Implements _Attribute
+      Public NotInheritable Class RelmKey Inherits Attribute Implements _Attribute
   inheritance:
   - System.Object
   - System.Attribute
@@ -80,42 +85,12 @@ items:
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.GetType
-  - System.Object.MemberwiseClone
   attributes:
   - type: System.AttributeUsageAttribute
     ctor: System.AttributeUsageAttribute.#ctor(System.AttributeTargets)
     arguments:
     - type: System.AttributeTargets
       value: 136
-- uid: SimpleRelm.Attributes.RelmKey.#ctor
-  commentId: M:SimpleRelm.Attributes.RelmKey.#ctor
-  id: '#ctor'
-  parent: SimpleRelm.Attributes.RelmKey
-  langs:
-  - csharp
-  - vb
-  name: RelmKey()
-  nameWithType: RelmKey.RelmKey()
-  fullName: SimpleRelm.Attributes.RelmKey.RelmKey()
-  type: Constructor
-  source:
-    remote:
-      path: SimpleRelm/Attributes/RelmKey.cs
-      branch: master
-      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
-    id: .ctor
-    path: SimpleRelm/Attributes/RelmKey.cs
-    startLine: 11
-  assemblies:
-  - SimpleRelm
-  namespace: SimpleRelm.Attributes
-  syntax:
-    content: public RelmKey()
-    content.vb: Public Sub New()
-  overload: SimpleRelm.Attributes.RelmKey.#ctor*
-  nameWithType.vb: RelmKey.New()
-  fullName.vb: SimpleRelm.Attributes.RelmKey.New()
-  name.vb: New()
 references:
 - uid: SimpleRelm.Attributes
   commentId: N:SimpleRelm.Attributes
@@ -1910,30 +1885,6 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.gettype
   - name: (
   - name: )
-- uid: System.Object.MemberwiseClone
-  commentId: M:System.Object.MemberwiseClone
-  parent: System.Object
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
-  name: MemberwiseClone()
-  nameWithType: object.MemberwiseClone()
-  fullName: object.MemberwiseClone()
-  nameWithType.vb: Object.MemberwiseClone()
-  fullName.vb: Object.MemberwiseClone()
-  spec.csharp:
-  - uid: System.Object.MemberwiseClone
-    name: MemberwiseClone
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: System.Object.MemberwiseClone
-    name: MemberwiseClone
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
-  - name: (
-  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1978,12 +1929,3 @@ references:
     name: InteropServices
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.runtime.interopservices
-- uid: SimpleRelm.Attributes.RelmKey.#ctor*
-  commentId: Overload:SimpleRelm.Attributes.RelmKey.#ctor
-  href: SimpleRelm.Attributes.RelmKey.html#SimpleRelm_Attributes_RelmKey__ctor
-  name: RelmKey
-  nameWithType: RelmKey.RelmKey
-  fullName: SimpleRelm.Attributes.RelmKey.RelmKey
-  nameWithType.vb: RelmKey.New
-  fullName.vb: SimpleRelm.Attributes.RelmKey.New
-  name.vb: New

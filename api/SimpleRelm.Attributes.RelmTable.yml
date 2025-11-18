@@ -21,10 +21,15 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmTable
     path: SimpleRelm/Attributes/RelmTable.cs
-    startLine: 8
+    startLine: 13
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: Specifies that a class or struct represents a table in a relational database and provides the name of the table.
+  remarks: >-
+    This attribute is used to associate a class or struct with a specific table name in a
+        relational database. The table name is specified via the <xref href="SimpleRelm.Attributes.RelmTable.TableName" data-throw-if-not-resolved="false"></xref> property.
+  example: []
   syntax:
     content: >-
       [AttributeUsage(AttributeTargets.Class|AttributeTargets.Struct)]
@@ -106,12 +111,14 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: TableName
     path: SimpleRelm/Attributes/RelmTable.cs
-    startLine: 13
+    startLine: 19
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: Gets or sets the name of the database table associated with this instance.
+  example: []
   syntax:
-    content: public string TableName { get; set; }
+    content: public string TableName { get; }
     parameters: []
     return:
       type: System.String
@@ -135,21 +142,34 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: SimpleRelm/Attributes/RelmTable.cs
-    startLine: 19
+    startLine: 26
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Attributes
+  summary: Initializes a new instance of the <xref href="SimpleRelm.Attributes.RelmTable" data-throw-if-not-resolved="false"></xref> class with the specified table name.
+  example: []
   syntax:
-    content: public RelmTable(string TableName)
+    content: public RelmTable(string tableName)
     parameters:
-    - id: TableName
+    - id: tableName
       type: System.String
-    content.vb: Public Sub New(TableName As String)
+      description: The name of the table. This value cannot be null, empty, or consist only of white-space characters.
+    content.vb: Public Sub New(tableName As String)
   overload: SimpleRelm.Attributes.RelmTable.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">tableName</code> is null, empty, or consists only of white-space characters.
   nameWithType.vb: RelmTable.New(String)
   fullName.vb: SimpleRelm.Attributes.RelmTable.New(String)
   name.vb: New(String)
 references:
+- uid: SimpleRelm.Attributes.RelmTable.TableName
+  commentId: P:SimpleRelm.Attributes.RelmTable.TableName
+  href: SimpleRelm.Attributes.RelmTable.html#SimpleRelm_Attributes_RelmTable_TableName
+  name: TableName
+  nameWithType: RelmTable.TableName
+  fullName: SimpleRelm.Attributes.RelmTable.TableName
 - uid: SimpleRelm.Attributes
   commentId: N:SimpleRelm.Attributes
   href: SimpleRelm.html
@@ -2028,6 +2048,19 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: SimpleRelm.Attributes.RelmTable
+  commentId: T:SimpleRelm.Attributes.RelmTable
+  href: SimpleRelm.Attributes.RelmTable.html
+  name: RelmTable
+  nameWithType: RelmTable
+  fullName: SimpleRelm.Attributes.RelmTable
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
 - uid: SimpleRelm.Attributes.RelmTable.#ctor*
   commentId: Overload:SimpleRelm.Attributes.RelmTable.#ctor
   href: SimpleRelm.Attributes.RelmTable.html#SimpleRelm_Attributes_RelmTable__ctor_System_String_

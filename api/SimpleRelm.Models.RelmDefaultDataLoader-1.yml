@@ -28,14 +28,26 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmDefaultDataLoader
     path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-    startLine: 17
+    startLine: 27
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: >-
+    Provides a default implementation of the <xref href="SimpleRelm.Interfaces.IRelmDataLoader%601" data-throw-if-not-resolved="false"></xref> interface for loading, querying, and
+
+    writing data for a specified model type. This class is designed to work with models that implement the <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> interface.
+  remarks: >-
+    This class supports operations such as adding query expressions, retrieving data, and writing
+        data to the database. It uses a combination of database column metadata and query expressions to dynamically
+        build SQL queries.
+  example: []
   syntax:
     content: 'public class RelmDefaultDataLoader<T> : IRelmDataLoader<T> where T : IRelmModel, new()'
     typeParameters:
     - id: T
+      description: >-
+        The type of the model to be loaded, queried, or written. The type must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and
+            have a parameterless constructor.
     content.vb: Public Class RelmDefaultDataLoader(Of T As {IRelmModel, New}) Implements IRelmDataLoader(Of T)
   inheritance:
   - System.Object
@@ -70,10 +82,16 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LastCommandsExecuted
     path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-    startLine: 19
+    startLine: 36
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Gets or sets the collection of the most recently executed commands and their associated execution details.
+  remarks: >-
+    This property provides a record of the last executed commands along with their
+        execution details.  The dictionary keys represent the commands, and the associated lists contain the
+        execution information  for each command. The property can be used to inspect or analyze the history of
+        command executions.
   example: []
   syntax:
     content: public Dictionary<Commands.Command, List<IRelmExecutionCommand>> LastCommandsExecuted { get; set; }
@@ -104,10 +122,15 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-    startLine: 33
+    startLine: 55
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Initializes a new instance of the RelmDefaultDataLoader class.
+  remarks: >-
+    This constructor performs the initial setup required for the data loader by invoking
+        the <xref href="SimpleRelm.Models.RelmDefaultDataLoader%601.InitialSetup" data-throw-if-not-resolved="false"></xref> method.
+  example: []
   syntax:
     content: public RelmDefaultDataLoader()
     content.vb: Public Sub New()
@@ -133,15 +156,21 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-    startLine: 38
+    startLine: 65
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: >-
+    Initializes a new instance of the RelmDefaultDataLoader class with the specified context
+
+    options builder.
+  example: []
   syntax:
     content: public RelmDefaultDataLoader(RelmContextOptionsBuilder contextOptionsBuilder)
     parameters:
     - id: contextOptionsBuilder
       type: SimpleRelm.Options.RelmContextOptionsBuilder
+      description: The builder used to configure options for the <xref href="SimpleRelm.Models.RelmContext" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Sub New(contextOptionsBuilder As RelmContextOptionsBuilder)
   overload: SimpleRelm.Models.RelmDefaultDataLoader`1.#ctor*
   nameWithType.vb: RelmDefaultDataLoader(Of T).New(RelmContextOptionsBuilder)
@@ -165,18 +194,24 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: HasUnderscoreProperty
     path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-    startLine: 69
+    startLine: 112
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Determines whether the specified property key exists in the column registry.
+  remarks: >-
+    This method checks the presence of a property key in the internal column registry. 
+        If the column registry is null, the method returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
   example: []
   syntax:
     content: public bool HasUnderscoreProperty(string PropertyKey)
     parameters:
     - id: PropertyKey
       type: System.String
+      description: The key of the property to check for existence.
     return:
       type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the column registry contains the specified property key;  otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     content.vb: Public Function HasUnderscoreProperty(PropertyKey As String) As Boolean
   overload: SimpleRelm.Models.RelmDefaultDataLoader`1.HasUnderscoreProperty*
   implements:
@@ -202,20 +237,28 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddExpression
     path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-    startLine: 71
+    startLine: 123
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Adds an expression to the specified command and returns a new execution command.
+  remarks: >-
+    This method creates a new execution command by associating the provided expression
+        with the specified command. The new execution command is added to the prewarmed query for the given
+        command.
   example: []
   syntax:
     content: public IRelmExecutionCommand AddExpression(Commands.Command command, Expression expression)
     parameters:
     - id: command
       type: SimpleRelm.Enums.Commands.Command
+      description: The command to which the expression will be added. Must not be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     - id: expression
       type: System.Linq.Expressions.Expression
+      description: The expression to add to the command. Must not be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     return:
       type: SimpleRelm.Interfaces.IRelmExecutionCommand
+      description: A new <xref href="SimpleRelm.Interfaces.IRelmExecutionCommand" data-throw-if-not-resolved="false"></xref> instance representing the command with the added expression.
     content.vb: Public Function AddExpression(command As Commands.Command, expression As Expression) As IRelmExecutionCommand
   overload: SimpleRelm.Models.RelmDefaultDataLoader`1.AddExpression*
   implements:
@@ -240,20 +283,29 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddSingleExpression
     path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-    startLine: 81
+    startLine: 141
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Adds a single expression to the specified command and returns the resulting execution command.
+  remarks: >-
+    If the command does not already have any associated expressions, a new execution
+        command is created.
   example: []
   syntax:
     content: public IRelmExecutionCommand AddSingleExpression(Commands.Command command, Expression expression)
     parameters:
     - id: command
       type: SimpleRelm.Enums.Commands.Command
+      description: The command to which the expression will be added.
     - id: expression
       type: System.Linq.Expressions.Expression
+      description: The expression to associate with the command.
     return:
       type: SimpleRelm.Interfaces.IRelmExecutionCommand
+      description: >-
+        An <xref href="SimpleRelm.Interfaces.IRelmExecutionCommand" data-throw-if-not-resolved="false"></xref> representing the updated execution command with the specified
+            expression.
     content.vb: Public Function AddSingleExpression(command As Commands.Command, expression As Expression) As IRelmExecutionCommand
   overload: SimpleRelm.Models.RelmDefaultDataLoader`1.AddSingleExpression*
   implements:
@@ -278,15 +330,22 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetLoadData
     path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-    startLine: 114
+    startLine: 180
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Retrieves a collection of data entities based on the current query configuration.
+  remarks: >-
+    This method constructs a query using the current configuration and retrieves the
+        corresponding data entities. The returned collection may be empty if no matching data is found.
   example: []
   syntax:
     content: public virtual ICollection<T> GetLoadData()
     return:
       type: System.Collections.Generic.ICollection{{T}}
+      description: >-
+        A collection of data entities of type <code class="typeparamref">T</code>. The collection will be empty if no data
+            matches the query.
     content.vb: Public Overridable Function GetLoadData() As ICollection(Of T)
   overload: SimpleRelm.Models.RelmDefaultDataLoader`1.GetLoadData*
   implements:
@@ -311,19 +370,34 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: PullData
     path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-    startLine: 122
+    startLine: 201
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Executes the specified SQL query and retrieves a collection of data objects of type <code class="typeparamref">T</code>.
+  remarks: >-
+    This method supports two modes of database connection: - If the context is configured
+        with an open database connection, the query is executed using the provided connection and transaction. -
+        Otherwise, the query is executed using the configured connection string type.
+  example: []
   syntax:
     content: public virtual ICollection<T> PullData(string selectQuery, Dictionary<string, object> findOptions)
     parameters:
     - id: selectQuery
       type: System.String
+      description: >-
+        The SQL query to execute. This query should be a valid SELECT statement that matches the structure of the
+            data objects being retrieved.
     - id: findOptions
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
+      description: >-
+        A dictionary of parameters to be used in the query. The keys represent parameter names, and the values
+            represent their corresponding values.
     return:
       type: System.Collections.Generic.ICollection{{T}}
+      description: >-
+        A collection of data objects of type <code class="typeparamref">T</code> that match the results of the query.  Returns
+            an empty collection if no data is found.
     content.vb: Public Overridable Function PullData(selectQuery As String, findOptions As Dictionary(Of String, Object)) As ICollection(Of T)
   overload: SimpleRelm.Models.RelmDefaultDataLoader`1.PullData*
   nameWithType.vb: RelmDefaultDataLoader(Of T).PullData(String, Dictionary(Of String, Object))
@@ -347,15 +421,23 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteData
     path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-    startLine: 130
+    startLine: 217
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Executes a database operation to write data and returns the result of the operation.
+  remarks: >-
+    This method constructs an update query and performs the database operation based on
+        the  configuration of the context options. It supports both open database connections and  connection
+        strings, depending on the specified options.
   example: []
   syntax:
     content: public int WriteData()
     return:
       type: System.Int32
+      description: >-
+        The result of the database operation as an integer. The value typically represents the number of rows
+            affected by the operation.
     content.vb: Public Function WriteData() As Integer
   overload: SimpleRelm.Models.RelmDefaultDataLoader`1.WriteData*
   implements:
@@ -363,6 +445,38 @@ items:
   nameWithType.vb: RelmDefaultDataLoader(Of T).WriteData()
   fullName.vb: SimpleRelm.Models.RelmDefaultDataLoader(Of T).WriteData()
 references:
+- uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+  commentId: T:SimpleRelm.Interfaces.IRelmDataLoader`1
+  href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  name: IRelmDataLoader<T>
+  nameWithType: IRelmDataLoader<T>
+  fullName: SimpleRelm.Interfaces.IRelmDataLoader<T>
+  nameWithType.vb: IRelmDataLoader(Of T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataLoader(Of T)
+  name.vb: IRelmDataLoader(Of T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmModel
+  commentId: T:SimpleRelm.Interfaces.IRelmModel
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmModel.html
+  name: IRelmModel
+  nameWithType: IRelmModel
+  fullName: SimpleRelm.Interfaces.IRelmModel
 - uid: SimpleRelm.Models
   commentId: N:SimpleRelm.Models
   href: SimpleRelm.html
@@ -642,38 +756,6 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
   - name: (
   - name: )
-- uid: System
-  commentId: N:System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System
-  nameWithType: System
-  fullName: System
-- uid: SimpleRelm.Interfaces.IRelmDataLoader`1
-  commentId: T:SimpleRelm.Interfaces.IRelmDataLoader`1
-  href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
-  name: IRelmDataLoader<T>
-  nameWithType: IRelmDataLoader<T>
-  fullName: SimpleRelm.Interfaces.IRelmDataLoader<T>
-  nameWithType.vb: IRelmDataLoader(Of T)
-  fullName.vb: SimpleRelm.Interfaces.IRelmDataLoader(Of T)
-  name.vb: IRelmDataLoader(Of T)
-  spec.csharp:
-  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
-    name: IRelmDataLoader
-    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
-    name: IRelmDataLoader
-    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
 - uid: SimpleRelm.Interfaces
   commentId: N:SimpleRelm.Interfaces
   href: SimpleRelm.html
@@ -696,6 +778,13 @@ references:
   - uid: SimpleRelm.Interfaces
     name: Interfaces
     href: SimpleRelm.Interfaces.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
 - uid: SimpleRelm.Models.RelmDefaultDataLoader`1.LastCommandsExecuted*
   commentId: Overload:SimpleRelm.Models.RelmDefaultDataLoader`1.LastCommandsExecuted
   href: SimpleRelm.Models.RelmDefaultDataLoader-1.html#SimpleRelm_Models_RelmDefaultDataLoader_1_LastCommandsExecuted
@@ -858,6 +947,23 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: SimpleRelm.Models.RelmDefaultDataLoader`1.InitialSetup
+  commentId: M:SimpleRelm.Models.RelmDefaultDataLoader`1.InitialSetup
+  name: InitialSetup()
+  nameWithType: RelmDefaultDataLoader<T>.InitialSetup()
+  fullName: SimpleRelm.Models.RelmDefaultDataLoader<T>.InitialSetup()
+  nameWithType.vb: RelmDefaultDataLoader(Of T).InitialSetup()
+  fullName.vb: SimpleRelm.Models.RelmDefaultDataLoader(Of T).InitialSetup()
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmDefaultDataLoader`1.InitialSetup
+    name: InitialSetup
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmDefaultDataLoader`1.InitialSetup
+    name: InitialSetup
+  - name: (
+  - name: )
 - uid: SimpleRelm.Models.RelmDefaultDataLoader`1.#ctor*
   commentId: Overload:SimpleRelm.Models.RelmDefaultDataLoader`1.#ctor
   href: SimpleRelm.Models.RelmDefaultDataLoader-1.html#SimpleRelm_Models_RelmDefaultDataLoader_1__ctor
@@ -867,6 +973,12 @@ references:
   nameWithType.vb: RelmDefaultDataLoader(Of T).New
   fullName.vb: SimpleRelm.Models.RelmDefaultDataLoader(Of T).New
   name.vb: New
+- uid: SimpleRelm.Models.RelmContext
+  commentId: T:SimpleRelm.Models.RelmContext
+  href: SimpleRelm.Models.RelmContext.html
+  name: RelmContext
+  nameWithType: RelmContext
+  fullName: SimpleRelm.Models.RelmContext
 - uid: SimpleRelm.Options.RelmContextOptionsBuilder
   commentId: T:SimpleRelm.Options.RelmContextOptionsBuilder
   parent: SimpleRelm.Options
@@ -987,6 +1099,13 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
+- uid: SimpleRelm.Interfaces.IRelmExecutionCommand
+  commentId: T:SimpleRelm.Interfaces.IRelmExecutionCommand
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmExecutionCommand.html
+  name: IRelmExecutionCommand
+  nameWithType: IRelmExecutionCommand
+  fullName: SimpleRelm.Interfaces.IRelmExecutionCommand
 - uid: SimpleRelm.Models.RelmDefaultDataLoader`1.AddExpression*
   commentId: Overload:SimpleRelm.Models.RelmDefaultDataLoader`1.AddExpression
   href: SimpleRelm.Models.RelmDefaultDataLoader-1.html#SimpleRelm_Models_RelmDefaultDataLoader_1_AddExpression_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression_
@@ -1066,13 +1185,6 @@ references:
   name: Expression
   nameWithType: Expression
   fullName: System.Linq.Expressions.Expression
-- uid: SimpleRelm.Interfaces.IRelmExecutionCommand
-  commentId: T:SimpleRelm.Interfaces.IRelmExecutionCommand
-  parent: SimpleRelm.Interfaces
-  href: SimpleRelm.Interfaces.IRelmExecutionCommand.html
-  name: IRelmExecutionCommand
-  nameWithType: IRelmExecutionCommand
-  fullName: SimpleRelm.Interfaces.IRelmExecutionCommand
 - uid: SimpleRelm.Interfaces.IRelmDataLoader`1.AddExpression(SimpleRelm.Enums.Commands.Command,System.Linq.Expressions.Expression)
   commentId: M:SimpleRelm.Interfaces.IRelmDataLoader`1.AddExpression(SimpleRelm.Enums.Commands.Command,System.Linq.Expressions.Expression)
   isExternal: true

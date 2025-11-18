@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class RelmKey | SimpleRelm ">
       
-      
+      <meta name="description" content="Specifies that the associated property or struct is a key used for identifying or referencing entities.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="SimpleRelm_Attributes_RelmKey" data-uid="SimpleRelm.Attributes.RelmKey" class="text-break">
-Class RelmKey  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmKey.cs/#L9"><i class="bi bi-code-slash"></i></a>
+Class RelmKey  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmKey.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,12 +97,13 @@ Class RelmKey  <a class="header-action link-secondary" title="View source" href=
   <dl><dt>Assembly</dt><dd>SimpleRelm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Specifies that the associated property or struct is a key used for identifying or referencing entities.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[AttributeUsage(AttributeTargets.Struct|AttributeTargets.Property)]
-public class RelmKey : Attribute, _Attribute</code></pre>
+public sealed class RelmKey : Attribute, _Attribute</code></pre>
   </div>
 
 
@@ -251,51 +252,23 @@ public class RelmKey : Attribute, _Attribute</code></pre>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
-    </div>
   </dd></dl>
 
 
 
 
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
-  <a id="SimpleRelm_Attributes_RelmKey__ctor_" data-uid="SimpleRelm.Attributes.RelmKey.#ctor*"></a>
-
-  <h3 id="SimpleRelm_Attributes_RelmKey__ctor" data-uid="SimpleRelm.Attributes.RelmKey.#ctor">
-  RelmKey()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmKey.cs/#L12"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RelmKey()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
+  <h2 id="SimpleRelm_Attributes_RelmKey_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This attribute can be applied to properties or structs to indicate their role as a key in a
+relational or entity-based context. It is primarily used for metadata purposes and does not enforce any behavior
+at runtime.</p>
+</div>
 
 
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmKey.cs/#L9" class="edit-link">Edit this page</a>
+          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmKey.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 

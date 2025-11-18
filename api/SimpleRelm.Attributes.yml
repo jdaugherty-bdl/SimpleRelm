@@ -54,7 +54,6 @@ references:
   fullName: SimpleRelm.Attributes.RelmForeignKey
 - uid: SimpleRelm.Attributes.RelmKey
   commentId: T:SimpleRelm.Attributes.RelmKey
-  parent: SimpleRelm.Attributes
   href: SimpleRelm.Attributes.RelmKey.html
   name: RelmKey
   nameWithType: RelmKey

@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class RelmTable | SimpleRelm ">
       
-      
+      <meta name="description" content="Specifies that a class or struct represents a table in a relational database and provides the name of the table.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="SimpleRelm_Attributes_RelmTable" data-uid="SimpleRelm.Attributes.RelmTable" class="text-break">
-Class RelmTable  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmTable.cs/#L9"><i class="bi bi-code-slash"></i></a>
+Class RelmTable  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmTable.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Class RelmTable  <a class="header-action link-secondary" title="View source" hre
   <dl><dt>Assembly</dt><dd>SimpleRelm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Specifies that a class or struct represents a table in a relational database and provides the name of the table.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -259,6 +260,10 @@ public class RelmTable : Attribute, _Attribute</code></pre>
 
 
 
+  <h2 id="SimpleRelm_Attributes_RelmTable_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This attribute is used to associate a class or struct with a specific table name in a
+relational database. The table name is specified via the <a class="xref" href="SimpleRelm.Attributes.RelmTable.html#SimpleRelm_Attributes_RelmTable_TableName">TableName</a> property.</p>
+</div>
 
 
   <h2 class="section" id="constructors">Constructors
@@ -269,20 +274,22 @@ public class RelmTable : Attribute, _Attribute</code></pre>
 
   <h3 id="SimpleRelm_Attributes_RelmTable__ctor_System_String_" data-uid="SimpleRelm.Attributes.RelmTable.#ctor(System.String)">
   RelmTable(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmTable.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmTable.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SimpleRelm.Attributes.RelmTable.html">RelmTable</a> class with the specified table name.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RelmTable(string TableName)</code></pre>
+    <pre><code class="lang-csharp hljs">public RelmTable(string tableName)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>TableName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dt><code>tableName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the table. This value cannot be null, empty, or consist only of white-space characters.</p>
+</dd>
   </dl>
 
 
@@ -293,6 +300,12 @@ public class RelmTable : Attribute, _Attribute</code></pre>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if <code class="paramref">tableName</code> is null, empty, or consists only of white-space characters.</p>
+</dd>
+  </dl>
 
 
 
@@ -304,14 +317,15 @@ public class RelmTable : Attribute, _Attribute</code></pre>
 
   <h3 id="SimpleRelm_Attributes_RelmTable_TableName" data-uid="SimpleRelm.Attributes.RelmTable.TableName">
   TableName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmTable.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmTable.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the name of the database table associated with this instance.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string TableName { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string TableName { get; }</code></pre>
   </div>
 
 
@@ -335,7 +349,7 @@ public class RelmTable : Attribute, _Attribute</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmTable.cs/#L9" class="edit-link">Edit this page</a>
+          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Attributes/RelmTable.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
 

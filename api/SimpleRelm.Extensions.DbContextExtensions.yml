@@ -20,10 +20,16 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DbContextExtensions
     path: SimpleRelm/Extensions/DbContextExtensions.cs
-    startLine: 9
+    startLine: 15
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Extensions
+  summary: Provides extension methods for configuring and interacting with database contexts.
+  remarks: >-
+    This class contains utility methods that extend the functionality of database contexts,  such
+        as setting session-specific database parameters. These methods are designed to simplify  common database
+        operations and enhance developer productivity when working with database contexts.
+  example: []
   syntax:
     content: public static class DbContextExtensions
     content.vb: Public Module DbContextExtensions
@@ -56,23 +62,31 @@ items:
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetLockWaitTimeout
     path: SimpleRelm/Extensions/DbContextExtensions.cs
-    startLine: 16
+    startLine: 26
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Extensions
-  summary: Sets the InnoDB lock wait timeout for the current database session
+  summary: Sets the InnoDB lock wait timeout for the current database session.
+  remarks: >-
+    This method executes a SQL command to set the InnoDB lock wait timeout for the
+        current session. The timeout determines how long a transaction will wait for a lock before timing
+        out.
   example: []
   syntax:
     content: public static void SetLockWaitTimeout(this IRelmContext context, int seconds = 300)
     parameters:
     - id: context
       type: SimpleRelm.Interfaces.IRelmContext
-      description: The database context
+      description: The database context. This parameter cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     - id: seconds
       type: System.Int32
-      description: 'Timeout in seconds (default: 300 seconds/5 minutes)'
+      description: The lock wait timeout, in seconds. The default value is 300 seconds (5 minutes).
     content.vb: Public Shared Sub SetLockWaitTimeout(context As IRelmContext, seconds As Integer = 300)
   overload: SimpleRelm.Extensions.DbContextExtensions.SetLockWaitTimeout*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">context</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
   nameWithType.vb: DbContextExtensions.SetLockWaitTimeout(IRelmContext, Integer)
   fullName.vb: SimpleRelm.Extensions.DbContextExtensions.SetLockWaitTimeout(SimpleRelm.Interfaces.IRelmContext, Integer)
   name.vb: SetLockWaitTimeout(IRelmContext, Integer)
@@ -336,6 +350,13 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
 - uid: SimpleRelm.Extensions.DbContextExtensions.SetLockWaitTimeout*
   commentId: Overload:SimpleRelm.Extensions.DbContextExtensions.SetLockWaitTimeout
   href: SimpleRelm.Extensions.DbContextExtensions.html#SimpleRelm_Extensions_DbContextExtensions_SetLockWaitTimeout_SimpleRelm_Interfaces_IRelmContext_System_Int32_

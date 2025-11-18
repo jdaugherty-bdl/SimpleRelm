@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class RelmDefaultDataLoader&lt;T&gt; | SimpleRelm ">
       
-      
+      <meta name="description" content="Provides a default implementation of the  interface for loading, querying, and writing data for a specified model type. This class is designed to work with models that implement the  interface.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="SimpleRelm_Models_RelmDefaultDataLoader_1" data-uid="SimpleRelm.Models.RelmDefaultDataLoader`1" class="text-break">
-Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L18"><i class="bi bi-code-slash"></i></a>
+Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,9 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
   <dl><dt>Assembly</dt><dd>SimpleRelm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Provides a default implementation of the <a class="xref" href="SimpleRelm.Interfaces.IRelmDataLoader-1.html">IRelmDataLoader&lt;T&gt;</a> interface for loading, querying, and
+writing data for a specified model type. This class is designed to work with models that implement the <a class="xref" href="SimpleRelm.Interfaces.IRelmModel.html">IRelmModel</a> interface.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -109,7 +111,9 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
     <dt><code>T</code></dt>
-    <dd></dd>
+    <dd><p>The type of the model to be loaded, queried, or written. The type must implement <a class="xref" href="SimpleRelm.Interfaces.IRelmModel.html">IRelmModel</a> and
+have a parameterless constructor.</p>
+</dd>
   </dl>
 
   <dl class="typelist inheritance">
@@ -157,6 +161,11 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
 
 
+  <h2 id="SimpleRelm_Models_RelmDefaultDataLoader_1_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This class supports operations such as adding query expressions, retrieving data, and writing
+data to the database. It uses a combination of database column metadata and query expressions to dynamically
+build SQL queries.</p>
+</div>
 
 
   <h2 class="section" id="constructors">Constructors
@@ -167,10 +176,11 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
   <h3 id="SimpleRelm_Models_RelmDefaultDataLoader_1__ctor" data-uid="SimpleRelm.Models.RelmDefaultDataLoader`1.#ctor">
   RelmDefaultDataLoader()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmDefaultDataLoader class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -185,6 +195,10 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
 
 
+  <h4 class="section" id="SimpleRelm_Models_RelmDefaultDataLoader_1__ctor_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This constructor performs the initial setup required for the data loader by invoking
+the <span class="xref">SimpleRelm.Models.RelmDefaultDataLoader&lt;T&gt;.InitialSetup()</span> method.</p>
+</div>
 
 
 
@@ -193,10 +207,12 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
   <h3 id="SimpleRelm_Models_RelmDefaultDataLoader_1__ctor_SimpleRelm_Options_RelmContextOptionsBuilder_" data-uid="SimpleRelm.Models.RelmDefaultDataLoader`1.#ctor(SimpleRelm.Options.RelmContextOptionsBuilder)">
   RelmDefaultDataLoader(RelmContextOptionsBuilder)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmDefaultDataLoader class with the specified context
+options builder.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -206,7 +222,8 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>contextOptionsBuilder</code> <a class="xref" href="SimpleRelm.Options.RelmContextOptionsBuilder.html">RelmContextOptionsBuilder</a></dt>
-    <dd></dd>
+    <dd><p>The builder used to configure options for the <a class="xref" href="SimpleRelm.Models.RelmContext.html">RelmContext</a>.</p>
+</dd>
   </dl>
 
 
@@ -228,10 +245,11 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
   <h3 id="SimpleRelm_Models_RelmDefaultDataLoader_1_LastCommandsExecuted" data-uid="SimpleRelm.Models.RelmDefaultDataLoader`1.LastCommandsExecuted">
   LastCommandsExecuted
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the collection of the most recently executed commands and their associated execution details.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -251,6 +269,12 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
 
 
+  <h4 class="section" id="SimpleRelm_Models_RelmDefaultDataLoader_1_LastCommandsExecuted_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This property provides a record of the last executed commands along with their
+execution details.  The dictionary keys represent the commands, and the associated lists contain the
+execution information  for each command. The property can be used to inspect or analyze the history of
+command executions.</p>
+</div>
 
 
 
@@ -263,10 +287,11 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
   <h3 id="SimpleRelm_Models_RelmDefaultDataLoader_1_AddExpression_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression_" data-uid="SimpleRelm.Models.RelmDefaultDataLoader`1.AddExpression(SimpleRelm.Enums.Commands.Command,System.Linq.Expressions.Expression)">
   AddExpression(Command, Expression)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L124"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds an expression to the specified command and returns a new execution command.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -276,15 +301,18 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>command</code> <a class="xref" href="SimpleRelm.Enums.Commands.html">Commands</a>.<a class="xref" href="SimpleRelm.Enums.Commands.Command.html">Command</a></dt>
-    <dd></dd>
+    <dd><p>The command to which the expression will be added. Must not be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
     <dt><code>expression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
-    <dd></dd>
+    <dd><p>The expression to add to the command. Must not be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmExecutionCommand.html">IRelmExecutionCommand</a></dt>
-    <dd></dd>
+    <dd><p>A new <a class="xref" href="SimpleRelm.Interfaces.IRelmExecutionCommand.html">IRelmExecutionCommand</a> instance representing the command with the added expression.</p>
+</dd>
   </dl>
 
 
@@ -293,6 +321,11 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
 
 
+  <h4 class="section" id="SimpleRelm_Models_RelmDefaultDataLoader_1_AddExpression_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method creates a new execution command by associating the provided expression
+with the specified command. The new execution command is added to the prewarmed query for the given
+command.</p>
+</div>
 
 
 
@@ -301,10 +334,11 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
   <h3 id="SimpleRelm_Models_RelmDefaultDataLoader_1_AddSingleExpression_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression_" data-uid="SimpleRelm.Models.RelmDefaultDataLoader`1.AddSingleExpression(SimpleRelm.Enums.Commands.Command,System.Linq.Expressions.Expression)">
   AddSingleExpression(Command, Expression)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L142"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds a single expression to the specified command and returns the resulting execution command.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -314,15 +348,19 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>command</code> <a class="xref" href="SimpleRelm.Enums.Commands.html">Commands</a>.<a class="xref" href="SimpleRelm.Enums.Commands.Command.html">Command</a></dt>
-    <dd></dd>
+    <dd><p>The command to which the expression will be added.</p>
+</dd>
     <dt><code>expression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
-    <dd></dd>
+    <dd><p>The expression to associate with the command.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmExecutionCommand.html">IRelmExecutionCommand</a></dt>
-    <dd></dd>
+    <dd><p>An <a class="xref" href="SimpleRelm.Interfaces.IRelmExecutionCommand.html">IRelmExecutionCommand</a> representing the updated execution command with the specified
+expression.</p>
+</dd>
   </dl>
 
 
@@ -331,6 +369,10 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
 
 
+  <h4 class="section" id="SimpleRelm_Models_RelmDefaultDataLoader_1_AddSingleExpression_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If the command does not already have any associated expressions, a new execution
+command is created.</p>
+</div>
 
 
 
@@ -339,10 +381,11 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
   <h3 id="SimpleRelm_Models_RelmDefaultDataLoader_1_GetLoadData" data-uid="SimpleRelm.Models.RelmDefaultDataLoader`1.GetLoadData">
   GetLoadData()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L181"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Retrieves a collection of data entities based on the current query configuration.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -353,7 +396,9 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
-    <dd></dd>
+    <dd><p>A collection of data entities of type <code class="typeparamref">T</code>. The collection will be empty if no data
+matches the query.</p>
+</dd>
   </dl>
 
 
@@ -362,6 +407,10 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
 
 
+  <h4 class="section" id="SimpleRelm_Models_RelmDefaultDataLoader_1_GetLoadData_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method constructs a query using the current configuration and retrieves the
+corresponding data entities. The returned collection may be empty if no matching data is found.</p>
+</div>
 
 
 
@@ -370,10 +419,11 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
   <h3 id="SimpleRelm_Models_RelmDefaultDataLoader_1_HasUnderscoreProperty_System_String_" data-uid="SimpleRelm.Models.RelmDefaultDataLoader`1.HasUnderscoreProperty(System.String)">
   HasUnderscoreProperty(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Determines whether the specified property key exists in the column registry.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -383,13 +433,15 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>PropertyKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The key of the property to check for existence.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the column registry contains the specified property key;  otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
   </dl>
 
 
@@ -398,6 +450,10 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
 
 
+  <h4 class="section" id="SimpleRelm_Models_RelmDefaultDataLoader_1_HasUnderscoreProperty_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method checks the presence of a property key in the internal column registry.
+If the column registry is null, the method returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</div>
 
 
 
@@ -406,10 +462,11 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
   <h3 id="SimpleRelm_Models_RelmDefaultDataLoader_1_PullData_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__" data-uid="SimpleRelm.Models.RelmDefaultDataLoader`1.PullData(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
   PullData(string, Dictionary&lt;string, object&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L202"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Executes the specified SQL query and retrieves a collection of data objects of type <code class="typeparamref">T</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -419,15 +476,21 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>selectQuery</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The SQL query to execute. This query should be a valid SELECT statement that matches the structure of the
+data objects being retrieved.</p>
+</dd>
     <dt><code>findOptions</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</dt>
-    <dd></dd>
+    <dd><p>A dictionary of parameters to be used in the query. The keys represent parameter names, and the values
+represent their corresponding values.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
-    <dd></dd>
+    <dd><p>A collection of data objects of type <code class="typeparamref">T</code> that match the results of the query.  Returns
+an empty collection if no data is found.</p>
+</dd>
   </dl>
 
 
@@ -436,6 +499,11 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
 
 
+  <h4 class="section" id="SimpleRelm_Models_RelmDefaultDataLoader_1_PullData_System_String_System_Collections_Generic_Dictionary_System_String_System_Object___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method supports two modes of database connection: - If the context is configured
+with an open database connection, the query is executed using the provided connection and transaction. -
+Otherwise, the query is executed using the configured connection string type.</p>
+</div>
 
 
 
@@ -444,10 +512,11 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
   <h3 id="SimpleRelm_Models_RelmDefaultDataLoader_1_WriteData" data-uid="SimpleRelm.Models.RelmDefaultDataLoader`1.WriteData">
   WriteData()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L218"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Executes a database operation to write data and returns the result of the operation.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -458,7 +527,9 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>The result of the database operation as an integer. The value typically represents the number of rows
+affected by the operation.</p>
+</dd>
   </dl>
 
 
@@ -467,6 +538,11 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 
 
 
+  <h4 class="section" id="SimpleRelm_Models_RelmDefaultDataLoader_1_WriteData_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method constructs an update query and performs the database operation based on
+the  configuration of the context options. It supports both open database connections and  connection
+strings, depending on the specified options.</p>
+</div>
 
 
 
@@ -475,7 +551,7 @@ Class RelmDefaultDataLoader&lt;T&gt;  <a class="header-action link-secondary" ti
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L18" class="edit-link">Edit this page</a>
+          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDefaultDataLoader.cs/#L28" class="edit-link">Edit this page</a>
         </div>
 
 
