@@ -11,7 +11,7 @@ using static SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator;
 
 namespace SimpleRelm.RelmInternal.Helpers.Utilities
 {
-    public static class ExpressionUtilities
+    internal static class ExpressionUtilities
     {
         public static object GetValue(Expression expression)
         {

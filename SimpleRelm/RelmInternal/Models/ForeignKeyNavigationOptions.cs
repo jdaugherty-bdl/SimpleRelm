@@ -11,15 +11,18 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.RelmInternal.Models
 {
+    /// <summary>
+    /// Class to hold foreign key navigation options, used internally by SimpleRelm to manage relationships between models.
+    /// </summary>
     public class ForeignKeyNavigationOptions
     {
-        public PropertyInfo[] ForeignKeyProperties { get; set; } = default;
+        internal PropertyInfo[] ForeignKeyProperties { get; set; } = default;
         //public PropertyInfo NavigationProperty { get; set; } = default;
-        public List<List<Tuple<PropertyInfo, object>>> ItemPrimaryKeys { get; set; } = default;
-        public PropertyInfo[] ReferenceKeys { get; set; } = default;
+        internal List<List<Tuple<PropertyInfo, object>>> ItemPrimaryKeys { get; set; } = default;
+        internal PropertyInfo[] ReferenceKeys { get; set; } = default;
 
         private MemberExpression _referenceProperty = default;
-        public MemberExpression ReferenceProperty
+        internal MemberExpression ReferenceProperty
         {
             get
             {
@@ -31,8 +34,8 @@ namespace SimpleRelm.RelmInternal.Models
             }
         }
 
-        public bool IsCollection { get; private set; }
-        public Type ReferenceType { get; private set; }
+        internal bool IsCollection { get; private set; }
+        internal Type ReferenceType { get; private set; }
 
         private void SetReferenceProperty(MemberExpression referenceProperty)
         {

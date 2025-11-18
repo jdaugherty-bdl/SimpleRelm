@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using SimpleRelm.Attributes;
+using SimpleRelm.Extensions;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Interfaces.RelmQuick;
 using SimpleRelm.Options;
@@ -106,6 +107,14 @@ namespace SimpleRelm.Models
             }
         }
 
+        public MySqlTransaction BeginTransaction()
+        {
+            if (ContextOptions.DatabaseTransaction == null)
+                ContextOptions.SetDatabaseTransaction(ContextOptions.DatabaseConnection?.BeginTransaction());
+
+            return ContextOptions.DatabaseTransaction;
+        }
+
         public void CommitTransaction()
         {
             ContextOptions.DatabaseTransaction?.Commit();
@@ -114,7 +123,7 @@ namespace SimpleRelm.Models
             ContextOptions.SetDatabaseTransaction(null);
         }
 
-        public void RollbackTransactions()
+        public void RollbackTransaction()
         {
             ContextOptions.DatabaseTransaction?.Rollback();
 
@@ -122,21 +131,24 @@ namespace SimpleRelm.Models
             ContextOptions.SetDatabaseTransaction(null);
         }
 
+        public void RollbackTransactions()
+            => RollbackTransaction();
+
         public void StartConnection(bool autoOpenTransaction = false)
         {
             if (ContextOptions.DatabaseConnection == null)
                 throw new InvalidOperationException("Cannot open a non-existent database connection.");
 
-            if (ContextOptions.DatabaseConnection.State == System.Data.ConnectionState.Closed)
+            if (ContextOptions.DatabaseConnection.State == ConnectionState.Closed)
             {
                 ContextOptions.DatabaseConnection.Open();
 
                 localOpenConnection = true;
             }
 
-            if (autoOpenTransaction && ContextOptions.DatabaseConnection.State == System.Data.ConnectionState.Open)
+            if (autoOpenTransaction && ContextOptions.DatabaseConnection.State == ConnectionState.Open)
             {
-                ContextOptions.SetDatabaseTransaction(ContextOptions.DatabaseConnection.BeginTransaction());
+                BeginTransaction();
 
                 localOpenTransaction = true;
             }
@@ -160,6 +172,14 @@ namespace SimpleRelm.Models
                     localOpenConnection = false;
                 }
             }
+        }
+
+        public void SetDataLoader<T>(IRelmDataLoader<T> dataLoader) where T : RelmModel, new()
+        {
+            if (!HasDataSet<T>())
+                throw new InvalidOperationException("No such data set exists");
+
+            GetDataSetType<T>().SetDataLoader(dataLoader);
         }
 
         public IRelmDataSet<T> GetDataSet<T>() where T : IRelmModel, new()
@@ -382,31 +402,31 @@ namespace SimpleRelm.Models
             => RowIdentityHelper.GetIdFromInternalId(this, Table, InternalId);
 
         public DataRow GetDataRow(string query, Dictionary<string, object> parameters = null, bool throwException = true)
-            => RefinedResultsHelper.GetDataRow(this, query, parameters, ThrowException: throwException);
+            => RefinedResultsHelper.GetDataRow(this, query, parameters, throwException: throwException);
 
         public DataTable GetDataTable(string query, Dictionary<string, object> parameters = null, bool throwException = true)
-            => RefinedResultsHelper.GetDataTable(this, query, parameters, ThrowException: throwException);
+            => RefinedResultsHelper.GetDataTable(this, query, parameters, throwException: throwException);
 
         public T GetDataObject<T>(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true) where T : IRelmModel, new()
-            => ObjectResultsHelper.GetDataObject<T>(this, QueryString, Parameters, ThrowException: ThrowException);
+            => ObjectResultsHelper.GetDataObject<T>(this, QueryString, Parameters, throwException: ThrowException);
 
         public IEnumerable<T> GetDataObjects<T>(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true) where T : IRelmModel, new()
-            => ObjectResultsHelper.GetDataObjects<T>(this, QueryString, Parameters, ThrowException: ThrowException);
+            => ObjectResultsHelper.GetDataObjects<T>(this, QueryString, Parameters, throwException: ThrowException);
 
         public IEnumerable<T> GetDataList<T>(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true)
-            => ObjectResultsHelper.GetDataList<T>(this, QueryString, Parameters: Parameters, ThrowException: ThrowException);
+            => ObjectResultsHelper.GetDataList<T>(this, QueryString, parameters: Parameters, throwException: ThrowException);
 
         public T GetScalar<T>(string query, Dictionary<string, object> parameters = null, bool throwException = true)
-            => RefinedResultsHelper.GetScalar<T>(this, query, Parameters: parameters, ThrowException: throwException);
+            => RefinedResultsHelper.GetScalar<T>(this, query, parameters: parameters, throwException: throwException);
 
         public BulkTableWriter<T> GetBulkTableWriter<T>(string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
-            => DataOutputOperations.GetBulkTableWriter<T>(this, InsertQuery: InsertQuery, UseTransaction: UseTransaction, ThrowException: ThrowException, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+            => DataOutputOperations.GetBulkTableWriter<T>(this, insertQuery: InsertQuery, useTransaction: UseTransaction, throwException: ThrowException, allowAutoIncrementColumns: AllowAutoIncrementColumns, allowPrimaryKeyColumns: AllowPrimaryKeyColumns, allowUniqueColumns: AllowUniqueColumns);
 
         public int BulkTableWrite<T>(T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false)
-            => DataOutputOperations.BulkTableWrite<T>(this, SourceData, TableName, ForceType, BatchSize: BatchSize, AllowAutoIncrementColumns: AllowAutoIncrementColumns, AllowPrimaryKeyColumns: AllowPrimaryKeyColumns, AllowUniqueColumns: AllowUniqueColumns);
+            => DataOutputOperations.BulkTableWrite<T>(this, SourceData, TableName, ForceType, batchSize: BatchSize, allowAutoIncrementColumns: AllowAutoIncrementColumns, allowPrimaryKeyColumns: AllowPrimaryKeyColumns, allowUniqueColumns: AllowUniqueColumns);
 
         public void DoDatabaseWork(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false)
-            => DatabaseWorkHelper.DoDatabaseWork(this, QueryString, Parameters, ThrowException: ThrowException, UseTransaction: UseTransaction);
+            => DatabaseWorkHelper.DoDatabaseWork(this, QueryString, Parameters, throwException: ThrowException, useTransaction: UseTransaction);
 
         public T DoDatabaseWork<T>(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false)
          => DatabaseWorkHelper.DoDatabaseWork<T>(this, QueryString, Parameters, ThrowException, UseTransaction);
@@ -416,5 +436,11 @@ namespace SimpleRelm.Models
 
         public T DoDatabaseWork<T>(string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false)
             => DatabaseWorkHelper.DoDatabaseWork<T>(this, QueryString, ActionCallback, ThrowException, UseTransaction);
+
+        public int WriteToDatabase(IRelmModel relmModel, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false, bool AllowAutoDateColumns = false)
+            => relmModel.WriteToDatabase(this, batchSize: batchSize, allowAutoIncrementColumns: AllowAutoIncrementColumns, allowPrimaryKeyColumns: AllowPrimaryKeyColumns, allowUniqueColumns: AllowUniqueColumns, allowAutoDateColumns: AllowAutoDateColumns);
+
+        public int WriteToDatabase(IEnumerable<IRelmModel> relmModels, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false, bool AllowAutoDateColumns = false)
+            => relmModels.WriteToDatabase(this, batchSize: batchSize, allowAutoIncrementColumns: AllowAutoIncrementColumns, allowPrimaryKeyColumns: AllowPrimaryKeyColumns, allowUniqueColumns: AllowUniqueColumns, allowAutoDateColumns: AllowAutoDateColumns);
     }
 }

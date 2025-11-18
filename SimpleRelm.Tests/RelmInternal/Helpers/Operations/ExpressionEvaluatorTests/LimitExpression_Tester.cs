@@ -10,6 +10,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static SimpleRelm.Enums.Commands;
 
 namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTests
 {
@@ -36,9 +37,9 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var limitCount = 1;
 
             // Act
-            var result = evaluator.EvaluateLimit(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
-                ExpressionEvaluator.Command.GroupBy,
-                new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.Limit, Expression.Constant(limitCount, limitCount.GetType())) }));
+            var result = evaluator.EvaluateLimit(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
+                Command.GroupBy,
+                new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Limit, Expression.Constant(limitCount, limitCount.GetType())) }));
 
             // Assert
             Assert.Equal(" LIMIT 1 ", result);

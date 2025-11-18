@@ -10,6 +10,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static SimpleRelm.Enums.Commands;
 
 namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTests
 {
@@ -36,9 +37,9 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => x.Id;
 
             // Act
-            var result = evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
-                ExpressionEvaluator.Command.GroupBy, 
-                new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.GroupBy, predicate.Body) }));
+            var result = evaluator.EvaluateGroupBy(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
+                Command.GroupBy, 
+                new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.GroupBy, predicate.Body) }));
 
             // Assert
             Assert.Equal("  GROUP BY a.`Id` ", result);
@@ -51,9 +52,9 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => new object[] { x.Id, x.InternalId };
 
             // Act
-            var result = evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
-                ExpressionEvaluator.Command.GroupBy,
-                new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.GroupBy, predicate.Body) }));
+            var result = evaluator.EvaluateGroupBy(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
+                Command.GroupBy,
+                new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.GroupBy, predicate.Body) }));
 
             // Assert
             Assert.Equal("   GROUP BY a.`Id` , a.`InternalId` ", result);
@@ -66,9 +67,9 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => new object[] { x.Id, x.InternalId, x.TestColumnInternalId };
 
             // Act
-            var result = evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
-                ExpressionEvaluator.Command.GroupBy,
-                new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.GroupBy, predicate.Body) }));
+            var result = evaluator.EvaluateGroupBy(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
+                Command.GroupBy,
+                new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.GroupBy, predicate.Body) }));
 
             // Assert
             Assert.Equal("   GROUP BY a.`Id` , a.`InternalId` , a.`test_column_InternalId` ", result);
@@ -82,12 +83,12 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             Expression<Func<ComplexTestModel, object>>? predicate2 = x => x.InternalId;
 
             // Act
-            var result = evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
-                ExpressionEvaluator.Command.GroupBy,
+            var result = evaluator.EvaluateGroupBy(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
+                Command.GroupBy,
                 new List<IRelmExecutionCommand> 
                 { 
-                    new RelmExecutionCommand(ExpressionEvaluator.Command.GroupBy, predicate.Body), 
-                    new RelmExecutionCommand(ExpressionEvaluator.Command.GroupBy, predicate2.Body) 
+                    new RelmExecutionCommand(Command.GroupBy, predicate.Body), 
+                    new RelmExecutionCommand(Command.GroupBy, predicate2.Body) 
                 }));
 
             // Assert
@@ -103,13 +104,13 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             Expression<Func<ComplexTestModel, object>>? predicate3 = x => x.TestColumnInternalId;
 
             // Act
-            var result = evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
-                ExpressionEvaluator.Command.GroupBy,
+            var result = evaluator.EvaluateGroupBy(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
+                Command.GroupBy,
                 new List<IRelmExecutionCommand>
                 {
-                    new RelmExecutionCommand(ExpressionEvaluator.Command.GroupBy, predicate.Body),
-                    new RelmExecutionCommand(ExpressionEvaluator.Command.GroupBy, predicate2.Body),
-                    new RelmExecutionCommand(ExpressionEvaluator.Command.GroupBy, predicate3.Body)
+                    new RelmExecutionCommand(Command.GroupBy, predicate.Body),
+                    new RelmExecutionCommand(Command.GroupBy, predicate2.Body),
+                    new RelmExecutionCommand(Command.GroupBy, predicate3.Body)
                 }));
 
             // Assert
@@ -124,13 +125,13 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             Expression<Func<ComplexTestModel, object>> predicate2 = x => x.InternalId;
 
             // Act
-            var result = evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
-                ExpressionEvaluator.Command.GroupBy,
-                new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.GroupBy, predicate.Body) }));
+            var result = evaluator.EvaluateGroupBy(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
+                Command.GroupBy,
+                new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.GroupBy, predicate.Body) }));
 
-            result += evaluator.EvaluateGroupBy(new KeyValuePair<ExpressionEvaluator.Command, List<IRelmExecutionCommand>>(
-                ExpressionEvaluator.Command.GroupBy,
-                new List<IRelmExecutionCommand> { new RelmExecutionCommand(ExpressionEvaluator.Command.GroupBy, predicate2.Body) }));
+            result += evaluator.EvaluateGroupBy(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
+                Command.GroupBy,
+                new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.GroupBy, predicate2.Body) }));
 
             // Assert
             Assert.Equal("  GROUP BY a.`Id`  , a.`InternalId` ", result);

@@ -38,7 +38,7 @@ namespace SimpleRelm.Interfaces
         IRelmDataSet<T> DistinctBy(Expression<Func<T, object>> predicate);
         int Save(T Item);
         int Save();
-        T New();
+        T New(bool Persist = true);
         T New(dynamic NewObjectParameters, bool Persist = true);
         new int Add(T item);
         int Add(T item, bool Persist);

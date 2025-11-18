@@ -21,30 +21,68 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         private readonly IRelmQuickContext relmQuickContext;
         private readonly IRelmContext relmContext;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DataLoaderHelper{T}"/> class with the specified context and
+        /// target object.
+        /// </summary>
+        /// <param name="relmContext">The context used to interact with the Realm database. This parameter cannot be <see langword="null"/>.</param>
+        /// <param name="targetObject">The target object to be managed by the helper. This parameter cannot be <see langword="null"/>.</param>
         public DataLoaderHelper(IRelmQuickContext relmContext, T targetObject)
         {
             this.targetObjects = new[] { targetObject };
             this.relmQuickContext = relmContext;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DataLoaderHelper{T}"/> class with the specified context and
+        /// target objects.
+        /// </summary>
+        /// <param name="relmContext">The context used to interact with the Realm database. This parameter cannot be <see langword="null"/>.</param>
+        /// <param name="targetObjects">A collection of target objects to be processed. This parameter cannot be <see langword="null"/>.</param>
         public DataLoaderHelper(IRelmQuickContext relmContext, ICollection<T> targetObjects)
         {
             this.targetObjects = targetObjects;
             this.relmQuickContext = relmContext;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DataLoaderHelper{T}"/> class with the specified context and
+        /// target object.
+        /// </summary>
+        /// <param name="relmContext">The context used to interact with the data source. This parameter cannot be <see langword="null"/>.</param>
+        /// <param name="targetObject">The target object to be processed by the data loader. This parameter cannot be <see langword="null"/>.</param>
         public DataLoaderHelper(IRelmContext relmContext, T targetObject)
         {
             this.targetObjects = new[] { targetObject };
             this.relmContext = relmContext;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DataLoaderHelper{T}"/> class with the specified context and
+        /// target objects.
+        /// </summary>
+        /// <param name="relmContext">The context used to interact with the data source. This parameter cannot be <see langword="null"/>.</param>
+        /// <param name="targetObjects">A collection of target objects to be processed. This parameter cannot be <see langword="null"/>.</param>
         public DataLoaderHelper(IRelmContext relmContext, ICollection<T> targetObjects)
         {
             this.targetObjects = targetObjects;
             this.relmContext = relmContext;
         }
 
+        /// <summary>
+        /// Loads and populates a collection or property for the specified field based on the provided lambda
+        /// expression.
+        /// </summary>
+        /// <remarks>This method uses the <see cref="RelmDataLoader"/> attribute on the specified field to
+        /// determine the appropriate loader type. The loader type must implement either <see
+        /// cref="IRelmQuickFieldLoader"/> or <see cref="IRelmFieldLoader"/>, depending on the context.</remarks>
+        /// <typeparam name="R">The type of the field being loaded.</typeparam>
+        /// <param name="predicate">A lambda expression representing the field to load, in the form of <c>x => x.PropertyName</c>. The field
+        /// must be decorated with a <see cref="RelmDataLoader"/> attribute.</param>
+        /// <returns>A collection of objects of type <typeparamref name="T"/> with the specified field populated.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if the provided lambda expression does not represent a valid member expression.</exception>
+        /// <exception cref="MemberAccessException">Thrown if the specified field does not have a <see cref="RelmDataLoader"/> attribute or if the attribute is
+        /// not configured correctly.</exception>
         internal ICollection<T> LoadField<R>(Expression<Func<T, R>> predicate)
         {
             var referenceProperty = predicate.Body as MemberExpression
