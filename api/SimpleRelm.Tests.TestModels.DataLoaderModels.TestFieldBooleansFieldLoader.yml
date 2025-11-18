@@ -1,0 +1,899 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader
+  commentId: T:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader
+  id: TestFieldBooleansFieldLoader
+  parent: SimpleRelm.Tests.TestModels.DataLoaderModels
+  children:
+  - SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.#ctor(System.String,System.String[])
+  - SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.FieldName
+  - SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.GetFieldData``1(System.Collections.Generic.ICollection{``0[]})
+  - SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.KeyFields
+  - SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.RelmContext
+  langs:
+  - csharp
+  - vb
+  name: TestFieldBooleansFieldLoader
+  nameWithType: TestFieldBooleansFieldLoader
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader
+  type: Class
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/DataLoaderModels/TestFieldBooleansFieldLoader.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: TestFieldBooleansFieldLoader
+    path: SimpleRelm.Tests/TestModels/DataLoaderModels/TestFieldBooleansFieldLoader.cs
+    startLine: 9
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.DataLoaderModels
+  syntax:
+    content: 'public class TestFieldBooleansFieldLoader : IRelmFieldLoader, IRelmFieldLoaderBase'
+    content.vb: Public Class TestFieldBooleansFieldLoader Implements IRelmFieldLoader, IRelmFieldLoaderBase
+  inheritance:
+  - System.Object
+  implements:
+  - SimpleRelm.Interfaces.IRelmFieldLoader
+  - SimpleRelm.Interfaces.IRelmFieldLoaderBase
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.FieldName
+  commentId: P:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.FieldName
+  id: FieldName
+  parent: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader
+  langs:
+  - csharp
+  - vb
+  name: FieldName
+  nameWithType: TestFieldBooleansFieldLoader.FieldName
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.FieldName
+  type: Property
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/DataLoaderModels/TestFieldBooleansFieldLoader.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: FieldName
+    path: SimpleRelm.Tests/TestModels/DataLoaderModels/TestFieldBooleansFieldLoader.cs
+    startLine: 12
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.DataLoaderModels
+  example: []
+  syntax:
+    content: public string? FieldName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property FieldName As String
+  overload: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.FieldName*
+  implements:
+  - SimpleRelm.Interfaces.IRelmFieldLoaderBase.FieldName
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.KeyFields
+  commentId: P:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.KeyFields
+  id: KeyFields
+  parent: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader
+  langs:
+  - csharp
+  - vb
+  name: KeyFields
+  nameWithType: TestFieldBooleansFieldLoader.KeyFields
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.KeyFields
+  type: Property
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/DataLoaderModels/TestFieldBooleansFieldLoader.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: KeyFields
+    path: SimpleRelm.Tests/TestModels/DataLoaderModels/TestFieldBooleansFieldLoader.cs
+    startLine: 14
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.DataLoaderModels
+  example: []
+  syntax:
+    content: public string[]? KeyFields { get; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: Public ReadOnly Property KeyFields As String()
+  overload: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.KeyFields*
+  implements:
+  - SimpleRelm.Interfaces.IRelmFieldLoaderBase.KeyFields
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.RelmContext
+  commentId: P:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.RelmContext
+  id: RelmContext
+  parent: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader
+  langs:
+  - csharp
+  - vb
+  name: RelmContext
+  nameWithType: TestFieldBooleansFieldLoader.RelmContext
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.RelmContext
+  type: Property
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/DataLoaderModels/TestFieldBooleansFieldLoader.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmContext
+    path: SimpleRelm.Tests/TestModels/DataLoaderModels/TestFieldBooleansFieldLoader.cs
+    startLine: 16
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.DataLoaderModels
+  example: []
+  syntax:
+    content: public IRelmContext RelmContext { get; }
+    parameters: []
+    return:
+      type: SimpleRelm.Interfaces.IRelmContext
+    content.vb: Public ReadOnly Property RelmContext As IRelmContext
+  overload: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.RelmContext*
+  implements:
+  - SimpleRelm.Interfaces.IRelmFieldLoader.RelmContext
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.#ctor(System.String,System.String[])
+  commentId: M:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.#ctor(System.String,System.String[])
+  id: '#ctor(System.String,System.String[])'
+  parent: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader
+  langs:
+  - csharp
+  - vb
+  name: TestFieldBooleansFieldLoader(string, string[]?)
+  nameWithType: TestFieldBooleansFieldLoader.TestFieldBooleansFieldLoader(string, string[]?)
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.TestFieldBooleansFieldLoader(string, string[]?)
+  type: Constructor
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/DataLoaderModels/TestFieldBooleansFieldLoader.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: .ctor
+    path: SimpleRelm.Tests/TestModels/DataLoaderModels/TestFieldBooleansFieldLoader.cs
+    startLine: 18
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.DataLoaderModels
+  syntax:
+    content: public TestFieldBooleansFieldLoader(string fieldName, string[]? keyFields = null)
+    parameters:
+    - id: fieldName
+      type: System.String
+    - id: keyFields
+      type: System.String[]
+    content.vb: Public Sub New(fieldName As String, keyFields As String() = Nothing)
+  overload: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.#ctor*
+  nameWithType.vb: TestFieldBooleansFieldLoader.New(String, String())
+  fullName.vb: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.New(String, String())
+  name.vb: New(String, String())
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.GetFieldData``1(System.Collections.Generic.ICollection{``0[]})
+  commentId: M:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.GetFieldData``1(System.Collections.Generic.ICollection{``0[]})
+  id: GetFieldData``1(System.Collections.Generic.ICollection{``0[]})
+  parent: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader
+  langs:
+  - csharp
+  - vb
+  name: GetFieldData<S>(ICollection<S[]>)
+  nameWithType: TestFieldBooleansFieldLoader.GetFieldData<S>(ICollection<S[]>)
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.GetFieldData<S>(System.Collections.Generic.ICollection<S[]>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/DataLoaderModels/TestFieldBooleansFieldLoader.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: GetFieldData
+    path: SimpleRelm.Tests/TestModels/DataLoaderModels/TestFieldBooleansFieldLoader.cs
+    startLine: 24
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.DataLoaderModels
+  example: []
+  syntax:
+    content: 'public virtual Dictionary<S[], object> GetFieldData<S>(ICollection<S[]> keyData) where S : notnull'
+    parameters:
+    - id: keyData
+      type: System.Collections.Generic.ICollection{{S}[]}
+    typeParameters:
+    - id: S
+    return:
+      type: System.Collections.Generic.Dictionary{{S}[],System.Object}
+    content.vb: Public Overridable Function GetFieldData(Of S)(keyData As ICollection(Of S())) As Dictionary(Of S(), Object)
+  overload: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.GetFieldData*
+  implements:
+  - SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData``1(System.Collections.Generic.ICollection{{S}[]})
+  nameWithType.vb: TestFieldBooleansFieldLoader.GetFieldData(Of S)(ICollection(Of S()))
+  fullName.vb: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.GetFieldData(Of S)(System.Collections.Generic.ICollection(Of S()))
+  name.vb: GetFieldData(Of S)(ICollection(Of S()))
+references:
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels
+  commentId: N:SimpleRelm.Tests.TestModels.DataLoaderModels
+  href: SimpleRelm.html
+  name: SimpleRelm.Tests.TestModels.DataLoaderModels
+  nameWithType: SimpleRelm.Tests.TestModels.DataLoaderModels
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Tests
+    name: Tests
+    href: SimpleRelm.Tests.html
+  - name: .
+  - uid: SimpleRelm.Tests.TestModels
+    name: TestModels
+    href: SimpleRelm.Tests.TestModels.html
+  - name: .
+  - uid: SimpleRelm.Tests.TestModels.DataLoaderModels
+    name: DataLoaderModels
+    href: SimpleRelm.Tests.TestModels.DataLoaderModels.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Tests
+    name: Tests
+    href: SimpleRelm.Tests.html
+  - name: .
+  - uid: SimpleRelm.Tests.TestModels
+    name: TestModels
+    href: SimpleRelm.Tests.TestModels.html
+  - name: .
+  - uid: SimpleRelm.Tests.TestModels.DataLoaderModels
+    name: DataLoaderModels
+    href: SimpleRelm.Tests.TestModels.DataLoaderModels.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: SimpleRelm.Interfaces.IRelmFieldLoader
+  commentId: T:SimpleRelm.Interfaces.IRelmFieldLoader
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmFieldLoader.html
+  name: IRelmFieldLoader
+  nameWithType: IRelmFieldLoader
+  fullName: SimpleRelm.Interfaces.IRelmFieldLoader
+- uid: SimpleRelm.Interfaces.IRelmFieldLoaderBase
+  commentId: T:SimpleRelm.Interfaces.IRelmFieldLoaderBase
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmFieldLoaderBase.html
+  name: IRelmFieldLoaderBase
+  nameWithType: IRelmFieldLoaderBase
+  fullName: SimpleRelm.Interfaces.IRelmFieldLoaderBase
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleRelm.Interfaces
+  commentId: N:SimpleRelm.Interfaces
+  href: SimpleRelm.html
+  name: SimpleRelm.Interfaces
+  nameWithType: SimpleRelm.Interfaces
+  fullName: SimpleRelm.Interfaces
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Interfaces.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Interfaces.html
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.FieldName*
+  commentId: Overload:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.FieldName
+  href: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.html#SimpleRelm_Tests_TestModels_DataLoaderModels_TestFieldBooleansFieldLoader_FieldName
+  name: FieldName
+  nameWithType: TestFieldBooleansFieldLoader.FieldName
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.FieldName
+- uid: SimpleRelm.Interfaces.IRelmFieldLoaderBase.FieldName
+  commentId: P:SimpleRelm.Interfaces.IRelmFieldLoaderBase.FieldName
+  parent: SimpleRelm.Interfaces.IRelmFieldLoaderBase
+  href: SimpleRelm.Interfaces.IRelmFieldLoaderBase.html#SimpleRelm_Interfaces_IRelmFieldLoaderBase_FieldName
+  name: FieldName
+  nameWithType: IRelmFieldLoaderBase.FieldName
+  fullName: SimpleRelm.Interfaces.IRelmFieldLoaderBase.FieldName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.KeyFields*
+  commentId: Overload:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.KeyFields
+  href: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.html#SimpleRelm_Tests_TestModels_DataLoaderModels_TestFieldBooleansFieldLoader_KeyFields
+  name: KeyFields
+  nameWithType: TestFieldBooleansFieldLoader.KeyFields
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.KeyFields
+- uid: SimpleRelm.Interfaces.IRelmFieldLoaderBase.KeyFields
+  commentId: P:SimpleRelm.Interfaces.IRelmFieldLoaderBase.KeyFields
+  parent: SimpleRelm.Interfaces.IRelmFieldLoaderBase
+  href: SimpleRelm.Interfaces.IRelmFieldLoaderBase.html#SimpleRelm_Interfaces_IRelmFieldLoaderBase_KeyFields
+  name: KeyFields
+  nameWithType: IRelmFieldLoaderBase.KeyFields
+  fullName: SimpleRelm.Interfaces.IRelmFieldLoaderBase.KeyFields
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.RelmContext*
+  commentId: Overload:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.RelmContext
+  href: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.html#SimpleRelm_Tests_TestModels_DataLoaderModels_TestFieldBooleansFieldLoader_RelmContext
+  name: RelmContext
+  nameWithType: TestFieldBooleansFieldLoader.RelmContext
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.RelmContext
+- uid: SimpleRelm.Interfaces.IRelmFieldLoader.RelmContext
+  commentId: P:SimpleRelm.Interfaces.IRelmFieldLoader.RelmContext
+  parent: SimpleRelm.Interfaces.IRelmFieldLoader
+  name: RelmContext
+  nameWithType: IRelmFieldLoader.RelmContext
+  fullName: SimpleRelm.Interfaces.IRelmFieldLoader.RelmContext
+- uid: SimpleRelm.Interfaces.IRelmContext
+  commentId: T:SimpleRelm.Interfaces.IRelmContext
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmContext.html
+  name: IRelmContext
+  nameWithType: IRelmContext
+  fullName: SimpleRelm.Interfaces.IRelmContext
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.#ctor*
+  commentId: Overload:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.#ctor
+  href: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.html#SimpleRelm_Tests_TestModels_DataLoaderModels_TestFieldBooleansFieldLoader__ctor_System_String_System_String___
+  name: TestFieldBooleansFieldLoader
+  nameWithType: TestFieldBooleansFieldLoader.TestFieldBooleansFieldLoader
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.TestFieldBooleansFieldLoader
+  nameWithType.vb: TestFieldBooleansFieldLoader.New
+  fullName.vb: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.New
+  name.vb: New
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.GetFieldData*
+  commentId: Overload:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.GetFieldData
+  href: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.html#SimpleRelm_Tests_TestModels_DataLoaderModels_TestFieldBooleansFieldLoader_GetFieldData__1_System_Collections_Generic_ICollection___0____
+  name: GetFieldData
+  nameWithType: TestFieldBooleansFieldLoader.GetFieldData
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.GetFieldData
+- uid: SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData``1(System.Collections.Generic.ICollection{{S}[]})
+  commentId: M:SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData``1(System.Collections.Generic.ICollection{``0[]})
+  parent: SimpleRelm.Interfaces.IRelmFieldLoaderBase
+  definition: SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData``1(System.Collections.Generic.ICollection{``0[]})
+  href: SimpleRelm.Interfaces.IRelmFieldLoaderBase.html#SimpleRelm_Interfaces_IRelmFieldLoaderBase_GetFieldData__1_System_Collections_Generic_ICollection___0____
+  name: GetFieldData<S>(ICollection<S[]>)
+  nameWithType: IRelmFieldLoaderBase.GetFieldData<S>(ICollection<S[]>)
+  fullName: SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData<S>(System.Collections.Generic.ICollection<S[]>)
+  nameWithType.vb: IRelmFieldLoaderBase.GetFieldData(Of S)(ICollection(Of S()))
+  fullName.vb: SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData(Of S)(System.Collections.Generic.ICollection(Of S()))
+  name.vb: GetFieldData(Of S)(ICollection(Of S()))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData``1(System.Collections.Generic.ICollection{``0[]})
+    name: GetFieldData
+    href: SimpleRelm.Interfaces.IRelmFieldLoaderBase.html#SimpleRelm_Interfaces_IRelmFieldLoaderBase_GetFieldData__1_System_Collections_Generic_ICollection___0____
+  - name: <
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: S
+  - name: '['
+  - name: ']'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData``1(System.Collections.Generic.ICollection{``0[]})
+    name: GetFieldData
+    href: SimpleRelm.Interfaces.IRelmFieldLoaderBase.html#SimpleRelm_Interfaces_IRelmFieldLoaderBase_GetFieldData__1_System_Collections_Generic_ICollection___0____
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: (
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.ICollection{{S}[]}
+  commentId: T:System.Collections.Generic.ICollection{``0[]}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<S[]>
+  nameWithType: ICollection<S[]>
+  fullName: System.Collections.Generic.ICollection<S[]>
+  nameWithType.vb: ICollection(Of S())
+  fullName.vb: System.Collections.Generic.ICollection(Of S())
+  name.vb: ICollection(Of S())
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: S
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.Dictionary{{S}[],System.Object}
+  commentId: T:System.Collections.Generic.Dictionary{``0[],System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<S[], object>
+  nameWithType: Dictionary<S[], object>
+  fullName: System.Collections.Generic.Dictionary<S[], object>
+  nameWithType.vb: Dictionary(Of S(), Object)
+  fullName.vb: System.Collections.Generic.Dictionary(Of S(), Object)
+  name.vb: Dictionary(Of S(), Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: S
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData``1(System.Collections.Generic.ICollection{``0[]})
+  commentId: M:SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData``1(System.Collections.Generic.ICollection{``0[]})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmFieldLoaderBase.html#SimpleRelm_Interfaces_IRelmFieldLoaderBase_GetFieldData__1_System_Collections_Generic_ICollection___0____
+  name: GetFieldData<S>(ICollection<S[]>)
+  nameWithType: IRelmFieldLoaderBase.GetFieldData<S>(ICollection<S[]>)
+  fullName: SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData<S>(System.Collections.Generic.ICollection<S[]>)
+  nameWithType.vb: IRelmFieldLoaderBase.GetFieldData(Of S)(ICollection(Of S()))
+  fullName.vb: SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData(Of S)(System.Collections.Generic.ICollection(Of S()))
+  name.vb: GetFieldData(Of S)(ICollection(Of S()))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData``1(System.Collections.Generic.ICollection{``0[]})
+    name: GetFieldData
+    href: SimpleRelm.Interfaces.IRelmFieldLoaderBase.html#SimpleRelm_Interfaces_IRelmFieldLoaderBase_GetFieldData__1_System_Collections_Generic_ICollection___0____
+  - name: <
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: S
+  - name: '['
+  - name: ']'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmFieldLoaderBase.GetFieldData``1(System.Collections.Generic.ICollection{``0[]})
+    name: GetFieldData
+    href: SimpleRelm.Interfaces.IRelmFieldLoaderBase.html#SimpleRelm_Interfaces_IRelmFieldLoaderBase_GetFieldData__1_System_Collections_Generic_ICollection___0____
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: (
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )

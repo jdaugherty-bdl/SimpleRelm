@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.RelmInternal.Helpers.Utilities
+  commentId: N:SimpleRelm.RelmInternal.Helpers.Utilities
+  id: SimpleRelm.RelmInternal.Helpers.Utilities
+  children:
+  - SimpleRelm.RelmInternal.Helpers.Utilities.ExpressionUtilities
+  langs:
+  - csharp
+  - vb
+  name: SimpleRelm.RelmInternal.Helpers.Utilities
+  nameWithType: SimpleRelm.RelmInternal.Helpers.Utilities
+  fullName: SimpleRelm.RelmInternal.Helpers.Utilities
+  type: Namespace
+  assemblies:
+  - SimpleRelm
+references:
+- uid: SimpleRelm.RelmInternal.Helpers.Utilities.ExpressionUtilities
+  commentId: T:SimpleRelm.RelmInternal.Helpers.Utilities.ExpressionUtilities
+  href: SimpleRelm.RelmInternal.Helpers.Utilities.ExpressionUtilities.html
+  name: ExpressionUtilities
+  nameWithType: ExpressionUtilities
+  fullName: SimpleRelm.RelmInternal.Helpers.Utilities.ExpressionUtilities

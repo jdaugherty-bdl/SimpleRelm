@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.Tests.Models.RelmContext_Tests
+  commentId: N:SimpleRelm.Tests.Models.RelmContext_Tests
+  id: SimpleRelm.Tests.Models.RelmContext_Tests
+  children:
+  - SimpleRelm.Tests.Models.RelmContext_Tests.HasDataSetTests
+  - SimpleRelm.Tests.Models.RelmContext_Tests.RelmContextInitializationTests
+  langs:
+  - csharp
+  - vb
+  name: SimpleRelm.Tests.Models.RelmContext_Tests
+  nameWithType: SimpleRelm.Tests.Models.RelmContext_Tests
+  fullName: SimpleRelm.Tests.Models.RelmContext_Tests
+  type: Namespace
+  assemblies:
+  - SimpleRelm.Tests
+references:
+- uid: SimpleRelm.Tests.Models.RelmContext_Tests.HasDataSetTests
+  commentId: T:SimpleRelm.Tests.Models.RelmContext_Tests.HasDataSetTests
+  href: SimpleRelm.Tests.Models.RelmContext_Tests.HasDataSetTests.html
+  name: HasDataSetTests
+  nameWithType: HasDataSetTests
+  fullName: SimpleRelm.Tests.Models.RelmContext_Tests.HasDataSetTests
+- uid: SimpleRelm.Tests.Models.RelmContext_Tests.RelmContextInitializationTests
+  commentId: T:SimpleRelm.Tests.Models.RelmContext_Tests.RelmContextInitializationTests
+  href: SimpleRelm.Tests.Models.RelmContext_Tests.RelmContextInitializationTests.html
+  name: RelmContextInitializationTests
+  nameWithType: RelmContextInitializationTests
+  fullName: SimpleRelm.Tests.Models.RelmContext_Tests.RelmContextInitializationTests

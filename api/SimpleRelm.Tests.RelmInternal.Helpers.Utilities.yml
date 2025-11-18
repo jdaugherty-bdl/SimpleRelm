@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.Tests.RelmInternal.Helpers.Utilities
+  commentId: N:SimpleRelm.Tests.RelmInternal.Helpers.Utilities
+  id: SimpleRelm.Tests.RelmInternal.Helpers.Utilities
+  children:
+  - SimpleRelm.Tests.RelmInternal.Helpers.Utilities.ForeignObjectsLoader_Tester
+  langs:
+  - csharp
+  - vb
+  name: SimpleRelm.Tests.RelmInternal.Helpers.Utilities
+  nameWithType: SimpleRelm.Tests.RelmInternal.Helpers.Utilities
+  fullName: SimpleRelm.Tests.RelmInternal.Helpers.Utilities
+  type: Namespace
+  assemblies:
+  - SimpleRelm.Tests
+references:
+- uid: SimpleRelm.Tests.RelmInternal.Helpers.Utilities.ForeignObjectsLoader_Tester
+  commentId: T:SimpleRelm.Tests.RelmInternal.Helpers.Utilities.ForeignObjectsLoader_Tester
+  href: SimpleRelm.Tests.RelmInternal.Helpers.Utilities.ForeignObjectsLoader_Tester.html
+  name: ForeignObjectsLoader_Tester
+  nameWithType: ForeignObjectsLoader_Tester
+  fullName: SimpleRelm.Tests.RelmInternal.Helpers.Utilities.ForeignObjectsLoader_Tester

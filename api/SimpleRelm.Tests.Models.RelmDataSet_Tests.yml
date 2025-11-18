@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.Tests.Models.RelmDataSet_Tests
+  commentId: N:SimpleRelm.Tests.Models.RelmDataSet_Tests
+  id: SimpleRelm.Tests.Models.RelmDataSet_Tests
+  children:
+  - SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference_CompoundKeys_Tester
+  - SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference_NonDefaultForeignKey_Tester
+  - SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference__BasicDefault_Tester
+  langs:
+  - csharp
+  - vb
+  name: SimpleRelm.Tests.Models.RelmDataSet_Tests
+  nameWithType: SimpleRelm.Tests.Models.RelmDataSet_Tests
+  fullName: SimpleRelm.Tests.Models.RelmDataSet_Tests
+  type: Namespace
+  assemblies:
+  - SimpleRelm.Tests
+references:
+- uid: SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference_CompoundKeys_Tester
+  commentId: T:SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference_CompoundKeys_Tester
+  href: SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference_CompoundKeys_Tester.html
+  name: Reference_CompoundKeys_Tester
+  nameWithType: Reference_CompoundKeys_Tester
+  fullName: SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference_CompoundKeys_Tester
+- uid: SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference_NonDefaultForeignKey_Tester
+  commentId: T:SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference_NonDefaultForeignKey_Tester
+  href: SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference_NonDefaultForeignKey_Tester.html
+  name: Reference_NonDefaultForeignKey_Tester
+  nameWithType: Reference_NonDefaultForeignKey_Tester
+  fullName: SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference_NonDefaultForeignKey_Tester
+- uid: SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference__BasicDefault_Tester
+  commentId: T:SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference__BasicDefault_Tester
+  href: SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference__BasicDefault_Tester.html
+  name: Reference__BasicDefault_Tester
+  nameWithType: Reference__BasicDefault_Tester
+  fullName: SimpleRelm.Tests.Models.RelmDataSet_Tests.Reference__BasicDefault_Tester

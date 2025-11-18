@@ -1,0 +1,2826 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext
+  commentId: T:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext
+  id: NonDefaultForeignKeysTestContext
+  parent: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  children:
+  - SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.#ctor(SimpleRelm.Options.RelmContextOptionsBuilder)
+  - SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.#ctor(System.String)
+  - SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_ForeignKeys
+  - SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_NavigationProperties
+  - SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_PrincipalEntities
+  - SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestObjects
+  - SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+  langs:
+  - csharp
+  - vb
+  name: NonDefaultForeignKeysTestContext
+  nameWithType: NonDefaultForeignKeysTestContext
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext
+  type: Class
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: NonDefaultForeignKeysTestContext
+    path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+    startLine: 13
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  syntax:
+    content: 'public class NonDefaultForeignKeysTestContext : RelmContext, IDisposable, IRelmContext'
+    content.vb: Public Class NonDefaultForeignKeysTestContext Inherits RelmContext Implements IDisposable, IRelmContext
+  inheritance:
+  - System.Object
+  - SimpleRelm.Models.RelmContext
+  implements:
+  - System.IDisposable
+  - SimpleRelm.Interfaces.IRelmContext
+  inheritedMembers:
+  - SimpleRelm.Models.RelmContext.ContextOptions
+  - SimpleRelm.Models.RelmContext.SetDataLoader``1(SimpleRelm.Interfaces.IRelmDataLoader{{T}})
+  - SimpleRelm.Models.RelmContext.StartConnection(System.Boolean,System.Int32)
+  - SimpleRelm.Models.RelmContext.EndConnection(System.Boolean)
+  - SimpleRelm.Models.RelmContext.HasTransaction
+  - SimpleRelm.Models.RelmContext.BeginTransaction
+  - SimpleRelm.Models.RelmContext.CommitTransaction
+  - SimpleRelm.Models.RelmContext.RollbackTransaction
+  - SimpleRelm.Models.RelmContext.RollbackTransactions
+  - SimpleRelm.Models.RelmContext.Dispose
+  - SimpleRelm.Models.RelmContext.Dispose(System.Boolean)
+  - SimpleRelm.Models.RelmContext.HasDataSet``1(System.Boolean)
+  - SimpleRelm.Models.RelmContext.HasDataSet(System.Type,System.Boolean)
+  - SimpleRelm.Models.RelmContext.GetDataSetType``1
+  - SimpleRelm.Models.RelmContext.GetDataSetType``1(System.Boolean)
+  - SimpleRelm.Models.RelmContext.GetDataSetType(System.Type)
+  - SimpleRelm.Models.RelmContext.GetDataSetType(System.Type,System.Boolean)
+  - SimpleRelm.Models.RelmContext.SaveAll
+  - SimpleRelm.Models.RelmContext.GetLastInsertId
+  - SimpleRelm.Models.RelmContext.GetIdFromInternalId(System.String,System.String)
+  - SimpleRelm.Models.RelmContext.GetDataRow(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  - SimpleRelm.Models.RelmContext.GetDataTable(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  - SimpleRelm.Models.RelmContext.GetDataObject``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  - SimpleRelm.Models.RelmContext.GetDataObjects``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  - SimpleRelm.Models.RelmContext.GetDataList``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  - SimpleRelm.Models.RelmContext.GetScalar``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  - SimpleRelm.Models.RelmContext.GetBulkTableWriter``1(System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  - SimpleRelm.Models.RelmContext.BulkTableWrite``1({T},System.String,MySql.Data.MySqlClient.MySqlTransaction,System.Type,System.Int32,System.Boolean,System.Boolean,System.Boolean)
+  - SimpleRelm.Models.RelmContext.DoDatabaseWork(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)
+  - SimpleRelm.Models.RelmContext.DoDatabaseWork``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)
+  - SimpleRelm.Models.RelmContext.DoDatabaseWork(System.String,System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object},System.Boolean,System.Boolean)
+  - SimpleRelm.Models.RelmContext.DoDatabaseWork``1(System.String,System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object},System.Boolean,System.Boolean)
+  - SimpleRelm.Models.RelmContext.WriteToDatabase(SimpleRelm.Interfaces.IRelmModel,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  - SimpleRelm.Models.RelmContext.WriteToDatabase(System.Collections.Generic.IEnumerable{SimpleRelm.Interfaces.IRelmModel},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.#ctor(System.String)
+  commentId: M:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext
+  langs:
+  - csharp
+  - vb
+  name: NonDefaultForeignKeysTestContext(string?)
+  nameWithType: NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestContext(string?)
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestContext(string?)
+  type: Constructor
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: .ctor
+    path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+    startLine: 15
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  syntax:
+    content: public NonDefaultForeignKeysTestContext(string? connectionString)
+    parameters:
+    - id: connectionString
+      type: System.String
+    content.vb: Public Sub New(connectionString As String)
+  overload: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.#ctor*
+  nameWithType.vb: NonDefaultForeignKeysTestContext.New(String)
+  fullName.vb: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.New(String)
+  name.vb: New(String)
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.#ctor(SimpleRelm.Options.RelmContextOptionsBuilder)
+  commentId: M:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.#ctor(SimpleRelm.Options.RelmContextOptionsBuilder)
+  id: '#ctor(SimpleRelm.Options.RelmContextOptionsBuilder)'
+  parent: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext
+  langs:
+  - csharp
+  - vb
+  name: NonDefaultForeignKeysTestContext(RelmContextOptionsBuilder?)
+  nameWithType: NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestContext(RelmContextOptionsBuilder?)
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestContext(SimpleRelm.Options.RelmContextOptionsBuilder?)
+  type: Constructor
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: .ctor
+    path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+    startLine: 16
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  syntax:
+    content: public NonDefaultForeignKeysTestContext(RelmContextOptionsBuilder? options)
+    parameters:
+    - id: options
+      type: SimpleRelm.Options.RelmContextOptionsBuilder
+    content.vb: Public Sub New(options As RelmContextOptionsBuilder)
+  overload: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.#ctor*
+  nameWithType.vb: NonDefaultForeignKeysTestContext.New(RelmContextOptionsBuilder)
+  fullName.vb: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.New(SimpleRelm.Options.RelmContextOptionsBuilder)
+  name.vb: New(RelmContextOptionsBuilder)
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestObjects
+  commentId: P:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestObjects
+  id: NonDefaultForeignKeysTestObjects
+  parent: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext
+  langs:
+  - csharp
+  - vb
+  name: NonDefaultForeignKeysTestObjects
+  nameWithType: NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestObjects
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestObjects
+  type: Property
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: NonDefaultForeignKeysTestObjects
+    path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+    startLine: 18
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  syntax:
+    content: public virtual IRelmDataSet<NonDefaultForeignKeysTestObject>? NonDefaultForeignKeysTestObjects { get; set; }
+    parameters: []
+    return:
+      type: SimpleRelm.Interfaces.IRelmDataSet{SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestObject}
+    content.vb: Public Overridable Property NonDefaultForeignKeysTestObjects As IRelmDataSet(Of NonDefaultForeignKeysTestObject)
+  overload: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestObjects*
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_ForeignKeys
+  commentId: P:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_ForeignKeys
+  id: NonDefaultForeignKeysReferenceObject_ForeignKeys
+  parent: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext
+  langs:
+  - csharp
+  - vb
+  name: NonDefaultForeignKeysReferenceObject_ForeignKeys
+  nameWithType: NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_ForeignKeys
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_ForeignKeys
+  type: Property
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: NonDefaultForeignKeysReferenceObject_ForeignKeys
+    path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+    startLine: 19
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  syntax:
+    content: public virtual IRelmDataSet<NonDefaultForeignKeysReferenceObject_ForeignKey>? NonDefaultForeignKeysReferenceObject_ForeignKeys { get; set; }
+    parameters: []
+    return:
+      type: SimpleRelm.Interfaces.IRelmDataSet{SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_ForeignKey}
+    content.vb: Public Overridable Property NonDefaultForeignKeysReferenceObject_ForeignKeys As IRelmDataSet(Of NonDefaultForeignKeysReferenceObject_ForeignKey)
+  overload: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_ForeignKeys*
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_NavigationProperties
+  commentId: P:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_NavigationProperties
+  id: NonDefaultForeignKeysReferenceObject_NavigationProperties
+  parent: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext
+  langs:
+  - csharp
+  - vb
+  name: NonDefaultForeignKeysReferenceObject_NavigationProperties
+  nameWithType: NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_NavigationProperties
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_NavigationProperties
+  type: Property
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: NonDefaultForeignKeysReferenceObject_NavigationProperties
+    path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+    startLine: 20
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  syntax:
+    content: public virtual IRelmDataSet<NonDefaultForeignKeysReferenceObject_NavigationProperty>? NonDefaultForeignKeysReferenceObject_NavigationProperties { get; set; }
+    parameters: []
+    return:
+      type: SimpleRelm.Interfaces.IRelmDataSet{SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_NavigationProperty}
+    content.vb: Public Overridable Property NonDefaultForeignKeysReferenceObject_NavigationProperties As IRelmDataSet(Of NonDefaultForeignKeysReferenceObject_NavigationProperty)
+  overload: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_NavigationProperties*
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_PrincipalEntities
+  commentId: P:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_PrincipalEntities
+  id: NonDefaultForeignKeysReferenceObject_PrincipalEntities
+  parent: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext
+  langs:
+  - csharp
+  - vb
+  name: NonDefaultForeignKeysReferenceObject_PrincipalEntities
+  nameWithType: NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_PrincipalEntities
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_PrincipalEntities
+  type: Property
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: NonDefaultForeignKeysReferenceObject_PrincipalEntities
+    path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+    startLine: 21
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  syntax:
+    content: public virtual IRelmDataSet<NonDefaultForeignKeysReferenceObject_PrincipalEntity>? NonDefaultForeignKeysReferenceObject_PrincipalEntities { get; set; }
+    parameters: []
+    return:
+      type: SimpleRelm.Interfaces.IRelmDataSet{SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_PrincipalEntity}
+    content.vb: Public Overridable Property NonDefaultForeignKeysReferenceObject_PrincipalEntities As IRelmDataSet(Of NonDefaultForeignKeysReferenceObject_PrincipalEntity)
+  overload: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_PrincipalEntities*
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+  commentId: M:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+  id: OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+  parent: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext
+  langs:
+  - csharp
+  - vb
+  name: OnConfigure(RelmContextOptionsBuilder)
+  nameWithType: NonDefaultForeignKeysTestContext.OnConfigure(RelmContextOptionsBuilder)
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: OnConfigure
+    path: SimpleRelm.Tests/TestModels/NonDefaultForeignKeys/NonDefaultForeignKeysTestContext.cs
+    startLine: 28
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  example: []
+  syntax:
+    content: public override void OnConfigure(RelmContextOptionsBuilder OptionsBuilder)
+    parameters:
+    - id: OptionsBuilder
+      type: SimpleRelm.Options.RelmContextOptionsBuilder
+    content.vb: Public Overrides Sub OnConfigure(OptionsBuilder As RelmContextOptionsBuilder)
+  overridden: SimpleRelm.Models.RelmContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+  overload: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.OnConfigure*
+references:
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  commentId: N:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  href: SimpleRelm.html
+  name: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  nameWithType: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Tests
+    name: Tests
+    href: SimpleRelm.Tests.html
+  - name: .
+  - uid: SimpleRelm.Tests.TestModels
+    name: TestModels
+    href: SimpleRelm.Tests.TestModels.html
+  - name: .
+  - uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+    name: NonDefaultForeignKeys
+    href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Tests
+    name: Tests
+    href: SimpleRelm.Tests.html
+  - name: .
+  - uid: SimpleRelm.Tests.TestModels
+    name: TestModels
+    href: SimpleRelm.Tests.TestModels.html
+  - name: .
+  - uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys
+    name: NonDefaultForeignKeys
+    href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: SimpleRelm.Models.RelmContext
+  commentId: T:SimpleRelm.Models.RelmContext
+  parent: SimpleRelm.Models
+  href: SimpleRelm.Models.RelmContext.html
+  name: RelmContext
+  nameWithType: RelmContext
+  fullName: SimpleRelm.Models.RelmContext
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: SimpleRelm.Interfaces.IRelmContext
+  commentId: T:SimpleRelm.Interfaces.IRelmContext
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmContext.html
+  name: IRelmContext
+  nameWithType: IRelmContext
+  fullName: SimpleRelm.Interfaces.IRelmContext
+- uid: SimpleRelm.Models.RelmContext.ContextOptions
+  commentId: P:SimpleRelm.Models.RelmContext.ContextOptions
+  parent: SimpleRelm.Models.RelmContext
+  name: ContextOptions
+  nameWithType: RelmContext.ContextOptions
+  fullName: SimpleRelm.Models.RelmContext.ContextOptions
+- uid: SimpleRelm.Models.RelmContext.SetDataLoader``1(SimpleRelm.Interfaces.IRelmDataLoader{{T}})
+  commentId: M:SimpleRelm.Models.RelmContext.SetDataLoader``1(SimpleRelm.Interfaces.IRelmDataLoader{``0})
+  parent: SimpleRelm.Models.RelmContext
+  definition: SimpleRelm.Models.RelmContext.SetDataLoader``1(SimpleRelm.Interfaces.IRelmDataLoader{``0})
+  name: SetDataLoader<T>(IRelmDataLoader<T>)
+  nameWithType: RelmContext.SetDataLoader<T>(IRelmDataLoader<T>)
+  fullName: SimpleRelm.Models.RelmContext.SetDataLoader<T>(SimpleRelm.Interfaces.IRelmDataLoader<T>)
+  nameWithType.vb: RelmContext.SetDataLoader(Of T)(IRelmDataLoader(Of T))
+  fullName.vb: SimpleRelm.Models.RelmContext.SetDataLoader(Of T)(SimpleRelm.Interfaces.IRelmDataLoader(Of T))
+  name.vb: SetDataLoader(Of T)(IRelmDataLoader(Of T))
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.SetDataLoader``1(SimpleRelm.Interfaces.IRelmDataLoader{``0})
+    name: SetDataLoader
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.SetDataLoader``1(SimpleRelm.Interfaces.IRelmDataLoader{``0})
+    name: SetDataLoader
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.StartConnection(System.Boolean,System.Int32)
+  commentId: M:SimpleRelm.Models.RelmContext.StartConnection(System.Boolean,System.Int32)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: StartConnection(bool, int)
+  nameWithType: RelmContext.StartConnection(bool, int)
+  fullName: SimpleRelm.Models.RelmContext.StartConnection(bool, int)
+  nameWithType.vb: RelmContext.StartConnection(Boolean, Integer)
+  fullName.vb: SimpleRelm.Models.RelmContext.StartConnection(Boolean, Integer)
+  name.vb: StartConnection(Boolean, Integer)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.StartConnection(System.Boolean,System.Int32)
+    name: StartConnection
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.StartConnection(System.Boolean,System.Int32)
+    name: StartConnection
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.EndConnection(System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.EndConnection(System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: EndConnection(bool)
+  nameWithType: RelmContext.EndConnection(bool)
+  fullName: SimpleRelm.Models.RelmContext.EndConnection(bool)
+  nameWithType.vb: RelmContext.EndConnection(Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.EndConnection(Boolean)
+  name.vb: EndConnection(Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.EndConnection(System.Boolean)
+    name: EndConnection
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.EndConnection(System.Boolean)
+    name: EndConnection
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.HasTransaction
+  commentId: M:SimpleRelm.Models.RelmContext.HasTransaction
+  parent: SimpleRelm.Models.RelmContext
+  name: HasTransaction()
+  nameWithType: RelmContext.HasTransaction()
+  fullName: SimpleRelm.Models.RelmContext.HasTransaction()
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.HasTransaction
+    name: HasTransaction
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.HasTransaction
+    name: HasTransaction
+  - name: (
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.BeginTransaction
+  commentId: M:SimpleRelm.Models.RelmContext.BeginTransaction
+  parent: SimpleRelm.Models.RelmContext
+  name: BeginTransaction()
+  nameWithType: RelmContext.BeginTransaction()
+  fullName: SimpleRelm.Models.RelmContext.BeginTransaction()
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.BeginTransaction
+    name: BeginTransaction
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.BeginTransaction
+    name: BeginTransaction
+  - name: (
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.CommitTransaction
+  commentId: M:SimpleRelm.Models.RelmContext.CommitTransaction
+  parent: SimpleRelm.Models.RelmContext
+  name: CommitTransaction()
+  nameWithType: RelmContext.CommitTransaction()
+  fullName: SimpleRelm.Models.RelmContext.CommitTransaction()
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.CommitTransaction
+    name: CommitTransaction
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.CommitTransaction
+    name: CommitTransaction
+  - name: (
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.RollbackTransaction
+  commentId: M:SimpleRelm.Models.RelmContext.RollbackTransaction
+  parent: SimpleRelm.Models.RelmContext
+  name: RollbackTransaction()
+  nameWithType: RelmContext.RollbackTransaction()
+  fullName: SimpleRelm.Models.RelmContext.RollbackTransaction()
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.RollbackTransaction
+    name: RollbackTransaction
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.RollbackTransaction
+    name: RollbackTransaction
+  - name: (
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.RollbackTransactions
+  commentId: M:SimpleRelm.Models.RelmContext.RollbackTransactions
+  parent: SimpleRelm.Models.RelmContext
+  name: RollbackTransactions()
+  nameWithType: RelmContext.RollbackTransactions()
+  fullName: SimpleRelm.Models.RelmContext.RollbackTransactions()
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.RollbackTransactions
+    name: RollbackTransactions
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.RollbackTransactions
+    name: RollbackTransactions
+  - name: (
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.Dispose
+  commentId: M:SimpleRelm.Models.RelmContext.Dispose
+  parent: SimpleRelm.Models.RelmContext
+  name: Dispose()
+  nameWithType: RelmContext.Dispose()
+  fullName: SimpleRelm.Models.RelmContext.Dispose()
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.Dispose
+    name: Dispose
+  - name: (
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.Dispose(System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.Dispose(System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: Dispose(bool)
+  nameWithType: RelmContext.Dispose(bool)
+  fullName: SimpleRelm.Models.RelmContext.Dispose(bool)
+  nameWithType.vb: RelmContext.Dispose(Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.Dispose(System.Boolean)
+    name: Dispose
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.Dispose(System.Boolean)
+    name: Dispose
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.HasDataSet``1(System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.HasDataSet``1(System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: HasDataSet<T>(bool)
+  nameWithType: RelmContext.HasDataSet<T>(bool)
+  fullName: SimpleRelm.Models.RelmContext.HasDataSet<T>(bool)
+  nameWithType.vb: RelmContext.HasDataSet(Of T)(Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.HasDataSet(Of T)(Boolean)
+  name.vb: HasDataSet(Of T)(Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.HasDataSet``1(System.Boolean)
+    name: HasDataSet
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.HasDataSet``1(System.Boolean)
+    name: HasDataSet
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.HasDataSet(System.Type,System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.HasDataSet(System.Type,System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: HasDataSet(Type, bool)
+  nameWithType: RelmContext.HasDataSet(Type, bool)
+  fullName: SimpleRelm.Models.RelmContext.HasDataSet(System.Type, bool)
+  nameWithType.vb: RelmContext.HasDataSet(Type, Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.HasDataSet(System.Type, Boolean)
+  name.vb: HasDataSet(Type, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.HasDataSet(System.Type,System.Boolean)
+    name: HasDataSet
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.HasDataSet(System.Type,System.Boolean)
+    name: HasDataSet
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetDataSetType``1
+  commentId: M:SimpleRelm.Models.RelmContext.GetDataSetType``1
+  parent: SimpleRelm.Models.RelmContext
+  name: GetDataSetType<T>()
+  nameWithType: RelmContext.GetDataSetType<T>()
+  fullName: SimpleRelm.Models.RelmContext.GetDataSetType<T>()
+  nameWithType.vb: RelmContext.GetDataSetType(Of T)()
+  fullName.vb: SimpleRelm.Models.RelmContext.GetDataSetType(Of T)()
+  name.vb: GetDataSetType(Of T)()
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetDataSetType``1
+    name: GetDataSetType
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetDataSetType``1
+    name: GetDataSetType
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetDataSetType``1(System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.GetDataSetType``1(System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: GetDataSetType<T>(bool)
+  nameWithType: RelmContext.GetDataSetType<T>(bool)
+  fullName: SimpleRelm.Models.RelmContext.GetDataSetType<T>(bool)
+  nameWithType.vb: RelmContext.GetDataSetType(Of T)(Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.GetDataSetType(Of T)(Boolean)
+  name.vb: GetDataSetType(Of T)(Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetDataSetType``1(System.Boolean)
+    name: GetDataSetType
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetDataSetType``1(System.Boolean)
+    name: GetDataSetType
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetDataSetType(System.Type)
+  commentId: M:SimpleRelm.Models.RelmContext.GetDataSetType(System.Type)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: GetDataSetType(Type)
+  nameWithType: RelmContext.GetDataSetType(Type)
+  fullName: SimpleRelm.Models.RelmContext.GetDataSetType(System.Type)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetDataSetType(System.Type)
+    name: GetDataSetType
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetDataSetType(System.Type)
+    name: GetDataSetType
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetDataSetType(System.Type,System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.GetDataSetType(System.Type,System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: GetDataSetType(Type, bool)
+  nameWithType: RelmContext.GetDataSetType(Type, bool)
+  fullName: SimpleRelm.Models.RelmContext.GetDataSetType(System.Type, bool)
+  nameWithType.vb: RelmContext.GetDataSetType(Type, Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.GetDataSetType(System.Type, Boolean)
+  name.vb: GetDataSetType(Type, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetDataSetType(System.Type,System.Boolean)
+    name: GetDataSetType
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetDataSetType(System.Type,System.Boolean)
+    name: GetDataSetType
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.SaveAll
+  commentId: M:SimpleRelm.Models.RelmContext.SaveAll
+  parent: SimpleRelm.Models.RelmContext
+  name: SaveAll()
+  nameWithType: RelmContext.SaveAll()
+  fullName: SimpleRelm.Models.RelmContext.SaveAll()
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.SaveAll
+    name: SaveAll
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.SaveAll
+    name: SaveAll
+  - name: (
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetLastInsertId
+  commentId: M:SimpleRelm.Models.RelmContext.GetLastInsertId
+  parent: SimpleRelm.Models.RelmContext
+  name: GetLastInsertId()
+  nameWithType: RelmContext.GetLastInsertId()
+  fullName: SimpleRelm.Models.RelmContext.GetLastInsertId()
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetLastInsertId
+    name: GetLastInsertId
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetLastInsertId
+    name: GetLastInsertId
+  - name: (
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetIdFromInternalId(System.String,System.String)
+  commentId: M:SimpleRelm.Models.RelmContext.GetIdFromInternalId(System.String,System.String)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetIdFromInternalId(string, string)
+  nameWithType: RelmContext.GetIdFromInternalId(string, string)
+  fullName: SimpleRelm.Models.RelmContext.GetIdFromInternalId(string, string)
+  nameWithType.vb: RelmContext.GetIdFromInternalId(String, String)
+  fullName.vb: SimpleRelm.Models.RelmContext.GetIdFromInternalId(String, String)
+  name.vb: GetIdFromInternalId(String, String)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetIdFromInternalId(System.String,System.String)
+    name: GetIdFromInternalId
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetIdFromInternalId(System.String,System.String)
+    name: GetIdFromInternalId
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetDataRow(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.GetDataRow(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetDataRow(string, Dictionary<string, object>, bool)
+  nameWithType: RelmContext.GetDataRow(string, Dictionary<string, object>, bool)
+  fullName: SimpleRelm.Models.RelmContext.GetDataRow(string, System.Collections.Generic.Dictionary<string, object>, bool)
+  nameWithType.vb: RelmContext.GetDataRow(String, Dictionary(Of String, Object), Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.GetDataRow(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean)
+  name.vb: GetDataRow(String, Dictionary(Of String, Object), Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetDataRow(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+    name: GetDataRow
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetDataRow(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+    name: GetDataRow
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetDataTable(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.GetDataTable(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetDataTable(string, Dictionary<string, object>, bool)
+  nameWithType: RelmContext.GetDataTable(string, Dictionary<string, object>, bool)
+  fullName: SimpleRelm.Models.RelmContext.GetDataTable(string, System.Collections.Generic.Dictionary<string, object>, bool)
+  nameWithType.vb: RelmContext.GetDataTable(String, Dictionary(Of String, Object), Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.GetDataTable(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean)
+  name.vb: GetDataTable(String, Dictionary(Of String, Object), Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetDataTable(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+    name: GetDataTable
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetDataTable(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+    name: GetDataTable
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetDataObject``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.GetDataObject``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetDataObject<T>(string, Dictionary<string, object>, bool)
+  nameWithType: RelmContext.GetDataObject<T>(string, Dictionary<string, object>, bool)
+  fullName: SimpleRelm.Models.RelmContext.GetDataObject<T>(string, System.Collections.Generic.Dictionary<string, object>, bool)
+  nameWithType.vb: RelmContext.GetDataObject(Of T)(String, Dictionary(Of String, Object), Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.GetDataObject(Of T)(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean)
+  name.vb: GetDataObject(Of T)(String, Dictionary(Of String, Object), Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetDataObject``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+    name: GetDataObject
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetDataObject``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+    name: GetDataObject
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetDataObjects``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.GetDataObjects``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetDataObjects<T>(string, Dictionary<string, object>, bool)
+  nameWithType: RelmContext.GetDataObjects<T>(string, Dictionary<string, object>, bool)
+  fullName: SimpleRelm.Models.RelmContext.GetDataObjects<T>(string, System.Collections.Generic.Dictionary<string, object>, bool)
+  nameWithType.vb: RelmContext.GetDataObjects(Of T)(String, Dictionary(Of String, Object), Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.GetDataObjects(Of T)(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean)
+  name.vb: GetDataObjects(Of T)(String, Dictionary(Of String, Object), Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetDataObjects``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+    name: GetDataObjects
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetDataObjects``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+    name: GetDataObjects
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetDataList``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.GetDataList``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetDataList<T>(string, Dictionary<string, object>, bool)
+  nameWithType: RelmContext.GetDataList<T>(string, Dictionary<string, object>, bool)
+  fullName: SimpleRelm.Models.RelmContext.GetDataList<T>(string, System.Collections.Generic.Dictionary<string, object>, bool)
+  nameWithType.vb: RelmContext.GetDataList(Of T)(String, Dictionary(Of String, Object), Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.GetDataList(Of T)(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean)
+  name.vb: GetDataList(Of T)(String, Dictionary(Of String, Object), Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetDataList``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+    name: GetDataList
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetDataList``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+    name: GetDataList
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetScalar``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.GetScalar``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetScalar<T>(string, Dictionary<string, object>, bool)
+  nameWithType: RelmContext.GetScalar<T>(string, Dictionary<string, object>, bool)
+  fullName: SimpleRelm.Models.RelmContext.GetScalar<T>(string, System.Collections.Generic.Dictionary<string, object>, bool)
+  nameWithType.vb: RelmContext.GetScalar(Of T)(String, Dictionary(Of String, Object), Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.GetScalar(Of T)(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean)
+  name.vb: GetScalar(Of T)(String, Dictionary(Of String, Object), Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetScalar``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+    name: GetScalar
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetScalar``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)
+    name: GetScalar
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.GetBulkTableWriter``1(System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.GetBulkTableWriter``1(System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetBulkTableWriter<T>(string, bool, bool, bool, bool, bool)
+  nameWithType: RelmContext.GetBulkTableWriter<T>(string, bool, bool, bool, bool, bool)
+  fullName: SimpleRelm.Models.RelmContext.GetBulkTableWriter<T>(string, bool, bool, bool, bool, bool)
+  nameWithType.vb: RelmContext.GetBulkTableWriter(Of T)(String, Boolean, Boolean, Boolean, Boolean, Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.GetBulkTableWriter(Of T)(String, Boolean, Boolean, Boolean, Boolean, Boolean)
+  name.vb: GetBulkTableWriter(Of T)(String, Boolean, Boolean, Boolean, Boolean, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.GetBulkTableWriter``1(System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+    name: GetBulkTableWriter
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.GetBulkTableWriter``1(System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+    name: GetBulkTableWriter
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.BulkTableWrite``1({T},System.String,MySql.Data.MySqlClient.MySqlTransaction,System.Type,System.Int32,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.BulkTableWrite``1(``0,System.String,MySql.Data.MySqlClient.MySqlTransaction,System.Type,System.Int32,System.Boolean,System.Boolean,System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  definition: SimpleRelm.Models.RelmContext.BulkTableWrite``1(``0,System.String,MySql.Data.MySqlClient.MySqlTransaction,System.Type,System.Int32,System.Boolean,System.Boolean,System.Boolean)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: BulkTableWrite<T>(T, string, MySqlTransaction, Type, int, bool, bool, bool)
+  nameWithType: RelmContext.BulkTableWrite<T>(T, string, MySqlTransaction, Type, int, bool, bool, bool)
+  fullName: SimpleRelm.Models.RelmContext.BulkTableWrite<T>(T, string, MySql.Data.MySqlClient.MySqlTransaction, System.Type, int, bool, bool, bool)
+  nameWithType.vb: RelmContext.BulkTableWrite(Of T)(T, String, MySqlTransaction, Type, Integer, Boolean, Boolean, Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.BulkTableWrite(Of T)(T, String, MySql.Data.MySqlClient.MySqlTransaction, System.Type, Integer, Boolean, Boolean, Boolean)
+  name.vb: BulkTableWrite(Of T)(T, String, MySqlTransaction, Type, Integer, Boolean, Boolean, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.BulkTableWrite``1(``0,System.String,MySql.Data.MySqlClient.MySqlTransaction,System.Type,System.Int32,System.Boolean,System.Boolean,System.Boolean)
+    name: BulkTableWrite
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: MySql.Data.MySqlClient.MySqlTransaction
+    name: MySqlTransaction
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.BulkTableWrite``1(``0,System.String,MySql.Data.MySqlClient.MySqlTransaction,System.Type,System.Int32,System.Boolean,System.Boolean,System.Boolean)
+    name: BulkTableWrite
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: MySql.Data.MySqlClient.MySqlTransaction
+    name: MySqlTransaction
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.DoDatabaseWork(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.DoDatabaseWork(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: DoDatabaseWork(string, Dictionary<string, object>, bool, bool)
+  nameWithType: RelmContext.DoDatabaseWork(string, Dictionary<string, object>, bool, bool)
+  fullName: SimpleRelm.Models.RelmContext.DoDatabaseWork(string, System.Collections.Generic.Dictionary<string, object>, bool, bool)
+  nameWithType.vb: RelmContext.DoDatabaseWork(String, Dictionary(Of String, Object), Boolean, Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.DoDatabaseWork(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean, Boolean)
+  name.vb: DoDatabaseWork(String, Dictionary(Of String, Object), Boolean, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.DoDatabaseWork(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)
+    name: DoDatabaseWork
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.DoDatabaseWork(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)
+    name: DoDatabaseWork
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.DoDatabaseWork``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.DoDatabaseWork``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: DoDatabaseWork<T>(string, Dictionary<string, object>, bool, bool)
+  nameWithType: RelmContext.DoDatabaseWork<T>(string, Dictionary<string, object>, bool, bool)
+  fullName: SimpleRelm.Models.RelmContext.DoDatabaseWork<T>(string, System.Collections.Generic.Dictionary<string, object>, bool, bool)
+  nameWithType.vb: RelmContext.DoDatabaseWork(Of T)(String, Dictionary(Of String, Object), Boolean, Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.DoDatabaseWork(Of T)(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean, Boolean)
+  name.vb: DoDatabaseWork(Of T)(String, Dictionary(Of String, Object), Boolean, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.DoDatabaseWork``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)
+    name: DoDatabaseWork
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.DoDatabaseWork``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Boolean)
+    name: DoDatabaseWork
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.DoDatabaseWork(System.String,System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object},System.Boolean,System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.DoDatabaseWork(System.String,System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object},System.Boolean,System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: DoDatabaseWork(string, Func<MySqlCommand, object>, bool, bool)
+  nameWithType: RelmContext.DoDatabaseWork(string, Func<MySqlCommand, object>, bool, bool)
+  fullName: SimpleRelm.Models.RelmContext.DoDatabaseWork(string, System.Func<MySql.Data.MySqlClient.MySqlCommand, object>, bool, bool)
+  nameWithType.vb: RelmContext.DoDatabaseWork(String, Func(Of MySqlCommand, Object), Boolean, Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.DoDatabaseWork(String, System.Func(Of MySql.Data.MySqlClient.MySqlCommand, Object), Boolean, Boolean)
+  name.vb: DoDatabaseWork(String, Func(Of MySqlCommand, Object), Boolean, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.DoDatabaseWork(System.String,System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object},System.Boolean,System.Boolean)
+    name: DoDatabaseWork
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: MySql.Data.MySqlClient.MySqlCommand
+    name: MySqlCommand
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.DoDatabaseWork(System.String,System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object},System.Boolean,System.Boolean)
+    name: DoDatabaseWork
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MySql.Data.MySqlClient.MySqlCommand
+    name: MySqlCommand
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.DoDatabaseWork``1(System.String,System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object},System.Boolean,System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.DoDatabaseWork``1(System.String,System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object},System.Boolean,System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: DoDatabaseWork<T>(string, Func<MySqlCommand, object>, bool, bool)
+  nameWithType: RelmContext.DoDatabaseWork<T>(string, Func<MySqlCommand, object>, bool, bool)
+  fullName: SimpleRelm.Models.RelmContext.DoDatabaseWork<T>(string, System.Func<MySql.Data.MySqlClient.MySqlCommand, object>, bool, bool)
+  nameWithType.vb: RelmContext.DoDatabaseWork(Of T)(String, Func(Of MySqlCommand, Object), Boolean, Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.DoDatabaseWork(Of T)(String, System.Func(Of MySql.Data.MySqlClient.MySqlCommand, Object), Boolean, Boolean)
+  name.vb: DoDatabaseWork(Of T)(String, Func(Of MySqlCommand, Object), Boolean, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.DoDatabaseWork``1(System.String,System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object},System.Boolean,System.Boolean)
+    name: DoDatabaseWork
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: MySql.Data.MySqlClient.MySqlCommand
+    name: MySqlCommand
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.DoDatabaseWork``1(System.String,System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object},System.Boolean,System.Boolean)
+    name: DoDatabaseWork
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MySql.Data.MySqlClient.MySqlCommand
+    name: MySqlCommand
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.WriteToDatabase(SimpleRelm.Interfaces.IRelmModel,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.WriteToDatabase(SimpleRelm.Interfaces.IRelmModel,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: WriteToDatabase(IRelmModel, int, bool, bool, bool, bool)
+  nameWithType: RelmContext.WriteToDatabase(IRelmModel, int, bool, bool, bool, bool)
+  fullName: SimpleRelm.Models.RelmContext.WriteToDatabase(SimpleRelm.Interfaces.IRelmModel, int, bool, bool, bool, bool)
+  nameWithType.vb: RelmContext.WriteToDatabase(IRelmModel, Integer, Boolean, Boolean, Boolean, Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.WriteToDatabase(SimpleRelm.Interfaces.IRelmModel, Integer, Boolean, Boolean, Boolean, Boolean)
+  name.vb: WriteToDatabase(IRelmModel, Integer, Boolean, Boolean, Boolean, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.WriteToDatabase(SimpleRelm.Interfaces.IRelmModel,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+    name: WriteToDatabase
+  - name: (
+  - uid: SimpleRelm.Interfaces.IRelmModel
+    name: IRelmModel
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.WriteToDatabase(SimpleRelm.Interfaces.IRelmModel,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+    name: WriteToDatabase
+  - name: (
+  - uid: SimpleRelm.Interfaces.IRelmModel
+    name: IRelmModel
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.WriteToDatabase(System.Collections.Generic.IEnumerable{SimpleRelm.Interfaces.IRelmModel},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.WriteToDatabase(System.Collections.Generic.IEnumerable{SimpleRelm.Interfaces.IRelmModel},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  parent: SimpleRelm.Models.RelmContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: WriteToDatabase(IEnumerable<IRelmModel>, int, bool, bool, bool, bool)
+  nameWithType: RelmContext.WriteToDatabase(IEnumerable<IRelmModel>, int, bool, bool, bool, bool)
+  fullName: SimpleRelm.Models.RelmContext.WriteToDatabase(System.Collections.Generic.IEnumerable<SimpleRelm.Interfaces.IRelmModel>, int, bool, bool, bool, bool)
+  nameWithType.vb: RelmContext.WriteToDatabase(IEnumerable(Of IRelmModel), Integer, Boolean, Boolean, Boolean, Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.WriteToDatabase(System.Collections.Generic.IEnumerable(Of SimpleRelm.Interfaces.IRelmModel), Integer, Boolean, Boolean, Boolean, Boolean)
+  name.vb: WriteToDatabase(IEnumerable(Of IRelmModel), Integer, Boolean, Boolean, Boolean, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.WriteToDatabase(System.Collections.Generic.IEnumerable{SimpleRelm.Interfaces.IRelmModel},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+    name: WriteToDatabase
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: SimpleRelm.Interfaces.IRelmModel
+    name: IRelmModel
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.WriteToDatabase(System.Collections.Generic.IEnumerable{SimpleRelm.Interfaces.IRelmModel},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+    name: WriteToDatabase
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmModel
+    name: IRelmModel
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleRelm.Models
+  commentId: N:SimpleRelm.Models
+  href: SimpleRelm.html
+  name: SimpleRelm.Models
+  nameWithType: SimpleRelm.Models
+  fullName: SimpleRelm.Models
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Models
+    name: Models
+    href: SimpleRelm.Models.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Models
+    name: Models
+    href: SimpleRelm.Models.html
+- uid: SimpleRelm.Interfaces
+  commentId: N:SimpleRelm.Interfaces
+  href: SimpleRelm.html
+  name: SimpleRelm.Interfaces
+  nameWithType: SimpleRelm.Interfaces
+  fullName: SimpleRelm.Interfaces
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Interfaces.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Interfaces.html
+- uid: SimpleRelm.Models.RelmContext.SetDataLoader``1(SimpleRelm.Interfaces.IRelmDataLoader{``0})
+  commentId: M:SimpleRelm.Models.RelmContext.SetDataLoader``1(SimpleRelm.Interfaces.IRelmDataLoader{``0})
+  name: SetDataLoader<T>(IRelmDataLoader<T>)
+  nameWithType: RelmContext.SetDataLoader<T>(IRelmDataLoader<T>)
+  fullName: SimpleRelm.Models.RelmContext.SetDataLoader<T>(SimpleRelm.Interfaces.IRelmDataLoader<T>)
+  nameWithType.vb: RelmContext.SetDataLoader(Of T)(IRelmDataLoader(Of T))
+  fullName.vb: SimpleRelm.Models.RelmContext.SetDataLoader(Of T)(SimpleRelm.Interfaces.IRelmDataLoader(Of T))
+  name.vb: SetDataLoader(Of T)(IRelmDataLoader(Of T))
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.SetDataLoader``1(SimpleRelm.Interfaces.IRelmDataLoader{``0})
+    name: SetDataLoader
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.SetDataLoader``1(SimpleRelm.Interfaces.IRelmDataLoader{``0})
+    name: SetDataLoader
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.BulkTableWrite``1(``0,System.String,MySql.Data.MySqlClient.MySqlTransaction,System.Type,System.Int32,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:SimpleRelm.Models.RelmContext.BulkTableWrite``1(``0,System.String,MySql.Data.MySqlClient.MySqlTransaction,System.Type,System.Int32,System.Boolean,System.Boolean,System.Boolean)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: BulkTableWrite<T>(T, string, MySqlTransaction, Type, int, bool, bool, bool)
+  nameWithType: RelmContext.BulkTableWrite<T>(T, string, MySqlTransaction, Type, int, bool, bool, bool)
+  fullName: SimpleRelm.Models.RelmContext.BulkTableWrite<T>(T, string, MySql.Data.MySqlClient.MySqlTransaction, System.Type, int, bool, bool, bool)
+  nameWithType.vb: RelmContext.BulkTableWrite(Of T)(T, String, MySqlTransaction, Type, Integer, Boolean, Boolean, Boolean)
+  fullName.vb: SimpleRelm.Models.RelmContext.BulkTableWrite(Of T)(T, String, MySql.Data.MySqlClient.MySqlTransaction, System.Type, Integer, Boolean, Boolean, Boolean)
+  name.vb: BulkTableWrite(Of T)(T, String, MySqlTransaction, Type, Integer, Boolean, Boolean, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.BulkTableWrite``1(``0,System.String,MySql.Data.MySqlClient.MySqlTransaction,System.Type,System.Int32,System.Boolean,System.Boolean,System.Boolean)
+    name: BulkTableWrite
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: MySql.Data.MySqlClient.MySqlTransaction
+    name: MySqlTransaction
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.BulkTableWrite``1(``0,System.String,MySql.Data.MySqlClient.MySqlTransaction,System.Type,System.Int32,System.Boolean,System.Boolean,System.Boolean)
+    name: BulkTableWrite
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: MySql.Data.MySqlClient.MySqlTransaction
+    name: MySqlTransaction
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.#ctor*
+  commentId: Overload:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.#ctor
+  href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.html#SimpleRelm_Tests_TestModels_NonDefaultForeignKeys_NonDefaultForeignKeysTestContext__ctor_System_String_
+  name: NonDefaultForeignKeysTestContext
+  nameWithType: NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestContext
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestContext
+  nameWithType.vb: NonDefaultForeignKeysTestContext.New
+  fullName.vb: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: SimpleRelm.Options.RelmContextOptionsBuilder
+  commentId: T:SimpleRelm.Options.RelmContextOptionsBuilder
+  parent: SimpleRelm.Options
+  href: SimpleRelm.Options.RelmContextOptionsBuilder.html
+  name: RelmContextOptionsBuilder
+  nameWithType: RelmContextOptionsBuilder
+  fullName: SimpleRelm.Options.RelmContextOptionsBuilder
+- uid: SimpleRelm.Options
+  commentId: N:SimpleRelm.Options
+  href: SimpleRelm.html
+  name: SimpleRelm.Options
+  nameWithType: SimpleRelm.Options
+  fullName: SimpleRelm.Options
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Options
+    name: Options
+    href: SimpleRelm.Options.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Options
+    name: Options
+    href: SimpleRelm.Options.html
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestObjects*
+  commentId: Overload:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestObjects
+  href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.html#SimpleRelm_Tests_TestModels_NonDefaultForeignKeys_NonDefaultForeignKeysTestContext_NonDefaultForeignKeysTestObjects
+  name: NonDefaultForeignKeysTestObjects
+  nameWithType: NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestObjects
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysTestObjects
+- uid: SimpleRelm.Interfaces.IRelmDataSet{SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestObject}
+  commentId: T:SimpleRelm.Interfaces.IRelmDataSet{SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestObject}
+  parent: SimpleRelm.Interfaces
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1
+  href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestObject.html
+  name: IRelmDataSet<NonDefaultForeignKeysTestObject>
+  nameWithType: IRelmDataSet<NonDefaultForeignKeysTestObject>
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestObject>
+  nameWithType.vb: IRelmDataSet(Of NonDefaultForeignKeysTestObject)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestObject)
+  name.vb: IRelmDataSet(Of NonDefaultForeignKeysTestObject)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+  - name: <
+  - uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestObject
+    name: NonDefaultForeignKeysTestObject
+    href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestObject.html
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestObject
+    name: NonDefaultForeignKeysTestObject
+    href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestObject.html
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1
+  commentId: T:SimpleRelm.Interfaces.IRelmDataSet`1
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html
+  name: IRelmDataSet<T>
+  nameWithType: IRelmDataSet<T>
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>
+  nameWithType.vb: IRelmDataSet(Of T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T)
+  name.vb: IRelmDataSet(Of T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_ForeignKeys*
+  commentId: Overload:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_ForeignKeys
+  href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.html#SimpleRelm_Tests_TestModels_NonDefaultForeignKeys_NonDefaultForeignKeysTestContext_NonDefaultForeignKeysReferenceObject_ForeignKeys
+  name: NonDefaultForeignKeysReferenceObject_ForeignKeys
+  nameWithType: NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_ForeignKeys
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_ForeignKeys
+- uid: SimpleRelm.Interfaces.IRelmDataSet{SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_ForeignKey}
+  commentId: T:SimpleRelm.Interfaces.IRelmDataSet{SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_ForeignKey}
+  parent: SimpleRelm.Interfaces
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1
+  href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_ForeignKey.html
+  name: IRelmDataSet<NonDefaultForeignKeysReferenceObject_ForeignKey>
+  nameWithType: IRelmDataSet<NonDefaultForeignKeysReferenceObject_ForeignKey>
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_ForeignKey>
+  nameWithType.vb: IRelmDataSet(Of NonDefaultForeignKeysReferenceObject_ForeignKey)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_ForeignKey)
+  name.vb: IRelmDataSet(Of NonDefaultForeignKeysReferenceObject_ForeignKey)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+  - name: <
+  - uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_ForeignKey
+    name: NonDefaultForeignKeysReferenceObject_ForeignKey
+    href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_ForeignKey.html
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_ForeignKey
+    name: NonDefaultForeignKeysReferenceObject_ForeignKey
+    href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_ForeignKey.html
+  - name: )
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_NavigationProperties*
+  commentId: Overload:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_NavigationProperties
+  href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.html#SimpleRelm_Tests_TestModels_NonDefaultForeignKeys_NonDefaultForeignKeysTestContext_NonDefaultForeignKeysReferenceObject_NavigationProperties
+  name: NonDefaultForeignKeysReferenceObject_NavigationProperties
+  nameWithType: NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_NavigationProperties
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_NavigationProperties
+- uid: SimpleRelm.Interfaces.IRelmDataSet{SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_NavigationProperty}
+  commentId: T:SimpleRelm.Interfaces.IRelmDataSet{SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_NavigationProperty}
+  parent: SimpleRelm.Interfaces
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1
+  href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_NavigationProperty.html
+  name: IRelmDataSet<NonDefaultForeignKeysReferenceObject_NavigationProperty>
+  nameWithType: IRelmDataSet<NonDefaultForeignKeysReferenceObject_NavigationProperty>
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_NavigationProperty>
+  nameWithType.vb: IRelmDataSet(Of NonDefaultForeignKeysReferenceObject_NavigationProperty)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_NavigationProperty)
+  name.vb: IRelmDataSet(Of NonDefaultForeignKeysReferenceObject_NavigationProperty)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+  - name: <
+  - uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_NavigationProperty
+    name: NonDefaultForeignKeysReferenceObject_NavigationProperty
+    href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_NavigationProperty.html
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_NavigationProperty
+    name: NonDefaultForeignKeysReferenceObject_NavigationProperty
+    href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_NavigationProperty.html
+  - name: )
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_PrincipalEntities*
+  commentId: Overload:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_PrincipalEntities
+  href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.html#SimpleRelm_Tests_TestModels_NonDefaultForeignKeys_NonDefaultForeignKeysTestContext_NonDefaultForeignKeysReferenceObject_PrincipalEntities
+  name: NonDefaultForeignKeysReferenceObject_PrincipalEntities
+  nameWithType: NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_PrincipalEntities
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.NonDefaultForeignKeysReferenceObject_PrincipalEntities
+- uid: SimpleRelm.Interfaces.IRelmDataSet{SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_PrincipalEntity}
+  commentId: T:SimpleRelm.Interfaces.IRelmDataSet{SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_PrincipalEntity}
+  parent: SimpleRelm.Interfaces
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1
+  href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_PrincipalEntity.html
+  name: IRelmDataSet<NonDefaultForeignKeysReferenceObject_PrincipalEntity>
+  nameWithType: IRelmDataSet<NonDefaultForeignKeysReferenceObject_PrincipalEntity>
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_PrincipalEntity>
+  nameWithType.vb: IRelmDataSet(Of NonDefaultForeignKeysReferenceObject_PrincipalEntity)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_PrincipalEntity)
+  name.vb: IRelmDataSet(Of NonDefaultForeignKeysReferenceObject_PrincipalEntity)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+  - name: <
+  - uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_PrincipalEntity
+    name: NonDefaultForeignKeysReferenceObject_PrincipalEntity
+    href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_PrincipalEntity.html
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_PrincipalEntity
+    name: NonDefaultForeignKeysReferenceObject_PrincipalEntity
+    href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysReferenceObject_PrincipalEntity.html
+  - name: )
+- uid: SimpleRelm.Models.RelmContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+  commentId: M:SimpleRelm.Models.RelmContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+  parent: SimpleRelm.Models.RelmContext
+  name: OnConfigure(RelmContextOptionsBuilder)
+  nameWithType: RelmContext.OnConfigure(RelmContextOptionsBuilder)
+  fullName: SimpleRelm.Models.RelmContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+    name: OnConfigure
+  - name: (
+  - uid: SimpleRelm.Options.RelmContextOptionsBuilder
+    name: RelmContextOptionsBuilder
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Models.RelmContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+    name: OnConfigure
+  - name: (
+  - uid: SimpleRelm.Options.RelmContextOptionsBuilder
+    name: RelmContextOptionsBuilder
+  - name: )
+- uid: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.OnConfigure*
+  commentId: Overload:SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.OnConfigure
+  href: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.html#SimpleRelm_Tests_TestModels_NonDefaultForeignKeys_NonDefaultForeignKeysTestContext_OnConfigure_SimpleRelm_Options_RelmContextOptionsBuilder_
+  name: OnConfigure
+  nameWithType: NonDefaultForeignKeysTestContext.OnConfigure
+  fullName: SimpleRelm.Tests.TestModels.NonDefaultForeignKeys.NonDefaultForeignKeysTestContext.OnConfigure

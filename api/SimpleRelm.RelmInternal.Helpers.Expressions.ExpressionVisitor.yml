@@ -1,0 +1,1700 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  commentId: T:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  id: ExpressionVisitor
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions
+  children:
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.#ctor
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinary(System.Linq.Expressions.BinaryExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinding(System.Linq.Expressions.MemberBinding)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBindingList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.MemberBinding})
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConditional(System.Linq.Expressions.ConditionalExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConstant(System.Linq.Expressions.ConstantExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializer(System.Linq.Expressions.ElementInit)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializerList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.ElementInit})
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitExpressionList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.Expression})
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitInvocation(System.Linq.Expressions.InvocationExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitLambda(System.Linq.Expressions.LambdaExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitListInit(System.Linq.Expressions.ListInitExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAccess(System.Linq.Expressions.MemberExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAssignment(System.Linq.Expressions.MemberAssignment)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberInit(System.Linq.Expressions.MemberInitExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberListBinding(System.Linq.Expressions.MemberListBinding)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberMemberBinding(System.Linq.Expressions.MemberMemberBinding)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMethodCall(System.Linq.Expressions.MethodCallExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNew(System.Linq.Expressions.NewExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNewArray(System.Linq.Expressions.NewArrayExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitParameter(System.Linq.Expressions.ParameterExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitTypeIs(System.Linq.Expressions.TypeBinaryExpression)
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitUnary(System.Linq.Expressions.UnaryExpression)
+  langs:
+  - csharp
+  - vb
+  name: ExpressionVisitor
+  nameWithType: ExpressionVisitor
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  type: Class
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: ExpressionVisitor
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 11
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: public abstract class ExpressionVisitor
+    content.vb: Public MustInherit Class ExpressionVisitor
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.#ctor
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.#ctor
+  id: '#ctor'
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: ExpressionVisitor()
+  nameWithType: ExpressionVisitor.ExpressionVisitor()
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.ExpressionVisitor()
+  type: Constructor
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: .ctor
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 13
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected ExpressionVisitor()
+    content.vb: Protected Sub New()
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.#ctor*
+  nameWithType.vb: ExpressionVisitor.New()
+  fullName.vb: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.New()
+  name.vb: New()
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinding(System.Linq.Expressions.MemberBinding)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinding(System.Linq.Expressions.MemberBinding)
+  id: VisitBinding(System.Linq.Expressions.MemberBinding)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitBinding(MemberBinding)
+  nameWithType: ExpressionVisitor.VisitBinding(MemberBinding)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinding(System.Linq.Expressions.MemberBinding)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitBinding
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 85
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual MemberBinding VisitBinding(MemberBinding binding)
+    parameters:
+    - id: binding
+      type: System.Linq.Expressions.MemberBinding
+    return:
+      type: System.Linq.Expressions.MemberBinding
+    content.vb: Protected Overridable Function VisitBinding(binding As MemberBinding) As MemberBinding
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinding*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializer(System.Linq.Expressions.ElementInit)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializer(System.Linq.Expressions.ElementInit)
+  id: VisitElementInitializer(System.Linq.Expressions.ElementInit)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitElementInitializer(ElementInit)
+  nameWithType: ExpressionVisitor.VisitElementInitializer(ElementInit)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializer(System.Linq.Expressions.ElementInit)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitElementInitializer
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 100
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual ElementInit VisitElementInitializer(ElementInit initializer)
+    parameters:
+    - id: initializer
+      type: System.Linq.Expressions.ElementInit
+    return:
+      type: System.Linq.Expressions.ElementInit
+    content.vb: Protected Overridable Function VisitElementInitializer(initializer As ElementInit) As ElementInit
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializer*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitUnary(System.Linq.Expressions.UnaryExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitUnary(System.Linq.Expressions.UnaryExpression)
+  id: VisitUnary(System.Linq.Expressions.UnaryExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitUnary(UnaryExpression)
+  nameWithType: ExpressionVisitor.VisitUnary(UnaryExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitUnary(System.Linq.Expressions.UnaryExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitUnary
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 110
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitUnary(UnaryExpression unary)
+    parameters:
+    - id: unary
+      type: System.Linq.Expressions.UnaryExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitUnary(unary As UnaryExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitUnary*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinary(System.Linq.Expressions.BinaryExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinary(System.Linq.Expressions.BinaryExpression)
+  id: VisitBinary(System.Linq.Expressions.BinaryExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitBinary(BinaryExpression)
+  nameWithType: ExpressionVisitor.VisitBinary(BinaryExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinary(System.Linq.Expressions.BinaryExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitBinary
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 120
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitBinary(BinaryExpression binary)
+    parameters:
+    - id: binary
+      type: System.Linq.Expressions.BinaryExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitBinary(binary As BinaryExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinary*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitTypeIs(System.Linq.Expressions.TypeBinaryExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitTypeIs(System.Linq.Expressions.TypeBinaryExpression)
+  id: VisitTypeIs(System.Linq.Expressions.TypeBinaryExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitTypeIs(TypeBinaryExpression)
+  nameWithType: ExpressionVisitor.VisitTypeIs(TypeBinaryExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitTypeIs(System.Linq.Expressions.TypeBinaryExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitTypeIs
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 137
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitTypeIs(TypeBinaryExpression typeBinary)
+    parameters:
+    - id: typeBinary
+      type: System.Linq.Expressions.TypeBinaryExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitTypeIs(typeBinary As TypeBinaryExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitTypeIs*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConstant(System.Linq.Expressions.ConstantExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConstant(System.Linq.Expressions.ConstantExpression)
+  id: VisitConstant(System.Linq.Expressions.ConstantExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitConstant(ConstantExpression)
+  nameWithType: ExpressionVisitor.VisitConstant(ConstantExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConstant(System.Linq.Expressions.ConstantExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitConstant
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 147
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitConstant(ConstantExpression constant)
+    parameters:
+    - id: constant
+      type: System.Linq.Expressions.ConstantExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitConstant(constant As ConstantExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConstant*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConditional(System.Linq.Expressions.ConditionalExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConditional(System.Linq.Expressions.ConditionalExpression)
+  id: VisitConditional(System.Linq.Expressions.ConditionalExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitConditional(ConditionalExpression)
+  nameWithType: ExpressionVisitor.VisitConditional(ConditionalExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConditional(System.Linq.Expressions.ConditionalExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitConditional
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 152
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitConditional(ConditionalExpression conditional)
+    parameters:
+    - id: conditional
+      type: System.Linq.Expressions.ConditionalExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitConditional(conditional As ConditionalExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConditional*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitParameter(System.Linq.Expressions.ParameterExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitParameter(System.Linq.Expressions.ParameterExpression)
+  id: VisitParameter(System.Linq.Expressions.ParameterExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitParameter(ParameterExpression)
+  nameWithType: ExpressionVisitor.VisitParameter(ParameterExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitParameter(System.Linq.Expressions.ParameterExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitParameter
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 164
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitParameter(ParameterExpression parameter)
+    parameters:
+    - id: parameter
+      type: System.Linq.Expressions.ParameterExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitParameter(parameter As ParameterExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitParameter*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAccess(System.Linq.Expressions.MemberExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAccess(System.Linq.Expressions.MemberExpression)
+  id: VisitMemberAccess(System.Linq.Expressions.MemberExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitMemberAccess(MemberExpression)
+  nameWithType: ExpressionVisitor.VisitMemberAccess(MemberExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAccess(System.Linq.Expressions.MemberExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitMemberAccess
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 169
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitMemberAccess(MemberExpression member)
+    parameters:
+    - id: member
+      type: System.Linq.Expressions.MemberExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitMemberAccess(member As MemberExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAccess*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMethodCall(System.Linq.Expressions.MethodCallExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMethodCall(System.Linq.Expressions.MethodCallExpression)
+  id: VisitMethodCall(System.Linq.Expressions.MethodCallExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitMethodCall(MethodCallExpression)
+  nameWithType: ExpressionVisitor.VisitMethodCall(MethodCallExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMethodCall(System.Linq.Expressions.MethodCallExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitMethodCall
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 179
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitMethodCall(MethodCallExpression methodCall)
+    parameters:
+    - id: methodCall
+      type: System.Linq.Expressions.MethodCallExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitMethodCall(methodCall As MethodCallExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMethodCall*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitExpressionList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.Expression})
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitExpressionList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.Expression})
+  id: VisitExpressionList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.Expression})
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitExpressionList(ReadOnlyCollection<Expression>)
+  nameWithType: ExpressionVisitor.VisitExpressionList(ReadOnlyCollection<Expression>)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitExpressionList(System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.Expression>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitExpressionList
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 190
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual ReadOnlyCollection<Expression> VisitExpressionList(ReadOnlyCollection<Expression> original)
+    parameters:
+    - id: original
+      type: System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.Expression}
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.Expression}
+    content.vb: Protected Overridable Function VisitExpressionList(original As ReadOnlyCollection(Of Expression)) As ReadOnlyCollection(Of Expression)
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitExpressionList*
+  nameWithType.vb: ExpressionVisitor.VisitExpressionList(ReadOnlyCollection(Of Expression))
+  fullName.vb: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitExpressionList(System.Collections.ObjectModel.ReadOnlyCollection(Of System.Linq.Expressions.Expression))
+  name.vb: VisitExpressionList(ReadOnlyCollection(Of Expression))
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAssignment(System.Linq.Expressions.MemberAssignment)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAssignment(System.Linq.Expressions.MemberAssignment)
+  id: VisitMemberAssignment(System.Linq.Expressions.MemberAssignment)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitMemberAssignment(MemberAssignment)
+  nameWithType: ExpressionVisitor.VisitMemberAssignment(MemberAssignment)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAssignment(System.Linq.Expressions.MemberAssignment)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitMemberAssignment
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 218
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual MemberAssignment VisitMemberAssignment(MemberAssignment memberAssignment)
+    parameters:
+    - id: memberAssignment
+      type: System.Linq.Expressions.MemberAssignment
+    return:
+      type: System.Linq.Expressions.MemberAssignment
+    content.vb: Protected Overridable Function VisitMemberAssignment(memberAssignment As MemberAssignment) As MemberAssignment
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAssignment*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberMemberBinding(System.Linq.Expressions.MemberMemberBinding)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberMemberBinding(System.Linq.Expressions.MemberMemberBinding)
+  id: VisitMemberMemberBinding(System.Linq.Expressions.MemberMemberBinding)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitMemberMemberBinding(MemberMemberBinding)
+  nameWithType: ExpressionVisitor.VisitMemberMemberBinding(MemberMemberBinding)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberMemberBinding(System.Linq.Expressions.MemberMemberBinding)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitMemberMemberBinding
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 228
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual MemberMemberBinding VisitMemberMemberBinding(MemberMemberBinding memberBinding)
+    parameters:
+    - id: memberBinding
+      type: System.Linq.Expressions.MemberMemberBinding
+    return:
+      type: System.Linq.Expressions.MemberMemberBinding
+    content.vb: Protected Overridable Function VisitMemberMemberBinding(memberBinding As MemberMemberBinding) As MemberMemberBinding
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberMemberBinding*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberListBinding(System.Linq.Expressions.MemberListBinding)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberListBinding(System.Linq.Expressions.MemberListBinding)
+  id: VisitMemberListBinding(System.Linq.Expressions.MemberListBinding)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitMemberListBinding(MemberListBinding)
+  nameWithType: ExpressionVisitor.VisitMemberListBinding(MemberListBinding)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberListBinding(System.Linq.Expressions.MemberListBinding)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitMemberListBinding
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 238
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual MemberListBinding VisitMemberListBinding(MemberListBinding listBinding)
+    parameters:
+    - id: listBinding
+      type: System.Linq.Expressions.MemberListBinding
+    return:
+      type: System.Linq.Expressions.MemberListBinding
+    content.vb: Protected Overridable Function VisitMemberListBinding(listBinding As MemberListBinding) As MemberListBinding
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberListBinding*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBindingList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.MemberBinding})
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBindingList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.MemberBinding})
+  id: VisitBindingList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.MemberBinding})
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitBindingList(ReadOnlyCollection<MemberBinding>)
+  nameWithType: ExpressionVisitor.VisitBindingList(ReadOnlyCollection<MemberBinding>)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBindingList(System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.MemberBinding>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitBindingList
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 248
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual IEnumerable<MemberBinding> VisitBindingList(ReadOnlyCollection<MemberBinding> original)
+    parameters:
+    - id: original
+      type: System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.MemberBinding}
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Linq.Expressions.MemberBinding}
+    content.vb: Protected Overridable Function VisitBindingList(original As ReadOnlyCollection(Of MemberBinding)) As IEnumerable(Of MemberBinding)
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBindingList*
+  nameWithType.vb: ExpressionVisitor.VisitBindingList(ReadOnlyCollection(Of MemberBinding))
+  fullName.vb: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBindingList(System.Collections.ObjectModel.ReadOnlyCollection(Of System.Linq.Expressions.MemberBinding))
+  name.vb: VisitBindingList(ReadOnlyCollection(Of MemberBinding))
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializerList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.ElementInit})
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializerList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.ElementInit})
+  id: VisitElementInitializerList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.ElementInit})
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitElementInitializerList(ReadOnlyCollection<ElementInit>)
+  nameWithType: ExpressionVisitor.VisitElementInitializerList(ReadOnlyCollection<ElementInit>)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializerList(System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.ElementInit>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitElementInitializerList
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 276
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual IEnumerable<ElementInit> VisitElementInitializerList(ReadOnlyCollection<ElementInit> original)
+    parameters:
+    - id: original
+      type: System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.ElementInit}
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Linq.Expressions.ElementInit}
+    content.vb: Protected Overridable Function VisitElementInitializerList(original As ReadOnlyCollection(Of ElementInit)) As IEnumerable(Of ElementInit)
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializerList*
+  nameWithType.vb: ExpressionVisitor.VisitElementInitializerList(ReadOnlyCollection(Of ElementInit))
+  fullName.vb: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializerList(System.Collections.ObjectModel.ReadOnlyCollection(Of System.Linq.Expressions.ElementInit))
+  name.vb: VisitElementInitializerList(ReadOnlyCollection(Of ElementInit))
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitLambda(System.Linq.Expressions.LambdaExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitLambda(System.Linq.Expressions.LambdaExpression)
+  id: VisitLambda(System.Linq.Expressions.LambdaExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitLambda(LambdaExpression)
+  nameWithType: ExpressionVisitor.VisitLambda(LambdaExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitLambda(System.Linq.Expressions.LambdaExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitLambda
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 304
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitLambda(LambdaExpression lambda)
+    parameters:
+    - id: lambda
+      type: System.Linq.Expressions.LambdaExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitLambda(lambda As LambdaExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitLambda*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNew(System.Linq.Expressions.NewExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNew(System.Linq.Expressions.NewExpression)
+  id: VisitNew(System.Linq.Expressions.NewExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitNew(NewExpression)
+  nameWithType: ExpressionVisitor.VisitNew(NewExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNew(System.Linq.Expressions.NewExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitNew
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 314
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual NewExpression VisitNew(NewExpression newExpression)
+    parameters:
+    - id: newExpression
+      type: System.Linq.Expressions.NewExpression
+    return:
+      type: System.Linq.Expressions.NewExpression
+    content.vb: Protected Overridable Function VisitNew(newExpression As NewExpression) As NewExpression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNew*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberInit(System.Linq.Expressions.MemberInitExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberInit(System.Linq.Expressions.MemberInitExpression)
+  id: VisitMemberInit(System.Linq.Expressions.MemberInitExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitMemberInit(MemberInitExpression)
+  nameWithType: ExpressionVisitor.VisitMemberInit(MemberInitExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberInit(System.Linq.Expressions.MemberInitExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitMemberInit
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 329
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitMemberInit(MemberInitExpression memberInit)
+    parameters:
+    - id: memberInit
+      type: System.Linq.Expressions.MemberInitExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitMemberInit(memberInit As MemberInitExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberInit*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitListInit(System.Linq.Expressions.ListInitExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitListInit(System.Linq.Expressions.ListInitExpression)
+  id: VisitListInit(System.Linq.Expressions.ListInitExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitListInit(ListInitExpression)
+  nameWithType: ExpressionVisitor.VisitListInit(ListInitExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitListInit(System.Linq.Expressions.ListInitExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitListInit
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 340
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitListInit(ListInitExpression listInit)
+    parameters:
+    - id: listInit
+      type: System.Linq.Expressions.ListInitExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitListInit(listInit As ListInitExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitListInit*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNewArray(System.Linq.Expressions.NewArrayExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNewArray(System.Linq.Expressions.NewArrayExpression)
+  id: VisitNewArray(System.Linq.Expressions.NewArrayExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitNewArray(NewArrayExpression)
+  nameWithType: ExpressionVisitor.VisitNewArray(NewArrayExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNewArray(System.Linq.Expressions.NewArrayExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitNewArray
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 351
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitNewArray(NewArrayExpression newArray)
+    parameters:
+    - id: newArray
+      type: System.Linq.Expressions.NewArrayExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitNewArray(newArray As NewArrayExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNewArray*
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitInvocation(System.Linq.Expressions.InvocationExpression)
+  commentId: M:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitInvocation(System.Linq.Expressions.InvocationExpression)
+  id: VisitInvocation(System.Linq.Expressions.InvocationExpression)
+  parent: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: VisitInvocation(InvocationExpression)
+  nameWithType: ExpressionVisitor.VisitInvocation(InvocationExpression)
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitInvocation(System.Linq.Expressions.InvocationExpression)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: VisitInvocation
+    path: SimpleRelm/RelmInternal/Helpers/Expressions/ExpressionVisitor.cs
+    startLine: 366
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.RelmInternal.Helpers.Expressions
+  syntax:
+    content: protected virtual Expression VisitInvocation(InvocationExpression invocation)
+    parameters:
+    - id: invocation
+      type: System.Linq.Expressions.InvocationExpression
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Protected Overridable Function VisitInvocation(invocation As InvocationExpression) As Expression
+  overload: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitInvocation*
+references:
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions
+  commentId: N:SimpleRelm.RelmInternal.Helpers.Expressions
+  href: SimpleRelm.html
+  name: SimpleRelm.RelmInternal.Helpers.Expressions
+  nameWithType: SimpleRelm.RelmInternal.Helpers.Expressions
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal
+    name: RelmInternal
+    href: SimpleRelm.RelmInternal.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal.Helpers
+    name: Helpers
+    href: SimpleRelm.RelmInternal.Helpers.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal.Helpers.Expressions
+    name: Expressions
+    href: SimpleRelm.RelmInternal.Helpers.Expressions.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal
+    name: RelmInternal
+    href: SimpleRelm.RelmInternal.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal.Helpers
+    name: Helpers
+    href: SimpleRelm.RelmInternal.Helpers.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal.Helpers.Expressions
+    name: Expressions
+    href: SimpleRelm.RelmInternal.Helpers.Expressions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.#ctor*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.#ctor
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor__ctor
+  name: ExpressionVisitor
+  nameWithType: ExpressionVisitor.ExpressionVisitor
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.ExpressionVisitor
+  nameWithType.vb: ExpressionVisitor.New
+  fullName.vb: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.New
+  name.vb: New
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinding*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinding
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitBinding_System_Linq_Expressions_MemberBinding_
+  name: VisitBinding
+  nameWithType: ExpressionVisitor.VisitBinding
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinding
+- uid: System.Linq.Expressions.MemberBinding
+  commentId: T:System.Linq.Expressions.MemberBinding
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.memberbinding
+  name: MemberBinding
+  nameWithType: MemberBinding
+  fullName: System.Linq.Expressions.MemberBinding
+- uid: System.Linq.Expressions
+  commentId: N:System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Linq.Expressions
+  nameWithType: System.Linq.Expressions
+  fullName: System.Linq.Expressions
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializer*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializer
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitElementInitializer_System_Linq_Expressions_ElementInit_
+  name: VisitElementInitializer
+  nameWithType: ExpressionVisitor.VisitElementInitializer
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializer
+- uid: System.Linq.Expressions.ElementInit
+  commentId: T:System.Linq.Expressions.ElementInit
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.elementinit
+  name: ElementInit
+  nameWithType: ElementInit
+  fullName: System.Linq.Expressions.ElementInit
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitUnary*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitUnary
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitUnary_System_Linq_Expressions_UnaryExpression_
+  name: VisitUnary
+  nameWithType: ExpressionVisitor.VisitUnary
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitUnary
+- uid: System.Linq.Expressions.UnaryExpression
+  commentId: T:System.Linq.Expressions.UnaryExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.unaryexpression
+  name: UnaryExpression
+  nameWithType: UnaryExpression
+  fullName: System.Linq.Expressions.UnaryExpression
+- uid: System.Linq.Expressions.Expression
+  commentId: T:System.Linq.Expressions.Expression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression
+  name: Expression
+  nameWithType: Expression
+  fullName: System.Linq.Expressions.Expression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinary*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinary
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitBinary_System_Linq_Expressions_BinaryExpression_
+  name: VisitBinary
+  nameWithType: ExpressionVisitor.VisitBinary
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBinary
+- uid: System.Linq.Expressions.BinaryExpression
+  commentId: T:System.Linq.Expressions.BinaryExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.binaryexpression
+  name: BinaryExpression
+  nameWithType: BinaryExpression
+  fullName: System.Linq.Expressions.BinaryExpression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitTypeIs*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitTypeIs
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitTypeIs_System_Linq_Expressions_TypeBinaryExpression_
+  name: VisitTypeIs
+  nameWithType: ExpressionVisitor.VisitTypeIs
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitTypeIs
+- uid: System.Linq.Expressions.TypeBinaryExpression
+  commentId: T:System.Linq.Expressions.TypeBinaryExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.typebinaryexpression
+  name: TypeBinaryExpression
+  nameWithType: TypeBinaryExpression
+  fullName: System.Linq.Expressions.TypeBinaryExpression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConstant*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConstant
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitConstant_System_Linq_Expressions_ConstantExpression_
+  name: VisitConstant
+  nameWithType: ExpressionVisitor.VisitConstant
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConstant
+- uid: System.Linq.Expressions.ConstantExpression
+  commentId: T:System.Linq.Expressions.ConstantExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.constantexpression
+  name: ConstantExpression
+  nameWithType: ConstantExpression
+  fullName: System.Linq.Expressions.ConstantExpression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConditional*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConditional
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitConditional_System_Linq_Expressions_ConditionalExpression_
+  name: VisitConditional
+  nameWithType: ExpressionVisitor.VisitConditional
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitConditional
+- uid: System.Linq.Expressions.ConditionalExpression
+  commentId: T:System.Linq.Expressions.ConditionalExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.conditionalexpression
+  name: ConditionalExpression
+  nameWithType: ConditionalExpression
+  fullName: System.Linq.Expressions.ConditionalExpression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitParameter*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitParameter
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitParameter_System_Linq_Expressions_ParameterExpression_
+  name: VisitParameter
+  nameWithType: ExpressionVisitor.VisitParameter
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitParameter
+- uid: System.Linq.Expressions.ParameterExpression
+  commentId: T:System.Linq.Expressions.ParameterExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.parameterexpression
+  name: ParameterExpression
+  nameWithType: ParameterExpression
+  fullName: System.Linq.Expressions.ParameterExpression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAccess*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAccess
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitMemberAccess_System_Linq_Expressions_MemberExpression_
+  name: VisitMemberAccess
+  nameWithType: ExpressionVisitor.VisitMemberAccess
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAccess
+- uid: System.Linq.Expressions.MemberExpression
+  commentId: T:System.Linq.Expressions.MemberExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.memberexpression
+  name: MemberExpression
+  nameWithType: MemberExpression
+  fullName: System.Linq.Expressions.MemberExpression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMethodCall*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMethodCall
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitMethodCall_System_Linq_Expressions_MethodCallExpression_
+  name: VisitMethodCall
+  nameWithType: ExpressionVisitor.VisitMethodCall
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMethodCall
+- uid: System.Linq.Expressions.MethodCallExpression
+  commentId: T:System.Linq.Expressions.MethodCallExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.methodcallexpression
+  name: MethodCallExpression
+  nameWithType: MethodCallExpression
+  fullName: System.Linq.Expressions.MethodCallExpression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitExpressionList*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitExpressionList
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitExpressionList_System_Collections_ObjectModel_ReadOnlyCollection_System_Linq_Expressions_Expression__
+  name: VisitExpressionList
+  nameWithType: ExpressionVisitor.VisitExpressionList
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitExpressionList
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.Expression}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.Expression}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  name: ReadOnlyCollection<Expression>
+  nameWithType: ReadOnlyCollection<Expression>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.Expression>
+  nameWithType.vb: ReadOnlyCollection(Of Expression)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of System.Linq.Expressions.Expression)
+  name.vb: ReadOnlyCollection(Of Expression)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - uid: System.Linq.Expressions.Expression
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.Expressions.Expression
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression
+  - name: )
+- uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  name: ReadOnlyCollection<T>
+  nameWithType: ReadOnlyCollection<T>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<T>
+  nameWithType.vb: ReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of T)
+  name.vb: ReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAssignment*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAssignment
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitMemberAssignment_System_Linq_Expressions_MemberAssignment_
+  name: VisitMemberAssignment
+  nameWithType: ExpressionVisitor.VisitMemberAssignment
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberAssignment
+- uid: System.Linq.Expressions.MemberAssignment
+  commentId: T:System.Linq.Expressions.MemberAssignment
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.memberassignment
+  name: MemberAssignment
+  nameWithType: MemberAssignment
+  fullName: System.Linq.Expressions.MemberAssignment
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberMemberBinding*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberMemberBinding
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitMemberMemberBinding_System_Linq_Expressions_MemberMemberBinding_
+  name: VisitMemberMemberBinding
+  nameWithType: ExpressionVisitor.VisitMemberMemberBinding
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberMemberBinding
+- uid: System.Linq.Expressions.MemberMemberBinding
+  commentId: T:System.Linq.Expressions.MemberMemberBinding
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.membermemberbinding
+  name: MemberMemberBinding
+  nameWithType: MemberMemberBinding
+  fullName: System.Linq.Expressions.MemberMemberBinding
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberListBinding*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberListBinding
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitMemberListBinding_System_Linq_Expressions_MemberListBinding_
+  name: VisitMemberListBinding
+  nameWithType: ExpressionVisitor.VisitMemberListBinding
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberListBinding
+- uid: System.Linq.Expressions.MemberListBinding
+  commentId: T:System.Linq.Expressions.MemberListBinding
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.memberlistbinding
+  name: MemberListBinding
+  nameWithType: MemberListBinding
+  fullName: System.Linq.Expressions.MemberListBinding
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBindingList*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBindingList
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitBindingList_System_Collections_ObjectModel_ReadOnlyCollection_System_Linq_Expressions_MemberBinding__
+  name: VisitBindingList
+  nameWithType: ExpressionVisitor.VisitBindingList
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitBindingList
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.MemberBinding}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.MemberBinding}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  name: ReadOnlyCollection<MemberBinding>
+  nameWithType: ReadOnlyCollection<MemberBinding>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.MemberBinding>
+  nameWithType.vb: ReadOnlyCollection(Of MemberBinding)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of System.Linq.Expressions.MemberBinding)
+  name.vb: ReadOnlyCollection(Of MemberBinding)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - uid: System.Linq.Expressions.MemberBinding
+    name: MemberBinding
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.memberbinding
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.Expressions.MemberBinding
+    name: MemberBinding
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.memberbinding
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Linq.Expressions.MemberBinding}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Linq.Expressions.MemberBinding}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<MemberBinding>
+  nameWithType: IEnumerable<MemberBinding>
+  fullName: System.Collections.Generic.IEnumerable<System.Linq.Expressions.MemberBinding>
+  nameWithType.vb: IEnumerable(Of MemberBinding)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Linq.Expressions.MemberBinding)
+  name.vb: IEnumerable(Of MemberBinding)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Linq.Expressions.MemberBinding
+    name: MemberBinding
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.memberbinding
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.Expressions.MemberBinding
+    name: MemberBinding
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.memberbinding
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializerList*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializerList
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitElementInitializerList_System_Collections_ObjectModel_ReadOnlyCollection_System_Linq_Expressions_ElementInit__
+  name: VisitElementInitializerList
+  nameWithType: ExpressionVisitor.VisitElementInitializerList
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitElementInitializerList
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.ElementInit}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.ElementInit}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  name: ReadOnlyCollection<ElementInit>
+  nameWithType: ReadOnlyCollection<ElementInit>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.ElementInit>
+  nameWithType.vb: ReadOnlyCollection(Of ElementInit)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of System.Linq.Expressions.ElementInit)
+  name.vb: ReadOnlyCollection(Of ElementInit)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - uid: System.Linq.Expressions.ElementInit
+    name: ElementInit
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.elementinit
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.Expressions.ElementInit
+    name: ElementInit
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.elementinit
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Linq.Expressions.ElementInit}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Linq.Expressions.ElementInit}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<ElementInit>
+  nameWithType: IEnumerable<ElementInit>
+  fullName: System.Collections.Generic.IEnumerable<System.Linq.Expressions.ElementInit>
+  nameWithType.vb: IEnumerable(Of ElementInit)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Linq.Expressions.ElementInit)
+  name.vb: IEnumerable(Of ElementInit)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Linq.Expressions.ElementInit
+    name: ElementInit
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.elementinit
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.Expressions.ElementInit
+    name: ElementInit
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.elementinit
+  - name: )
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitLambda*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitLambda
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitLambda_System_Linq_Expressions_LambdaExpression_
+  name: VisitLambda
+  nameWithType: ExpressionVisitor.VisitLambda
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitLambda
+- uid: System.Linq.Expressions.LambdaExpression
+  commentId: T:System.Linq.Expressions.LambdaExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.lambdaexpression
+  name: LambdaExpression
+  nameWithType: LambdaExpression
+  fullName: System.Linq.Expressions.LambdaExpression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNew*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNew
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitNew_System_Linq_Expressions_NewExpression_
+  name: VisitNew
+  nameWithType: ExpressionVisitor.VisitNew
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNew
+- uid: System.Linq.Expressions.NewExpression
+  commentId: T:System.Linq.Expressions.NewExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.newexpression
+  name: NewExpression
+  nameWithType: NewExpression
+  fullName: System.Linq.Expressions.NewExpression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberInit*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberInit
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitMemberInit_System_Linq_Expressions_MemberInitExpression_
+  name: VisitMemberInit
+  nameWithType: ExpressionVisitor.VisitMemberInit
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitMemberInit
+- uid: System.Linq.Expressions.MemberInitExpression
+  commentId: T:System.Linq.Expressions.MemberInitExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.memberinitexpression
+  name: MemberInitExpression
+  nameWithType: MemberInitExpression
+  fullName: System.Linq.Expressions.MemberInitExpression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitListInit*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitListInit
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitListInit_System_Linq_Expressions_ListInitExpression_
+  name: VisitListInit
+  nameWithType: ExpressionVisitor.VisitListInit
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitListInit
+- uid: System.Linq.Expressions.ListInitExpression
+  commentId: T:System.Linq.Expressions.ListInitExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.listinitexpression
+  name: ListInitExpression
+  nameWithType: ListInitExpression
+  fullName: System.Linq.Expressions.ListInitExpression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNewArray*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNewArray
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitNewArray_System_Linq_Expressions_NewArrayExpression_
+  name: VisitNewArray
+  nameWithType: ExpressionVisitor.VisitNewArray
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitNewArray
+- uid: System.Linq.Expressions.NewArrayExpression
+  commentId: T:System.Linq.Expressions.NewArrayExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.newarrayexpression
+  name: NewArrayExpression
+  nameWithType: NewArrayExpression
+  fullName: System.Linq.Expressions.NewArrayExpression
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitInvocation*
+  commentId: Overload:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitInvocation
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html#SimpleRelm_RelmInternal_Helpers_Expressions_ExpressionVisitor_VisitInvocation_System_Linq_Expressions_InvocationExpression_
+  name: VisitInvocation
+  nameWithType: ExpressionVisitor.VisitInvocation
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.VisitInvocation
+- uid: System.Linq.Expressions.InvocationExpression
+  commentId: T:System.Linq.Expressions.InvocationExpression
+  parent: System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.invocationexpression
+  name: InvocationExpression
+  nameWithType: InvocationExpression
+  fullName: System.Linq.Expressions.InvocationExpression

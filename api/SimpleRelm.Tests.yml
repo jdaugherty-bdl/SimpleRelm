@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.Tests
+  commentId: N:SimpleRelm.Tests
+  id: SimpleRelm.Tests
+  children:
+  - SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: SimpleRelm.Tests
+  nameWithType: SimpleRelm.Tests
+  fullName: SimpleRelm.Tests
+  type: Namespace
+  assemblies:
+  - SimpleRelm.Tests
+references:
+- uid: SimpleRelm.Tests.RelmHelper_Tester
+  commentId: T:SimpleRelm.Tests.RelmHelper_Tester
+  href: SimpleRelm.Tests.RelmHelper_Tester.html
+  name: RelmHelper_Tester
+  nameWithType: RelmHelper_Tester
+  fullName: SimpleRelm.Tests.RelmHelper_Tester

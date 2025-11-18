@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions
+  commentId: N:SimpleRelm.RelmInternal.Helpers.Expressions
+  id: SimpleRelm.RelmInternal.Helpers.Expressions
+  children:
+  - SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  langs:
+  - csharp
+  - vb
+  name: SimpleRelm.RelmInternal.Helpers.Expressions
+  nameWithType: SimpleRelm.RelmInternal.Helpers.Expressions
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions
+  type: Namespace
+  assemblies:
+  - SimpleRelm
+references:
+- uid: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  commentId: T:SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor
+  href: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor.html
+  name: ExpressionVisitor
+  nameWithType: ExpressionVisitor
+  fullName: SimpleRelm.RelmInternal.Helpers.Expressions.ExpressionVisitor

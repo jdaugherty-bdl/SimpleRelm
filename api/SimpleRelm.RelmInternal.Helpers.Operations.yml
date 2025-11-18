@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.RelmInternal.Helpers.Operations
+  commentId: N:SimpleRelm.RelmInternal.Helpers.Operations
+  id: SimpleRelm.RelmInternal.Helpers.Operations
+  children:
+  - SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator
+  - SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator.Command
+  langs:
+  - csharp
+  - vb
+  name: SimpleRelm.RelmInternal.Helpers.Operations
+  nameWithType: SimpleRelm.RelmInternal.Helpers.Operations
+  fullName: SimpleRelm.RelmInternal.Helpers.Operations
+  type: Namespace
+  assemblies:
+  - SimpleRelm
+references:
+- uid: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator
+  commentId: T:SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator
+  href: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator.html
+  name: ExpressionEvaluator
+  nameWithType: ExpressionEvaluator
+  fullName: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator
+- uid: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator.Command
+  commentId: T:SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator.Command
+  parent: SimpleRelm.RelmInternal.Helpers.Operations
+  href: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator.html
+  name: ExpressionEvaluator.Command
+  nameWithType: ExpressionEvaluator.Command
+  fullName: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator.Command
+  spec.csharp:
+  - uid: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator
+    name: ExpressionEvaluator
+    href: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator.Command
+    name: Command
+    href: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator.Command.html
+  spec.vb:
+  - uid: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator
+    name: ExpressionEvaluator
+    href: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator.Command
+    name: Command
+    href: SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator.Command.html
+- uid: SimpleRelm.RelmInternal.Helpers.Operations
+  commentId: N:SimpleRelm.RelmInternal.Helpers.Operations
+  href: SimpleRelm.html
+  name: SimpleRelm.RelmInternal.Helpers.Operations
+  nameWithType: SimpleRelm.RelmInternal.Helpers.Operations
+  fullName: SimpleRelm.RelmInternal.Helpers.Operations
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal
+    name: RelmInternal
+    href: SimpleRelm.RelmInternal.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal.Helpers
+    name: Helpers
+    href: SimpleRelm.RelmInternal.Helpers.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal.Helpers.Operations
+    name: Operations
+    href: SimpleRelm.RelmInternal.Helpers.Operations.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal
+    name: RelmInternal
+    href: SimpleRelm.RelmInternal.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal.Helpers
+    name: Helpers
+    href: SimpleRelm.RelmInternal.Helpers.html
+  - name: .
+  - uid: SimpleRelm.RelmInternal.Helpers.Operations
+    name: Operations
+    href: SimpleRelm.RelmInternal.Helpers.Operations.html

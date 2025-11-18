@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels
+  commentId: N:SimpleRelm.Tests.TestModels.DataLoaderModels
+  id: SimpleRelm.Tests.TestModels.DataLoaderModels
+  children:
+  - SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleanFieldLoader
+  - SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader
+  langs:
+  - csharp
+  - vb
+  name: SimpleRelm.Tests.TestModels.DataLoaderModels
+  nameWithType: SimpleRelm.Tests.TestModels.DataLoaderModels
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels
+  type: Namespace
+  assemblies:
+  - SimpleRelm.Tests
+references:
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleanFieldLoader
+  commentId: T:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleanFieldLoader
+  parent: SimpleRelm.Tests.TestModels.DataLoaderModels
+  href: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleanFieldLoader.html
+  name: TestFieldBooleanFieldLoader
+  nameWithType: TestFieldBooleanFieldLoader
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleanFieldLoader
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader
+  commentId: T:SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader
+  parent: SimpleRelm.Tests.TestModels.DataLoaderModels
+  href: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader.html
+  name: TestFieldBooleansFieldLoader
+  nameWithType: TestFieldBooleansFieldLoader
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels.TestFieldBooleansFieldLoader
+- uid: SimpleRelm.Tests.TestModels.DataLoaderModels
+  commentId: N:SimpleRelm.Tests.TestModels.DataLoaderModels
+  href: SimpleRelm.html
+  name: SimpleRelm.Tests.TestModels.DataLoaderModels
+  nameWithType: SimpleRelm.Tests.TestModels.DataLoaderModels
+  fullName: SimpleRelm.Tests.TestModels.DataLoaderModels
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Tests
+    name: Tests
+    href: SimpleRelm.Tests.html
+  - name: .
+  - uid: SimpleRelm.Tests.TestModels
+    name: TestModels
+    href: SimpleRelm.Tests.TestModels.html
+  - name: .
+  - uid: SimpleRelm.Tests.TestModels.DataLoaderModels
+    name: DataLoaderModels
+    href: SimpleRelm.Tests.TestModels.DataLoaderModels.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Tests
+    name: Tests
+    href: SimpleRelm.Tests.html
+  - name: .
+  - uid: SimpleRelm.Tests.TestModels
+    name: TestModels
+    href: SimpleRelm.Tests.TestModels.html
+  - name: .
+  - uid: SimpleRelm.Tests.TestModels.DataLoaderModels
+    name: DataLoaderModels
+    href: SimpleRelm.Tests.TestModels.DataLoaderModels.html

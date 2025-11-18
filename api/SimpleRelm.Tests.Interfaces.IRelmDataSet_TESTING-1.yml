@@ -1,0 +1,4238 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1
+  commentId: T:SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1
+  id: IRelmDataSet_TESTING`1
+  parent: SimpleRelm.Tests.Interfaces
+  children:
+  - SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1.GetDataLoader
+  - SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1.GetLoadData
+  langs:
+  - csharp
+  - vb
+  name: IRelmDataSet_TESTING<T>
+  nameWithType: IRelmDataSet_TESTING<T>
+  fullName: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING<T>
+  type: Interface
+  source:
+    remote:
+      path: SimpleRelm.Tests/Interfaces/IRelmDataSet_TESTING.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: IRelmDataSet_TESTING
+    path: SimpleRelm.Tests/Interfaces/IRelmDataSet_TESTING.cs
+    startLine: 9
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Interfaces
+  syntax:
+    content: 'public interface IRelmDataSet_TESTING<T> : IRelmDataSet<T>, ICollection<T>, IEnumerable<T>, IEnumerable, IRelmDataSetBase where T : IRelmModel, new()'
+    typeParameters:
+    - id: T
+    content.vb: Public Interface IRelmDataSet_TESTING(Of T As {IRelmModel, New}) Inherits IRelmDataSet(Of T), ICollection(Of T), IEnumerable(Of T), IEnumerable, IRelmDataSetBase
+  inheritedMembers:
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.SetFieldLoader(System.String,SimpleRelm.Interfaces.IRelmFieldLoader)
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader{{T}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Where(System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Reference``1(System.Linq.Expressions.Expression{System.Func{{T},{S}}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Reference``1(System.Linq.Expressions.Expression{System.Func{{T},{S}}},System.Linq.Expressions.Expression{System.Func{{S},System.Object}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Reference``1(System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{S}}}},System.Linq.Expressions.Expression{System.Func{{S},System.Object}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Reference``1(System.Linq.Expressions.Expression{System.Func{{T},{S}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{{S},System.Object}}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Reference``1(System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{S}}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{{S},System.Object}}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Find(System.Int32)
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Find(System.String)
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.FirstOrDefault
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.FirstOrDefault(System.Boolean)
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}},System.Boolean)
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Load
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Load(System.Boolean)
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.LoadAsDataSet
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Write
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Entry({T})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Entry({T},System.Boolean)
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.OrderBy(System.Linq.Expressions.Expression{System.Func{{T},System.Object}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.OrderByDescending(System.Linq.Expressions.Expression{System.Func{{T},System.Object}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Set(System.Linq.Expressions.Expression{System.Func{{T},{T}}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.GroupBy(System.Linq.Expressions.Expression{System.Func{{T},System.Object}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Limit(System.Int32)
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.DistinctBy(System.Linq.Expressions.Expression{System.Func{{T},System.Object}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Save({T})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Save
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.New(System.Boolean)
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.New(System.Object,System.Boolean)
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Add({T})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Add({T},System.Boolean)
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Add(System.Collections.Generic.ICollection{{T}})
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Add(System.Collections.Generic.ICollection{{T}},System.Boolean)
+  - System.Collections.Generic.ICollection{{T}}.Clear
+  - System.Collections.Generic.ICollection{{T}}.Contains({T})
+  - System.Collections.Generic.ICollection{{T}}.CopyTo({T}[],System.Int32)
+  - System.Collections.Generic.ICollection{{T}}.Remove({T})
+  - System.Collections.Generic.ICollection{{T}}.Count
+  - System.Collections.Generic.ICollection{{T}}.IsReadOnly
+  - System.Collections.Generic.IEnumerable{{T}}.GetEnumerator
+  nameWithType.vb: IRelmDataSet_TESTING(Of T)
+  fullName.vb: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING(Of T)
+  name.vb: IRelmDataSet_TESTING(Of T)
+- uid: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1.GetLoadData
+  commentId: M:SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1.GetLoadData
+  id: GetLoadData
+  parent: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1
+  langs:
+  - csharp
+  - vb
+  name: GetLoadData()
+  nameWithType: IRelmDataSet_TESTING<T>.GetLoadData()
+  fullName: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING<T>.GetLoadData()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Interfaces/IRelmDataSet_TESTING.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: GetLoadData
+    path: SimpleRelm.Tests/Interfaces/IRelmDataSet_TESTING.cs
+    startLine: 11
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Interfaces
+  syntax:
+    content: ICollection<T> GetLoadData()
+    return:
+      type: System.Collections.Generic.ICollection{{T}}
+    content.vb: Function GetLoadData() As ICollection(Of T)
+  overload: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1.GetLoadData*
+  nameWithType.vb: IRelmDataSet_TESTING(Of T).GetLoadData()
+  fullName.vb: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING(Of T).GetLoadData()
+- uid: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1.GetDataLoader
+  commentId: M:SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1.GetDataLoader
+  id: GetDataLoader
+  parent: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1
+  langs:
+  - csharp
+  - vb
+  name: GetDataLoader()
+  nameWithType: IRelmDataSet_TESTING<T>.GetDataLoader()
+  fullName: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING<T>.GetDataLoader()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Interfaces/IRelmDataSet_TESTING.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: GetDataLoader
+    path: SimpleRelm.Tests/Interfaces/IRelmDataSet_TESTING.cs
+    startLine: 12
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Interfaces
+  syntax:
+    content: IRelmDataLoader<T> GetDataLoader()
+    return:
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{T}}
+    content.vb: Function GetDataLoader() As IRelmDataLoader(Of T)
+  overload: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1.GetDataLoader*
+  nameWithType.vb: IRelmDataSet_TESTING(Of T).GetDataLoader()
+  fullName.vb: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING(Of T).GetDataLoader()
+references:
+- uid: SimpleRelm.Tests.Interfaces
+  commentId: N:SimpleRelm.Tests.Interfaces
+  href: SimpleRelm.html
+  name: SimpleRelm.Tests.Interfaces
+  nameWithType: SimpleRelm.Tests.Interfaces
+  fullName: SimpleRelm.Tests.Interfaces
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Tests
+    name: Tests
+    href: SimpleRelm.Tests.html
+  - name: .
+  - uid: SimpleRelm.Tests.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Tests.Interfaces.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Tests
+    name: Tests
+    href: SimpleRelm.Tests.html
+  - name: .
+  - uid: SimpleRelm.Tests.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Tests.Interfaces.html
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.SetFieldLoader(System.String,SimpleRelm.Interfaces.IRelmFieldLoader)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.SetFieldLoader(System.String,SimpleRelm.Interfaces.IRelmFieldLoader)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.SetFieldLoader(System.String,SimpleRelm.Interfaces.IRelmFieldLoader)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_SetFieldLoader_System_String_SimpleRelm_Interfaces_IRelmFieldLoader_
+  name: SetFieldLoader(string, IRelmFieldLoader)
+  nameWithType: IRelmDataSet<T>.SetFieldLoader(string, IRelmFieldLoader)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.SetFieldLoader(string, SimpleRelm.Interfaces.IRelmFieldLoader)
+  nameWithType.vb: IRelmDataSet(Of T).SetFieldLoader(String, IRelmFieldLoader)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).SetFieldLoader(String, SimpleRelm.Interfaces.IRelmFieldLoader)
+  name.vb: SetFieldLoader(String, IRelmFieldLoader)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.SetFieldLoader(System.String,SimpleRelm.Interfaces.IRelmFieldLoader)
+    name: SetFieldLoader
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_SetFieldLoader_System_String_SimpleRelm_Interfaces_IRelmFieldLoader_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmFieldLoader
+    name: IRelmFieldLoader
+    href: SimpleRelm.Interfaces.IRelmFieldLoader.html
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.SetFieldLoader(System.String,SimpleRelm.Interfaces.IRelmFieldLoader)
+    name: SetFieldLoader
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_SetFieldLoader_System_String_SimpleRelm_Interfaces_IRelmFieldLoader_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmFieldLoader
+    name: IRelmFieldLoader
+    href: SimpleRelm.Interfaces.IRelmFieldLoader.html
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader{{T}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader{`0})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader{`0})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_SetDataLoader_SimpleRelm_Interfaces_IRelmDataLoader__0__
+  name: SetDataLoader(IRelmDataLoader<T>)
+  nameWithType: IRelmDataSet<T>.SetDataLoader(IRelmDataLoader<T>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader<T>)
+  nameWithType.vb: IRelmDataSet(Of T).SetDataLoader(IRelmDataLoader(Of T))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader(Of T))
+  name.vb: SetDataLoader(IRelmDataLoader(Of T))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader{`0})
+    name: SetDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_SetDataLoader_SimpleRelm_Interfaces_IRelmDataLoader__0__
+  - name: (
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader{`0})
+    name: SetDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_SetDataLoader_SimpleRelm_Interfaces_IRelmDataLoader__0__
+  - name: (
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Where(System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Where(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Where(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Where_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  name: Where(Expression<Func<T, bool>>)
+  nameWithType: IRelmDataSet<T>.Where(Expression<Func<T, bool>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Where(System.Linq.Expressions.Expression<System.Func<T, bool>>)
+  nameWithType.vb: IRelmDataSet(Of T).Where(Expression(Of Func(Of T, Boolean)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Where(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)))
+  name.vb: Where(Expression(Of Func(Of T, Boolean)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Where(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+    name: Where
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Where_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Where(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+    name: Where
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Where_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Reference``1(System.Linq.Expressions.Expression{System.Func{{T},{S}}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  name: Reference<S>(Expression<Func<T, S>>)
+  nameWithType: IRelmDataSet<T>.Reference<S>(Expression<Func<T, S>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Reference<S>(System.Linq.Expressions.Expression<System.Func<T, S>>)
+  nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, S)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, S)))
+  name.vb: Reference(Of S)(Expression(Of Func(Of T, S)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  - name: <
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Reference``1(System.Linq.Expressions.Expression{System.Func{{T},{S}}},System.Linq.Expressions.Expression{System.Func{{S},System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func___0_System_Object___
+  name: Reference<S>(Expression<Func<T, S>>, Expression<Func<S, object>>)
+  nameWithType: IRelmDataSet<T>.Reference<S>(Expression<Func<T, S>>, Expression<Func<S, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Reference<S>(System.Linq.Expressions.Expression<System.Func<T, S>>, System.Linq.Expressions.Expression<System.Func<S, object>>)
+  nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, S)), Expression(Of Func(Of S, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, S)), System.Linq.Expressions.Expression(Of System.Func(Of S, Object)))
+  name.vb: Reference(Of S)(Expression(Of Func(Of T, S)), Expression(Of Func(Of S, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func___0_System_Object___
+  - name: <
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func___0_System_Object___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Reference``1(System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{S}}}},System.Linq.Expressions.Expression{System.Func{{S},System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Linq_Expressions_Expression_System_Func___0_System_Object___
+  name: Reference<S>(Expression<Func<T, ICollection<S>>>, Expression<Func<S, object>>)
+  nameWithType: IRelmDataSet<T>.Reference<S>(Expression<Func<T, ICollection<S>>>, Expression<Func<S, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Reference<S>(System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<S>>>, System.Linq.Expressions.Expression<System.Func<S, object>>)
+  nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), Expression(Of Func(Of S, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of S))), System.Linq.Expressions.Expression(Of System.Func(Of S, Object)))
+  name.vb: Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), Expression(Of Func(Of S, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Linq_Expressions_Expression_System_Func___0_System_Object___
+  - name: <
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: S
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Linq_Expressions_Expression_System_Func___0_System_Object___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Reference``1(System.Linq.Expressions.Expression{System.Func{{T},{S}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{{S},System.Object}}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____
+  name: Reference<S>(Expression<Func<T, S>>, ICollection<Expression<Func<S, object>>>)
+  nameWithType: IRelmDataSet<T>.Reference<S>(Expression<Func<T, S>>, ICollection<Expression<Func<S, object>>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Reference<S>(System.Linq.Expressions.Expression<System.Func<T, S>>, System.Collections.Generic.ICollection<System.Linq.Expressions.Expression<System.Func<S, object>>>)
+  nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, S)), ICollection(Of Expression(Of Func(Of S, Object))))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, S)), System.Collections.Generic.ICollection(Of System.Linq.Expressions.Expression(Of System.Func(Of S, Object))))
+  name.vb: Reference(Of S)(Expression(Of Func(Of T, S)), ICollection(Of Expression(Of Func(Of S, Object))))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____
+  - name: <
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Reference``1(System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{S}}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{{S},System.Object}}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____
+  name: Reference<S>(Expression<Func<T, ICollection<S>>>, ICollection<Expression<Func<S, object>>>)
+  nameWithType: IRelmDataSet<T>.Reference<S>(Expression<Func<T, ICollection<S>>>, ICollection<Expression<Func<S, object>>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Reference<S>(System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<S>>>, System.Collections.Generic.ICollection<System.Linq.Expressions.Expression<System.Func<S, object>>>)
+  nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), ICollection(Of Expression(Of Func(Of S, Object))))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of S))), System.Collections.Generic.ICollection(Of System.Linq.Expressions.Expression(Of System.Func(Of S, Object))))
+  name.vb: Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), ICollection(Of Expression(Of Func(Of S, Object))))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____
+  - name: <
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: S
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Find(System.Int32)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Find(System.Int32)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Find(System.Int32)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Find_System_Int32_
+  name: Find(int)
+  nameWithType: IRelmDataSet<T>.Find(int)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Find(int)
+  nameWithType.vb: IRelmDataSet(Of T).Find(Integer)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Find(Integer)
+  name.vb: Find(Integer)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Find(System.Int32)
+    name: Find
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Find_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Find(System.Int32)
+    name: Find
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Find_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Find(System.String)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Find(System.String)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Find(System.String)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Find_System_String_
+  name: Find(string)
+  nameWithType: IRelmDataSet<T>.Find(string)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Find(string)
+  nameWithType.vb: IRelmDataSet(Of T).Find(String)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Find(String)
+  name.vb: Find(String)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Find(System.String)
+    name: Find
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Find_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Find(System.String)
+    name: Find
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Find_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.FirstOrDefault
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.FirstOrDefault
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault
+  name: FirstOrDefault()
+  nameWithType: IRelmDataSet<T>.FirstOrDefault()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.FirstOrDefault()
+  nameWithType.vb: IRelmDataSet(Of T).FirstOrDefault()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).FirstOrDefault()
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.FirstOrDefault
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.FirstOrDefault
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.FirstOrDefault(System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.FirstOrDefault(System.Boolean)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Boolean)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Boolean_
+  name: FirstOrDefault(bool)
+  nameWithType: IRelmDataSet<T>.FirstOrDefault(bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.FirstOrDefault(bool)
+  nameWithType.vb: IRelmDataSet(Of T).FirstOrDefault(Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).FirstOrDefault(Boolean)
+  name.vb: FirstOrDefault(Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.FirstOrDefault(System.Boolean)
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.FirstOrDefault(System.Boolean)
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  name: FirstOrDefault(Expression<Func<T, bool>>)
+  nameWithType: IRelmDataSet<T>.FirstOrDefault(Expression<Func<T, bool>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.FirstOrDefault(System.Linq.Expressions.Expression<System.Func<T, bool>>)
+  nameWithType.vb: IRelmDataSet(Of T).FirstOrDefault(Expression(Of Func(Of T, Boolean)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).FirstOrDefault(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)))
+  name.vb: FirstOrDefault(Expression(Of Func(Of T, Boolean)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}},System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Boolean)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Boolean)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Boolean_
+  name: FirstOrDefault(Expression<Func<T, bool>>, bool)
+  nameWithType: IRelmDataSet<T>.FirstOrDefault(Expression<Func<T, bool>>, bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.FirstOrDefault(System.Linq.Expressions.Expression<System.Func<T, bool>>, bool)
+  nameWithType.vb: IRelmDataSet(Of T).FirstOrDefault(Expression(Of Func(Of T, Boolean)), Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).FirstOrDefault(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)), Boolean)
+  name.vb: FirstOrDefault(Expression(Of Func(Of T, Boolean)), Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Boolean)
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Boolean_
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Boolean)
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Boolean_
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Load
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Load
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Load
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load
+  name: Load()
+  nameWithType: IRelmDataSet<T>.Load()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Load()
+  nameWithType.vb: IRelmDataSet(Of T).Load()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Load()
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Load
+    name: Load
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Load
+    name: Load
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Load(System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Load(System.Boolean)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Load(System.Boolean)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load_System_Boolean_
+  name: Load(bool)
+  nameWithType: IRelmDataSet<T>.Load(bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Load(bool)
+  nameWithType.vb: IRelmDataSet(Of T).Load(Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Load(Boolean)
+  name.vb: Load(Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Load(System.Boolean)
+    name: Load
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Load(System.Boolean)
+    name: Load
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.LoadAsDataSet
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.LoadAsDataSet
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.LoadAsDataSet
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_LoadAsDataSet
+  name: LoadAsDataSet()
+  nameWithType: IRelmDataSet<T>.LoadAsDataSet()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.LoadAsDataSet()
+  nameWithType.vb: IRelmDataSet(Of T).LoadAsDataSet()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).LoadAsDataSet()
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.LoadAsDataSet
+    name: LoadAsDataSet
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_LoadAsDataSet
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.LoadAsDataSet
+    name: LoadAsDataSet
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_LoadAsDataSet
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Write
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Write
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Write
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Write
+  name: Write()
+  nameWithType: IRelmDataSet<T>.Write()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Write()
+  nameWithType.vb: IRelmDataSet(Of T).Write()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Write()
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Write
+    name: Write
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Write
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Write
+    name: Write
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Write
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Entry({T})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Entry(`0)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Entry(`0)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Entry__0_
+  name: Entry(T)
+  nameWithType: IRelmDataSet<T>.Entry(T)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Entry(T)
+  nameWithType.vb: IRelmDataSet(Of T).Entry(T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Entry(T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Entry(`0)
+    name: Entry
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Entry__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Entry(`0)
+    name: Entry
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Entry__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Entry({T},System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Entry(`0,System.Boolean)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Entry(`0,System.Boolean)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Entry__0_System_Boolean_
+  name: Entry(T, bool)
+  nameWithType: IRelmDataSet<T>.Entry(T, bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Entry(T, bool)
+  nameWithType.vb: IRelmDataSet(Of T).Entry(T, Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Entry(T, Boolean)
+  name.vb: Entry(T, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Entry(`0,System.Boolean)
+    name: Entry
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Entry__0_System_Boolean_
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Entry(`0,System.Boolean)
+    name: Entry
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Entry__0_System_Boolean_
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.OrderBy(System.Linq.Expressions.Expression{System.Func{{T},System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  name: OrderBy(Expression<Func<T, object>>)
+  nameWithType: IRelmDataSet<T>.OrderBy(Expression<Func<T, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.OrderBy(System.Linq.Expressions.Expression<System.Func<T, object>>)
+  nameWithType.vb: IRelmDataSet(Of T).OrderBy(Expression(Of Func(Of T, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).OrderBy(System.Linq.Expressions.Expression(Of System.Func(Of T, Object)))
+  name.vb: OrderBy(Expression(Of Func(Of T, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: OrderBy
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: OrderBy
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.OrderByDescending(System.Linq.Expressions.Expression{System.Func{{T},System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.OrderByDescending(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.OrderByDescending(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderByDescending_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  name: OrderByDescending(Expression<Func<T, object>>)
+  nameWithType: IRelmDataSet<T>.OrderByDescending(Expression<Func<T, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.OrderByDescending(System.Linq.Expressions.Expression<System.Func<T, object>>)
+  nameWithType.vb: IRelmDataSet(Of T).OrderByDescending(Expression(Of Func(Of T, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).OrderByDescending(System.Linq.Expressions.Expression(Of System.Func(Of T, Object)))
+  name.vb: OrderByDescending(Expression(Of Func(Of T, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.OrderByDescending(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: OrderByDescending
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderByDescending_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.OrderByDescending(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: OrderByDescending
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderByDescending_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Set(System.Linq.Expressions.Expression{System.Func{{T},{T}}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Set(System.Linq.Expressions.Expression{System.Func{`0,`0}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Set(System.Linq.Expressions.Expression{System.Func{`0,`0}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Set_System_Linq_Expressions_Expression_System_Func__0__0___
+  name: Set(Expression<Func<T, T>>)
+  nameWithType: IRelmDataSet<T>.Set(Expression<Func<T, T>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Set(System.Linq.Expressions.Expression<System.Func<T, T>>)
+  nameWithType.vb: IRelmDataSet(Of T).Set(Expression(Of Func(Of T, T)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Set(System.Linq.Expressions.Expression(Of System.Func(Of T, T)))
+  name.vb: Set(Expression(Of Func(Of T, T)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Set(System.Linq.Expressions.Expression{System.Func{`0,`0}})
+    name: Set
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Set_System_Linq_Expressions_Expression_System_Func__0__0___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Set(System.Linq.Expressions.Expression{System.Func{`0,`0}})
+    name: Set
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Set_System_Linq_Expressions_Expression_System_Func__0__0___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.GroupBy(System.Linq.Expressions.Expression{System.Func{{T},System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.GroupBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.GroupBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_GroupBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  name: GroupBy(Expression<Func<T, object>>)
+  nameWithType: IRelmDataSet<T>.GroupBy(Expression<Func<T, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.GroupBy(System.Linq.Expressions.Expression<System.Func<T, object>>)
+  nameWithType.vb: IRelmDataSet(Of T).GroupBy(Expression(Of Func(Of T, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).GroupBy(System.Linq.Expressions.Expression(Of System.Func(Of T, Object)))
+  name.vb: GroupBy(Expression(Of Func(Of T, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.GroupBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: GroupBy
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_GroupBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.GroupBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: GroupBy
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_GroupBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Limit(System.Int32)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Limit(System.Int32)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Limit(System.Int32)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Limit_System_Int32_
+  name: Limit(int)
+  nameWithType: IRelmDataSet<T>.Limit(int)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Limit(int)
+  nameWithType.vb: IRelmDataSet(Of T).Limit(Integer)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Limit(Integer)
+  name.vb: Limit(Integer)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Limit(System.Int32)
+    name: Limit
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Limit_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Limit(System.Int32)
+    name: Limit
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Limit_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.DistinctBy(System.Linq.Expressions.Expression{System.Func{{T},System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_DistinctBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  name: DistinctBy(Expression<Func<T, object>>)
+  nameWithType: IRelmDataSet<T>.DistinctBy(Expression<Func<T, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.DistinctBy(System.Linq.Expressions.Expression<System.Func<T, object>>)
+  nameWithType.vb: IRelmDataSet(Of T).DistinctBy(Expression(Of Func(Of T, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).DistinctBy(System.Linq.Expressions.Expression(Of System.Func(Of T, Object)))
+  name.vb: DistinctBy(Expression(Of Func(Of T, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: DistinctBy
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_DistinctBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: DistinctBy
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_DistinctBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Save({T})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Save(`0)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Save(`0)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Save__0_
+  name: Save(T)
+  nameWithType: IRelmDataSet<T>.Save(T)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Save(T)
+  nameWithType.vb: IRelmDataSet(Of T).Save(T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Save(T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Save(`0)
+    name: Save
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Save__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Save(`0)
+    name: Save
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Save__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Save
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Save
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Save
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Save
+  name: Save()
+  nameWithType: IRelmDataSet<T>.Save()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Save()
+  nameWithType.vb: IRelmDataSet(Of T).Save()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Save()
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Save
+    name: Save
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Save
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Save
+    name: Save
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Save
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.New(System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.New(System.Boolean)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.New(System.Boolean)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_New_System_Boolean_
+  name: New(bool)
+  nameWithType: IRelmDataSet<T>.New(bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.New(bool)
+  nameWithType.vb: IRelmDataSet(Of T).New(Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).New(Boolean)
+  name.vb: New(Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.New(System.Boolean)
+    name: New
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_New_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.New(System.Boolean)
+    name: New
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_New_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.New(System.Object,System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.New(System.Object,System.Boolean)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.New(System.Object,System.Boolean)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_New_System_Object_System_Boolean_
+  name: New(dynamic, bool)
+  nameWithType: IRelmDataSet<T>.New(dynamic, bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.New(dynamic, bool)
+  nameWithType.vb: IRelmDataSet(Of T).New(Object, Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).New(Object, Boolean)
+  name.vb: New(Object, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.New(System.Object,System.Boolean)
+    name: New
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_New_System_Object_System_Boolean_
+  - name: (
+  - uid: dynamic
+    name: dynamic
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.New(System.Object,System.Boolean)
+    name: New
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_New_System_Object_System_Boolean_
+  - name: (
+  - name: Object
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Add({T})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Add(`0)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Add(`0)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add__0_
+  name: Add(T)
+  nameWithType: IRelmDataSet<T>.Add(T)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Add(T)
+  nameWithType.vb: IRelmDataSet(Of T).Add(T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Add(T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Add(`0)
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Add(`0)
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Add({T},System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Add(`0,System.Boolean)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Add(`0,System.Boolean)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add__0_System_Boolean_
+  name: Add(T, bool)
+  nameWithType: IRelmDataSet<T>.Add(T, bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Add(T, bool)
+  nameWithType.vb: IRelmDataSet(Of T).Add(T, Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Add(T, Boolean)
+  name.vb: Add(T, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Add(`0,System.Boolean)
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add__0_System_Boolean_
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Add(`0,System.Boolean)
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add__0_System_Boolean_
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Add(System.Collections.Generic.ICollection{{T}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Add(System.Collections.Generic.ICollection{`0})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Add(System.Collections.Generic.ICollection{`0})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add_System_Collections_Generic_ICollection__0__
+  name: Add(ICollection<T>)
+  nameWithType: IRelmDataSet<T>.Add(ICollection<T>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Add(System.Collections.Generic.ICollection<T>)
+  nameWithType.vb: IRelmDataSet(Of T).Add(ICollection(Of T))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Add(System.Collections.Generic.ICollection(Of T))
+  name.vb: Add(ICollection(Of T))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Add(System.Collections.Generic.ICollection{`0})
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add_System_Collections_Generic_ICollection__0__
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Add(System.Collections.Generic.ICollection{`0})
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add_System_Collections_Generic_ICollection__0__
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Add(System.Collections.Generic.ICollection{{T}},System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Add(System.Collections.Generic.ICollection{`0},System.Boolean)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Add(System.Collections.Generic.ICollection{`0},System.Boolean)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add_System_Collections_Generic_ICollection__0__System_Boolean_
+  name: Add(ICollection<T>, bool)
+  nameWithType: IRelmDataSet<T>.Add(ICollection<T>, bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Add(System.Collections.Generic.ICollection<T>, bool)
+  nameWithType.vb: IRelmDataSet(Of T).Add(ICollection(Of T), Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Add(System.Collections.Generic.ICollection(Of T), Boolean)
+  name.vb: Add(ICollection(Of T), Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Add(System.Collections.Generic.ICollection{`0},System.Boolean)
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add_System_Collections_Generic_ICollection__0__System_Boolean_
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Add(System.Collections.Generic.ICollection{`0},System.Boolean)
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add_System_Collections_Generic_ICollection__0__System_Boolean_
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Collections.Generic.ICollection{{T}}.Clear
+  commentId: M:System.Collections.Generic.ICollection{`0}.Clear
+  parent: System.Collections.Generic.ICollection{{T}}
+  definition: System.Collections.Generic.ICollection`1.Clear
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  name: Clear()
+  nameWithType: ICollection<T>.Clear()
+  fullName: System.Collections.Generic.ICollection<T>.Clear()
+  nameWithType.vb: ICollection(Of T).Clear()
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Clear()
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{`0}.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{`0}.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.ICollection{{T}}.Contains({T})
+  commentId: M:System.Collections.Generic.ICollection{`0}.Contains(`0)
+  parent: System.Collections.Generic.ICollection{{T}}
+  definition: System.Collections.Generic.ICollection`1.Contains(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  name: Contains(T)
+  nameWithType: ICollection<T>.Contains(T)
+  fullName: System.Collections.Generic.ICollection<T>.Contains(T)
+  nameWithType.vb: ICollection(Of T).Contains(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Contains(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{`0}.Contains(`0)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{`0}.Contains(`0)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.ICollection{{T}}.CopyTo({T}[],System.Int32)
+  commentId: M:System.Collections.Generic.ICollection{`0}.CopyTo(`0[],System.Int32)
+  parent: System.Collections.Generic.ICollection{{T}}
+  definition: System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  name: CopyTo(T[], int)
+  nameWithType: ICollection<T>.CopyTo(T[], int)
+  fullName: System.Collections.Generic.ICollection<T>.CopyTo(T[], int)
+  nameWithType.vb: ICollection(Of T).CopyTo(T(), Integer)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).CopyTo(T(), Integer)
+  name.vb: CopyTo(T(), Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{`0}.CopyTo(`0[],System.Int32)
+    name: CopyTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  - name: (
+  - name: T
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{`0}.CopyTo(`0[],System.Int32)
+    name: CopyTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  - name: (
+  - name: T
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.ICollection{{T}}.Remove({T})
+  commentId: M:System.Collections.Generic.ICollection{`0}.Remove(`0)
+  parent: System.Collections.Generic.ICollection{{T}}
+  definition: System.Collections.Generic.ICollection`1.Remove(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  name: Remove(T)
+  nameWithType: ICollection<T>.Remove(T)
+  fullName: System.Collections.Generic.ICollection<T>.Remove(T)
+  nameWithType.vb: ICollection(Of T).Remove(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Remove(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{`0}.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{`0}.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.ICollection{{T}}.Count
+  commentId: P:System.Collections.Generic.ICollection{`0}.Count
+  parent: System.Collections.Generic.ICollection{{T}}
+  definition: System.Collections.Generic.ICollection`1.Count
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.count
+  name: Count
+  nameWithType: ICollection<T>.Count
+  fullName: System.Collections.Generic.ICollection<T>.Count
+  nameWithType.vb: ICollection(Of T).Count
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Count
+- uid: System.Collections.Generic.ICollection{{T}}.IsReadOnly
+  commentId: P:System.Collections.Generic.ICollection{`0}.IsReadOnly
+  parent: System.Collections.Generic.ICollection{{T}}
+  definition: System.Collections.Generic.ICollection`1.IsReadOnly
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.isreadonly
+  name: IsReadOnly
+  nameWithType: ICollection<T>.IsReadOnly
+  fullName: System.Collections.Generic.ICollection<T>.IsReadOnly
+  nameWithType.vb: ICollection(Of T).IsReadOnly
+  fullName.vb: System.Collections.Generic.ICollection(Of T).IsReadOnly
+- uid: System.Collections.Generic.IEnumerable{{T}}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{`0}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{{T}}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{`0}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{`0}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.SetFieldLoader(System.String,SimpleRelm.Interfaces.IRelmFieldLoader)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.SetFieldLoader(System.String,SimpleRelm.Interfaces.IRelmFieldLoader)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_SetFieldLoader_System_String_SimpleRelm_Interfaces_IRelmFieldLoader_
+  name: SetFieldLoader(string, IRelmFieldLoader)
+  nameWithType: IRelmDataSet<T>.SetFieldLoader(string, IRelmFieldLoader)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.SetFieldLoader(string, SimpleRelm.Interfaces.IRelmFieldLoader)
+  nameWithType.vb: IRelmDataSet(Of T).SetFieldLoader(String, IRelmFieldLoader)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).SetFieldLoader(String, SimpleRelm.Interfaces.IRelmFieldLoader)
+  name.vb: SetFieldLoader(String, IRelmFieldLoader)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.SetFieldLoader(System.String,SimpleRelm.Interfaces.IRelmFieldLoader)
+    name: SetFieldLoader
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_SetFieldLoader_System_String_SimpleRelm_Interfaces_IRelmFieldLoader_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmFieldLoader
+    name: IRelmFieldLoader
+    href: SimpleRelm.Interfaces.IRelmFieldLoader.html
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.SetFieldLoader(System.String,SimpleRelm.Interfaces.IRelmFieldLoader)
+    name: SetFieldLoader
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_SetFieldLoader_System_String_SimpleRelm_Interfaces_IRelmFieldLoader_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: SimpleRelm.Interfaces.IRelmFieldLoader
+    name: IRelmFieldLoader
+    href: SimpleRelm.Interfaces.IRelmFieldLoader.html
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  commentId: T:SimpleRelm.Interfaces.IRelmDataSet{``0}
+  parent: SimpleRelm.Interfaces
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html
+  name: IRelmDataSet<T>
+  nameWithType: IRelmDataSet<T>
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>
+  nameWithType.vb: IRelmDataSet(Of T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T)
+  name.vb: IRelmDataSet(Of T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader{`0})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader{`0})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_SetDataLoader_SimpleRelm_Interfaces_IRelmDataLoader__0__
+  name: SetDataLoader(IRelmDataLoader<T>)
+  nameWithType: IRelmDataSet<T>.SetDataLoader(IRelmDataLoader<T>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader<T>)
+  nameWithType.vb: IRelmDataSet(Of T).SetDataLoader(IRelmDataLoader(Of T))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader(Of T))
+  name.vb: SetDataLoader(IRelmDataLoader(Of T))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader{`0})
+    name: SetDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_SetDataLoader_SimpleRelm_Interfaces_IRelmDataLoader__0__
+  - name: (
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader{`0})
+    name: SetDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_SetDataLoader_SimpleRelm_Interfaces_IRelmDataLoader__0__
+  - name: (
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Where(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Where(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Where_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  name: Where(Expression<Func<T, bool>>)
+  nameWithType: IRelmDataSet<T>.Where(Expression<Func<T, bool>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Where(System.Linq.Expressions.Expression<System.Func<T, bool>>)
+  nameWithType.vb: IRelmDataSet(Of T).Where(Expression(Of Func(Of T, Boolean)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Where(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)))
+  name.vb: Where(Expression(Of Func(Of T, Boolean)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Where(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+    name: Where
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Where_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Where(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+    name: Where
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Where_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  name: Reference<S>(Expression<Func<T, S>>)
+  nameWithType: IRelmDataSet<T>.Reference<S>(Expression<Func<T, S>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Reference<S>(System.Linq.Expressions.Expression<System.Func<T, S>>)
+  nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, S)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, S)))
+  name.vb: Reference(Of S)(Expression(Of Func(Of T, S)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  - name: <
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func___0_System_Object___
+  name: Reference<S>(Expression<Func<T, S>>, Expression<Func<S, object>>)
+  nameWithType: IRelmDataSet<T>.Reference<S>(Expression<Func<T, S>>, Expression<Func<S, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Reference<S>(System.Linq.Expressions.Expression<System.Func<T, S>>, System.Linq.Expressions.Expression<System.Func<S, object>>)
+  nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, S)), Expression(Of Func(Of S, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, S)), System.Linq.Expressions.Expression(Of System.Func(Of S, Object)))
+  name.vb: Reference(Of S)(Expression(Of Func(Of T, S)), Expression(Of Func(Of S, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func___0_System_Object___
+  - name: <
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func___0_System_Object___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Linq_Expressions_Expression_System_Func___0_System_Object___
+  name: Reference<S>(Expression<Func<T, ICollection<S>>>, Expression<Func<S, object>>)
+  nameWithType: IRelmDataSet<T>.Reference<S>(Expression<Func<T, ICollection<S>>>, Expression<Func<S, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Reference<S>(System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<S>>>, System.Linq.Expressions.Expression<System.Func<S, object>>)
+  nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), Expression(Of Func(Of S, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of S))), System.Linq.Expressions.Expression(Of System.Func(Of S, Object)))
+  name.vb: Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), Expression(Of Func(Of S, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Linq_Expressions_Expression_System_Func___0_System_Object___
+  - name: <
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: S
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Linq_Expressions_Expression_System_Func___0_System_Object___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____
+  name: Reference<S>(Expression<Func<T, S>>, ICollection<Expression<Func<S, object>>>)
+  nameWithType: IRelmDataSet<T>.Reference<S>(Expression<Func<T, S>>, ICollection<Expression<Func<S, object>>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Reference<S>(System.Linq.Expressions.Expression<System.Func<T, S>>, System.Collections.Generic.ICollection<System.Linq.Expressions.Expression<System.Func<S, object>>>)
+  nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, S)), ICollection(Of Expression(Of Func(Of S, Object))))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, S)), System.Collections.Generic.ICollection(Of System.Linq.Expressions.Expression(Of System.Func(Of S, Object))))
+  name.vb: Reference(Of S)(Expression(Of Func(Of T, S)), ICollection(Of Expression(Of Func(Of S, Object))))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____
+  - name: <
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____
+  name: Reference<S>(Expression<Func<T, ICollection<S>>>, ICollection<Expression<Func<S, object>>>)
+  nameWithType: IRelmDataSet<T>.Reference<S>(Expression<Func<T, ICollection<S>>>, ICollection<Expression<Func<S, object>>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Reference<S>(System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<S>>>, System.Collections.Generic.ICollection<System.Linq.Expressions.Expression<System.Func<S, object>>>)
+  nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), ICollection(Of Expression(Of Func(Of S, Object))))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of S))), System.Collections.Generic.ICollection(Of System.Linq.Expressions.Expression(Of System.Func(Of S, Object))))
+  name.vb: Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), ICollection(Of Expression(Of Func(Of S, Object))))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____
+  - name: <
+  - name: S
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: S
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
+    name: Reference
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Find(System.Int32)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Find(System.Int32)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Find_System_Int32_
+  name: Find(int)
+  nameWithType: IRelmDataSet<T>.Find(int)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Find(int)
+  nameWithType.vb: IRelmDataSet(Of T).Find(Integer)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Find(Integer)
+  name.vb: Find(Integer)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Find(System.Int32)
+    name: Find
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Find_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Find(System.Int32)
+    name: Find
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Find_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Find(System.String)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Find(System.String)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Find_System_String_
+  name: Find(string)
+  nameWithType: IRelmDataSet<T>.Find(string)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Find(string)
+  nameWithType.vb: IRelmDataSet(Of T).Find(String)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Find(String)
+  name.vb: Find(String)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Find(System.String)
+    name: Find
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Find_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Find(System.String)
+    name: Find
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Find_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault
+  name: FirstOrDefault()
+  nameWithType: IRelmDataSet<T>.FirstOrDefault()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.FirstOrDefault()
+  nameWithType.vb: IRelmDataSet(Of T).FirstOrDefault()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).FirstOrDefault()
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Boolean)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Boolean_
+  name: FirstOrDefault(bool)
+  nameWithType: IRelmDataSet<T>.FirstOrDefault(bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.FirstOrDefault(bool)
+  nameWithType.vb: IRelmDataSet(Of T).FirstOrDefault(Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).FirstOrDefault(Boolean)
+  name.vb: FirstOrDefault(Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Boolean)
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Boolean)
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  name: FirstOrDefault(Expression<Func<T, bool>>)
+  nameWithType: IRelmDataSet<T>.FirstOrDefault(Expression<Func<T, bool>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.FirstOrDefault(System.Linq.Expressions.Expression<System.Func<T, bool>>)
+  nameWithType.vb: IRelmDataSet(Of T).FirstOrDefault(Expression(Of Func(Of T, Boolean)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).FirstOrDefault(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)))
+  name.vb: FirstOrDefault(Expression(Of Func(Of T, Boolean)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Boolean)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Boolean_
+  name: FirstOrDefault(Expression<Func<T, bool>>, bool)
+  nameWithType: IRelmDataSet<T>.FirstOrDefault(Expression<Func<T, bool>>, bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.FirstOrDefault(System.Linq.Expressions.Expression<System.Func<T, bool>>, bool)
+  nameWithType.vb: IRelmDataSet(Of T).FirstOrDefault(Expression(Of Func(Of T, Boolean)), Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).FirstOrDefault(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)), Boolean)
+  name.vb: FirstOrDefault(Expression(Of Func(Of T, Boolean)), Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Boolean)
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Boolean_
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Boolean)
+    name: FirstOrDefault
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Boolean_
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Load
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Load
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load
+  name: Load()
+  nameWithType: IRelmDataSet<T>.Load()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Load()
+  nameWithType.vb: IRelmDataSet(Of T).Load()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Load()
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Load
+    name: Load
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Load
+    name: Load
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Load(System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Load(System.Boolean)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load_System_Boolean_
+  name: Load(bool)
+  nameWithType: IRelmDataSet<T>.Load(bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Load(bool)
+  nameWithType.vb: IRelmDataSet(Of T).Load(Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Load(Boolean)
+  name.vb: Load(Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Load(System.Boolean)
+    name: Load
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Load(System.Boolean)
+    name: Load
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Load_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.LoadAsDataSet
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.LoadAsDataSet
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_LoadAsDataSet
+  name: LoadAsDataSet()
+  nameWithType: IRelmDataSet<T>.LoadAsDataSet()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.LoadAsDataSet()
+  nameWithType.vb: IRelmDataSet(Of T).LoadAsDataSet()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).LoadAsDataSet()
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.LoadAsDataSet
+    name: LoadAsDataSet
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_LoadAsDataSet
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.LoadAsDataSet
+    name: LoadAsDataSet
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_LoadAsDataSet
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Write
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Write
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Write
+  name: Write()
+  nameWithType: IRelmDataSet<T>.Write()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Write()
+  nameWithType.vb: IRelmDataSet(Of T).Write()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Write()
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Write
+    name: Write
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Write
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Write
+    name: Write
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Write
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Entry(`0)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Entry(`0)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Entry__0_
+  name: Entry(T)
+  nameWithType: IRelmDataSet<T>.Entry(T)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Entry(T)
+  nameWithType.vb: IRelmDataSet(Of T).Entry(T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Entry(T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Entry(`0)
+    name: Entry
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Entry__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Entry(`0)
+    name: Entry
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Entry__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Entry(`0,System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Entry(`0,System.Boolean)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Entry__0_System_Boolean_
+  name: Entry(T, bool)
+  nameWithType: IRelmDataSet<T>.Entry(T, bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Entry(T, bool)
+  nameWithType.vb: IRelmDataSet(Of T).Entry(T, Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Entry(T, Boolean)
+  name.vb: Entry(T, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Entry(`0,System.Boolean)
+    name: Entry
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Entry__0_System_Boolean_
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Entry(`0,System.Boolean)
+    name: Entry
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Entry__0_System_Boolean_
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  name: OrderBy(Expression<Func<T, object>>)
+  nameWithType: IRelmDataSet<T>.OrderBy(Expression<Func<T, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.OrderBy(System.Linq.Expressions.Expression<System.Func<T, object>>)
+  nameWithType.vb: IRelmDataSet(Of T).OrderBy(Expression(Of Func(Of T, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).OrderBy(System.Linq.Expressions.Expression(Of System.Func(Of T, Object)))
+  name.vb: OrderBy(Expression(Of Func(Of T, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: OrderBy
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: OrderBy
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.OrderByDescending(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.OrderByDescending(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderByDescending_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  name: OrderByDescending(Expression<Func<T, object>>)
+  nameWithType: IRelmDataSet<T>.OrderByDescending(Expression<Func<T, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.OrderByDescending(System.Linq.Expressions.Expression<System.Func<T, object>>)
+  nameWithType.vb: IRelmDataSet(Of T).OrderByDescending(Expression(Of Func(Of T, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).OrderByDescending(System.Linq.Expressions.Expression(Of System.Func(Of T, Object)))
+  name.vb: OrderByDescending(Expression(Of Func(Of T, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.OrderByDescending(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: OrderByDescending
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderByDescending_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.OrderByDescending(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: OrderByDescending
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderByDescending_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Set(System.Linq.Expressions.Expression{System.Func{`0,`0}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Set(System.Linq.Expressions.Expression{System.Func{`0,`0}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Set_System_Linq_Expressions_Expression_System_Func__0__0___
+  name: Set(Expression<Func<T, T>>)
+  nameWithType: IRelmDataSet<T>.Set(Expression<Func<T, T>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Set(System.Linq.Expressions.Expression<System.Func<T, T>>)
+  nameWithType.vb: IRelmDataSet(Of T).Set(Expression(Of Func(Of T, T)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Set(System.Linq.Expressions.Expression(Of System.Func(Of T, T)))
+  name.vb: Set(Expression(Of Func(Of T, T)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Set(System.Linq.Expressions.Expression{System.Func{`0,`0}})
+    name: Set
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Set_System_Linq_Expressions_Expression_System_Func__0__0___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Set(System.Linq.Expressions.Expression{System.Func{`0,`0}})
+    name: Set
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Set_System_Linq_Expressions_Expression_System_Func__0__0___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.GroupBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.GroupBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_GroupBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  name: GroupBy(Expression<Func<T, object>>)
+  nameWithType: IRelmDataSet<T>.GroupBy(Expression<Func<T, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.GroupBy(System.Linq.Expressions.Expression<System.Func<T, object>>)
+  nameWithType.vb: IRelmDataSet(Of T).GroupBy(Expression(Of Func(Of T, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).GroupBy(System.Linq.Expressions.Expression(Of System.Func(Of T, Object)))
+  name.vb: GroupBy(Expression(Of Func(Of T, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.GroupBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: GroupBy
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_GroupBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.GroupBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: GroupBy
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_GroupBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Limit(System.Int32)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Limit(System.Int32)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Limit_System_Int32_
+  name: Limit(int)
+  nameWithType: IRelmDataSet<T>.Limit(int)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Limit(int)
+  nameWithType.vb: IRelmDataSet(Of T).Limit(Integer)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Limit(Integer)
+  name.vb: Limit(Integer)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Limit(System.Int32)
+    name: Limit
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Limit_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Limit(System.Int32)
+    name: Limit
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Limit_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_DistinctBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  name: DistinctBy(Expression<Func<T, object>>)
+  nameWithType: IRelmDataSet<T>.DistinctBy(Expression<Func<T, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.DistinctBy(System.Linq.Expressions.Expression<System.Func<T, object>>)
+  nameWithType.vb: IRelmDataSet(Of T).DistinctBy(Expression(Of Func(Of T, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).DistinctBy(System.Linq.Expressions.Expression(Of System.Func(Of T, Object)))
+  name.vb: DistinctBy(Expression(Of Func(Of T, Object)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: DistinctBy
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_DistinctBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
+    name: DistinctBy
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_DistinctBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Save(`0)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Save(`0)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Save__0_
+  name: Save(T)
+  nameWithType: IRelmDataSet<T>.Save(T)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Save(T)
+  nameWithType.vb: IRelmDataSet(Of T).Save(T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Save(T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Save(`0)
+    name: Save
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Save__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Save(`0)
+    name: Save
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Save__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Save
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Save
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Save
+  name: Save()
+  nameWithType: IRelmDataSet<T>.Save()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Save()
+  nameWithType.vb: IRelmDataSet(Of T).Save()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Save()
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Save
+    name: Save
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Save
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Save
+    name: Save
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Save
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.New(System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.New(System.Boolean)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_New_System_Boolean_
+  name: New(bool)
+  nameWithType: IRelmDataSet<T>.New(bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.New(bool)
+  nameWithType.vb: IRelmDataSet(Of T).New(Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).New(Boolean)
+  name.vb: New(Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.New(System.Boolean)
+    name: New
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_New_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.New(System.Boolean)
+    name: New
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_New_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.New(System.Object,System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.New(System.Object,System.Boolean)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_New_System_Object_System_Boolean_
+  name: New(dynamic, bool)
+  nameWithType: IRelmDataSet<T>.New(dynamic, bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.New(dynamic, bool)
+  nameWithType.vb: IRelmDataSet(Of T).New(Object, Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).New(Object, Boolean)
+  name.vb: New(Object, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.New(System.Object,System.Boolean)
+    name: New
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_New_System_Object_System_Boolean_
+  - name: (
+  - uid: dynamic
+    name: dynamic
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.New(System.Object,System.Boolean)
+    name: New
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_New_System_Object_System_Boolean_
+  - name: (
+  - name: Object
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Add(`0)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Add(`0)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add__0_
+  name: Add(T)
+  nameWithType: IRelmDataSet<T>.Add(T)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Add(T)
+  nameWithType.vb: IRelmDataSet(Of T).Add(T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Add(T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Add(`0)
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Add(`0)
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Add(`0,System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Add(`0,System.Boolean)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add__0_System_Boolean_
+  name: Add(T, bool)
+  nameWithType: IRelmDataSet<T>.Add(T, bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Add(T, bool)
+  nameWithType.vb: IRelmDataSet(Of T).Add(T, Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Add(T, Boolean)
+  name.vb: Add(T, Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Add(`0,System.Boolean)
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add__0_System_Boolean_
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Add(`0,System.Boolean)
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add__0_System_Boolean_
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Add(System.Collections.Generic.ICollection{`0})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Add(System.Collections.Generic.ICollection{`0})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add_System_Collections_Generic_ICollection__0__
+  name: Add(ICollection<T>)
+  nameWithType: IRelmDataSet<T>.Add(ICollection<T>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Add(System.Collections.Generic.ICollection<T>)
+  nameWithType.vb: IRelmDataSet(Of T).Add(ICollection(Of T))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Add(System.Collections.Generic.ICollection(Of T))
+  name.vb: Add(ICollection(Of T))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Add(System.Collections.Generic.ICollection{`0})
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add_System_Collections_Generic_ICollection__0__
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Add(System.Collections.Generic.ICollection{`0})
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add_System_Collections_Generic_ICollection__0__
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Add(System.Collections.Generic.ICollection{`0},System.Boolean)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Add(System.Collections.Generic.ICollection{`0},System.Boolean)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add_System_Collections_Generic_ICollection__0__System_Boolean_
+  name: Add(ICollection<T>, bool)
+  nameWithType: IRelmDataSet<T>.Add(ICollection<T>, bool)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Add(System.Collections.Generic.ICollection<T>, bool)
+  nameWithType.vb: IRelmDataSet(Of T).Add(ICollection(Of T), Boolean)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Add(System.Collections.Generic.ICollection(Of T), Boolean)
+  name.vb: Add(ICollection(Of T), Boolean)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Add(System.Collections.Generic.ICollection{`0},System.Boolean)
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add_System_Collections_Generic_ICollection__0__System_Boolean_
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Add(System.Collections.Generic.ICollection{`0},System.Boolean)
+    name: Add
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Add_System_Collections_Generic_ICollection__0__System_Boolean_
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Clear
+  commentId: M:System.Collections.Generic.ICollection`1.Clear
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  name: Clear()
+  nameWithType: ICollection<T>.Clear()
+  fullName: System.Collections.Generic.ICollection<T>.Clear()
+  nameWithType.vb: ICollection(Of T).Clear()
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Clear()
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.ICollection{{T}}
+  commentId: T:System.Collections.Generic.ICollection{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Contains(`0)
+  commentId: M:System.Collections.Generic.ICollection`1.Contains(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  name: Contains(T)
+  nameWithType: ICollection<T>.Contains(T)
+  fullName: System.Collections.Generic.ICollection<T>.Contains(T)
+  nameWithType.vb: ICollection(Of T).Contains(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Contains(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Contains(`0)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Contains(`0)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+  commentId: M:System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  name: CopyTo(T[], int)
+  nameWithType: ICollection<T>.CopyTo(T[], int)
+  fullName: System.Collections.Generic.ICollection<T>.CopyTo(T[], int)
+  nameWithType.vb: ICollection(Of T).CopyTo(T(), Integer)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).CopyTo(T(), Integer)
+  name.vb: CopyTo(T(), Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+    name: CopyTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  - name: (
+  - name: T
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+    name: CopyTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  - name: (
+  - name: T
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Remove(`0)
+  commentId: M:System.Collections.Generic.ICollection`1.Remove(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  name: Remove(T)
+  nameWithType: ICollection<T>.Remove(T)
+  fullName: System.Collections.Generic.ICollection<T>.Remove(T)
+  nameWithType.vb: ICollection(Of T).Remove(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Remove(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Count
+  commentId: P:System.Collections.Generic.ICollection`1.Count
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.count
+  name: Count
+  nameWithType: ICollection<T>.Count
+  fullName: System.Collections.Generic.ICollection<T>.Count
+  nameWithType.vb: ICollection(Of T).Count
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Count
+- uid: System.Collections.Generic.ICollection`1.IsReadOnly
+  commentId: P:System.Collections.Generic.ICollection`1.IsReadOnly
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.isreadonly
+  name: IsReadOnly
+  nameWithType: ICollection<T>.IsReadOnly
+  fullName: System.Collections.Generic.ICollection<T>.IsReadOnly
+  nameWithType.vb: ICollection(Of T).IsReadOnly
+  fullName.vb: System.Collections.Generic.ICollection(Of T).IsReadOnly
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{{T}}
+  commentId: T:System.Collections.Generic.IEnumerable{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1
+  commentId: T:SimpleRelm.Interfaces.IRelmDataSet`1
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html
+  name: IRelmDataSet<T>
+  nameWithType: IRelmDataSet<T>
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>
+  nameWithType.vb: IRelmDataSet(Of T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T)
+  name.vb: IRelmDataSet(Of T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces
+  commentId: N:SimpleRelm.Interfaces
+  href: SimpleRelm.html
+  name: SimpleRelm.Interfaces
+  nameWithType: SimpleRelm.Interfaces
+  fullName: SimpleRelm.Interfaces
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Interfaces.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Interfaces.html
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1.GetLoadData*
+  commentId: Overload:SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1.GetLoadData
+  href: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING-1.html#SimpleRelm_Tests_Interfaces_IRelmDataSet_TESTING_1_GetLoadData
+  name: GetLoadData
+  nameWithType: IRelmDataSet_TESTING<T>.GetLoadData
+  fullName: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING<T>.GetLoadData
+  nameWithType.vb: IRelmDataSet_TESTING(Of T).GetLoadData
+  fullName.vb: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING(Of T).GetLoadData
+- uid: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1.GetDataLoader*
+  commentId: Overload:SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING`1.GetDataLoader
+  href: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING-1.html#SimpleRelm_Tests_Interfaces_IRelmDataSet_TESTING_1_GetDataLoader
+  name: GetDataLoader
+  nameWithType: IRelmDataSet_TESTING<T>.GetDataLoader
+  fullName: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING<T>.GetDataLoader
+  nameWithType.vb: IRelmDataSet_TESTING(Of T).GetDataLoader
+  fullName.vb: SimpleRelm.Tests.Interfaces.IRelmDataSet_TESTING(Of T).GetDataLoader
+- uid: SimpleRelm.Interfaces.IRelmDataLoader{{T}}
+  commentId: T:SimpleRelm.Interfaces.IRelmDataLoader{``0}
+  parent: SimpleRelm.Interfaces
+  definition: SimpleRelm.Interfaces.IRelmDataLoader`1
+  href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  name: IRelmDataLoader<T>
+  nameWithType: IRelmDataLoader<T>
+  fullName: SimpleRelm.Interfaces.IRelmDataLoader<T>
+  nameWithType.vb: IRelmDataLoader(Of T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataLoader(Of T)
+  name.vb: IRelmDataLoader(Of T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+  commentId: T:SimpleRelm.Interfaces.IRelmDataLoader`1
+  href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  name: IRelmDataLoader<T>
+  nameWithType: IRelmDataLoader<T>
+  fullName: SimpleRelm.Interfaces.IRelmDataLoader<T>
+  nameWithType.vb: IRelmDataLoader(Of T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataLoader(Of T)
+  name.vb: IRelmDataLoader(Of T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

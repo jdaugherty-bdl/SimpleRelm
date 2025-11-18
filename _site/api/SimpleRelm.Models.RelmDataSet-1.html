@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class RelmDataSet&lt;T&gt; | SimpleRelm </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class RelmDataSet&lt;T&gt; | SimpleRelm ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/jdaugherty-bdl/SimpleRelm/new/master/apiSpec/new?filename=SimpleRelm_Models_RelmDataSet_1.md&amp;value=---%0Auid%3A%20SimpleRelm.Models.RelmDataSet%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="SimpleRelm">
+            SimpleRelm
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="SimpleRelm.Models.RelmDataSet`1">
+
+
+
+  <h1 id="SimpleRelm_Models_RelmDataSet_1" data-uid="SimpleRelm.Models.RelmDataSet`1" class="text-break">
+Class RelmDataSet&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="SimpleRelm.html">SimpleRelm</a>.<a class="xref" href="SimpleRelm.Models.html">Models</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>SimpleRelm.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RelmDataSet&lt;T&gt; : IRelmDataSet&lt;T&gt;, ICollection&lt;T&gt;, IEnumerable&lt;T&gt;, IEnumerable, IRelmDataSetBase where T : IRelmModel, new()</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">RelmDataSet&lt;T&gt;</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+      <div><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSetBase.html">IRelmDataSetBase</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadDataLoaderField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___">ListExtensions.LoadDataLoaderField&lt;T, R&gt;(ICollection&lt;T&gt;, IRelmContext, Expression&lt;Func&lt;T, R&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadDataLoaderField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___">ListExtensions.LoadDataLoaderField&lt;T, R&gt;(ICollection&lt;T&gt;, IRelmQuickContext, Expression&lt;Func&lt;T, R&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____">ListExtensions.LoadForeignKeyField&lt;T, R&gt;(ICollection&lt;T&gt;, IRelmContext, Expression&lt;Func&lt;T, ICollection&lt;R&gt;&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____System_Linq_Expressions_Expression_System_Func___1_System_Object___">ListExtensions.LoadForeignKeyField&lt;T, R&gt;(ICollection&lt;T&gt;, IRelmContext, Expression&lt;Func&lt;T, ICollection&lt;R&gt;&gt;&gt;, Expression&lt;Func&lt;R, object&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___">ListExtensions.LoadForeignKeyField&lt;T, R&gt;(ICollection&lt;T&gt;, IRelmContext, Expression&lt;Func&lt;T, R&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___System_Linq_Expressions_Expression_System_Func___1_System_Object___">ListExtensions.LoadForeignKeyField&lt;T, R&gt;(ICollection&lt;T&gt;, IRelmContext, Expression&lt;Func&lt;T, R&gt;&gt;, Expression&lt;Func&lt;R, object&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____">ListExtensions.LoadForeignKeyField&lt;T, R&gt;(ICollection&lt;T&gt;, IRelmQuickContext, Expression&lt;Func&lt;T, ICollection&lt;R&gt;&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____System_Linq_Expressions_Expression_System_Func___1_System_Object___">ListExtensions.LoadForeignKeyField&lt;T, R&gt;(ICollection&lt;T&gt;, IRelmQuickContext, Expression&lt;Func&lt;T, ICollection&lt;R&gt;&gt;&gt;, Expression&lt;Func&lt;R, object&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___">ListExtensions.LoadForeignKeyField&lt;T, R&gt;(ICollection&lt;T&gt;, IRelmQuickContext, Expression&lt;Func&lt;T, R&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___System_Linq_Expressions_Expression_System_Func___1_System_Object___">ListExtensions.LoadForeignKeyField&lt;T, R&gt;(ICollection&lt;T&gt;, IRelmQuickContext, Expression&lt;Func&lt;T, R&gt;&gt;, Expression&lt;Func&lt;R, object&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____">ListExtensions.LoadForeignKeyField&lt;T, R&gt;(ICollection&lt;T&gt;, RelmContextOptionsBuilder, Expression&lt;Func&lt;T, ICollection&lt;R&gt;&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____System_Linq_Expressions_Expression_System_Func___1_System_Object___">ListExtensions.LoadForeignKeyField&lt;T, R&gt;(ICollection&lt;T&gt;, RelmContextOptionsBuilder, Expression&lt;Func&lt;T, ICollection&lt;R&gt;&gt;&gt;, Expression&lt;Func&lt;R, object&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___System_Linq_Expressions_Expression_System_Func___1_System_Object___">ListExtensions.LoadForeignKeyField&lt;T, R&gt;(ICollection&lt;T&gt;, RelmContextOptionsBuilder, Expression&lt;Func&lt;T, R&gt;&gt;, Expression&lt;Func&lt;R, object&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, IRelmContext, Expression&lt;Func&lt;T, ICollection&lt;R&gt;&gt;&gt;, IRelmDataLoader&lt;S&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__System_Linq_Expressions_Expression_System_Func___1_System_Object___">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, IRelmContext, Expression&lt;Func&lt;T, ICollection&lt;R&gt;&gt;&gt;, IRelmDataLoader&lt;S&gt;, Expression&lt;Func&lt;R, object&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, IRelmContext, Expression&lt;Func&lt;T, R&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___SimpleRelm_Interfaces_IRelmDataLoader___2__">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, IRelmContext, Expression&lt;Func&lt;T, R&gt;&gt;, IRelmDataLoader&lt;S&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___SimpleRelm_Interfaces_IRelmDataLoader___2__System_Linq_Expressions_Expression_System_Func___1_System_Object___">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, IRelmContext, Expression&lt;Func&lt;T, R&gt;&gt;, IRelmDataLoader&lt;S&gt;, Expression&lt;Func&lt;R, object&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, IRelmQuickContext, Expression&lt;Func&lt;T, ICollection&lt;R&gt;&gt;&gt;, IRelmDataLoader&lt;S&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0_System_Collections_Generic_ICollection___1____SimpleRelm_Interfaces_IRelmDataLoader___2__System_Linq_Expressions_Expression_System_Func___1_System_Object___">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, IRelmQuickContext, Expression&lt;Func&lt;T, ICollection&lt;R&gt;&gt;&gt;, IRelmDataLoader&lt;S&gt;, Expression&lt;Func&lt;R, object&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, IRelmQuickContext, Expression&lt;Func&lt;T, R&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___SimpleRelm_Interfaces_IRelmDataLoader___2__">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, IRelmQuickContext, Expression&lt;Func&lt;T, R&gt;&gt;, IRelmDataLoader&lt;S&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___SimpleRelm_Interfaces_IRelmDataLoader___2__System_Linq_Expressions_Expression_System_Func___1_System_Object___">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, IRelmQuickContext, Expression&lt;Func&lt;T, R&gt;&gt;, IRelmDataLoader&lt;S&gt;, Expression&lt;Func&lt;R, object&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, RelmContextOptionsBuilder, Expression&lt;Func&lt;T, R&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___SimpleRelm_Interfaces_IRelmDataLoader___2__">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, RelmContextOptionsBuilder, Expression&lt;Func&lt;T, R&gt;&gt;, IRelmDataLoader&lt;S&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_LoadForeignKeyField__3_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___SimpleRelm_Interfaces_IRelmDataLoader___2__System_Linq_Expressions_Expression_System_Func___1_System_Object___">ListExtensions.LoadForeignKeyField&lt;T, R, S&gt;(ICollection&lt;T&gt;, RelmContextOptionsBuilder, Expression&lt;Func&lt;T, R&gt;&gt;, IRelmDataLoader&lt;S&gt;, Expression&lt;Func&lt;R, object&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ModelExtensions.html#SimpleRelm_Extensions_ModelExtensions_LoadDataLoaderField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___">ModelExtensions.LoadDataLoaderField&lt;T, S&gt;(ICollection&lt;T&gt;, IRelmContext, Expression&lt;Func&lt;T, S&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ModelExtensions.html#SimpleRelm_Extensions_ModelExtensions_LoadDataLoaderField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Linq_Expressions_Expression_System_Func___0___1___">ModelExtensions.LoadDataLoaderField&lt;T, S&gt;(ICollection&lt;T&gt;, IRelmQuickContext, Expression&lt;Func&lt;T, S&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ModelExtensions.html#SimpleRelm_Extensions_ModelExtensions_LoadDataLoaderField__2_System_Collections_Generic_ICollection___0__SimpleRelm_Options_RelmContextOptionsBuilder_System_Linq_Expressions_Expression_System_Func___0___1___">ModelExtensions.LoadDataLoaderField&lt;T, S&gt;(ICollection&lt;T&gt;, RelmContextOptionsBuilder, Expression&lt;Func&lt;T, S&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_FlattenTreeObject__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Collections_Generic_ICollection___0___">ListExtensions.FlattenTreeObject&lt;T&gt;(IEnumerable&lt;T&gt;, Func&lt;T, ICollection&lt;T&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_GenerateDTO__1_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_ICollection_System_String__System_Collections_Generic_ICollection_System_String__System_String_System_Func_SimpleRelm_Interfaces_IRelmModel_System_Collections_Generic_Dictionary_System_String_System_Object___">ListExtensions.GenerateDTO&lt;T&gt;(IEnumerable&lt;T&gt;, ICollection&lt;string&gt;, ICollection&lt;string&gt;, string, Func&lt;IRelmModel, Dictionary&lt;string, object&gt;&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_WriteToDatabase__1_System_Collections_Generic_IEnumerable___0__MySql_Data_MySqlClient_MySqlConnection_MySql_Data_MySqlClient_MySqlTransaction_System_String_System_Type_System_Int32_System_String_System_Boolean_System_Boolean_System_Boolean_System_Boolean_">ListExtensions.WriteToDatabase&lt;T&gt;(IEnumerable&lt;T&gt;, MySqlConnection, MySqlTransaction, string, Type, int, string, bool, bool, bool, bool)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_WriteToDatabase__1_System_Collections_Generic_IEnumerable___0__SimpleRelm_Interfaces_IRelmContext_System_String_System_Type_System_Int32_System_String_System_Boolean_System_Boolean_System_Boolean_System_Boolean_">ListExtensions.WriteToDatabase&lt;T&gt;(IEnumerable&lt;T&gt;, IRelmContext, string, Type, int, string, bool, bool, bool, bool)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_WriteToDatabase__1_System_Collections_Generic_IEnumerable___0__SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_String_System_Type_System_Int32_System_String_System_Boolean_System_Boolean_System_Boolean_System_Boolean_">ListExtensions.WriteToDatabase&lt;T&gt;(IEnumerable&lt;T&gt;, IRelmQuickContext, string, Type, int, string, bool, bool, bool, bool)</a>
+  </div>
+  <div>
+      <a class="xref" href="SimpleRelm.Extensions.ListExtensions.html#SimpleRelm_Extensions_ListExtensions_WriteToDatabase__1_System_Collections_Generic_IEnumerable___0__System_Enum_System_String_System_Type_System_Boolean_System_Int32_System_String_System_Boolean_System_Boolean_System_Boolean_System_Boolean_">ListExtensions.WriteToDatabase&lt;T&gt;(IEnumerable&lt;T&gt;, Enum, string, Type, bool, int, string, bool, bool, bool, bool)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1__ctor_" data-uid="SimpleRelm.Models.RelmDataSet`1.#ctor*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1__ctor_SimpleRelm_Interfaces_IRelmContext_SimpleRelm_Interfaces_IRelmDataLoader__0__" data-uid="SimpleRelm.Models.RelmDataSet`1.#ctor(SimpleRelm.Interfaces.IRelmContext,SimpleRelm.Interfaces.IRelmDataLoader{`0})">
+  RelmDataSet(IRelmContext, IRelmDataLoader&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelmDataSet(IRelmContext currentContext, IRelmDataLoader&lt;T&gt; dataLoader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>currentContext</code> <a class="xref" href="SimpleRelm.Interfaces.IRelmContext.html">IRelmContext</a></dt>
+    <dd></dd>
+    <dt><code>dataLoader</code> <a class="xref" href="SimpleRelm.Interfaces.IRelmDataLoader-1.html">IRelmDataLoader</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1__ctor_" data-uid="SimpleRelm.Models.RelmDataSet`1.#ctor*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1__ctor_SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_SimpleRelm_Interfaces_IRelmDataLoader__0__" data-uid="SimpleRelm.Models.RelmDataSet`1.#ctor(SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,SimpleRelm.Interfaces.IRelmDataLoader{`0})">
+  RelmDataSet(IRelmQuickContext, IRelmDataLoader&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelmDataSet(IRelmQuickContext currentContext, IRelmDataLoader&lt;T&gt; dataLoader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>currentContext</code> <a class="xref" href="SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext.html">IRelmQuickContext</a></dt>
+    <dd></dd>
+    <dt><code>dataLoader</code> <a class="xref" href="SimpleRelm.Interfaces.IRelmDataLoader-1.html">IRelmDataLoader</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Count_" data-uid="SimpleRelm.Models.RelmDataSet`1.Count*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Count" data-uid="SimpleRelm.Models.RelmDataSet`1.Count">
+  Count
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the number of elements contained in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of elements contained in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_IsReadOnly_" data-uid="SimpleRelm.Models.RelmDataSet`1.IsReadOnly*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_IsReadOnly" data-uid="SimpleRelm.Models.RelmDataSet`1.IsReadOnly">
+  IsReadOnly
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Modified_" data-uid="SimpleRelm.Models.RelmDataSet`1.Modified*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Modified" data-uid="SimpleRelm.Models.RelmDataSet`1.Modified">
+  Modified
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Modified { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Add_" data-uid="SimpleRelm.Models.RelmDataSet`1.Add*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Add_System_Collections_Generic_ICollection__0__" data-uid="SimpleRelm.Models.RelmDataSet`1.Add(System.Collections.Generic.ICollection{`0})">
+  Add(ICollection&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L524"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Add(ICollection&lt;T&gt; items)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>items</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Add_" data-uid="SimpleRelm.Models.RelmDataSet`1.Add*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Add_System_Collections_Generic_ICollection__0__System_Boolean_" data-uid="SimpleRelm.Models.RelmDataSet`1.Add(System.Collections.Generic.ICollection{`0},System.Boolean)">
+  Add(ICollection&lt;T&gt;, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L529"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Add(ICollection&lt;T&gt; items, bool Persist)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>items</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
+    <dd></dd>
+    <dt><code>Persist</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Add_" data-uid="SimpleRelm.Models.RelmDataSet`1.Add*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Add__0_" data-uid="SimpleRelm.Models.RelmDataSet`1.Add(`0)">
+  Add(T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L496"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Add(T item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Add_" data-uid="SimpleRelm.Models.RelmDataSet`1.Add*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Add__0_System_Boolean_" data-uid="SimpleRelm.Models.RelmDataSet`1.Add(`0,System.Boolean)">
+  Add(T, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L501"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Add(T item, bool Persist)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <span class="xref">T</span></dt>
+    <dd></dd>
+    <dt><code>Persist</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Clear_" data-uid="SimpleRelm.Models.RelmDataSet`1.Clear*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Clear" data-uid="SimpleRelm.Models.RelmDataSet`1.Clear">
+  Clear()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L544"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes all items from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Contains_" data-uid="SimpleRelm.Models.RelmDataSet`1.Contains*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Contains__0_" data-uid="SimpleRelm.Models.RelmDataSet`1.Contains(`0)">
+  Contains(T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L549"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> contains a specific value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(T item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <span class="xref">T</span></dt>
+    <dd><p>The object to locate in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> is found in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_CopyTo_" data-uid="SimpleRelm.Models.RelmDataSet`1.CopyTo*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_CopyTo__0___System_Int32_" data-uid="SimpleRelm.Models.RelmDataSet`1.CopyTo(`0[],System.Int32)">
+  CopyTo(T[], int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L554"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Copies the elements of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> to an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a>, starting at a particular <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyTo(T[] array, int arrayIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> T[]</dt>
+    <dd><p>The one-dimensional <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> that is the destination of the elements copied from <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>. The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> must have zero-based indexing.</p>
+</dd>
+    <dt><code>arrayIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The zero-based index in <code class="paramref">array</code> at which copying begins.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p><code class="paramref">array</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p><code class="paramref">arrayIndex</code> is less than 0.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>The number of elements in the source <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is greater than the available space from <code class="paramref">arrayIndex</code> to the end of the destination <code class="paramref">array</code>.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_DistinctBy_" data-uid="SimpleRelm.Models.RelmDataSet`1.DistinctBy*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_DistinctBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___" data-uid="SimpleRelm.Models.RelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+  DistinctBy(Expression&lt;Func&lt;T, object&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L436"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; DistinctBy(Expression&lt;Func&lt;T, object&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Entry_" data-uid="SimpleRelm.Models.RelmDataSet`1.Entry*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Entry__0_" data-uid="SimpleRelm.Models.RelmDataSet`1.Entry(`0)">
+  Entry(T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L376"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; Entry(T Item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Item</code> <span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Entry_" data-uid="SimpleRelm.Models.RelmDataSet`1.Entry*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Entry__0_System_Boolean_" data-uid="SimpleRelm.Models.RelmDataSet`1.Entry(`0,System.Boolean)">
+  Entry(T, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L388"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; Entry(T Item, bool Persist = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Item</code> <span class="xref">T</span></dt>
+    <dd></dd>
+    <dt><code>Persist</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Find_" data-uid="SimpleRelm.Models.RelmDataSet`1.Find*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Find_System_Int32_" data-uid="SimpleRelm.Models.RelmDataSet`1.Find(System.Int32)">
+  Find(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L217"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T Find(int ItemId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ItemId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Find_" data-uid="SimpleRelm.Models.RelmDataSet`1.Find*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Find_System_String_" data-uid="SimpleRelm.Models.RelmDataSet`1.Find(System.String)">
+  Find(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L222"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T Find(string ItemInternalId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ItemInternalId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_FirstOrDefault_" data-uid="SimpleRelm.Models.RelmDataSet`1.FirstOrDefault*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_FirstOrDefault" data-uid="SimpleRelm.Models.RelmDataSet`1.FirstOrDefault">
+  FirstOrDefault()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L227"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T FirstOrDefault()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_FirstOrDefault_" data-uid="SimpleRelm.Models.RelmDataSet`1.FirstOrDefault*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_FirstOrDefault_System_Boolean_" data-uid="SimpleRelm.Models.RelmDataSet`1.FirstOrDefault(System.Boolean)">
+  FirstOrDefault(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L232"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T FirstOrDefault(bool loadItems)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>loadItems</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_FirstOrDefault_" data-uid="SimpleRelm.Models.RelmDataSet`1.FirstOrDefault*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___" data-uid="SimpleRelm.Models.RelmDataSet`1.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+  FirstOrDefault(Expression&lt;Func&lt;T, bool&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L237"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T FirstOrDefault(Expression&lt;Func&lt;T, bool&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_FirstOrDefault_" data-uid="SimpleRelm.Models.RelmDataSet`1.FirstOrDefault*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_FirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Boolean_" data-uid="SimpleRelm.Models.RelmDataSet`1.FirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Boolean)">
+  FirstOrDefault(Expression&lt;Func&lt;T, bool&gt;&gt;, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T FirstOrDefault(Expression&lt;Func&lt;T, bool&gt;&gt; predicate, bool loadItems)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>loadItems</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_GetEnumerator_" data-uid="SimpleRelm.Models.RelmDataSet`1.GetEnumerator*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_GetEnumerator" data-uid="SimpleRelm.Models.RelmDataSet`1.GetEnumerator">
+  GetEnumerator()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;T&gt; GetEnumerator()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;T&gt;</dt>
+    <dd><p>An enumerator for the collection of items.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="SimpleRelm_Models_RelmDataSet_1_GetEnumerator_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If the collection is not already loaded, it will attempt to load the items
+dynamically.  If no items are available, the enumerator will iterate over an empty collection.</p>
+</div>
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_GroupBy_" data-uid="SimpleRelm.Models.RelmDataSet`1.GroupBy*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_GroupBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___" data-uid="SimpleRelm.Models.RelmDataSet`1.GroupBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+  GroupBy(Expression&lt;Func&lt;T, object&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L422"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; GroupBy(Expression&lt;Func&lt;T, object&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Limit_" data-uid="SimpleRelm.Models.RelmDataSet`1.Limit*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Limit_System_Int32_" data-uid="SimpleRelm.Models.RelmDataSet`1.Limit(System.Int32)">
+  Limit(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L429"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; Limit(int LimitCount)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>LimitCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Load_" data-uid="SimpleRelm.Models.RelmDataSet`1.Load*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Load" data-uid="SimpleRelm.Models.RelmDataSet`1.Load">
+  Load()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L267"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;T&gt; Load()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Load_" data-uid="SimpleRelm.Models.RelmDataSet`1.Load*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Load_System_Boolean_" data-uid="SimpleRelm.Models.RelmDataSet`1.Load(System.Boolean)">
+  Load(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L272"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;T&gt; Load(bool loadDataLoaders)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>loadDataLoaders</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_LoadAsDataSet_" data-uid="SimpleRelm.Models.RelmDataSet`1.LoadAsDataSet*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_LoadAsDataSet" data-uid="SimpleRelm.Models.RelmDataSet`1.LoadAsDataSet">
+  LoadAsDataSet()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L260"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; LoadAsDataSet()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_New_" data-uid="SimpleRelm.Models.RelmDataSet`1.New*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_New_System_Boolean_" data-uid="SimpleRelm.Models.RelmDataSet`1.New(System.Boolean)">
+  New(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L470"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T New(bool Persist = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Persist</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_New_" data-uid="SimpleRelm.Models.RelmDataSet`1.New*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_New_System_Object_System_Boolean_" data-uid="SimpleRelm.Models.RelmDataSet`1.New(System.Object,System.Boolean)">
+  New(dynamic, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L475"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T New(dynamic NewObjectParameters, bool Persist = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>NewObjectParameters</code> <span class="xref">dynamic</span></dt>
+    <dd></dd>
+    <dt><code>Persist</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_OrderBy_" data-uid="SimpleRelm.Models.RelmDataSet`1.OrderBy*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_OrderBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___" data-uid="SimpleRelm.Models.RelmDataSet`1.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+  OrderBy(Expression&lt;Func&lt;T, object&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L401"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; OrderBy(Expression&lt;Func&lt;T, object&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_OrderByDescending_" data-uid="SimpleRelm.Models.RelmDataSet`1.OrderByDescending*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_OrderByDescending_System_Linq_Expressions_Expression_System_Func__0_System_Object___" data-uid="SimpleRelm.Models.RelmDataSet`1.OrderByDescending(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+  OrderByDescending(Expression&lt;Func&lt;T, object&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L408"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; OrderByDescending(Expression&lt;Func&lt;T, object&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Reference_" data-uid="SimpleRelm.Models.RelmDataSet`1.Reference*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____" data-uid="SimpleRelm.Models.RelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})">
+  Reference&lt;S&gt;(Expression&lt;Func&lt;T, ICollection&lt;S&gt;&gt;&gt;, ICollection&lt;Expression&lt;Func&lt;S, object&gt;&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L196"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; Reference&lt;S&gt;(Expression&lt;Func&lt;T, ICollection&lt;S&gt;&gt;&gt; predicate, ICollection&lt;Expression&lt;Func&lt;S, object&gt;&gt;&gt; additionalConstraints)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;S&gt;&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>additionalConstraints</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;S, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>S</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Reference_" data-uid="SimpleRelm.Models.RelmDataSet`1.Reference*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Linq_Expressions_Expression_System_Func___0_System_Object___" data-uid="SimpleRelm.Models.RelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+  Reference&lt;S&gt;(Expression&lt;Func&lt;T, ICollection&lt;S&gt;&gt;&gt;, Expression&lt;Func&lt;S, object&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L186"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configures a reference navigation property for inclusion in the query,  allowing additional constraints to
+be applied to the related entities.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; Reference&lt;S&gt;(Expression&lt;Func&lt;T, ICollection&lt;S&gt;&gt;&gt; predicate, Expression&lt;Func&lt;S, object&gt;&gt; additionalConstraints)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;S&gt;&gt;&gt;</dt>
+    <dd><p>An expression that specifies the navigation property to include.</p>
+</dd>
+    <dt><code>additionalConstraints</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;S, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</dt>
+    <dd><p>An expression that defines additional constraints to apply to the related entities.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd><p>An <a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet&lt;T&gt;</a> that includes the specified navigation property and applies the given
+constraints.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>S</code></dt>
+    <dd><p>The type of the related entities in the collection.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="SimpleRelm_Models_RelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0_System_Collections_Generic_ICollection___0____System_Linq_Expressions_Expression_System_Func___0_System_Object____remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is typically used to include a collection navigation property in a query
+and apply additional filtering or constraints to the related entities.</p>
+</div>
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Reference_" data-uid="SimpleRelm.Models.RelmDataSet`1.Reference*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___" data-uid="SimpleRelm.Models.RelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+  Reference&lt;S&gt;(Expression&lt;Func&lt;T, S&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a reference to the specified property or field of the current entity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; Reference&lt;S&gt;(Expression&lt;Func&lt;T, S&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, S&gt;&gt;</dt>
+    <dd><p>An expression that specifies the property or field to reference.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd><p>An <a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet&lt;T&gt;</a> that includes the specified reference.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>S</code></dt>
+    <dd><p>The type of the property or field being referenced.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="SimpleRelm_Models_RelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0____remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method allows you to define a reference to a property or field of the entity,
+which can be used to include related data in subsequent operations.</p>
+</div>
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Reference_" data-uid="SimpleRelm.Models.RelmDataSet`1.Reference*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Collections_Generic_ICollection_System_Linq_Expressions_Expression_System_Func___0_System_Object____" data-uid="SimpleRelm.Models.RelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})">
+  Reference&lt;S&gt;(Expression&lt;Func&lt;T, S&gt;&gt;, ICollection&lt;Expression&lt;Func&lt;S, object&gt;&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L201"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; Reference&lt;S&gt;(Expression&lt;Func&lt;T, S&gt;&gt; predicate, ICollection&lt;Expression&lt;Func&lt;S, object&gt;&gt;&gt; additionalConstraints)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, S&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>additionalConstraints</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;S, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>S</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Reference_" data-uid="SimpleRelm.Models.RelmDataSet`1.Reference*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Reference__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func___0_System_Object___" data-uid="SimpleRelm.Models.RelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+  Reference&lt;S&gt;(Expression&lt;Func&lt;T, S&gt;&gt;, Expression&lt;Func&lt;S, object&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L191"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; Reference&lt;S&gt;(Expression&lt;Func&lt;T, S&gt;&gt; predicate, Expression&lt;Func&lt;S, object&gt;&gt; additionalConstraints)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, S&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>additionalConstraints</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;S, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>S</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Remove_" data-uid="SimpleRelm.Models.RelmDataSet`1.Remove*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Remove__0_" data-uid="SimpleRelm.Models.RelmDataSet`1.Remove(`0)">
+  Remove(T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L560"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes the first occurrence of a specific object from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(T item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <span class="xref">T</span></dt>
+    <dd><p>The object to remove from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> was successfully removed from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if <code class="paramref">item</code> is not found in the original <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Save_" data-uid="SimpleRelm.Models.RelmDataSet`1.Save*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Save" data-uid="SimpleRelm.Models.RelmDataSet`1.Save">
+  Save()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L456"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Save()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Save_" data-uid="SimpleRelm.Models.RelmDataSet`1.Save*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Save__0_" data-uid="SimpleRelm.Models.RelmDataSet`1.Save(`0)">
+  Save(T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L443"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Save(T Item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Item</code> <span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Set_" data-uid="SimpleRelm.Models.RelmDataSet`1.Set*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Set_System_Linq_Expressions_Expression_System_Func__0__0___" data-uid="SimpleRelm.Models.RelmDataSet`1.Set(System.Linq.Expressions.Expression{System.Func{`0,`0}})">
+  Set(Expression&lt;Func&lt;T, T&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L415"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; Set(Expression&lt;Func&lt;T, T&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, T&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_SetDataLoader_" data-uid="SimpleRelm.Models.RelmDataSet`1.SetDataLoader*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_SetDataLoader_SimpleRelm_Interfaces_IRelmDataLoader__0__" data-uid="SimpleRelm.Models.RelmDataSet`1.SetDataLoader(SimpleRelm.Interfaces.IRelmDataLoader{`0})">
+  SetDataLoader(IRelmDataLoader&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L133"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the data loader for the current instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataLoader&lt;T&gt; SetDataLoader(IRelmDataLoader&lt;T&gt; dataLoader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dataLoader</code> <a class="xref" href="SimpleRelm.Interfaces.IRelmDataLoader-1.html">IRelmDataLoader</a>&lt;T&gt;</dt>
+    <dd><p>The data loader to be used. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataLoader-1.html">IRelmDataLoader</a>&lt;T&gt;</dt>
+    <dd><p>The data loader that was set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_SetFieldLoader_" data-uid="SimpleRelm.Models.RelmDataSet`1.SetFieldLoader*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_SetFieldLoader_System_String_SimpleRelm_Interfaces_IRelmFieldLoader_" data-uid="SimpleRelm.Models.RelmDataSet`1.SetFieldLoader(System.String,SimpleRelm.Interfaces.IRelmFieldLoader)">
+  SetFieldLoader(string, IRelmFieldLoader)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers a field loader for the specified field name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmFieldLoader SetFieldLoader(string fieldName, IRelmFieldLoader dataLoader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fieldName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the field on the model for which the loader is being registered.  The field must exist on the
+model type <code class="typeparamref">T</code>.</p>
+</dd>
+    <dt><code>dataLoader</code> <a class="xref" href="SimpleRelm.Interfaces.IRelmFieldLoader.html">IRelmFieldLoader</a></dt>
+    <dd><p>The <a class="xref" href="SimpleRelm.Interfaces.IRelmFieldLoader.html">IRelmFieldLoader</a> instance responsible for loading data for the specified field.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmFieldLoader.html">IRelmFieldLoader</a></dt>
+    <dd><p>The <a class="xref" href="SimpleRelm.Interfaces.IRelmFieldLoader.html">IRelmFieldLoader</a> instance that was registered for the specified field.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="SimpleRelm_Models_RelmDataSet_1_SetFieldLoader_System_String_SimpleRelm_Interfaces_IRelmFieldLoader__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method ensures that the specified field exists on the model type <code class="typeparamref">T</code> before registering the loader.</p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown if <code class="paramref">fieldName</code> does not correspond to a property on the model type <code class="typeparamref">T</code>.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_SetFieldLoader_" data-uid="SimpleRelm.Models.RelmDataSet`1.SetFieldLoader*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_SetFieldLoader_System_String_SimpleRelm_Interfaces_RelmQuick_IRelmQuickFieldLoader_" data-uid="SimpleRelm.Models.RelmDataSet`1.SetFieldLoader(System.String,SimpleRelm.Interfaces.RelmQuick.IRelmQuickFieldLoader)">
+  SetFieldLoader(string, IRelmQuickFieldLoader)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers a field loader for the specified field name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmQuickFieldLoader SetFieldLoader(string fieldName, IRelmQuickFieldLoader dataLoader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fieldName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the field on the model for which the loader is being registered.  The field must exist on the
+model type <code class="typeparamref">T</code>.</p>
+</dd>
+    <dt><code>dataLoader</code> <a class="xref" href="SimpleRelm.Interfaces.RelmQuick.IRelmQuickFieldLoader.html">IRelmQuickFieldLoader</a></dt>
+    <dd><p>An instance of <a class="xref" href="SimpleRelm.Interfaces.RelmQuick.IRelmQuickFieldLoader.html">IRelmQuickFieldLoader</a> that provides the logic for loading the field's data.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.RelmQuick.IRelmQuickFieldLoader.html">IRelmQuickFieldLoader</a></dt>
+    <dd><p>The registered <a class="xref" href="SimpleRelm.Interfaces.RelmQuick.IRelmQuickFieldLoader.html">IRelmQuickFieldLoader</a> instance for the specified field.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="SimpleRelm_Models_RelmDataSet_1_SetFieldLoader_System_String_SimpleRelm_Interfaces_RelmQuick_IRelmQuickFieldLoader__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method ensures that the specified field exists on the model type <code class="typeparamref">T</code> before registering the loader.</p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown if the specified <code class="paramref">fieldName</code> does not exist on the model type <code class="typeparamref">T</code>.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Where_" data-uid="SimpleRelm.Models.RelmDataSet`1.Where*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Where_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___" data-uid="SimpleRelm.Models.RelmDataSet`1.Where(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+  Where(Expression&lt;Func&lt;T, bool&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Filters the dataset based on the specified predicate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IRelmDataSet&lt;T&gt; Where(Expression&lt;Func&lt;T, bool&gt;&gt; predicate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd><p>An expression that defines the conditions of the filter. The predicate is a function that takes an element
+of type <code class="typeparamref">T</code>  and returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the element should be included in
+the result; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmDataSet-1.html">IRelmDataSet</a>&lt;T&gt;</dt>
+    <dd><p>A dataset containing only the elements that satisfy the specified predicate.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="SimpleRelm_Models_RelmDataSet_1_Where_System_Linq_Expressions_Expression_System_Func__0_System_Boolean____remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method allows you to apply a filtering condition to the dataset. The filtering
+is deferred, meaning the predicate is not evaluated  until the dataset is enumerated or further operations
+are performed.</p>
+</div>
+
+
+
+
+  <a id="SimpleRelm_Models_RelmDataSet_1_Write_" data-uid="SimpleRelm.Models.RelmDataSet`1.Write*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmDataSet_1_Write" data-uid="SimpleRelm.Models.RelmDataSet`1.Write">
+  Write()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L344"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Write()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmDataSet.cs/#L27" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  commentId: N:SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  id: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  children:
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_NotSpecified_Tester
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Tester
+  langs:
+  - csharp
+  - vb
+  name: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  nameWithType: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  type: Namespace
+  assemblies:
+  - SimpleRelm.Tests
+references:
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_NotSpecified_Tester
+  commentId: T:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_NotSpecified_Tester
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_NotSpecified_Tester.html
+  name: RelmColumn_NotSpecified_Tester
+  nameWithType: RelmColumn_NotSpecified_Tester
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_NotSpecified_Tester
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  commentId: T:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html
+  name: RelmColumn_Specified_Tester
+  nameWithType: RelmColumn_Specified_Tester
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Tester
+  commentId: T:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Tester
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Tester.html
+  name: RelmColumn_Tester
+  nameWithType: RelmColumn_Tester
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Tester

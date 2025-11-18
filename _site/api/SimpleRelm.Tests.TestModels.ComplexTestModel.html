@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ComplexTestModel | SimpleRelm </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ComplexTestModel | SimpleRelm ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/jdaugherty-bdl/SimpleRelm/new/master/apiSpec/new?filename=SimpleRelm_Tests_TestModels_ComplexTestModel.md&amp;value=---%0Auid%3A%20SimpleRelm.Tests.TestModels.ComplexTestModel%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="SimpleRelm">
+            SimpleRelm
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel">
+
+
+
+  <h1 id="SimpleRelm_Tests_TestModels_ComplexTestModel" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel" class="text-break">
+Class ComplexTestModel  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="SimpleRelm.html">SimpleRelm</a>.<a class="xref" href="SimpleRelm.Tests.html">Tests</a>.<a class="xref" href="SimpleRelm.Tests.TestModels.html">TestModels</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>SimpleRelm.Tests.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RelmDatabase(&quot;test_database&quot;)]
+[RelmTable(&quot;nothing_table&quot;)]
+public class ComplexTestModel : RelmModel, IRelmModel</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="SimpleRelm.Models.RelmModel.html">RelmModel</a></div>
+      <div><span class="xref">ComplexTestModel</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="SimpleRelm.Interfaces.IRelmModel.html">IRelmModel</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_DtoTypeProcessor">RelmModel.DtoTypeProcessor</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_Id">RelmModel.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_Active">RelmModel.Active</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_InternalId">RelmModel.InternalId</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_CreateDate">RelmModel.CreateDate</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_LastUpdated">RelmModel.LastUpdated</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_ResetCoreAttributes_System_Boolean_System_Boolean_">RelmModel.ResetCoreAttributes(bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_ResetWithData_System_Data_DataRow_System_String_">RelmModel.ResetWithData(DataRow, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_GetUnderscoreProperties_System_Boolean_">RelmModel.GetUnderscoreProperties(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_WriteToDatabase_System_Enum_System_Int32_System_Boolean_System_Boolean_System_Boolean_System_Boolean_">RelmModel.WriteToDatabase(Enum, int, bool, bool, bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_WriteToDatabase_SimpleRelm_Interfaces_IRelmContext_System_Int32_System_Boolean_System_Boolean_System_Boolean_System_Boolean_">RelmModel.WriteToDatabase(IRelmContext, int, bool, bool, bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_WriteToDatabase_SimpleRelm_Interfaces_RelmQuick_IRelmQuickContext_System_Int32_System_Boolean_System_Boolean_System_Boolean_System_Boolean_">RelmModel.WriteToDatabase(IRelmQuickContext, int, bool, bool, bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_WriteToDatabase_SimpleRelm_Options_RelmContextOptionsBuilder_System_Int32_System_Boolean_System_Boolean_System_Boolean_System_Boolean_">RelmModel.WriteToDatabase(RelmContextOptionsBuilder, int, bool, bool, bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_WriteToDatabase_MySql_Data_MySqlClient_MySqlConnection_MySql_Data_MySqlClient_MySqlTransaction_System_Int32_System_Boolean_System_Boolean_System_Boolean_System_Boolean_">RelmModel.WriteToDatabase(MySqlConnection, MySqlTransaction, int, bool, bool, bool, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_CopyFromSource__1___0_">RelmModel.CopyFromSource&lt;T&gt;(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_GenerateDTO_System_Collections_Generic_IEnumerable_System_String__System_Collections_Generic_IEnumerable_System_String__System_String_System_Func_SimpleRelm_Interfaces_IRelmModel_System_Collections_Generic_Dictionary_System_String_System_Object___System_Int32_">RelmModel.GenerateDTO(IEnumerable&lt;string&gt;, IEnumerable&lt;string&gt;, string, Func&lt;IRelmModel, Dictionary&lt;string, object&gt;&gt;, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="SimpleRelm.Models.RelmModel.html#SimpleRelm_Models_RelmModel_Duplicate">RelmModel.Duplicate()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject">
+  ComplexReferenceObject
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ComplexReferenceObject? ComplexReferenceObject { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Tests.TestModels.ComplexReferenceObject.html">ComplexReferenceObject</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObjectLocalKey_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObjectLocalKey*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObjectLocalKey" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObjectLocalKey">
+  ComplexReferenceObjectLocalKey
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? ComplexReferenceObjectLocalKey { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_NavigationProperties_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject_NavigationProperties*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_NavigationProperties" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject_NavigationProperties">
+  ComplexReferenceObject_NavigationProperties
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ICollection&lt;ComplexReferenceObject_NavigationProperty&gt;? ComplexReferenceObject_NavigationProperties { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="SimpleRelm.Tests.TestModels.ComplexReferenceObject_NavigationProperty.html">ComplexReferenceObject_NavigationProperty</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_NavigationPropertyItem_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject_NavigationPropertyItem*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_NavigationPropertyItem" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject_NavigationPropertyItem">
+  ComplexReferenceObject_NavigationPropertyItem
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ComplexReferenceObject_NavigationProperty? ComplexReferenceObject_NavigationPropertyItem { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Tests.TestModels.ComplexReferenceObject_NavigationProperty.html">ComplexReferenceObject_NavigationProperty</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_PrincipalEntities_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject_PrincipalEntities*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_PrincipalEntities" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject_PrincipalEntities">
+  ComplexReferenceObject_PrincipalEntities
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RelmForeignKey(&quot;ComplexTestModelInternalId&quot;, null, null)]
+public virtual ICollection&lt;ComplexReferenceObject_PrincipalEntity&gt;? ComplexReferenceObject_PrincipalEntities { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="SimpleRelm.Tests.TestModels.ComplexReferenceObject_PrincipalEntity.html">ComplexReferenceObject_PrincipalEntity</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_PrincipalEntities_LocalKeys_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject_PrincipalEntities_LocalKeys*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_PrincipalEntities_LocalKeys" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject_PrincipalEntities_LocalKeys">
+  ComplexReferenceObject_PrincipalEntities_LocalKeys
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RelmForeignKey(&quot;ComplexTestModelLocalKey&quot;, &quot;ComplexReferenceObjectLocalKey&quot;, null)]
+public virtual ICollection&lt;ComplexReferenceObject_PrincipalEntity&gt;? ComplexReferenceObject_PrincipalEntities_LocalKeys { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="SimpleRelm.Tests.TestModels.ComplexReferenceObject_PrincipalEntity.html">ComplexReferenceObject_PrincipalEntity</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_PrincipalEntityItem_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject_PrincipalEntityItem*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_PrincipalEntityItem" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject_PrincipalEntityItem">
+  ComplexReferenceObject_PrincipalEntityItem
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RelmForeignKey(&quot;ComplexTestModelInternalId&quot;, null, null)]
+public virtual ComplexReferenceObject_PrincipalEntity? ComplexReferenceObject_PrincipalEntityItem { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Tests.TestModels.ComplexReferenceObject_PrincipalEntity.html">ComplexReferenceObject_PrincipalEntity</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_PrincipalEntity_LocalKey_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject_PrincipalEntity_LocalKey*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObject_PrincipalEntity_LocalKey" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObject_PrincipalEntity_LocalKey">
+  ComplexReferenceObject_PrincipalEntity_LocalKey
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RelmForeignKey(&quot;ComplexTestModelLocalKey&quot;, &quot;ComplexReferenceObjectLocalKey&quot;, null)]
+public virtual ComplexReferenceObject_PrincipalEntity? ComplexReferenceObject_PrincipalEntity_LocalKey { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Tests.TestModels.ComplexReferenceObject_PrincipalEntity.html">ComplexReferenceObject_PrincipalEntity</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObjects_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObjects*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexReferenceObjects" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexReferenceObjects">
+  ComplexReferenceObjects
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ICollection&lt;ComplexReferenceObject&gt;? ComplexReferenceObjects { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="SimpleRelm.Tests.TestModels.ComplexReferenceObject.html">ComplexReferenceObject</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexTestModels_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexTestModels*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_ComplexTestModels" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.ComplexTestModels">
+  ComplexTestModels
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ICollection&lt;ComplexTestModel&gt;? ComplexTestModels { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="SimpleRelm.Tests.TestModels.ComplexTestModel.html">ComplexTestModel</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_SimpleReferenceObjects_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.SimpleReferenceObjects*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_SimpleReferenceObjects" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.SimpleReferenceObjects">
+  SimpleReferenceObjects
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ICollection&lt;SimpleReferenceObject&gt;? SimpleReferenceObjects { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="SimpleRelm.Tests.TestModels.SimpleReferenceObject.html">SimpleReferenceObject</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_TestColumnId_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.TestColumnId*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_TestColumnId" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.TestColumnId">
+  TestColumnId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RelmColumn(&quot;test_column_id&quot;, 255, null, false, false, true, true, &quot;DEFAULTVALUE&quot;, &quot;INDEX&quot;, true, true, true)]
+public int TestColumnId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_TestColumnInternalId_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.TestColumnInternalId*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_TestColumnInternalId" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.TestColumnInternalId">
+  TestColumnInternalId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RelmColumn(&quot;test_column_InternalId&quot;, 255, new int[] { 100, 200 }, false, false, true, true, &quot;DEFAULTVALUE&quot;, &quot;INDEX&quot;, true, true, true)]
+public string? TestColumnInternalId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_TestColumnNoAttributeArguments_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.TestColumnNoAttributeArguments*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_TestColumnNoAttributeArguments" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.TestColumnNoAttributeArguments">
+  TestColumnNoAttributeArguments
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RelmColumn(null, -1, null, true, false, false, false, null, null, false, false, false)]
+public string? TestColumnNoAttributeArguments { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_TestFieldBoolean_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.TestFieldBoolean*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_TestFieldBoolean" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.TestFieldBoolean">
+  TestFieldBoolean
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RelmDataLoader(typeof(TestFieldBooleanFieldLoader))]
+public virtual bool? TestFieldBoolean { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_TestFieldBooleans_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.TestFieldBooleans*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_TestFieldBooleans" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.TestFieldBooleans">
+  TestFieldBooleans
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RelmDataLoader(typeof(TestFieldBooleansFieldLoader))]
+public virtual ICollection&lt;bool&gt;? TestFieldBooleans { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_TestFieldString_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.TestFieldString*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_TestFieldString" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.TestFieldString">
+  TestFieldString
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RelmDataLoader(typeof(TestFieldStringFieldLoader))]
+public virtual string? TestFieldString { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Tests_TestModels_ComplexTestModel_WhereTypeProperty_" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.WhereTypeProperty*"></a>
+
+  <h3 id="SimpleRelm_Tests_TestModels_ComplexTestModel_WhereTypeProperty" data-uid="SimpleRelm.Tests.TestModels.ComplexTestModel.WhereTypeProperty">
+  WhereTypeProperty
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RelmColumn(null, -1, null, true, false, false, false, null, null, false, false, false)]
+public ComplexTestModel.WhereTypes WhereTypeProperty { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Tests.TestModels.ComplexTestModel.html">ComplexTestModel</a>.<a class="xref" href="SimpleRelm.Tests.TestModels.ComplexTestModel.WhereTypes.html">WhereTypes</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm.Tests/TestModels/ComplexTestModel.cs/#L12" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,955 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  commentId: T:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  id: RelmColumn_Specified_Tester
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  children:
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.#ctor
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnName
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Present
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Unique_True
+  - SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_Specified_Tester
+  nameWithType: RelmColumn_Specified_Tester
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  type: Class
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_Specified_Tester
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 10
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: public class RelmColumn_Specified_Tester
+    content.vb: Public Class RelmColumn_Specified_Tester
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.#ctor
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.#ctor
+  id: '#ctor'
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_Specified_Tester()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_Specified_Tester()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_Specified_Tester()
+  type: Constructor
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: .ctor
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 14
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: public RelmColumn_Specified_Tester()
+    content.vb: Public Sub New()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.#ctor*
+  nameWithType.vb: RelmColumn_Specified_Tester.New()
+  fullName.vb: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.New()
+  name.vb: New()
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnName
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnName
+  id: RelmColumn_ComplexTestModel_Has_Attribute_ColumnName
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_ColumnName()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnName()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnName()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_ColumnName
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 27
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_ColumnName()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_ColumnName()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnName*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255
+  id: RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 33
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False
+  id: RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 39
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False
+  id: RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 45
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True
+  id: RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 51
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Unique_True
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Unique_True
+  id: RelmColumn_ComplexTestModel_Has_Attribute_Unique_True
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_Unique_True()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Unique_True()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Unique_True()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_Unique_True
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 57
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_Unique_True()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_Unique_True()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Unique_True*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE
+  id: RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 63
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX
+  id: RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 69
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True
+  id: RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 75
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True
+  id: RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 81
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True
+  id: RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 87
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified
+  id: RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 93
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Present
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Present
+  id: RelmColumn_ComplexTestModel_Has_Attribute_Present
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_Present()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Present()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Present()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_Present
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 99
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_Present()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_Present()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Present*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property
+  commentId: M:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property
+  id: RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property
+  parent: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property()
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property()
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property
+    path: SimpleRelm.Tests/Attributes/RelmColumn_Testers/RelmColumn_Specified_Tester.cs
+    startLine: 105
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property()
+  overload: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+references:
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  commentId: N:SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  href: SimpleRelm.html
+  name: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  nameWithType: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Tests
+    name: Tests
+    href: SimpleRelm.Tests.html
+  - name: .
+  - uid: SimpleRelm.Tests.Attributes
+    name: Attributes
+    href: SimpleRelm.Tests.Attributes.html
+  - name: .
+  - uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+    name: RelmColumn_Testers
+    href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Tests
+    name: Tests
+    href: SimpleRelm.Tests.html
+  - name: .
+  - uid: SimpleRelm.Tests.Attributes
+    name: Attributes
+    href: SimpleRelm.Tests.Attributes.html
+  - name: .
+  - uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers
+    name: RelmColumn_Testers
+    href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.#ctor*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.#ctor
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester__ctor
+  name: RelmColumn_Specified_Tester
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_Specified_Tester
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_Specified_Tester
+  nameWithType.vb: RelmColumn_Specified_Tester.New
+  fullName.vb: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.New
+  name.vb: New
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnName*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnName
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_ColumnName
+  name: RelmColumn_ComplexTestModel_Has_Attribute_ColumnName
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnName
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnName
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255
+  name: RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_ColumnSize_255
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False
+  name: RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IsNullable_False
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False
+  name: RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_PrimaryKey_False
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True
+  name: RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Autonumber_True
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Unique_True*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Unique_True
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_Unique_True
+  name: RelmColumn_ComplexTestModel_Has_Attribute_Unique_True
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Unique_True
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Unique_True
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE
+  name: RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_DefaultValue_DEFAULTVALUE
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX
+  name: RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Index_INDEX
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True
+  name: RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_IndexDescending_True
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True
+  name: RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_AllowDataTruncation_True
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True
+  name: RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Virtual_True
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified
+  name: RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_CompoundColumnSize_Specified
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Present*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Present
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_Present
+  name: RelmColumn_ComplexTestModel_Has_Attribute_Present
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Present
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Present
+- uid: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property*
+  commentId: Overload:SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property
+  href: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.html#SimpleRelm_Tests_Attributes_RelmColumn_Testers_RelmColumn_Specified_Tester_RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property
+  name: RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property
+  nameWithType: RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property
+  fullName: SimpleRelm.Tests.Attributes.RelmColumn_Testers.RelmColumn_Specified_Tester.RelmColumn_ComplexTestModel_Has_Attribute_Absent_On_Other_Property

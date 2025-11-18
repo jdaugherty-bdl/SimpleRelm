@@ -1,0 +1,853 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.Tests.RelmHelper_Tester
+  commentId: T:SimpleRelm.Tests.RelmHelper_Tester
+  id: RelmHelper_Tester
+  parent: SimpleRelm.Tests
+  children:
+  - SimpleRelm.Tests.RelmHelper_Tester.#ctor
+  - SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectCorrectly
+  - SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectsCorrectly
+  - SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly
+  - SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly_SingleReturn
+  - SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly
+  - SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn
+  - SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectCorrectly
+  - SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectsCorrectly
+  - SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectCorrectly
+  - SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectsCorrectly
+  - SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoaderField_Single_Boolean
+  - SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoadersField_Multiple_Boolean
+  langs:
+  - csharp
+  - vb
+  name: RelmHelper_Tester
+  nameWithType: RelmHelper_Tester
+  fullName: SimpleRelm.Tests.RelmHelper_Tester
+  type: Class
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmHelper_Tester
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 12
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: public class RelmHelper_Tester
+    content.vb: Public Class RelmHelper_Tester
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: SimpleRelm.Tests.RelmHelper_Tester.#ctor
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.#ctor
+  id: '#ctor'
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmHelper_Tester()
+  nameWithType: RelmHelper_Tester.RelmHelper_Tester()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_Tester()
+  type: Constructor
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: .ctor
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 16
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: public RelmHelper_Tester()
+    content.vb: Public Sub New()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.#ctor*
+  nameWithType.vb: RelmHelper_Tester.New()
+  fullName.vb: SimpleRelm.Tests.RelmHelper_Tester.New()
+  name.vb: New()
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly
+  id: Reference_LoadsForeignKeyObjectsCorrectly
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: Reference_LoadsForeignKeyObjectsCorrectly()
+  nameWithType: RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Reference_LoadsForeignKeyObjectsCorrectly
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 168
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void Reference_LoadsForeignKeyObjectsCorrectly()
+    content.vb: >-
+      <Fact>
+
+      Public Sub Reference_LoadsForeignKeyObjectsCorrectly()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly
+  id: Reference_LoadsForeignKeyObjectCorrectly
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: Reference_LoadsForeignKeyObjectCorrectly()
+  nameWithType: RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Reference_LoadsForeignKeyObjectCorrectly
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 205
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void Reference_LoadsForeignKeyObjectCorrectly()
+    content.vb: >-
+      <Fact>
+
+      Public Sub Reference_LoadsForeignKeyObjectCorrectly()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn
+  id: Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn()
+  nameWithType: RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 234
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn()
+    content.vb: >-
+      <Fact>
+
+      Public Sub Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly_SingleReturn
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly_SingleReturn
+  id: Reference_LoadsForeignKeyObjectCorrectly_SingleReturn
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: Reference_LoadsForeignKeyObjectCorrectly_SingleReturn()
+  nameWithType: RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly_SingleReturn()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly_SingleReturn()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Reference_LoadsForeignKeyObjectCorrectly_SingleReturn
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 264
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void Reference_LoadsForeignKeyObjectCorrectly_SingleReturn()
+    content.vb: >-
+      <Fact>
+
+      Public Sub Reference_LoadsForeignKeyObjectCorrectly_SingleReturn()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly_SingleReturn*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectsCorrectly
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectsCorrectly
+  id: Reference_LoadsNavigationPropertyObjectsCorrectly
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: Reference_LoadsNavigationPropertyObjectsCorrectly()
+  nameWithType: RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectsCorrectly()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectsCorrectly()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Reference_LoadsNavigationPropertyObjectsCorrectly
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 282
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void Reference_LoadsNavigationPropertyObjectsCorrectly()
+    content.vb: >-
+      <Fact>
+
+      Public Sub Reference_LoadsNavigationPropertyObjectsCorrectly()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectsCorrectly*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectCorrectly
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectCorrectly
+  id: Reference_LoadsNavigationPropertyObjectCorrectly
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: Reference_LoadsNavigationPropertyObjectCorrectly()
+  nameWithType: RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectCorrectly()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectCorrectly()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Reference_LoadsNavigationPropertyObjectCorrectly
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 311
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void Reference_LoadsNavigationPropertyObjectCorrectly()
+    content.vb: >-
+      <Fact>
+
+      Public Sub Reference_LoadsNavigationPropertyObjectCorrectly()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectCorrectly*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectsCorrectly
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectsCorrectly
+  id: Reference_LoadsPrincipalEntityObjectsCorrectly
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: Reference_LoadsPrincipalEntityObjectsCorrectly()
+  nameWithType: RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectsCorrectly()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectsCorrectly()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Reference_LoadsPrincipalEntityObjectsCorrectly
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 329
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void Reference_LoadsPrincipalEntityObjectsCorrectly()
+    content.vb: >-
+      <Fact>
+
+      Public Sub Reference_LoadsPrincipalEntityObjectsCorrectly()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectsCorrectly*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectCorrectly
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectCorrectly
+  id: Reference_LoadsPrincipalEntityObjectCorrectly
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: Reference_LoadsPrincipalEntityObjectCorrectly()
+  nameWithType: RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectCorrectly()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectCorrectly()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Reference_LoadsPrincipalEntityObjectCorrectly
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 358
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void Reference_LoadsPrincipalEntityObjectCorrectly()
+    content.vb: >-
+      <Fact>
+
+      Public Sub Reference_LoadsPrincipalEntityObjectCorrectly()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectCorrectly*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectsCorrectly
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectsCorrectly
+  id: Reference_LoadReferenceLocalKeyObjectsCorrectly
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: Reference_LoadReferenceLocalKeyObjectsCorrectly()
+  nameWithType: RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectsCorrectly()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectsCorrectly()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Reference_LoadReferenceLocalKeyObjectsCorrectly
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 376
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void Reference_LoadReferenceLocalKeyObjectsCorrectly()
+    content.vb: >-
+      <Fact>
+
+      Public Sub Reference_LoadReferenceLocalKeyObjectsCorrectly()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectsCorrectly*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectCorrectly
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectCorrectly
+  id: Reference_LoadReferenceLocalKeyObjectCorrectly
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: Reference_LoadReferenceLocalKeyObjectCorrectly()
+  nameWithType: RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectCorrectly()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectCorrectly()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Reference_LoadReferenceLocalKeyObjectCorrectly
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 405
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void Reference_LoadReferenceLocalKeyObjectCorrectly()
+    content.vb: >-
+      <Fact>
+
+      Public Sub Reference_LoadReferenceLocalKeyObjectCorrectly()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectCorrectly*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoaderField_Single_Boolean
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoaderField_Single_Boolean
+  id: RelmHelper_LoadDataLoaderField_Single_Boolean
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmHelper_LoadDataLoaderField_Single_Boolean()
+  nameWithType: RelmHelper_Tester.RelmHelper_LoadDataLoaderField_Single_Boolean()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoaderField_Single_Boolean()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmHelper_LoadDataLoaderField_Single_Boolean
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 423
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmHelper_LoadDataLoaderField_Single_Boolean()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmHelper_LoadDataLoaderField_Single_Boolean()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoaderField_Single_Boolean*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+- uid: SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoadersField_Multiple_Boolean
+  commentId: M:SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoadersField_Multiple_Boolean
+  id: RelmHelper_LoadDataLoadersField_Multiple_Boolean
+  parent: SimpleRelm.Tests.RelmHelper_Tester
+  langs:
+  - csharp
+  - vb
+  name: RelmHelper_LoadDataLoadersField_Multiple_Boolean()
+  nameWithType: RelmHelper_Tester.RelmHelper_LoadDataLoadersField_Multiple_Boolean()
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoadersField_Multiple_Boolean()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm.Tests/RelmHelper_Tester.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: RelmHelper_LoadDataLoadersField_Multiple_Boolean
+    path: SimpleRelm.Tests/RelmHelper_Tester.cs
+    startLine: 438
+  assemblies:
+  - SimpleRelm.Tests
+  namespace: SimpleRelm.Tests
+  syntax:
+    content: >-
+      [Fact]
+
+      public void RelmHelper_LoadDataLoadersField_Multiple_Boolean()
+    content.vb: >-
+      <Fact>
+
+      Public Sub RelmHelper_LoadDataLoadersField_Multiple_Boolean()
+  overload: SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoadersField_Multiple_Boolean*
+  attributes:
+  - type: Xunit.FactAttribute
+    ctor: Xunit.FactAttribute.#ctor
+    arguments: []
+references:
+- uid: SimpleRelm.Tests
+  commentId: N:SimpleRelm.Tests
+  href: SimpleRelm.html
+  name: SimpleRelm.Tests
+  nameWithType: SimpleRelm.Tests
+  fullName: SimpleRelm.Tests
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Tests
+    name: Tests
+    href: SimpleRelm.Tests.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Tests
+    name: Tests
+    href: SimpleRelm.Tests.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleRelm.Tests.RelmHelper_Tester.#ctor*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.#ctor
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester__ctor
+  name: RelmHelper_Tester
+  nameWithType: RelmHelper_Tester.RelmHelper_Tester
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_Tester
+  nameWithType.vb: RelmHelper_Tester.New
+  fullName.vb: SimpleRelm.Tests.RelmHelper_Tester.New
+  name.vb: New
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester_Reference_LoadsForeignKeyObjectsCorrectly
+  name: Reference_LoadsForeignKeyObjectsCorrectly
+  nameWithType: RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester_Reference_LoadsForeignKeyObjectCorrectly
+  name: Reference_LoadsForeignKeyObjectCorrectly
+  nameWithType: RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester_Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn
+  name: Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn
+  nameWithType: RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectsCorrectly_SingleReturn
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly_SingleReturn*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly_SingleReturn
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester_Reference_LoadsForeignKeyObjectCorrectly_SingleReturn
+  name: Reference_LoadsForeignKeyObjectCorrectly_SingleReturn
+  nameWithType: RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly_SingleReturn
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsForeignKeyObjectCorrectly_SingleReturn
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectsCorrectly*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectsCorrectly
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester_Reference_LoadsNavigationPropertyObjectsCorrectly
+  name: Reference_LoadsNavigationPropertyObjectsCorrectly
+  nameWithType: RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectsCorrectly
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectsCorrectly
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectCorrectly*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectCorrectly
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester_Reference_LoadsNavigationPropertyObjectCorrectly
+  name: Reference_LoadsNavigationPropertyObjectCorrectly
+  nameWithType: RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectCorrectly
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsNavigationPropertyObjectCorrectly
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectsCorrectly*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectsCorrectly
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester_Reference_LoadsPrincipalEntityObjectsCorrectly
+  name: Reference_LoadsPrincipalEntityObjectsCorrectly
+  nameWithType: RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectsCorrectly
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectsCorrectly
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectCorrectly*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectCorrectly
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester_Reference_LoadsPrincipalEntityObjectCorrectly
+  name: Reference_LoadsPrincipalEntityObjectCorrectly
+  nameWithType: RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectCorrectly
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadsPrincipalEntityObjectCorrectly
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectsCorrectly*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectsCorrectly
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester_Reference_LoadReferenceLocalKeyObjectsCorrectly
+  name: Reference_LoadReferenceLocalKeyObjectsCorrectly
+  nameWithType: RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectsCorrectly
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectsCorrectly
+- uid: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectCorrectly*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectCorrectly
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester_Reference_LoadReferenceLocalKeyObjectCorrectly
+  name: Reference_LoadReferenceLocalKeyObjectCorrectly
+  nameWithType: RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectCorrectly
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.Reference_LoadReferenceLocalKeyObjectCorrectly
+- uid: SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoaderField_Single_Boolean*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoaderField_Single_Boolean
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester_RelmHelper_LoadDataLoaderField_Single_Boolean
+  name: RelmHelper_LoadDataLoaderField_Single_Boolean
+  nameWithType: RelmHelper_Tester.RelmHelper_LoadDataLoaderField_Single_Boolean
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoaderField_Single_Boolean
+- uid: SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoadersField_Multiple_Boolean*
+  commentId: Overload:SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoadersField_Multiple_Boolean
+  href: SimpleRelm.Tests.RelmHelper_Tester.html#SimpleRelm_Tests_RelmHelper_Tester_RelmHelper_LoadDataLoadersField_Multiple_Boolean
+  name: RelmHelper_LoadDataLoadersField_Multiple_Boolean
+  nameWithType: RelmHelper_Tester.RelmHelper_LoadDataLoadersField_Multiple_Boolean
+  fullName: SimpleRelm.Tests.RelmHelper_Tester.RelmHelper_LoadDataLoadersField_Multiple_Boolean

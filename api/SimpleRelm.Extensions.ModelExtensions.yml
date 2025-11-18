@@ -1,0 +1,2213 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleRelm.Extensions.ModelExtensions
+  commentId: T:SimpleRelm.Extensions.ModelExtensions
+  id: ModelExtensions
+  parent: SimpleRelm.Extensions
+  children:
+  - SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  - SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  langs:
+  - csharp
+  - vb
+  name: ModelExtensions
+  nameWithType: ModelExtensions
+  fullName: SimpleRelm.Extensions.ModelExtensions
+  type: Class
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: ModelExtensions
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 16
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: public static class ModelExtensions
+    content.vb: Public Module ModelExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  id: LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R, S>(T, IRelmContext, Expression<Func<T, R>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R, S>(T, IRelmContext, Expression<Func<T, R>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R, S>(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression<System.Func<T, R>>, SimpleRelm.Interfaces.IRelmDataLoader<S>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 30
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  summary: Loads the results of a foreign key or data loader field into the relevant properties of the supplied target.
+  example: []
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R, S>(this T target, IRelmContext relmContext, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+      description: The object to load the data onto.
+    - id: relmContext
+      type: SimpleRelm.Interfaces.IRelmContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+      description: A member expression indicating which field to load independently.
+    - id: customDataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+      description: ''
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+      description: ''
+    typeParameters:
+    - id: T
+      description: A RelmModel object type to load the data for.
+    - id: R
+      description: The field type of the target property.
+    - id: S
+      description: ''
+    return:
+      type: '{T}'
+      description: The target object with the relevant data loaded.
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New}, S As {IRelmModel, New})(target As T, relmContext As IRelmContext, predicate As Expression(Of Func(Of T, R)), customDataLoader As IRelmDataLoader(Of S), additionalConstraints As Expression(Of Func(Of R, Object))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, IRelmContext, Expression(Of Func(Of T, R)), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression(Of System.Func(Of T, R)), SimpleRelm.Interfaces.IRelmDataLoader(Of S), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R, S)(T, IRelmContext, Expression(Of Func(Of T, R)), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  id: LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R, S>(T, IRelmContext, Expression<Func<T, R>>, IRelmDataLoader<S>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R, S>(T, IRelmContext, Expression<Func<T, R>>, IRelmDataLoader<S>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R, S>(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression<System.Func<T, R>>, SimpleRelm.Interfaces.IRelmDataLoader<S>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 33
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R, S>(this T target, IRelmContext relmContext, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.IRelmContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+    - id: customDataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+    typeParameters:
+    - id: T
+    - id: R
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New}, S As {IRelmModel, New})(target As T, relmContext As IRelmContext, predicate As Expression(Of Func(Of T, R)), customDataLoader As IRelmDataLoader(Of S)) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, IRelmContext, Expression(Of Func(Of T, R)), IRelmDataLoader(Of S))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression(Of System.Func(Of T, R)), SimpleRelm.Interfaces.IRelmDataLoader(Of S))
+  name.vb: LoadForeignKeyField(Of T, R, S)(T, IRelmContext, Expression(Of Func(Of T, R)), IRelmDataLoader(Of S))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  id: LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R>(T, IRelmContext, Expression<Func<T, R>>, Expression<Func<R, object>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R>(T, IRelmContext, Expression<Func<T, R>>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R>(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression<System.Func<T, R>>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 36
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R>(this T target, IRelmContext relmContext, Expression<Func<T, R>> predicate, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.IRelmContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+    typeParameters:
+    - id: T
+    - id: R
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New})(target As T, relmContext As IRelmContext, predicate As Expression(Of Func(Of T, R)), additionalConstraints As Expression(Of Func(Of R, Object))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R)(T, IRelmContext, Expression(Of Func(Of T, R)), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R)(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression(Of System.Func(Of T, R)), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R)(T, IRelmContext, Expression(Of Func(Of T, R)), Expression(Of Func(Of R, Object)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  id: LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R>(T, IRelmContext, Expression<Func<T, R>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R>(T, IRelmContext, Expression<Func<T, R>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R>(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression<System.Func<T, R>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 39
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R>(this T target, IRelmContext relmContext, Expression<Func<T, R>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.IRelmContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+    typeParameters:
+    - id: T
+    - id: R
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New})(target As T, relmContext As IRelmContext, predicate As Expression(Of Func(Of T, R))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R)(T, IRelmContext, Expression(Of Func(Of T, R)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R)(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression(Of System.Func(Of T, R)))
+  name.vb: LoadForeignKeyField(Of T, R)(T, IRelmContext, Expression(Of Func(Of T, R)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  id: LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R, S>(T, IRelmContext, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R, S>(T, IRelmContext, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R, S>(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, SimpleRelm.Interfaces.IRelmDataLoader<S>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 42
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R, S>(this T target, IRelmContext relmContext, Expression<Func<T, ICollection<R>>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.IRelmContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+    - id: customDataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+    typeParameters:
+    - id: T
+    - id: R
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New}, S As {IRelmModel, New})(target As T, relmContext As IRelmContext, predicate As Expression(Of Func(Of T, ICollection(Of R))), customDataLoader As IRelmDataLoader(Of S), additionalConstraints As Expression(Of Func(Of R, Object))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, IRelmContext, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), SimpleRelm.Interfaces.IRelmDataLoader(Of S), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R, S)(T, IRelmContext, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  id: LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R, S>(T, IRelmContext, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R, S>(T, IRelmContext, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R, S>(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, SimpleRelm.Interfaces.IRelmDataLoader<S>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 45
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R, S>(this T target, IRelmContext relmContext, Expression<Func<T, ICollection<R>>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.IRelmContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+    - id: customDataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+    typeParameters:
+    - id: T
+    - id: R
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New}, S As {IRelmModel, New})(target As T, relmContext As IRelmContext, predicate As Expression(Of Func(Of T, ICollection(Of R))), customDataLoader As IRelmDataLoader(Of S)) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, IRelmContext, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), SimpleRelm.Interfaces.IRelmDataLoader(Of S))
+  name.vb: LoadForeignKeyField(Of T, R, S)(T, IRelmContext, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  id: LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R>(T, IRelmContext, Expression<Func<T, ICollection<R>>>, Expression<Func<R, object>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R>(T, IRelmContext, Expression<Func<T, ICollection<R>>>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R>(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 48
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R>(this T target, IRelmContext relmContext, Expression<Func<T, ICollection<R>>> predicate, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.IRelmContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+    typeParameters:
+    - id: T
+    - id: R
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New})(target As T, relmContext As IRelmContext, predicate As Expression(Of Func(Of T, ICollection(Of R))), additionalConstraints As Expression(Of Func(Of R, Object))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R)(T, IRelmContext, Expression(Of Func(Of T, ICollection(Of R))), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R)(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R)(T, IRelmContext, Expression(Of Func(Of T, ICollection(Of R))), Expression(Of Func(Of R, Object)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}})
+  id: LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R>(T, IRelmContext, Expression<Func<T, ICollection<R>>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R>(T, IRelmContext, Expression<Func<T, ICollection<R>>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R>(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 51
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R>(this T target, IRelmContext relmContext, Expression<Func<T, ICollection<R>>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.IRelmContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+    typeParameters:
+    - id: T
+    - id: R
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New})(target As T, relmContext As IRelmContext, predicate As Expression(Of Func(Of T, ICollection(Of R)))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R)(T, IRelmContext, Expression(Of Func(Of T, ICollection(Of R))))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R)(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))))
+  name.vb: LoadForeignKeyField(Of T, R)(T, IRelmContext, Expression(Of Func(Of T, ICollection(Of R))))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  id: LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R, S>(T, IRelmQuickContext, Expression<Func<T, R>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R, S>(T, IRelmQuickContext, Expression<Func<T, R>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R, S>(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression<System.Func<T, R>>, SimpleRelm.Interfaces.IRelmDataLoader<S>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 58
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R, S>(this T target, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+    - id: customDataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+    typeParameters:
+    - id: T
+    - id: R
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New}, S As {IRelmModel, New})(target As T, relmContext As IRelmQuickContext, predicate As Expression(Of Func(Of T, R)), customDataLoader As IRelmDataLoader(Of S), additionalConstraints As Expression(Of Func(Of R, Object))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, IRelmQuickContext, Expression(Of Func(Of T, R)), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression(Of System.Func(Of T, R)), SimpleRelm.Interfaces.IRelmDataLoader(Of S), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R, S)(T, IRelmQuickContext, Expression(Of Func(Of T, R)), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  id: LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R, S>(T, IRelmQuickContext, Expression<Func<T, R>>, IRelmDataLoader<S>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R, S>(T, IRelmQuickContext, Expression<Func<T, R>>, IRelmDataLoader<S>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R, S>(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression<System.Func<T, R>>, SimpleRelm.Interfaces.IRelmDataLoader<S>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 61
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R, S>(this T target, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+    - id: customDataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+    typeParameters:
+    - id: T
+    - id: R
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New}, S As {IRelmModel, New})(target As T, relmContext As IRelmQuickContext, predicate As Expression(Of Func(Of T, R)), customDataLoader As IRelmDataLoader(Of S)) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, IRelmQuickContext, Expression(Of Func(Of T, R)), IRelmDataLoader(Of S))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression(Of System.Func(Of T, R)), SimpleRelm.Interfaces.IRelmDataLoader(Of S))
+  name.vb: LoadForeignKeyField(Of T, R, S)(T, IRelmQuickContext, Expression(Of Func(Of T, R)), IRelmDataLoader(Of S))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  id: LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R>(T, IRelmQuickContext, Expression<Func<T, R>>, Expression<Func<R, object>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R>(T, IRelmQuickContext, Expression<Func<T, R>>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R>(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression<System.Func<T, R>>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 64
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R>(this T target, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+    typeParameters:
+    - id: T
+    - id: R
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New})(target As T, relmContext As IRelmQuickContext, predicate As Expression(Of Func(Of T, R)), additionalConstraints As Expression(Of Func(Of R, Object))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R)(T, IRelmQuickContext, Expression(Of Func(Of T, R)), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R)(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression(Of System.Func(Of T, R)), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R)(T, IRelmQuickContext, Expression(Of Func(Of T, R)), Expression(Of Func(Of R, Object)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  id: LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R>(T, IRelmQuickContext, Expression<Func<T, R>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R>(T, IRelmQuickContext, Expression<Func<T, R>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R>(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression<System.Func<T, R>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 67
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R>(this T target, IRelmQuickContext relmContext, Expression<Func<T, R>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+    typeParameters:
+    - id: T
+    - id: R
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New})(target As T, relmContext As IRelmQuickContext, predicate As Expression(Of Func(Of T, R))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R)(T, IRelmQuickContext, Expression(Of Func(Of T, R)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R)(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression(Of System.Func(Of T, R)))
+  name.vb: LoadForeignKeyField(Of T, R)(T, IRelmQuickContext, Expression(Of Func(Of T, R)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  id: LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R, S>(T, IRelmQuickContext, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R, S>(T, IRelmQuickContext, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R, S>(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, SimpleRelm.Interfaces.IRelmDataLoader<S>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 70
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R, S>(this T target, IRelmQuickContext relmContext, Expression<Func<T, ICollection<R>>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+    - id: customDataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+    typeParameters:
+    - id: T
+    - id: R
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New}, S As {IRelmModel, New})(target As T, relmContext As IRelmQuickContext, predicate As Expression(Of Func(Of T, ICollection(Of R))), customDataLoader As IRelmDataLoader(Of S), additionalConstraints As Expression(Of Func(Of R, Object))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, IRelmQuickContext, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), SimpleRelm.Interfaces.IRelmDataLoader(Of S), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R, S)(T, IRelmQuickContext, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  id: LoadForeignKeyField``3(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R, S>(T, IRelmQuickContext, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R, S>(T, IRelmQuickContext, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R, S>(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, SimpleRelm.Interfaces.IRelmDataLoader<S>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 73
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R, S>(this T target, IRelmQuickContext relmContext, Expression<Func<T, ICollection<R>>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+    - id: customDataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+    typeParameters:
+    - id: T
+    - id: R
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New}, S As {IRelmModel, New})(target As T, relmContext As IRelmQuickContext, predicate As Expression(Of Func(Of T, ICollection(Of R))), customDataLoader As IRelmDataLoader(Of S)) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, IRelmQuickContext, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), SimpleRelm.Interfaces.IRelmDataLoader(Of S))
+  name.vb: LoadForeignKeyField(Of T, R, S)(T, IRelmQuickContext, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  id: LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R>(T, IRelmQuickContext, Expression<Func<T, ICollection<R>>>, Expression<Func<R, object>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R>(T, IRelmQuickContext, Expression<Func<T, ICollection<R>>>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R>(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 76
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R>(this T target, IRelmQuickContext relmContext, Expression<Func<T, ICollection<R>>> predicate, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+    typeParameters:
+    - id: T
+    - id: R
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New})(target As T, relmContext As IRelmQuickContext, predicate As Expression(Of Func(Of T, ICollection(Of R))), additionalConstraints As Expression(Of Func(Of R, Object))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R)(T, IRelmQuickContext, Expression(Of Func(Of T, ICollection(Of R))), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R)(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R)(T, IRelmQuickContext, Expression(Of Func(Of T, ICollection(Of R))), Expression(Of Func(Of R, Object)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}})
+  id: LoadForeignKeyField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R>(T, IRelmQuickContext, Expression<Func<T, ICollection<R>>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R>(T, IRelmQuickContext, Expression<Func<T, ICollection<R>>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R>(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 79
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R>(this T target, IRelmQuickContext relmContext, Expression<Func<T, ICollection<R>>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+    typeParameters:
+    - id: T
+    - id: R
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New})(target As T, relmContext As IRelmQuickContext, predicate As Expression(Of Func(Of T, ICollection(Of R)))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R)(T, IRelmQuickContext, Expression(Of Func(Of T, ICollection(Of R))))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R)(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))))
+  name.vb: LoadForeignKeyField(Of T, R)(T, IRelmQuickContext, Expression(Of Func(Of T, ICollection(Of R))))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  id: LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R, S>(T, RelmContextOptionsBuilder, Expression<Func<T, R>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R, S>(T, RelmContextOptionsBuilder, Expression<Func<T, R>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R, S>(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, R>>, SimpleRelm.Interfaces.IRelmDataLoader<S>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 94
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  summary: Loads the results of a foreign key or data loader field into the relevant properties of the supplied target.
+  example: []
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R, S>(this T target, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+      description: The object to load the data onto.
+    - id: relmContextOptionsBuilder
+      type: SimpleRelm.Options.RelmContextOptionsBuilder
+      description: The connection options to use when retrieving data.
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+      description: A member expression indicating which field to load independently.
+    - id: customDataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+      description: ''
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+      description: ''
+    typeParameters:
+    - id: T
+      description: A RelmModel object type to load the data for.
+    - id: R
+      description: The field type of the target property.
+    - id: S
+      description: ''
+    return:
+      type: '{T}'
+      description: The target object with the relevant data loaded.
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New}, S As {IRelmModel, New})(target As T, relmContextOptionsBuilder As RelmContextOptionsBuilder, predicate As Expression(Of Func(Of T, R)), customDataLoader As IRelmDataLoader(Of S), additionalConstraints As Expression(Of Func(Of R, Object))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, R)), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, R)), SimpleRelm.Interfaces.IRelmDataLoader(Of S), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R, S)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, R)), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  id: LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R, S>(T, RelmContextOptionsBuilder, Expression<Func<T, R>>, IRelmDataLoader<S>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R, S>(T, RelmContextOptionsBuilder, Expression<Func<T, R>>, IRelmDataLoader<S>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R, S>(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, R>>, SimpleRelm.Interfaces.IRelmDataLoader<S>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 97
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R, S>(this T target, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContextOptionsBuilder
+      type: SimpleRelm.Options.RelmContextOptionsBuilder
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+    - id: customDataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+    typeParameters:
+    - id: T
+    - id: R
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New}, S As {IRelmModel, New})(target As T, relmContextOptionsBuilder As RelmContextOptionsBuilder, predicate As Expression(Of Func(Of T, R)), customDataLoader As IRelmDataLoader(Of S)) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, R)), IRelmDataLoader(Of S))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, R)), SimpleRelm.Interfaces.IRelmDataLoader(Of S))
+  name.vb: LoadForeignKeyField(Of T, R, S)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, R)), IRelmDataLoader(Of S))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  id: LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R>(T, RelmContextOptionsBuilder, Expression<Func<T, R>>, Expression<Func<R, object>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R>(T, RelmContextOptionsBuilder, Expression<Func<T, R>>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R>(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, R>>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 100
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R>(this T target, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContextOptionsBuilder
+      type: SimpleRelm.Options.RelmContextOptionsBuilder
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+    typeParameters:
+    - id: T
+    - id: R
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New})(target As T, relmContextOptionsBuilder As RelmContextOptionsBuilder, predicate As Expression(Of Func(Of T, R)), additionalConstraints As Expression(Of Func(Of R, Object))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, R)), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R)(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, R)), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, R)), Expression(Of Func(Of R, Object)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  id: LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R>(T, RelmContextOptionsBuilder, Expression<Func<T, R>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R>(T, RelmContextOptionsBuilder, Expression<Func<T, R>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R>(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, R>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 103
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R>(this T target, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContextOptionsBuilder
+      type: SimpleRelm.Options.RelmContextOptionsBuilder
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+    typeParameters:
+    - id: T
+    - id: R
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New})(target As T, relmContextOptionsBuilder As RelmContextOptionsBuilder, predicate As Expression(Of Func(Of T, R))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, R)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R)(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, R)))
+  name.vb: LoadForeignKeyField(Of T, R)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, R)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  id: LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R, S>(T, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R, S>(T, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R, S>(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, SimpleRelm.Interfaces.IRelmDataLoader<S>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 106
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R, S>(this T target, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, ICollection<R>>> predicate, IRelmDataLoader<S> customDataLoader, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContextOptionsBuilder
+      type: SimpleRelm.Options.RelmContextOptionsBuilder
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+    - id: customDataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+    typeParameters:
+    - id: T
+    - id: R
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New}, S As {IRelmModel, New})(target As T, relmContextOptionsBuilder As RelmContextOptionsBuilder, predicate As Expression(Of Func(Of T, ICollection(Of R))), customDataLoader As IRelmDataLoader(Of S), additionalConstraints As Expression(Of Func(Of R, Object))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), SimpleRelm.Interfaces.IRelmDataLoader(Of S), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R, S)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S), Expression(Of Func(Of R, Object)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  id: LoadForeignKeyField``3(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},SimpleRelm.Interfaces.IRelmDataLoader{``2})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R, S>(T, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R, S>(T, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, IRelmDataLoader<S>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R, S>(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, SimpleRelm.Interfaces.IRelmDataLoader<S>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 109
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R, S>(this T target, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, ICollection<R>>> predicate, IRelmDataLoader<S> customDataLoader) where T : IRelmModel, new() where R : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContextOptionsBuilder
+      type: SimpleRelm.Options.RelmContextOptionsBuilder
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+    - id: customDataLoader
+      type: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+    typeParameters:
+    - id: T
+    - id: R
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New}, S As {IRelmModel, New})(target As T, relmContextOptionsBuilder As RelmContextOptionsBuilder, predicate As Expression(Of Func(Of T, ICollection(Of R))), customDataLoader As IRelmDataLoader(Of S)) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R, S)(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), SimpleRelm.Interfaces.IRelmDataLoader(Of S))
+  name.vb: LoadForeignKeyField(Of T, R, S)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), IRelmDataLoader(Of S))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  id: LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}},System.Linq.Expressions.Expression{System.Func{``1,System.Object}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R>(T, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, Expression<Func<R, object>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R>(T, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>, Expression<Func<R, object>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R>(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>, System.Linq.Expressions.Expression<System.Func<R, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 112
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R>(this T target, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, ICollection<R>>> predicate, Expression<Func<R, object>> additionalConstraints) where T : IRelmModel, new() where R : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContextOptionsBuilder
+      type: SimpleRelm.Options.RelmContextOptionsBuilder
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+    typeParameters:
+    - id: T
+    - id: R
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New})(target As T, relmContextOptionsBuilder As RelmContextOptionsBuilder, predicate As Expression(Of Func(Of T, ICollection(Of R))), additionalConstraints As Expression(Of Func(Of R, Object))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), Expression(Of Func(Of R, Object)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R)(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))), System.Linq.Expressions.Expression(Of System.Func(Of R, Object)))
+  name.vb: LoadForeignKeyField(Of T, R)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))), Expression(Of Func(Of R, Object)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}})
+  id: LoadForeignKeyField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadForeignKeyField<T, R>(T, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>)
+  nameWithType: ModelExtensions.LoadForeignKeyField<T, R>(T, RelmContextOptionsBuilder, Expression<Func<T, ICollection<R>>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField<T, R>(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadForeignKeyField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 115
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadForeignKeyField<T, R>(this T target, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, ICollection<R>>> predicate) where T : IRelmModel, new() where R : IRelmModel, new()'
+    parameters:
+    - id: target
+      type: '{T}'
+    - id: relmContextOptionsBuilder
+      type: SimpleRelm.Options.RelmContextOptionsBuilder
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+    typeParameters:
+    - id: T
+    - id: R
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadForeignKeyField(Of T As {IRelmModel, New}, R As {IRelmModel, New})(target As T, relmContextOptionsBuilder As RelmContextOptionsBuilder, predicate As Expression(Of Func(Of T, ICollection(Of R)))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  nameWithType.vb: ModelExtensions.LoadForeignKeyField(Of T, R)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField(Of T, R)(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R))))
+  name.vb: LoadForeignKeyField(Of T, R)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, ICollection(Of R))))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  id: LoadDataLoaderField``2(``0,SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadDataLoaderField<T, S>(T, IRelmContext, Expression<Func<T, S>>)
+  nameWithType: ModelExtensions.LoadDataLoaderField<T, S>(T, IRelmContext, Expression<Func<T, S>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField<T, S>(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression<System.Func<T, S>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadDataLoaderField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 118
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadDataLoaderField<T, S>(this T inputModel, IRelmContext relmContext, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: inputModel
+      type: '{T}'
+    - id: relmContext
+      type: SimpleRelm.Interfaces.IRelmContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{S}}}
+    typeParameters:
+    - id: T
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadDataLoaderField(Of T As {IRelmModel, New}, S As {IRelmModel, New})(inputModel As T, relmContext As IRelmContext, predicate As Expression(Of Func(Of T, S))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField*
+  nameWithType.vb: ModelExtensions.LoadDataLoaderField(Of T, S)(T, IRelmContext, Expression(Of Func(Of T, S)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField(Of T, S)(T, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression(Of System.Func(Of T, S)))
+  name.vb: LoadDataLoaderField(Of T, S)(T, IRelmContext, Expression(Of Func(Of T, S)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  id: LoadDataLoaderField``2(``0,SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadDataLoaderField<T, S>(T, IRelmQuickContext, Expression<Func<T, S>>)
+  nameWithType: ModelExtensions.LoadDataLoaderField<T, S>(T, IRelmQuickContext, Expression<Func<T, S>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField<T, S>(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression<System.Func<T, S>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadDataLoaderField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 121
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadDataLoaderField<T, S>(this T inputModel, IRelmQuickContext relmQuickContext, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: inputModel
+      type: '{T}'
+    - id: relmQuickContext
+      type: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{S}}}
+    typeParameters:
+    - id: T
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadDataLoaderField(Of T As {IRelmModel, New}, S As {IRelmModel, New})(inputModel As T, relmQuickContext As IRelmQuickContext, predicate As Expression(Of Func(Of T, S))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField*
+  nameWithType.vb: ModelExtensions.LoadDataLoaderField(Of T, S)(T, IRelmQuickContext, Expression(Of Func(Of T, S)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField(Of T, S)(T, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression(Of System.Func(Of T, S)))
+  name.vb: LoadDataLoaderField(Of T, S)(T, IRelmQuickContext, Expression(Of Func(Of T, S)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  id: LoadDataLoaderField``2(``0,SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadDataLoaderField<T, S>(T, RelmContextOptionsBuilder, Expression<Func<T, S>>)
+  nameWithType: ModelExtensions.LoadDataLoaderField<T, S>(T, RelmContextOptionsBuilder, Expression<Func<T, S>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField<T, S>(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, S>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadDataLoaderField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 124
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static T LoadDataLoaderField<T, S>(this T inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: inputModel
+      type: '{T}'
+    - id: relmContextOptionsBuilder
+      type: SimpleRelm.Options.RelmContextOptionsBuilder
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{S}}}
+    typeParameters:
+    - id: T
+    - id: S
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function LoadDataLoaderField(Of T As {IRelmModel, New}, S As {IRelmModel, New})(inputModel As T, relmContextOptionsBuilder As RelmContextOptionsBuilder, predicate As Expression(Of Func(Of T, S))) As T
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField*
+  nameWithType.vb: ModelExtensions.LoadDataLoaderField(Of T, S)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, S)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField(Of T, S)(T, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, S)))
+  name.vb: LoadDataLoaderField(Of T, S)(T, RelmContextOptionsBuilder, Expression(Of Func(Of T, S)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  id: LoadDataLoaderField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.IRelmContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadDataLoaderField<T, S>(ICollection<T>, IRelmContext, Expression<Func<T, S>>)
+  nameWithType: ModelExtensions.LoadDataLoaderField<T, S>(ICollection<T>, IRelmContext, Expression<Func<T, S>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField<T, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression<System.Func<T, S>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadDataLoaderField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 146
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static ICollection<T> LoadDataLoaderField<T, S>(this ICollection<T> inputModel, IRelmContext relmContext, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: inputModel
+      type: System.Collections.Generic.ICollection{{T}}
+    - id: relmContext
+      type: SimpleRelm.Interfaces.IRelmContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{S}}}
+    typeParameters:
+    - id: T
+    - id: S
+    return:
+      type: System.Collections.Generic.ICollection{{T}}
+    content.vb: Public Shared Function LoadDataLoaderField(Of T As {IRelmModel, New}, S As {IRelmModel, New})(inputModel As ICollection(Of T), relmContext As IRelmContext, predicate As Expression(Of Func(Of T, S))) As ICollection(Of T)
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField*
+  nameWithType.vb: ModelExtensions.LoadDataLoaderField(Of T, S)(ICollection(Of T), IRelmContext, Expression(Of Func(Of T, S)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField(Of T, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Interfaces.IRelmContext, System.Linq.Expressions.Expression(Of System.Func(Of T, S)))
+  name.vb: LoadDataLoaderField(Of T, S)(ICollection(Of T), IRelmContext, Expression(Of Func(Of T, S)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  id: LoadDataLoaderField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadDataLoaderField<T, S>(ICollection<T>, IRelmQuickContext, Expression<Func<T, S>>)
+  nameWithType: ModelExtensions.LoadDataLoaderField<T, S>(ICollection<T>, IRelmQuickContext, Expression<Func<T, S>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField<T, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression<System.Func<T, S>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadDataLoaderField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 149
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static ICollection<T> LoadDataLoaderField<T, S>(this ICollection<T> inputModel, IRelmQuickContext relmQuickContext, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: inputModel
+      type: System.Collections.Generic.ICollection{{T}}
+    - id: relmQuickContext
+      type: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{S}}}
+    typeParameters:
+    - id: T
+    - id: S
+    return:
+      type: System.Collections.Generic.ICollection{{T}}
+    content.vb: Public Shared Function LoadDataLoaderField(Of T As {IRelmModel, New}, S As {IRelmModel, New})(inputModel As ICollection(Of T), relmQuickContext As IRelmQuickContext, predicate As Expression(Of Func(Of T, S))) As ICollection(Of T)
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField*
+  nameWithType.vb: ModelExtensions.LoadDataLoaderField(Of T, S)(ICollection(Of T), IRelmQuickContext, Expression(Of Func(Of T, S)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField(Of T, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext, System.Linq.Expressions.Expression(Of System.Func(Of T, S)))
+  name.vb: LoadDataLoaderField(Of T, S)(ICollection(Of T), IRelmQuickContext, Expression(Of Func(Of T, S)))
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  commentId: M:SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  id: LoadDataLoaderField``2(System.Collections.Generic.ICollection{``0},SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  isExtensionMethod: true
+  parent: SimpleRelm.Extensions.ModelExtensions
+  langs:
+  - csharp
+  - vb
+  name: LoadDataLoaderField<T, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, S>>)
+  nameWithType: ModelExtensions.LoadDataLoaderField<T, S>(ICollection<T>, RelmContextOptionsBuilder, Expression<Func<T, S>>)
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField<T, S>(System.Collections.Generic.ICollection<T>, SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression<System.Func<T, S>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Extensions/ModelExtensions.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: LoadDataLoaderField
+    path: SimpleRelm/Extensions/ModelExtensions.cs
+    startLine: 152
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Extensions
+  syntax:
+    content: 'public static ICollection<T> LoadDataLoaderField<T, S>(this ICollection<T> inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()'
+    parameters:
+    - id: inputModel
+      type: System.Collections.Generic.ICollection{{T}}
+    - id: relmContextOptionsBuilder
+      type: SimpleRelm.Options.RelmContextOptionsBuilder
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},{S}}}
+    typeParameters:
+    - id: T
+    - id: S
+    return:
+      type: System.Collections.Generic.ICollection{{T}}
+    content.vb: Public Shared Function LoadDataLoaderField(Of T As {IRelmModel, New}, S As {IRelmModel, New})(inputModel As ICollection(Of T), relmContextOptionsBuilder As RelmContextOptionsBuilder, predicate As Expression(Of Func(Of T, S))) As ICollection(Of T)
+  overload: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField*
+  nameWithType.vb: ModelExtensions.LoadDataLoaderField(Of T, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, S)))
+  fullName.vb: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField(Of T, S)(System.Collections.Generic.ICollection(Of T), SimpleRelm.Options.RelmContextOptionsBuilder, System.Linq.Expressions.Expression(Of System.Func(Of T, S)))
+  name.vb: LoadDataLoaderField(Of T, S)(ICollection(Of T), RelmContextOptionsBuilder, Expression(Of Func(Of T, S)))
+references:
+- uid: SimpleRelm.Extensions
+  commentId: N:SimpleRelm.Extensions
+  href: SimpleRelm.html
+  name: SimpleRelm.Extensions
+  nameWithType: SimpleRelm.Extensions
+  fullName: SimpleRelm.Extensions
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Extensions
+    name: Extensions
+    href: SimpleRelm.Extensions.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Extensions
+    name: Extensions
+    href: SimpleRelm.Extensions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField*
+  commentId: Overload:SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField
+  href: SimpleRelm.Extensions.ModelExtensions.html#SimpleRelm_Extensions_ModelExtensions_LoadForeignKeyField__3___0_SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___SimpleRelm_Interfaces_IRelmDataLoader___2__System_Linq_Expressions_Expression_System_Func___1_System_Object___
+  name: LoadForeignKeyField
+  nameWithType: ModelExtensions.LoadForeignKeyField
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: SimpleRelm.Interfaces.IRelmContext
+  commentId: T:SimpleRelm.Interfaces.IRelmContext
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmContext.html
+  name: IRelmContext
+  nameWithType: IRelmContext
+  fullName: SimpleRelm.Interfaces.IRelmContext
+- uid: System.Linq.Expressions.Expression{System.Func{{T},{R}}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{``0,``1}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<Func<T, R>>
+  nameWithType: Expression<Func<T, R>>
+  fullName: System.Linq.Expressions.Expression<System.Func<T, R>>
+  nameWithType.vb: Expression(Of Func(Of T, R))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of T, R))
+  name.vb: Expression(Of Func(Of T, R))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: R
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataLoader{{S}}
+  commentId: T:SimpleRelm.Interfaces.IRelmDataLoader{``2}
+  parent: SimpleRelm.Interfaces
+  definition: SimpleRelm.Interfaces.IRelmDataLoader`1
+  href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  name: IRelmDataLoader<S>
+  nameWithType: IRelmDataLoader<S>
+  fullName: SimpleRelm.Interfaces.IRelmDataLoader<S>
+  nameWithType.vb: IRelmDataLoader(Of S)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataLoader(Of S)
+  name.vb: IRelmDataLoader(Of S)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: <
+  - name: S
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
+  - name: )
+- uid: System.Linq.Expressions.Expression{System.Func{{R},System.Object}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{``1,System.Object}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<Func<R, object>>
+  nameWithType: Expression<Func<R, object>>
+  fullName: System.Linq.Expressions.Expression<System.Func<R, object>>
+  nameWithType.vb: Expression(Of Func(Of R, Object))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of R, Object))
+  name.vb: Expression(Of Func(Of R, Object))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: R
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: R
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: SimpleRelm.Interfaces
+  commentId: N:SimpleRelm.Interfaces
+  href: SimpleRelm.html
+  name: SimpleRelm.Interfaces
+  nameWithType: SimpleRelm.Interfaces
+  fullName: SimpleRelm.Interfaces
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Interfaces.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Interfaces.html
+- uid: System.Linq.Expressions.Expression`1
+  commentId: T:System.Linq.Expressions.Expression`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<TDelegate>
+  nameWithType: Expression<TDelegate>
+  fullName: System.Linq.Expressions.Expression<TDelegate>
+  nameWithType.vb: Expression(Of TDelegate)
+  fullName.vb: System.Linq.Expressions.Expression(Of TDelegate)
+  name.vb: Expression(Of TDelegate)
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - name: TDelegate
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: )
+- uid: System.Linq.Expressions
+  commentId: N:System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Linq.Expressions
+  nameWithType: System.Linq.Expressions
+  fullName: System.Linq.Expressions
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+- uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+  commentId: T:SimpleRelm.Interfaces.IRelmDataLoader`1
+  href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  name: IRelmDataLoader<T>
+  nameWithType: IRelmDataLoader<T>
+  fullName: SimpleRelm.Interfaces.IRelmDataLoader<T>
+  nameWithType.vb: IRelmDataLoader(Of T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataLoader(Of T)
+  name.vb: IRelmDataLoader(Of T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
+    name: IRelmDataLoader
+    href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{R}}}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``1}}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<Func<T, ICollection<R>>>
+  nameWithType: Expression<Func<T, ICollection<R>>>
+  fullName: System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<R>>>
+  nameWithType.vb: Expression(Of Func(Of T, ICollection(Of R)))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of R)))
+  name.vb: Expression(Of Func(Of T, ICollection(Of R)))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: R
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: R
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+  commentId: T:SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+  parent: SimpleRelm.Interfaces.RelmQuick
+  href: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext.html
+  name: IRelmQuickContext
+  nameWithType: IRelmQuickContext
+  fullName: SimpleRelm.Interfaces.RelmQuick.IRelmQuickContext
+- uid: SimpleRelm.Interfaces.RelmQuick
+  commentId: N:SimpleRelm.Interfaces.RelmQuick
+  href: SimpleRelm.html
+  name: SimpleRelm.Interfaces.RelmQuick
+  nameWithType: SimpleRelm.Interfaces.RelmQuick
+  fullName: SimpleRelm.Interfaces.RelmQuick
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Interfaces.html
+  - name: .
+  - uid: SimpleRelm.Interfaces.RelmQuick
+    name: RelmQuick
+    href: SimpleRelm.Interfaces.RelmQuick.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Interfaces
+    name: Interfaces
+    href: SimpleRelm.Interfaces.html
+  - name: .
+  - uid: SimpleRelm.Interfaces.RelmQuick
+    name: RelmQuick
+    href: SimpleRelm.Interfaces.RelmQuick.html
+- uid: SimpleRelm.Options.RelmContextOptionsBuilder
+  commentId: T:SimpleRelm.Options.RelmContextOptionsBuilder
+  parent: SimpleRelm.Options
+  href: SimpleRelm.Options.RelmContextOptionsBuilder.html
+  name: RelmContextOptionsBuilder
+  nameWithType: RelmContextOptionsBuilder
+  fullName: SimpleRelm.Options.RelmContextOptionsBuilder
+- uid: SimpleRelm.Options
+  commentId: N:SimpleRelm.Options
+  href: SimpleRelm.html
+  name: SimpleRelm.Options
+  nameWithType: SimpleRelm.Options
+  fullName: SimpleRelm.Options
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Options
+    name: Options
+    href: SimpleRelm.Options.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Options
+    name: Options
+    href: SimpleRelm.Options.html
+- uid: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField*
+  commentId: Overload:SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField
+  href: SimpleRelm.Extensions.ModelExtensions.html#SimpleRelm_Extensions_ModelExtensions_LoadDataLoaderField__2___0_SimpleRelm_Interfaces_IRelmContext_System_Linq_Expressions_Expression_System_Func___0___1___
+  name: LoadDataLoaderField
+  nameWithType: ModelExtensions.LoadDataLoaderField
+  fullName: SimpleRelm.Extensions.ModelExtensions.LoadDataLoaderField
+- uid: System.Linq.Expressions.Expression{System.Func{{T},{S}}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{``0,``1}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<Func<T, S>>
+  nameWithType: Expression<Func<T, S>>
+  fullName: System.Linq.Expressions.Expression<System.Func<T, S>>
+  nameWithType.vb: Expression(Of Func(Of T, S))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of T, S))
+  name.vb: Expression(Of Func(Of T, S))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: S
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.ICollection{{T}}
+  commentId: T:System.Collections.Generic.ICollection{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
