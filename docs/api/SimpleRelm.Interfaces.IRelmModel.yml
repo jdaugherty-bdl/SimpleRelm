@@ -28,7 +28,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmModel
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -64,7 +64,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Id
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -96,7 +96,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Active
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -127,7 +127,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: InternalId
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -161,7 +161,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: CreateDate
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -192,7 +192,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LastUpdated
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -223,7 +223,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ResetCoreAttributes
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -265,7 +265,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ResetWithData
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -308,7 +308,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetUnderscoreProperties
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -350,7 +350,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -408,7 +408,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -474,7 +474,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -540,7 +540,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Interfaces/IRelmModel.cs
@@ -604,7 +604,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GenerateDTO
     path: ../SimpleRelm/Interfaces/IRelmModel.cs

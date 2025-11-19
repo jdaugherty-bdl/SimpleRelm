@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmTable.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmTable
     path: ../SimpleRelm/Attributes/RelmTable.cs
@@ -107,7 +107,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmTable.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: TableName
     path: ../SimpleRelm/Attributes/RelmTable.cs
@@ -138,7 +138,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmTable.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Attributes/RelmTable.cs

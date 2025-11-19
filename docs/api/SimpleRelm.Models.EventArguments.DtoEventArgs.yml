@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/EventArguments/DtoEventArgs.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DtoEventArgs
     path: ../SimpleRelm/Models/EventArguments/DtoEventArgs.cs
@@ -53,7 +53,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/EventArguments/DtoEventArgs.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AdditionalObjectProperties
     path: ../SimpleRelm/Models/EventArguments/DtoEventArgs.cs

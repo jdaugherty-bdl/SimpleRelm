@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmExecutionCommand
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
@@ -46,7 +46,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: InitialCommand
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
@@ -75,7 +75,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: InitialExpression
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
@@ -104,7 +104,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AdditionalCommandCount
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
@@ -133,7 +133,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddAdditionalCommand
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
@@ -166,7 +166,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetAdditionalCommands
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
@@ -194,7 +194,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetForeignKeyNavigationOptions
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs

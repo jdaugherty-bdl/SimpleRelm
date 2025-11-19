@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/DbContextExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DbContextExtensions
     path: ../SimpleRelm/Extensions/DbContextExtensions.cs
@@ -58,7 +58,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/DbContextExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetLockWaitTimeout
     path: ../SimpleRelm/Extensions/DbContextExtensions.cs

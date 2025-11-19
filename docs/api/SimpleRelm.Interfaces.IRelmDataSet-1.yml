@@ -49,7 +49,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmDataSet
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -121,7 +121,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetFieldLoader
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -157,7 +157,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDataLoader
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -191,7 +191,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Where
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -225,7 +225,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -261,7 +261,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -299,7 +299,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -337,7 +337,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -375,7 +375,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -413,7 +413,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Find
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -447,7 +447,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Find
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -481,7 +481,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -511,7 +511,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -545,7 +545,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -579,7 +579,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -615,7 +615,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Load
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -645,7 +645,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Load
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -679,7 +679,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadAsDataSet
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -709,7 +709,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Write
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -739,7 +739,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Entry
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -772,7 +772,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Entry
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -808,7 +808,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OrderBy
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -842,7 +842,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OrderByDescending
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -876,7 +876,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Set
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -910,7 +910,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GroupBy
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -944,7 +944,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Limit
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -978,7 +978,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DistinctBy
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -1012,7 +1012,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Save
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -1045,7 +1045,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Save
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -1075,7 +1075,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: New
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -1109,7 +1109,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: New
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -1145,7 +1145,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -1178,7 +1178,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -1214,7 +1214,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
@@ -1248,7 +1248,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs

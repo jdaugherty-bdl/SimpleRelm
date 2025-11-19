@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OptionsBuilderTypes
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -43,7 +43,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ConnectionString
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -69,7 +69,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: NamedConnectionString
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -95,7 +95,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OpenConnection
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs

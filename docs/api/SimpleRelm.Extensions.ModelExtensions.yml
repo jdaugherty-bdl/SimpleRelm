@@ -42,7 +42,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ModelExtensions
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -78,7 +78,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -132,7 +132,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -191,7 +191,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -246,7 +246,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -311,7 +311,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -365,7 +365,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -427,7 +427,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -489,7 +489,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -554,7 +554,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -609,7 +609,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -671,7 +671,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -730,7 +730,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -797,7 +797,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -853,7 +853,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -906,7 +906,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -961,7 +961,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -1027,7 +1027,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -1081,7 +1081,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -1137,7 +1137,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -1200,7 +1200,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -1264,7 +1264,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -1319,7 +1319,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -1377,7 +1377,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -1441,7 +1441,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -1506,7 +1506,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadDataLoaderField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -1560,7 +1560,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadDataLoaderField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs
@@ -1618,7 +1618,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Extensions/ModelExtensions.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadDataLoaderField
     path: ../SimpleRelm/Extensions/ModelExtensions.cs

@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmMember
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
@@ -46,7 +46,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Id
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
@@ -75,7 +75,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Name
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
@@ -104,7 +104,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Email
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
@@ -133,7 +133,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Login
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
@@ -162,7 +162,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetValue
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
@@ -195,7 +195,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetValue
     path: ../SimpleRelm/Interfaces/IRelmMember.cs

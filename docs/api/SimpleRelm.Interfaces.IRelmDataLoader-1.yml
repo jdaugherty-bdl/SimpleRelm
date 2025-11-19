@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmDataLoader
     path: ../SimpleRelm/Interfaces/IRelmDataLoader.cs
@@ -57,7 +57,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LastCommandsExecuted
     path: ../SimpleRelm/Interfaces/IRelmDataLoader.cs
@@ -93,7 +93,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetLoadData
     path: ../SimpleRelm/Interfaces/IRelmDataLoader.cs
@@ -131,7 +131,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteData
     path: ../SimpleRelm/Interfaces/IRelmDataLoader.cs
@@ -164,7 +164,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddExpression
     path: ../SimpleRelm/Interfaces/IRelmDataLoader.cs
@@ -204,7 +204,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddSingleExpression
     path: ../SimpleRelm/Interfaces/IRelmDataLoader.cs
@@ -244,7 +244,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: HasUnderscoreProperty
     path: ../SimpleRelm/Interfaces/IRelmDataLoader.cs

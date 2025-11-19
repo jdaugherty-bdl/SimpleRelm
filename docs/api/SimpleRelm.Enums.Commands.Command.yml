@@ -25,7 +25,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Command
     path: ../SimpleRelm/Enums/Commands.cs
@@ -56,7 +56,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Where
     path: ../SimpleRelm/Enums/Commands.cs
@@ -87,7 +87,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Enums/Commands.cs
@@ -119,7 +119,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OrderBy
     path: ../SimpleRelm/Enums/Commands.cs
@@ -151,7 +151,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OrderByDescending
     path: ../SimpleRelm/Enums/Commands.cs
@@ -183,7 +183,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Set
     path: ../SimpleRelm/Enums/Commands.cs
@@ -214,7 +214,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetPostfix
     path: ../SimpleRelm/Enums/Commands.cs
@@ -242,7 +242,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GroupBy
     path: ../SimpleRelm/Enums/Commands.cs
@@ -273,7 +273,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Limit
     path: ../SimpleRelm/Enums/Commands.cs
@@ -301,7 +301,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DistinctBy
     path: ../SimpleRelm/Enums/Commands.cs
@@ -334,7 +334,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Count
     path: ../SimpleRelm/Enums/Commands.cs

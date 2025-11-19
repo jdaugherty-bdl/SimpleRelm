@@ -35,7 +35,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmModel
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -114,7 +114,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DtoTypeProcessor
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -147,7 +147,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Id
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -186,7 +186,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Active
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -225,7 +225,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: InternalId
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -264,7 +264,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: CreateDate
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -303,7 +303,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LastUpdated
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -342,7 +342,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ResetCoreAttributes
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -387,7 +387,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -419,7 +419,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -466,7 +466,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -512,7 +512,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ResetWithData
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -562,7 +562,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetUnderscoreProperties
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -609,7 +609,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -672,7 +672,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -740,7 +740,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -812,7 +812,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -884,7 +884,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -945,7 +945,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: CopyFromSource
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -999,7 +999,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GenerateDTO
     path: ../SimpleRelm/Models/RelmModel.cs
@@ -1064,7 +1064,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModel.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Duplicate
     path: ../SimpleRelm/Models/RelmModel.cs

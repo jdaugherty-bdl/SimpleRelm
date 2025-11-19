@@ -43,7 +43,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmContextOptionsBuilder
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -78,7 +78,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseServer
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -107,7 +107,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseName
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -136,7 +136,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseUser
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -165,7 +165,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabasePassword
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -194,7 +194,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseConnectionString
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -223,7 +223,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: NamedConnection
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -252,7 +252,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseConnection
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -281,7 +281,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseTransaction
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -310,7 +310,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OptionsBuilderType
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -339,7 +339,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ConnectionStringType
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -368,7 +368,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -397,7 +397,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -429,7 +429,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -467,7 +467,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -499,7 +499,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -531,7 +531,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -565,7 +565,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseConnection
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -594,7 +594,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseTransaction
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -623,7 +623,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseServer
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -655,7 +655,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseName
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -687,7 +687,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseUser
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -719,7 +719,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabasePassword
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -751,7 +751,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetConnectionStringType
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -780,7 +780,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetConnectionStringType
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -811,7 +811,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetNamedConnection
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -843,7 +843,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseConnectionString
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -875,7 +875,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ValidateAllSettings
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
@@ -909,7 +909,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ParseConnectionDetails
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs

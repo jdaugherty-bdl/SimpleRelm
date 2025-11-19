@@ -53,7 +53,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmQuickContext
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -95,7 +95,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ContextOptions
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -126,7 +126,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: CommitTransaction
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -154,7 +154,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RollbackTransaction
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -186,7 +186,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RollbackTransactions
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -218,7 +218,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDataLoader
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -258,7 +258,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: StartConnection
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -304,7 +304,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: EndConnection
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -344,7 +344,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: HasDataSet
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -389,7 +389,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: HasDataSet
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -430,7 +430,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSet
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -473,7 +473,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSet
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -519,7 +519,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSet
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -556,7 +556,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSet
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -601,7 +601,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSetType
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -643,7 +643,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSetType
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -686,7 +686,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSetType
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -721,7 +721,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSetType
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -767,7 +767,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Get
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -814,7 +814,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Get
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -862,7 +862,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -913,7 +913,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Where
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -959,7 +959,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Run
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1009,7 +1009,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetLastInsertId
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1046,7 +1046,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetIdFromInternalId
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1087,7 +1087,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataRow
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1138,7 +1138,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataTable
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1189,7 +1189,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObject
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1242,7 +1242,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObjects
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1296,7 +1296,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataList
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1349,7 +1349,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetScalar
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1404,7 +1404,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetBulkTableWriter
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1477,7 +1477,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BulkTableWrite
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1557,7 +1557,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1608,7 +1608,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1671,7 +1671,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1721,7 +1721,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1783,7 +1783,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
@@ -1847,7 +1847,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickContext.cs

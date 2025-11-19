@@ -36,7 +36,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BulkTableWriter
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -76,7 +76,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Write
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -110,7 +110,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Write
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -159,7 +159,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: UseTransaction
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -199,7 +199,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetTransaction
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -238,7 +238,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ThrowException
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -278,7 +278,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AllowUserVariables
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -318,7 +318,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AllowAutoDateColumns
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -358,7 +358,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AllowAutoIncrementColumns
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -398,7 +398,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AllowPrimaryKeyColumns
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -442,7 +442,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AllowUniqueColumns
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -482,7 +482,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetInsertQuery
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -522,7 +522,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetSourceData
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -560,7 +560,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetSourceData
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -597,7 +597,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddColumn
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -649,7 +649,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddColumns
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -692,7 +692,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddColumns
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -736,7 +736,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetTableName
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -774,7 +774,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseName
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -812,7 +812,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RemoveColumn
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -853,7 +853,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetBatchSize
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
@@ -895,7 +895,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ResetBatchSize
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs

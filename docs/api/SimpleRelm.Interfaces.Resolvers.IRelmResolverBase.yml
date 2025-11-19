@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/Resolvers/IRelmResolverBase.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmResolverBase
     path: ../SimpleRelm/Interfaces/Resolvers/IRelmResolverBase.cs
@@ -42,7 +42,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/Resolvers/IRelmResolverBase.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetConnectionBuilder
     path: ../SimpleRelm/Interfaces/Resolvers/IRelmResolverBase.cs
@@ -73,7 +73,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/Resolvers/IRelmResolverBase.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetConnectionBuilder
     path: ../SimpleRelm/Interfaces/Resolvers/IRelmResolverBase.cs

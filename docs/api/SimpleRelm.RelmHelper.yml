@@ -113,7 +113,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmHelper
     path: ../SimpleRelm/RelmHelper.cs
@@ -156,7 +156,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LastExecutionException
     path: ../SimpleRelm/RelmHelper.cs
@@ -187,7 +187,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LastExecutionError
     path: ../SimpleRelm/RelmHelper.cs
@@ -218,7 +218,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: HasError
     path: ../SimpleRelm/RelmHelper.cs
@@ -249,7 +249,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: CurrentContext
     path: ../SimpleRelm/RelmHelper.cs
@@ -283,7 +283,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RootLoggingDirectory
     path: ../SimpleRelm/RelmHelper.cs
@@ -314,7 +314,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetConnectionBuilderFromConnectionType
     path: ../SimpleRelm/RelmHelper.cs
@@ -355,7 +355,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetConnectionBuilderFromName
     path: ../SimpleRelm/RelmHelper.cs
@@ -397,7 +397,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetConnectionBuilderFromConnectionString
     path: ../SimpleRelm/RelmHelper.cs
@@ -440,7 +440,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetConnectionFromType
     path: ../SimpleRelm/RelmHelper.cs
@@ -498,7 +498,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetConnectionFromName
     path: ../SimpleRelm/RelmHelper.cs
@@ -549,7 +549,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetConnectionFromConnectionString
     path: ../SimpleRelm/RelmHelper.cs
@@ -606,7 +606,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetLastInsertId
     path: ../SimpleRelm/RelmHelper.cs
@@ -648,7 +648,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetLastInsertId
     path: ../SimpleRelm/RelmHelper.cs
@@ -692,7 +692,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetLastInsertId
     path: ../SimpleRelm/RelmHelper.cs
@@ -736,7 +736,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetIdFromInternalId
     path: ../SimpleRelm/RelmHelper.cs
@@ -784,7 +784,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetIdFromInternalId
     path: ../SimpleRelm/RelmHelper.cs
@@ -832,7 +832,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetIdFromInternalId
     path: ../SimpleRelm/RelmHelper.cs
@@ -880,7 +880,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetScalar
     path: ../SimpleRelm/RelmHelper.cs
@@ -947,7 +947,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetScalar
     path: ../SimpleRelm/RelmHelper.cs
@@ -1008,7 +1008,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetScalar
     path: ../SimpleRelm/RelmHelper.cs
@@ -1064,7 +1064,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetScalar
     path: ../SimpleRelm/RelmHelper.cs
@@ -1120,7 +1120,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataRow
     path: ../SimpleRelm/RelmHelper.cs
@@ -1181,7 +1181,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataRow
     path: ../SimpleRelm/RelmHelper.cs
@@ -1245,7 +1245,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataRow
     path: ../SimpleRelm/RelmHelper.cs
@@ -1296,7 +1296,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataRow
     path: ../SimpleRelm/RelmHelper.cs
@@ -1349,7 +1349,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataTable
     path: ../SimpleRelm/RelmHelper.cs
@@ -1408,7 +1408,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataTable
     path: ../SimpleRelm/RelmHelper.cs
@@ -1466,7 +1466,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataTable
     path: ../SimpleRelm/RelmHelper.cs
@@ -1515,7 +1515,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataTable
     path: ../SimpleRelm/RelmHelper.cs
@@ -1569,7 +1569,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObject
     path: ../SimpleRelm/RelmHelper.cs
@@ -1633,7 +1633,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObject
     path: ../SimpleRelm/RelmHelper.cs
@@ -1700,7 +1700,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObject
     path: ../SimpleRelm/RelmHelper.cs
@@ -1762,7 +1762,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObject
     path: ../SimpleRelm/RelmHelper.cs
@@ -1826,7 +1826,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObjects
     path: ../SimpleRelm/RelmHelper.cs
@@ -1892,7 +1892,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObjects
     path: ../SimpleRelm/RelmHelper.cs
@@ -1957,7 +1957,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObjects
     path: ../SimpleRelm/RelmHelper.cs
@@ -2022,7 +2022,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObjects
     path: ../SimpleRelm/RelmHelper.cs
@@ -2090,7 +2090,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObjects
     path: ../SimpleRelm/RelmHelper.cs
@@ -2142,7 +2142,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataList
     path: ../SimpleRelm/RelmHelper.cs
@@ -2205,7 +2205,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataList
     path: ../SimpleRelm/RelmHelper.cs
@@ -2262,7 +2262,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataList
     path: ../SimpleRelm/RelmHelper.cs
@@ -2319,7 +2319,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataList
     path: ../SimpleRelm/RelmHelper.cs
@@ -2376,7 +2376,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetBulkTableWriter
     path: ../SimpleRelm/RelmHelper.cs
@@ -2451,7 +2451,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetBulkTableWriter
     path: ../SimpleRelm/RelmHelper.cs
@@ -2532,7 +2532,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetBulkTableWriter
     path: ../SimpleRelm/RelmHelper.cs
@@ -2612,7 +2612,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetBulkTableWriter
     path: ../SimpleRelm/RelmHelper.cs
@@ -2682,7 +2682,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BulkTableWrite
     path: ../SimpleRelm/RelmHelper.cs
@@ -2759,7 +2759,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BulkTableWrite
     path: ../SimpleRelm/RelmHelper.cs
@@ -2840,7 +2840,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BulkTableWrite
     path: ../SimpleRelm/RelmHelper.cs
@@ -2914,7 +2914,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BulkTableWrite
     path: ../SimpleRelm/RelmHelper.cs
@@ -2988,7 +2988,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BulkTableWrite
     path: ../SimpleRelm/RelmHelper.cs
@@ -3068,7 +3068,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BulkTableWrite
     path: ../SimpleRelm/RelmHelper.cs
@@ -3156,7 +3156,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BulkTableWrite
     path: ../SimpleRelm/RelmHelper.cs
@@ -3232,7 +3232,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BulkTableWrite
     path: ../SimpleRelm/RelmHelper.cs
@@ -3302,7 +3302,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -3369,7 +3369,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -3432,7 +3432,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -3485,7 +3485,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -3537,7 +3537,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -3608,7 +3608,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -3676,7 +3676,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -3737,7 +3737,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -3792,7 +3792,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -3859,7 +3859,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -3925,7 +3925,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -3982,7 +3982,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -4032,7 +4032,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -4108,7 +4108,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -4174,7 +4174,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -4233,7 +4233,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/RelmHelper.cs
@@ -4292,7 +4292,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDalTable
     path: ../SimpleRelm/RelmHelper.cs
@@ -4334,7 +4334,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDalTable
     path: ../SimpleRelm/RelmHelper.cs
@@ -4369,7 +4369,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetColumnName
     path: ../SimpleRelm/RelmHelper.cs
@@ -4412,7 +4412,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: StandardConnectionWrapper
     path: ../SimpleRelm/RelmHelper.cs
@@ -4462,7 +4462,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: StandardConnectionWrapper
     path: ../SimpleRelm/RelmHelper.cs
@@ -4517,7 +4517,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -4583,7 +4583,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -4645,7 +4645,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -4704,7 +4704,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -4758,7 +4758,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -4823,7 +4823,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -4886,7 +4886,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -4943,7 +4943,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -5003,7 +5003,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -5067,7 +5067,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -5128,7 +5128,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -5185,7 +5185,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -5238,7 +5238,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -5303,7 +5303,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -5365,7 +5365,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -5422,7 +5422,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadForeignKeyField
     path: ../SimpleRelm/RelmHelper.cs
@@ -5477,7 +5477,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadDataLoaderField
     path: ../SimpleRelm/RelmHelper.cs
@@ -5532,7 +5532,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadDataLoaderField
     path: ../SimpleRelm/RelmHelper.cs
@@ -5588,7 +5588,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadDataLoaderField
     path: ../SimpleRelm/RelmHelper.cs
@@ -5644,7 +5644,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/RelmHelper.cs
@@ -5708,7 +5708,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/RelmHelper.cs
@@ -5777,7 +5777,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/RelmHelper.cs
@@ -5846,7 +5846,7 @@ items:
   source:
     remote:
       path: SimpleRelm/RelmHelper.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/RelmHelper.cs

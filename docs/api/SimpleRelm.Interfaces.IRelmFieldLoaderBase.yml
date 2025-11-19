@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmFieldLoaderBase.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmFieldLoaderBase
     path: ../SimpleRelm/Interfaces/IRelmFieldLoaderBase.cs
@@ -43,7 +43,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmFieldLoaderBase.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FieldName
     path: ../SimpleRelm/Interfaces/IRelmFieldLoaderBase.cs
@@ -72,7 +72,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmFieldLoaderBase.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: KeyFields
     path: ../SimpleRelm/Interfaces/IRelmFieldLoaderBase.cs
@@ -101,7 +101,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmFieldLoaderBase.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetFieldData
     path: ../SimpleRelm/Interfaces/IRelmFieldLoaderBase.cs

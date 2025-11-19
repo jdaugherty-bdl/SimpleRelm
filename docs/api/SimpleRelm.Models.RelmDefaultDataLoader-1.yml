@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmDefaultDataLoader
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -78,7 +78,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LastCommandsExecuted
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -118,7 +118,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -152,7 +152,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -190,7 +190,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: HasUnderscoreProperty
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -233,7 +233,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddExpression
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -279,7 +279,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddSingleExpression
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -326,7 +326,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetLoadData
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -366,7 +366,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: PullData
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -417,7 +417,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteData
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs

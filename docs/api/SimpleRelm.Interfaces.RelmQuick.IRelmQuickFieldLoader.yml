@@ -16,7 +16,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickFieldLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmQuickFieldLoader
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickFieldLoader.cs
@@ -45,7 +45,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickFieldLoader.cs
-      branch: master
+      branch: connector_8
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmContext
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickFieldLoader.cs
