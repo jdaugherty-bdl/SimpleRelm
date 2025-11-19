@@ -134,7 +134,7 @@ namespace SimpleRelm.Models
         public void RollbackTransactions()
             => RollbackTransaction();
 
-        public void StartConnection(bool autoOpenTransaction = false)
+        public void StartConnection(bool autoOpenTransaction = false, int lockWaitTimeoutSeconds = 0)
         {
             if (ContextOptions.DatabaseConnection == null)
                 throw new InvalidOperationException("Cannot open a non-existent database connection.");
@@ -144,6 +144,20 @@ namespace SimpleRelm.Models
                 ContextOptions.DatabaseConnection.Open();
 
                 localOpenConnection = true;
+
+                if (lockWaitTimeoutSeconds > 0)
+                {
+                    // For true lock wait timeout, we need to execute a command immediately after opening
+                    using (var cmd = ContextOptions.DatabaseConnection.CreateCommand())
+                    {
+                        cmd.CommandText = $"SET SESSION innodb_lock_wait_timeout = {lockWaitTimeoutSeconds}";
+                        cmd.ExecuteNonQuery();
+
+                        // Also set transaction isolation level to help with locks
+                        cmd.CommandText = "SET SESSION transaction_isolation = 'READ-COMMITTED'";
+                        cmd.ExecuteNonQuery();
+                    }
+                }
             }
 
             if (autoOpenTransaction && ContextOptions.DatabaseConnection.State == ConnectionState.Open)

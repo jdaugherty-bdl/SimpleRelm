@@ -68,7 +68,9 @@ namespace SimpleRelm.Interfaces.RelmQuick
         /// before performing any  database operations.</remarks>
         /// <param name="autoOpenTransaction">Specifies whether a transaction should be automatically opened after the connection is established.  Pass
         /// <see langword="true"/> to open a transaction automatically; otherwise, <see langword="false"/>.</param>
-        void StartConnection(bool autoOpenTransaction = false);
+        /// <param name="lockWaitTimeoutSeconds">The lock wait timeout in seconds. A value of 0 indicates the default timeout for the database.  Specify a positive integer to set a
+        /// custom timeout duration.</param>
+        void StartConnection(bool autoOpenTransaction = false, int lockWaitTimeoutSeconds = 0);
 
         /// <summary>
         /// Ends the current connection and optionally commits any active transaction.

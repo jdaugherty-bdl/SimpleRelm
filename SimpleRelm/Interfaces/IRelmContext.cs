@@ -24,7 +24,7 @@ namespace SimpleRelm.Interfaces
 
         void SetDataLoader<T>(IRelmDataLoader<T> dataLoader) where T : RelmModel, new();
 
-        void StartConnection(bool autoOpenTransaction = false);
+        void StartConnection(bool autoOpenTransaction = false, int lockWaitTimeoutSeconds = 0);
         void EndConnection(bool commitTransaction = true);
         bool HasDataSet<T>(bool throwException = true) where T : IRelmModel, new();
         bool HasDataSet(Type dataSetType, bool throwException = true);
