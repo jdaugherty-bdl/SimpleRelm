@@ -28,10 +28,14 @@ namespace SimpleRelm.Quickstart.FieldLoaders
 
         public Dictionary<S[], object> GetFieldData<S>(ICollection<S[]> keyData)
         {
+            var sourceInternalIds = keyData.Select(x => x.Select(y => y.ToString()).ToArray()).ToList();
+            if ((sourceInternalIds?.Count ?? 0) <= 0)
+                return null;
+
             var data = keyData
                 .ToDictionary(x => x, x => (object)(_exampleContext
                     .ExampleModels
-                    .Where(y => y.Active == true && y.SuperceededByInternalId == x.ToString())
+                    .Where(y => sourceInternalIds.Any(z => z.Contains(y.SuperceededByInternalId)) && y.Active == true)
                     .Load()
                     .Count > 0));
 

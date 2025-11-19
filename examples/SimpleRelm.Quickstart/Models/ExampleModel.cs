@@ -35,13 +35,11 @@ namespace SimpleRelm.Quickstart.Models
         [RelmDto]
         [RelmDataLoader(typeof(IsModificationFieldLoaderQuick), keyField: nameof(InternalId))]
         [RelmDataLoader(typeof(IsModificationFieldLoader), keyField: nameof(InternalId))]
-        public virtual bool IsModification { get; set; }
+        public virtual ExampleModel ModificationWithModification { get; set; }
 
 
         [RelmForeignKey(foreignKey: nameof(ExampleGroup.InternalId), localKey: nameof(GroupInternalId))]
         public virtual ExampleGroup Group { get; set; }
 
-        [RelmForeignKey(foreignKey: nameof(ExampleModel.InternalId), localKey: nameof(SuperceededByInternalId))]
-        public virtual ExampleModel SuperceededBy { get; set; }
     }
 }

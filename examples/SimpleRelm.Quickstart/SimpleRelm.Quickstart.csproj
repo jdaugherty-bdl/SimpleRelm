@@ -57,6 +57,7 @@
     <Compile Include="Examples\Context\ContextDataExamples.cs" />
     <Compile Include="Examples\Context\ScopedContextExamples.cs" />
     <Compile Include="Examples\Context\UnscopedContextExamples.cs" />
+    <Compile Include="Examples\DataLoaders\LoadDataLoaderExamples.cs" />
     <Compile Include="Examples\DataTransferObjects\DTOExamples.cs" />
     <Compile Include="Examples\Data\DatabaseWorkExamples.cs" />
     <Compile Include="Examples\Data\DataListExamples.cs" />

@@ -1,5 +1,5 @@
 ﻿using SimpleRelm.Interfaces.RelmQuick;
-using SimpleRelm.Quickstart.Models;
+using SimpleRelm.Quickstart.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,18 +14,29 @@ namespace SimpleRelm.Quickstart.FieldLoaders
         public string[] KeyFields { get; private set; }
         public IRelmQuickContext RelmContext { get; private set; }
 
+        private ExampleContext _exampleContext => RelmContext as ExampleContext;
+
         public IsModificationFieldLoaderQuick(IRelmQuickContext relmContext, string fieldName, string[] keyFields)
         {
             FieldName = fieldName;
             KeyFields = keyFields;
             RelmContext = relmContext ?? throw new ArgumentNullException(nameof(relmContext), "RelmContext cannot be null.");
+
+            if (_exampleContext == null)
+                RelmContext = new ExampleQuickContext(relmContext.ContextOptions);
         }
 
         public Dictionary<S[], object> GetFieldData<S>(ICollection<S[]> keyData)
         {
+            var sourceInternalIds = keyData.Select(x => x.Select(y => y.ToString()).ToArray()).ToList();
+            if ((sourceInternalIds?.Count ?? 0) <= 0)
+                return null;
+
             var data = keyData
-                .ToDictionary(x => x, x => (object)(RelmContext
-                    .Get<ExampleModel>(y => y.Active == true && y.SuperceededByInternalId == x.ToString())
+                .ToDictionary(x => x, x => (object)(_exampleContext
+                    .ExampleModels
+                    .Where(y => sourceInternalIds.Any(z => z.Contains(y.SuperceededByInternalId)) && y.Active == true)
+                    .Load()
                     .Count > 0));
 
             return data;
