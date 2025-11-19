@@ -16,7 +16,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
     <PackageReference Include="Moq" Version="4.20.69" />
-    <PackageReference Include="MySql.Data" Version="8.0.33" />
+    <PackageReference Include="MySql.Data" Version="8.4.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
     <PackageReference Include="System.Data.Odbc" Version="7.0.0" />
     <PackageReference Include="System.Management" Version="7.0.2" />
