@@ -444,7 +444,7 @@ namespace SimpleRelm.Extensions
             => new ForeignKeyLoader<T>(target, relmContextOptionsBuilder).LoadForeignKey(predicate, customDataLoader, additionalConstraints).FirstOrDefault();
 
         /************************************************************************************************************************/
-        /****************************************** Data load singular property ******************************************/
+        /****************************************** Data loader fields ******************************************/
         /************************************************************************************************************************/
 
         /// <summary>
@@ -460,8 +460,8 @@ namespace SimpleRelm.Extensions
         /// <param name="predicate">An expression specifying the related data field to load.</param>
         /// <returns>The input model with the specified related data field loaded.</returns>
         public static T LoadDataLoaderField<T, S>(this T inputModel, IRelmContext relmContext, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
-            => LoadDataLoaderField(inputModel, relmContext, null, predicate);
-        
+            => new DataLoaderHelper<T>(relmContext, inputModel).LoadField(predicate).FirstOrDefault();
+
         /// <summary>
         /// Loads a related data loader field for the specified model using the provided context and predicate.
         /// </summary>
@@ -477,8 +477,8 @@ namespace SimpleRelm.Extensions
         /// <param name="predicate">An expression specifying the property of the input model that represents the related data loader field.</param>
         /// <returns>The input model with the specified data loader field loaded.</returns>
         public static T LoadDataLoaderField<T, S>(this T inputModel, IRelmQuickContext relmQuickContext, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
-            => LoadDataLoaderField(inputModel, null, relmQuickContext, predicate);
-        
+            => new DataLoaderHelper<T>(relmQuickContext, inputModel).LoadField(predicate).FirstOrDefault();
+
         /// <summary>
         /// Loads a related data loader field for the specified input model using the provided context options and
         /// predicate.
@@ -495,120 +495,6 @@ namespace SimpleRelm.Extensions
         /// <param name="predicate">An expression specifying the related data loader field to load.</param>
         /// <returns>The input model with the specified related data loader field loaded.</returns>
         public static T LoadDataLoaderField<T, S>(this T inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
-            => LoadDataLoaderField(inputModel, new RelmContext(relmContextOptionsBuilder), null, predicate);
-        
-        /// <summary>
-        /// Loads a related field for the specified input model using the provided context and predicate.
-        /// </summary>
-        /// <typeparam name="T">The type of the input model, which must implement <see cref="IRelmModel"/> and have a parameterless
-        /// constructor.</typeparam>
-        /// <typeparam name="S">The type of the related field to load, which must implement <see cref="IRelmModel"/> and have a
-        /// parameterless constructor.</typeparam>
-        /// <param name="inputModel">The input model for which the related field is to be loaded.</param>
-        /// <param name="relmContext">The primary context used for loading the related field. If <paramref name="relmContext"/> is <see
-        /// langword="null"/>, <paramref name="relmQuickContext"/> will be used instead.</param>
-        /// <param name="relmQuickContext">The quick context used for loading the related field if <paramref name="relmContext"/> is <see
-        /// langword="null"/>.</param>
-        /// <param name="predicate">An expression specifying the related field to load.</param>
-        /// <returns>The input model with the specified related field loaded, or <see langword="null"/> if no matching field is
-        /// found.</returns>
-        /// <exception cref="InvalidOperationException">Thrown if the required method for loading the field cannot be found on the data loader type.</exception>
-        private static T LoadDataLoaderField<T, S>(this T inputModel, IRelmContext relmContext, IRelmQuickContext relmQuickContext, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
-        {
-            var loaderType = typeof(DataLoaderHelper<>).MakeGenericType(typeof(T));
-            var loaderInstance = relmContext == null
-                ? Activator.CreateInstance(loaderType, new object[] { relmQuickContext, inputModel })
-                : Activator.CreateInstance(loaderType, new object[] { relmContext, inputModel });
-
-            // Get the generic method definition
-            var methodInfo = loaderType.GetMethod("LoadField", BindingFlags.Instance | BindingFlags.NonPublic) 
-                ?? throw new InvalidOperationException($"Could not find LoadField method on {loaderType.Name}");
-
-            // Create a constructed generic method with the S type parameter
-            var genericMethod = methodInfo.MakeGenericMethod(typeof(S));
-
-            var loaderResult = genericMethod.Invoke(loaderInstance, new object[] { predicate });
-
-            return ((ICollection<T>)loaderResult).FirstOrDefault();
-        }
-
-        /************************************************************************************************************************/
-        /****************************************** Data load collection property ******************************************/
-        /************************************************************************************************************************/
-
-        /// <summary>
-        /// Loads and populates a collection of related data for the specified model type.
-        /// </summary>
-        /// <typeparam name="T">The type of the primary model in the collection. Must implement <see cref="IRelmModel"/>.</typeparam>
-        /// <typeparam name="S">The type of the related model to be loaded. Must implement <see cref="IRelmModel"/>.</typeparam>
-        /// <param name="inputModel">The collection of primary models for which related data will be loaded. Cannot be <see langword="null"/>.</param>
-        /// <param name="relmContext">The context used to manage data loading operations. Cannot be <see langword="null"/>.</param>
-        /// <param name="predicate">An expression specifying the relationship between the primary model and the related model. Cannot be <see
-        /// langword="null"/>.</param>
-        /// <returns>The input collection with the related data loaded and populated.</returns>
-        public static ICollection<T> LoadDataLoaderField<T, S>(this ICollection<T> inputModel, IRelmContext relmContext, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
-            => LoadDataLoaderField(inputModel, relmContext, null, predicate);
-        
-        /// <summary>
-        /// Loads and resolves a related data field for a collection of models using the specified predicate.
-        /// </summary>
-        /// <typeparam name="T">The type of the model in the input collection. Must implement <see cref="IRelmModel"/>.</typeparam>
-        /// <typeparam name="S">The type of the related model to be loaded. Must implement <see cref="IRelmModel"/>.</typeparam>
-        /// <param name="inputModel">The collection of models for which the related data field will be loaded. Cannot be <see langword="null"/>.</param>
-        /// <param name="relmQuickContext">The context used to resolve the related data. Cannot be <see langword="null"/>.</param>
-        /// <param name="predicate">An expression specifying the related data field to load.</param>
-        /// <returns>The input collection with the specified related data field resolved.</returns>
-        public static ICollection<T> LoadDataLoaderField<T, S>(this ICollection<T> inputModel, IRelmQuickContext relmQuickContext, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
-            => LoadDataLoaderField(inputModel, null, relmQuickContext, predicate);
-        
-        /// <summary>
-        /// Loads and populates a specified field for a collection of models using a data loader.
-        /// </summary>
-        /// <remarks>This method uses a data loader to populate the specified field for each model in the
-        /// input collection. The field to be loaded is determined by the <paramref name="predicate"/>
-        /// expression.</remarks>
-        /// <typeparam name="T">The type of the model in the input collection. Must implement <see cref="IRelmModel"/>.</typeparam>
-        /// <typeparam name="S">The type of the related model to be loaded. Must implement <see cref="IRelmModel"/>.</typeparam>
-        /// <param name="inputModel">The collection of models for which the field will be loaded.</param>
-        /// <param name="relmContextOptionsBuilder">The options builder used to configure the data context.</param>
-        /// <param name="predicate">An expression specifying the field to be loaded for each model in the collection.</param>
-        /// <returns>The input collection with the specified field loaded for each model.</returns>
-        public static ICollection<T> LoadDataLoaderField<T, S>(this ICollection<T> inputModel, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
-            => LoadDataLoaderField(inputModel, new RelmContext(relmContextOptionsBuilder), null, predicate);
-
-        /// <summary>
-        /// Loads and populates a related field for the specified collection of models using the provided context and
-        /// predicate.
-        /// </summary>
-        /// <remarks>This method dynamically invokes the `LoadField` method on a generic data loader to
-        /// populate the specified related field. The caller must ensure that the provided contexts and predicate are
-        /// valid and compatible with the models being processed.</remarks>
-        /// <typeparam name="T">The type of the primary model in the collection. Must implement <see cref="IRelmModel"/>.</typeparam>
-        /// <typeparam name="S">The type of the related model to be loaded. Must implement <see cref="IRelmModel"/>.</typeparam>
-        /// <param name="inputModel">The collection of primary models for which the related field will be loaded.</param>
-        /// <param name="relmContext">The primary context used for data loading. If null, <paramref name="relmQuickContext"/> will be used
-        /// instead.</param>
-        /// <param name="relmQuickContext">The quick context used for data loading if <paramref name="relmContext"/> is null.</param>
-        /// <param name="predicate">An expression specifying the related field to load for each model in the collection.</param>
-        /// <returns>A collection of the primary models with the specified related field loaded.</returns>
-        /// <exception cref="InvalidOperationException">Thrown if the `LoadField` method cannot be found on the dynamically created data loader type.</exception>
-        private static ICollection<T> LoadDataLoaderField<T, S>(this ICollection<T> inputModel, IRelmContext relmContext, IRelmQuickContext relmQuickContext, Expression<Func<T, S>> predicate) where T : IRelmModel, new() where S : IRelmModel, new()
-        {
-            var loaderType = typeof(DataLoaderHelper<>).MakeGenericType(typeof(T));
-            var loaderInstance = relmContext == null
-                ? Activator.CreateInstance(loaderType, new object[] { relmQuickContext, inputModel })
-                : Activator.CreateInstance(loaderType, new object[] { relmContext, inputModel });
-
-            // Get the generic method definition
-            var methodInfo = loaderType.GetMethod("LoadField", BindingFlags.Instance | BindingFlags.NonPublic)
-                ?? throw new InvalidOperationException($"Could not find LoadField method on {loaderType.Name}");
-
-            // Create a constructed generic method
-            var genericMethod = methodInfo.MakeGenericMethod(typeof(S));
-
-            var loaderResult = genericMethod.Invoke(loaderInstance, new object[] { predicate });
-
-            return (ICollection<T>)loaderResult;
-        }
+            => new DataLoaderHelper<T>(relmContextOptionsBuilder, inputModel).LoadField(predicate).FirstOrDefault();
     }
 }

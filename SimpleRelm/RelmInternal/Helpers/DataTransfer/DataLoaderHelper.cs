@@ -1,6 +1,7 @@
 ﻿using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Interfaces.RelmQuick;
+using SimpleRelm.Models;
 using SimpleRelm.Options;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
@@ -67,6 +68,36 @@ namespace SimpleRelm.RelmInternal.Helpers.DataTransfer
         {
             this.targetObjects = targetObjects;
             this.relmContext = relmContext;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DataLoaderHelper{T}"/> class with the specified context options
+        /// and target object.
+        /// </summary>
+        /// <remarks>This constructor sets up the <see cref="RelmQuickContext"/> using the provided
+        /// options builder and initializes the helper with a single target object.</remarks>
+        /// <param name="relmContextOptionsBuilder">The options builder used to configure the <see cref="RelmQuickContext"/> instance.</param>
+        /// <param name="targetObject">The target object of type <typeparamref name="T"/> to be associated with this helper.</param>
+        public DataLoaderHelper(RelmContextOptionsBuilder relmContextOptionsBuilder, T targetObject)
+        {
+            this.targetObjects = new[] { targetObject };
+            this.relmQuickContext = new RelmQuickContext(relmContextOptionsBuilder);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DataLoaderHelper{T}"/> class, which facilitates loading data
+        /// into the specified target collection using the provided context options.
+        /// </summary>
+        /// <remarks>This class is designed to streamline data loading processes by leveraging the
+        /// provided <see cref="RelmQuickContext"/> configured with the specified options. Ensure that the <paramref
+        /// name="targetObjects"/> collection is properly initialized before using this helper.</remarks>
+        /// <param name="relmContextOptionsBuilder">The options builder used to configure the <see cref="RelmQuickContext"/> for data operations.</param>
+        /// <param name="targetObjects">The collection of objects of type <typeparamref name="T"/> that will be the target of data loading
+        /// operations.</param>
+        public DataLoaderHelper(RelmContextOptionsBuilder relmContextOptionsBuilder, ICollection<T> targetObjects)
+        {
+            this.targetObjects = targetObjects;
+            this.relmQuickContext = new RelmQuickContext(relmContextOptionsBuilder);
         }
 
         /// <summary>

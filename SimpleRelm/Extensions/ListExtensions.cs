@@ -608,6 +608,22 @@ namespace SimpleRelm.Extensions
         public static ICollection<T> LoadDataLoaderField<T, R>(this ICollection<T> modelData, IRelmQuickContext relmQuickContext, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
             => new DataLoaderHelper<T>(relmQuickContext, modelData).LoadField(predicate);
 
+        /// <summary>
+        /// Loads and populates a specified field for a collection of models using a data loader.
+        /// </summary>
+        /// <remarks>This method uses a data loader to populate the specified field in the provided
+        /// collection of models. Ensure that the <paramref name="relmContextOptionsBuilder"/> is properly configured to
+        /// access the required data source.</remarks>
+        /// <typeparam name="T">The type of the model in the collection. Must implement <see cref="IRelmModel"/> and have a parameterless
+        /// constructor.</typeparam>
+        /// <typeparam name="R">The type of the field to be loaded, as specified by the predicate.</typeparam>
+        /// <param name="modelData">The collection of models to be updated with the loaded field data.</param>
+        /// <param name="relmContextOptionsBuilder">The options builder used to configure the database context for loading the field.</param>
+        /// <param name="predicate">An expression specifying the field to be loaded for each model in the collection.</param>
+        /// <returns>The updated collection of models with the specified field populated.</returns>
+        public static ICollection<T> LoadDataLoaderField<T, R>(this ICollection<T> modelData, RelmContextOptionsBuilder relmContextOptionsBuilder, Expression<Func<T, R>> predicate) where T : IRelmModel, new()
+            => new DataLoaderHelper<T>(relmContextOptionsBuilder, modelData).LoadField(predicate);
+
         /************************************************************************************************************************/
         /****************************************** Other functions ******************************************/
         /************************************************************************************************************************/
