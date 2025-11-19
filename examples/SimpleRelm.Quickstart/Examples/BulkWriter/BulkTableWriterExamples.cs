@@ -30,7 +30,7 @@ namespace SimpleRelm.Quickstart.Examples.BulkWriter
             };
 
             var bulkWriter = RelmHelper.GetBulkTableWriter<ExampleModel>(exampleContext, insertQuery: insertQuery, useTransaction: true, throwException: true, allowAutoIncrementColumns: false, allowPrimaryKeyColumns: false, allowUniqueColumns: false);
-            bulkWriter = exampleContext.GetBulkTableWriter<ExampleModel>(InsertQuery: insertQuery, UseTransaction: true, ThrowException: true, AllowAutoIncrementColumns: false, AllowPrimaryKeyColumns: false, AllowUniqueColumns: false);
+            bulkWriter = exampleContext.GetBulkTableWriter<ExampleModel>(InsertQuery: insertQuery, useTransaction: true, throwException: true, allowAutoIncrementColumns: false, allowPrimaryKeyColumns: false, allowUniqueColumns: false);
 
             var rowsUpdated = bulkWriter.Write();
         }
@@ -53,7 +53,7 @@ namespace SimpleRelm.Quickstart.Examples.BulkWriter
             };
 
             var bulkWriter = RelmHelper.GetBulkTableWriter<ExampleModel>(exampleQuickContext, insertQuery: insertQuery, useTransaction: true, throwException: true, allowAutoIncrementColumns: false, allowPrimaryKeyColumns: false, allowUniqueColumns: false);
-            bulkWriter = exampleQuickContext.GetBulkTableWriter<ExampleModel>(InsertQuery: insertQuery, UseTransaction: true, ThrowException: true, AllowAutoIncrementColumns: false, AllowPrimaryKeyColumns: false, AllowUniqueColumns: false);
+            bulkWriter = exampleQuickContext.GetBulkTableWriter<ExampleModel>(InsertQuery: insertQuery, useTransaction: true, throwException: true, allowAutoIncrementColumns: false, allowPrimaryKeyColumns: false, allowUniqueColumns: false);
 
             var rowsUpdated = bulkWriter.Write();
         }

@@ -18,7 +18,7 @@ namespace SimpleRelm.Quickstart.Examples.Data
             var queryOnly = $@"SELECT ID FROM {RelmHelper.GetDalTable<ExampleModel>()};";
             
             var dataList = RelmHelper.GetDataList<int>(exampleContext, queryOnly, throwException: true);
-            dataList = exampleContext.GetDataList<int>(queryOnly, ThrowException: true);
+            dataList = exampleContext.GetDataList<int>(queryOnly, throwException: true);
             
             // Example usage to get a DataList using query and parameters
             var parametersQuery = $@"SELECT ID FROM {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -30,7 +30,7 @@ namespace SimpleRelm.Quickstart.Examples.Data
             };
 
             dataList = RelmHelper.GetDataList<int>(exampleContext, parametersQuery, parameters: exampleParameters, throwException: true);
-            dataList = exampleContext.GetDataList<int>(parametersQuery, Parameters: exampleParameters, ThrowException: true);
+            dataList = exampleContext.GetDataList<int>(parametersQuery, Parameters: exampleParameters, throwException: true);
         }
 
         internal void RunExamples(ExampleQuickContext exampleQuickContext)
@@ -39,7 +39,7 @@ namespace SimpleRelm.Quickstart.Examples.Data
             var queryOnly = $@"SELECT ID FROM {RelmHelper.GetDalTable<ExampleModel>()};";
             
             var dataList = RelmHelper.GetDataList<int>(exampleQuickContext, queryOnly, throwException: true);
-            dataList = exampleQuickContext.GetDataList<int>(queryOnly, ThrowException: true);
+            dataList = exampleQuickContext.GetDataList<int>(queryOnly, throwException: true);
             
             // Example usage to get a DataList using query and parameters
             var parametersQuery = $@"SELECT ID FROM {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -51,7 +51,7 @@ namespace SimpleRelm.Quickstart.Examples.Data
             };
 
             dataList = RelmHelper.GetDataList<int>(exampleQuickContext, parametersQuery, parameters: exampleParameters, throwException: true);
-            dataList = exampleQuickContext.GetDataList<int>(parametersQuery, Parameters: exampleParameters, ThrowException: true);
+            dataList = exampleQuickContext.GetDataList<int>(parametersQuery, Parameters: exampleParameters, throwException: true);
         }
     }
 }
