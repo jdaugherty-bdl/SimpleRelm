@@ -538,7 +538,7 @@ namespace SimpleRelm.Models
 
                             var fieldValue = property.GetValue(baseRef);
                             if ((hasTransfer ?? false) && isBaseModel)
-                                fieldValue = ((DALBaseModel)property.GetValue(baseRef))?.GenerateDTO(BaseRef: baseRef, IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties, SourceObjectName: string.Join(".", new List<string> { SourceObjectName, property.Name }.Where(y => !string.IsNullOrWhiteSpace(y))));
+                                fieldValue = ((DALBaseModel)property.GetValue(baseRef))?.GenerateDTO(BaseRef: baseRef, includeProperties: includeProperties, excludeProperties: excludeProperties, SourceObjectName: string.Join(".", new List<string> { SourceObjectName, property.Name }.Where(y => !string.IsNullOrWhiteSpace(y))));
 
                             seed.Add(property.Name, fieldValue);
                             */
@@ -568,7 +568,7 @@ namespace SimpleRelm.Models
                             {
                                 // if the property is a RelmDto and a RelmModel, then call GenerateDTO on it recursively
                                 seed.Add(property.Name, ((RelmModel)property.GetValue(baseRef))
-                                    .GenerateDTO(IncludeProperties: IncludeProperties, ExcludeProperties: ExcludeProperties, SourceObjectName: string.Join(".", new List<string> { SourceObjectName, property.Name }.Where(y => !string.IsNullOrWhiteSpace(y))), GetAdditionalObjectProperties: GetAdditionalObjectProperties, Iteration: Iteration + 1));
+                                    .GenerateDTO(includeProperties: includeProperties, excludeProperties: excludeProperties, SourceObjectName: string.Join(".", new List<string> { SourceObjectName, property.Name }.Where(y => !string.IsNullOrWhiteSpace(y))), getAdditionalObjectProperties: getAdditionalObjectProperties, Iteration: Iteration + 1));
                             }
                             else
                             {

@@ -44,22 +44,22 @@ namespace SimpleRelm.Interfaces
 
         string GetLastInsertId();
         string GetIdFromInternalId(string Table, string InternalId);
-        DataRow GetDataRow(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true);
-        DataTable GetDataTable(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true);
-        T GetDataObject<T>(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true) where T : IRelmModel, new();
-        IEnumerable<T> GetDataObjects<T>(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true) where T : IRelmModel, new();
-        IEnumerable<T> GetDataList<T>(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true);
+        DataRow GetDataRow(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true);
+        DataTable GetDataTable(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true);
+        T GetDataObject<T>(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true) where T : IRelmModel, new();
+        IEnumerable<T> GetDataObjects<T>(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true) where T : IRelmModel, new();
+        IEnumerable<T> GetDataList<T>(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true);
         T GetScalar<T>(string query, Dictionary<string, object> parameters = null, bool throwException = true);
 
-        BulkTableWriter<T> GetBulkTableWriter<T>(string InsertQuery = null, bool UseTransaction = false, bool ThrowException = true, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false);
-        int BulkTableWrite<T>(T SourceData, string TableName = null, MySqlTransaction SqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false);
+        BulkTableWriter<T> GetBulkTableWriter<T>(string InsertQuery = null, bool useTransaction = false, bool throwException = true, bool allowAutoIncrementColumns = false, bool allowPrimaryKeyColumns = false, bool allowUniqueColumns = false);
+        int BulkTableWrite<T>(T SourceData, string TableName = null, MySqlTransaction sqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool allowAutoIncrementColumns = false, bool allowPrimaryKeyColumns = false, bool allowUniqueColumns = false);
 
-        void DoDatabaseWork(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false);
-        T DoDatabaseWork<T>(string QueryString, Dictionary<string, object> Parameters = null, bool ThrowException = true, bool UseTransaction = false);
-        void DoDatabaseWork(string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false);
-        T DoDatabaseWork<T>(string QueryString, Func<MySqlCommand, object> ActionCallback, bool ThrowException = true, bool UseTransaction = false);
+        void DoDatabaseWork(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true, bool useTransaction = false);
+        T DoDatabaseWork<T>(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true, bool useTransaction = false);
+        void DoDatabaseWork(string QueryString, Func<MySqlCommand, object> ActionCallback, bool throwException = true, bool useTransaction = false);
+        T DoDatabaseWork<T>(string QueryString, Func<MySqlCommand, object> ActionCallback, bool throwException = true, bool useTransaction = false);
 
-        int WriteToDatabase(IRelmModel relmModel, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false, bool AllowAutoDateColumns = false);
-        int WriteToDatabase(IEnumerable<IRelmModel> relmModels, int batchSize = 100, bool AllowAutoIncrementColumns = false, bool AllowPrimaryKeyColumns = false, bool AllowUniqueColumns = false, bool AllowAutoDateColumns = false);
+        int WriteToDatabase(IRelmModel relmModel, int batchSize = 100, bool allowAutoIncrementColumns = false, bool allowPrimaryKeyColumns = false, bool allowUniqueColumns = false, bool allowAutoDateColumns = false);
+        int WriteToDatabase(IEnumerable<IRelmModel> relmModels, int batchSize = 100, bool allowAutoIncrementColumns = false, bool allowPrimaryKeyColumns = false, bool allowUniqueColumns = false, bool allowAutoDateColumns = false);
     }
 }
