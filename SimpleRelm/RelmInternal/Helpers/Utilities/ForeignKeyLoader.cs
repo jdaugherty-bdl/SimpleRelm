@@ -99,20 +99,8 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
         /// <exception cref="ArgumentException">Thrown if <paramref name="targetObjects"/> is empty or contains <see langword="null"/> values.</exception>
         public ForeignKeyLoader(ICollection<T> targetObjects, RelmContextOptionsBuilder contextOptions)
         {
-            if (targetObjects == null)
-                throw new ArgumentNullException(nameof(targetObjects));
-
-            if (targetObjects.Count == 0)
-                throw new ArgumentException("Target objects collection cannot be empty", nameof(targetObjects));
-
-            if (targetObjects.FirstOrDefault() == null)
-                throw new ArgumentException("Target objects collection cannot contain null values", nameof(targetObjects));
-
-            if (contextOptions == null)
-                throw new ArgumentNullException(nameof(contextOptions));
-
-            this.targetObjects = targetObjects;
-            this.contextOptions = contextOptions;
+            this.targetObjects = targetObjects ?? throw new ArgumentNullException(nameof(targetObjects));
+            this.contextOptions = contextOptions ?? throw new ArgumentNullException(nameof(contextOptions));
         }
 
         /// <summary>
