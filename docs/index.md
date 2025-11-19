@@ -1,3 +1,6 @@
+---
+_layout: landing
+---
 # SimpleRelm
 
 **SimpleRelm** is a lightweight, attribute-based ORM / data access layer for C# and .NET Framework developers who want a small, predictable alternative to heavyweight ORMs.

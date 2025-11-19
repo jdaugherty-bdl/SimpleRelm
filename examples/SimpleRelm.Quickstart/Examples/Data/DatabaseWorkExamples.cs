@@ -18,7 +18,7 @@ namespace SimpleRelm.Quickstart.Examples.Data
             var queryOnly = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()};";
 
             RelmHelper.DoDatabaseWork(exampleContext, queryOnly, throwException: true);
-            exampleContext.DoDatabaseWork(queryOnly, ThrowException: true);
+            exampleContext.DoDatabaseWork(queryOnly, throwException: true);
 
             // Example usage to run DoDatabaseWork using query and parameters with no return
             var parametersQuery = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -30,14 +30,14 @@ namespace SimpleRelm.Quickstart.Examples.Data
             };
             
             RelmHelper.DoDatabaseWork(exampleContext, parametersQuery, exampleParameters, throwException: true);
-            exampleContext.DoDatabaseWork(parametersQuery, exampleParameters, ThrowException: true);
+            exampleContext.DoDatabaseWork(parametersQuery, exampleParameters, throwException: true);
 
             // Example usage to run DoDatabaseWork using query only with return of number of affected rows
             var affectedRowsQuery = $@"UPDATE {RelmHelper.GetDalTable<ExampleModel>()} 
                 SET {RelmHelper.GetColumnName<ExampleModel>(x => x.Active)} = 0;";
 
             var affectedRows = RelmHelper.DoDatabaseWork<int>(exampleContext, affectedRowsQuery, throwException: true);
-            affectedRows = exampleContext.DoDatabaseWork<int>(affectedRowsQuery, ThrowException: true);
+            affectedRows = exampleContext.DoDatabaseWork<int>(affectedRowsQuery, throwException: true);
 
             // Example usage to run DoDatabaseWork using query and parameters with return of number of affected rows
             var affectedRowsParametersQuery = $@"UPDATE {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -45,7 +45,7 @@ namespace SimpleRelm.Quickstart.Examples.Data
                 WHERE {RelmHelper.GetColumnName<ExampleModel>(x => x.InternalId)} = @guid_value;";
 
             affectedRows = RelmHelper.DoDatabaseWork<int>(exampleContext, affectedRowsParametersQuery, exampleParameters, throwException: true);
-            affectedRows = exampleContext.DoDatabaseWork<int>(affectedRowsParametersQuery, exampleParameters, ThrowException: true);
+            affectedRows = exampleContext.DoDatabaseWork<int>(affectedRowsParametersQuery, exampleParameters, throwException: true);
         }
 
         internal void RunExamples(ExampleQuickContext exampleQuickContext)
@@ -54,7 +54,7 @@ namespace SimpleRelm.Quickstart.Examples.Data
             var queryOnly = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()};";
 
             RelmHelper.DoDatabaseWork(exampleQuickContext, queryOnly, throwException: true);
-            exampleQuickContext.DoDatabaseWork(queryOnly, ThrowException: true);
+            exampleQuickContext.DoDatabaseWork(queryOnly, throwException: true);
 
             // Example usage to run DoDatabaseWork using query and parameters with no return
             var parametersQuery = $@"SELECT * FROM {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -66,14 +66,14 @@ namespace SimpleRelm.Quickstart.Examples.Data
             };
             
             RelmHelper.DoDatabaseWork(exampleQuickContext, parametersQuery, exampleParameters, throwException: true);
-            exampleQuickContext.DoDatabaseWork(parametersQuery, exampleParameters, ThrowException: true);
+            exampleQuickContext.DoDatabaseWork(parametersQuery, exampleParameters, throwException: true);
 
             // Example usage to run DoDatabaseWork using query only with return of number of affected rows
             var affectedRowsQuery = $@"UPDATE {RelmHelper.GetDalTable<ExampleModel>()} 
                 SET {RelmHelper.GetColumnName<ExampleModel>(x => x.Active)} = 0;";
 
             var affectedRows = RelmHelper.DoDatabaseWork<int>(exampleQuickContext, affectedRowsQuery, throwException: true);
-            affectedRows = exampleQuickContext.DoDatabaseWork<int>(affectedRowsQuery, ThrowException: true);
+            affectedRows = exampleQuickContext.DoDatabaseWork<int>(affectedRowsQuery, throwException: true);
 
             // Example usage to run DoDatabaseWork using query and parameters with return of number of affected rows
             var affectedRowsParametersQuery = $@"UPDATE {RelmHelper.GetDalTable<ExampleModel>()} 
@@ -81,7 +81,7 @@ namespace SimpleRelm.Quickstart.Examples.Data
                 WHERE {RelmHelper.GetColumnName<ExampleModel>(x => x.InternalId)} = @guid_value;";
 
             affectedRows = RelmHelper.DoDatabaseWork<int>(exampleQuickContext, affectedRowsParametersQuery, exampleParameters, throwException: true);
-            affectedRows = exampleQuickContext.DoDatabaseWork<int>(affectedRowsParametersQuery, exampleParameters, ThrowException: true);
+            affectedRows = exampleQuickContext.DoDatabaseWork<int>(affectedRowsParametersQuery, exampleParameters, throwException: true);
         }
     }
 }
