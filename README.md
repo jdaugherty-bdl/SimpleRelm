@@ -13,6 +13,8 @@ It’s especially aimed at **.NET Framework** apps and services that need someth
 
 > ⚠️ **Status:** SimpleRelm is under active development. APIs and examples may evolve as features are added and real-world scenarios are covered. Feedback, issues, and PRs are welcome.
 
+Documentation: https://jdaugherty-bdl.github.io/SimpleRelm/index.html
+
 ---
 
 ## Features
