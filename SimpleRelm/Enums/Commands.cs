@@ -71,6 +71,10 @@ namespace SimpleRelm.Enums
             /// </summary>
             Limit,
             /// <summary>
+            /// Gets or sets the offset value used for positioning or alignment.
+            /// </summary>
+            Offset,
+            /// <summary>
             /// Returns a collection of distinct elements from the input sequence based on a specified key selector.
             /// </summary>
             /// <remarks>This method uses deferred execution. The distinctness of elements is

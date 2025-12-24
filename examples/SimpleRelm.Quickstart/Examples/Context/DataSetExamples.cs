@@ -110,6 +110,17 @@ namespace SimpleRelm.Quickstart.Examples.Context
                 .Limit(100)
                 .Load();
 
+            // Example usage to load 100 distinct models, offset by 50 rows from the beginning, by model name with a model index greater than 1000, grouped by group internal ID and ordered by model index
+            models = exampleContext
+                .ExampleModels
+                .Where(x => x.ModelIndex > 1000)
+                .DistinctBy(x => x.ModelName)
+                .GroupBy(x => x.GroupInternalId)
+                .OrderBy(x => x.ModelIndex)
+                .Limit(100)
+                .Offset(50)
+                .Load();
+
             // Example usage to load all models with their related groups
             models = exampleContext
                 .ExampleModels

@@ -35,6 +35,7 @@ namespace SimpleRelm.Interfaces
         IRelmDataSet<T> Set(Expression<Func<T, T>> predicate);
         IRelmDataSet<T> GroupBy(Expression<Func<T, object>> predicate);
         IRelmDataSet<T> Limit(int LimitCount);
+        IRelmDataSet<T> Offset(int OffsetCount);
         IRelmDataSet<T> DistinctBy(Expression<Func<T, object>> predicate);
         int Save(T Item);
         int Save();

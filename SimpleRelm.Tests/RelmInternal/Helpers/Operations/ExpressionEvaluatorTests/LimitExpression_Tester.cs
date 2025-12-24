@@ -44,5 +44,20 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             // Assert
             Assert.Equal(" LIMIT 1 ", result);
         }
+
+        [Fact]
+        public void TestOffsetQuery_SingleOperand()
+        {
+            // Arrange
+            var offsetCount = 1;
+
+            // Act
+            var result = evaluator.EvaluateOffset(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
+                Command.GroupBy,
+                new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Offset, Expression.Constant(offsetCount, offsetCount.GetType())) }));
+
+            // Assert
+            Assert.Equal(" OFFSET 1 ", result);
+        }
     }
 }

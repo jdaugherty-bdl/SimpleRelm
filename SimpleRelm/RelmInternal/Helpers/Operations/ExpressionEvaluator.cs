@@ -673,6 +673,11 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
             return $" LIMIT {(CommandExpression.Value[0].InitialExpression as ConstantExpression).Value} ";
         }
 
+        internal string EvaluateOffset(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression)
+        {
+            return $" OFFSET {(CommandExpression.Value[0].InitialExpression as ConstantExpression).Value} ";
+        }
+
         internal string EvaluateDistinctBy(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression)
         {
             MemberExpression methodOperand;

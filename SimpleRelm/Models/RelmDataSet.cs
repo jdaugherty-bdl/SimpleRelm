@@ -634,6 +634,18 @@ namespace SimpleRelm.Models
         }
 
         /// <summary>
+        /// Sets the offset value used for positioning or alignment.
+        /// </summary>
+        /// <param name="offsetCount">The offset value to apply. Must be a non-negative integer.</param>
+        /// <returns>The current dataset instance with the applied offset, allowing for further query chaining.</returns>
+        public IRelmDataSet<T> Offset(int offsetCount)
+        {
+            _dataLoader.AddSingleExpression(Command.Offset, Expression.Constant(offsetCount, offsetCount.GetType()));
+
+            return this;
+        }
+
+        /// <summary>
         /// Filters the dataset to include only distinct elements based on the specified key selector.
         /// </summary>
         /// <remarks>This method modifies the current dataset by adding a distinct operation to the query.

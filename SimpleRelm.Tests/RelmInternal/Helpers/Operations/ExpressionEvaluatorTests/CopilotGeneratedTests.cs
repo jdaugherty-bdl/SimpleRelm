@@ -219,6 +219,25 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         }
 
         [Fact]
+        public void EvaluateLimit_SimpleOffset_ReturnsCorrectSql()
+        {
+            // Arrange
+            var constantExpression = Expression.Constant(10);
+            var commandExpression = new KeyValuePair<Command, List<IRelmExecutionCommand>>(
+                Command.Offset,
+                new List<IRelmExecutionCommand>
+                {
+                    new RelmExecutionCommand(Command.Offset, constantExpression)
+                });
+
+            // Act
+            var sql = evaluator.EvaluateOffset(commandExpression);
+
+            // Assert
+            Assert.Equal(" OFFSET 10 ", sql);
+        }
+
+        [Fact]
         public void EvaluateWhere_WithOrExpression_ReturnsCorrectSql()
         {
             // Arrange

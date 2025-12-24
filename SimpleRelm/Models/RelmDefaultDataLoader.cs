@@ -303,6 +303,9 @@ namespace SimpleRelm.Models
                         case Command.Limit:
                             queryPieces[command.Key].Add(expressionEvaluator.EvaluateLimit(command));
                             break;
+                        case Command.Offset:
+                            queryPieces[command.Key].Add(expressionEvaluator.EvaluateOffset(command));
+                            break;
                         case Command.GroupBy:
                             queryPieces[command.Key].Add(expressionEvaluator.EvaluateGroupBy(command));
                             break;
@@ -360,6 +363,9 @@ namespace SimpleRelm.Models
 
             if (queryPieces.ContainsKey(Command.Limit))
                 findQuery += string.Join("\n", queryPieces[Command.Limit]);
+
+            if (queryPieces.ContainsKey(Command.Offset))
+                findQuery += string.Join("\n", queryPieces[Command.Offset]);
 
             LastCommandsExecuted = _commands;
             _commands = null;
