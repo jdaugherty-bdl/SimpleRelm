@@ -8,10 +8,15 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <!-- <icon>icon.png</icon> -->
-    <projectUrl>https://BostonDataLabs.com/SimpleRelm/</projectUrl>
+    <projectUrl>https://github.com/jdaugherty-bdl/SimpleRelm</projectUrl>
     <description>SimpleRelm ORM library for usage with MySQL 5.x</description>
     <releaseNotes>Inital release of NuGet package.</releaseNotes>
     <copyright>$copyright$</copyright>
-    <tags>SimpleRelm Relm ORM C#</tags>
+    <readme>README_SHORT.md</readme>
+    <tags>SimpleRelm Relm ORM C# MySQL</tags>
+    <repository type="git" url="https://github.com/jdaugherty-bdl/SimpleRelm" />
   </metadata>
+  <files>
+    <file src="..\README_SHORT.md" target="\" />
+  </files>
 </package>
