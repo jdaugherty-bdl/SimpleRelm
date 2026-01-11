@@ -16,14 +16,20 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/EventArguments/DtoEventArgs.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DtoEventArgs
     path: ../SimpleRelm/Models/EventArguments/DtoEventArgs.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models.EventArguments
+  summary: Provides event data that includes additional object properties for data transfer operations.
+  remarks: >-
+    Use this class to pass extra key-value pairs with event notifications when working with data
+        transfer objects (DTOs). This enables event handlers to access supplementary information that may not be part of
+        the standard event arguments.
+  example: []
   syntax:
     content: 'public class DtoEventArgs : EventArgs'
     content.vb: Public Class DtoEventArgs Inherits EventArgs
@@ -53,14 +59,20 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/EventArguments/DtoEventArgs.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AdditionalObjectProperties
     path: ../SimpleRelm/Models/EventArguments/DtoEventArgs.cs
-    startLine: 10
+    startLine: 22
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models.EventArguments
+  summary: Gets or sets a collection of additional properties associated with the object.
+  remarks: >-
+    This dictionary allows for the storage of custom key-value pairs that are not
+        explicitly defined by other properties. It can be used to extend the object with extra data as
+        needed.
+  example: []
   syntax:
     content: public Dictionary<string, object> AdditionalObjectProperties { get; set; }
     parameters: []

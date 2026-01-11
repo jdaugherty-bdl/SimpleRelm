@@ -186,10 +186,6 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
         public static MemberExpression GetReferencedMember(Tuple<Expression, ICollection<ParameterExpression>> command)
         {
-            //if (!(command.Item1 is MethodCallExpression methodCall))
-            //    return null;
-
-            //return GetReferencedMember(methodCall, command.Item2.FirstOrDefault());
             return GetReferencedMember((MethodCallExpression)command.Item1, command.Item2.FirstOrDefault());
         }
 
@@ -201,11 +197,19 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
             {
                 foreach (var arg in methodCall.Arguments)
                 {
-                    if (arg is MemberExpression memberExpression && memberExpression.Expression == parameter)
+                    if (arg is MemberExpression memberExpression)
                     {
-                        referencedMember = memberExpression;
+                        if (memberExpression.Expression == parameter)
+                        {
+                            referencedMember = memberExpression;
 
-                        break;
+                            break;
+                        }
+
+                        if (memberExpression.Expression is ConstantExpression constantExpression)
+                        {
+                            var ddd = GetValue(constantExpression);
+                        }
                     }
                     else if (arg is MethodCallExpression methodCallExpression)
                     {
@@ -223,12 +227,68 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                             if (referencedMember != null)
                                 break;
                         }
+                        else if (lambdaExpression.Body is BinaryExpression binaryExpression)
+                        {
+                        }
                     }
                 }
             }
 
             return referencedMember;
         }
+        /*
+        public static List<MemberExpression> GetReferencedMember(Tuple<Expression, ICollection<ParameterExpression>> command)
+        {
+            return GetReferencedMember((MethodCallExpression)command.Item1, command.Item2.FirstOrDefault());
+        }
+
+        public static List<MemberExpression> GetReferencedMember(MethodCallExpression methodCall, ParameterExpression parameter)
+        {
+            var referencedMembers = methodCall.Arguments.Where(x => x is MemberExpression).Cast<MemberExpression>().ToList();
+
+            if (referencedMembers.All(x => (x?.Expression?.NodeType ?? ExpressionType.Not) == ExpressionType.Parameter))
+                return referencedMembers;
+
+            foreach (var arg in methodCall.Arguments)
+            {
+                if (arg is MemberExpression memberExpression)
+                {
+                    if (memberExpression.Expression == parameter)
+                    {
+                        referencedMembers.Add(memberExpression);
+
+                        //break;
+                    }
+                    else if (memberExpression.Expression is ConstantExpression constantExpression)
+                    {
+                        var ddd = GetValue(constantExpression);
+                    }
+                }
+                else if (arg is MethodCallExpression methodCallExpression)
+                {
+                    referencedMembers = GetReferencedMember(methodCallExpression, parameter);
+
+                    //if (referencedMembers != null)
+                        //break;
+                }
+                else if (arg is LambdaExpression lambdaExpression)
+                {
+                    if (lambdaExpression.Body is MethodCallExpression method)
+                    {
+                        referencedMembers = GetReferencedMember(method, parameter);
+
+                        //if (referencedMembers != null)
+                            //break;
+                    }
+                    else if (lambdaExpression.Body is BinaryExpression binaryExpression)
+                    {
+                    }
+                }
+            }
+
+            return referencedMembers;
+        }
+        */
 
         public static List<object> GetReferencedValues(MethodCallExpression methodCall)
         {

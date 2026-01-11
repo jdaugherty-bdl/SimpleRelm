@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class RelmModelApartment | SimpleRelm ">
       
-      
+      <meta name="description" content="Represents an apartment entity within the Relm data model, including user and member association information.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/jdaugherty-bdl/SimpleRelm/new/connector_8/apiSpec/new?filename=SimpleRelm_Models_RelmModelApartment.md&amp;value=---%0Auid%3A%20SimpleRelm.Models.RelmModelApartment%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/jdaugherty-bdl/SimpleRelm/new/master/apiSpec/new?filename=SimpleRelm_Models_RelmModelApartment.md&amp;value=---%0Auid%3A%20SimpleRelm.Models.RelmModelApartment%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="SimpleRelm_Models_RelmModelApartment" data-uid="SimpleRelm.Models.RelmModelApartment" class="text-break">
-Class RelmModelApartment  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmModelApartment.cs/#L13"><i class="bi bi-code-slash"></i></a>
+Class RelmModelApartment  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmModelApartment.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Class RelmModelApartment  <a class="header-action link-secondary" title="View so
   <dl><dt>Assembly</dt><dd>SimpleRelm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Represents an apartment entity within the Relm data model, including user and member association information.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -290,6 +291,11 @@ Class RelmModelApartment  <a class="header-action link-secondary" title="View so
 
 
 
+  <h2 id="SimpleRelm_Models_RelmModelApartment_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This class provides properties for identifying the apartment and its associated user and
+member. It is typically used in scenarios where apartment membership and user linkage are required within the
+Relm system. Inherits from RelmModel and implements IRelmModelApartment.</p>
+</div>
 
 
   <h2 class="section" id="constructors">Constructors
@@ -300,10 +306,11 @@ Class RelmModelApartment  <a class="header-action link-secondary" title="View so
 
   <h3 id="SimpleRelm_Models_RelmModelApartment__ctor" data-uid="SimpleRelm.Models.RelmModelApartment.#ctor">
   RelmModelApartment()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmModelApartment.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmModelApartment.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmModelApartment class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -326,10 +333,11 @@ Class RelmModelApartment  <a class="header-action link-secondary" title="View so
 
   <h3 id="SimpleRelm_Models_RelmModelApartment__ctor_SimpleRelm_Interfaces_IRelmModel_" data-uid="SimpleRelm.Models.RelmModelApartment.#ctor(SimpleRelm.Interfaces.IRelmModel)">
   RelmModelApartment(IRelmModel)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmModelApartment.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmModelApartment.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmModelApartment class by copying data from the specified model.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -339,7 +347,8 @@ Class RelmModelApartment  <a class="header-action link-secondary" title="View so
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>fromModel</code> <a class="xref" href="SimpleRelm.Interfaces.IRelmModel.html">IRelmModel</a></dt>
-    <dd></dd>
+    <dd><p>The source model from which to copy data. Cannot be null.</p>
+</dd>
   </dl>
 
 
@@ -357,10 +366,12 @@ Class RelmModelApartment  <a class="header-action link-secondary" title="View so
 
   <h3 id="SimpleRelm_Models_RelmModelApartment__ctor_System_Data_DataRow_System_String_" data-uid="SimpleRelm.Models.RelmModelApartment.#ctor(System.Data.DataRow,System.String)">
   RelmModelApartment(DataRow, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmModelApartment.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmModelApartment.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmModelApartment class using the specified data row and optional
+alternate table name.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -370,9 +381,11 @@ Class RelmModelApartment  <a class="header-action link-secondary" title="View so
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>ModelData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.datarow">DataRow</a></dt>
-    <dd></dd>
+    <dd><p>The DataRow containing the data to initialize the apartment model. Cannot be null.</p>
+</dd>
     <dt><code>AlternateTableName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>An optional table name to use instead of the default. If null, the class name is used.</p>
+</dd>
   </dl>
 
 
@@ -394,10 +407,11 @@ Class RelmModelApartment  <a class="header-action link-secondary" title="View so
 
   <h3 id="SimpleRelm_Models_RelmModelApartment_ApartmentId" data-uid="SimpleRelm.Models.RelmModelApartment.ApartmentId">
   ApartmentId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmModelApartment.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmModelApartment.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the unique identifier for the apartment.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -426,10 +440,11 @@ public string ApartmentId { get; set; }</code></pre>
 
   <h3 id="SimpleRelm_Models_RelmModelApartment_Member" data-uid="SimpleRelm.Models.RelmModelApartment.Member">
   Member
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmModelApartment.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmModelApartment.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the associated Relm member for this entity.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -458,10 +473,11 @@ public IRelmMember Member { get; set; }</code></pre>
 
   <h3 id="SimpleRelm_Models_RelmModelApartment_UserEmail" data-uid="SimpleRelm.Models.RelmModelApartment.UserEmail">
   UserEmail
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmModelApartment.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmModelApartment.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the email address associated with the user.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -490,10 +506,11 @@ public string UserEmail { get; set; }</code></pre>
 
   <h3 id="SimpleRelm_Models_RelmModelApartment_UserId" data-uid="SimpleRelm.Models.RelmModelApartment.UserId">
   UserId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmModelApartment.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmModelApartment.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the unique identifier for the user.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -522,10 +539,11 @@ public int UserId { get; set; }</code></pre>
 
   <h3 id="SimpleRelm_Models_RelmModelApartment_UserName" data-uid="SimpleRelm.Models.RelmModelApartment.UserName">
   UserName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmModelApartment.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmModelApartment.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the user name associated with the entity.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -558,10 +576,11 @@ public string UserName { get; set; }</code></pre>
 
   <h3 id="SimpleRelm_Models_RelmModelApartment_SetMemberApartment_System_Int32_System_Boolean_" data-uid="SimpleRelm.Models.RelmModelApartment.SetMemberApartment(System.Int32,System.Boolean)">
   SetMemberApartment(int, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmModelApartment.cs/#L133"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmModelApartment.cs/#L182"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the apartment membership information for the specified member and updates tracking fields as specified.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -571,15 +590,19 @@ public string UserName { get; set; }</code></pre>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>MemberId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>The identifier of the member whose apartment information is to be set.</p>
+</dd>
     <dt><code>UpdateCreate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p>true to update the creation tracking fields in addition to the last updated fields; otherwise, false. The
+default is true.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="SimpleRelm.Interfaces.IRelmModelApartment.html">IRelmModelApartment</a></dt>
-    <dd></dd>
+    <dd><p>The current instance with updated membership information.</p>
+</dd>
   </dl>
 
 
@@ -596,7 +619,7 @@ public string UserName { get; set; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmModelApartment.cs/#L13" class="edit-link">Edit this page</a>
+          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmModelApartment.cs/#L19" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -11,11 +11,11 @@ It sits close to ADO.NET, but gives you:
 
 It’s especially aimed at **.NET Framework** apps and services that need something quick and focused, but it also works from modern .NET projects.
 
+Documentation: https://jdaugherty-bdl.github.io/SimpleRelm/index.html
+
 > ⚠️ **Status:** SimpleRelm is under active development. APIs and examples may evolve as features are added and real-world scenarios are covered. Feedback, issues, and PRs are welcome.
 
-> ❗ **.NET Framework 4.8 ONLY** ❗For the .NET Core 9 version of this library, please go to https://github.com/jdaugherty-bdl/CoreRelm 
-
-Documentation: https://jdaugherty-bdl.github.io/SimpleRelm/index.html
+> ❗ **.NET Framework 4.8 ONLY** ❗This library is intended for .NET Framework 4.8 and above. For the .NET Core 9 version of this library, please go to https://github.com/jdaugherty-bdl/CoreRelm 
 
 ---
 

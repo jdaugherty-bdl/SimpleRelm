@@ -15,14 +15,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSetBase.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmDataSetBase
     path: ../SimpleRelm/Interfaces/IRelmDataSetBase.cs
-    startLine: 8
+    startLine: 11
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Base interface for Relm data sets.
+  example: []
   syntax:
     content: public interface IRelmDataSetBase
     content.vb: Public Interface IRelmDataSetBase

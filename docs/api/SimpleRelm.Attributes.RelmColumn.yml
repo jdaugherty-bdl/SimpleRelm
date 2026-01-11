@@ -28,7 +28,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmColumn
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -121,7 +121,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ColumnName
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -155,7 +155,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ColumnSize
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -189,7 +189,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: CompoundColumnSize
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -220,7 +220,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AllowDataTruncation
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -251,7 +251,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IsNullable
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -282,7 +282,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: PrimaryKey
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -313,7 +313,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Autonumber
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -344,7 +344,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Unique
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -375,7 +375,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DefaultValue
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -406,7 +406,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Index
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -437,7 +437,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IndexDescending
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -468,7 +468,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Virtual
     path: ../SimpleRelm/Attributes/RelmColumn.cs
@@ -499,7 +499,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmColumn.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Attributes/RelmColumn.cs

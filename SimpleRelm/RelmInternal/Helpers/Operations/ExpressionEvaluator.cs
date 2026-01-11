@@ -599,6 +599,10 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                     methodOperand = methodCall;
                 else if (commandExpression.InitialExpression is UnaryExpression unaryExpression)
                     methodOperand = unaryExpression.Operand as MemberExpression;
+                else if (commandExpression.InitialExpression is LambdaExpression lambdaExpression)
+                    methodOperand = lambdaExpression.Body is UnaryExpression lambdaUnary && lambdaUnary.NodeType == ExpressionType.Convert
+                        ? lambdaUnary.Operand as MemberExpression
+                        : lambdaExpression.Body as MemberExpression;
 
                 if (methodOperand == default)
                 {
@@ -661,9 +665,46 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         {
             var findQuery = string.Empty;
 
-            var count = CommandExpression.Value.Count;
+            var countItems = new List<string>();
+            foreach (var command in CommandExpression.Value)
+            {
+                if (command.InitialExpression == null)
+                    countItems.Add(" COUNT(*) AS `count_rows` ");
+                else
+                {
+                    var methodOperands = new List<MemberExpression>();
 
-            findQuery += $" COUNT(*) ";
+                    if (command.InitialExpression is MemberExpression methodCall)
+                        methodOperands.Add(methodCall);
+                    else if (command.InitialExpression is UnaryExpression unaryExpression)
+                        methodOperands.Add(unaryExpression.Operand as MemberExpression);
+                    else if (command.InitialExpression is NewExpression newExpression)
+                        methodOperands = newExpression.Arguments.Select(x => x as MemberExpression).ToList();
+                    else
+                        throw new InvalidCastException();
+
+                    foreach (var methodOperand in methodOperands)
+                    {
+                        var currentAlias = GetTableAlias(((RelmTable)methodOperand.Expression.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
+
+                        if (string.IsNullOrWhiteSpace(currentAlias))
+                            throw new TypeAccessException($"Could not find 'RelmTable' custom attribute on type: [{methodOperand.Expression.Type.FullName}]");
+
+                        var countExpression = " COUNT(";
+                        countExpression += currentAlias;
+                        countExpression += ".`";
+                        countExpression += UnderscoreProperties[methodOperand.Member.Name];
+                        countExpression += "`) ";
+                        countExpression += "AS `count_";
+                        countExpression += UnderscoreProperties[methodOperand.Member.Name];
+                        countExpression += "` ";
+
+                        countItems.Add(countExpression);
+                    }
+                }
+            }
+
+            findQuery += string.Join(",", countItems);
 
             return findQuery;
         }
@@ -685,6 +726,10 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 methodOperand = methodCall;
             else if (CommandExpression.Value[0].InitialExpression is UnaryExpression unaryExpression)
                 methodOperand = unaryExpression.Operand as MemberExpression;
+            else if (CommandExpression.Value[0].InitialExpression is LambdaExpression lambdaExpression)
+                methodOperand = lambdaExpression.Body is UnaryExpression lambdaUnary && lambdaUnary.NodeType == ExpressionType.Convert
+                    ? lambdaUnary.Operand as MemberExpression
+                    : lambdaExpression.Body as MemberExpression;
             else
                 throw new InvalidCastException();
 

@@ -14,6 +14,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 {
     public class CopilotGeneratedTests
     {
+        [RelmTable("test_models")]
         private class TestModel
         {
             [RelmColumn("id")]
@@ -46,7 +47,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
                 { nameof(TestModel.Status), "status" }
             };
 
-            evaluator = new ExpressionEvaluator("TestTable", underscoreProperties);
+            evaluator = new ExpressionEvaluator("test_models", underscoreProperties);
             queryParameters = new Dictionary<string, object>();
         }
 
@@ -87,11 +88,11 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var sql = evaluator.EvaluateWhere(commandExpression, queryParameters);
 
             // Assert
-            var expectedSql = " WHERE ( a.`name` = @_Name_1_ ) AND ( a.`status` = @_Status_1_ ))";
+            var expectedSql = " WHERE ( a.`name` = @_Name_1_    ) AND (  a.`status` = @_Status_1_ )";
             Assert.Equal(expectedSql, sql);
             Assert.Equal(2, queryParameters.Count);
             Assert.Equal("Test", queryParameters["@_Name_1_"]);
-            Assert.Equal(1, queryParameters["@_Status_1_"]);
+            Assert.Equal(TestEnum.Active, queryParameters["@_Status_1_"]);
         }
 
         [Fact]
@@ -156,7 +157,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var expectedSql = " WHERE ( a.`status` = @_Status_1_ )";
             Assert.Equal(expectedSql, sql);
             Assert.Single(queryParameters);
-            Assert.Equal(2, queryParameters["@_Status_1_"]);
+            Assert.Equal(TestEnum.Inactive, queryParameters["@_Status_1_"]);
         }
 
         [Fact]
@@ -175,7 +176,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var sql = evaluator.EvaluateOrderBy(commandExpression, false);
 
             // Assert
-            var expectedSql = " ORDER BY a.`name`  ASC ";
+            var expectedSql = "  ORDER BY a.`name`  ASC ";
             Assert.Equal(expectedSql, sql);
         }
 
@@ -195,7 +196,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var sql = evaluator.EvaluateGroupBy(commandExpression);
 
             // Assert
-            var expectedSql = " GROUP BY a.`status` ";
+            var expectedSql = "  GROUP BY a.`status` ";
             Assert.Equal(expectedSql, sql);
         }
 
@@ -253,7 +254,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var sql = evaluator.EvaluateWhere(commandExpression, queryParameters);
 
             // Assert
-            var expectedSql = " WHERE ( a.`name` = @_Name_1_ ) OR ( a.`id` > @_Id_1_ ))";
+            var expectedSql = " WHERE ( a.`name` = @_Name_1_     ) OR ( a.`id` > @_Id_1_ ))";
             Assert.Equal(expectedSql, sql);
             Assert.Equal(2, queryParameters.Count);
             Assert.Equal("Test", queryParameters["@_Name_1_"]);
@@ -304,11 +305,11 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var sql = evaluator.EvaluateSet(commandExpression, queryParameters);
 
             // Assert
-            var expectedSql = " SET  a.`name` = @_Name_1_, a.`status` = @_Status_1_  ";
+            var expectedSql = " SET  a.`name` = @_Name_1_ , a.`status` = @_Status_1_  ";
             Assert.Equal(expectedSql, sql);
             Assert.Equal(2, queryParameters.Count);
             Assert.Equal("UpdatedName", queryParameters["@_Name_1_"]);
-            Assert.Equal(1, queryParameters["@_Status_1_"]);
+            Assert.Equal(TestEnum.Active, queryParameters["@_Status_1_"]);
         }
 
         [Fact]

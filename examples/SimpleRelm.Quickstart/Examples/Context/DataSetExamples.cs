@@ -21,7 +21,7 @@ namespace SimpleRelm.Quickstart.Examples.Context
             // Example usage to create a new blank model with minimal identifiable information and persist it
             var blankModel = exampleContext
                 .ExampleModels
-                .New(Persist: true);
+                .New(persist: true);
 
             blankModel.ModelName = "New Model";
 
@@ -36,17 +36,17 @@ namespace SimpleRelm.Quickstart.Examples.Context
                 .New(new ExampleModel
                 {
                     ModelName = "New Model",
-                }, Persist: true);
+                }, persist: true);
 
             // Example usage to find a model by ID
             var model = exampleContext
                 .ExampleModels
-                .Find(ItemId: 1);
+                .Find(itemId: 1);
 
             // Example usage to find a model by InternalId
             model = exampleContext
                 .ExampleModels
-                .Find(ItemInternalId: "some-guid-value");
+                .Find(itemInternalId: "some-guid-value");
 
             // Example usage to find a model by ModelIndex
             model = exampleContext
@@ -144,7 +144,7 @@ namespace SimpleRelm.Quickstart.Examples.Context
             // Example usage to add a single new model and persist it
             var itemsAdded = exampleContext
                 .ExampleModels
-                .Add(newModel, Persist: true);
+                .Add(newModel, persist: true);
 
             var newModels = new List<ExampleModel>
             {
@@ -167,7 +167,7 @@ namespace SimpleRelm.Quickstart.Examples.Context
             // Example usage to add multiple new models and persist them
             itemsAdded = exampleContext
                 .ExampleModels
-                .Add(newModels, Persist: true);
+                .Add(newModels, persist: true);
 
             foreach (var updateModel in newModels)
             {
@@ -194,7 +194,7 @@ namespace SimpleRelm.Quickstart.Examples.Context
             // Example usage to create a new blank model with minimal identifiable information and persist it
             var blankModel = exampleQuickContext
                 .ExampleModels
-                .New(Persist: true);
+                .New(persist: true);
 
             blankModel.ModelName = "New Model";
 
@@ -209,17 +209,17 @@ namespace SimpleRelm.Quickstart.Examples.Context
                 .New(new ExampleModel
                 {
                     ModelName = "New Model",
-                }, Persist: true);
+                }, persist: true);
 
             // Example usage to find a model by ID
             var model = exampleQuickContext
                 .ExampleModels
-                .Find(ItemId: 1);
+                .Find(itemId: 1);
 
             // Example usage to find a model by InternalId
             model = exampleQuickContext
                 .ExampleModels
-                .Find(ItemInternalId: "some-guid-value");
+                .Find(itemInternalId: "some-guid-value");
 
             // Example usage to find a model by ModelIndex
             model = exampleQuickContext
@@ -306,7 +306,7 @@ namespace SimpleRelm.Quickstart.Examples.Context
             // Example usage to add a single new model and persist it
             var itemsAdded = exampleQuickContext
                 .ExampleModels
-                .Add(newModel, Persist: true);
+                .Add(newModel, persist: true);
 
             var newModels = new List<ExampleModel>
             {
@@ -329,7 +329,7 @@ namespace SimpleRelm.Quickstart.Examples.Context
             // Example usage to add multiple new models and persist them
             itemsAdded = exampleQuickContext
                 .ExampleModels
-                .Add(newModels, Persist: true);
+                .Add(newModels, persist: true);
 
             foreach (var updateModel in newModels)
             {

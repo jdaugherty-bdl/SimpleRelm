@@ -24,14 +24,20 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmModelApartment
     path: ../SimpleRelm/Models/RelmModelApartment.cs
-    startLine: 12
+    startLine: 18
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Represents an apartment entity within the Relm data model, including user and member association information.
+  remarks: >-
+    This class provides properties for identifying the apartment and its associated user and
+        member. It is typically used in scenarios where apartment membership and user linkage are required within the
+        Relm system. Inherits from RelmModel and implements IRelmModelApartment.
+  example: []
   syntax:
     content: 'public class RelmModelApartment : RelmModel, IRelmModel, IRelmModelApartment'
     content.vb: Public Class RelmModelApartment Inherits RelmModel Implements IRelmModel, IRelmModelApartment
@@ -94,6 +100,113 @@ items:
   - SimpleRelm.Models.RelmModelApartment.SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{SimpleRelm.Models.RelmModelApartment,System.Collections.Generic.ICollection{{R}}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
   - SimpleRelm.Models.RelmModelApartment.SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{SimpleRelm.Models.RelmModelApartment,{R}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}})
   - SimpleRelm.Models.RelmModelApartment.SimpleRelm.Extensions.ModelExtensions.LoadForeignKeyField``3(SimpleRelm.Options.RelmContextOptionsBuilder,System.Linq.Expressions.Expression{System.Func{SimpleRelm.Models.RelmModelApartment,{R}}},SimpleRelm.Interfaces.IRelmDataLoader{{S}},System.Linq.Expressions.Expression{System.Func{{R},System.Object}})
+- uid: SimpleRelm.Models.RelmModelApartment.#ctor
+  commentId: M:SimpleRelm.Models.RelmModelApartment.#ctor
+  id: '#ctor'
+  parent: SimpleRelm.Models.RelmModelApartment
+  langs:
+  - csharp
+  - vb
+  name: RelmModelApartment()
+  nameWithType: RelmModelApartment.RelmModelApartment()
+  fullName: SimpleRelm.Models.RelmModelApartment.RelmModelApartment()
+  type: Constructor
+  source:
+    remote:
+      path: SimpleRelm/Models/RelmModelApartment.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: .ctor
+    path: ../SimpleRelm/Models/RelmModelApartment.cs
+    startLine: 23
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Models
+  summary: Initializes a new instance of the RelmModelApartment class.
+  example: []
+  syntax:
+    content: public RelmModelApartment()
+    content.vb: Public Sub New()
+  overload: SimpleRelm.Models.RelmModelApartment.#ctor*
+  nameWithType.vb: RelmModelApartment.New()
+  fullName.vb: SimpleRelm.Models.RelmModelApartment.New()
+  name.vb: New()
+- uid: SimpleRelm.Models.RelmModelApartment.#ctor(System.Data.DataRow,System.String)
+  commentId: M:SimpleRelm.Models.RelmModelApartment.#ctor(System.Data.DataRow,System.String)
+  id: '#ctor(System.Data.DataRow,System.String)'
+  parent: SimpleRelm.Models.RelmModelApartment
+  langs:
+  - csharp
+  - vb
+  name: RelmModelApartment(DataRow, string)
+  nameWithType: RelmModelApartment.RelmModelApartment(DataRow, string)
+  fullName: SimpleRelm.Models.RelmModelApartment.RelmModelApartment(System.Data.DataRow, string)
+  type: Constructor
+  source:
+    remote:
+      path: SimpleRelm/Models/RelmModelApartment.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: .ctor
+    path: ../SimpleRelm/Models/RelmModelApartment.cs
+    startLine: 31
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Models
+  summary: >-
+    Initializes a new instance of the RelmModelApartment class using the specified data row and optional
+
+    alternate table name.
+  example: []
+  syntax:
+    content: public RelmModelApartment(DataRow ModelData, string AlternateTableName = null)
+    parameters:
+    - id: ModelData
+      type: System.Data.DataRow
+      description: The DataRow containing the data to initialize the apartment model. Cannot be null.
+    - id: AlternateTableName
+      type: System.String
+      description: An optional table name to use instead of the default. If null, the class name is used.
+    content.vb: Public Sub New(ModelData As DataRow, AlternateTableName As String = Nothing)
+  overload: SimpleRelm.Models.RelmModelApartment.#ctor*
+  nameWithType.vb: RelmModelApartment.New(DataRow, String)
+  fullName.vb: SimpleRelm.Models.RelmModelApartment.New(System.Data.DataRow, String)
+  name.vb: New(DataRow, String)
+- uid: SimpleRelm.Models.RelmModelApartment.#ctor(SimpleRelm.Interfaces.IRelmModel)
+  commentId: M:SimpleRelm.Models.RelmModelApartment.#ctor(SimpleRelm.Interfaces.IRelmModel)
+  id: '#ctor(SimpleRelm.Interfaces.IRelmModel)'
+  parent: SimpleRelm.Models.RelmModelApartment
+  langs:
+  - csharp
+  - vb
+  name: RelmModelApartment(IRelmModel)
+  nameWithType: RelmModelApartment.RelmModelApartment(IRelmModel)
+  fullName: SimpleRelm.Models.RelmModelApartment.RelmModelApartment(SimpleRelm.Interfaces.IRelmModel)
+  type: Constructor
+  source:
+    remote:
+      path: SimpleRelm/Models/RelmModelApartment.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: .ctor
+    path: ../SimpleRelm/Models/RelmModelApartment.cs
+    startLine: 37
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Models
+  summary: Initializes a new instance of the RelmModelApartment class by copying data from the specified model.
+  example: []
+  syntax:
+    content: public RelmModelApartment(IRelmModel fromModel)
+    parameters:
+    - id: fromModel
+      type: SimpleRelm.Interfaces.IRelmModel
+      description: The source model from which to copy data. Cannot be null.
+    content.vb: Public Sub New(fromModel As IRelmModel)
+  overload: SimpleRelm.Models.RelmModelApartment.#ctor*
+  nameWithType.vb: RelmModelApartment.New(IRelmModel)
+  fullName.vb: SimpleRelm.Models.RelmModelApartment.New(SimpleRelm.Interfaces.IRelmModel)
+  name.vb: New(IRelmModel)
 - uid: SimpleRelm.Models.RelmModelApartment.ApartmentId
   commentId: P:SimpleRelm.Models.RelmModelApartment.ApartmentId
   id: ApartmentId
@@ -108,14 +221,15 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ApartmentId
     path: ../SimpleRelm/Models/RelmModelApartment.cs
-    startLine: 14
+    startLine: 42
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Gets or sets the unique identifier for the apartment.
   example: []
   syntax:
     content: >-
@@ -146,14 +260,15 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: UserId
     path: ../SimpleRelm/Models/RelmModelApartment.cs
-    startLine: 17
+    startLine: 48
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Gets or sets the unique identifier for the user.
   example: []
   syntax:
     content: >-
@@ -184,14 +299,15 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: UserEmail
     path: ../SimpleRelm/Models/RelmModelApartment.cs
-    startLine: 19
+    startLine: 54
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Gets or sets the email address associated with the user.
   example: []
   syntax:
     content: >-
@@ -222,14 +338,15 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: UserName
     path: ../SimpleRelm/Models/RelmModelApartment.cs
-    startLine: 21
+    startLine: 60
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Gets or sets the user name associated with the entity.
   example: []
   syntax:
     content: >-
@@ -260,14 +377,15 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Member
     path: ../SimpleRelm/Models/RelmModelApartment.cs
-    startLine: 24
+    startLine: 66
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Gets or sets the associated Relm member for this entity.
   example: []
   syntax:
     content: >-
@@ -298,123 +416,35 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetMemberApartment
     path: ../SimpleRelm/Models/RelmModelApartment.cs
-    startLine: 132
+    startLine: 181
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Sets the apartment membership information for the specified member and updates tracking fields as specified.
+  example: []
   syntax:
     content: public IRelmModelApartment SetMemberApartment(int MemberId, bool UpdateCreate = true)
     parameters:
     - id: MemberId
       type: System.Int32
+      description: The identifier of the member whose apartment information is to be set.
     - id: UpdateCreate
       type: System.Boolean
+      description: >-
+        true to update the creation tracking fields in addition to the last updated fields; otherwise, false. The
+            default is true.
     return:
       type: SimpleRelm.Interfaces.IRelmModelApartment
+      description: The current instance with updated membership information.
     content.vb: Public Function SetMemberApartment(MemberId As Integer, UpdateCreate As Boolean = True) As IRelmModelApartment
   overload: SimpleRelm.Models.RelmModelApartment.SetMemberApartment*
   nameWithType.vb: RelmModelApartment.SetMemberApartment(Integer, Boolean)
   fullName.vb: SimpleRelm.Models.RelmModelApartment.SetMemberApartment(Integer, Boolean)
   name.vb: SetMemberApartment(Integer, Boolean)
-- uid: SimpleRelm.Models.RelmModelApartment.#ctor
-  commentId: M:SimpleRelm.Models.RelmModelApartment.#ctor
-  id: '#ctor'
-  parent: SimpleRelm.Models.RelmModelApartment
-  langs:
-  - csharp
-  - vb
-  name: RelmModelApartment()
-  nameWithType: RelmModelApartment.RelmModelApartment()
-  fullName: SimpleRelm.Models.RelmModelApartment.RelmModelApartment()
-  type: Constructor
-  source:
-    remote:
-      path: SimpleRelm/Models/RelmModelApartment.cs
-      branch: connector_8
-      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
-    id: .ctor
-    path: ../SimpleRelm/Models/RelmModelApartment.cs
-    startLine: 141
-  assemblies:
-  - SimpleRelm
-  namespace: SimpleRelm.Models
-  syntax:
-    content: public RelmModelApartment()
-    content.vb: Public Sub New()
-  overload: SimpleRelm.Models.RelmModelApartment.#ctor*
-  nameWithType.vb: RelmModelApartment.New()
-  fullName.vb: SimpleRelm.Models.RelmModelApartment.New()
-  name.vb: New()
-- uid: SimpleRelm.Models.RelmModelApartment.#ctor(System.Data.DataRow,System.String)
-  commentId: M:SimpleRelm.Models.RelmModelApartment.#ctor(System.Data.DataRow,System.String)
-  id: '#ctor(System.Data.DataRow,System.String)'
-  parent: SimpleRelm.Models.RelmModelApartment
-  langs:
-  - csharp
-  - vb
-  name: RelmModelApartment(DataRow, string)
-  nameWithType: RelmModelApartment.RelmModelApartment(DataRow, string)
-  fullName: SimpleRelm.Models.RelmModelApartment.RelmModelApartment(System.Data.DataRow, string)
-  type: Constructor
-  source:
-    remote:
-      path: SimpleRelm/Models/RelmModelApartment.cs
-      branch: connector_8
-      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
-    id: .ctor
-    path: ../SimpleRelm/Models/RelmModelApartment.cs
-    startLine: 142
-  assemblies:
-  - SimpleRelm
-  namespace: SimpleRelm.Models
-  syntax:
-    content: public RelmModelApartment(DataRow ModelData, string AlternateTableName = null)
-    parameters:
-    - id: ModelData
-      type: System.Data.DataRow
-    - id: AlternateTableName
-      type: System.String
-    content.vb: Public Sub New(ModelData As DataRow, AlternateTableName As String = Nothing)
-  overload: SimpleRelm.Models.RelmModelApartment.#ctor*
-  nameWithType.vb: RelmModelApartment.New(DataRow, String)
-  fullName.vb: SimpleRelm.Models.RelmModelApartment.New(System.Data.DataRow, String)
-  name.vb: New(DataRow, String)
-- uid: SimpleRelm.Models.RelmModelApartment.#ctor(SimpleRelm.Interfaces.IRelmModel)
-  commentId: M:SimpleRelm.Models.RelmModelApartment.#ctor(SimpleRelm.Interfaces.IRelmModel)
-  id: '#ctor(SimpleRelm.Interfaces.IRelmModel)'
-  parent: SimpleRelm.Models.RelmModelApartment
-  langs:
-  - csharp
-  - vb
-  name: RelmModelApartment(IRelmModel)
-  nameWithType: RelmModelApartment.RelmModelApartment(IRelmModel)
-  fullName: SimpleRelm.Models.RelmModelApartment.RelmModelApartment(SimpleRelm.Interfaces.IRelmModel)
-  type: Constructor
-  source:
-    remote:
-      path: SimpleRelm/Models/RelmModelApartment.cs
-      branch: connector_8
-      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
-    id: .ctor
-    path: ../SimpleRelm/Models/RelmModelApartment.cs
-    startLine: 143
-  assemblies:
-  - SimpleRelm
-  namespace: SimpleRelm.Models
-  syntax:
-    content: public RelmModelApartment(IRelmModel fromModel)
-    parameters:
-    - id: fromModel
-      type: SimpleRelm.Interfaces.IRelmModel
-    content.vb: Public Sub New(fromModel As IRelmModel)
-  overload: SimpleRelm.Models.RelmModelApartment.#ctor*
-  nameWithType.vb: RelmModelApartment.New(IRelmModel)
-  fullName.vb: SimpleRelm.Models.RelmModelApartment.New(SimpleRelm.Interfaces.IRelmModel)
-  name.vb: New(IRelmModel)
 references:
 - uid: SimpleRelm.Models
   commentId: N:SimpleRelm.Models
@@ -8722,6 +8752,61 @@ references:
   - uid: SimpleRelm.Extensions
     name: Extensions
     href: SimpleRelm.Extensions.html
+- uid: SimpleRelm.Models.RelmModelApartment.#ctor*
+  commentId: Overload:SimpleRelm.Models.RelmModelApartment.#ctor
+  href: SimpleRelm.Models.RelmModelApartment.html#SimpleRelm_Models_RelmModelApartment__ctor
+  name: RelmModelApartment
+  nameWithType: RelmModelApartment.RelmModelApartment
+  fullName: SimpleRelm.Models.RelmModelApartment.RelmModelApartment
+  nameWithType.vb: RelmModelApartment.New
+  fullName.vb: SimpleRelm.Models.RelmModelApartment.New
+  name.vb: New
+- uid: System.Data.DataRow
+  commentId: T:System.Data.DataRow
+  parent: System.Data
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.data.datarow
+  name: DataRow
+  nameWithType: DataRow
+  fullName: System.Data.DataRow
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Data
+  commentId: N:System.Data
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Data
+  nameWithType: System.Data
+  fullName: System.Data
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Data
+    name: Data
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.data
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Data
+    name: Data
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.data
 - uid: SimpleRelm.Models.RelmModelApartment.ApartmentId*
   commentId: Overload:SimpleRelm.Models.RelmModelApartment.ApartmentId
   href: SimpleRelm.Models.RelmModelApartment.html#SimpleRelm_Models_RelmModelApartment_ApartmentId
@@ -8735,17 +8820,6 @@ references:
   name: ApartmentId
   nameWithType: IRelmModelApartment.ApartmentId
   fullName: SimpleRelm.Interfaces.IRelmModelApartment.ApartmentId
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String
 - uid: SimpleRelm.Models.RelmModelApartment.UserId*
   commentId: Overload:SimpleRelm.Models.RelmModelApartment.UserId
   href: SimpleRelm.Models.RelmModelApartment.html#SimpleRelm_Models_RelmModelApartment_UserId
@@ -8833,47 +8907,3 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
-- uid: SimpleRelm.Models.RelmModelApartment.#ctor*
-  commentId: Overload:SimpleRelm.Models.RelmModelApartment.#ctor
-  href: SimpleRelm.Models.RelmModelApartment.html#SimpleRelm_Models_RelmModelApartment__ctor
-  name: RelmModelApartment
-  nameWithType: RelmModelApartment.RelmModelApartment
-  fullName: SimpleRelm.Models.RelmModelApartment.RelmModelApartment
-  nameWithType.vb: RelmModelApartment.New
-  fullName.vb: SimpleRelm.Models.RelmModelApartment.New
-  name.vb: New
-- uid: System.Data.DataRow
-  commentId: T:System.Data.DataRow
-  parent: System.Data
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.data.datarow
-  name: DataRow
-  nameWithType: DataRow
-  fullName: System.Data.DataRow
-- uid: System.Data
-  commentId: N:System.Data
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Data
-  nameWithType: System.Data
-  fullName: System.Data
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Data
-    name: Data
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.data
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Data
-    name: Data
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.data

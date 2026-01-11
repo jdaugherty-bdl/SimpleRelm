@@ -19,7 +19,7 @@ namespace SimpleRelm.Tests.Models.RelmContext_Tests
             var context = new ComplexTestContext(optionsBuilder);
 
             // Act
-            bool result = context.HasDataSet<ComplexTestModel>();  // Replace YourDataSetType with the actual type
+            bool result = context.HasDataSet<ComplexTestModel>();
 
             // Assert
             Assert.True(result);
@@ -33,7 +33,7 @@ namespace SimpleRelm.Tests.Models.RelmContext_Tests
             var context = new RelmContext(optionsBuilder, autoOpenConnection: false);
 
             // Act
-            bool result = context.HasDataSet<ComplexTestModel>(throwException: false);  // Replace YourOtherDataSetType with the actual type
+            bool result = context.HasDataSet<ComplexTestModel>(throwException: false);
 
             // Assert
             Assert.False(result);
@@ -48,7 +48,7 @@ namespace SimpleRelm.Tests.Models.RelmContext_Tests
             // Assuming you have a way to attach a dataset of type "YourDataSetType"
 
             // Act
-            bool result = context.HasDataSet(typeof(ComplexTestModel));  // Replace YourDataSetType with the actual type
+            bool result = context.HasDataSet(typeof(ComplexTestModel));
 
             // Assert
             Assert.True(result);
@@ -62,7 +62,7 @@ namespace SimpleRelm.Tests.Models.RelmContext_Tests
             var context = new RelmContext(optionsBuilder, autoOpenConnection: false);
 
             // Act
-            bool result = context.HasDataSet(typeof(ComplexTestModel), throwException: false);  // Replace YourOtherDataSetType with the actual type
+            bool result = context.HasDataSet(typeof(ComplexTestModel), throwException: false);
 
             // Assert
             Assert.False(result);

@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Enum RelmContextOptionsBuilder.OptionsBuilderTypes | SimpleRelm ">
       
-      
+      <meta name="description" content="Specifies the types of options that can be used to configure a database context using an options builder.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/jdaugherty-bdl/SimpleRelm/new/connector_8/apiSpec/new?filename=SimpleRelm_Options_RelmContextOptionsBuilder_OptionsBuilderTypes.md&amp;value=---%0Auid%3A%20SimpleRelm.Options.RelmContextOptionsBuilder.OptionsBuilderTypes%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/jdaugherty-bdl/SimpleRelm/new/master/apiSpec/new?filename=SimpleRelm_Options_RelmContextOptionsBuilder_OptionsBuilderTypes.md&amp;value=---%0Auid%3A%20SimpleRelm.Options.RelmContextOptionsBuilder.OptionsBuilderTypes%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -90,7 +90,7 @@
 
 
   <h1 id="SimpleRelm_Options_RelmContextOptionsBuilder_OptionsBuilderTypes" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.OptionsBuilderTypes" class="text-break">
-Enum RelmContextOptionsBuilder.OptionsBuilderTypes  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L17"><i class="bi bi-code-slash"></i></a>
+Enum RelmContextOptionsBuilder.OptionsBuilderTypes  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -98,7 +98,8 @@ Enum RelmContextOptionsBuilder.OptionsBuilderTypes  <a class="header-action link
   <dl><dt>Assembly</dt><dd>SimpleRelm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Specifies the types of options that can be used to configure a database context using an options builder.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -118,21 +119,29 @@ Enum RelmContextOptionsBuilder.OptionsBuilderTypes  <a class="header-action link
   <dl class="parameters">
     <dt id="SimpleRelm_Options_RelmContextOptionsBuilder_OptionsBuilderTypes_ConnectionString"><code>ConnectionString = 0</code></dt>
   
-  <dd></dd>
+  <dd><p>Sets the option builder connection type to use a raw connection string.</p>
+</dd>
     <dt id="SimpleRelm_Options_RelmContextOptionsBuilder_OptionsBuilderTypes_NamedConnectionString"><code>NamedConnectionString = 1</code></dt>
   
-  <dd></dd>
+  <dd><p>Sets the option builder connection type to use a named connection string.</p>
+</dd>
     <dt id="SimpleRelm_Options_RelmContextOptionsBuilder_OptionsBuilderTypes_OpenConnection"><code>OpenConnection = 2</code></dt>
   
-  <dd></dd>
+  <dd><p>Sets the option builder connection type to use an open connection.</p>
+</dd>
   </dl>
 
 
+  <h2 id="SimpleRelm_Options_RelmContextOptionsBuilder_OptionsBuilderTypes_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Use this enumeration to indicate how the options builder should obtain or interpret
+connection information when configuring a database context. The selected value determines whether a raw
+connection string, a named connection string, or an existing open connection is used.</p>
+</div>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L17" class="edit-link">Edit this page</a>
+          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L32" class="edit-link">Edit this page</a>
         </div>
 
 

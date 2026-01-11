@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class RelmExecutionCommand | SimpleRelm ">
       
-      
+      <meta name="description" content="Represents a command and its associated expression for execution within the Relm framework, supporting additional and child commands for complex execution scenarios.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/jdaugherty-bdl/SimpleRelm/new/connector_8/apiSpec/new?filename=SimpleRelm_Models_RelmExecutionCommand.md&amp;value=---%0Auid%3A%20SimpleRelm.Models.RelmExecutionCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/jdaugherty-bdl/SimpleRelm/new/master/apiSpec/new?filename=SimpleRelm_Models_RelmExecutionCommand.md&amp;value=---%0Auid%3A%20SimpleRelm.Models.RelmExecutionCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="SimpleRelm_Models_RelmExecutionCommand" data-uid="SimpleRelm.Models.RelmExecutionCommand" class="text-break">
-Class RelmExecutionCommand  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmExecutionCommand.cs/#L17"><i class="bi bi-code-slash"></i></a>
+Class RelmExecutionCommand  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,9 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
   <dl><dt>Assembly</dt><dd>SimpleRelm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Represents a command and its associated expression for execution within the Relm framework, supporting
+additional and child commands for complex execution scenarios.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -152,6 +154,13 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 
 
 
+  <h2 id="SimpleRelm_Models_RelmExecutionCommand_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>A RelmExecutionCommand encapsulates a primary command and expression, and can aggregate
+additional related commands to support batch or hierarchical execution patterns. This class is typically used to
+construct and manage command trees or sequences for advanced data operations, such as those involving foreign
+key navigation or entity relationships. Thread safety is not guaranteed; if used concurrently, external
+synchronization is required.</p>
+</div>
 
 
   <h2 class="section" id="constructors">Constructors
@@ -162,10 +171,11 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 
   <h3 id="SimpleRelm_Models_RelmExecutionCommand__ctor" data-uid="SimpleRelm.Models.RelmExecutionCommand.#ctor">
   RelmExecutionCommand()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmExecutionCommand.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmExecutionCommand class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -188,10 +198,11 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 
   <h3 id="SimpleRelm_Models_RelmExecutionCommand__ctor_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression_" data-uid="SimpleRelm.Models.RelmExecutionCommand.#ctor(SimpleRelm.Enums.Commands.Command,System.Linq.Expressions.Expression)">
   RelmExecutionCommand(Command, Expression)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmExecutionCommand.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L72"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmExecutionCommand class with the specified command and expression.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -201,9 +212,11 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>command</code> <a class="xref" href="SimpleRelm.Enums.Commands.html">Commands</a>.<a class="xref" href="SimpleRelm.Enums.Commands.Command.html">Command</a></dt>
-    <dd></dd>
+    <dd><p>The command to be executed as part of the execution command. Cannot be null.</p>
+</dd>
     <dt><code>expression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
-    <dd></dd>
+    <dd><p>The expression associated with the execution command. Cannot be null.</p>
+</dd>
   </dl>
 
 
@@ -225,10 +238,11 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 
   <h3 id="SimpleRelm_Models_RelmExecutionCommand_AdditionalCommandCount" data-uid="SimpleRelm.Models.RelmExecutionCommand.AdditionalCommandCount">
   AdditionalCommandCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmExecutionCommand.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the number of additional commands associated with this instance.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -252,14 +266,111 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 
 
 
+  <a id="SimpleRelm_Models_RelmExecutionCommand_ChildCommandCount_" data-uid="SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmExecutionCommand_ChildCommandCount" data-uid="SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount">
+  ChildCommandCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the number of child commands associated with this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ChildCommandCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmExecutionCommand_ExecutionCommand_" data-uid="SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmExecutionCommand_ExecutionCommand" data-uid="SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand">
+  ExecutionCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the command that initiates execution for this operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Commands.Command ExecutionCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="SimpleRelm.Enums.Commands.html">Commands</a>.<a class="xref" href="SimpleRelm.Enums.Commands.Command.html">Command</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="SimpleRelm_Models_RelmExecutionCommand_ExecutionExpression_" data-uid="SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression*"></a>
+
+  <h3 id="SimpleRelm_Models_RelmExecutionCommand_ExecutionExpression" data-uid="SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression">
+  ExecutionExpression
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the expression that represents the execution logic for this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Expression ExecutionExpression { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="SimpleRelm_Models_RelmExecutionCommand_InitialCommand_" data-uid="SimpleRelm.Models.RelmExecutionCommand.InitialCommand*"></a>
 
   <h3 id="SimpleRelm_Models_RelmExecutionCommand_InitialCommand" data-uid="SimpleRelm.Models.RelmExecutionCommand.InitialCommand">
   InitialCommand
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmExecutionCommand.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the command that is executed when the associated component is initialized.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -287,10 +398,11 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 
   <h3 id="SimpleRelm_Models_RelmExecutionCommand_InitialExpression" data-uid="SimpleRelm.Models.RelmExecutionCommand.InitialExpression">
   InitialExpression
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmExecutionCommand.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the initial expression used to define the starting state or value for this instance.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -322,10 +434,11 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 
   <h3 id="SimpleRelm_Models_RelmExecutionCommand_AddAdditionalCommand_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression_" data-uid="SimpleRelm.Models.RelmExecutionCommand.AddAdditionalCommand(SimpleRelm.Enums.Commands.Command,System.Linq.Expressions.Expression)">
   AddAdditionalCommand(Command, Expression)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmExecutionCommand.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L86"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds an additional command and its associated expression to the current execution command sequence.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -335,15 +448,18 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>command</code> <a class="xref" href="SimpleRelm.Enums.Commands.html">Commands</a>.<a class="xref" href="SimpleRelm.Enums.Commands.Command.html">Command</a></dt>
-    <dd></dd>
+    <dd><p>The command to add to the execution sequence. Cannot be null.</p>
+</dd>
     <dt><code>expression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
-    <dd></dd>
+    <dd><p>The expression associated with the command. Cannot be null.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="SimpleRelm.Models.RelmExecutionCommand.html">RelmExecutionCommand</a></dt>
-    <dd></dd>
+    <dd><p>The current <a class="xref" href="SimpleRelm.Models.RelmExecutionCommand.html">RelmExecutionCommand</a> instance with the additional command included.</p>
+</dd>
   </dl>
 
 
@@ -352,6 +468,10 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 
 
 
+  <h4 class="section" id="SimpleRelm_Models_RelmExecutionCommand_AddAdditionalCommand_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method enables fluent chaining by returning the same instance after adding the
+command and expression.</p>
+</div>
 
 
 
@@ -360,10 +480,12 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 
   <h3 id="SimpleRelm_Models_RelmExecutionCommand_AddAdditionalCommand__1_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression_System_Func___0_System_Object___" data-uid="SimpleRelm.Models.RelmExecutionCommand.AddAdditionalCommand``1(SimpleRelm.Enums.Commands.Command,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
   AddAdditionalCommand&lt;T&gt;(Command, Expression&lt;Func&lt;T, object&gt;&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmExecutionCommand.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L101"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds an additional command to the execution pipeline using a strongly typed expression to specify the target
+property or member.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -373,21 +495,25 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>command</code> <a class="xref" href="SimpleRelm.Enums.Commands.html">Commands</a>.<a class="xref" href="SimpleRelm.Enums.Commands.Command.html">Command</a></dt>
-    <dd></dd>
+    <dd><p>The command to add to the execution pipeline.</p>
+</dd>
     <dt><code>expression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;T, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</dt>
-    <dd></dd>
+    <dd><p>An expression that identifies the property or member of type T to which the command applies.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="SimpleRelm.Models.RelmExecutionCommand.html">RelmExecutionCommand</a></dt>
-    <dd></dd>
+    <dd><p>The current <a class="xref" href="SimpleRelm.Models.RelmExecutionCommand.html">RelmExecutionCommand</a> instance, enabling method chaining.</p>
+</dd>
   </dl>
 
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
     <dt><code>T</code></dt>
-    <dd></dd>
+    <dd><p>The type of the object that contains the member referenced by the expression.</p>
+</dd>
   </dl>
 
 
@@ -403,10 +529,11 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 
   <h3 id="SimpleRelm_Models_RelmExecutionCommand_GetAdditionalCommands" data-uid="SimpleRelm.Models.RelmExecutionCommand.GetAdditionalCommands">
   GetAdditionalCommands()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmExecutionCommand.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the list of additional execution commands associated with this instance.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -417,7 +544,9 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="SimpleRelm.Models.RelmExecutionCommand.html">RelmExecutionCommand</a>&gt;</dt>
-    <dd></dd>
+    <dd><p>A list of <a class="xref" href="SimpleRelm.Models.RelmExecutionCommand.html">RelmExecutionCommand</a> objects representing additional commands. The list may be empty
+if no additional commands are present.</p>
+</dd>
   </dl>
 
 
@@ -434,10 +563,12 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 
   <h3 id="SimpleRelm_Models_RelmExecutionCommand_GetForeignKeyNavigationOptions__1_System_Collections_Generic_ICollection___0__" data-uid="SimpleRelm.Models.RelmExecutionCommand.GetForeignKeyNavigationOptions``1(System.Collections.Generic.ICollection{``0})">
   GetForeignKeyNavigationOptions&lt;T&gt;(ICollection&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmExecutionCommand.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L133"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Retrieves navigation and foreign key mapping options for a collection of entities, enabling resolution of
+relationships between the provided items and their related entities.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -447,19 +578,23 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>_items</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
-    <dd></dd>
+    <dd><p>The collection of entities for which to resolve foreign key navigation options. Cannot be null.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="SimpleRelm.RelmInternal.Models.ForeignKeyNavigationOptions.html">ForeignKeyNavigationOptions</a></dt>
-    <dd></dd>
+    <dd><p>A ForeignKeyNavigationOptions instance containing metadata about the navigation properties, foreign key
+properties, and primary key values for the specified collection.</p>
+</dd>
   </dl>
 
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
     <dt><code>T</code></dt>
-    <dd></dd>
+    <dd><p>The type of the entities in the collection for which foreign key navigation options are to be determined.</p>
+</dd>
   </dl>
 
 
@@ -467,7 +602,25 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 
 
 
+  <h4 class="section" id="SimpleRelm_Models_RelmExecutionCommand_GetForeignKeyNavigationOptions__1_System_Collections_Generic_ICollection___0___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method analyzes the provided collection and its type metadata to determine the
+appropriate navigation and foreign key properties. It supports both principal and dependent entity
+configurations, and will throw exceptions if required attributes or keys are missing. The returned options
+can be used to facilitate relationship resolution in data access scenarios.</p>
+</div>
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>Thrown if the initial expression is not a lambda expression in the form of 'x =&gt; x.PropertyName'.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if no primary keys or reference keys are found for the provided collection.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.memberaccessexception">MemberAccessException</a></dt>
+    <dd><p>Thrown if the foreign key referenced by the RelmForeignKey attribute cannot be found.</p>
+</dd>
+  </dl>
 
 
 
@@ -475,7 +628,7 @@ Class RelmExecutionCommand  <a class="header-action link-secondary" title="View 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Models/RelmExecutionCommand.cs/#L17" class="edit-link">Edit this page</a>
+          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Models/RelmExecutionCommand.cs/#L26" class="edit-link">Edit this page</a>
         </div>
 
 

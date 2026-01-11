@@ -15,7 +15,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmKey.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmKey
     path: ../SimpleRelm/Attributes/RelmKey.cs

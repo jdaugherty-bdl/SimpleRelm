@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Triggers.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: TriggerTypes
     path: ../SimpleRelm/Enums/Triggers.cs
@@ -52,7 +52,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Triggers.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BeforeInsert
     path: ../SimpleRelm/Enums/Triggers.cs
@@ -84,7 +84,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Triggers.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AfterInsert
     path: ../SimpleRelm/Enums/Triggers.cs
@@ -115,7 +115,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Triggers.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BeforeUpdate
     path: ../SimpleRelm/Enums/Triggers.cs
@@ -147,7 +147,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Triggers.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AfterUpdate
     path: ../SimpleRelm/Enums/Triggers.cs
@@ -179,7 +179,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Triggers.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BeforeDelete
     path: ../SimpleRelm/Enums/Triggers.cs
@@ -211,7 +211,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Triggers.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AfterDelete
     path: ../SimpleRelm/Enums/Triggers.cs

@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmTrigger.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmTrigger
     path: ../SimpleRelm/Models/RelmTrigger.cs
@@ -71,7 +71,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmTrigger.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: TableName
     path: ../SimpleRelm/Models/RelmTrigger.cs
@@ -104,7 +104,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmTrigger.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: TriggerType
     path: ../SimpleRelm/Models/RelmTrigger.cs
@@ -137,7 +137,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmTrigger.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: TriggerBody
     path: ../SimpleRelm/Models/RelmTrigger.cs
@@ -170,7 +170,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmTrigger.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DefinerUser
     path: ../SimpleRelm/Models/RelmTrigger.cs
@@ -203,7 +203,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmTrigger.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: StatementDelimiter
     path: ../SimpleRelm/Models/RelmTrigger.cs
@@ -240,7 +240,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmTrigger.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseName
     path: ../SimpleRelm/Models/RelmTrigger.cs
@@ -273,7 +273,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmTrigger.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ToString
     path: ../SimpleRelm/Models/RelmTrigger.cs

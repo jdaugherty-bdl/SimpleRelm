@@ -21,14 +21,24 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmExecutionCommand
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-    startLine: 13
+    startLine: 21
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Defines the contract for an execution command within the Relm framework, providing access to the initial command
+
+    and expression, management of additional commands, and options for foreign key navigation.
+  remarks: >-
+    Implementations of this interface allow for the composition and extension of execution
+        commands, supporting scenarios where multiple related commands and expressions are processed together. The
+        interface also facilitates navigation of foreign key relationships for collections of items, which can be useful
+        in data access or object-relational mapping contexts.
+  example: []
   syntax:
     content: public interface IRelmExecutionCommand
     content.vb: Public Interface IRelmExecutionCommand
@@ -46,14 +56,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: InitialCommand
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-    startLine: 15
+    startLine: 26
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets the initial command that was associated with this execution command.
+  example: []
   syntax:
     content: Commands.Command InitialCommand { get; }
     parameters: []
@@ -75,14 +87,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: InitialExpression
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-    startLine: 16
+    startLine: 31
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets the initial expression associated with this execution command.
+  example: []
   syntax:
     content: Expression InitialExpression { get; }
     parameters: []
@@ -104,14 +118,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AdditionalCommandCount
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-    startLine: 17
+    startLine: 36
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets the number of additional commands associated with the current context.
+  example: []
   syntax:
     content: int AdditionalCommandCount { get; }
     parameters: []
@@ -133,23 +149,31 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddAdditionalCommand
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-    startLine: 19
+    startLine: 45
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Adds an additional execution command to the current context using the specified command and associated
+
+    expression.
+  example: []
   syntax:
     content: RelmExecutionCommand AddAdditionalCommand(Commands.Command command, Expression expression)
     parameters:
     - id: command
       type: SimpleRelm.Enums.Commands.Command
+      description: The command to be added to the execution context. Cannot be null.
     - id: expression
       type: System.Linq.Expressions.Expression
+      description: The expression associated with the command. Cannot be null.
     return:
       type: SimpleRelm.Models.RelmExecutionCommand
+      description: A <xref href="SimpleRelm.Models.RelmExecutionCommand" data-throw-if-not-resolved="false"></xref> representing the newly added command and its associated expression.
     content.vb: Function AddAdditionalCommand(command As Commands.Command, expression As Expression) As RelmExecutionCommand
   overload: SimpleRelm.Interfaces.IRelmExecutionCommand.AddAdditionalCommand*
 - uid: SimpleRelm.Interfaces.IRelmExecutionCommand.GetAdditionalCommands
@@ -166,18 +190,23 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetAdditionalCommands
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-    startLine: 20
+    startLine: 52
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves a list of additional execution commands to be processed.
+  example: []
   syntax:
     content: List<RelmExecutionCommand> GetAdditionalCommands()
     return:
       type: System.Collections.Generic.List{SimpleRelm.Models.RelmExecutionCommand}
+      description: >-
+        A list of <xref href="SimpleRelm.Models.RelmExecutionCommand" data-throw-if-not-resolved="false"></xref> objects representing additional commands. The list may be empty
+            if there are no additional commands to process.
     content.vb: Function GetAdditionalCommands() As List(Of RelmExecutionCommand)
   overload: SimpleRelm.Interfaces.IRelmExecutionCommand.GetAdditionalCommands*
 - uid: SimpleRelm.Interfaces.IRelmExecutionCommand.GetForeignKeyNavigationOptions``1(System.Collections.Generic.ICollection{``0})
@@ -194,23 +223,30 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetForeignKeyNavigationOptions
     path: ../SimpleRelm/Interfaces/IRelmExecutionCommand.cs
-    startLine: 21
+    startLine: 61
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves navigation options for foreign key relationships based on the provided collection of items.
+  example: []
   syntax:
     content: ForeignKeyNavigationOptions GetForeignKeyNavigationOptions<T>(ICollection<T> _items)
     parameters:
     - id: _items
       type: System.Collections.Generic.ICollection{{T}}
+      description: The collection of items used to determine the available foreign key navigation options. Cannot be null.
     typeParameters:
     - id: T
+      description: The type of elements contained in the collection for which to retrieve navigation options.
     return:
       type: SimpleRelm.RelmInternal.Models.ForeignKeyNavigationOptions
+      description: >-
+        A <xref href="SimpleRelm.RelmInternal.Models.ForeignKeyNavigationOptions" data-throw-if-not-resolved="false"></xref> instance representing the available navigation options for the
+            specified items.
     content.vb: Function GetForeignKeyNavigationOptions(Of T)(_items As ICollection(Of T)) As ForeignKeyNavigationOptions
   overload: SimpleRelm.Interfaces.IRelmExecutionCommand.GetForeignKeyNavigationOptions*
   nameWithType.vb: IRelmExecutionCommand.GetForeignKeyNavigationOptions(Of T)(ICollection(Of T))
@@ -365,12 +401,6 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: SimpleRelm.Interfaces.IRelmExecutionCommand.AddAdditionalCommand*
-  commentId: Overload:SimpleRelm.Interfaces.IRelmExecutionCommand.AddAdditionalCommand
-  href: SimpleRelm.Interfaces.IRelmExecutionCommand.html#SimpleRelm_Interfaces_IRelmExecutionCommand_AddAdditionalCommand_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression_
-  name: AddAdditionalCommand
-  nameWithType: IRelmExecutionCommand.AddAdditionalCommand
-  fullName: SimpleRelm.Interfaces.IRelmExecutionCommand.AddAdditionalCommand
 - uid: SimpleRelm.Models.RelmExecutionCommand
   commentId: T:SimpleRelm.Models.RelmExecutionCommand
   parent: SimpleRelm.Models
@@ -378,6 +408,12 @@ references:
   name: RelmExecutionCommand
   nameWithType: RelmExecutionCommand
   fullName: SimpleRelm.Models.RelmExecutionCommand
+- uid: SimpleRelm.Interfaces.IRelmExecutionCommand.AddAdditionalCommand*
+  commentId: Overload:SimpleRelm.Interfaces.IRelmExecutionCommand.AddAdditionalCommand
+  href: SimpleRelm.Interfaces.IRelmExecutionCommand.html#SimpleRelm_Interfaces_IRelmExecutionCommand_AddAdditionalCommand_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression_
+  name: AddAdditionalCommand
+  nameWithType: IRelmExecutionCommand.AddAdditionalCommand
+  fullName: SimpleRelm.Interfaces.IRelmExecutionCommand.AddAdditionalCommand
 - uid: SimpleRelm.Models
   commentId: N:SimpleRelm.Models
   href: SimpleRelm.html
@@ -504,6 +540,13 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: SimpleRelm.RelmInternal.Models.ForeignKeyNavigationOptions
+  commentId: T:SimpleRelm.RelmInternal.Models.ForeignKeyNavigationOptions
+  parent: SimpleRelm.RelmInternal.Models
+  href: SimpleRelm.RelmInternal.Models.ForeignKeyNavigationOptions.html
+  name: ForeignKeyNavigationOptions
+  nameWithType: ForeignKeyNavigationOptions
+  fullName: SimpleRelm.RelmInternal.Models.ForeignKeyNavigationOptions
 - uid: SimpleRelm.Interfaces.IRelmExecutionCommand.GetForeignKeyNavigationOptions*
   commentId: Overload:SimpleRelm.Interfaces.IRelmExecutionCommand.GetForeignKeyNavigationOptions
   href: SimpleRelm.Interfaces.IRelmExecutionCommand.html#SimpleRelm_Interfaces_IRelmExecutionCommand_GetForeignKeyNavigationOptions__1_System_Collections_Generic_ICollection___0__
@@ -514,41 +557,6 @@ references:
   commentId: T:System.Collections.Generic.ICollection{``0}
   parent: System.Collections.Generic
   definition: System.Collections.Generic.ICollection`1
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  name: ICollection<T>
-  nameWithType: ICollection<T>
-  fullName: System.Collections.Generic.ICollection<T>
-  nameWithType.vb: ICollection(Of T)
-  fullName.vb: System.Collections.Generic.ICollection(Of T)
-  name.vb: ICollection(Of T)
-  spec.csharp:
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-- uid: SimpleRelm.RelmInternal.Models.ForeignKeyNavigationOptions
-  commentId: T:SimpleRelm.RelmInternal.Models.ForeignKeyNavigationOptions
-  parent: SimpleRelm.RelmInternal.Models
-  href: SimpleRelm.RelmInternal.Models.ForeignKeyNavigationOptions.html
-  name: ForeignKeyNavigationOptions
-  nameWithType: ForeignKeyNavigationOptions
-  fullName: SimpleRelm.RelmInternal.Models.ForeignKeyNavigationOptions
-- uid: System.Collections.Generic.ICollection`1
-  commentId: T:System.Collections.Generic.ICollection`1
-  isExternal: true
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
   name: ICollection<T>
   nameWithType: ICollection<T>
@@ -604,3 +612,31 @@ references:
   - uid: SimpleRelm.RelmInternal.Models
     name: Models
     href: SimpleRelm.RelmInternal.Models.html
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

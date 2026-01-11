@@ -38,7 +38,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 
             // Act
             var result = evaluator.EvaluateLimit(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                Command.GroupBy,
+                Command.Limit,
                 new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Limit, Expression.Constant(limitCount, limitCount.GetType())) }));
 
             // Assert
@@ -53,7 +53,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 
             // Act
             var result = evaluator.EvaluateOffset(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                Command.GroupBy,
+                Command.Offset,
                 new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Offset, Expression.Constant(offsetCount, offsetCount.GetType())) }));
 
             // Assert

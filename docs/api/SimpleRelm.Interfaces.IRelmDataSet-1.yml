@@ -9,6 +9,8 @@ items:
   - SimpleRelm.Interfaces.IRelmDataSet`1.Add(System.Collections.Generic.ICollection{`0},System.Boolean)
   - SimpleRelm.Interfaces.IRelmDataSet`1.Add(`0)
   - SimpleRelm.Interfaces.IRelmDataSet`1.Add(`0,System.Boolean)
+  - SimpleRelm.Interfaces.IRelmDataSet`1.Count
+  - SimpleRelm.Interfaces.IRelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
   - SimpleRelm.Interfaces.IRelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   - SimpleRelm.Interfaces.IRelmDataSet`1.Entry(`0)
   - SimpleRelm.Interfaces.IRelmDataSet`1.Entry(`0,System.Boolean)
@@ -25,6 +27,7 @@ items:
   - SimpleRelm.Interfaces.IRelmDataSet`1.LoadAsDataSet
   - SimpleRelm.Interfaces.IRelmDataSet`1.New(System.Boolean)
   - SimpleRelm.Interfaces.IRelmDataSet`1.New(System.Object,System.Boolean)
+  - SimpleRelm.Interfaces.IRelmDataSet`1.Offset(System.Int32)
   - SimpleRelm.Interfaces.IRelmDataSet`1.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   - SimpleRelm.Interfaces.IRelmDataSet`1.OrderByDescending(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   - SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
@@ -49,25 +52,38 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmDataSet
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 10
+    startLine: 21
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Represents a strongly-typed, queryable, and updatable collection of data model entities, providing advanced data
+
+    loading, filtering, and manipulation capabilities.
+  remarks: >-
+    The <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> interface extends standard collection functionality with methods for
+        querying, loading, and persisting data entities. It supports fluent query composition, including filtering,
+        ordering, grouping, and referencing related entities. Implementations may provide deferred execution and
+        optimized data access patterns. This interface is typically used in data access layers to manage and interact
+        with sets of domain models.
+  example: []
   syntax:
     content: 'public interface IRelmDataSet<T> : ICollection<T>, IEnumerable<T>, IEnumerable, IRelmDataSetBase where T : IRelmModel, new()'
     typeParameters:
     - id: T
+      description: >-
+        The type of data model entities contained in the data set. Must implement IRelmModel and have a parameterless
+            constructor.
     content.vb: Public Interface IRelmDataSet(Of T As {IRelmModel, New}) Inherits ICollection(Of T), IEnumerable(Of T), IEnumerable, IRelmDataSetBase
   inheritedMembers:
   - System.Collections.Generic.ICollection{{T}}.Clear
   - System.Collections.Generic.ICollection{{T}}.Contains({T})
   - System.Collections.Generic.ICollection{{T}}.CopyTo({T}[],System.Int32)
   - System.Collections.Generic.ICollection{{T}}.Remove({T})
-  - System.Collections.Generic.ICollection{{T}}.Count
   - System.Collections.Generic.ICollection{{T}}.IsReadOnly
   - System.Collections.Generic.IEnumerable{{T}}.GetEnumerator
   extensionMethods:
@@ -121,23 +137,28 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetFieldLoader
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 12
+    startLine: 29
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Associates a custom field loader with the specified field name.
+  example: []
   syntax:
     content: IRelmFieldLoader SetFieldLoader(string fieldName, IRelmFieldLoader dataLoader)
     parameters:
     - id: fieldName
       type: System.String
+      description: The name of the field for which to set the data loader. Cannot be null or empty.
     - id: dataLoader
       type: SimpleRelm.Interfaces.IRelmFieldLoader
+      description: The field loader to associate with the specified field. Cannot be null.
     return:
       type: SimpleRelm.Interfaces.IRelmFieldLoader
+      description: The updated field loader associated with the specified field name.
     content.vb: Function SetFieldLoader(fieldName As String, dataLoader As IRelmFieldLoader) As IRelmFieldLoader
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.SetFieldLoader*
   nameWithType.vb: IRelmDataSet(Of T).SetFieldLoader(String, IRelmFieldLoader)
@@ -157,21 +178,25 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDataLoader
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 13
+    startLine: 36
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Sets the data loader to be used for retrieving data in this dataset.
+  example: []
   syntax:
     content: IRelmDataLoader<T> SetDataLoader(IRelmDataLoader<T> dataLoader)
     parameters:
     - id: dataLoader
       type: SimpleRelm.Interfaces.IRelmDataLoader{{T}}
+      description: The data loader instance that will be used to load data. Cannot be null.
     return:
       type: SimpleRelm.Interfaces.IRelmDataLoader{{T}}
+      description: The data loader instance that was set.
     content.vb: Function SetDataLoader(dataLoader As IRelmDataLoader(Of T)) As IRelmDataLoader(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.SetDataLoader*
   nameWithType.vb: IRelmDataSet(Of T).SetDataLoader(IRelmDataLoader(Of T))
@@ -191,21 +216,30 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Where
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 14
+    startLine: 46
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Filters the data set based on a specified predicate expression.
+  remarks: >-
+    The returned data set is not materialized until it is enumerated. Multiple calls to
+        this method can be chained to apply additional filters.
+  example: []
   syntax:
     content: IRelmDataSet<T> Where(Expression<Func<T, bool>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+      description: >-
+        An expression that defines the conditions each element must satisfy to be included in the returned data set.
+            Cannot be null.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: A new data set containing elements that satisfy the specified predicate.
     content.vb: Function Where(predicate As Expression(Of Func(Of T, Boolean))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Where*
   nameWithType.vb: IRelmDataSet(Of T).Where(Expression(Of Func(Of T, Boolean)))
@@ -225,23 +259,33 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 15
+    startLine: 57
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Creates a reference to a related data set based on the specified property expression.
+  remarks: >-
+    Use this method to navigate relationships between data sets, such as foreign key
+        associations. The returned data set allows further querying or operations on the related entities.
+  example: []
   syntax:
     content: IRelmDataSet<T> Reference<S>(Expression<Func<T, S>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},{S}}}
+      description: >-
+        An expression that specifies the property of type T to use as the reference. Typically a lambda expression
+            selecting a navigation property.
     typeParameters:
     - id: S
+      description: The type of the property referenced by the expression.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: An <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> representing the related data set identified by the specified property expression.
     content.vb: Function Reference(Of S)(predicate As Expression(Of Func(Of T, S))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Reference*
   nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, S)))
@@ -261,68 +305,43 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 16
+    startLine: 70
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Creates a reference to a related data set based on the specified navigation property and applies additional
+
+    constraints to the referenced set.
+  remarks: >-
+    Use this method to navigate relationships between entities and further filter the
+        referenced data set. This is useful for querying related data with custom constraints in a type-safe
+        manner.
+  example: []
   syntax:
     content: IRelmDataSet<T> Reference<S>(Expression<Func<T, S>> predicate, Expression<Func<S, object>> additionalConstraints)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},{S}}}
+      description: An expression that specifies the navigation property used to reference the related entity.
     - id: additionalConstraints
       type: System.Linq.Expressions.Expression{System.Func{{S},System.Object}}
+      description: An expression that defines additional constraints to apply to the referenced data set.
     typeParameters:
     - id: S
+      description: The type of the related entity to reference.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: An <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> representing the related data set with the specified constraints applied.
     content.vb: Function Reference(Of S)(predicate As Expression(Of Func(Of T, S)), additionalConstraints As Expression(Of Func(Of S, Object))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Reference*
   nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, S)), Expression(Of Func(Of S, Object)))
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, S)), System.Linq.Expressions.Expression(Of System.Func(Of S, Object)))
   name.vb: Reference(Of S)(Expression(Of Func(Of T, S)), Expression(Of Func(Of S, Object)))
-- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
-  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
-  id: Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
-  parent: SimpleRelm.Interfaces.IRelmDataSet`1
-  langs:
-  - csharp
-  - vb
-  name: Reference<S>(Expression<Func<T, ICollection<S>>>, Expression<Func<S, object>>)
-  nameWithType: IRelmDataSet<T>.Reference<S>(Expression<Func<T, ICollection<S>>>, Expression<Func<S, object>>)
-  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Reference<S>(System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<S>>>, System.Linq.Expressions.Expression<System.Func<S, object>>)
-  type: Method
-  source:
-    remote:
-      path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
-      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
-    id: Reference
-    path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 17
-  assemblies:
-  - SimpleRelm
-  namespace: SimpleRelm.Interfaces
-  syntax:
-    content: IRelmDataSet<T> Reference<S>(Expression<Func<T, ICollection<S>>> predicate, Expression<Func<S, object>> additionalConstraints)
-    parameters:
-    - id: predicate
-      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{S}}}}
-    - id: additionalConstraints
-      type: System.Linq.Expressions.Expression{System.Func{{S},System.Object}}
-    typeParameters:
-    - id: S
-    return:
-      type: SimpleRelm.Interfaces.IRelmDataSet`1
-    content.vb: Function Reference(Of S)(predicate As Expression(Of Func(Of T, ICollection(Of S))), additionalConstraints As Expression(Of Func(Of S, Object))) As IRelmDataSet(Of T)
-  overload: SimpleRelm.Interfaces.IRelmDataSet`1.Reference*
-  nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), Expression(Of Func(Of S, Object)))
-  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of S))), System.Linq.Expressions.Expression(Of System.Func(Of S, Object)))
-  name.vb: Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), Expression(Of Func(Of S, Object)))
 - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
   commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
   id: Reference``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
@@ -337,30 +356,98 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 18
+    startLine: 84
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Creates a reference to a related data set based on the specified navigation property and applies additional
+
+    constraints to the referenced entities.
+  remarks: >-
+    Use this method to navigate relationships between entities and to further filter the
+        referenced data set using additional property constraints. This is useful for scenarios where related data
+        must be accessed with specific filtering criteria.
+  example: []
   syntax:
     content: IRelmDataSet<T> Reference<S>(Expression<Func<T, S>> predicate, ICollection<Expression<Func<S, object>>> additionalConstraints)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},{S}}}
+      description: An expression that specifies the navigation property from the current entity to the related entity.
     - id: additionalConstraints
       type: System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{{S},System.Object}}}
+      description: >-
+        A collection of expressions that define additional constraints to apply to the referenced entities. Each
+            expression specifies a property of the related entity and a constraint to filter the results.
     typeParameters:
     - id: S
+      description: The type of the related entity to reference.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: An <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> representing the referenced data set with the applied constraints.
     content.vb: Function Reference(Of S)(predicate As Expression(Of Func(Of T, S)), additionalConstraints As ICollection(Of Expression(Of Func(Of S, Object)))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Reference*
   nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, S)), ICollection(Of Expression(Of Func(Of S, Object))))
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, S)), System.Collections.Generic.ICollection(Of System.Linq.Expressions.Expression(Of System.Func(Of S, Object))))
   name.vb: Reference(Of S)(Expression(Of Func(Of T, S)), ICollection(Of Expression(Of Func(Of S, Object))))
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+  id: Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet`1
+  langs:
+  - csharp
+  - vb
+  name: Reference<S>(Expression<Func<T, ICollection<S>>>, Expression<Func<S, object>>)
+  nameWithType: IRelmDataSet<T>.Reference<S>(Expression<Func<T, ICollection<S>>>, Expression<Func<S, object>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Reference<S>(System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<S>>>, System.Linq.Expressions.Expression<System.Func<S, object>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Interfaces/IRelmDataSet.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Reference
+    path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
+    startLine: 98
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Interfaces
+  summary: >-
+    Creates a reference to a related collection of entities, applying additional constraints to the referenced
+
+    items.
+  remarks: >-
+    Use this method to navigate and filter related collections in a type-safe manner. The
+        returned data set reflects the specified navigation and constraints, enabling further query
+        composition.
+  example: []
+  syntax:
+    content: IRelmDataSet<T> Reference<S>(Expression<Func<T, ICollection<S>>> predicate, Expression<Func<S, object>> additionalConstraints)
+    parameters:
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{S}}}}
+      description: An expression that specifies the collection navigation property on the source entity to reference.
+    - id: additionalConstraints
+      type: System.Linq.Expressions.Expression{System.Func{{S},System.Object}}
+      description: An expression that defines additional constraints or filters to apply to the referenced entities.
+    typeParameters:
+    - id: S
+      description: The type of the entities in the referenced collection.
+    return:
+      type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: >-
+        An <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> representing the referenced collection with the specified constraints
+            applied.
+    content.vb: Function Reference(Of S)(predicate As Expression(Of Func(Of T, ICollection(Of S))), additionalConstraints As Expression(Of Func(Of S, Object))) As IRelmDataSet(Of T)
+  overload: SimpleRelm.Interfaces.IRelmDataSet`1.Reference*
+  nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), Expression(Of Func(Of S, Object)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Reference(Of S)(System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of S))), System.Linq.Expressions.Expression(Of System.Func(Of S, Object)))
+  name.vb: Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), Expression(Of Func(Of S, Object)))
 - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
   commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
   id: Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
@@ -375,25 +462,44 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 19
+    startLine: 114
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Creates a reference to a related collection of entities based on the specified navigation property and
+
+    applies additional constraints to the referenced entities.
+  remarks: >-
+    Use this method to include and constrain related collections when querying or
+        manipulating the data set. This is useful for eager loading or applying filters to related entities in
+        complex queries.
+  example: []
   syntax:
     content: IRelmDataSet<T> Reference<S>(Expression<Func<T, ICollection<S>>> predicate, ICollection<Expression<Func<S, object>>> additionalConstraints)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{S}}}}
+      description: >-
+        An expression that specifies the navigation property representing the collection of related entities to
+            reference.
     - id: additionalConstraints
       type: System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{{S},System.Object}}}
+      description: >-
+        A collection of expressions that define additional constraints to apply to the referenced entities. Each
+            expression specifies a property or condition to filter or shape the referenced collection.
     typeParameters:
     - id: S
+      description: The type of the related entities in the referenced collection.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: >-
+        An <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> that represents the current data set with the specified reference and constraints
+            applied.
     content.vb: Function Reference(Of S)(predicate As Expression(Of Func(Of T, ICollection(Of S))), additionalConstraints As ICollection(Of Expression(Of Func(Of S, Object)))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Reference*
   nameWithType.vb: IRelmDataSet(Of T).Reference(Of S)(Expression(Of Func(Of T, ICollection(Of S))), ICollection(Of Expression(Of Func(Of S, Object))))
@@ -413,22 +519,28 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Find
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 20
+    startLine: 122
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves an item of type T with the specified identifier.
+  example: []
   syntax:
-    content: T Find(int ItemId)
+    content: T Find(int itemId)
     parameters:
-    - id: ItemId
+    - id: itemId
       type: System.Int32
+      description: The unique identifier of the item to locate.
     return:
       type: '{T}'
-    content.vb: Function Find(ItemId As Integer) As T
+      description: >-
+        The item of type T that matches the specified identifier, or the default value for type T if no matching
+            item is found.
+    content.vb: Function Find(itemId As Integer) As T
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Find*
   nameWithType.vb: IRelmDataSet(Of T).Find(Integer)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Find(Integer)
@@ -447,22 +559,26 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Find
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 21
+    startLine: 129
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves an item of type T that matches the specified internal identifier.
+  example: []
   syntax:
-    content: T Find(string ItemInternalId)
+    content: T Find(string itemInternalId)
     parameters:
-    - id: ItemInternalId
+    - id: itemInternalId
       type: System.String
+      description: The unique internal identifier of the item to locate. Cannot be null or empty.
     return:
       type: '{T}'
-    content.vb: Function Find(ItemInternalId As String) As T
+      description: The item of type T that matches the specified internal identifier, or null if no matching item is found.
+    content.vb: Function Find(itemInternalId As String) As T
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Find*
   nameWithType.vb: IRelmDataSet(Of T).Find(String)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Find(String)
@@ -481,18 +597,23 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 22
+    startLine: 136
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Returns the first element of a sequence, or a default value if the sequence contains no elements.
+  example: []
   syntax:
     content: T FirstOrDefault()
     return:
       type: '{T}'
+      description: >-
+        The first element in the sequence, or the default value for type <code class="typeparamref">T</code> if the sequence is
+            empty.
     content.vb: Function FirstOrDefault() As T
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault*
   nameWithType.vb: IRelmDataSet(Of T).FirstOrDefault()
@@ -511,22 +632,31 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 23
+    startLine: 145
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Returns the first element of the sequence, or the default value for type T if the sequence contains no
+
+    elements.
+  example: []
   syntax:
-    content: T FirstOrDefault(bool LoadItems)
+    content: T FirstOrDefault(bool loadItems)
     parameters:
-    - id: LoadItems
+    - id: loadItems
       type: System.Boolean
+      description: >-
+        true to load items before retrieving the first element; otherwise, false to use the current state of the
+            sequence.
     return:
       type: '{T}'
-    content.vb: Function FirstOrDefault(LoadItems As Boolean) As T
+      description: The first element of the sequence if it exists; otherwise, the default value for type T.
+    content.vb: Function FirstOrDefault(loadItems As Boolean) As T
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault*
   nameWithType.vb: IRelmDataSet(Of T).FirstOrDefault(Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).FirstOrDefault(Boolean)
@@ -545,21 +675,30 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 24
+    startLine: 154
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Returns the first element that satisfies the specified condition, or the default value for the type if no
+
+    such element is found.
+  example: []
   syntax:
     content: T FirstOrDefault(Expression<Func<T, bool>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+      description: An expression that defines the condition to test each element for. Cannot be null.
     return:
       type: '{T}'
+      description: >-
+        The first element that matches the specified predicate; or the default value for type T if no such element
+            is found.
     content.vb: Function FirstOrDefault(predicate As Expression(Of Func(Of T, Boolean))) As T
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault*
   nameWithType.vb: IRelmDataSet(Of T).FirstOrDefault(Expression(Of Func(Of T, Boolean)))
@@ -579,24 +718,36 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 25
+    startLine: 165
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Returns the first element that matches the specified predicate, or the default value for type T if no such
+
+    element is found.
+  example: []
   syntax:
-    content: T FirstOrDefault(Expression<Func<T, bool>> predicate, bool LoadItems)
+    content: T FirstOrDefault(Expression<Func<T, bool>> predicate, bool loadItems)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
-    - id: LoadItems
+      description: An expression that defines the condition to test each element for. Cannot be null.
+    - id: loadItems
       type: System.Boolean
+      description: >-
+        true to load items before retrieving the first element; otherwise, false to use the current state of the
+            sequence.
     return:
       type: '{T}'
-    content.vb: Function FirstOrDefault(predicate As Expression(Of Func(Of T, Boolean)), LoadItems As Boolean) As T
+      description: >-
+        The first element that matches the predicate, or the default value for type T if no matching element is
+            found.
+    content.vb: Function FirstOrDefault(predicate As Expression(Of Func(Of T, Boolean)), loadItems As Boolean) As T
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.FirstOrDefault*
   nameWithType.vb: IRelmDataSet(Of T).FirstOrDefault(Expression(Of Func(Of T, Boolean)), Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).FirstOrDefault(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)), Boolean)
@@ -615,18 +766,21 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Load
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 26
+    startLine: 171
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Loads the items in the data set.
+  example: []
   syntax:
     content: ICollection<T> Load()
     return:
       type: System.Collections.Generic.ICollection{{T}}
+      description: A collection of all items in the data set.
     content.vb: Function Load() As ICollection(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Load*
   nameWithType.vb: IRelmDataSet(Of T).Load()
@@ -645,21 +799,25 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Load
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 27
+    startLine: 178
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Loads a collection of items of type T, optionally including data loaders based on the specified flag.
+  example: []
   syntax:
     content: ICollection<T> Load(bool loadDataLoaders)
     parameters:
     - id: loadDataLoaders
       type: System.Boolean
+      description: true to include data loaders in the returned collection; otherwise, false to exclude them.
     return:
       type: System.Collections.Generic.ICollection{{T}}
+      description: A collection of items of type T. The collection may include data loaders if loadDataLoaders is set to true.
     content.vb: Function Load(loadDataLoaders As Boolean) As ICollection(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Load*
   nameWithType.vb: IRelmDataSet(Of T).Load(Boolean)
@@ -679,18 +837,23 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadAsDataSet
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 28
+    startLine: 185
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Loads the current data as an <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> instance for querying and manipulation.
+  example: []
   syntax:
     content: IRelmDataSet<T> LoadAsDataSet()
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: >-
+        An <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> containing the loaded data. The returned data set reflects the current
+            state of the underlying source at the time of the call.
     content.vb: Function LoadAsDataSet() As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.LoadAsDataSet*
   nameWithType.vb: IRelmDataSet(Of T).LoadAsDataSet()
@@ -709,18 +872,21 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Write
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 29
+    startLine: 191
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Writes data to the underlying destination.
+  example: []
   syntax:
     content: int Write()
     return:
       type: System.Int32
+      description: The number of rows written to the destination.
     content.vb: Function Write() As Integer
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Write*
   nameWithType.vb: IRelmDataSet(Of T).Write()
@@ -739,22 +905,26 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Entry
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 30
+    startLine: 198
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Creates an entry in the data set for the specified item.
+  example: []
   syntax:
-    content: IRelmDataSet<T> Entry(T Item)
+    content: IRelmDataSet<T> Entry(T item)
     parameters:
-    - id: Item
+    - id: item
       type: '{T}'
+      description: The item to create an entry for.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
-    content.vb: Function Entry(Item As T) As IRelmDataSet(Of T)
+      description: An <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> holding the created entry.
+    content.vb: Function Entry(item As T) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Entry*
   nameWithType.vb: IRelmDataSet(Of T).Entry(T)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Entry(T)
@@ -772,24 +942,31 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Entry
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 31
+    startLine: 207
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Creates an entry in the data set for the specified item.
+  example: []
   syntax:
-    content: IRelmDataSet<T> Entry(T Item, bool Persist = true)
+    content: IRelmDataSet<T> Entry(T item, bool persist = true)
     parameters:
-    - id: Item
+    - id: item
       type: '{T}'
-    - id: Persist
+      description: The item to create an entry for.
+    - id: persist
       type: System.Boolean
+      description: >-
+        A value indicating whether the entry should be persisted. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the entry is saved to
+            the underlying data store; otherwise, it is not persisted.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
-    content.vb: Function Entry(Item As T, Persist As Boolean = True) As IRelmDataSet(Of T)
+      description: An <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> holding the created entry.
+    content.vb: Function Entry(item As T, persist As Boolean = True) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Entry*
   nameWithType.vb: IRelmDataSet(Of T).Entry(T, Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Entry(T, Boolean)
@@ -808,21 +985,30 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OrderBy
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 32
+    startLine: 217
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Sorts the elements of the data set in ascending order according to a specified key.
+  remarks: >-
+    The ordering is stable; elements with equal keys maintain their original relative
+        order. To perform a descending sort, use the corresponding OrderByDescending method.
+  example: []
   syntax:
     content: IRelmDataSet<T> OrderBy(Expression<Func<T, object>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Object}}
+      description: >-
+        An expression that specifies the key by which to order the elements. The expression should select a property
+            or value from each element to use as the sort key.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: A new data set with the elements ordered in ascending order according to the specified key.
     content.vb: Function OrderBy(predicate As Expression(Of Func(Of T, Object))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.OrderBy*
   nameWithType.vb: IRelmDataSet(Of T).OrderBy(Expression(Of Func(Of T, Object)))
@@ -842,21 +1028,27 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OrderByDescending
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 33
+    startLine: 225
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Sorts the elements of the data set in descending order according to a specified key.
+  example: []
   syntax:
     content: IRelmDataSet<T> OrderByDescending(Expression<Func<T, object>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Object}}
+      description: >-
+        An expression that selects the key to order the elements by. The key is extracted from each element in the
+            data set.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: A new data set with the elements sorted in descending order based on the specified key.
     content.vb: Function OrderByDescending(predicate As Expression(Of Func(Of T, Object))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.OrderByDescending*
   nameWithType.vb: IRelmDataSet(Of T).OrderByDescending(Expression(Of Func(Of T, Object)))
@@ -876,21 +1068,25 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Set
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 34
+    startLine: 232
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Sets the value of the specified property for all elements in the data set.
+  example: []
   syntax:
     content: IRelmDataSet<T> Set(Expression<Func<T, T>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},{T}}}
+      description: An expression that specifies the property to set and the value to assign.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: The current data set with the updated elements.
     content.vb: Function [Set](predicate As Expression(Of Func(Of T, T))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Set*
   nameWithType.vb: IRelmDataSet(Of T).Set(Expression(Of Func(Of T, T)))
@@ -910,21 +1106,25 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GroupBy
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 35
+    startLine: 239
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Sets the "group by" clause for the data set based on the specified key selector.
+  example: []
   syntax:
     content: IRelmDataSet<T> GroupBy(Expression<Func<T, object>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Object}}
+      description: An expression that defines the key by which to group the elements.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: The current data set with the "group by" clause added.
     content.vb: Function GroupBy(predicate As Expression(Of Func(Of T, Object))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.GroupBy*
   nameWithType.vb: IRelmDataSet(Of T).GroupBy(Expression(Of Func(Of T, Object)))
@@ -944,26 +1144,142 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Limit
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 36
+    startLine: 246
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Sets the "limit" clause for the data set, restricting the number of items returned.
+  example: []
   syntax:
-    content: IRelmDataSet<T> Limit(int LimitCount)
+    content: IRelmDataSet<T> Limit(int limitCount)
     parameters:
-    - id: LimitCount
+    - id: limitCount
       type: System.Int32
+      description: The maximum number of items to include in the result set. Must be greater than zero.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
-    content.vb: Function Limit(LimitCount As Integer) As IRelmDataSet(Of T)
+      description: The current data set with the "limit" clause added.
+    content.vb: Function Limit(limitCount As Integer) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Limit*
   nameWithType.vb: IRelmDataSet(Of T).Limit(Integer)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Limit(Integer)
   name.vb: Limit(Integer)
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Offset(System.Int32)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Offset(System.Int32)
+  id: Offset(System.Int32)
+  parent: SimpleRelm.Interfaces.IRelmDataSet`1
+  langs:
+  - csharp
+  - vb
+  name: Offset(int)
+  nameWithType: IRelmDataSet<T>.Offset(int)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Offset(int)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Interfaces/IRelmDataSet.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Offset
+    path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
+    startLine: 254
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Interfaces
+  summary: >-
+    Sets the "offset" clause for the data set, specifying the number of items to skip before starting to
+
+    return items.
+  example: []
+  syntax:
+    content: IRelmDataSet<T> Offset(int offsetCount)
+    parameters:
+    - id: offsetCount
+      type: System.Int32
+      description: The number of items to skip. Must be greater than or equal to zero.
+    return:
+      type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: The current data set with the "offset" clause added.
+    content.vb: Function Offset(offsetCount As Integer) As IRelmDataSet(Of T)
+  overload: SimpleRelm.Interfaces.IRelmDataSet`1.Offset*
+  nameWithType.vb: IRelmDataSet(Of T).Offset(Integer)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Offset(Integer)
+  name.vb: Offset(Integer)
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Count
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Count
+  id: Count
+  parent: SimpleRelm.Interfaces.IRelmDataSet`1
+  langs:
+  - csharp
+  - vb
+  name: Count()
+  nameWithType: IRelmDataSet<T>.Count()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Count()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Interfaces/IRelmDataSet.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Count
+    path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
+    startLine: 260
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Interfaces
+  summary: Sets a "COUNT(*)" return column on the data set.
+  example: []
+  syntax:
+    content: IRelmDataSet<T> Count()
+    return:
+      type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: The current data set with the "count" operation added.
+    content.vb: Function Count() As IRelmDataSet(Of T)
+  overload: SimpleRelm.Interfaces.IRelmDataSet`1.Count*
+  nameWithType.vb: IRelmDataSet(Of T).Count()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Count()
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  id: Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet`1
+  langs:
+  - csharp
+  - vb
+  name: Count(Expression<Func<T, bool>>)
+  nameWithType: IRelmDataSet<T>.Count(Expression<Func<T, bool>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Count(System.Linq.Expressions.Expression<System.Func<T, bool>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Interfaces/IRelmDataSet.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Count
+    path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
+    startLine: 267
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Interfaces
+  summary: Sets a "COUNT" return column on the data set with a specified predicate.
+  example: []
+  syntax:
+    content: IRelmDataSet<T> Count(Expression<Func<T, bool>> predicate)
+    parameters:
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+      description: An expression that defines the criteria for counting items.
+    return:
+      type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: The current data set with the "count" operation added.
+    content.vb: Function Count(predicate As Expression(Of Func(Of T, Boolean))) As IRelmDataSet(Of T)
+  overload: SimpleRelm.Interfaces.IRelmDataSet`1.Count*
+  nameWithType.vb: IRelmDataSet(Of T).Count(Expression(Of Func(Of T, Boolean)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Count(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)))
+  name.vb: Count(Expression(Of Func(Of T, Boolean)))
 - uid: SimpleRelm.Interfaces.IRelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   id: DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
@@ -978,21 +1294,25 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DistinctBy
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 37
+    startLine: 274
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Sets a "DISTINCT" return column on the data set with a specified key selector.
+  example: []
   syntax:
     content: IRelmDataSet<T> DistinctBy(Expression<Func<T, object>> predicate)
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Object}}
+      description: An expression that defines the key by which to filter distinct items.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet`1
+      description: The current data set with the "distinct" operation added.
     content.vb: Function DistinctBy(predicate As Expression(Of Func(Of T, Object))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.DistinctBy*
   nameWithType.vb: IRelmDataSet(Of T).DistinctBy(Expression(Of Func(Of T, Object)))
@@ -1012,22 +1332,28 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Save
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 38
+    startLine: 282
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Saves the specified item to the underlying data store.
+  example: []
   syntax:
-    content: int Save(T Item)
+    content: int Save(T item)
     parameters:
-    - id: Item
+    - id: item
       type: '{T}'
+      description: The item to be saved. Cannot be null.
     return:
       type: System.Int32
-    content.vb: Function Save(Item As T) As Integer
+      description: >-
+        The number of records affected by the save operation. Typically returns 1 if the item was saved
+            successfully; otherwise, returns 0.
+    content.vb: Function Save(item As T) As Integer
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Save*
   nameWithType.vb: IRelmDataSet(Of T).Save(T)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Save(T)
@@ -1045,18 +1371,21 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Save
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 39
+    startLine: 288
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Saves the current changes to the underlying data store.
+  example: []
   syntax:
     content: int Save()
     return:
       type: System.Int32
+      description: The number of objects that were saved to the data store. Returns 0 if no changes were detected.
     content.vb: Function Save() As Integer
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Save*
   nameWithType.vb: IRelmDataSet(Of T).Save()
@@ -1075,22 +1404,26 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: New
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 40
+    startLine: 295
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Creates a new instance of type T, optionally persisting it.
+  example: []
   syntax:
-    content: T New(bool Persist = true)
+    content: T New(bool persist = true)
     parameters:
-    - id: Persist
+    - id: persist
       type: System.Boolean
+      description: true to persist the new instance; otherwise, false. The default is true.
     return:
       type: '{T}'
-    content.vb: Function [New](Persist As Boolean = True) As T
+      description: A new instance of type T. The instance may be persisted depending on the value of the persist parameter.
+    content.vb: Function [New](persist As Boolean = True) As T
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.New*
   nameWithType.vb: IRelmDataSet(Of T).New(Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).New(Boolean)
@@ -1109,24 +1442,35 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: New
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 41
+    startLine: 307
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Creates a new instance of type T using the specified parameters.
+  remarks: >-
+    If persist is set to false, the new instance will not be saved or committed to any
+        underlying data store. The caller is responsible for ensuring that newObjectParameters contains all
+        necessary information for constructing a valid instance of T.
+  example: []
   syntax:
-    content: T New(dynamic NewObjectParameters, bool Persist = true)
+    content: T New(dynamic newObjectParameters, bool persist = true)
     parameters:
-    - id: NewObjectParameters
+    - id: newObjectParameters
       type: dynamic
-    - id: Persist
+      description: >-
+        An object containing the parameters required to initialize the new instance. The structure and required
+            properties depend on the type T.
+    - id: persist
       type: System.Boolean
+      description: true to persist the new instance immediately; otherwise, false. The default is true.
     return:
       type: '{T}'
-    content.vb: Function [New](NewObjectParameters As Object, Persist As Boolean = True) As T
+      description: A new instance of type T initialized with the provided parameters.
+    content.vb: Function [New](newObjectParameters As Object, persist As Boolean = True) As T
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.New*
   nameWithType.vb: IRelmDataSet(Of T).New(Object, Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).New(Object, Boolean)
@@ -1145,21 +1489,25 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 42
+    startLine: 314
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Adds the specified item to the data set and returns its identifier.
+  example: []
   syntax:
     content: int Add(T item)
     parameters:
     - id: item
       type: '{T}'
+      description: The item to add to the data set.
     return:
       type: System.Int32
+      description: The identifier of the added item.
     content.vb: Function Add(item As T) As Integer
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Add*
   nameWithType.vb: IRelmDataSet(Of T).Add(T)
@@ -1178,24 +1526,31 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 43
+    startLine: 323
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Adds the specified item to the collection and optionally persists the change.
+  example: []
   syntax:
-    content: int Add(T item, bool Persist)
+    content: int Add(T item, bool persist)
     parameters:
     - id: item
       type: '{T}'
-    - id: Persist
+      description: The item to add to the collection. Cannot be null.
+    - id: persist
       type: System.Boolean
+      description: >-
+        A value indicating whether the addition should be persisted. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the change is saved;
+            otherwise, it is not.
     return:
       type: System.Int32
-    content.vb: Function Add(item As T, Persist As Boolean) As Integer
+      description: The zero-based index at which the item was added.
+    content.vb: Function Add(item As T, persist As Boolean) As Integer
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Add*
   nameWithType.vb: IRelmDataSet(Of T).Add(T, Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Add(T, Boolean)
@@ -1214,21 +1569,27 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 44
+    startLine: 331
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Adds the elements of the specified collection to the current collection.
+  example: []
   syntax:
     content: int Add(ICollection<T> items)
     parameters:
     - id: items
       type: System.Collections.Generic.ICollection{{T}}
+      description: >-
+        The collection of items to add. Cannot be null. All elements in the collection will be added in enumeration
+            order.
     return:
       type: System.Int32
+      description: The number of items successfully added to the collection.
     content.vb: Function Add(items As ICollection(Of T)) As Integer
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Add*
   nameWithType.vb: IRelmDataSet(Of T).Add(ICollection(Of T))
@@ -1248,29 +1609,62 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: ../SimpleRelm/Interfaces/IRelmDataSet.cs
-    startLine: 45
+    startLine: 340
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Adds the specified collection of items to the underlying store, optionally persisting the changes.
+  example: []
   syntax:
-    content: int Add(ICollection<T> items, bool Persist)
+    content: int Add(ICollection<T> items, bool persist)
     parameters:
     - id: items
       type: System.Collections.Generic.ICollection{{T}}
-    - id: Persist
+      description: The collection of items to add. Cannot be null or contain null elements.
+    - id: persist
       type: System.Boolean
+      description: >-
+        A value indicating whether the changes should be persisted immediately. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the items
+            are saved to the store; otherwise, the changes remain in memory until persisted.
     return:
       type: System.Int32
-    content.vb: Function Add(items As ICollection(Of T), Persist As Boolean) As Integer
+      description: The number of items successfully added to the store.
+    content.vb: Function Add(items As ICollection(Of T), persist As Boolean) As Integer
   overload: SimpleRelm.Interfaces.IRelmDataSet`1.Add*
   nameWithType.vb: IRelmDataSet(Of T).Add(ICollection(Of T), Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Add(System.Collections.Generic.ICollection(Of T), Boolean)
   name.vb: Add(ICollection(Of T), Boolean)
 references:
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1
+  commentId: T:SimpleRelm.Interfaces.IRelmDataSet`1
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html
+  name: IRelmDataSet<T>
+  nameWithType: IRelmDataSet<T>
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>
+  nameWithType.vb: IRelmDataSet(Of T)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T)
+  name.vb: IRelmDataSet(Of T)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
+    name: IRelmDataSet
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: SimpleRelm.Interfaces
   commentId: N:SimpleRelm.Interfaces
   href: SimpleRelm.html
@@ -1412,16 +1806,6 @@ references:
   - name: (
   - name: T
   - name: )
-- uid: System.Collections.Generic.ICollection{{T}}.Count
-  commentId: P:System.Collections.Generic.ICollection{`0}.Count
-  parent: System.Collections.Generic.ICollection{{T}}
-  definition: System.Collections.Generic.ICollection`1.Count
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.count
-  name: Count
-  nameWithType: ICollection<T>.Count
-  fullName: System.Collections.Generic.ICollection<T>.Count
-  nameWithType.vb: ICollection(Of T).Count
-  fullName.vb: System.Collections.Generic.ICollection(Of T).Count
 - uid: System.Collections.Generic.ICollection{{T}}.IsReadOnly
   commentId: P:System.Collections.Generic.ICollection{`0}.IsReadOnly
   parent: System.Collections.Generic.ICollection{{T}}
@@ -6285,15 +6669,6 @@ references:
   - name: (
   - name: T
   - name: )
-- uid: System.Collections.Generic.ICollection`1.Count
-  commentId: P:System.Collections.Generic.ICollection`1.Count
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.count
-  name: Count
-  nameWithType: ICollection<T>.Count
-  fullName: System.Collections.Generic.ICollection<T>.Count
-  nameWithType.vb: ICollection(Of T).Count
-  fullName.vb: System.Collections.Generic.ICollection(Of T).Count
 - uid: System.Collections.Generic.ICollection`1.IsReadOnly
   commentId: P:System.Collections.Generic.ICollection`1.IsReadOnly
   isExternal: true
@@ -11285,32 +11660,6 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
   - name: )
-- uid: SimpleRelm.Interfaces.IRelmDataSet`1
-  commentId: T:SimpleRelm.Interfaces.IRelmDataSet`1
-  parent: SimpleRelm.Interfaces
-  href: SimpleRelm.Interfaces.IRelmDataSet-1.html
-  name: IRelmDataSet<T>
-  nameWithType: IRelmDataSet<T>
-  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>
-  nameWithType.vb: IRelmDataSet(Of T)
-  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T)
-  name.vb: IRelmDataSet(Of T)
-  spec.csharp:
-  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
-    name: IRelmDataSet
-    href: SimpleRelm.Interfaces.IRelmDataSet-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: SimpleRelm.Interfaces.IRelmDataSet`1
-    name: IRelmDataSet
-    href: SimpleRelm.Interfaces.IRelmDataSet-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
 - uid: System.Linq.Expressions.Expression`1
   commentId: T:System.Linq.Expressions.Expression`1
   isExternal: true
@@ -11488,69 +11837,6 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
   - name: )
-- uid: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{S}}}}
-  commentId: T:System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}}
-  parent: System.Linq.Expressions
-  definition: System.Linq.Expressions.Expression`1
-  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
-  name: Expression<Func<T, ICollection<S>>>
-  nameWithType: Expression<Func<T, ICollection<S>>>
-  fullName: System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<S>>>
-  nameWithType.vb: Expression(Of Func(Of T, ICollection(Of S)))
-  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of S)))
-  name.vb: Expression(Of Func(Of T, ICollection(Of S)))
-  spec.csharp:
-  - uid: System.Linq.Expressions.Expression`1
-    name: Expression
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
-  - name: <
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: <
-  - name: T
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: <
-  - name: S
-  - name: '>'
-  - name: '>'
-  - name: '>'
-  spec.vb:
-  - uid: System.Linq.Expressions.Expression`1
-    name: Expression
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Func`2
-    name: Func
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.func-2
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.ICollection`1
-    name: ICollection
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: S
-  - name: )
-  - name: )
-  - name: )
 - uid: System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{{S},System.Object}}}
   commentId: T:System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}}
   parent: System.Collections.Generic
@@ -11617,6 +11903,69 @@ references:
     name: Object
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Linq.Expressions.Expression{System.Func{{T},System.Collections.Generic.ICollection{{S}}}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<Func<T, ICollection<S>>>
+  nameWithType: Expression<Func<T, ICollection<S>>>
+  fullName: System.Linq.Expressions.Expression<System.Func<T, System.Collections.Generic.ICollection<S>>>
+  nameWithType.vb: Expression(Of Func(Of T, ICollection(Of S)))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of T, System.Collections.Generic.ICollection(Of S)))
+  name.vb: Expression(Of Func(Of T, ICollection(Of S)))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: S
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: S
   - name: )
   - name: )
   - name: )
@@ -11844,6 +12193,22 @@ references:
   fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Limit
   nameWithType.vb: IRelmDataSet(Of T).Limit
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Limit
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Offset*
+  commentId: Overload:SimpleRelm.Interfaces.IRelmDataSet`1.Offset
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Offset_System_Int32_
+  name: Offset
+  nameWithType: IRelmDataSet<T>.Offset
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Offset
+  nameWithType.vb: IRelmDataSet(Of T).Offset
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Offset
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Count*
+  commentId: Overload:SimpleRelm.Interfaces.IRelmDataSet`1.Count
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count
+  name: Count
+  nameWithType: IRelmDataSet<T>.Count
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Count
+  nameWithType.vb: IRelmDataSet(Of T).Count
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Count
 - uid: SimpleRelm.Interfaces.IRelmDataSet`1.DistinctBy*
   commentId: Overload:SimpleRelm.Interfaces.IRelmDataSet`1.DistinctBy
   href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_DistinctBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___

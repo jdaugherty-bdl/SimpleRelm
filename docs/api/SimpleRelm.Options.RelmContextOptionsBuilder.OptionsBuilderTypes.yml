@@ -18,14 +18,20 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OptionsBuilderTypes
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 16
+    startLine: 31
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Specifies the types of options that can be used to configure a database context using an options builder.
+  remarks: >-
+    Use this enumeration to indicate how the options builder should obtain or interpret
+        connection information when configuring a database context. The selected value determines whether a raw
+        connection string, a named connection string, or an existing open connection is used.
+  example: []
   syntax:
     content: public enum RelmContextOptionsBuilder.OptionsBuilderTypes
     content.vb: Public Enum RelmContextOptionsBuilder.OptionsBuilderTypes
@@ -43,14 +49,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ConnectionString
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 18
+    startLine: 36
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the option builder connection type to use a raw connection string.
+  example: []
   syntax:
     content: ConnectionString = 0
     return:
@@ -69,14 +77,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: NamedConnectionString
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 19
+    startLine: 40
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the option builder connection type to use a named connection string.
+  example: []
   syntax:
     content: NamedConnectionString = 1
     return:
@@ -95,14 +105,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OpenConnection
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 20
+    startLine: 44
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the option builder connection type to use an open connection.
+  example: []
   syntax:
     content: OpenConnection = 2
     return:

@@ -14,10 +14,11 @@ namespace SimpleRelm.Tests.TestModels.DataLoaderModels
         private readonly string[]? _keyFields;
         public string[]? KeyFields => _keyFields;
 
-        public IRelmContext RelmContext => throw new NotImplementedException();
+        public IRelmContext RelmContext { get; }
 
-        public TestFieldBooleansFieldLoader(string fieldName, string[]? keyFields = null)
+        public TestFieldBooleansFieldLoader(ComplexTestContext relmContext, string fieldName, string[]? keyFields = null)
         {
+            RelmContext = relmContext;
             _fieldName = fieldName;
             _keyFields = keyFields;
         }

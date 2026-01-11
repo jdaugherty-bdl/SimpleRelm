@@ -16,14 +16,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickFieldLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmQuickFieldLoader
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickFieldLoader.cs
-    startLine: 8
+    startLine: 11
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces.RelmQuick
+  summary: Provides access to the field loading quick context for use with RELM field loaders.
+  example: []
   syntax:
     content: 'public interface IRelmQuickFieldLoader : IRelmFieldLoaderBase'
     content.vb: Public Interface IRelmQuickFieldLoader Inherits IRelmFieldLoaderBase
@@ -45,14 +47,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/RelmQuick/IRelmQuickFieldLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmContext
     path: ../SimpleRelm/Interfaces/RelmQuick/IRelmQuickFieldLoader.cs
-    startLine: 10
+    startLine: 16
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces.RelmQuick
+  summary: Gets the current quick context for Relm operations.
+  example: []
   syntax:
     content: IRelmQuickContext RelmContext { get; }
     parameters: []

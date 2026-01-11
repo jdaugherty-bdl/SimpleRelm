@@ -21,14 +21,23 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmMember
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
-    startLine: 8
+    startLine: 15
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Defines the contract for a member entity used in aparmenting within the Relm system, including identification, contact information,
+
+    and value accessors.
+  remarks: >-
+    Implementations of this interface represent individual members and provide methods to
+        retrieve and assign values of arbitrary types associated with the member. The generic value accessors enable
+        flexible storage and retrieval of member-specific data.
+  example: []
   syntax:
     content: public interface IRelmMember
     content.vb: Public Interface IRelmMember
@@ -46,14 +55,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Id
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
-    startLine: 10
+    startLine: 20
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets or sets the unique identifier for the user.
+  example: []
   syntax:
     content: long Id { get; set; }
     parameters: []
@@ -75,14 +86,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Name
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
-    startLine: 11
+    startLine: 25
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets or sets the name associated with the user.
+  example: []
   syntax:
     content: string Name { get; set; }
     parameters: []
@@ -104,14 +117,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Email
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
-    startLine: 12
+    startLine: 30
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets or sets the email address associated with the user.
+  example: []
   syntax:
     content: string Email { get; set; }
     parameters: []
@@ -133,14 +148,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Login
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
-    startLine: 13
+    startLine: 35
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets or sets the login name associated with the user or account.
+  example: []
   syntax:
     content: string Login { get; set; }
     parameters: []
@@ -162,20 +179,24 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetValue
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
-    startLine: 15
+    startLine: 42
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves the value of the specified type from the underlying source.
+  example: []
   syntax:
     content: T GetValue<T>()
     typeParameters:
     - id: T
+      description: The type of the value to retrieve.
     return:
       type: '{T}'
+      description: The value of type <code class="typeparamref">T</code> obtained from the source.
     content.vb: Function GetValue(Of T)() As T
   overload: SimpleRelm.Interfaces.IRelmMember.GetValue*
   nameWithType.vb: IRelmMember.GetValue(Of T)()
@@ -195,21 +216,25 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmMember.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetValue
     path: ../SimpleRelm/Interfaces/IRelmMember.cs
-    startLine: 16
+    startLine: 49
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Sets the value of the current object to the specified value.
+  example: []
   syntax:
     content: void SetValue<T>(T value)
     parameters:
     - id: value
       type: '{T}'
+      description: The value to assign to the current object.
     typeParameters:
     - id: T
+      description: The type of the value to set.
     content.vb: Sub SetValue(Of T)(value As T)
   overload: SimpleRelm.Interfaces.IRelmMember.SetValue*
   nameWithType.vb: IRelmMember.SetValue(Of T)(T)

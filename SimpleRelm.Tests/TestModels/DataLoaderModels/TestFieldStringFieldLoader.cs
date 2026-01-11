@@ -12,15 +12,13 @@ namespace SimpleRelm.Tests.TestModels.DataLoaderModels
         public string FieldName { get; private set; }
         public string[] KeyFields { get; private set; }
 
-        public IRelmContext RelmContext => relmContext;
-        private IRelmContext relmContext;
+        public IRelmContext RelmContext { get; }
 
-        public TestFieldStringFieldLoader(string fieldName, string[] keyFields)
+        public TestFieldStringFieldLoader(ComplexTestContext relmContext, string fieldName, string[] keyFields)
         {
+            RelmContext = relmContext;
             FieldName = fieldName;
             KeyFields = keyFields;
-
-            relmContext = new ComplexTestContext();
         }
 
         public Dictionary<S[], object> GetFieldData<S>(ICollection<S[]> keyData) where S : notnull

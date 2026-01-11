@@ -18,14 +18,23 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/Resolvers/IRelmResolver_MySQL.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmResolver_MySQL
     path: ../SimpleRelm/Interfaces/Resolvers/IRelmResolver_MySQL.cs
-    startLine: 9
+    startLine: 16
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces.Resolvers
+  summary: >-
+    Defines methods for obtaining MySQL connection string builders based on connection type, name, or raw connection
+
+    string.
+  remarks: >-
+    This interface extends IRelmResolverBase to provide MySQL-specific connection string
+        resolution. Implementations are expected to return configured MySQLConnectionStringBuilder instances for use in
+        establishing MySQL database connections.
+  example: []
   syntax:
     content: 'public interface IRelmResolver_MySQL : IRelmResolverBase'
     content.vb: Public Interface IRelmResolver_MySQL Inherits IRelmResolverBase
@@ -46,21 +55,27 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/Resolvers/IRelmResolver_MySQL.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetConnectionBuilderFromType
     path: ../SimpleRelm/Interfaces/Resolvers/IRelmResolver_MySQL.cs
-    startLine: 11
+    startLine: 24
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces.Resolvers
+  summary: Creates a new <xref href="MySql.Data.MySqlClient.MySqlConnectionStringBuilder" data-throw-if-not-resolved="false"></xref> instance configured for the specified connection type.
+  example: []
   syntax:
     content: MySqlConnectionStringBuilder GetConnectionBuilderFromType(Enum ConnectionType)
     parameters:
     - id: ConnectionType
       type: System.Enum
+      description: >-
+        An enumeration value that specifies the type of connection for which to create the connection string
+            builder. Must be a valid value recognized by the method.
     return:
       type: MySql.Data.MySqlClient.MySqlConnectionStringBuilder
+      description: A <xref href="MySql.Data.MySqlClient.MySqlConnectionStringBuilder" data-throw-if-not-resolved="false"></xref> instance configured according to the specified connection type.
     content.vb: Function GetConnectionBuilderFromType(ConnectionType As [Enum]) As MySqlConnectionStringBuilder
   overload: SimpleRelm.Interfaces.Resolvers.IRelmResolver_MySQL.GetConnectionBuilderFromType*
 - uid: SimpleRelm.Interfaces.Resolvers.IRelmResolver_MySQL.GetConnectionBuilderFromName(System.String)
@@ -77,21 +92,27 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/Resolvers/IRelmResolver_MySQL.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetConnectionBuilderFromName
     path: ../SimpleRelm/Interfaces/Resolvers/IRelmResolver_MySQL.cs
-    startLine: 12
+    startLine: 32
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces.Resolvers
+  summary: Retrieves a new <xref href="MySql.Data.MySqlClient.MySqlConnectionStringBuilder" data-throw-if-not-resolved="false"></xref> instance initialized with the specified connection string.
+  example: []
   syntax:
     content: MySqlConnectionStringBuilder GetConnectionBuilderFromName(string ConnectionString)
     parameters:
     - id: ConnectionString
       type: System.String
+      description: >-
+        The name or value of the connection string to use for initializing the connection string builder. Cannot be
+            null or empty.
     return:
       type: MySql.Data.MySqlClient.MySqlConnectionStringBuilder
+      description: A <xref href="MySql.Data.MySqlClient.MySqlConnectionStringBuilder" data-throw-if-not-resolved="false"></xref> configured with the provided connection string.
     content.vb: Function GetConnectionBuilderFromName(ConnectionString As String) As MySqlConnectionStringBuilder
   overload: SimpleRelm.Interfaces.Resolvers.IRelmResolver_MySQL.GetConnectionBuilderFromName*
   nameWithType.vb: IRelmResolver_MySQL.GetConnectionBuilderFromName(String)
@@ -111,21 +132,25 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/Resolvers/IRelmResolver_MySQL.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetConnectionBuilderFromConnectionString
     path: ../SimpleRelm/Interfaces/Resolvers/IRelmResolver_MySQL.cs
-    startLine: 13
+    startLine: 39
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces.Resolvers
+  summary: Creates a new <xref href="MySql.Data.MySqlClient.MySqlConnectionStringBuilder" data-throw-if-not-resolved="false"></xref> instance based on the specified connection string.
+  example: []
   syntax:
     content: MySqlConnectionStringBuilder GetConnectionBuilderFromConnectionString(string connectionString)
     parameters:
     - id: connectionString
       type: System.String
+      description: The connection string to parse. Must be a valid MySQL connection string.
     return:
       type: MySql.Data.MySqlClient.MySqlConnectionStringBuilder
+      description: A <xref href="MySql.Data.MySqlClient.MySqlConnectionStringBuilder" data-throw-if-not-resolved="false"></xref> initialized with the values from the specified connection string.
     content.vb: Function GetConnectionBuilderFromConnectionString(connectionString As String) As MySqlConnectionStringBuilder
   overload: SimpleRelm.Interfaces.Resolvers.IRelmResolver_MySQL.GetConnectionBuilderFromConnectionString*
   nameWithType.vb: IRelmResolver_MySQL.GetConnectionBuilderFromConnectionString(String)
@@ -228,6 +253,13 @@ references:
   name: IRelmResolverBase
   nameWithType: IRelmResolverBase
   fullName: SimpleRelm.Interfaces.Resolvers.IRelmResolverBase
+- uid: MySql.Data.MySqlClient.MySqlConnectionStringBuilder
+  commentId: T:MySql.Data.MySqlClient.MySqlConnectionStringBuilder
+  parent: MySql.Data.MySqlClient
+  isExternal: true
+  name: MySqlConnectionStringBuilder
+  nameWithType: MySqlConnectionStringBuilder
+  fullName: MySql.Data.MySqlClient.MySqlConnectionStringBuilder
 - uid: SimpleRelm.Interfaces.Resolvers.IRelmResolver_MySQL.GetConnectionBuilderFromType*
   commentId: Overload:SimpleRelm.Interfaces.Resolvers.IRelmResolver_MySQL.GetConnectionBuilderFromType
   href: SimpleRelm.Interfaces.Resolvers.IRelmResolver_MySQL.html#SimpleRelm_Interfaces_Resolvers_IRelmResolver_MySQL_GetConnectionBuilderFromType_System_Enum_
@@ -242,20 +274,6 @@ references:
   name: Enum
   nameWithType: Enum
   fullName: System.Enum
-- uid: MySql.Data.MySqlClient.MySqlConnectionStringBuilder
-  commentId: T:MySql.Data.MySqlClient.MySqlConnectionStringBuilder
-  parent: MySql.Data.MySqlClient
-  isExternal: true
-  name: MySqlConnectionStringBuilder
-  nameWithType: MySqlConnectionStringBuilder
-  fullName: MySql.Data.MySqlClient.MySqlConnectionStringBuilder
-- uid: System
-  commentId: N:System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System
-  nameWithType: System
-  fullName: System
 - uid: MySql.Data.MySqlClient
   commentId: N:MySql.Data.MySqlClient
   isExternal: true
@@ -286,6 +304,13 @@ references:
   - uid: MySql.Data.MySqlClient
     name: MySqlClient
     isExternal: true
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
 - uid: SimpleRelm.Interfaces.Resolvers.IRelmResolver_MySQL.GetConnectionBuilderFromName*
   commentId: Overload:SimpleRelm.Interfaces.Resolvers.IRelmResolver_MySQL.GetConnectionBuilderFromName
   href: SimpleRelm.Interfaces.Resolvers.IRelmResolver_MySQL.html#SimpleRelm_Interfaces_Resolvers_IRelmResolver_MySQL_GetConnectionBuilderFromName_System_String_

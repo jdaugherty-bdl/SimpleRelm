@@ -15,7 +15,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Commands
     path: ../SimpleRelm/Enums/Commands.cs

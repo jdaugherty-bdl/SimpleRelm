@@ -49,7 +49,7 @@ namespace SimpleRelm.Models
         private Dictionary<Command, List<IRelmExecutionCommand>> _commands;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RelmDefaultDataLoader"/> class.
+        /// Initializes a new instance of the <see cref="RelmDefaultDataLoader()"/> class.
         /// </summary>
         /// <remarks>This constructor performs the initial setup required for the data loader by invoking
         /// the <see cref="InitialSetup"/> method.</remarks>
@@ -59,7 +59,7 @@ namespace SimpleRelm.Models
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RelmDefaultDataLoader"/> class with the specified context
+        /// Initializes a new instance of the <see cref="RelmDefaultDataLoader()"/> class with the specified context
         /// options builder.
         /// </summary>
         /// <param name="contextOptionsBuilder">The builder used to configure options for the <see cref="RelmContext"/>.</param>

@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class RelmContextOptionsBuilder | SimpleRelm ">
       
-      
+      <meta name="description" content="Provides a builder for configuring options required to establish a connection to a relational database context. Supports multiple initialization patterns, including connection strings, named connections, and open MySQL connections.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/jdaugherty-bdl/SimpleRelm/new/connector_8/apiSpec/new?filename=SimpleRelm_Options_RelmContextOptionsBuilder.md&amp;value=---%0Auid%3A%20SimpleRelm.Options.RelmContextOptionsBuilder%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/jdaugherty-bdl/SimpleRelm/new/master/apiSpec/new?filename=SimpleRelm_Options_RelmContextOptionsBuilder.md&amp;value=---%0Auid%3A%20SimpleRelm.Options.RelmContextOptionsBuilder%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="SimpleRelm_Options_RelmContextOptionsBuilder" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder" class="text-break">
-Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L15"><i class="bi bi-code-slash"></i></a>
+Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,10 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <dl><dt>Assembly</dt><dd>SimpleRelm.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Provides a builder for configuring options required to establish a connection to a relational database context.
+Supports multiple initialization patterns, including connection strings, named connections, and open MySQL
+connections.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -146,6 +149,12 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h2 id="SimpleRelm_Options_RelmContextOptionsBuilder_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Use this class to specify database connection details such as server, database name, user
+credentials, or to provide an existing MySqlConnection or named connection. The builder validates configuration
+based on the selected connection method. Once configured, the options can be used to initialize a database
+context. This class is not thread-safe.</p>
+</div>
 
 
   <h2 class="section" id="constructors">Constructors
@@ -156,10 +165,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder__ctor" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.#ctor">
   RelmContextOptionsBuilder()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L107"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmContextOptionsBuilder class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -182,10 +192,12 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder__ctor_MySql_Data_MySqlClient_MySqlConnection_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.#ctor(MySql.Data.MySqlClient.MySqlConnection)">
   RelmContextOptionsBuilder(MySqlConnection)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L154"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmContextOptionsBuilder class using the specified MySQL database
+connection.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -195,7 +207,8 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>connection</code> <span class="xref">MySqlConnection</span></dt>
-    <dd></dd>
+    <dd><p>The MySqlConnection to use for configuring the context options. Cannot be null.</p>
+</dd>
   </dl>
 
 
@@ -213,10 +226,12 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder__ctor_MySql_Data_MySqlClient_MySqlConnection_MySql_Data_MySqlClient_MySqlTransaction_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.#ctor(MySql.Data.MySqlClient.MySqlConnection,MySql.Data.MySqlClient.MySqlTransaction)">
   RelmContextOptionsBuilder(MySqlConnection, MySqlTransaction)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L168"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmContextOptionsBuilder class using the specified MySqlConnection and
+MySqlTransaction.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -226,9 +241,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>connection</code> <span class="xref">MySqlConnection</span></dt>
-    <dd></dd>
+    <dd><p>The MySqlConnection to be used for database operations. Cannot be null.</p>
+</dd>
     <dt><code>transaction</code> <span class="xref">MySqlTransaction</span></dt>
-    <dd></dd>
+    <dd><p>The MySqlTransaction to associate with the context. Cannot be null.</p>
+</dd>
   </dl>
 
 
@@ -238,6 +255,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section" id="SimpleRelm_Options_RelmContextOptionsBuilder__ctor_MySql_Data_MySqlClient_MySqlConnection_MySql_Data_MySqlClient_MySqlTransaction__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Use this constructor to configure the context to operate within an existing MySQL
+connection and transaction. This is useful when managing connection and transaction lifetimes
+externally.</p>
+</div>
 
 
 
@@ -246,10 +268,12 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder__ctor_System_Enum_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.#ctor(System.Enum)">
   RelmContextOptionsBuilder(Enum)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L144"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmContextOptionsBuilder class using the specified connection string
+type.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -259,7 +283,9 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>connectionStringType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.enum">Enum</a></dt>
-    <dd></dd>
+    <dd><p>An enumeration value that specifies the type of connection string to use. Must be a valid enum representing
+a supported connection string type.</p>
+</dd>
   </dl>
 
 
@@ -277,10 +303,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder__ctor_System_String_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.#ctor(System.String)">
   RelmContextOptionsBuilder(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L114"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmContextOptionsBuilder class using the specified connection string.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -290,7 +317,8 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>connectionString</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The connection string used to configure the context options. Cannot be null or empty.</p>
+</dd>
   </dl>
 
 
@@ -301,6 +329,12 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if the connectionString parameter is null or empty.</p>
+</dd>
+  </dl>
 
 
 
@@ -308,10 +342,12 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder__ctor_System_String_System_String_System_String_System_String_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.#ctor(System.String,System.String,System.String,System.String)">
   RelmContextOptionsBuilder(string, string, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L130"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the RelmContextOptionsBuilder class with the specified database connection
+settings.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -321,13 +357,17 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>databaseServer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The name or network address of the database server to connect to. Cannot be null or empty.</p>
+</dd>
     <dt><code>databaseName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The name of the database to use. Cannot be null or empty.</p>
+</dd>
     <dt><code>databaseUser</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The username to use when connecting to the database. Cannot be null or empty.</p>
+</dd>
     <dt><code>databasePassword</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The password associated with the specified database user. Cannot be null or empty.</p>
+</dd>
   </dl>
 
 
@@ -349,10 +389,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_ConnectionStringType" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.ConnectionStringType">
   ConnectionStringType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the type of the connection string used by the data source.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -380,10 +421,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_DatabaseConnection" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.DatabaseConnection">
   DatabaseConnection
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L81"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the active MySQL database connection used by the application.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -411,10 +453,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_DatabaseConnectionString" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.DatabaseConnectionString">
   DatabaseConnectionString
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the connection string used to connect to the database.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -442,10 +485,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_DatabaseName" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.DatabaseName">
   DatabaseName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the name of the database associated with this instance.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -473,10 +517,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_DatabasePassword" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.DatabasePassword">
   DatabasePassword
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the password used to connect to the database.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -504,10 +549,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_DatabaseServer" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.DatabaseServer">
   DatabaseServer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the name or network address of the database server to which the application is connected.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -535,10 +581,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_DatabaseTransaction" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.DatabaseTransaction">
   DatabaseTransaction
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the current database transaction associated with the connection.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -558,6 +605,10 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section" id="SimpleRelm_Options_RelmContextOptionsBuilder_DatabaseTransaction_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Use this property to access the active MySQL transaction for executing commands
+within a transactional context. The property is null if no transaction is in progress.</p>
+</div>
 
 
 
@@ -566,10 +617,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_DatabaseUser" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.DatabaseUser">
   DatabaseUser
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the user name used to connect to the database.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -597,10 +649,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_NamedConnection" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.NamedConnection">
   NamedConnection
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the name of the connection to use for database operations.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -628,10 +681,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_OptionsBuilderType" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.OptionsBuilderType">
   OptionsBuilderType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L93"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the type of options builder used to configure options for this instance.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -663,10 +717,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_ParseConnectionDetails_System_String_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.ParseConnectionDetails(System.String)">
   ParseConnectionDetails(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L244"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L427"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Parses the specified connection details string and configures the database connection settings accordingly.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -676,7 +731,10 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>connectionDetails</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>A string containing the connection details. Must be in the format 'name=connectionString' to use a named
+connection, or 'server=serverName;database=databaseName;user=userName;password=password' to specify
+individual connection parameters.</p>
+</dd>
   </dl>
 
 
@@ -686,7 +744,23 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section" id="SimpleRelm_Options_RelmContextOptionsBuilder_ParseConnectionDetails_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The method supports two formats for specifying connection details: a named connection
+(e.g., 'name=MyConnection') or explicit connection parameters (e.g.,
+'server=localhost;database=MyDb;user=admin;password=secret'). Only one format may be used at a time.
+Additional or missing parameters will result in an exception.</p>
+</div>
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if the connectionDetails parameter is null, empty, or consists only of white-space characters.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown if the connectionDetails parameter does not match the required format or is missing required
+connection parameters.</p>
+</dd>
+  </dl>
 
 
 
@@ -694,10 +768,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_SetConnectionStringType_System_Enum_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.SetConnectionStringType(System.Enum)">
   SetConnectionStringType(Enum)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L276"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the type of the connection string using the specified enumeration value.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -707,7 +782,8 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>connectionStringType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.enum">Enum</a></dt>
-    <dd></dd>
+    <dd><p>An enumeration value that specifies the type of connection string to use. Must not be null.</p>
+</dd>
   </dl>
 
 
@@ -725,10 +801,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_SetConnectionStringType_System_Type_System_Enum_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.SetConnectionStringType(System.Type,System.Enum)">
   SetConnectionStringType(Type, Enum)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L140"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L287"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the type of the connection string to use for database operations.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -738,9 +815,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>enumType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
-    <dd></dd>
+    <dd><p>The enumeration type that defines the valid connection string types. Must be an enum type.</p>
+</dd>
     <dt><code>connectionStringType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.enum">Enum</a></dt>
-    <dd></dd>
+    <dd><p>The specific connection string type to set. Must be a defined value of <code class="paramref">enumType</code>.</p>
+</dd>
   </dl>
 
 
@@ -751,6 +830,12 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if <code class="paramref">connectionStringType</code> is not a defined value of <code class="paramref">enumType</code>.</p>
+</dd>
+  </dl>
 
 
 
@@ -758,10 +843,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_SetDatabaseConnection_MySql_Data_MySqlClient_MySqlConnection_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseConnection(MySql.Data.MySqlClient.MySqlConnection)">
   SetDatabaseConnection(MySqlConnection)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L182"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the database connection to be used by the current instance.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -771,7 +857,8 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>connection</code> <span class="xref">MySqlConnection</span></dt>
-    <dd></dd>
+    <dd><p>The open <span class="xref">MySql.Data.MySqlClient.MySqlConnection</span> to associate with this instance. The connection must not be null.</p>
+</dd>
   </dl>
 
 
@@ -781,7 +868,18 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section" id="SimpleRelm_Options_RelmContextOptionsBuilder_SetDatabaseConnection_MySql_Data_MySqlClient_MySqlConnection__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>After calling this method, the instance will use the provided connection for all
+subsequent database operations. The caller is responsible for managing the lifetime of the
+connection.</p>
+</div>
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if <code class="paramref">connection</code> is null.</p>
+</dd>
+  </dl>
 
 
 
@@ -789,10 +887,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_SetDatabaseConnectionString_System_String_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseConnectionString(System.String)">
   SetDatabaseConnectionString(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L325"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the connection string used to connect to the database.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -802,7 +901,8 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>DatabaseConnectionString</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The connection string to use for database connections. Cannot be null or empty.</p>
+</dd>
   </dl>
 
 
@@ -813,6 +913,12 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if <code class="paramref">DatabaseConnectionString</code> is null or empty.</p>
+</dd>
+  </dl>
 
 
 
@@ -820,10 +926,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_SetDatabaseName_System_String_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseName(System.String)">
   SetDatabaseName(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L227"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the name of the database to be used for the connection.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -833,7 +940,9 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>databaseName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The name of the database. Must be a non-empty string containing only alphanumeric characters, underscores
+(_), dollar signs ($), or Unicode characters in the range U+0080 to U+FFFF.</p>
+</dd>
   </dl>
 
 
@@ -844,6 +953,16 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if the databaseName parameter is null or an empty string.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown if databaseName contains invalid characters. The name must be alphanumeric and may include
+underscores (_), dollar signs ($), or Unicode characters in the range U+0080 to U+FFFF.</p>
+</dd>
+  </dl>
 
 
 
@@ -851,10 +970,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_SetDatabasePassword_System_String_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabasePassword(System.String)">
   SetDatabasePassword(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L262"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the password used to connect to the database.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -864,7 +984,8 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>databasePassword</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The password to use for authenticating the database connection. Cannot be null or empty.</p>
+</dd>
   </dl>
 
 
@@ -875,6 +996,12 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if <code class="paramref">databasePassword</code> is null or empty.</p>
+</dd>
+  </dl>
 
 
 
@@ -882,10 +1009,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_SetDatabaseServer_System_String_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseServer(System.String)">
   SetDatabaseServer(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L209"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the database server to use for establishing connections.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -895,7 +1023,8 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>databaseServer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The name or address of the database server. Cannot be null or empty.</p>
+</dd>
   </dl>
 
 
@@ -906,6 +1035,12 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if <code class="paramref">databaseServer</code> is null or empty.</p>
+</dd>
+  </dl>
 
 
 
@@ -913,10 +1048,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_SetDatabaseTransaction_MySql_Data_MySqlClient_MySqlTransaction_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseTransaction(MySql.Data.MySqlClient.MySqlTransaction)">
   SetDatabaseTransaction(MySqlTransaction)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L197"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the database transaction to be used for subsequent database operations.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -926,7 +1062,9 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>transaction</code> <span class="xref">MySqlTransaction</span></dt>
-    <dd></dd>
+    <dd><p>The MySqlTransaction instance to associate with database operations. Can be null to clear the current
+transaction.</p>
+</dd>
   </dl>
 
 
@@ -936,6 +1074,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section" id="SimpleRelm_Options_RelmContextOptionsBuilder_SetDatabaseTransaction_MySql_Data_MySqlClient_MySqlTransaction__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Use this method to specify an existing transaction for database commands. If a
+transaction is set, all subsequent operations will be executed within the context of that transaction until
+it is cleared or replaced.</p>
+</div>
 
 
 
@@ -944,10 +1087,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_SetDatabaseUser_System_String_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseUser(System.String)">
   SetDatabaseUser(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L247"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the database user name to be used for the connection.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -957,7 +1101,8 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>databaseUser</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The user name to associate with the database connection. Cannot be null or empty.</p>
+</dd>
   </dl>
 
 
@@ -968,6 +1113,12 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if <code class="paramref">databaseUser</code> is null or empty.</p>
+</dd>
+  </dl>
 
 
 
@@ -975,10 +1126,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_SetNamedConnection_System_String_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.SetNamedConnection(System.String)">
   SetNamedConnection(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L304"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the current database connection using the specified named connection string.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -988,7 +1140,8 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>namedConnection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The name of the connection string to use. Cannot be null or empty.</p>
+</dd>
   </dl>
 
 
@@ -999,6 +1152,12 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if the namedConnection parameter is null or empty.</p>
+</dd>
+  </dl>
 
 
 
@@ -1006,10 +1165,11 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
   <h3 id="SimpleRelm_Options_RelmContextOptionsBuilder_ValidateAllSettings_System_Boolean_" data-uid="SimpleRelm.Options.RelmContextOptionsBuilder.ValidateAllSettings(System.Boolean)">
   ValidateAllSettings(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L346"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Validates all required database connection settings based on the configured options builder type.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1019,13 +1179,17 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>throwExceptions</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p>true to throw an exception if a required setting is missing; false to return false instead of throwing an
+exception. The default is true.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p>true if all required settings are valid; otherwise, false if a required setting is missing and
+throwExceptions is false.</p>
+</dd>
   </dl>
 
 
@@ -1034,7 +1198,22 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 
 
 
+  <h4 class="section" id="SimpleRelm_Options_RelmContextOptionsBuilder_ValidateAllSettings_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The required settings depend on the options builder type. For example, a named
+connection string requires DatabaseConnectionString, an open connection requires DatabaseConnection, and a
+standard connection string requires DatabaseServer, DatabaseName, DatabaseUser, and
+DatabasePassword.</p>
+</div>
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if a required setting is missing and throwExceptions is true.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown if the configured connection string type is invalid.</p>
+</dd>
+  </dl>
 
 
 
@@ -1042,7 +1221,7 @@ Class RelmContextOptionsBuilder  <a class="header-action link-secondary" title="
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/connector_8/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/jdaugherty-bdl/SimpleRelm/blob/master/SimpleRelm/Options/RelmContextOptionsBuilder.cs/#L24" class="edit-link">Edit this page</a>
         </div>
 
 

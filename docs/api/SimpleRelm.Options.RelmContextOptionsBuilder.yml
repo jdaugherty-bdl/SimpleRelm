@@ -43,14 +43,26 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmContextOptionsBuilder
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 14
+    startLine: 23
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: >-
+    Provides a builder for configuring options required to establish a connection to a relational database context.
+
+    Supports multiple initialization patterns, including connection strings, named connections, and open MySQL
+
+    connections.
+  remarks: >-
+    Use this class to specify database connection details such as server, database name, user
+        credentials, or to provide an existing MySqlConnection or named connection. The builder validates configuration
+        based on the selected connection method. Once configured, the options can be used to initialize a database
+        context. This class is not thread-safe.
+  example: []
   syntax:
     content: public class RelmContextOptionsBuilder
     content.vb: Public Class RelmContextOptionsBuilder
@@ -78,14 +90,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseServer
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 23
+    startLine: 50
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Gets the name or network address of the database server to which the application is connected.
+  example: []
   syntax:
     content: public string DatabaseServer { get; }
     parameters: []
@@ -107,14 +121,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseName
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 24
+    startLine: 55
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Gets the name of the database associated with this instance.
+  example: []
   syntax:
     content: public string DatabaseName { get; }
     parameters: []
@@ -136,14 +152,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseUser
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 25
+    startLine: 60
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Gets the user name used to connect to the database.
+  example: []
   syntax:
     content: public string DatabaseUser { get; }
     parameters: []
@@ -165,14 +183,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabasePassword
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 26
+    startLine: 65
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Gets the password used to connect to the database.
+  example: []
   syntax:
     content: public string DatabasePassword { get; }
     parameters: []
@@ -194,14 +214,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseConnectionString
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 27
+    startLine: 70
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Gets the connection string used to connect to the database.
+  example: []
   syntax:
     content: public string DatabaseConnectionString { get; }
     parameters: []
@@ -223,14 +245,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: NamedConnection
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 28
+    startLine: 75
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Gets or sets the name of the connection to use for database operations.
+  example: []
   syntax:
     content: public string NamedConnection { get; set; }
     parameters: []
@@ -252,14 +276,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseConnection
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 30
+    startLine: 80
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Gets the active MySQL database connection used by the application.
+  example: []
   syntax:
     content: public MySqlConnection DatabaseConnection { get; }
     parameters: []
@@ -281,14 +307,19 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DatabaseTransaction
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 31
+    startLine: 87
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Gets the current database transaction associated with the connection.
+  remarks: >-
+    Use this property to access the active MySQL transaction for executing commands
+        within a transactional context. The property is null if no transaction is in progress.
+  example: []
   syntax:
     content: public MySqlTransaction DatabaseTransaction { get; }
     parameters: []
@@ -310,14 +341,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OptionsBuilderType
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 34
+    startLine: 92
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Gets the type of options builder used to configure options for this instance.
+  example: []
   syntax:
     content: public RelmContextOptionsBuilder.OptionsBuilderTypes OptionsBuilderType { get; }
     parameters: []
@@ -339,14 +372,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ConnectionStringType
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 37
+    startLine: 98
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Gets the type of the connection string used by the data source.
+  example: []
   syntax:
     content: public Enum ConnectionStringType { get; }
     parameters: []
@@ -368,14 +403,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 41
+    startLine: 106
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Initializes a new instance of the RelmContextOptionsBuilder class.
+  example: []
   syntax:
     content: public RelmContextOptionsBuilder()
     content.vb: Public Sub New()
@@ -397,21 +434,28 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 43
+    startLine: 113
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Initializes a new instance of the RelmContextOptionsBuilder class using the specified connection string.
+  example: []
   syntax:
     content: public RelmContextOptionsBuilder(string connectionString)
     parameters:
     - id: connectionString
       type: System.String
+      description: The connection string used to configure the context options. Cannot be null or empty.
     content.vb: Public Sub New(connectionString As String)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the connectionString parameter is null or empty.
   nameWithType.vb: RelmContextOptionsBuilder.New(String)
   fullName.vb: SimpleRelm.Options.RelmContextOptionsBuilder.New(String)
   name.vb: New(String)
@@ -429,25 +473,34 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 51
+    startLine: 129
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: >-
+    Initializes a new instance of the RelmContextOptionsBuilder class with the specified database connection
+
+    settings.
+  example: []
   syntax:
     content: public RelmContextOptionsBuilder(string databaseServer, string databaseName, string databaseUser, string databasePassword)
     parameters:
     - id: databaseServer
       type: System.String
+      description: The name or network address of the database server to connect to. Cannot be null or empty.
     - id: databaseName
       type: System.String
+      description: The name of the database to use. Cannot be null or empty.
     - id: databaseUser
       type: System.String
+      description: The username to use when connecting to the database. Cannot be null or empty.
     - id: databasePassword
       type: System.String
+      description: The password associated with the specified database user. Cannot be null or empty.
     content.vb: Public Sub New(databaseServer As String, databaseName As String, databaseUser As String, databasePassword As String)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.#ctor*
   nameWithType.vb: RelmContextOptionsBuilder.New(String, String, String, String)
@@ -467,19 +520,27 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 59
+    startLine: 143
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: >-
+    Initializes a new instance of the RelmContextOptionsBuilder class using the specified connection string
+
+    type.
+  example: []
   syntax:
     content: public RelmContextOptionsBuilder(Enum connectionStringType)
     parameters:
     - id: connectionStringType
       type: System.Enum
+      description: >-
+        An enumeration value that specifies the type of connection string to use. Must be a valid enum representing
+            a supported connection string type.
     content.vb: Public Sub New(connectionStringType As [Enum])
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.#ctor*
   nameWithType.vb: RelmContextOptionsBuilder.New(Enum)
@@ -499,19 +560,25 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 64
+    startLine: 153
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: >-
+    Initializes a new instance of the RelmContextOptionsBuilder class using the specified MySQL database
+
+    connection.
+  example: []
   syntax:
     content: public RelmContextOptionsBuilder(MySqlConnection connection)
     parameters:
     - id: connection
       type: MySql.Data.MySqlClient.MySqlConnection
+      description: The MySqlConnection to use for configuring the context options. Cannot be null.
     content.vb: Public Sub New(connection As MySqlConnection)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.#ctor*
   nameWithType.vb: RelmContextOptionsBuilder.New(MySqlConnection)
@@ -531,21 +598,32 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 69
+    startLine: 167
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: >-
+    Initializes a new instance of the RelmContextOptionsBuilder class using the specified MySqlConnection and
+
+    MySqlTransaction.
+  remarks: >-
+    Use this constructor to configure the context to operate within an existing MySQL
+        connection and transaction. This is useful when managing connection and transaction lifetimes
+        externally.
+  example: []
   syntax:
     content: public RelmContextOptionsBuilder(MySqlConnection connection, MySqlTransaction transaction)
     parameters:
     - id: connection
       type: MySql.Data.MySqlClient.MySqlConnection
+      description: The MySqlConnection to be used for database operations. Cannot be null.
     - id: transaction
       type: MySql.Data.MySqlClient.MySqlTransaction
+      description: The MySqlTransaction to associate with the context. Cannot be null.
     content.vb: Public Sub New(connection As MySqlConnection, transaction As MySqlTransaction)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.#ctor*
   nameWithType.vb: RelmContextOptionsBuilder.New(MySqlConnection, MySqlTransaction)
@@ -565,21 +643,32 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseConnection
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 75
+    startLine: 181
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the database connection to be used by the current instance.
+  remarks: >-
+    After calling this method, the instance will use the provided connection for all
+        subsequent database operations. The caller is responsible for managing the lifetime of the
+        connection.
+  example: []
   syntax:
     content: public void SetDatabaseConnection(MySqlConnection connection)
     parameters:
     - id: connection
       type: MySql.Data.MySqlClient.MySqlConnection
+      description: The open <xref href="MySql.Data.MySqlClient.MySqlConnection" data-throw-if-not-resolved="false"></xref> to associate with this instance. The connection must not be null.
     content.vb: Public Sub SetDatabaseConnection(connection As MySqlConnection)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseConnection*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">connection</code> is null.
 - uid: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseTransaction(MySql.Data.MySqlClient.MySqlTransaction)
   commentId: M:SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseTransaction(MySql.Data.MySqlClient.MySqlTransaction)
   id: SetDatabaseTransaction(MySql.Data.MySqlClient.MySqlTransaction)
@@ -594,19 +683,28 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseTransaction
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 82
+    startLine: 196
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the database transaction to be used for subsequent database operations.
+  remarks: >-
+    Use this method to specify an existing transaction for database commands. If a
+        transaction is set, all subsequent operations will be executed within the context of that transaction until
+        it is cleared or replaced.
+  example: []
   syntax:
     content: public void SetDatabaseTransaction(MySqlTransaction transaction)
     parameters:
     - id: transaction
       type: MySql.Data.MySqlClient.MySqlTransaction
+      description: >-
+        The MySqlTransaction instance to associate with database operations. Can be null to clear the current
+            transaction.
     content.vb: Public Sub SetDatabaseTransaction(transaction As MySqlTransaction)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseTransaction*
 - uid: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseServer(System.String)
@@ -623,21 +721,28 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseServer
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 89
+    startLine: 208
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the database server to use for establishing connections.
+  example: []
   syntax:
     content: public void SetDatabaseServer(string databaseServer)
     parameters:
     - id: databaseServer
       type: System.String
+      description: The name or address of the database server. Cannot be null or empty.
     content.vb: Public Sub SetDatabaseServer(databaseServer As String)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseServer*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">databaseServer</code> is null or empty.
   nameWithType.vb: RelmContextOptionsBuilder.SetDatabaseServer(String)
   fullName.vb: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseServer(String)
   name.vb: SetDatabaseServer(String)
@@ -655,21 +760,35 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseName
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 99
+    startLine: 226
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the name of the database to be used for the connection.
+  example: []
   syntax:
     content: public void SetDatabaseName(string databaseName)
     parameters:
     - id: databaseName
       type: System.String
+      description: >-
+        The name of the database. Must be a non-empty string containing only alphanumeric characters, underscores
+            (_), dollar signs ($), or Unicode characters in the range U+0080 to U+FFFF.
     content.vb: Public Sub SetDatabaseName(databaseName As String)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseName*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the databaseName parameter is null or an empty string.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: >-
+      Thrown if databaseName contains invalid characters. The name must be alphanumeric and may include
+          underscores (_), dollar signs ($), or Unicode characters in the range U+0080 to U+FFFF.
   nameWithType.vb: RelmContextOptionsBuilder.SetDatabaseName(String)
   fullName.vb: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseName(String)
   name.vb: SetDatabaseName(String)
@@ -687,21 +806,28 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseUser
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 114
+    startLine: 246
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the database user name to be used for the connection.
+  example: []
   syntax:
     content: public void SetDatabaseUser(string databaseUser)
     parameters:
     - id: databaseUser
       type: System.String
+      description: The user name to associate with the database connection. Cannot be null or empty.
     content.vb: Public Sub SetDatabaseUser(databaseUser As String)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseUser*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">databaseUser</code> is null or empty.
   nameWithType.vb: RelmContextOptionsBuilder.SetDatabaseUser(String)
   fullName.vb: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseUser(String)
   name.vb: SetDatabaseUser(String)
@@ -719,21 +845,28 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabasePassword
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 124
+    startLine: 261
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the password used to connect to the database.
+  example: []
   syntax:
     content: public void SetDatabasePassword(string databasePassword)
     parameters:
     - id: databasePassword
       type: System.String
+      description: The password to use for authenticating the database connection. Cannot be null or empty.
     content.vb: Public Sub SetDatabasePassword(databasePassword As String)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabasePassword*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">databasePassword</code> is null or empty.
   nameWithType.vb: RelmContextOptionsBuilder.SetDatabasePassword(String)
   fullName.vb: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabasePassword(String)
   name.vb: SetDatabasePassword(String)
@@ -751,19 +884,22 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetConnectionStringType
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 134
+    startLine: 275
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the type of the connection string using the specified enumeration value.
+  example: []
   syntax:
     content: public void SetConnectionStringType(Enum connectionStringType)
     parameters:
     - id: connectionStringType
       type: System.Enum
+      description: An enumeration value that specifies the type of connection string to use. Must not be null.
     content.vb: Public Sub SetConnectionStringType(connectionStringType As [Enum])
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.SetConnectionStringType*
 - uid: SimpleRelm.Options.RelmContextOptionsBuilder.SetConnectionStringType(System.Type,System.Enum)
@@ -780,23 +916,31 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetConnectionStringType
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 139
+    startLine: 286
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the type of the connection string to use for database operations.
+  example: []
   syntax:
     content: public void SetConnectionStringType(Type enumType, Enum connectionStringType)
     parameters:
     - id: enumType
       type: System.Type
+      description: The enumeration type that defines the valid connection string types. Must be an enum type.
     - id: connectionStringType
       type: System.Enum
+      description: The specific connection string type to set. Must be a defined value of <code class="paramref">enumType</code>.
     content.vb: Public Sub SetConnectionStringType(enumType As Type, connectionStringType As [Enum])
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.SetConnectionStringType*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">connectionStringType</code> is not a defined value of <code class="paramref">enumType</code>.
 - uid: SimpleRelm.Options.RelmContextOptionsBuilder.SetNamedConnection(System.String)
   commentId: M:SimpleRelm.Options.RelmContextOptionsBuilder.SetNamedConnection(System.String)
   id: SetNamedConnection(System.String)
@@ -811,21 +955,28 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetNamedConnection
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 151
+    startLine: 303
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the current database connection using the specified named connection string.
+  example: []
   syntax:
     content: public void SetNamedConnection(string namedConnection)
     parameters:
     - id: namedConnection
       type: System.String
+      description: The name of the connection string to use. Cannot be null or empty.
     content.vb: Public Sub SetNamedConnection(namedConnection As String)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.SetNamedConnection*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the namedConnection parameter is null or empty.
   nameWithType.vb: RelmContextOptionsBuilder.SetNamedConnection(String)
   fullName.vb: SimpleRelm.Options.RelmContextOptionsBuilder.SetNamedConnection(String)
   name.vb: SetNamedConnection(String)
@@ -843,21 +994,28 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseConnectionString
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 167
+    startLine: 324
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Sets the connection string used to connect to the database.
+  example: []
   syntax:
     content: public void SetDatabaseConnectionString(string DatabaseConnectionString)
     parameters:
     - id: DatabaseConnectionString
       type: System.String
+      description: The connection string to use for database connections. Cannot be null or empty.
     content.vb: Public Sub SetDatabaseConnectionString(DatabaseConnectionString As String)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseConnectionString*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if <code class="paramref">DatabaseConnectionString</code> is null or empty.
   nameWithType.vb: RelmContextOptionsBuilder.SetDatabaseConnectionString(String)
   fullName.vb: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseConnectionString(String)
   name.vb: SetDatabaseConnectionString(String)
@@ -875,23 +1033,43 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ValidateAllSettings
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 175
+    startLine: 345
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Validates all required database connection settings based on the configured options builder type.
+  remarks: >-
+    The required settings depend on the options builder type. For example, a named
+        connection string requires DatabaseConnectionString, an open connection requires DatabaseConnection, and a
+        standard connection string requires DatabaseServer, DatabaseName, DatabaseUser, and
+        DatabasePassword.
+  example: []
   syntax:
     content: public bool ValidateAllSettings(bool throwExceptions = true)
     parameters:
     - id: throwExceptions
       type: System.Boolean
+      description: >-
+        true to throw an exception if a required setting is missing; false to return false instead of throwing an
+            exception. The default is true.
     return:
       type: System.Boolean
+      description: >-
+        true if all required settings are valid; otherwise, false if a required setting is missing and
+            throwExceptions is false.
     content.vb: Public Function ValidateAllSettings(throwExceptions As Boolean = True) As Boolean
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.ValidateAllSettings*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if a required setting is missing and throwExceptions is true.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown if the configured connection string type is invalid.
   nameWithType.vb: RelmContextOptionsBuilder.ValidateAllSettings(Boolean)
   fullName.vb: SimpleRelm.Options.RelmContextOptionsBuilder.ValidateAllSettings(Boolean)
   name.vb: ValidateAllSettings(Boolean)
@@ -909,21 +1087,41 @@ items:
   source:
     remote:
       path: SimpleRelm/Options/RelmContextOptionsBuilder.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ParseConnectionDetails
     path: ../SimpleRelm/Options/RelmContextOptionsBuilder.cs
-    startLine: 243
+    startLine: 426
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Options
+  summary: Parses the specified connection details string and configures the database connection settings accordingly.
+  remarks: >-
+    The method supports two formats for specifying connection details: a named connection
+        (e.g., 'name=MyConnection') or explicit connection parameters (e.g.,
+        'server=localhost;database=MyDb;user=admin;password=secret'). Only one format may be used at a time.
+        Additional or missing parameters will result in an exception.
+  example: []
   syntax:
     content: public void ParseConnectionDetails(string connectionDetails)
     parameters:
     - id: connectionDetails
       type: System.String
+      description: >-
+        A string containing the connection details. Must be in the format 'name=connectionString' to use a named
+            connection, or 'server=serverName;database=databaseName;user=userName;password=password' to specify
+            individual connection parameters.
     content.vb: Public Sub ParseConnectionDetails(connectionDetails As String)
   overload: SimpleRelm.Options.RelmContextOptionsBuilder.ParseConnectionDetails*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown if the connectionDetails parameter is null, empty, or consists only of white-space characters.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: >-
+      Thrown if the connectionDetails parameter does not match the required format or is missing required
+          connection parameters.
   nameWithType.vb: RelmContextOptionsBuilder.ParseConnectionDetails(String)
   fullName.vb: SimpleRelm.Options.RelmContextOptionsBuilder.ParseConnectionDetails(String)
   name.vb: ParseConnectionDetails(String)
@@ -1342,6 +1540,13 @@ references:
   nameWithType.vb: RelmContextOptionsBuilder.New
   fullName.vb: SimpleRelm.Options.RelmContextOptionsBuilder.New
   name.vb: New
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
 - uid: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseConnection*
   commentId: Overload:SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseConnection
   href: SimpleRelm.Options.RelmContextOptionsBuilder.html#SimpleRelm_Options_RelmContextOptionsBuilder_SetDatabaseConnection_MySql_Data_MySqlClient_MySqlConnection_
@@ -1360,6 +1565,13 @@ references:
   name: SetDatabaseServer
   nameWithType: RelmContextOptionsBuilder.SetDatabaseServer
   fullName: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseServer
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
 - uid: SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseName*
   commentId: Overload:SimpleRelm.Options.RelmContextOptionsBuilder.SetDatabaseName
   href: SimpleRelm.Options.RelmContextOptionsBuilder.html#SimpleRelm_Options_RelmContextOptionsBuilder_SetDatabaseName_System_String_

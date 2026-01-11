@@ -10,6 +10,9 @@ items:
   - SimpleRelm.Models.RelmExecutionCommand.AddAdditionalCommand(SimpleRelm.Enums.Commands.Command,System.Linq.Expressions.Expression)
   - SimpleRelm.Models.RelmExecutionCommand.AddAdditionalCommand``1(SimpleRelm.Enums.Commands.Command,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
   - SimpleRelm.Models.RelmExecutionCommand.AdditionalCommandCount
+  - SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount
+  - SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand
+  - SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression
   - SimpleRelm.Models.RelmExecutionCommand.GetAdditionalCommands
   - SimpleRelm.Models.RelmExecutionCommand.GetForeignKeyNavigationOptions``1(System.Collections.Generic.ICollection{``0})
   - SimpleRelm.Models.RelmExecutionCommand.InitialCommand
@@ -24,14 +27,25 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmExecutionCommand
     path: ../SimpleRelm/Models/RelmExecutionCommand.cs
-    startLine: 16
+    startLine: 25
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: >-
+    Represents a command and its associated expression for execution within the Relm framework, supporting
+
+    additional and child commands for complex execution scenarios.
+  remarks: >-
+    A RelmExecutionCommand encapsulates a primary command and expression, and can aggregate
+        additional related commands to support batch or hierarchical execution patterns. This class is typically used to
+        construct and manage command trees or sequences for advanced data operations, such as those involving foreign
+        key navigation or entity relationships. Thread safety is not guaranteed; if used concurrently, external
+        synchronization is required.
+  example: []
   syntax:
     content: 'public class RelmExecutionCommand : IRelmExecutionCommand'
     content.vb: Public Class RelmExecutionCommand Implements IRelmExecutionCommand
@@ -47,6 +61,37 @@ items:
   - System.Object.GetHashCode
   - System.Object.GetType
   - System.Object.MemberwiseClone
+- uid: SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand
+  commentId: P:SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand
+  id: ExecutionCommand
+  parent: SimpleRelm.Models.RelmExecutionCommand
+  langs:
+  - csharp
+  - vb
+  name: ExecutionCommand
+  nameWithType: RelmExecutionCommand.ExecutionCommand
+  fullName: SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand
+  type: Property
+  source:
+    remote:
+      path: SimpleRelm/Models/RelmExecutionCommand.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: ExecutionCommand
+    path: ../SimpleRelm/Models/RelmExecutionCommand.cs
+    startLine: 30
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Models
+  summary: Gets the command that initiates execution for this operation.
+  example: []
+  syntax:
+    content: public Commands.Command ExecutionCommand { get; }
+    parameters: []
+    return:
+      type: SimpleRelm.Enums.Commands.Command
+    content.vb: Public Property ExecutionCommand As Commands.Command
+  overload: SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand*
 - uid: SimpleRelm.Models.RelmExecutionCommand.InitialCommand
   commentId: P:SimpleRelm.Models.RelmExecutionCommand.InitialCommand
   id: InitialCommand
@@ -61,24 +106,56 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: InitialCommand
     path: ../SimpleRelm/Models/RelmExecutionCommand.cs
-    startLine: 18
+    startLine: 35
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Gets the command that is executed when the associated component is initialized.
   example: []
   syntax:
     content: public Commands.Command InitialCommand { get; }
     parameters: []
     return:
       type: SimpleRelm.Enums.Commands.Command
-    content.vb: Public Property InitialCommand As Commands.Command
+    content.vb: Public ReadOnly Property InitialCommand As Commands.Command
   overload: SimpleRelm.Models.RelmExecutionCommand.InitialCommand*
   implements:
   - SimpleRelm.Interfaces.IRelmExecutionCommand.InitialCommand
+- uid: SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression
+  commentId: P:SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression
+  id: ExecutionExpression
+  parent: SimpleRelm.Models.RelmExecutionCommand
+  langs:
+  - csharp
+  - vb
+  name: ExecutionExpression
+  nameWithType: RelmExecutionCommand.ExecutionExpression
+  fullName: SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression
+  type: Property
+  source:
+    remote:
+      path: SimpleRelm/Models/RelmExecutionCommand.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: ExecutionExpression
+    path: ../SimpleRelm/Models/RelmExecutionCommand.cs
+    startLine: 40
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Models
+  summary: Gets the expression that represents the execution logic for this instance.
+  example: []
+  syntax:
+    content: public Expression ExecutionExpression { get; }
+    parameters: []
+    return:
+      type: System.Linq.Expressions.Expression
+    content.vb: Public Property ExecutionExpression As Expression
+  overload: SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression*
 - uid: SimpleRelm.Models.RelmExecutionCommand.InitialExpression
   commentId: P:SimpleRelm.Models.RelmExecutionCommand.InitialExpression
   id: InitialExpression
@@ -93,24 +170,56 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: InitialExpression
     path: ../SimpleRelm/Models/RelmExecutionCommand.cs
-    startLine: 19
+    startLine: 45
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Gets the initial expression used to define the starting state or value for this instance.
   example: []
   syntax:
     content: public Expression InitialExpression { get; }
     parameters: []
     return:
       type: System.Linq.Expressions.Expression
-    content.vb: Public Property InitialExpression As Expression
+    content.vb: Public ReadOnly Property InitialExpression As Expression
   overload: SimpleRelm.Models.RelmExecutionCommand.InitialExpression*
   implements:
   - SimpleRelm.Interfaces.IRelmExecutionCommand.InitialExpression
+- uid: SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount
+  commentId: P:SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount
+  id: ChildCommandCount
+  parent: SimpleRelm.Models.RelmExecutionCommand
+  langs:
+  - csharp
+  - vb
+  name: ChildCommandCount
+  nameWithType: RelmExecutionCommand.ChildCommandCount
+  fullName: SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount
+  type: Property
+  source:
+    remote:
+      path: SimpleRelm/Models/RelmExecutionCommand.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: ChildCommandCount
+    path: ../SimpleRelm/Models/RelmExecutionCommand.cs
+    startLine: 50
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Models
+  summary: Gets the number of child commands associated with this instance.
+  example: []
+  syntax:
+    content: public int ChildCommandCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ChildCommandCount As Integer
+  overload: SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount*
 - uid: SimpleRelm.Models.RelmExecutionCommand.AdditionalCommandCount
   commentId: P:SimpleRelm.Models.RelmExecutionCommand.AdditionalCommandCount
   id: AdditionalCommandCount
@@ -125,14 +234,15 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AdditionalCommandCount
     path: ../SimpleRelm/Models/RelmExecutionCommand.cs
-    startLine: 20
+    startLine: 55
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Gets the number of additional commands associated with this instance.
   example: []
   syntax:
     content: public int AdditionalCommandCount { get; }
@@ -157,14 +267,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Models/RelmExecutionCommand.cs
-    startLine: 24
+    startLine: 62
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Initializes a new instance of the RelmExecutionCommand class.
+  example: []
   syntax:
     content: public RelmExecutionCommand()
     content.vb: Public Sub New()
@@ -186,21 +298,25 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Models/RelmExecutionCommand.cs
-    startLine: 29
+    startLine: 71
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Initializes a new instance of the RelmExecutionCommand class with the specified command and expression.
+  example: []
   syntax:
     content: public RelmExecutionCommand(Commands.Command command, Expression expression)
     parameters:
     - id: command
       type: SimpleRelm.Enums.Commands.Command
+      description: The command to be executed as part of the execution command. Cannot be null.
     - id: expression
       type: System.Linq.Expressions.Expression
+      description: The expression associated with the execution command. Cannot be null.
     content.vb: Public Sub New(command As Commands.Command, expression As Expression)
   overload: SimpleRelm.Models.RelmExecutionCommand.#ctor*
   nameWithType.vb: RelmExecutionCommand.New(Commands.Command, Expression)
@@ -220,24 +336,31 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddAdditionalCommand
     path: ../SimpleRelm/Models/RelmExecutionCommand.cs
-    startLine: 35
+    startLine: 85
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Adds an additional command and its associated expression to the current execution command sequence.
+  remarks: >-
+    This method enables fluent chaining by returning the same instance after adding the
+        command and expression.
   example: []
   syntax:
     content: public RelmExecutionCommand AddAdditionalCommand(Commands.Command command, Expression expression)
     parameters:
     - id: command
       type: SimpleRelm.Enums.Commands.Command
+      description: The command to add to the execution sequence. Cannot be null.
     - id: expression
       type: System.Linq.Expressions.Expression
+      description: The expression associated with the command. Cannot be null.
     return:
       type: SimpleRelm.Models.RelmExecutionCommand
+      description: The current <xref href="SimpleRelm.Models.RelmExecutionCommand" data-throw-if-not-resolved="false"></xref> instance with the additional command included.
     content.vb: Public Function AddAdditionalCommand(command As Commands.Command, expression As Expression) As RelmExecutionCommand
   overload: SimpleRelm.Models.RelmExecutionCommand.AddAdditionalCommand*
   implements:
@@ -256,25 +379,34 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddAdditionalCommand
     path: ../SimpleRelm/Models/RelmExecutionCommand.cs
-    startLine: 42
+    startLine: 100
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: >-
+    Adds an additional command to the execution pipeline using a strongly typed expression to specify the target
+
+    property or member.
+  example: []
   syntax:
     content: public RelmExecutionCommand AddAdditionalCommand<T>(Commands.Command command, Expression<Func<T, object>> expression)
     parameters:
     - id: command
       type: SimpleRelm.Enums.Commands.Command
+      description: The command to add to the execution pipeline.
     - id: expression
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Object}}
+      description: An expression that identifies the property or member of type T to which the command applies.
     typeParameters:
     - id: T
+      description: The type of the object that contains the member referenced by the expression.
     return:
       type: SimpleRelm.Models.RelmExecutionCommand
+      description: The current <xref href="SimpleRelm.Models.RelmExecutionCommand" data-throw-if-not-resolved="false"></xref> instance, enabling method chaining.
     content.vb: Public Function AddAdditionalCommand(Of T)(command As Commands.Command, expression As Expression(Of Func(Of T, Object))) As RelmExecutionCommand
   overload: SimpleRelm.Models.RelmExecutionCommand.AddAdditionalCommand*
   nameWithType.vb: RelmExecutionCommand.AddAdditionalCommand(Of T)(Commands.Command, Expression(Of Func(Of T, Object)))
@@ -294,19 +426,23 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetAdditionalCommands
     path: ../SimpleRelm/Models/RelmExecutionCommand.cs
-    startLine: 49
+    startLine: 112
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: Gets the list of additional execution commands associated with this instance.
   example: []
   syntax:
     content: public List<RelmExecutionCommand> GetAdditionalCommands()
     return:
       type: System.Collections.Generic.List{SimpleRelm.Models.RelmExecutionCommand}
+      description: >-
+        A list of <xref href="SimpleRelm.Models.RelmExecutionCommand" data-throw-if-not-resolved="false"></xref> objects representing additional commands. The list may be empty
+            if no additional commands are present.
     content.vb: Public Function GetAdditionalCommands() As List(Of RelmExecutionCommand)
   overload: SimpleRelm.Models.RelmExecutionCommand.GetAdditionalCommands*
   implements:
@@ -325,26 +461,50 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmExecutionCommand.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetForeignKeyNavigationOptions
     path: ../SimpleRelm/Models/RelmExecutionCommand.cs
-    startLine: 54
+    startLine: 132
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
+  summary: >-
+    Retrieves navigation and foreign key mapping options for a collection of entities, enabling resolution of
+
+    relationships between the provided items and their related entities.
+  remarks: >-
+    This method analyzes the provided collection and its type metadata to determine the
+        appropriate navigation and foreign key properties. It supports both principal and dependent entity
+        configurations, and will throw exceptions if required attributes or keys are missing. The returned options
+        can be used to facilitate relationship resolution in data access scenarios.
   example: []
   syntax:
     content: public ForeignKeyNavigationOptions GetForeignKeyNavigationOptions<T>(ICollection<T> _items)
     parameters:
     - id: _items
       type: System.Collections.Generic.ICollection{{T}}
+      description: The collection of entities for which to resolve foreign key navigation options. Cannot be null.
     typeParameters:
     - id: T
+      description: The type of the entities in the collection for which foreign key navigation options are to be determined.
     return:
       type: SimpleRelm.RelmInternal.Models.ForeignKeyNavigationOptions
+      description: >-
+        A ForeignKeyNavigationOptions instance containing metadata about the navigation properties, foreign key
+            properties, and primary key values for the specified collection.
     content.vb: Public Function GetForeignKeyNavigationOptions(Of T)(_items As ICollection(Of T)) As ForeignKeyNavigationOptions
   overload: SimpleRelm.Models.RelmExecutionCommand.GetForeignKeyNavigationOptions*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown if the initial expression is not a lambda expression in the form of 'x =&gt; x.PropertyName'.
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if no primary keys or reference keys are found for the provided collection.
+  - type: System.MemberAccessException
+    commentId: T:System.MemberAccessException
+    description: Thrown if the foreign key referenced by the RelmForeignKey attribute cannot be found.
   implements:
   - SimpleRelm.Interfaces.IRelmExecutionCommand.GetForeignKeyNavigationOptions``1(System.Collections.Generic.ICollection{{T}})
   nameWithType.vb: RelmExecutionCommand.GetForeignKeyNavigationOptions(Of T)(ICollection(Of T))
@@ -639,19 +799,12 @@ references:
   - uid: SimpleRelm.Interfaces
     name: Interfaces
     href: SimpleRelm.Interfaces.html
-- uid: SimpleRelm.Models.RelmExecutionCommand.InitialCommand*
-  commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.InitialCommand
-  href: SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_InitialCommand
-  name: InitialCommand
-  nameWithType: RelmExecutionCommand.InitialCommand
-  fullName: SimpleRelm.Models.RelmExecutionCommand.InitialCommand
-- uid: SimpleRelm.Interfaces.IRelmExecutionCommand.InitialCommand
-  commentId: P:SimpleRelm.Interfaces.IRelmExecutionCommand.InitialCommand
-  parent: SimpleRelm.Interfaces.IRelmExecutionCommand
-  href: SimpleRelm.Interfaces.IRelmExecutionCommand.html#SimpleRelm_Interfaces_IRelmExecutionCommand_InitialCommand
-  name: InitialCommand
-  nameWithType: IRelmExecutionCommand.InitialCommand
-  fullName: SimpleRelm.Interfaces.IRelmExecutionCommand.InitialCommand
+- uid: SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand*
+  commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand
+  href: SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_ExecutionCommand
+  name: ExecutionCommand
+  nameWithType: RelmExecutionCommand.ExecutionCommand
+  fullName: SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand
 - uid: SimpleRelm.Enums.Commands.Command
   commentId: T:SimpleRelm.Enums.Commands.Command
   parent: SimpleRelm.Enums
@@ -697,19 +850,25 @@ references:
   - uid: SimpleRelm.Enums
     name: Enums
     href: SimpleRelm.Enums.html
-- uid: SimpleRelm.Models.RelmExecutionCommand.InitialExpression*
-  commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.InitialExpression
-  href: SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_InitialExpression
-  name: InitialExpression
-  nameWithType: RelmExecutionCommand.InitialExpression
-  fullName: SimpleRelm.Models.RelmExecutionCommand.InitialExpression
-- uid: SimpleRelm.Interfaces.IRelmExecutionCommand.InitialExpression
-  commentId: P:SimpleRelm.Interfaces.IRelmExecutionCommand.InitialExpression
+- uid: SimpleRelm.Models.RelmExecutionCommand.InitialCommand*
+  commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.InitialCommand
+  href: SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_InitialCommand
+  name: InitialCommand
+  nameWithType: RelmExecutionCommand.InitialCommand
+  fullName: SimpleRelm.Models.RelmExecutionCommand.InitialCommand
+- uid: SimpleRelm.Interfaces.IRelmExecutionCommand.InitialCommand
+  commentId: P:SimpleRelm.Interfaces.IRelmExecutionCommand.InitialCommand
   parent: SimpleRelm.Interfaces.IRelmExecutionCommand
-  href: SimpleRelm.Interfaces.IRelmExecutionCommand.html#SimpleRelm_Interfaces_IRelmExecutionCommand_InitialExpression
-  name: InitialExpression
-  nameWithType: IRelmExecutionCommand.InitialExpression
-  fullName: SimpleRelm.Interfaces.IRelmExecutionCommand.InitialExpression
+  href: SimpleRelm.Interfaces.IRelmExecutionCommand.html#SimpleRelm_Interfaces_IRelmExecutionCommand_InitialCommand
+  name: InitialCommand
+  nameWithType: IRelmExecutionCommand.InitialCommand
+  fullName: SimpleRelm.Interfaces.IRelmExecutionCommand.InitialCommand
+- uid: SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression*
+  commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression
+  href: SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_ExecutionExpression
+  name: ExecutionExpression
+  nameWithType: RelmExecutionCommand.ExecutionExpression
+  fullName: SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression
 - uid: System.Linq.Expressions.Expression
   commentId: T:System.Linq.Expressions.Expression
   parent: System.Linq.Expressions
@@ -755,6 +914,36 @@ references:
     name: Expressions
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+- uid: SimpleRelm.Models.RelmExecutionCommand.InitialExpression*
+  commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.InitialExpression
+  href: SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_InitialExpression
+  name: InitialExpression
+  nameWithType: RelmExecutionCommand.InitialExpression
+  fullName: SimpleRelm.Models.RelmExecutionCommand.InitialExpression
+- uid: SimpleRelm.Interfaces.IRelmExecutionCommand.InitialExpression
+  commentId: P:SimpleRelm.Interfaces.IRelmExecutionCommand.InitialExpression
+  parent: SimpleRelm.Interfaces.IRelmExecutionCommand
+  href: SimpleRelm.Interfaces.IRelmExecutionCommand.html#SimpleRelm_Interfaces_IRelmExecutionCommand_InitialExpression
+  name: InitialExpression
+  nameWithType: IRelmExecutionCommand.InitialExpression
+  fullName: SimpleRelm.Interfaces.IRelmExecutionCommand.InitialExpression
+- uid: SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount*
+  commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount
+  href: SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_ChildCommandCount
+  name: ChildCommandCount
+  nameWithType: RelmExecutionCommand.ChildCommandCount
+  fullName: SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: SimpleRelm.Models.RelmExecutionCommand.AdditionalCommandCount*
   commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.AdditionalCommandCount
   href: SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_AdditionalCommandCount
@@ -768,17 +957,6 @@ references:
   name: AdditionalCommandCount
   nameWithType: IRelmExecutionCommand.AdditionalCommandCount
   fullName: SimpleRelm.Interfaces.IRelmExecutionCommand.AdditionalCommandCount
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
 - uid: SimpleRelm.Models.RelmExecutionCommand.#ctor*
   commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.#ctor
   href: SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand__ctor
@@ -788,6 +966,13 @@ references:
   nameWithType.vb: RelmExecutionCommand.New
   fullName.vb: SimpleRelm.Models.RelmExecutionCommand.New
   name.vb: New
+- uid: SimpleRelm.Models.RelmExecutionCommand
+  commentId: T:SimpleRelm.Models.RelmExecutionCommand
+  parent: SimpleRelm.Models
+  href: SimpleRelm.Models.RelmExecutionCommand.html
+  name: RelmExecutionCommand
+  nameWithType: RelmExecutionCommand
+  fullName: SimpleRelm.Models.RelmExecutionCommand
 - uid: SimpleRelm.Models.RelmExecutionCommand.AddAdditionalCommand*
   commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.AddAdditionalCommand
   href: SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_AddAdditionalCommand_SimpleRelm_Enums_Commands_Command_System_Linq_Expressions_Expression_
@@ -832,13 +1017,6 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression
   - name: )
-- uid: SimpleRelm.Models.RelmExecutionCommand
-  commentId: T:SimpleRelm.Models.RelmExecutionCommand
-  parent: SimpleRelm.Models
-  href: SimpleRelm.Models.RelmExecutionCommand.html
-  name: RelmExecutionCommand
-  nameWithType: RelmExecutionCommand
-  fullName: SimpleRelm.Models.RelmExecutionCommand
 - uid: System.Linq.Expressions.Expression{System.Func{{T},System.Object}}
   commentId: T:System.Linq.Expressions.Expression{System.Func{``0,System.Object}}
   parent: System.Linq.Expressions
@@ -1045,6 +1223,28 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.MemberAccessException
+  commentId: T:System.MemberAccessException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.memberaccessexception
+  name: MemberAccessException
+  nameWithType: MemberAccessException
+  fullName: System.MemberAccessException
 - uid: SimpleRelm.Models.RelmExecutionCommand.GetForeignKeyNavigationOptions*
   commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.GetForeignKeyNavigationOptions
   href: SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_GetForeignKeyNavigationOptions__1_System_Collections_Generic_ICollection___0__

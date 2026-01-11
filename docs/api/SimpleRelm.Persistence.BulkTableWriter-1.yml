@@ -36,18 +36,33 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BulkTableWriter
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 20
+    startLine: 32
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
+  summary: >-
+    Provides functionality for performing high-performance bulk insert operations into a database table with
+
+    configurable options for batching, transactions, error handling, and column mapping.
+  remarks: >-
+    The <xref href="SimpleRelm.Persistence.BulkTableWriter%601" data-throw-if-not-resolved="false"></xref> class is designed for efficient bulk data insertion
+        scenarios, such as importing large datasets or synchronizing data between sources. It supports customization of
+        batch size, transaction usage, and column inclusion rules, and allows mapping between object properties and
+        database columns. This class is intended for internal use and is typically instantiated via factory methods or
+        helper classes within the data access layer. Thread safety is not guaranteed; use separate instances for
+        concurrent operations.
+  example: []
   syntax:
     content: public class BulkTableWriter<T>
     typeParameters:
     - id: T
+      description: >-
+        The type of the data items to be written to the database table. Each instance of <code class="typeparamref">T</code>
+            represents a row in the target table.
     content.vb: Public Class BulkTableWriter(Of T)
   inheritance:
   - System.Object
@@ -76,22 +91,22 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Write
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 222
+    startLine: 234
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
   summary: Writes data to the underlying output stream.
-  remarks: This overload calls the Write(object?) method with a <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> argument.
+  remarks: This overload calls the <xref href="SimpleRelm.Persistence.BulkTableWriter%601.Write(System.Func%7bSystem.String%2c%600%2cSystem.Object%7d)" data-throw-if-not-resolved="false"></xref> method with a <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> argument.
   example: []
   syntax:
     content: public int Write()
     return:
       type: System.Int32
-      description: The result of the write operation, as returned by the Write(object?) method.
+      description: The result of the write operation, as returned by the <xref href="SimpleRelm.Persistence.BulkTableWriter%601.Write(System.Func%7bSystem.String%2c%600%2cSystem.Object%7d)" data-throw-if-not-resolved="false"></xref> method.
     content.vb: Public Function Write() As Integer
   overload: SimpleRelm.Persistence.BulkTableWriter`1.Write*
   nameWithType.vb: BulkTableWriter(Of T).Write()
@@ -110,11 +125,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Write
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 238
+    startLine: 250
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -159,11 +174,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: UseTransaction
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 564
+    startLine: 576
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -199,11 +214,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetTransaction
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 577
+    startLine: 589
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -238,11 +253,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ThrowException
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 590
+    startLine: 602
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -278,11 +293,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AllowUserVariables
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 603
+    startLine: 615
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -318,11 +333,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AllowAutoDateColumns
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 616
+    startLine: 628
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -358,11 +373,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AllowAutoIncrementColumns
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 629
+    startLine: 641
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -398,11 +413,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AllowPrimaryKeyColumns
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 645
+    startLine: 657
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -442,11 +457,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AllowUniqueColumns
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 658
+    startLine: 670
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -482,11 +497,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetInsertQuery
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 671
+    startLine: 683
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -522,11 +537,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetSourceData
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 683
+    startLine: 695
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -560,11 +575,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetSourceData
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 695
+    startLine: 707
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -597,11 +612,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddColumn
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 712
+    startLine: 724
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -649,11 +664,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddColumns
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 731
+    startLine: 743
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -692,11 +707,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddColumns
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 753
+    startLine: 765
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -736,11 +751,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetTableName
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 763
+    startLine: 775
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -774,11 +789,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDatabaseName
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 775
+    startLine: 787
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -812,11 +827,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RemoveColumn
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 789
+    startLine: 801
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -853,11 +868,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetBatchSize
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 805
+    startLine: 817
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -895,11 +910,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Persistence/BulkTableWriter.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ResetBatchSize
     path: ../SimpleRelm/Persistence/BulkTableWriter.cs
-    startLine: 818
+    startLine: 830
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Persistence
@@ -918,6 +933,32 @@ items:
   nameWithType.vb: BulkTableWriter(Of T).ResetBatchSize()
   fullName.vb: SimpleRelm.Persistence.BulkTableWriter(Of T).ResetBatchSize()
 references:
+- uid: SimpleRelm.Persistence.BulkTableWriter`1
+  commentId: T:SimpleRelm.Persistence.BulkTableWriter`1
+  parent: SimpleRelm.Persistence
+  href: SimpleRelm.Persistence.BulkTableWriter-1.html
+  name: BulkTableWriter<T>
+  nameWithType: BulkTableWriter<T>
+  fullName: SimpleRelm.Persistence.BulkTableWriter<T>
+  nameWithType.vb: BulkTableWriter(Of T)
+  fullName.vb: SimpleRelm.Persistence.BulkTableWriter(Of T)
+  name.vb: BulkTableWriter(Of T)
+  spec.csharp:
+  - uid: SimpleRelm.Persistence.BulkTableWriter`1
+    name: BulkTableWriter
+    href: SimpleRelm.Persistence.BulkTableWriter-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: SimpleRelm.Persistence.BulkTableWriter`1
+    name: BulkTableWriter
+    href: SimpleRelm.Persistence.BulkTableWriter-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: SimpleRelm.Persistence
   commentId: N:SimpleRelm.Persistence
   href: SimpleRelm.html
@@ -1177,6 +1218,68 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: SimpleRelm.Persistence.BulkTableWriter`1.Write(System.Func{System.String,`0,System.Object})
+  commentId: M:SimpleRelm.Persistence.BulkTableWriter`1.Write(System.Func{System.String,`0,System.Object})
+  isExternal: true
+  href: SimpleRelm.Persistence.BulkTableWriter-1.html#SimpleRelm_Persistence_BulkTableWriter_1_Write_System_Func_System_String__0_System_Object__
+  name: Write(Func<string, T, object>)
+  nameWithType: BulkTableWriter<T>.Write(Func<string, T, object>)
+  fullName: SimpleRelm.Persistence.BulkTableWriter<T>.Write(System.Func<string, T, object>)
+  nameWithType.vb: BulkTableWriter(Of T).Write(Func(Of String, T, Object))
+  fullName.vb: SimpleRelm.Persistence.BulkTableWriter(Of T).Write(System.Func(Of String, T, Object))
+  name.vb: Write(Func(Of String, T, Object))
+  spec.csharp:
+  - uid: SimpleRelm.Persistence.BulkTableWriter`1.Write(System.Func{System.String,`0,System.Object})
+    name: Write
+    href: SimpleRelm.Persistence.BulkTableWriter-1.html#SimpleRelm_Persistence_BulkTableWriter_1_Write_System_Func_System_String__0_System_Object__
+  - name: (
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Persistence.BulkTableWriter`1.Write(System.Func{System.String,`0,System.Object})
+    name: Write
+    href: SimpleRelm.Persistence.BulkTableWriter-1.html#SimpleRelm_Persistence_BulkTableWriter_1_Write_System_Func_System_String__0_System_Object__
+  - name: (
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
 - uid: SimpleRelm.Persistence.BulkTableWriter`1.Write*
   commentId: Overload:SimpleRelm.Persistence.BulkTableWriter`1.Write
   href: SimpleRelm.Persistence.BulkTableWriter-1.html#SimpleRelm_Persistence_BulkTableWriter_1_Write
@@ -1288,32 +1391,6 @@ references:
   - name: ','
   - name: " "
   - name: TResult
-  - name: )
-- uid: SimpleRelm.Persistence.BulkTableWriter`1
-  commentId: T:SimpleRelm.Persistence.BulkTableWriter`1
-  parent: SimpleRelm.Persistence
-  href: SimpleRelm.Persistence.BulkTableWriter-1.html
-  name: BulkTableWriter<T>
-  nameWithType: BulkTableWriter<T>
-  fullName: SimpleRelm.Persistence.BulkTableWriter<T>
-  nameWithType.vb: BulkTableWriter(Of T)
-  fullName.vb: SimpleRelm.Persistence.BulkTableWriter(Of T)
-  name.vb: BulkTableWriter(Of T)
-  spec.csharp:
-  - uid: SimpleRelm.Persistence.BulkTableWriter`1
-    name: BulkTableWriter
-    href: SimpleRelm.Persistence.BulkTableWriter-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: SimpleRelm.Persistence.BulkTableWriter`1
-    name: BulkTableWriter
-    href: SimpleRelm.Persistence.BulkTableWriter-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
   - name: )
 - uid: SimpleRelm.Persistence.BulkTableWriter`1.UseTransaction*
   commentId: Overload:SimpleRelm.Persistence.BulkTableWriter`1.UseTransaction

@@ -53,14 +53,29 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmContext
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 16
+    startLine: 28
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Defines a context for interacting with a Relm database, providing methods for managing connections, 
+
+    transactions, and data operations. This interface supports querying, data manipulation, and bulk operations 
+
+    while ensuring proper resource management.
+  remarks: >-
+    Implementations of this interface are designed to facilitate database operations in a
+        structured and  transactional manner. The context provides methods for starting and ending connections, managing
+        transactions,  and performing CRUD operations on data sets. It also includes support for executing raw queries
+        and bulk  operations. The interface extends <xref href="System.IDisposable" data-throw-if-not-resolved="false"></xref> to ensure that resources are properly
+        released  when the context is no longer needed.  Thread safety is not guaranteed unless explicitly stated by the
+        implementation. Users should ensure proper  synchronization when accessing the context from multiple
+        threads.
+  example: []
   syntax:
     content: public interface IRelmContext
     content.vb: Public Interface IRelmContext
@@ -80,14 +95,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ContextOptions
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 18
+    startLine: 33
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets the builder used to configure options for the current Relm context.
+  example: []
   syntax:
     content: RelmContextOptionsBuilder ContextOptions { get; }
     parameters: []
@@ -109,14 +126,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: CommitTransaction
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 20
+    startLine: 38
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Commits the current transaction, making all changes permanent in the database.
+  example: []
   syntax:
     content: void CommitTransaction()
     content.vb: Sub CommitTransaction()
@@ -135,14 +154,20 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RollbackTransaction
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 21
+    startLine: 46
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Rolls back the current transaction, undoing any changes made since the transaction began.
+  remarks: >-
+    This method should be called to revert changes if an error occurs or if the
+        transaction cannot be completed successfully.  Ensure that a transaction is active before calling this
+        method; otherwise, an exception may be thrown.
+  example: []
   syntax:
     content: void RollbackTransaction()
     content.vb: Sub RollbackTransaction()
@@ -161,14 +186,20 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RollbackTransactions
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 22
+    startLine: 54
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Rolls back the current transaction, undoing any changes made since the transaction began.
+  remarks: >-
+    This method should be called to revert changes if an error occurs or if the
+        transaction cannot be completed successfully.  Ensure that a transaction is active before calling this
+        method; otherwise, an exception may be thrown.
+  example: []
   syntax:
     content: void RollbackTransactions()
     content.vb: Sub RollbackTransactions()
@@ -187,21 +218,27 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDataLoader
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 24
+    startLine: 62
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Configures the data loader for the specified model type.
+  example: []
   syntax:
     content: 'void SetDataLoader<T>(IRelmDataLoader<T> dataLoader) where T : RelmModel, new()'
     parameters:
     - id: dataLoader
       type: SimpleRelm.Interfaces.IRelmDataLoader{{T}}
+      description: The data loader instance to associate with the specified model type. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     typeParameters:
     - id: T
+      description: >-
+        The type of the model that the data loader will handle. Must inherit from <xref href="SimpleRelm.Models.RelmModel" data-throw-if-not-resolved="false"></xref> and have a
+            parameterless constructor.
     content.vb: Sub SetDataLoader(Of T As {RelmModel, New})(dataLoader As IRelmDataLoader(Of T))
   overload: SimpleRelm.Interfaces.IRelmContext.SetDataLoader*
   nameWithType.vb: IRelmContext.SetDataLoader(Of T)(IRelmDataLoader(Of T))
@@ -221,21 +258,33 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: StartConnection
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 26
+    startLine: 74
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Starts a connection to the database.
+  remarks: >-
+    If <code class="paramref">autoOpenTransaction</code> is set to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, ensure
+        that the transaction  is committed or rolled back to avoid leaving it open. This method must be called
+        before performing any  database operations.
+  example: []
   syntax:
     content: void StartConnection(bool autoOpenTransaction = false, int lockWaitTimeoutSeconds = 0)
     parameters:
     - id: autoOpenTransaction
       type: System.Boolean
+      description: >-
+        Specifies whether a transaction should be automatically opened after the connection is established.  Pass
+            <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> to open a transaction automatically; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     - id: lockWaitTimeoutSeconds
       type: System.Int32
+      description: >-
+        The lock wait timeout in seconds. A value of 0 indicates the default timeout for the database.  Specify a positive integer to set a
+            custom timeout duration.
     content.vb: Sub StartConnection(autoOpenTransaction As Boolean = False, lockWaitTimeoutSeconds As Integer = 0)
   overload: SimpleRelm.Interfaces.IRelmContext.StartConnection*
   nameWithType.vb: IRelmContext.StartConnection(Boolean, Integer)
@@ -255,19 +304,27 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: EndConnection
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 27
+    startLine: 86
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Ends the current connection and optionally commits any active transaction.
+  remarks: >-
+    Use this method to cleanly terminate a connection. If a transaction is active, you
+        can  specify whether to commit or roll it back before the connection is closed. Ensure that  any necessary
+        operations are completed before calling this method, as the connection  will no longer be available
+        afterward.
+  example: []
   syntax:
     content: void EndConnection(bool commitTransaction = true)
     parameters:
     - id: commitTransaction
       type: System.Boolean
+      description: A value indicating whether to commit the active transaction before ending the connection.  <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> to commit the transaction; <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> to roll it back.  The default is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>.
     content.vb: Sub EndConnection(commitTransaction As Boolean = True)
   overload: SimpleRelm.Interfaces.IRelmContext.EndConnection*
   nameWithType.vb: IRelmContext.EndConnection(Boolean)
@@ -287,23 +344,32 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: HasDataSet
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 28
+    startLine: 96
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Determines whether a dataset of the specified type exists in the current context.
+  example: []
   syntax:
     content: 'bool HasDataSet<T>(bool throwException = true) where T : IRelmModel, new()'
     parameters:
     - id: throwException
       type: System.Boolean
+      description: >-
+        A value indicating whether to throw an exception if the dataset does not exist.  <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> to
+            throw an exception; <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> to return <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> instead.
     typeParameters:
     - id: T
+      description: >-
+        The type of the dataset to check for. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a parameterless
+            constructor.
     return:
       type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the dataset of the specified type exists; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     content.vb: Function HasDataSet(Of T As {IRelmModel, New})(throwException As Boolean = True) As Boolean
   overload: SimpleRelm.Interfaces.IRelmContext.HasDataSet*
   nameWithType.vb: IRelmContext.HasDataSet(Of T)(Boolean)
@@ -323,23 +389,28 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: HasDataSet
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 29
+    startLine: 108
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Determines whether a dataset of the specified type is available.
+  example: []
   syntax:
     content: bool HasDataSet(Type dataSetType, bool throwException = true)
     parameters:
     - id: dataSetType
       type: System.Type
+      description: The <xref href="System.Type" data-throw-if-not-resolved="false"></xref> of the dataset to check for availability. This parameter cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     - id: throwException
       type: System.Boolean
+      description: A value indicating whether an exception should be thrown if the dataset is not available. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, an exception is thrown when the dataset is not found; otherwise, the method returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     return:
       type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the dataset of the specified type is available; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     content.vb: Function HasDataSet(dataSetType As Type, throwException As Boolean = True) As Boolean
   overload: SimpleRelm.Interfaces.IRelmContext.HasDataSet*
   nameWithType.vb: IRelmContext.HasDataSet(Type, Boolean)
@@ -359,20 +430,30 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSet
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 30
+    startLine: 119
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves an initialized instance of a dataset of the specified type.
+  remarks: >-
+    Use this method to access a dataset for a specific model type. The type parameter
+        <code class="typeparamref">T</code> must represent a model that conforms to the <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref>
+        interface.
+  example: []
   syntax:
     content: 'IRelmDataSet<T> GetDataSet<T>() where T : IRelmModel, new()'
     typeParameters:
     - id: T
+      description: >-
+        The type of the dataset to retrieve. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a parameterless
+            constructor.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: An instance of <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> containing the data for the specified type.
     content.vb: Function GetDataSet(Of T As {IRelmModel, New})() As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataSet*
   nameWithType.vb: IRelmContext.GetDataSet(Of T)()
@@ -392,23 +473,33 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSet
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 31
+    startLine: 131
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves an initialized instance of a dataset of the specified type.
+  example: []
   syntax:
     content: 'IRelmDataSet<T> GetDataSet<T>(bool throwException) where T : IRelmModel, new()'
     parameters:
     - id: throwException
       type: System.Boolean
+      description: A value indicating whether an exception should be thrown if the dataset cannot be retrieved. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, an exception is thrown on failure; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> is returned.
     typeParameters:
     - id: T
+      description: >-
+        The type of the dataset to retrieve. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a parameterless
+            constructor.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: >-
+        An instance of <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> containing the dataset of type <code class="typeparamref">T</code>.
+            Returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if the dataset cannot be retrieved and <code class="paramref">throwException</code> is
+            <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     content.vb: Function GetDataSet(Of T As {IRelmModel, New})(throwException As Boolean) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataSet*
   nameWithType.vb: IRelmContext.GetDataSet(Of T)(Boolean)
@@ -428,21 +519,27 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSet
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 32
+    startLine: 140
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves an initialized instance of a dataset based on the specified type.
+  example: []
   syntax:
     content: IRelmDataSetBase GetDataSet(Type dataSetType)
     parameters:
     - id: dataSetType
       type: System.Type
+      description: The <xref href="System.Type" data-throw-if-not-resolved="false"></xref> of the dataset to retrieve. This must be a type that implements <xref href="SimpleRelm.Interfaces.IRelmDataSetBase" data-throw-if-not-resolved="false"></xref>.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSetBase
+      description: >-
+        An instance of the dataset that matches the specified type. Returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if no matching
+            dataset is found.
     content.vb: Function GetDataSet(dataSetType As Type) As IRelmDataSetBase
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataSet*
 - uid: SimpleRelm.Interfaces.IRelmContext.GetDataSet(System.Type,System.Boolean)
@@ -459,23 +556,32 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSet
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 33
+    startLine: 151
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves an initialized instance of a dataset of the specified type.
+  example: []
   syntax:
     content: IRelmDataSetBase GetDataSet(Type dataSetType, bool throwException)
     parameters:
     - id: dataSetType
       type: System.Type
+      description: The <xref href="System.Type" data-throw-if-not-resolved="false"></xref> of the dataset to retrieve. This must implement <xref href="SimpleRelm.Interfaces.IRelmDataSetBase" data-throw-if-not-resolved="false"></xref>.
     - id: throwException
       type: System.Boolean
+      description: >-
+        A value indicating whether an exception should be thrown if the dataset cannot be found.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, an exception is thrown when the dataset is not found; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>
+            is returned.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSetBase
+      description: >-
+        An instance of <xref href="SimpleRelm.Interfaces.IRelmDataSetBase" data-throw-if-not-resolved="false"></xref> representing the requested dataset, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>
+            if the dataset is not found and <code class="paramref">throwException</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     content.vb: Function GetDataSet(dataSetType As Type, throwException As Boolean) As IRelmDataSetBase
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataSet*
   nameWithType.vb: IRelmContext.GetDataSet(Type, Boolean)
@@ -495,20 +601,29 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSetType
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 34
+    startLine: 161
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves an uninitialized dataset of the specified type.
+  remarks: >-
+    This method is generic and allows retrieval of datasets for any type that satisfies
+        the constraints.
+  example: []
   syntax:
     content: 'IRelmDataSet<T> GetDataSetType<T>() where T : IRelmModel, new()'
     typeParameters:
     - id: T
+      description: >-
+        The type of the dataset to retrieve. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a parameterless
+            constructor.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: An instance of <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> representing the dataset of the specified type.
     content.vb: Function GetDataSetType(Of T As {IRelmModel, New})() As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataSetType*
   nameWithType.vb: IRelmContext.GetDataSetType(Of T)()
@@ -528,23 +643,30 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSetType
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 35
+    startLine: 173
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves an uninitialized dataset of the specified type.
+  example: []
   syntax:
     content: 'IRelmDataSet<T> GetDataSetType<T>(bool throwException) where T : IRelmModel, new()'
     parameters:
     - id: throwException
       type: System.Boolean
+      description: A value indicating whether an exception should be thrown if the dataset cannot be retrieved. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, an exception is thrown; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> may be returned.
     typeParameters:
     - id: T
+      description: >-
+        The type of the dataset to retrieve. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a parameterless
+            constructor.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: An instance of <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> representing the dataset of the specified type, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if the dataset cannot be retrieved and <code class="paramref">throwException</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     content.vb: Function GetDataSetType(Of T As {IRelmModel, New})(throwException As Boolean) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataSetType*
   nameWithType.vb: IRelmContext.GetDataSetType(Of T)(Boolean)
@@ -564,21 +686,25 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSetType
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 36
+    startLine: 181
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves an uninitialized dataset of type specified by <code class="paramref">dataSetType</code>.
+  example: []
   syntax:
     content: IRelmDataSetBase GetDataSetType(Type dataSetType)
     parameters:
     - id: dataSetType
       type: System.Type
+      description: The <xref href="System.Type" data-throw-if-not-resolved="false"></xref> of the dataset to retrieve. This must implement <xref href="SimpleRelm.Interfaces.IRelmDataSetBase" data-throw-if-not-resolved="false"></xref>.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSetBase
+      description: An instance of <xref href="SimpleRelm.Interfaces.IRelmDataSetBase" data-throw-if-not-resolved="false"></xref> that corresponds to the specified <code class="paramref">dataSetType</code>.
     content.vb: Function GetDataSetType(dataSetType As Type) As IRelmDataSetBase
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataSetType*
 - uid: SimpleRelm.Interfaces.IRelmContext.GetDataSetType(System.Type,System.Boolean)
@@ -595,23 +721,33 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataSetType
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 37
+    startLine: 192
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves an uninitialized dataset of type specified by <code class="paramref">dataSetType</code>.
+  example: []
   syntax:
     content: IRelmDataSetBase GetDataSetType(Type dataSetType, bool throwException)
     parameters:
     - id: dataSetType
       type: System.Type
+      description: The <xref href="System.Type" data-throw-if-not-resolved="false"></xref> of the dataset to retrieve. Must implement <xref href="SimpleRelm.Interfaces.IRelmDataSetBase" data-throw-if-not-resolved="false"></xref>.
     - id: throwException
       type: System.Boolean
+      description: >-
+        A boolean value indicating whether to throw an exception if the specified <code class="paramref">dataSetType</code> is
+            invalid. <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> to throw an exception; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSetBase
+      description: >-
+        An instance of <xref href="SimpleRelm.Interfaces.IRelmDataSetBase" data-throw-if-not-resolved="false"></xref> corresponding to the specified <code class="paramref">dataSetType</code>.
+            Returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if <code class="paramref">throwException</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> and the
+            dataset type is invalid.
     content.vb: Function GetDataSetType(dataSetType As Type, throwException As Boolean) As IRelmDataSetBase
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataSetType*
   nameWithType.vb: IRelmContext.GetDataSetType(Type, Boolean)
@@ -631,23 +767,34 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Get
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 38
+    startLine: 203
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves a collection of entities of type <code class="typeparamref">T</code> from the data source.
+  example: []
   syntax:
     content: 'ICollection<T> Get<T>(bool loadDataLoaders = false) where T : IRelmModel, new()'
     parameters:
     - id: loadDataLoaders
       type: System.Boolean
+      description: >-
+        A boolean value indicating whether to load associated data loaders. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, data loaders
+            will be initialized; otherwise, they will not.
     typeParameters:
     - id: T
+      description: >-
+        The type of objects to retrieve. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a parameterless
+            constructor.
     return:
       type: System.Collections.Generic.ICollection{{T}}
+      description: >-
+        A collection of objects of type <code class="typeparamref">T</code>. The collection may be empty if no objects are
+            found.
     content.vb: Function [Get](Of T As {IRelmModel, New})(loadDataLoaders As Boolean = False) As ICollection(Of T)
   overload: SimpleRelm.Interfaces.IRelmContext.Get*
   nameWithType.vb: IRelmContext.Get(Of T)(Boolean)
@@ -667,25 +814,35 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Get
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 39
+    startLine: 215
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves a collection of entities of type <code class="typeparamref">T</code> from the data source that satisfy the specified predicate.
+  example: []
   syntax:
     content: 'ICollection<T> Get<T>(Expression<Func<T, bool>> predicate, bool loadDataLoaders = false) where T : IRelmModel, new()'
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+      description: An expression that defines the conditions the entities must satisfy.
     - id: loadDataLoaders
       type: System.Boolean
+      description: A boolean value indicating whether to load associated data loaders for the retrieved entities. <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> to load data loaders; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     typeParameters:
     - id: T
+      description: >-
+        The type of the entities to retrieve. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a parameterless
+            constructor.
     return:
       type: System.Collections.Generic.ICollection{{T}}
+      description: >-
+        A collection of entities of type <code class="typeparamref">T</code> that match the specified predicate.  Returns an
+            empty collection if no entities match.
     content.vb: Function [Get](Of T As {IRelmModel, New})(predicate As Expression(Of Func(Of T, Boolean)), loadDataLoaders As Boolean = False) As ICollection(Of T)
   overload: SimpleRelm.Interfaces.IRelmContext.Get*
   nameWithType.vb: IRelmContext.Get(Of T)(Expression(Of Func(Of T, Boolean)), Boolean)
@@ -705,25 +862,38 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 40
+    startLine: 228
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Retrieves the first element of a sequence from the data source that satisfies the specified condition, or a default value if no
+
+    such element is found.
+  example: []
   syntax:
     content: 'T FirstOrDefault<T>(Expression<Func<T, bool>> predicate, bool loadDataLoaders = false) where T : IRelmModel, new()'
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+      description: An expression that defines the condition to test each element for.
     - id: loadDataLoaders
       type: System.Boolean
+      description: A boolean value indicating whether to load associated data loaders for the retrieved element.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, data loaders will be initialized; otherwise, they will not be loaded.
     typeParameters:
     - id: T
+      description: >-
+        The type of the elements in the sequence. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a parameterless
+            constructor.
     return:
       type: '{T}'
+      description: >-
+        The first element of type <code class="typeparamref">T</code> that satisfies the specified condition,  or the default
+            value of <code class="typeparamref">T</code> if no such element is found.
     content.vb: Function FirstOrDefault(Of T As {IRelmModel, New})(predicate As Expression(Of Func(Of T, Boolean)), loadDataLoaders As Boolean = False) As T
   overload: SimpleRelm.Interfaces.IRelmContext.FirstOrDefault*
   nameWithType.vb: IRelmContext.FirstOrDefault(Of T)(Expression(Of Func(Of T, Boolean)), Boolean)
@@ -743,23 +913,33 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Where
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 41
+    startLine: 239
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves data from the data source, filtered based on the specified predicate.
+  remarks: >-
+    The predicate is evaluated for each element in the dataset, and only those elements
+        for which the predicate returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> are included in the result.
+  example: []
   syntax:
     content: 'IRelmDataSet<T> Where<T>(Expression<Func<T, bool>> predicate) where T : IRelmModel, new()'
     parameters:
     - id: predicate
       type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+      description: An expression that defines the conditions for filtering the dataset.
     typeParameters:
     - id: T
+      description: >-
+        The type of the model in the dataset. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a parameterless
+            constructor.
     return:
       type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: A new dataset containing only the elements that satisfy the specified predicate.
     content.vb: Function Where(Of T As {IRelmModel, New})(predicate As Expression(Of Func(Of T, Boolean))) As IRelmDataSet(Of T)
   overload: SimpleRelm.Interfaces.IRelmContext.Where*
   nameWithType.vb: IRelmContext.Where(Of T)(Expression(Of Func(Of T, Boolean)))
@@ -779,25 +959,37 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Run
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 42
+    startLine: 251
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Executes the specified query and returns a collection of results mapped to the specified type.
+  example: []
   syntax:
     content: 'ICollection<T> Run<T>(string query, Dictionary<string, object> parameters = null) where T : IRelmModel, new()'
     parameters:
     - id: query
       type: System.String
+      description: The query string to execute. This string must be a valid query in the context of the underlying data source.
     - id: parameters
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
+      description: >-
+        An optional dictionary of parameter names and values to be used in the query. If null, no parameters are
+            applied.
     typeParameters:
     - id: T
+      description: >-
+        The type of the objects in the result collection. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a
+            parameterless constructor.
     return:
       type: System.Collections.Generic.ICollection{{T}}
+      description: >-
+        A collection of objects of type <code class="typeparamref">T</code> representing the query results. The collection will
+            be empty if no results are found.
     content.vb: Function Run(Of T As {IRelmModel, New})(query As String, parameters As Dictionary(Of String, Object) = Nothing) As ICollection(Of T)
   overload: SimpleRelm.Interfaces.IRelmContext.Run*
   nameWithType.vb: IRelmContext.Run(Of T)(String, Dictionary(Of String, Object))
@@ -817,18 +1009,27 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetLastInsertId
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 44
+    startLine: 261
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Retrieves the row identifier of the most recently inserted record in the database.
+  remarks: >-
+    This method is typically used after an insert operation to obtain the unique
+        identifier generated for the new record. Ensure that the database connection and context are properly
+        configured before calling this method.
+  example: []
   syntax:
     content: string GetLastInsertId()
     return:
       type: System.String
+      description: >-
+        The identifier of the last inserted record as a string. The format and value depend on the database
+            implementation.
     content.vb: Function GetLastInsertId() As String
   overload: SimpleRelm.Interfaces.IRelmContext.GetLastInsertId*
 - uid: SimpleRelm.Interfaces.IRelmContext.GetIdFromInternalId(System.String,System.String)
@@ -845,24 +1046,29 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetIdFromInternalId
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 45
+    startLine: 269
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Converts an internal identifier to its corresponding row identifier for a specified table.
+  example: []
   syntax:
-    content: string GetIdFromInternalId(string Table, string InternalId)
+    content: string GetIdFromInternalId(string table, string InternalId)
     parameters:
-    - id: Table
+    - id: table
       type: System.String
+      description: The name of the table containing the internal identifier. Cannot be null or empty.
     - id: InternalId
       type: System.String
+      description: The internal identifier to be converted. Cannot be null or empty.
     return:
       type: System.String
-    content.vb: Function GetIdFromInternalId(Table As String, InternalId As String) As String
+      description: The row identifier corresponding to the specified internal identifier and table.
+    content.vb: Function GetIdFromInternalId(table As String, InternalId As String) As String
   overload: SimpleRelm.Interfaces.IRelmContext.GetIdFromInternalId*
   nameWithType.vb: IRelmContext.GetIdFromInternalId(String, String)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.GetIdFromInternalId(String, String)
@@ -881,26 +1087,39 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataRow
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 46
+    startLine: 282
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Executes the specified query and retrieves the first row of the result set as a <xref href="System.Data.DataRow" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
-    content: DataRow GetDataRow(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true)
+    content: DataRow GetDataRow(string query, Dictionary<string, object> parameters = null, bool throwException = true)
     parameters:
-    - id: QueryString
+    - id: query
       type: System.String
-    - id: Parameters
+      description: The SQL query to execute. Must be a valid SQL statement.
+    - id: parameters
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
+      description: >-
+        An optional dictionary of parameter names and values to be used in the query.  If null, no parameters are
+            applied.
     - id: throwException
       type: System.Boolean
+      description: >-
+        A boolean value indicating whether an exception should be thrown if the query does not return any rows.  If
+            <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, an exception is thrown when no rows are found; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> is
+            returned.
     return:
       type: System.Data.DataRow
-    content.vb: Function GetDataRow(QueryString As String, Parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True) As DataRow
+      description: >-
+        A <xref href="System.Data.DataRow" data-throw-if-not-resolved="false"></xref> representing the first row of the result set, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if no rows
+            are found  and <code class="paramref">throwException</code> is set to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Function GetDataRow(query As String, parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True) As DataRow
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataRow*
   nameWithType.vb: IRelmContext.GetDataRow(String, Dictionary(Of String, Object), Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.GetDataRow(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean)
@@ -919,26 +1138,39 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataTable
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 47
+    startLine: 298
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Executes the specified SQL query and returns the results as a <xref href="System.Data.DataTable" data-throw-if-not-resolved="false"></xref>.
+  remarks: >-
+    This method is designed to execute read-only queries, such as SELECT statements. It
+        is not intended for executing queries that modify data (e.g., INSERT, UPDATE, DELETE).
+  example: []
   syntax:
-    content: DataTable GetDataTable(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true)
+    content: DataTable GetDataTable(string query, Dictionary<string, object> parameters = null, bool throwException = true)
     parameters:
-    - id: QueryString
+    - id: query
       type: System.String
-    - id: Parameters
+      description: The SQL query to execute. This must be a valid SQL statement.
+    - id: parameters
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
+      description: >-
+        An optional dictionary of parameter names and values to be used in the query. If provided, the parameters
+            will be added to the query to prevent SQL injection. Defaults to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     - id: throwException
       type: System.Boolean
+      description: >-
+        A value indicating whether an exception should be thrown if an error occurs during query execution. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, exceptions will be propagated to the caller. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>, the method will
+            suppress exceptions and return <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> in case of an error. Defaults to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>.
     return:
       type: System.Data.DataTable
-    content.vb: Function GetDataTable(QueryString As String, Parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True) As DataTable
+      description: A <xref href="System.Data.DataTable" data-throw-if-not-resolved="false"></xref> containing the results of the query. Returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if <code class="paramref">throwException</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> and an error occurs during execution.
+    content.vb: Function GetDataTable(query As String, parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True) As DataTable
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataTable*
   nameWithType.vb: IRelmContext.GetDataTable(String, Dictionary(Of String, Object), Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.GetDataTable(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean)
@@ -957,28 +1189,41 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObject
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 48
+    startLine: 313
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Executes the specified query and retrieves a data object of the specified type.
+  example: []
   syntax:
-    content: 'T GetDataObject<T>(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true) where T : IRelmModel, new()'
+    content: 'T GetDataObject<T>(string query, Dictionary<string, object> parameters = null, bool throwException = true) where T : IRelmModel, new()'
     parameters:
-    - id: QueryString
+    - id: query
       type: System.String
-    - id: Parameters
+      description: The query string used to retrieve the data object. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> or empty.
+    - id: parameters
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
+      description: >-
+        An optional dictionary of parameters to be used in the query. Keys represent parameter names, and values
+            represent their corresponding values.
     - id: throwException
       type: System.Boolean
+      description: A value indicating whether an exception should be thrown if the query fails or no data is found.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, an exception is thrown; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/default">default</a> is returned.
     typeParameters:
     - id: T
+      description: >-
+        The type of the data object to retrieve. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a parameterless
+            constructor.
     return:
       type: '{T}'
-    content.vb: Function GetDataObject(Of T As {IRelmModel, New})(QueryString As String, Parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True) As T
+      description: >-
+        An instance of the specified type <code class="typeparamref">T</code> populated with the data retrieved by the query. 
+            Returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/default">default</a> if no data is found and <code class="paramref">throwException</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Function GetDataObject(Of T As {IRelmModel, New})(query As String, parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True) As T
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataObject*
   nameWithType.vb: IRelmContext.GetDataObject(Of T)(String, Dictionary(Of String, Object), Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.GetDataObject(Of T)(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean)
@@ -997,28 +1242,42 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataObjects
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 49
+    startLine: 328
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Executes a query and retrieves a collection of data objects of the specified type.
+  example: []
   syntax:
-    content: 'IEnumerable<T> GetDataObjects<T>(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true) where T : IRelmModel, new()'
+    content: 'IEnumerable<T> GetDataObjects<T>(string query, Dictionary<string, object> parameters = null, bool throwException = true) where T : IRelmModel, new()'
     parameters:
-    - id: QueryString
+    - id: query
       type: System.String
-    - id: Parameters
+      description: The query string used to retrieve the data objects. Cannot be null or empty.
+    - id: parameters
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
+      description: >-
+        An optional dictionary of parameter names and values to be used in the query. If null, no parameters are
+            applied.
     - id: throwException
       type: System.Boolean
+      description: A boolean value indicating whether an exception should be thrown if the query fails. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, an exception is thrown on failure; otherwise, the method returns an empty collection.
     typeParameters:
     - id: T
+      description: >-
+        The type of data objects to retrieve. Must implement <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> and have a parameterless
+            constructor.
     return:
       type: System.Collections.Generic.IEnumerable{{T}}
-    content.vb: Function GetDataObjects(Of T As {IRelmModel, New})(QueryString As String, Parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True) As IEnumerable(Of T)
+      description: >-
+        An <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> containing the data objects retrieved by the query. Returns an empty
+            collection if no data is found or if <code class="paramref">throwException</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> and the
+            query fails.
+    content.vb: Function GetDataObjects(Of T As {IRelmModel, New})(query As String, parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True) As IEnumerable(Of T)
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataObjects*
   nameWithType.vb: IRelmContext.GetDataObjects(Of T)(String, Dictionary(Of String, Object), Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.GetDataObjects(Of T)(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean)
@@ -1037,28 +1296,41 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetDataList
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 50
+    startLine: 342
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Executes the specified query and retrieves a collection of data mapped to the specified type.
+  example: []
   syntax:
-    content: IEnumerable<T> GetDataList<T>(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true)
+    content: IEnumerable<T> GetDataList<T>(string query, Dictionary<string, object> parameters = null, bool throwException = true)
     parameters:
-    - id: QueryString
+    - id: query
       type: System.String
-    - id: Parameters
+      description: The SQL query to execute. Must not be null or empty.
+    - id: parameters
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
+      description: >-
+        An optional dictionary of parameter names and values to be used in the query. Can be null if no parameters
+            are required.
     - id: throwException
       type: System.Boolean
+      description: >-
+        A value indicating whether an exception should be thrown if the query fails.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, an
+            exception will be thrown on failure; otherwise, the method will return an empty collection.
     typeParameters:
     - id: T
+      description: The type to which the query results will be mapped.
     return:
       type: System.Collections.Generic.IEnumerable{{T}}
-    content.vb: Function GetDataList(Of T)(QueryString As String, Parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True) As IEnumerable(Of T)
+      description: >-
+        An <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> containing the results of the query mapped to the specified type.  Returns
+            an empty collection if no results are found or if <code class="paramref">throwException</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> and the query fails.
+    content.vb: Function GetDataList(Of T)(query As String, parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True) As IEnumerable(Of T)
   overload: SimpleRelm.Interfaces.IRelmContext.GetDataList*
   nameWithType.vb: IRelmContext.GetDataList(Of T)(String, Dictionary(Of String, Object), Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.GetDataList(Of T)(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean)
@@ -1077,27 +1349,42 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetScalar
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 51
+    startLine: 360
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Executes the specified SQL query and retrieves a single scalar value of the specified type.
+  remarks: >-
+    Use this method to retrieve a single value, such as a count or aggregate result, from
+        a database query. Ensure that the query is written to return only one value; otherwise, an exception may
+        occur.
+  example: []
   syntax:
     content: T GetScalar<T>(string query, Dictionary<string, object> parameters = null, bool throwException = true)
     parameters:
     - id: query
       type: System.String
+      description: The SQL query to execute. Must not be null or empty.
     - id: parameters
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
+      description: >-
+        An optional dictionary of parameter names and values to include in the query.  If null, no parameters are
+            added.
     - id: throwException
       type: System.Boolean
+      description: A boolean value indicating whether an exception should be thrown if the query fails.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, an exception is thrown on failure; otherwise, the default value of <code class="typeparamref">T</code> is returned.
     typeParameters:
     - id: T
+      description: The type of the scalar value to return.
     return:
       type: '{T}'
+      description: >-
+        The scalar value of type <code class="typeparamref">T</code> returned by the query.  If the query does not return a
+            result and <code class="paramref">throwException</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>, the default value of <code class="typeparamref">T</code> is returned.
     content.vb: Function GetScalar(Of T)(query As String, parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True) As T
   overload: SimpleRelm.Interfaces.IRelmContext.GetScalar*
   nameWithType.vb: IRelmContext.GetScalar(Of T)(String, Dictionary(Of String, Object), Boolean)
@@ -1117,34 +1404,61 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetBulkTableWriter
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 53
+    startLine: 383
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: >-
+    Creates and returns a <xref href="SimpleRelm.Persistence.BulkTableWriter%601" data-throw-if-not-resolved="false"></xref> instance for performing bulk insert operations on a
+
+    database table.
+  remarks: >-
+    The <xref href="SimpleRelm.Persistence.BulkTableWriter%601" data-throw-if-not-resolved="false"></xref> provides an efficient way to insert large
+        amounts of data into a database table.  Use the optional parameters to customize the behavior of the bulk
+        operation, such as enabling transactions or allowing specific column types.
+  example: []
   syntax:
-    content: BulkTableWriter<T> GetBulkTableWriter<T>(string InsertQuery = null, bool useTransaction = false, bool throwException = true, bool allowAutoIncrementColumns = false, bool allowPrimaryKeyColumns = false, bool allowUniqueColumns = false)
+    content: BulkTableWriter<T> GetBulkTableWriter<T>(string insertQuery = null, bool useTransaction = false, bool throwException = true, bool allowAutoIncrementColumns = false, bool allowPrimaryKeyColumns = false, bool allowUniqueColumns = false)
     parameters:
-    - id: InsertQuery
+    - id: insertQuery
       type: System.String
+      description: >-
+        An optional SQL insert query to use for the bulk operation. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>, a default query is
+            generated based on the type <code class="typeparamref">T</code>.
     - id: useTransaction
       type: System.Boolean
+      description: >-
+        Specifies whether the bulk operation should be performed within a transaction. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>,
+            the operation is transactional; otherwise, it is not.
     - id: throwException
       type: System.Boolean
+      description: Specifies whether exceptions should be thrown if an error occurs during the bulk operation. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, exceptions are thrown; otherwise, errors are suppressed.
     - id: allowAutoIncrementColumns
       type: System.Boolean
+      description: >-
+        Indicates whether auto-increment columns in the database table are allowed to be included in the bulk
+            operation. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, these columns are included; otherwise, they are excluded.
     - id: allowPrimaryKeyColumns
       type: System.Boolean
+      description: >-
+        Indicates whether primary key columns in the database table are allowed to be included in the bulk
+            operation. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, these columns are included; otherwise, they are excluded.
     - id: allowUniqueColumns
       type: System.Boolean
+      description: >-
+        Indicates whether unique columns in the database table are allowed to be included in the bulk operation. If
+            <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, these columns are included; otherwise, they are excluded.
     typeParameters:
     - id: T
+      description: The type of the objects to be written to the database table. Each object represents a row in the table.
     return:
       type: SimpleRelm.Persistence.BulkTableWriter{{T}}
-    content.vb: Function GetBulkTableWriter(Of T)(InsertQuery As String = Nothing, useTransaction As Boolean = False, throwException As Boolean = True, allowAutoIncrementColumns As Boolean = False, allowPrimaryKeyColumns As Boolean = False, allowUniqueColumns As Boolean = False) As BulkTableWriter(Of T)
+      description: A <xref href="SimpleRelm.Persistence.BulkTableWriter%601" data-throw-if-not-resolved="false"></xref> instance configured for the specified bulk operation settings.
+    content.vb: Function GetBulkTableWriter(Of T)(insertQuery As String = Nothing, useTransaction As Boolean = False, throwException As Boolean = True, allowAutoIncrementColumns As Boolean = False, allowPrimaryKeyColumns As Boolean = False, allowUniqueColumns As Boolean = False) As BulkTableWriter(Of T)
   overload: SimpleRelm.Interfaces.IRelmContext.GetBulkTableWriter*
   nameWithType.vb: IRelmContext.GetBulkTableWriter(Of T)(String, Boolean, Boolean, Boolean, Boolean, Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.GetBulkTableWriter(Of T)(String, Boolean, Boolean, Boolean, Boolean, Boolean)
@@ -1163,38 +1477,68 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: BulkTableWrite
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 54
+    startLine: 410
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Performs a bulk write operation to insert or update data in the specified database table.
+  remarks: >-
+    This method is optimized for high-performance bulk operations and supports optional
+        batching to handle large datasets efficiently.  Ensure that the source data aligns with the schema of the
+        target table to avoid runtime errors.
+  example: []
   syntax:
-    content: int BulkTableWrite<T>(T SourceData, string TableName = null, MySqlTransaction sqlTransaction = null, Type ForceType = null, int BatchSize = 100, bool allowAutoIncrementColumns = false, bool allowPrimaryKeyColumns = false, bool allowUniqueColumns = false)
+    content: int BulkTableWrite<T>(T sourceData, string tableName = null, MySqlTransaction sqlTransaction = null, Type forceType = null, int batchSize = 100, bool allowAutoIncrementColumns = false, bool allowPrimaryKeyColumns = false, bool allowUniqueColumns = false)
     parameters:
-    - id: SourceData
+    - id: sourceData
       type: '{T}'
-    - id: TableName
+      description: >-
+        The data to be written to the table. Must not be null. If a collection is provided, each item will be
+            processed in the bulk operation.
+    - id: tableName
       type: System.String
+      description: The name of the target database table. If null, the table name will be inferred from the type <code class="typeparamref">T</code>.
     - id: sqlTransaction
       type: MySql.Data.MySqlClient.MySqlTransaction
-    - id: ForceType
+      description: >-
+        An optional <xref href="MySql.Data.MySqlClient.MySqlTransaction" data-throw-if-not-resolved="false"></xref> to associate the bulk write operation with an existing
+            transaction. If null, the operation will execute without a transaction.
+    - id: forceType
       type: System.Type
-    - id: BatchSize
+      description: >-
+        An optional <xref href="System.Type" data-throw-if-not-resolved="false"></xref> to explicitly specify the type of the data being written. If null, the type
+            will be inferred from <code class="typeparamref">T</code>.
+    - id: batchSize
       type: System.Int32
+      description: >-
+        The maximum number of rows to include in each batch during the bulk write operation. Must be greater than
+            zero. Defaults to 100.
     - id: allowAutoIncrementColumns
       type: System.Boolean
+      description: >-
+        Indicates whether auto-increment columns in the target table are allowed to be explicitly written. Defaults
+            to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     - id: allowPrimaryKeyColumns
       type: System.Boolean
+      description: >-
+        Indicates whether primary key columns in the target table are allowed to be explicitly written. Defaults to
+            <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     - id: allowUniqueColumns
       type: System.Boolean
+      description: Indicates whether unique columns in the target table are allowed to be explicitly written. Defaults to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     typeParameters:
     - id: T
+      description: >-
+        The type of the source data. This can be a collection or a single object representing the data to be
+            written.
     return:
       type: System.Int32
-    content.vb: Function BulkTableWrite(Of T)(SourceData As T, TableName As String = Nothing, sqlTransaction As MySqlTransaction = Nothing, ForceType As Type = Nothing, BatchSize As Integer = 100, allowAutoIncrementColumns As Boolean = False, allowPrimaryKeyColumns As Boolean = False, allowUniqueColumns As Boolean = False) As Integer
+      description: The number of rows successfully written to the database table.
+    content.vb: Function BulkTableWrite(Of T)(sourceData As T, tableName As String = Nothing, sqlTransaction As MySqlTransaction = Nothing, forceType As Type = Nothing, batchSize As Integer = 100, allowAutoIncrementColumns As Boolean = False, allowPrimaryKeyColumns As Boolean = False, allowUniqueColumns As Boolean = False) As Integer
   overload: SimpleRelm.Interfaces.IRelmContext.BulkTableWrite*
   nameWithType.vb: IRelmContext.BulkTableWrite(Of T)(T, String, MySqlTransaction, Type, Integer, Boolean, Boolean, Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.BulkTableWrite(Of T)(T, String, MySql.Data.MySqlClient.MySqlTransaction, System.Type, Integer, Boolean, Boolean, Boolean)
@@ -1213,26 +1557,39 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 56
+    startLine: 424
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Executes a database operation using the specified query and parameters.
+  remarks: >-
+    This method allows for executing parameterized SQL queries with optional transaction
+        support.  Use the <code class="paramref">throwException</code> parameter to control error handling behavior.
+  example: []
   syntax:
-    content: void DoDatabaseWork(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true, bool useTransaction = false)
+    content: void DoDatabaseWork(string query, Dictionary<string, object> parameters = null, bool throwException = true, bool useTransaction = false)
     parameters:
-    - id: QueryString
+    - id: query
       type: System.String
-    - id: Parameters
+      description: The SQL query to execute. Cannot be null or empty.
+    - id: parameters
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
+      description: >-
+        An optional dictionary of parameter names and values to be used in the query.  If null, no parameters are
+            applied.
     - id: throwException
       type: System.Boolean
+      description: >-
+        A value indicating whether an exception should be thrown if the operation fails.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>,
+            an exception is thrown on failure; otherwise, the failure is silently handled.
     - id: useTransaction
       type: System.Boolean
-    content.vb: Sub DoDatabaseWork(QueryString As String, Parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True, useTransaction As Boolean = False)
+      description: A value indicating whether the operation should be executed within a transaction.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the operation is wrapped in a transaction; otherwise, it is executed without one.
+    content.vb: Sub DoDatabaseWork(query As String, parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True, useTransaction As Boolean = False)
   overload: SimpleRelm.Interfaces.IRelmContext.DoDatabaseWork*
   nameWithType.vb: IRelmContext.DoDatabaseWork(String, Dictionary(Of String, Object), Boolean, Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.DoDatabaseWork(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean, Boolean)
@@ -1251,30 +1608,51 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 57
+    startLine: 443
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Executes a database query and returns the result as the specified type.
+  remarks: >-
+    Use this method to execute queries that return a single result, such as scalar values
+        or objects.  Ensure that the type <code class="typeparamref">T</code> matches the expected result of the query to avoid
+        runtime errors.
+  example: []
   syntax:
-    content: T DoDatabaseWork<T>(string QueryString, Dictionary<string, object> Parameters = null, bool throwException = true, bool useTransaction = false)
+    content: T DoDatabaseWork<T>(string query, Dictionary<string, object> parameters = null, bool throwException = true, bool useTransaction = false)
     parameters:
-    - id: QueryString
+    - id: query
       type: System.String
-    - id: Parameters
+      description: The SQL query to execute. Cannot be null or empty.
+    - id: parameters
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
+      description: >-
+        An optional dictionary of parameter names and values to include in the query. Can be null if no parameters
+            are required.
     - id: throwException
       type: System.Boolean
+      description: >-
+        Specifies whether an exception should be thrown if the query fails. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, an exception
+            is thrown on failure; otherwise, the method returns the default value of <code class="typeparamref">T</code>.
     - id: useTransaction
       type: System.Boolean
+      description: >-
+        Specifies whether the query should be executed within a transaction. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the query is
+            executed in a transactional context; otherwise, it is executed without a transaction.
     typeParameters:
     - id: T
+      description: The type of the result expected from the query.
     return:
       type: '{T}'
-    content.vb: Function DoDatabaseWork(Of T)(QueryString As String, Parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True, useTransaction As Boolean = False) As T
+      description: >-
+        The result of the query as an instance of type <code class="typeparamref">T</code>. Returns the default value of
+            <code class="typeparamref">T</code> if <code class="paramref">throwException</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> and the query
+            fails.
+    content.vb: Function DoDatabaseWork(Of T)(query As String, parameters As Dictionary(Of String, Object) = Nothing, throwException As Boolean = True, useTransaction As Boolean = False) As T
   overload: SimpleRelm.Interfaces.IRelmContext.DoDatabaseWork*
   nameWithType.vb: IRelmContext.DoDatabaseWork(Of T)(String, Dictionary(Of String, Object), Boolean, Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.DoDatabaseWork(Of T)(String, System.Collections.Generic.Dictionary(Of String, Object), Boolean, Boolean)
@@ -1293,26 +1671,38 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 58
+    startLine: 458
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Executes a database operation using the specified query and callback function.
+  remarks: >-
+    This method provides a flexible way to execute database operations by allowing the
+        caller to  define custom logic through the <code class="paramref">actionCallback</code> parameter. Ensure that the 
+        <code class="paramref">query</code> is properly sanitized to prevent SQL injection attacks.
+  example: []
   syntax:
-    content: void DoDatabaseWork(string QueryString, Func<MySqlCommand, object> ActionCallback, bool throwException = true, bool useTransaction = false)
+    content: void DoDatabaseWork(string query, Func<MySqlCommand, object> actionCallback, bool throwException = true, bool useTransaction = false)
     parameters:
-    - id: QueryString
+    - id: query
       type: System.String
-    - id: ActionCallback
+      description: The SQL query to execute. Must not be null or empty.
+    - id: actionCallback
       type: System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object}
+      description: >-
+        A callback function that processes the <xref href="MySql.Data.MySqlClient.MySqlCommand" data-throw-if-not-resolved="false"></xref> object and returns a result.  The callback
+            must not be null.
     - id: throwException
       type: System.Boolean
+      description: A value indicating whether to throw an exception if an error occurs during the operation.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, exceptions will be thrown; otherwise, errors will be suppressed.
     - id: useTransaction
       type: System.Boolean
-    content.vb: Sub DoDatabaseWork(QueryString As String, ActionCallback As Func(Of MySqlCommand, Object), throwException As Boolean = True, useTransaction As Boolean = False)
+      description: A value indicating whether the operation should be executed within a database transaction.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the operation will be wrapped in a transaction; otherwise, it will not.
+    content.vb: Sub DoDatabaseWork(query As String, actionCallback As Func(Of MySqlCommand, Object), throwException As Boolean = True, useTransaction As Boolean = False)
   overload: SimpleRelm.Interfaces.IRelmContext.DoDatabaseWork*
   nameWithType.vb: IRelmContext.DoDatabaseWork(String, Func(Of MySqlCommand, Object), Boolean, Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.DoDatabaseWork(String, System.Func(Of MySql.Data.MySqlClient.MySqlCommand, Object), Boolean, Boolean)
@@ -1331,30 +1721,50 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DoDatabaseWork
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 59
+    startLine: 477
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Executes a database operation using the specified query and callback function.
+  remarks: >-
+    This method provides a flexible way to execute database operations by allowing the
+        caller to define the specific action to perform using the provided <xref href="MySql.Data.MySqlClient.MySqlCommand" data-throw-if-not-resolved="false"></xref> object. If
+        <code class="paramref">useTransaction</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, the operation will be executed within a
+        transaction, which will be committed or rolled back based on the success or failure of the
+        operation.
+  example: []
   syntax:
-    content: T DoDatabaseWork<T>(string QueryString, Func<MySqlCommand, object> ActionCallback, bool throwException = true, bool useTransaction = false)
+    content: T DoDatabaseWork<T>(string query, Func<MySqlCommand, object> actionCallback, bool throwException = true, bool useTransaction = false)
     parameters:
-    - id: QueryString
+    - id: query
       type: System.String
-    - id: ActionCallback
+      description: The SQL query to be executed. Cannot be null or empty.
+    - id: actionCallback
       type: System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object}
+      description: >-
+        A callback function that defines the operation to perform with the <xref href="MySql.Data.MySqlClient.MySqlCommand" data-throw-if-not-resolved="false"></xref> object. The
+            function should return an object of type <code class="typeparamref">T</code>.
     - id: throwException
       type: System.Boolean
+      description: >-
+        A value indicating whether an exception should be thrown if an error occurs during the operation. The
+            default value is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>.
     - id: useTransaction
       type: System.Boolean
+      description: >-
+        A value indicating whether the operation should be executed within a database transaction. The default value
+            is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     typeParameters:
     - id: T
+      description: The type of the result returned by the callback function.
     return:
       type: '{T}'
-    content.vb: Function DoDatabaseWork(Of T)(QueryString As String, ActionCallback As Func(Of MySqlCommand, Object), throwException As Boolean = True, useTransaction As Boolean = False) As T
+      description: The result of the operation, as returned by the <code class="paramref">actionCallback</code> function.
+    content.vb: Function DoDatabaseWork(Of T)(query As String, actionCallback As Func(Of MySqlCommand, Object), throwException As Boolean = True, useTransaction As Boolean = False) As T
   overload: SimpleRelm.Interfaces.IRelmContext.DoDatabaseWork*
   nameWithType.vb: IRelmContext.DoDatabaseWork(Of T)(String, Func(Of MySqlCommand, Object), Boolean, Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.DoDatabaseWork(Of T)(String, System.Func(Of MySql.Data.MySqlClient.MySqlCommand, Object), Boolean, Boolean)
@@ -1373,31 +1783,51 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 61
+    startLine: 498
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Writes the specified <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> to the database in batches.
+  remarks: >-
+    This method writes data to the database in batches to optimize performance. The
+        behavior of the write operation can be customized using the boolean parameters to control the inclusion of
+        specific column types.
+  example: []
   syntax:
     content: int WriteToDatabase(IRelmModel relmModel, int batchSize = 100, bool allowAutoIncrementColumns = false, bool allowPrimaryKeyColumns = false, bool allowUniqueColumns = false, bool allowAutoDateColumns = false)
     parameters:
     - id: relmModel
       type: SimpleRelm.Interfaces.IRelmModel
+      description: The model containing the data to be written to the database. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
     - id: batchSize
       type: System.Int32
+      description: The number of records to write in each batch. Must be greater than 0. The default value is 100.
     - id: allowAutoIncrementColumns
       type: System.Boolean
+      description: >-
+        A value indicating whether columns with auto-increment constraints are allowed to be written. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, auto-increment columns will be included in the write operation; otherwise, they will be
+            excluded.
     - id: allowPrimaryKeyColumns
       type: System.Boolean
+      description: >-
+        A value indicating whether primary key columns are allowed to be written. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, primary
+            key columns will be included in the write operation; otherwise, they will be excluded.
     - id: allowUniqueColumns
       type: System.Boolean
+      description: A value indicating whether columns with unique constraints are allowed to be written. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, unique columns will be included in the write operation; otherwise, they will be excluded.
     - id: allowAutoDateColumns
       type: System.Boolean
+      description: >-
+        A value indicating whether columns with automatic date generation constraints are allowed to be written. If
+            <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, auto-date columns will be included in the write operation; otherwise, they will be
+            excluded.
     return:
       type: System.Int32
+      description: The total number of records successfully written to the database.
     content.vb: Function WriteToDatabase(relmModel As IRelmModel, batchSize As Integer = 100, allowAutoIncrementColumns As Boolean = False, allowPrimaryKeyColumns As Boolean = False, allowUniqueColumns As Boolean = False, allowAutoDateColumns As Boolean = False) As Integer
   overload: SimpleRelm.Interfaces.IRelmContext.WriteToDatabase*
   nameWithType.vb: IRelmContext.WriteToDatabase(IRelmModel, Integer, Boolean, Boolean, Boolean, Boolean)
@@ -1417,37 +1847,67 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmContext.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteToDatabase
     path: ../SimpleRelm/Interfaces/IRelmContext.cs
-    startLine: 62
+    startLine: 522
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Writes a collection of Relm models to the database in batches.
+  remarks: >-
+    This method processes the provided models in batches to optimize database writes. The
+        behavior of the write operation can be customized using the optional parameters to control which types of
+        columns are included.
+  example: []
   syntax:
     content: int WriteToDatabase(IEnumerable<IRelmModel> relmModels, int batchSize = 100, bool allowAutoIncrementColumns = false, bool allowPrimaryKeyColumns = false, bool allowUniqueColumns = false, bool allowAutoDateColumns = false)
     parameters:
     - id: relmModels
       type: System.Collections.Generic.IEnumerable{SimpleRelm.Interfaces.IRelmModel}
+      description: The collection of models to be written to the database. Each model must implement the <xref href="SimpleRelm.Interfaces.IRelmModel" data-throw-if-not-resolved="false"></xref> interface.
     - id: batchSize
       type: System.Int32
+      description: The number of models to include in each batch. Must be a positive integer. The default value is 100.
     - id: allowAutoIncrementColumns
       type: System.Boolean
+      description: >-
+        A value indicating whether columns with auto-increment constraints are allowed to be written. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, auto-increment columns will be included; otherwise, they will be excluded. The default
+            value is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     - id: allowPrimaryKeyColumns
       type: System.Boolean
+      description: >-
+        A value indicating whether primary key columns are allowed to be written. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, primary
+            key columns will be included; otherwise, they will be excluded. The default value is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     - id: allowUniqueColumns
       type: System.Boolean
+      description: >-
+        A value indicating whether columns with unique constraints are allowed to be written. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, unique columns will be included; otherwise, they will be excluded. The default value is
+            <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     - id: allowAutoDateColumns
       type: System.Boolean
+      description: >-
+        A value indicating whether columns with automatic date generation constraints are allowed to be written. If
+            <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, auto-date columns will be included; otherwise, they will be excluded. The default
+            value is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
     return:
       type: System.Int32
+      description: The total number of models successfully written to the database.
     content.vb: Function WriteToDatabase(relmModels As IEnumerable(Of IRelmModel), batchSize As Integer = 100, allowAutoIncrementColumns As Boolean = False, allowPrimaryKeyColumns As Boolean = False, allowUniqueColumns As Boolean = False, allowAutoDateColumns As Boolean = False) As Integer
   overload: SimpleRelm.Interfaces.IRelmContext.WriteToDatabase*
   nameWithType.vb: IRelmContext.WriteToDatabase(IEnumerable(Of IRelmModel), Integer, Boolean, Boolean, Boolean, Boolean)
   fullName.vb: SimpleRelm.Interfaces.IRelmContext.WriteToDatabase(System.Collections.Generic.IEnumerable(Of SimpleRelm.Interfaces.IRelmModel), Integer, Boolean, Boolean, Boolean, Boolean)
   name.vb: WriteToDatabase(IEnumerable(Of IRelmModel), Integer, Boolean, Boolean, Boolean, Boolean)
 references:
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
 - uid: SimpleRelm.Interfaces
   commentId: N:SimpleRelm.Interfaces
   href: SimpleRelm.html
@@ -1511,6 +1971,13 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
 - uid: SimpleRelm.Extensions.DbContextExtensions.SetLockWaitTimeout(SimpleRelm.Interfaces.IRelmContext,System.Int32)
   commentId: M:SimpleRelm.Extensions.DbContextExtensions.SetLockWaitTimeout(SimpleRelm.Interfaces.IRelmContext,System.Int32)
   isExternal: true
@@ -1633,6 +2100,13 @@ references:
   name: RollbackTransactions
   nameWithType: IRelmContext.RollbackTransactions
   fullName: SimpleRelm.Interfaces.IRelmContext.RollbackTransactions
+- uid: SimpleRelm.Models.RelmModel
+  commentId: T:SimpleRelm.Models.RelmModel
+  parent: SimpleRelm.Models
+  href: SimpleRelm.Models.RelmModel.html
+  name: RelmModel
+  nameWithType: RelmModel
+  fullName: SimpleRelm.Models.RelmModel
 - uid: SimpleRelm.Interfaces.IRelmContext.SetDataLoader*
   commentId: Overload:SimpleRelm.Interfaces.IRelmContext.SetDataLoader
   href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_SetDataLoader__1_SimpleRelm_Interfaces_IRelmDataLoader___0__
@@ -1666,6 +2140,28 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: SimpleRelm.Models
+  commentId: N:SimpleRelm.Models
+  href: SimpleRelm.html
+  name: SimpleRelm.Models
+  nameWithType: SimpleRelm.Models
+  fullName: SimpleRelm.Models
+  spec.csharp:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Models
+    name: Models
+    href: SimpleRelm.Models.html
+  spec.vb:
+  - uid: SimpleRelm
+    name: SimpleRelm
+    href: SimpleRelm.html
+  - name: .
+  - uid: SimpleRelm.Models
+    name: Models
+    href: SimpleRelm.Models.html
 - uid: SimpleRelm.Interfaces.IRelmDataLoader`1
   commentId: T:SimpleRelm.Interfaces.IRelmDataLoader`1
   href: SimpleRelm.Interfaces.IRelmDataLoader-1.html
@@ -1719,19 +2215,19 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
-- uid: System
-  commentId: N:System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System
-  nameWithType: System
-  fullName: System
 - uid: SimpleRelm.Interfaces.IRelmContext.EndConnection*
   commentId: Overload:SimpleRelm.Interfaces.IRelmContext.EndConnection
   href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_EndConnection_System_Boolean_
   name: EndConnection
   nameWithType: IRelmContext.EndConnection
   fullName: SimpleRelm.Interfaces.IRelmContext.EndConnection
+- uid: SimpleRelm.Interfaces.IRelmModel
+  commentId: T:SimpleRelm.Interfaces.IRelmModel
+  parent: SimpleRelm.Interfaces
+  href: SimpleRelm.Interfaces.IRelmModel.html
+  name: IRelmModel
+  nameWithType: IRelmModel
+  fullName: SimpleRelm.Interfaces.IRelmModel
 - uid: SimpleRelm.Interfaces.IRelmContext.HasDataSet*
   commentId: Overload:SimpleRelm.Interfaces.IRelmContext.HasDataSet
   href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_HasDataSet__1_System_Boolean_
@@ -1746,16 +2242,9 @@ references:
   name: Type
   nameWithType: Type
   fullName: System.Type
-- uid: SimpleRelm.Interfaces.IRelmContext.GetDataSet*
-  commentId: Overload:SimpleRelm.Interfaces.IRelmContext.GetDataSet
-  href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_GetDataSet__1
-  name: GetDataSet
-  nameWithType: IRelmContext.GetDataSet
-  fullName: SimpleRelm.Interfaces.IRelmContext.GetDataSet
-- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}
-  commentId: T:SimpleRelm.Interfaces.IRelmDataSet{``0}
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1
+  commentId: T:SimpleRelm.Interfaces.IRelmDataSet`1
   parent: SimpleRelm.Interfaces
-  definition: SimpleRelm.Interfaces.IRelmDataSet`1
   href: SimpleRelm.Interfaces.IRelmDataSet-1.html
   name: IRelmDataSet<T>
   nameWithType: IRelmDataSet<T>
@@ -1779,9 +2268,16 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: SimpleRelm.Interfaces.IRelmDataSet`1
-  commentId: T:SimpleRelm.Interfaces.IRelmDataSet`1
+- uid: SimpleRelm.Interfaces.IRelmContext.GetDataSet*
+  commentId: Overload:SimpleRelm.Interfaces.IRelmContext.GetDataSet
+  href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_GetDataSet__1
+  name: GetDataSet
+  nameWithType: IRelmContext.GetDataSet
+  fullName: SimpleRelm.Interfaces.IRelmContext.GetDataSet
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  commentId: T:SimpleRelm.Interfaces.IRelmDataSet{``0}
   parent: SimpleRelm.Interfaces
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1
   href: SimpleRelm.Interfaces.IRelmDataSet-1.html
   name: IRelmDataSet<T>
   nameWithType: IRelmDataSet<T>
@@ -2170,12 +2666,6 @@ references:
   name: GetIdFromInternalId
   nameWithType: IRelmContext.GetIdFromInternalId
   fullName: SimpleRelm.Interfaces.IRelmContext.GetIdFromInternalId
-- uid: SimpleRelm.Interfaces.IRelmContext.GetDataRow*
-  commentId: Overload:SimpleRelm.Interfaces.IRelmContext.GetDataRow
-  href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_GetDataRow_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__System_Boolean_
-  name: GetDataRow
-  nameWithType: IRelmContext.GetDataRow
-  fullName: SimpleRelm.Interfaces.IRelmContext.GetDataRow
 - uid: System.Data.DataRow
   commentId: T:System.Data.DataRow
   parent: System.Data
@@ -2184,6 +2674,12 @@ references:
   name: DataRow
   nameWithType: DataRow
   fullName: System.Data.DataRow
+- uid: SimpleRelm.Interfaces.IRelmContext.GetDataRow*
+  commentId: Overload:SimpleRelm.Interfaces.IRelmContext.GetDataRow
+  href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_GetDataRow_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__System_Boolean_
+  name: GetDataRow
+  nameWithType: IRelmContext.GetDataRow
+  fullName: SimpleRelm.Interfaces.IRelmContext.GetDataRow
 - uid: System.Data
   commentId: N:System.Data
   isExternal: true
@@ -2211,12 +2707,6 @@ references:
     name: Data
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.data
-- uid: SimpleRelm.Interfaces.IRelmContext.GetDataTable*
-  commentId: Overload:SimpleRelm.Interfaces.IRelmContext.GetDataTable
-  href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_GetDataTable_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__System_Boolean_
-  name: GetDataTable
-  nameWithType: IRelmContext.GetDataTable
-  fullName: SimpleRelm.Interfaces.IRelmContext.GetDataTable
 - uid: System.Data.DataTable
   commentId: T:System.Data.DataTable
   parent: System.Data
@@ -2225,22 +2715,21 @@ references:
   name: DataTable
   nameWithType: DataTable
   fullName: System.Data.DataTable
+- uid: SimpleRelm.Interfaces.IRelmContext.GetDataTable*
+  commentId: Overload:SimpleRelm.Interfaces.IRelmContext.GetDataTable
+  href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_GetDataTable_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__System_Boolean_
+  name: GetDataTable
+  nameWithType: IRelmContext.GetDataTable
+  fullName: SimpleRelm.Interfaces.IRelmContext.GetDataTable
 - uid: SimpleRelm.Interfaces.IRelmContext.GetDataObject*
   commentId: Overload:SimpleRelm.Interfaces.IRelmContext.GetDataObject
   href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_GetDataObject__1_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__System_Boolean_
   name: GetDataObject
   nameWithType: IRelmContext.GetDataObject
   fullName: SimpleRelm.Interfaces.IRelmContext.GetDataObject
-- uid: SimpleRelm.Interfaces.IRelmContext.GetDataObjects*
-  commentId: Overload:SimpleRelm.Interfaces.IRelmContext.GetDataObjects
-  href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_GetDataObjects__1_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__System_Boolean_
-  name: GetDataObjects
-  nameWithType: IRelmContext.GetDataObjects
-  fullName: SimpleRelm.Interfaces.IRelmContext.GetDataObjects
-- uid: System.Collections.Generic.IEnumerable{{T}}
-  commentId: T:System.Collections.Generic.IEnumerable{``0}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.IEnumerable`1
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   name: IEnumerable<T>
   nameWithType: IEnumerable<T>
@@ -2266,9 +2755,16 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: System.Collections.Generic.IEnumerable`1
-  commentId: T:System.Collections.Generic.IEnumerable`1
-  isExternal: true
+- uid: SimpleRelm.Interfaces.IRelmContext.GetDataObjects*
+  commentId: Overload:SimpleRelm.Interfaces.IRelmContext.GetDataObjects
+  href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_GetDataObjects__1_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__System_Boolean_
+  name: GetDataObjects
+  nameWithType: IRelmContext.GetDataObjects
+  fullName: SimpleRelm.Interfaces.IRelmContext.GetDataObjects
+- uid: System.Collections.Generic.IEnumerable{{T}}
+  commentId: T:System.Collections.Generic.IEnumerable{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   name: IEnumerable<T>
   nameWithType: IEnumerable<T>
@@ -2306,16 +2802,9 @@ references:
   name: GetScalar
   nameWithType: IRelmContext.GetScalar
   fullName: SimpleRelm.Interfaces.IRelmContext.GetScalar
-- uid: SimpleRelm.Interfaces.IRelmContext.GetBulkTableWriter*
-  commentId: Overload:SimpleRelm.Interfaces.IRelmContext.GetBulkTableWriter
-  href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_GetBulkTableWriter__1_System_String_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_
-  name: GetBulkTableWriter
-  nameWithType: IRelmContext.GetBulkTableWriter
-  fullName: SimpleRelm.Interfaces.IRelmContext.GetBulkTableWriter
-- uid: SimpleRelm.Persistence.BulkTableWriter{{T}}
-  commentId: T:SimpleRelm.Persistence.BulkTableWriter{``0}
+- uid: SimpleRelm.Persistence.BulkTableWriter`1
+  commentId: T:SimpleRelm.Persistence.BulkTableWriter`1
   parent: SimpleRelm.Persistence
-  definition: SimpleRelm.Persistence.BulkTableWriter`1
   href: SimpleRelm.Persistence.BulkTableWriter-1.html
   name: BulkTableWriter<T>
   nameWithType: BulkTableWriter<T>
@@ -2339,9 +2828,16 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: SimpleRelm.Persistence.BulkTableWriter`1
-  commentId: T:SimpleRelm.Persistence.BulkTableWriter`1
+- uid: SimpleRelm.Interfaces.IRelmContext.GetBulkTableWriter*
+  commentId: Overload:SimpleRelm.Interfaces.IRelmContext.GetBulkTableWriter
+  href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_GetBulkTableWriter__1_System_String_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_
+  name: GetBulkTableWriter
+  nameWithType: IRelmContext.GetBulkTableWriter
+  fullName: SimpleRelm.Interfaces.IRelmContext.GetBulkTableWriter
+- uid: SimpleRelm.Persistence.BulkTableWriter{{T}}
+  commentId: T:SimpleRelm.Persistence.BulkTableWriter{``0}
   parent: SimpleRelm.Persistence
+  definition: SimpleRelm.Persistence.BulkTableWriter`1
   href: SimpleRelm.Persistence.BulkTableWriter-1.html
   name: BulkTableWriter<T>
   nameWithType: BulkTableWriter<T>
@@ -2387,12 +2883,6 @@ references:
   - uid: SimpleRelm.Persistence
     name: Persistence
     href: SimpleRelm.Persistence.html
-- uid: SimpleRelm.Interfaces.IRelmContext.BulkTableWrite*
-  commentId: Overload:SimpleRelm.Interfaces.IRelmContext.BulkTableWrite
-  href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_BulkTableWrite__1___0_System_String_MySql_Data_MySqlClient_MySqlTransaction_System_Type_System_Int32_System_Boolean_System_Boolean_System_Boolean_
-  name: BulkTableWrite
-  nameWithType: IRelmContext.BulkTableWrite
-  fullName: SimpleRelm.Interfaces.IRelmContext.BulkTableWrite
 - uid: MySql.Data.MySqlClient.MySqlTransaction
   commentId: T:MySql.Data.MySqlClient.MySqlTransaction
   parent: MySql.Data.MySqlClient
@@ -2400,6 +2890,12 @@ references:
   name: MySqlTransaction
   nameWithType: MySqlTransaction
   fullName: MySql.Data.MySqlClient.MySqlTransaction
+- uid: SimpleRelm.Interfaces.IRelmContext.BulkTableWrite*
+  commentId: Overload:SimpleRelm.Interfaces.IRelmContext.BulkTableWrite
+  href: SimpleRelm.Interfaces.IRelmContext.html#SimpleRelm_Interfaces_IRelmContext_BulkTableWrite__1___0_System_String_MySql_Data_MySqlClient_MySqlTransaction_System_Type_System_Int32_System_Boolean_System_Boolean_System_Boolean_
+  name: BulkTableWrite
+  nameWithType: IRelmContext.BulkTableWrite
+  fullName: SimpleRelm.Interfaces.IRelmContext.BulkTableWrite
 - uid: MySql.Data.MySqlClient
   commentId: N:MySql.Data.MySqlClient
   isExternal: true
@@ -2436,6 +2932,12 @@ references:
   name: DoDatabaseWork
   nameWithType: IRelmContext.DoDatabaseWork
   fullName: SimpleRelm.Interfaces.IRelmContext.DoDatabaseWork
+- uid: MySql.Data.MySqlClient.MySqlCommand
+  commentId: T:MySql.Data.MySqlClient.MySqlCommand
+  isExternal: true
+  name: MySqlCommand
+  nameWithType: MySqlCommand
+  fullName: MySql.Data.MySqlClient.MySqlCommand
 - uid: System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object}
   commentId: T:System.Func{MySql.Data.MySqlClient.MySqlCommand,System.Object}
   parent: System
@@ -2521,13 +3023,6 @@ references:
   name: WriteToDatabase
   nameWithType: IRelmContext.WriteToDatabase
   fullName: SimpleRelm.Interfaces.IRelmContext.WriteToDatabase
-- uid: SimpleRelm.Interfaces.IRelmModel
-  commentId: T:SimpleRelm.Interfaces.IRelmModel
-  parent: SimpleRelm.Interfaces
-  href: SimpleRelm.Interfaces.IRelmModel.html
-  name: IRelmModel
-  nameWithType: IRelmModel
-  fullName: SimpleRelm.Interfaces.IRelmModel
 - uid: System.Collections.Generic.IEnumerable{SimpleRelm.Interfaces.IRelmModel}
   commentId: T:System.Collections.Generic.IEnumerable{SimpleRelm.Interfaces.IRelmModel}
   parent: System.Collections.Generic

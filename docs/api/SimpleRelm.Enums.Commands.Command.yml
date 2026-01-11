@@ -9,6 +9,7 @@ items:
   - SimpleRelm.Enums.Commands.Command.DistinctBy
   - SimpleRelm.Enums.Commands.Command.GroupBy
   - SimpleRelm.Enums.Commands.Command.Limit
+  - SimpleRelm.Enums.Commands.Command.Offset
   - SimpleRelm.Enums.Commands.Command.OrderBy
   - SimpleRelm.Enums.Commands.Command.OrderByDescending
   - SimpleRelm.Enums.Commands.Command.Reference
@@ -25,7 +26,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Command
     path: ../SimpleRelm/Enums/Commands.cs
@@ -56,7 +57,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Where
     path: ../SimpleRelm/Enums/Commands.cs
@@ -87,7 +88,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Enums/Commands.cs
@@ -119,7 +120,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OrderBy
     path: ../SimpleRelm/Enums/Commands.cs
@@ -151,19 +152,18 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OrderByDescending
     path: ../SimpleRelm/Enums/Commands.cs
-    startLine: 51
+    startLine: 50
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Enums
   summary: Sorts the elements of a sequence in descending order according to a specified key.
   remarks: >-
     This method performs a stable sort; that is, if two elements have the same
-        key, their original order is preserved in the returned sequence. To perform subsequent ordering
-        operations, use IOrderedEnumerable&lt;TElement&gt;.ThenByDescending.
+        key, their original order is preserved in the returned sequence.
   example: []
   syntax:
     content: OrderByDescending = 3
@@ -183,11 +183,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Set
     path: ../SimpleRelm/Enums/Commands.cs
-    startLine: 57
+    startLine: 56
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Enums
@@ -214,11 +214,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetPostfix
     path: ../SimpleRelm/Enums/Commands.cs
-    startLine: 61
+    startLine: 60
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Enums
@@ -242,11 +242,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GroupBy
     path: ../SimpleRelm/Enums/Commands.cs
-    startLine: 67
+    startLine: 66
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Enums
@@ -273,11 +273,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Limit
     path: ../SimpleRelm/Enums/Commands.cs
-    startLine: 71
+    startLine: 70
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Enums
@@ -285,6 +285,34 @@ items:
   example: []
   syntax:
     content: Limit = 7
+    return:
+      type: SimpleRelm.Enums.Commands.Command
+- uid: SimpleRelm.Enums.Commands.Command.Offset
+  commentId: F:SimpleRelm.Enums.Commands.Command.Offset
+  id: Offset
+  parent: SimpleRelm.Enums.Commands.Command
+  langs:
+  - csharp
+  - vb
+  name: Offset
+  nameWithType: Commands.Command.Offset
+  fullName: SimpleRelm.Enums.Commands.Command.Offset
+  type: Field
+  source:
+    remote:
+      path: SimpleRelm/Enums/Commands.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Offset
+    path: ../SimpleRelm/Enums/Commands.cs
+    startLine: 74
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Enums
+  summary: Gets or sets the offset value used for positioning or alignment.
+  example: []
+  syntax:
+    content: Offset = 8
     return:
       type: SimpleRelm.Enums.Commands.Command
 - uid: SimpleRelm.Enums.Commands.Command.DistinctBy
@@ -301,11 +329,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DistinctBy
     path: ../SimpleRelm/Enums/Commands.cs
-    startLine: 79
+    startLine: 82
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Enums
@@ -317,7 +345,7 @@ items:
         sequence.
   example: []
   syntax:
-    content: DistinctBy = 8
+    content: DistinctBy = 9
     return:
       type: SimpleRelm.Enums.Commands.Command
 - uid: SimpleRelm.Enums.Commands.Command.Count
@@ -334,18 +362,18 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Commands.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Count
     path: ../SimpleRelm/Enums/Commands.cs
-    startLine: 83
+    startLine: 86
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Enums
   summary: Gets the number of elements contained in the collection.
   example: []
   syntax:
-    content: Count = 9
+    content: Count = 10
     return:
       type: SimpleRelm.Enums.Commands.Command
 references:

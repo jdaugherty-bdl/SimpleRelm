@@ -47,8 +47,7 @@ namespace SimpleRelm.Enums
             /// Sorts the elements of a sequence in descending order according to a specified key.
             /// </summary>
             /// <remarks>This method performs a stable sort; that is, if two elements have the same
-            /// key, their original order is preserved in the returned sequence. To perform subsequent ordering
-            /// operations, use <see cref="IOrderedEnumerable{TElement}.ThenByDescending"/>.</remarks>
+            /// key, their original order is preserved in the returned sequence.</remarks>
             OrderByDescending,
             /// <summary>
             /// Sets the value of the specified property or field.

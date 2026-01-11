@@ -15,7 +15,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Enums/Triggers.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Triggers
     path: ../SimpleRelm/Enums/Triggers.cs

@@ -514,7 +514,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
                 , queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( FIND_IN_SET(a.`InternalId`, @_InternalId_1_) )", result);
+            Assert.Equal(" WHERE ( a.`test_column_InternalId` == '00000000-0000-0000-0000-000000000001' AND a.`test_column_no_attribute_arguments` == '1' )", result);
             Assert.Equal("00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000001", queryParameters["@_InternalId_1_"]);
         }
 

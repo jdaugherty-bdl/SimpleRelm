@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmDefaultDataLoader
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -78,7 +78,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LastCommandsExecuted
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -118,7 +118,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -126,7 +126,7 @@ items:
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
-  summary: Initializes a new instance of the RelmDefaultDataLoader class.
+  summary: Initializes a new instance of the <xref href="SimpleRelm.Models.RelmDefaultDataLoader%601.%23ctor" data-throw-if-not-resolved="false"></xref> class.
   remarks: >-
     This constructor performs the initial setup required for the data loader by invoking
         the <xref href="SimpleRelm.Models.RelmDefaultDataLoader%601.InitialSetup" data-throw-if-not-resolved="false"></xref> method.
@@ -152,7 +152,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -161,7 +161,7 @@ items:
   - SimpleRelm
   namespace: SimpleRelm.Models
   summary: >-
-    Initializes a new instance of the RelmDefaultDataLoader class with the specified context
+    Initializes a new instance of the <xref href="SimpleRelm.Models.RelmDefaultDataLoader%601.%23ctor" data-throw-if-not-resolved="false"></xref> class with the specified context
 
     options builder.
   example: []
@@ -190,7 +190,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: HasUnderscoreProperty
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -233,7 +233,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddExpression
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -279,7 +279,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: AddSingleExpression
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -326,7 +326,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetLoadData
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -366,7 +366,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: PullData
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -417,7 +417,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDefaultDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: WriteData
     path: ../SimpleRelm/Models/RelmDefaultDataLoader.cs
@@ -947,6 +947,25 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: SimpleRelm.Models.RelmDefaultDataLoader`1.#ctor
+  commentId: M:SimpleRelm.Models.RelmDefaultDataLoader`1.#ctor
+  href: SimpleRelm.Models.RelmDefaultDataLoader-1.html#SimpleRelm_Models_RelmDefaultDataLoader_1__ctor
+  name: RelmDefaultDataLoader()
+  nameWithType: RelmDefaultDataLoader<T>.RelmDefaultDataLoader()
+  fullName: SimpleRelm.Models.RelmDefaultDataLoader<T>.RelmDefaultDataLoader()
+  nameWithType.vb: RelmDefaultDataLoader(Of T).New()
+  fullName.vb: SimpleRelm.Models.RelmDefaultDataLoader(Of T).New()
+  name.vb: New()
+  spec.csharp:
+  - uid: SimpleRelm.Models.RelmDefaultDataLoader`1.#ctor
+    name: RelmDefaultDataLoader
+    href: SimpleRelm.Models.RelmDefaultDataLoader-1.html#SimpleRelm_Models_RelmDefaultDataLoader_1__ctor
+  - name: (
+  - name: )
+  spec.vb:
+  - name: New
+  - name: (
+  - name: )
 - uid: SimpleRelm.Models.RelmDefaultDataLoader`1.InitialSetup
   commentId: M:SimpleRelm.Models.RelmDefaultDataLoader`1.InitialSetup
   name: InitialSetup()

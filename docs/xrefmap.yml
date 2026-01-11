@@ -466,6 +466,12 @@ references:
   commentId: F:SimpleRelm.Enums.Commands.Command.Limit
   fullName: SimpleRelm.Enums.Commands.Command.Limit
   nameWithType: Commands.Command.Limit
+- uid: SimpleRelm.Enums.Commands.Command.Offset
+  name: Offset
+  href: api/SimpleRelm.Enums.Commands.Command.html#SimpleRelm_Enums_Commands_Command_Offset
+  commentId: F:SimpleRelm.Enums.Commands.Command.Offset
+  fullName: SimpleRelm.Enums.Commands.Command.Offset
+  nameWithType: Commands.Command.Offset
 - uid: SimpleRelm.Enums.Commands.Command.OrderBy
   name: OrderBy
   href: api/SimpleRelm.Enums.Commands.Command.html#SimpleRelm_Enums_Commands_Command_OrderBy
@@ -1881,6 +1887,32 @@ references:
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Add
   nameWithType: IRelmDataSet<T>.Add
   nameWithType.vb: IRelmDataSet(Of T).Add
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Count
+  name: Count()
+  href: api/SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Count
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Count()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Count()
+  nameWithType: IRelmDataSet<T>.Count()
+  nameWithType.vb: IRelmDataSet(Of T).Count()
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  name: Count(Expression<Func<T, bool>>)
+  href: api/SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  name.vb: Count(Expression(Of Func(Of T, Boolean)))
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Count(System.Linq.Expressions.Expression<System.Func<T, bool>>)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Count(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)))
+  nameWithType: IRelmDataSet<T>.Count(Expression<Func<T, bool>>)
+  nameWithType.vb: IRelmDataSet(Of T).Count(Expression(Of Func(Of T, Boolean)))
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Count*
+  name: Count
+  href: api/SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count_
+  commentId: Overload:SimpleRelm.Interfaces.IRelmDataSet`1.Count
+  isSpec: "True"
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Count
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Count
+  nameWithType: IRelmDataSet<T>.Count
+  nameWithType.vb: IRelmDataSet(Of T).Count
 - uid: SimpleRelm.Interfaces.IRelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   name: DistinctBy(Expression<Func<T, object>>)
   href: api/SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_DistinctBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
@@ -2102,6 +2134,24 @@ references:
   fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).New
   nameWithType: IRelmDataSet<T>.New
   nameWithType.vb: IRelmDataSet(Of T).New
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Offset(System.Int32)
+  name: Offset(int)
+  href: api/SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Offset_System_Int32_
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Offset(System.Int32)
+  name.vb: Offset(Integer)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Offset(int)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Offset(Integer)
+  nameWithType: IRelmDataSet<T>.Offset(int)
+  nameWithType.vb: IRelmDataSet(Of T).Offset(Integer)
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Offset*
+  name: Offset
+  href: api/SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Offset_
+  commentId: Overload:SimpleRelm.Interfaces.IRelmDataSet`1.Offset
+  isSpec: "True"
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Offset
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Offset
+  nameWithType: IRelmDataSet<T>.Offset
+  nameWithType.vb: IRelmDataSet(Of T).Offset
 - uid: SimpleRelm.Interfaces.IRelmDataSet`1.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   name: OrderBy(Expression<Func<T, object>>)
   href: api/SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_OrderBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
@@ -4274,13 +4324,22 @@ references:
   nameWithType: RelmDataSet<T>.CopyTo
   nameWithType.vb: RelmDataSet(Of T).CopyTo
 - uid: SimpleRelm.Models.RelmDataSet`1.Count
-  name: Count
+  name: Count()
   href: api/SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_Count
-  commentId: P:SimpleRelm.Models.RelmDataSet`1.Count
-  fullName: SimpleRelm.Models.RelmDataSet<T>.Count
-  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Count
-  nameWithType: RelmDataSet<T>.Count
-  nameWithType.vb: RelmDataSet(Of T).Count
+  commentId: M:SimpleRelm.Models.RelmDataSet`1.Count
+  fullName: SimpleRelm.Models.RelmDataSet<T>.Count()
+  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Count()
+  nameWithType: RelmDataSet<T>.Count()
+  nameWithType.vb: RelmDataSet(Of T).Count()
+- uid: SimpleRelm.Models.RelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  name: Count(Expression<Func<T, bool>>)
+  href: api/SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_Count_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  commentId: M:SimpleRelm.Models.RelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  name.vb: Count(Expression(Of Func(Of T, Boolean)))
+  fullName: SimpleRelm.Models.RelmDataSet<T>.Count(System.Linq.Expressions.Expression<System.Func<T, bool>>)
+  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Count(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)))
+  nameWithType: RelmDataSet<T>.Count(Expression<Func<T, bool>>)
+  nameWithType.vb: RelmDataSet(Of T).Count(Expression(Of Func(Of T, Boolean)))
 - uid: SimpleRelm.Models.RelmDataSet`1.Count*
   name: Count
   href: api/SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_Count_
@@ -4562,6 +4621,24 @@ references:
   fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).New
   nameWithType: RelmDataSet<T>.New
   nameWithType.vb: RelmDataSet(Of T).New
+- uid: SimpleRelm.Models.RelmDataSet`1.Offset(System.Int32)
+  name: Offset(int)
+  href: api/SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_Offset_System_Int32_
+  commentId: M:SimpleRelm.Models.RelmDataSet`1.Offset(System.Int32)
+  name.vb: Offset(Integer)
+  fullName: SimpleRelm.Models.RelmDataSet<T>.Offset(int)
+  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Offset(Integer)
+  nameWithType: RelmDataSet<T>.Offset(int)
+  nameWithType.vb: RelmDataSet(Of T).Offset(Integer)
+- uid: SimpleRelm.Models.RelmDataSet`1.Offset*
+  name: Offset
+  href: api/SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_Offset_
+  commentId: Overload:SimpleRelm.Models.RelmDataSet`1.Offset
+  isSpec: "True"
+  fullName: SimpleRelm.Models.RelmDataSet<T>.Offset
+  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Offset
+  nameWithType: RelmDataSet<T>.Offset
+  nameWithType.vb: RelmDataSet(Of T).Offset
 - uid: SimpleRelm.Models.RelmDataSet`1.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   name: OrderBy(Expression<Func<T, object>>)
   href: api/SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_OrderBy_System_Linq_Expressions_Expression_System_Func__0_System_Object___
@@ -5019,6 +5096,45 @@ references:
   isSpec: "True"
   fullName: SimpleRelm.Models.RelmExecutionCommand.AdditionalCommandCount
   nameWithType: RelmExecutionCommand.AdditionalCommandCount
+- uid: SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount
+  name: ChildCommandCount
+  href: api/SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_ChildCommandCount
+  commentId: P:SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount
+  fullName: SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount
+  nameWithType: RelmExecutionCommand.ChildCommandCount
+- uid: SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount*
+  name: ChildCommandCount
+  href: api/SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_ChildCommandCount_
+  commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount
+  isSpec: "True"
+  fullName: SimpleRelm.Models.RelmExecutionCommand.ChildCommandCount
+  nameWithType: RelmExecutionCommand.ChildCommandCount
+- uid: SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand
+  name: ExecutionCommand
+  href: api/SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_ExecutionCommand
+  commentId: P:SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand
+  fullName: SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand
+  nameWithType: RelmExecutionCommand.ExecutionCommand
+- uid: SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand*
+  name: ExecutionCommand
+  href: api/SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_ExecutionCommand_
+  commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand
+  isSpec: "True"
+  fullName: SimpleRelm.Models.RelmExecutionCommand.ExecutionCommand
+  nameWithType: RelmExecutionCommand.ExecutionCommand
+- uid: SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression
+  name: ExecutionExpression
+  href: api/SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_ExecutionExpression
+  commentId: P:SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression
+  fullName: SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression
+  nameWithType: RelmExecutionCommand.ExecutionExpression
+- uid: SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression*
+  name: ExecutionExpression
+  href: api/SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_ExecutionExpression_
+  commentId: Overload:SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression
+  isSpec: "True"
+  fullName: SimpleRelm.Models.RelmExecutionCommand.ExecutionExpression
+  nameWithType: RelmExecutionCommand.ExecutionExpression
 - uid: SimpleRelm.Models.RelmExecutionCommand.GetAdditionalCommands
   name: GetAdditionalCommands()
   href: api/SimpleRelm.Models.RelmExecutionCommand.html#SimpleRelm_Models_RelmExecutionCommand_GetAdditionalCommands
@@ -5957,6 +6073,32 @@ references:
   fullName.vb: SimpleRelm.Models.RelmQuickContext.HasDataSet(Of T)(Boolean)
   nameWithType: RelmQuickContext.HasDataSet<T>(bool)
   nameWithType.vb: RelmQuickContext.HasDataSet(Of T)(Boolean)
+- uid: SimpleRelm.Models.RelmQuickContext.HasTransaction
+  name: HasTransaction()
+  href: api/SimpleRelm.Models.RelmQuickContext.html#SimpleRelm_Models_RelmQuickContext_HasTransaction
+  commentId: M:SimpleRelm.Models.RelmQuickContext.HasTransaction
+  fullName: SimpleRelm.Models.RelmQuickContext.HasTransaction()
+  nameWithType: RelmQuickContext.HasTransaction()
+- uid: SimpleRelm.Models.RelmQuickContext.HasTransaction*
+  name: HasTransaction
+  href: api/SimpleRelm.Models.RelmQuickContext.html#SimpleRelm_Models_RelmQuickContext_HasTransaction_
+  commentId: Overload:SimpleRelm.Models.RelmQuickContext.HasTransaction
+  isSpec: "True"
+  fullName: SimpleRelm.Models.RelmQuickContext.HasTransaction
+  nameWithType: RelmQuickContext.HasTransaction
+- uid: SimpleRelm.Models.RelmQuickContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+  name: OnConfigure(RelmContextOptionsBuilder)
+  href: api/SimpleRelm.Models.RelmQuickContext.html#SimpleRelm_Models_RelmQuickContext_OnConfigure_SimpleRelm_Options_RelmContextOptionsBuilder_
+  commentId: M:SimpleRelm.Models.RelmQuickContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+  fullName: SimpleRelm.Models.RelmQuickContext.OnConfigure(SimpleRelm.Options.RelmContextOptionsBuilder)
+  nameWithType: RelmQuickContext.OnConfigure(RelmContextOptionsBuilder)
+- uid: SimpleRelm.Models.RelmQuickContext.OnConfigure*
+  name: OnConfigure
+  href: api/SimpleRelm.Models.RelmQuickContext.html#SimpleRelm_Models_RelmQuickContext_OnConfigure_
+  commentId: Overload:SimpleRelm.Models.RelmQuickContext.OnConfigure
+  isSpec: "True"
+  fullName: SimpleRelm.Models.RelmQuickContext.OnConfigure
+  nameWithType: RelmQuickContext.OnConfigure
 - uid: SimpleRelm.Models.RelmQuickContext.RollbackTransaction
   name: RollbackTransaction()
   href: api/SimpleRelm.Models.RelmQuickContext.html#SimpleRelm_Models_RelmQuickContext_RollbackTransaction

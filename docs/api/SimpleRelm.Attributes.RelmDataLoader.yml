@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmDataLoader
     path: ../SimpleRelm/Attributes/RelmDataLoader.cs
@@ -115,7 +115,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoaderType
     path: ../SimpleRelm/Attributes/RelmDataLoader.cs
@@ -149,7 +149,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: KeyFields
     path: ../SimpleRelm/Attributes/RelmDataLoader.cs
@@ -184,7 +184,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Attributes/RelmDataLoader.cs
@@ -219,7 +219,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Attributes/RelmDataLoader.cs
@@ -265,7 +265,7 @@ items:
   source:
     remote:
       path: SimpleRelm/Attributes/RelmDataLoader.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Attributes/RelmDataLoader.cs

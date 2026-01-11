@@ -20,14 +20,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IRelmModelApartment
     path: ../SimpleRelm/Interfaces/IRelmModelApartment.cs
-    startLine: 9
+    startLine: 12
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Represents an apartment entity within the Relm model, including associated user and membership information.
+  example: []
   syntax:
     content: public interface IRelmModelApartment
     content.vb: Public Interface IRelmModelApartment
@@ -45,14 +47,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: ApartmentId
     path: ../SimpleRelm/Interfaces/IRelmModelApartment.cs
-    startLine: 11
+    startLine: 17
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets or sets the unique identifier for the apartment.
+  example: []
   syntax:
     content: string ApartmentId { get; set; }
     parameters: []
@@ -74,14 +78,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: UserId
     path: ../SimpleRelm/Interfaces/IRelmModelApartment.cs
-    startLine: 12
+    startLine: 22
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets or sets the unique identifier for the user.
+  example: []
   syntax:
     content: int UserId { get; set; }
     parameters: []
@@ -103,14 +109,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: UserEmail
     path: ../SimpleRelm/Interfaces/IRelmModelApartment.cs
-    startLine: 13
+    startLine: 27
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets or sets the email address associated with the user.
+  example: []
   syntax:
     content: string UserEmail { get; set; }
     parameters: []
@@ -132,14 +140,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: UserName
     path: ../SimpleRelm/Interfaces/IRelmModelApartment.cs
-    startLine: 14
+    startLine: 32
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets or sets the user name associated with the current context.
+  example: []
   syntax:
     content: string UserName { get; set; }
     parameters: []
@@ -161,14 +171,16 @@ items:
   source:
     remote:
       path: SimpleRelm/Interfaces/IRelmModelApartment.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Member
     path: ../SimpleRelm/Interfaces/IRelmModelApartment.cs
-    startLine: 15
+    startLine: 37
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Interfaces
+  summary: Gets or sets the associated member for this instance.
+  example: []
   syntax:
     content: IRelmMember Member { get; set; }
     parameters: []

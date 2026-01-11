@@ -15,6 +15,7 @@ items:
   - SimpleRelm.Models.RelmDataSet`1.Contains(`0)
   - SimpleRelm.Models.RelmDataSet`1.CopyTo(`0[],System.Int32)
   - SimpleRelm.Models.RelmDataSet`1.Count
+  - SimpleRelm.Models.RelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
   - SimpleRelm.Models.RelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   - SimpleRelm.Models.RelmDataSet`1.Entry(`0)
   - SimpleRelm.Models.RelmDataSet`1.Entry(`0,System.Boolean)
@@ -34,6 +35,7 @@ items:
   - SimpleRelm.Models.RelmDataSet`1.Modified
   - SimpleRelm.Models.RelmDataSet`1.New(System.Boolean)
   - SimpleRelm.Models.RelmDataSet`1.New(System.Object,System.Boolean)
+  - SimpleRelm.Models.RelmDataSet`1.Offset(System.Int32)
   - SimpleRelm.Models.RelmDataSet`1.OrderBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   - SimpleRelm.Models.RelmDataSet`1.OrderByDescending(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   - SimpleRelm.Models.RelmDataSet`1.Reference``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}},System.Collections.Generic.ICollection{System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})
@@ -60,11 +62,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: RelmDataSet
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 38
+    startLine: 37
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -155,11 +157,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Modified
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 43
+    startLine: 42
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -174,41 +176,6 @@ items:
   overload: SimpleRelm.Models.RelmDataSet`1.Modified*
   nameWithType.vb: RelmDataSet(Of T).Modified
   fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Modified
-- uid: SimpleRelm.Models.RelmDataSet`1.Count
-  commentId: P:SimpleRelm.Models.RelmDataSet`1.Count
-  id: Count
-  parent: SimpleRelm.Models.RelmDataSet`1
-  langs:
-  - csharp
-  - vb
-  name: Count
-  nameWithType: RelmDataSet<T>.Count
-  fullName: SimpleRelm.Models.RelmDataSet<T>.Count
-  type: Property
-  source:
-    remote:
-      path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
-      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
-    id: Count
-    path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 48
-  assemblies:
-  - SimpleRelm
-  namespace: SimpleRelm.Models
-  summary: Gets the number of items in the collection.
-  example: []
-  syntax:
-    content: public int Count { get; }
-    parameters: []
-    return:
-      type: System.Int32
-    content.vb: Public ReadOnly Property Count As Integer
-  overload: SimpleRelm.Models.RelmDataSet`1.Count*
-  implements:
-  - System.Collections.Generic.ICollection{{T}}.Count
-  nameWithType.vb: RelmDataSet(Of T).Count
-  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Count
 - uid: SimpleRelm.Models.RelmDataSet`1.IsReadOnly
   commentId: P:SimpleRelm.Models.RelmDataSet`1.IsReadOnly
   id: IsReadOnly
@@ -223,11 +190,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: IsReadOnly
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 53
+    startLine: 52
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -258,11 +225,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 71
+    startLine: 70
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -303,11 +270,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: .ctor
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 85
+    startLine: 84
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -348,11 +315,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GetEnumerator
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 108
+    startLine: 107
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -386,11 +353,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetFieldLoader
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 137
+    startLine: 136
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -436,11 +403,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetFieldLoader
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 156
+    startLine: 155
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -484,11 +451,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: SetDataLoader
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 169
+    startLine: 168
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -524,11 +491,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Where
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 196
+    startLine: 195
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -571,11 +538,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 211
+    startLine: 210
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -617,11 +584,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 227
+    startLine: 226
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -671,11 +638,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 243
+    startLine: 242
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -723,11 +690,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 260
+    startLine: 259
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -777,11 +744,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Reference
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 273
+    startLine: 272
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -825,11 +792,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Find
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 304
+    startLine: 303
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -868,11 +835,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Find
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 315
+    startLine: 314
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -910,11 +877,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 328
+    startLine: 327
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -951,11 +918,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 341
+    startLine: 340
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -996,11 +963,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 353
+    startLine: 352
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1041,11 +1008,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: FirstOrDefault
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 372
+    startLine: 371
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1098,11 +1065,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: LoadAsDataSet
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 396
+    startLine: 395
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1136,11 +1103,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Load
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 410
+    startLine: 409
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1176,11 +1143,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Load
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 428
+    startLine: 427
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1225,11 +1192,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Write
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 492
+    startLine: 491
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1260,11 +1227,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Entry
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 531
+    startLine: 530
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1302,11 +1269,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Entry
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 550
+    startLine: 549
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1348,11 +1315,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OrderBy
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 568
+    startLine: 567
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1391,11 +1358,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: OrderByDescending
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 584
+    startLine: 583
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1436,11 +1403,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Set
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 600
+    startLine: 599
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1481,11 +1448,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: GroupBy
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 616
+    startLine: 615
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1525,11 +1492,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Limit
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 629
+    startLine: 628
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1551,6 +1518,129 @@ items:
   nameWithType.vb: RelmDataSet(Of T).Limit(Integer)
   fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Limit(Integer)
   name.vb: Limit(Integer)
+- uid: SimpleRelm.Models.RelmDataSet`1.Offset(System.Int32)
+  commentId: M:SimpleRelm.Models.RelmDataSet`1.Offset(System.Int32)
+  id: Offset(System.Int32)
+  parent: SimpleRelm.Models.RelmDataSet`1
+  langs:
+  - csharp
+  - vb
+  name: Offset(int)
+  nameWithType: RelmDataSet<T>.Offset(int)
+  fullName: SimpleRelm.Models.RelmDataSet<T>.Offset(int)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Models/RelmDataSet.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Offset
+    path: ../SimpleRelm/Models/RelmDataSet.cs
+    startLine: 640
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Models
+  summary: Sets the offset value used for positioning or alignment.
+  example: []
+  syntax:
+    content: public IRelmDataSet<T> Offset(int offsetCount)
+    parameters:
+    - id: offsetCount
+      type: System.Int32
+      description: The offset value to apply. Must be a non-negative integer.
+    return:
+      type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: The current dataset instance with the applied offset, allowing for further query chaining.
+    content.vb: Public Function Offset(offsetCount As Integer) As IRelmDataSet(Of T)
+  overload: SimpleRelm.Models.RelmDataSet`1.Offset*
+  implements:
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Offset(System.Int32)
+  nameWithType.vb: RelmDataSet(Of T).Offset(Integer)
+  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Offset(Integer)
+  name.vb: Offset(Integer)
+- uid: SimpleRelm.Models.RelmDataSet`1.Count
+  commentId: M:SimpleRelm.Models.RelmDataSet`1.Count
+  id: Count
+  parent: SimpleRelm.Models.RelmDataSet`1
+  langs:
+  - csharp
+  - vb
+  name: Count()
+  nameWithType: RelmDataSet<T>.Count()
+  fullName: SimpleRelm.Models.RelmDataSet<T>.Count()
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Models/RelmDataSet.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Count
+    path: ../SimpleRelm/Models/RelmDataSet.cs
+    startLine: 653
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Models
+  summary: Adds a count operation to the current query expression.
+  remarks: >-
+    This method modifies the query by appending a count operation, allowing further query
+        composition. The actual count is not executed until the query is evaluated.
+  example: []
+  syntax:
+    content: public IRelmDataSet<T> Count()
+    return:
+      type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: The current <xref href="SimpleRelm.Interfaces.IRelmDataSet%601" data-throw-if-not-resolved="false"></xref> instance with the count operation applied.
+    content.vb: Public Function Count() As IRelmDataSet(Of T)
+  overload: SimpleRelm.Models.RelmDataSet`1.Count*
+  implements:
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Count
+  nameWithType.vb: RelmDataSet(Of T).Count()
+  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Count()
+- uid: SimpleRelm.Models.RelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  commentId: M:SimpleRelm.Models.RelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  id: Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  parent: SimpleRelm.Models.RelmDataSet`1
+  langs:
+  - csharp
+  - vb
+  name: Count(Expression<Func<T, bool>>)
+  nameWithType: RelmDataSet<T>.Count(Expression<Func<T, bool>>)
+  fullName: SimpleRelm.Models.RelmDataSet<T>.Count(System.Linq.Expressions.Expression<System.Func<T, bool>>)
+  type: Method
+  source:
+    remote:
+      path: SimpleRelm/Models/RelmDataSet.cs
+      branch: master
+      repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
+    id: Count
+    path: ../SimpleRelm/Models/RelmDataSet.cs
+    startLine: 668
+  assemblies:
+  - SimpleRelm
+  namespace: SimpleRelm.Models
+  summary: Adds a count operation with the specified filter to the current query.
+  remarks: >-
+    This method does not execute the count operation immediately. Instead, it adds the
+        count expression to the query, which will be executed when the query is materialized.
+  example: []
+  syntax:
+    content: public IRelmDataSet<T> Count(Expression<Func<T, bool>> predicate)
+    parameters:
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+      description: An expression that defines the conditions that the data must satisfy to be included in the count operation.
+    return:
+      type: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+      description: >-
+        The current dataset instance with the count operation applied. This enables method chaining for building
+            complex queries.
+    content.vb: Public Function Count(predicate As Expression(Of Func(Of T, Boolean))) As IRelmDataSet(Of T)
+  overload: SimpleRelm.Models.RelmDataSet`1.Count*
+  implements:
+  - SimpleRelm.Interfaces.IRelmDataSet{{T}}.Count(System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}})
+  nameWithType.vb: RelmDataSet(Of T).Count(Expression(Of Func(Of T, Boolean)))
+  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Count(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)))
+  name.vb: Count(Expression(Of Func(Of T, Boolean)))
 - uid: SimpleRelm.Models.RelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   commentId: M:SimpleRelm.Models.RelmDataSet`1.DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
   id: DistinctBy(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})
@@ -1565,11 +1655,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: DistinctBy
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 645
+    startLine: 684
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1611,11 +1701,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Save
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 663
+    startLine: 701
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1659,11 +1749,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Save
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 684
+    startLine: 722
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1699,11 +1789,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: New
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 704
+    startLine: 742
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1741,11 +1831,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: New
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 721
+    startLine: 759
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1793,11 +1883,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 753
+    startLine: 791
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1832,11 +1922,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 771
+    startLine: 809
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1884,11 +1974,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 799
+    startLine: 837
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1924,11 +2014,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Add
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 813
+    startLine: 851
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -1969,11 +2059,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Clear
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 833
+    startLine: 871
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -2004,11 +2094,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Contains
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 844
+    startLine: 882
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -2044,11 +2134,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: CopyTo
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 857
+    startLine: 895
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -2089,11 +2179,11 @@ items:
   source:
     remote:
       path: SimpleRelm/Models/RelmDataSet.cs
-      branch: connector_8
+      branch: master
       repo: https://github.com/jdaugherty-bdl/SimpleRelm.git
     id: Remove
     path: ../SimpleRelm/Models/RelmDataSet.cs
-    startLine: 869
+    startLine: 907
   assemblies:
   - SimpleRelm
   namespace: SimpleRelm.Models
@@ -12061,44 +12151,6 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
-- uid: SimpleRelm.Models.RelmDataSet`1.Count*
-  commentId: Overload:SimpleRelm.Models.RelmDataSet`1.Count
-  href: SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_Count
-  name: Count
-  nameWithType: RelmDataSet<T>.Count
-  fullName: SimpleRelm.Models.RelmDataSet<T>.Count
-  nameWithType.vb: RelmDataSet(Of T).Count
-  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Count
-- uid: System.Collections.Generic.ICollection{{T}}.Count
-  commentId: P:System.Collections.Generic.ICollection{`0}.Count
-  parent: System.Collections.Generic.ICollection{{T}}
-  definition: System.Collections.Generic.ICollection`1.Count
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.count
-  name: Count
-  nameWithType: ICollection<T>.Count
-  fullName: System.Collections.Generic.ICollection<T>.Count
-  nameWithType.vb: ICollection(Of T).Count
-  fullName.vb: System.Collections.Generic.ICollection(Of T).Count
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
-- uid: System.Collections.Generic.ICollection`1.Count
-  commentId: P:System.Collections.Generic.ICollection`1.Count
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.count
-  name: Count
-  nameWithType: ICollection<T>.Count
-  fullName: System.Collections.Generic.ICollection<T>.Count
-  nameWithType.vb: ICollection(Of T).Count
-  fullName.vb: System.Collections.Generic.ICollection(Of T).Count
 - uid: SimpleRelm.Models.RelmDataSet`1.IsReadOnly*
   commentId: Overload:SimpleRelm.Models.RelmDataSet`1.IsReadOnly
   href: SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_IsReadOnly
@@ -14236,6 +14288,17 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: '{T}'
   commentId: '!:T'
   definition: T
@@ -15782,6 +15845,254 @@ references:
     name: Integer
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: SimpleRelm.Models.RelmDataSet`1.Offset*
+  commentId: Overload:SimpleRelm.Models.RelmDataSet`1.Offset
+  href: SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_Offset_System_Int32_
+  name: Offset
+  nameWithType: RelmDataSet<T>.Offset
+  fullName: SimpleRelm.Models.RelmDataSet<T>.Offset
+  nameWithType.vb: RelmDataSet(Of T).Offset
+  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Offset
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Offset(System.Int32)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Offset(System.Int32)
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Offset(System.Int32)
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Offset_System_Int32_
+  name: Offset(int)
+  nameWithType: IRelmDataSet<T>.Offset(int)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Offset(int)
+  nameWithType.vb: IRelmDataSet(Of T).Offset(Integer)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Offset(Integer)
+  name.vb: Offset(Integer)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Offset(System.Int32)
+    name: Offset
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Offset_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Offset(System.Int32)
+    name: Offset
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Offset_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Offset(System.Int32)
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Offset(System.Int32)
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Offset_System_Int32_
+  name: Offset(int)
+  nameWithType: IRelmDataSet<T>.Offset(int)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Offset(int)
+  nameWithType.vb: IRelmDataSet(Of T).Offset(Integer)
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Offset(Integer)
+  name.vb: Offset(Integer)
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Offset(System.Int32)
+    name: Offset
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Offset_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Offset(System.Int32)
+    name: Offset
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Offset_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: SimpleRelm.Models.RelmDataSet`1.Count*
+  commentId: Overload:SimpleRelm.Models.RelmDataSet`1.Count
+  href: SimpleRelm.Models.RelmDataSet-1.html#SimpleRelm_Models_RelmDataSet_1_Count
+  name: Count
+  nameWithType: RelmDataSet<T>.Count
+  fullName: SimpleRelm.Models.RelmDataSet<T>.Count
+  nameWithType.vb: RelmDataSet(Of T).Count
+  fullName.vb: SimpleRelm.Models.RelmDataSet(Of T).Count
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Count
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Count
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Count
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count
+  name: Count()
+  nameWithType: IRelmDataSet<T>.Count()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Count()
+  nameWithType.vb: IRelmDataSet(Of T).Count()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Count()
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Count
+    name: Count
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Count
+    name: Count
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Count
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Count
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count
+  name: Count()
+  nameWithType: IRelmDataSet<T>.Count()
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Count()
+  nameWithType.vb: IRelmDataSet(Of T).Count()
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Count()
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Count
+    name: Count
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Count
+    name: Count
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count
+  - name: (
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet{{T}}.Count(System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet{`0}.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  parent: SimpleRelm.Interfaces.IRelmDataSet{{T}}
+  definition: SimpleRelm.Interfaces.IRelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  name: Count(Expression<Func<T, bool>>)
+  nameWithType: IRelmDataSet<T>.Count(Expression<Func<T, bool>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Count(System.Linq.Expressions.Expression<System.Func<T, bool>>)
+  nameWithType.vb: IRelmDataSet(Of T).Count(Expression(Of Func(Of T, Boolean)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Count(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)))
+  name.vb: Count(Expression(Of Func(Of T, Boolean)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+    name: Count
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet{`0}.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+    name: Count
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+  - name: )
+- uid: SimpleRelm.Interfaces.IRelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  commentId: M:SimpleRelm.Interfaces.IRelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  isExternal: true
+  href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  name: Count(Expression<Func<T, bool>>)
+  nameWithType: IRelmDataSet<T>.Count(Expression<Func<T, bool>>)
+  fullName: SimpleRelm.Interfaces.IRelmDataSet<T>.Count(System.Linq.Expressions.Expression<System.Func<T, bool>>)
+  nameWithType.vb: IRelmDataSet(Of T).Count(Expression(Of Func(Of T, Boolean)))
+  fullName.vb: SimpleRelm.Interfaces.IRelmDataSet(Of T).Count(System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)))
+  name.vb: Count(Expression(Of Func(Of T, Boolean)))
+  spec.csharp:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+    name: Count
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: SimpleRelm.Interfaces.IRelmDataSet`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+    name: Count
+    href: SimpleRelm.Interfaces.IRelmDataSet-1.html#SimpleRelm_Interfaces_IRelmDataSet_1_Count_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
   - name: )
 - uid: SimpleRelm.Models.RelmDataSet`1.DistinctBy*
   commentId: Overload:SimpleRelm.Models.RelmDataSet`1.DistinctBy

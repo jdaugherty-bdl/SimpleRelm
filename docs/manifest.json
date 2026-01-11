@@ -260,7 +260,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.IRelmContext",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.IRelmContext.yml\" sourcestartlinenumber=\"1\">Defines a context for interacting with a Relm database, providing methods for managing connections,\ntransactions, and data operations. This interface supports querying, data manipulation, and bulk operations\nwhile ensuring proper resource management.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -288,7 +288,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.IRelmDataSet<T>",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.IRelmDataSet-1.yml\" sourcestartlinenumber=\"1\">Represents a strongly-typed, queryable, and updatable collection of data model entities, providing advanced data\nloading, filtering, and manipulation capabilities.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -302,7 +302,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.IRelmDataSetBase",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.IRelmDataSetBase.yml\" sourcestartlinenumber=\"1\">Base interface for Relm data sets.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -316,7 +316,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.IRelmExecutionCommand",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.IRelmExecutionCommand.yml\" sourcestartlinenumber=\"1\">Defines the contract for an execution command within the Relm framework, providing access to the initial command\nand expression, management of additional commands, and options for foreign key navigation.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -330,7 +330,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.IRelmFieldLoader",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.IRelmFieldLoader.yml\" sourcestartlinenumber=\"1\">Defines a contract for loading field data within a Relm context.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -344,7 +344,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.IRelmFieldLoaderBase",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.IRelmFieldLoaderBase.yml\" sourcestartlinenumber=\"1\">Defines the contract for loading field data based on key values in a data source.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -358,7 +358,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.IRelmMember",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.IRelmMember.yml\" sourcestartlinenumber=\"1\">Defines the contract for a member entity used in aparmenting within the Relm system, including identification, contact information,\nand value accessors.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -386,7 +386,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.IRelmModelApartment",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.IRelmModelApartment.yml\" sourcestartlinenumber=\"1\">Represents an apartment entity within the Relm model, including associated user and membership information.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -414,7 +414,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.RelmQuick.IRelmQuickFieldLoader",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.RelmQuick.IRelmQuickFieldLoader.yml\" sourcestartlinenumber=\"1\">Provides access to the field loading quick context for use with RELM field loaders.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -442,7 +442,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.Resolvers.IRelmResolverBase",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.Resolvers.IRelmResolverBase.yml\" sourcestartlinenumber=\"1\">Defines methods for obtaining a database connection string builder based on a specified connection type or\nconnection string.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -456,7 +456,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.Resolvers.IRelmResolver_MySQL",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.Resolvers.IRelmResolver_MySQL.yml\" sourcestartlinenumber=\"1\">Defines methods for obtaining MySQL connection string builders based on connection type, name, or raw connection\nstring.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -470,7 +470,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Interfaces.Resolvers.IRelmResolver_ODBC",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Interfaces.Resolvers.IRelmResolver_ODBC.yml\" sourcestartlinenumber=\"1\">Defines methods for obtaining ODBC connection string builders based on connection type or connection string.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -512,7 +512,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Models.EventArguments.DtoEventArgs",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Models.EventArguments.DtoEventArgs.yml\" sourcestartlinenumber=\"1\">Provides event data that includes additional object properties for data transfer operations.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -540,7 +540,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Models.RelmContext",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Models.RelmContext.yml\" sourcestartlinenumber=\"1\">Provides a context for managing database connections, transactions, and data sets within the Relm data access\nlayer. Enables querying, updating, and bulk operations on relational data models using configurable options and\nconnection strategies.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -582,7 +582,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Models.RelmExecutionCommand",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Models.RelmExecutionCommand.yml\" sourcestartlinenumber=\"1\">Represents a command and its associated expression for execution within the Relm framework, supporting\nadditional and child commands for complex execution scenarios.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -610,7 +610,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Models.RelmModelApartment",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Models.RelmModelApartment.yml\" sourcestartlinenumber=\"1\">Represents an apartment entity within the Relm data model, including user and member association information.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -624,7 +624,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Models.RelmQuickContext",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Models.RelmQuickContext.yml\" sourcestartlinenumber=\"1\">Provides a quick-start context for working with Relm data models and MySQL database connections, supporting\nconfiguration, data set management, and transactional operations.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -666,7 +666,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Options.RelmContextOptionsBuilder.OptionsBuilderTypes",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Options.RelmContextOptionsBuilder.OptionsBuilderTypes.yml\" sourcestartlinenumber=\"1\">Specifies the types of options that can be used to configure a database context using an options builder.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -680,7 +680,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Options.RelmContextOptionsBuilder",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Options.RelmContextOptionsBuilder.yml\" sourcestartlinenumber=\"1\">Provides a builder for configuring options required to establish a connection to a relational database context.\nSupports multiple initialization patterns, including connection strings, named connections, and open MySQL\nconnections.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -708,7 +708,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "SimpleRelm.Persistence.BulkTableWriter<T>",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/SimpleRelm.Persistence.BulkTableWriter-1.yml\" sourcestartlinenumber=\"1\">Provides functionality for performing high-performance bulk insert operations into a database table with\nconfigurable options for batching, transactions, error handling, and column mapping.</p>\n"
     },
     {
       "type": "ManagedReference",
