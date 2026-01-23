@@ -5,7 +5,7 @@
 It sits close to ADO.NET, but gives you:
 
 - Strongly-typed table/column access via attributes and expressions
-- A simple context model (`RelmContext` / `RelmQuickContext`)
+- A simple context model (`RelmContext`)
 - Helper methods for the common database shapes you actually use
 - A clean, explicit pattern for transactions and error handling
 

@@ -5,7 +5,7 @@
 It sits close to ADO.NET, but gives you:
 
 - Strongly-typed table/column access via attributes and expressions
-- A simple context model (`RelmContext` / `RelmQuickContext`)
+- A simple context model (`RelmContext`)
 - Helper methods for the common database shapes you actually use
 - A clean, explicit pattern for transactions and error handling
 
@@ -80,8 +80,7 @@ SimpleRelm revolves around a few core pieces:
 - **Contexts**  
   You create your own context classes that inherit from:
 
-  - `RelmContext` – **eager**: preloads table metadata up-front  
-  - `RelmQuickContext` – **lazy**: loads metadata on first use
+  - `RelmContext` – set _autoInitializeDataSets_ to **true** for *eager*: preloads table metadata up-front, or to **false** for *lazy*: loads metadata on first use
 
   and expose your datasets as `IRelmDataSet` properties:
 
@@ -93,18 +92,22 @@ SimpleRelm revolves around a few core pieces:
           bool autoOpenTransaction = false,
           bool allowUserVariables = false,
           bool convertZeroDateTime = false,
+          bool autoInitializeDataSets = true, 
+          bool autoVerifyTables = true
           int  lockWaitTimeoutSeconds = 0)
           : base("name=ExampleContextDatabase",
                  autoOpenConnection:  autoOpenConnection,
                  autoOpenTransaction: autoOpenTransaction,
                  allowUserVariables:  allowUserVariables,
                  convertZeroDateTime: convertZeroDateTime,
-                 lockWaitTimeoutSeconds: lockWaitTimeoutSeconds)
+                 lockWaitTimeoutSeconds: lockWaitTimeoutSeconds,
+                 autoInitializeDataSets = autoInitializeDataSets, 
+                 autoVerifyTables = autoVerifyTables)
       {
       }
 
-      public IRelmDataSet ExampleModels { get; set; }
-      public IRelmDataSet ExampleGroups { get; set; }
+      public IRelmDataSet<ExampleModel> ExampleModels { get; set; }
+      public IRelmDataSet<ExampleGroup> ExampleGroups { get; set; }
   }
   ```
 
@@ -120,8 +123,7 @@ SimpleRelm revolves around a few core pieces:
   - `RelmHelper.GetLastInsertId(...)`
   - `RelmHelper.GetIdFromInternalId(...)`
 
-  Most of these also exist as instance methods on `IRelmContext`
-  and `IRelmQuickContext` (`relmContext.DoDatabaseWork(...)`, etc.).
+  Most of these also exist as instance methods on `IRelmContext` (`relmContext.DoDatabaseWork(...)`, etc.).
 
 ---
 
@@ -133,9 +135,9 @@ From the Quickstart examples, SimpleRelm currently provides:
   - `[RelmTable]`, `[RelmColumn]`, `[RelmForeignKey]` give you strongly-typed access to table and column names without scattering strings everywhere.
   - `RelmHelper.GetDalTable()` and `RelmHelper.GetColumnName(...)` use those attributes.
 
-- **Two context modes**
-  - `RelmContext` – reads the database and preloads datasets/metadata when created (slightly heavier startup, faster subsequent operations).
-  - `RelmQuickContext` – lazy-loads metadata as needed (faster startup, first operations may be slower).
+- **Two initialization modes for RelmContext**
+  - `AutoInitializeDataSets = true` – reads the database and preloads datasets/metadata when created (slightly heavier startup, faster subsequent operations).
+  - `AutoInitializeDataSets = false` – lazy-loads metadata as needed (faster startup, first operations may be slower).
 
 - **Standard connection wrapper**
   - `RelmHelper.StandardConnectionWrapper(...)` lets you run a lambda with a raw `connection` and `transaction` without manually wiring up boilerplate.
