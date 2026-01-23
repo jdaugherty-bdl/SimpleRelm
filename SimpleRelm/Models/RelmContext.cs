@@ -53,11 +53,11 @@ namespace SimpleRelm.Models
         /// configuration.</remarks>
         public RelmContextOptionsBuilder ContextOptions { get; private set; }
 
-        private IEnumerable<PropertyInfo> _attachedProperties;
+        private IEnumerable<PropertyInfo> _enumeratedDataSets;
         private List<object> _attachedDataSets;
 
-        private bool localOpenConnection = false;
-        private bool localOpenTransaction = false;
+        private bool _localOpenConnection = false;
+        private bool _localOpenTransaction = false;
 
         /// <summary>
         /// Initializes a new instance of the RelmContext class using the specified context options and configuration
@@ -70,14 +70,16 @@ namespace SimpleRelm.Models
         /// <param name="convertZeroDateTime">true to convert zero date/time values to null when reading from the database; otherwise, false.</param>
         /// <param name="lockWaitTimeoutSeconds">The maximum time, in seconds, to wait for a database lock before timing out. Specify 0 to use the default
         /// timeout.</param>
+        /// <param name="autoInitializeDataSets">true to automatically initialize data sets when the context is created; otherwise, false.</param>
+        /// <param name="autoVerifyTables">true to automatically verify table existence when the context is created; otherwise, false.</param>
         /// <exception cref="ArgumentNullException">Thrown if relmContext or relmContext.ContextOptions is null.</exception>
-        public RelmContext(IRelmContext relmContext, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
+        public RelmContext(IRelmContext relmContext, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0, bool autoInitializeDataSets = true, bool autoVerifyTables = true)
         {
             if (relmContext == null)
                 throw new ArgumentNullException(nameof(relmContext), "RelmContext cannot be null.");
             ContextOptions = relmContext.ContextOptions ?? throw new ArgumentNullException(nameof(relmContext.ContextOptions), "RelmContextOptionsBuilder cannot be null.");
             ContextOptions.ValidateAllSettings();
-            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
+            InitializeContext(autoOpenConnection, autoOpenTransaction, allowUserVariables, convertZeroDateTime, lockWaitTimeoutSeconds, autoInitializeDataSets, autoVerifyTables);
         }
 
         /// <summary>
@@ -88,22 +90,12 @@ namespace SimpleRelm.Models
         /// constructor allows fine-grained control over connection and transaction behavior, as well as SQL
         /// compatibility options.</remarks>
         /// <param name="optionsBuilder">The options builder used to configure the context. Cannot be null.</param>
-        /// <param name="autoOpenConnection">Specifies whether the database connection should be automatically opened when the context is created. The
-        /// default is <see langword="true"/>.</param>
-        /// <param name="autoOpenTransaction">Specifies whether a database transaction should be automatically started when the context is created. The
-        /// default is <see langword="false"/>.</param>
-        /// <param name="allowUserVariables">Specifies whether user-defined variables are allowed in SQL statements executed by the context. The default
-        /// is <see langword="false"/>.</param>
-        /// <param name="convertZeroDateTime">Specifies whether zero date/time values should be converted to null when reading from the database. The
-        /// default is <see langword="false"/>.</param>
-        /// <param name="lockWaitTimeoutSeconds">The number of seconds to wait for a database lock before timing out. The default is 0, which uses the
-        /// server's default lock wait timeout.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="optionsBuilder"/> is null.</exception>
-        public RelmContext(RelmContextOptionsBuilder optionsBuilder, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
+        public RelmContext(RelmContextOptionsBuilder optionsBuilder)
         {
             ContextOptions = optionsBuilder ?? throw new ArgumentNullException(nameof(optionsBuilder), "RelmContextOptionsBuilder cannot be null.");
             ContextOptions.ValidateAllSettings();
-            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
+            InitializeContext(optionsBuilder.AutoOpenConnection, optionsBuilder.AutoOpenTransaction, optionsBuilder.AllowUserVariables, optionsBuilder.ConvertZeroDateTime, optionsBuilder.LockWaitTimeoutSeconds, optionsBuilder.AutoInitializeDataSets, optionsBuilder.AutoVerifyTables);
         }
 
         /// <summary>
@@ -124,11 +116,13 @@ namespace SimpleRelm.Models
         /// is false.</param>
         /// <param name="lockWaitTimeoutSeconds">The maximum number of seconds to wait for a database lock before timing out. Specify 0 to use the default
         /// timeout.</param>
-        public RelmContext(Enum connectionStringType, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
+        /// <param name="autoInitializeDataSets">true to automatically initialize data sets when the context is created; otherwise, false.</param>
+        /// <param name="autoVerifyTables">true to automatically verify table existence when the context is created; otherwise, false.</param>
+        public RelmContext(Enum connectionStringType, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0, bool autoInitializeDataSets = true, bool autoVerifyTables = true)
         {
             // set the options and allow user to override
             ContextOptions = new RelmContextOptionsBuilder(connectionStringType);
-            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
+            InitializeContext(autoOpenConnection, autoOpenTransaction, allowUserVariables, convertZeroDateTime, lockWaitTimeoutSeconds, autoInitializeDataSets, autoVerifyTables);
         }
 
         /// <summary>
@@ -141,11 +135,13 @@ namespace SimpleRelm.Models
         /// <param name="allowUserVariables">true to allow the use of user-defined variables in database queries; otherwise, false.</param>
         /// <param name="convertZeroDateTime">true to convert zero date/time values to null when reading from the database; otherwise, false.</param>
         /// <param name="lockWaitTimeoutSeconds">The number of seconds to wait for a database lock before timing out. Specify 0 to use the default timeout.</param>
-        public RelmContext(string connectionDetails, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
+        /// <param name="autoInitializeDataSets">true to automatically initialize data sets when the context is created; otherwise, false.</param>
+        /// <param name="autoVerifyTables">true to automatically verify table existence when the context is created; otherwise, false.</param>
+        public RelmContext(string connectionDetails, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0, bool autoInitializeDataSets = true, bool autoVerifyTables = true)
         {
             // set the options and allow user to override
             ContextOptions = new RelmContextOptionsBuilder(connectionDetails);
-            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
+            InitializeContext(autoOpenConnection, autoOpenTransaction, allowUserVariables, convertZeroDateTime, lockWaitTimeoutSeconds, autoInitializeDataSets, autoVerifyTables);
         }
 
         /// <summary>
@@ -163,10 +159,12 @@ namespace SimpleRelm.Models
         /// langword="true"/>, zero date/time values are converted; otherwise, they are not.</param>
         /// <param name="lockWaitTimeoutSeconds">The number of seconds to wait for a database lock before timing out. Specify 0 to use the default server
         /// setting.</param>
-        public RelmContext(MySqlConnection connection, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
+        /// <param name="autoInitializeDataSets">true to automatically initialize data sets when the context is created; otherwise, false.</param>
+        /// <param name="autoVerifyTables">true to automatically verify table existence when the context is created; otherwise, false.</param>
+        public RelmContext(MySqlConnection connection, bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0, bool autoInitializeDataSets = true, bool autoVerifyTables = true)
         {
             ContextOptions = new RelmContextOptionsBuilder(connection);
-            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: autoOpenTransaction, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
+            InitializeContext(autoOpenConnection, autoOpenTransaction, allowUserVariables, convertZeroDateTime, lockWaitTimeoutSeconds, autoInitializeDataSets, autoVerifyTables);
         }
 
         /// <summary>
@@ -184,19 +182,29 @@ namespace SimpleRelm.Models
         /// of throwing an exception. Set to <see langword="true"/> to enable conversion.</param>
         /// <param name="lockWaitTimeoutSeconds">The maximum number of seconds to wait for a database lock before timing out. Specify 0 to use the default
         /// server setting.</param>
-        public RelmContext(MySqlConnection connection, MySqlTransaction transaction, bool autoOpenConnection = true, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
+        /// <param name="autoInitializeDataSets">true to automatically initialize data sets when the context is created; otherwise, false.</param>
+        /// <param name="autoVerifyTables">true to automatically verify table existence when the context is created; otherwise, false.</param>
+        public RelmContext(MySqlConnection connection, MySqlTransaction transaction, bool autoOpenConnection = true, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0, bool autoInitializeDataSets = true, bool autoVerifyTables = true)
         {
             ContextOptions = new RelmContextOptionsBuilder(connection, transaction);
-            InitializeContext(autoOpenConnection: autoOpenConnection, autoOpenTransaction: false, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
+            InitializeContext(autoOpenConnection, autoOpenTransaction: false, allowUserVariables, convertZeroDateTime, lockWaitTimeoutSeconds, autoInitializeDataSets, autoVerifyTables);
         }
 
-        private void InitializeContext(bool autoOpenConnection = true, bool autoOpenTransaction = false, bool allowUserVariables = false, bool convertZeroDateTime = false, int lockWaitTimeoutSeconds = 0)
+        private void InitializeContext(bool autoOpenConnection, bool autoOpenTransaction, bool allowUserVariables, bool convertZeroDateTime, int lockWaitTimeoutSeconds, bool autoInitializeDataSets, bool autoVerifyTables)
         {
             if (ContextOptions.DatabaseConnection == null)
                 ContextOptions.SetDatabaseConnection(RelmHelper.GetConnectionFromConnectionString(ContextOptions.DatabaseConnectionString, allowUserVariables: allowUserVariables, convertZeroDateTime: convertZeroDateTime, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds));
 
             if ((autoOpenConnection || autoOpenTransaction) && ContextOptions.DatabaseConnection != null)
                 StartConnection(autoOpenTransaction: autoOpenTransaction, lockWaitTimeoutSeconds: lockWaitTimeoutSeconds);
+
+            ContextOptions.SetAutoOpenConnection(autoOpenConnection);
+            ContextOptions.SetAutoOpenTransaction(autoOpenTransaction);
+            ContextOptions.SetAllowUserVariables(allowUserVariables);
+            ContextOptions.SetConvertZeroDateTime(convertZeroDateTime);
+            ContextOptions.SetLockWaitTimeoutSeconds(lockWaitTimeoutSeconds);
+            ContextOptions.SetAutoInitializeDataSets(autoInitializeDataSets);
+            ContextOptions.SetAutoVerifyTables(autoVerifyTables);
 
             _attachedDataSets = new List<object>();
 
@@ -209,53 +217,66 @@ namespace SimpleRelm.Models
         private void InitializeDataSets()
         {
             // find any properties that are DALDataSet<T>
-            _attachedProperties = this.GetType().GetProperties().Where(x => x.PropertyType.IsGenericType && x.PropertyType.GetGenericTypeDefinition() == typeof(IRelmDataSet<>));
+            _enumeratedDataSets = this.GetType()
+                .GetProperties()
+                .Where(x => x.PropertyType.IsGenericType 
+                    && x.PropertyType.GetGenericTypeDefinition() == typeof(IRelmDataSet<>));
 
-            /*
-            var tableNames = _attachedProperties
-                .Select(attachedProperty => (attachedProperty.PropertyType.GetGenericArguments()[0].GetCustomAttribute<RelmTable>(false)?.TableName, attachedProperty))
-                .Where(x => !string.IsNullOrWhiteSpace(x.TableName))
-                .ToList();
-
-            var currentDatabaseTables = RelmHelper.GetDataList<string>(this, "SHOW TABLES;")
-                .ToList();
-
-            // don't initialize the data sets if the table name is not in the current database
-            _attachedProperties = tableNames
-                .Where(x => currentDatabaseTables.Contains(x.TableName))
-                .Select(x => x.attachedProperty)
-                .ToList();
-            */
-
-            // instantiate each item in the DALDataSet<T> properties
-            foreach (var attachedProperty in _attachedProperties)
+            if (ContextOptions.AutoVerifyTables)
             {
-                var dalDataSetType = attachedProperty.PropertyType.GetGenericArguments()[0];
+                var tableNames = _enumeratedDataSets
+                    .Select(attachedProperty => (attachedProperty.PropertyType.GetGenericArguments()[0].GetCustomAttribute<RelmTable>(false)?.TableName, attachedProperty))
+                    .Where(x => !string.IsNullOrWhiteSpace(x.TableName))
+                    .ToList();
 
-                // create a default data loader for the generic type argument then create a dataset and pass the data loader
-                // check if dalDataSetType has a RelmDataLoader attribute defined at the class level, and create a new instance of the type indicated and save to dalDataLoader
-                object dalDataLoader = null;
-                var classDataLoader = dalDataSetType.GetCustomAttribute<RelmDataLoader>(true);
+                var currentDatabaseTables = RelmHelper.GetDataList<string>(this, "SHOW TABLES;")
+                    .ToList();
 
-                try
-                {
-                    if (classDataLoader?.LoaderType == null)
-                        dalDataLoader = Activator.CreateInstance(typeof(RelmDefaultDataLoader<>).MakeGenericType(dalDataSetType), new object[] { ContextOptions });
-                    else
-                        dalDataLoader = Activator.CreateInstance(classDataLoader.LoaderType, new object[] { ContextOptions });
-                }
-                catch (Exception ex)
-                {
-                    throw new InvalidOperationException($"Error creating data loader of type [{classDataLoader?.LoaderType?.FullName}] for dataset [{dalDataSetType.Name}]", ex);
-                }
-
-                // create a new instance of the DALDataSet<T> and pass the data loader
-                var dalDataSet = Activator.CreateInstance(typeof(RelmDataSet<>).MakeGenericType(dalDataSetType), new object[] { this, dalDataLoader });
-
-                attachedProperty.SetValue(this, dalDataSet);
-
-                _attachedDataSets.Add(dalDataSet);
+                // don't initialize the data sets if the table name is not in the current database
+                _enumeratedDataSets = tableNames
+                    .Where(x => currentDatabaseTables.Contains(x.TableName))
+                    .Select(x => x.attachedProperty)
+                    .ToList();
             }
+
+            if (ContextOptions.AutoInitializeDataSets)
+            {
+                // instantiate each item in the DALDataSet<T> properties
+                foreach (var attachedProperty in _enumeratedDataSets)
+                {
+                    var dalDataSet = CreateDataSetType(attachedProperty);
+                    _attachedDataSets.Add(dalDataSet);
+                }
+            }
+        }
+
+        private object CreateDataSetType(PropertyInfo attachedProperty)
+        {
+            var dalDataSetType = attachedProperty.PropertyType.GetGenericArguments()[0];
+
+            // create a default data loader for the generic type argument then create a dataset and pass the data loader
+            // check if dalDataSetType has a RelmDataLoader attribute defined at the class level, and create a new instance of the type indicated and save to dalDataLoader
+            object dalDataLoader;
+            var classDataLoader = dalDataSetType.GetCustomAttribute<RelmDataLoader>(true);
+
+            try
+            {
+                if (classDataLoader?.LoaderType == null)
+                    dalDataLoader = Activator.CreateInstance(typeof(RelmDefaultDataLoader<>).MakeGenericType(dalDataSetType), new object[] { ContextOptions });
+                else
+                    dalDataLoader = Activator.CreateInstance(classDataLoader.LoaderType, new object[] { ContextOptions });
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Error creating data loader of type [{classDataLoader?.LoaderType?.FullName}] for dataset [{dalDataSetType.Name}]", ex);
+            }
+
+            // create a new instance of the DALDataSet<T> and pass the data loader
+            var dalDataSet = Activator.CreateInstance(typeof(RelmDataSet<>).MakeGenericType(dalDataSetType), new object[] { this, dalDataLoader });
+            
+            attachedProperty.SetValue(this, dalDataSet);
+
+            return dalDataSet;
         }
 
         /// <summary>
@@ -322,7 +343,7 @@ namespace SimpleRelm.Models
             {
                 ContextOptions.DatabaseConnection.Open();
 
-                localOpenConnection = true;
+                _localOpenConnection = true;
 
                 if (lockWaitTimeoutSeconds > 0)
                 {
@@ -343,7 +364,7 @@ namespace SimpleRelm.Models
             {
                 ContextOptions.SetDatabaseTransaction(ContextOptions.DatabaseConnection.BeginTransaction());
 
-                localOpenTransaction = true;
+                _localOpenTransaction = true;
             }
         }
 
@@ -359,18 +380,18 @@ namespace SimpleRelm.Models
         {
             if ((ContextOptions?.DatabaseConnection?.State ?? System.Data.ConnectionState.Closed) != System.Data.ConnectionState.Closed)
             {
-                if (commitTransaction && localOpenTransaction)
+                if (commitTransaction && _localOpenTransaction)
                 {
                     ContextOptions.DatabaseTransaction?.Commit();
 
-                    localOpenTransaction = false;
+                    _localOpenTransaction = false;
                 }
 
-                if (localOpenConnection)
+                if (_localOpenConnection)
                 {
                     ContextOptions.DatabaseConnection.Close();
 
-                    localOpenConnection = false;
+                    _localOpenConnection = false;
                 }
             }
         }
@@ -411,7 +432,7 @@ namespace SimpleRelm.Models
         {
             ContextOptions.DatabaseTransaction?.Commit();
 
-            localOpenTransaction = false;
+            _localOpenTransaction = false;
             ContextOptions.SetDatabaseTransaction(null);
         }
 
@@ -424,7 +445,7 @@ namespace SimpleRelm.Models
         {
             ContextOptions.DatabaseTransaction?.Rollback();
 
-            localOpenTransaction = false;
+            _localOpenTransaction = false;
             ContextOptions.SetDatabaseTransaction(null);
         }
 
@@ -462,7 +483,7 @@ namespace SimpleRelm.Models
 
             if (disposing)
             {
-                foreach (var attachedProperty in _attachedProperties)
+                foreach (var attachedProperty in _enumeratedDataSets)
                 {
                     if (attachedProperty.GetValue(this) is IDisposable disposable)
                         disposable.Dispose();
@@ -541,14 +562,19 @@ namespace SimpleRelm.Models
         /// <see langword="true"/>.</exception>
         public IRelmDataSetBase GetDataSet(Type dataSetType, bool throwException)
         {
-            var attachedProperty = _attachedProperties.FirstOrDefault(x => x.PropertyType.GetGenericArguments().Any(y => y == dataSetType))
-                ?? _attachedProperties.FirstOrDefault(x => x.PropertyType.GetGenericArguments().Any(y => y.IsAssignableFrom(dataSetType)))
+            var attachedProperty = _enumeratedDataSets.FirstOrDefault(x => x.PropertyType.GetGenericArguments().Any(y => y == dataSetType))
+                ?? _enumeratedDataSets.FirstOrDefault(x => x.PropertyType.GetGenericArguments().Any(y => y.IsAssignableFrom(dataSetType)))
                 ?? throw new InvalidOperationException($"No attached property found for type {dataSetType.Name}.");
 
             var dataSet = attachedProperty.GetValue(this) as IRelmDataSetBase;
 
-            if (dataSet == null && throwException)
-                throw new InvalidOperationException($"DataSet for type {dataSetType.Name} is not initialized.");
+            if (dataSet == null)
+            {
+                dataSet = CreateDataSetType(attachedProperty) as IRelmDataSetBase;
+
+                if (dataSet == null && throwException)
+                    throw new InvalidOperationException($"DataSet for type {dataSetType.Name} is not initialized.");
+            }
 
             return dataSet;
         }

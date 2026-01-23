@@ -133,8 +133,8 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         {
             var objectList = new List<ComplexTestModel>
             {
-                new ComplexTestModel { TestColumnInternalId = "00000000-0000-0000-0000-000000000000" },
-                new ComplexTestModel { TestColumnInternalId = "00000000-0000-0000-0000-000000000001" }
+                new() { TestColumnInternalId = "00000000-0000-0000-0000-000000000000" },
+                new() { TestColumnInternalId = "00000000-0000-0000-0000-000000000001" }
             };
 
             // Arrange

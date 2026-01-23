@@ -48,7 +48,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                 },
             };
 
-            context = new MultipleKeysTestContext("name=SimpleRelmMySql");
+            context = new MultipleKeysTestContext("name=SimpleRelmMySql", autoVerifyTables: false);
 
             // create dummy data loaders for dummy data to be placed in both relevant data sets
             var modelDataLoader = new Mock<RelmDefaultDataLoader<MultipleKeysTestObject>>(); // { CallBase = true };

@@ -46,7 +46,7 @@ namespace SimpleRelm.Tests.Models.RelmModel_Tests
 
             var modelDataLoader = SetupSingleReturnReferenceDataLoader(true, false);
 
-            var context = new ComplexTestContext();
+            var context = new ComplexTestContext(autoVerifyTables: false);
             context.ComplexReferenceObjects!.SetDataLoader(modelDataLoader.Object);
 
             // Act
@@ -73,7 +73,7 @@ namespace SimpleRelm.Tests.Models.RelmModel_Tests
             var dataLoader = SetupSingleReturnReferenceDataLoader(false, false);
 
             // Act
-            complexTestModel.LoadForeignKeyField(new ComplexTestContext(), x => x.ComplexReferenceObject, dataLoader.Object);
+            complexTestModel.LoadForeignKeyField(new ComplexTestContext(autoVerifyTables: false), x => x.ComplexReferenceObject, dataLoader.Object);
 
             // Assert
             Assert.NotNull(complexTestModel.ComplexReferenceObject);
@@ -92,7 +92,7 @@ namespace SimpleRelm.Tests.Models.RelmModel_Tests
             var dataLoader = SetupSingleReturnReferenceDataLoader(true, false);
 
             // Act
-            complexTestModel.LoadForeignKeyField(new ComplexTestContext(), x => x.ComplexReferenceObjects, dataLoader.Object);
+            complexTestModel.LoadForeignKeyField(new ComplexTestContext(autoVerifyTables: false), x => x.ComplexReferenceObjects, dataLoader.Object);
 
             // Assert
             Assert.NotNull(complexTestModel.ComplexReferenceObjects);

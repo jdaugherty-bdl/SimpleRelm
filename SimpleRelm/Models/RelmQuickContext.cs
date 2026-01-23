@@ -28,6 +28,7 @@ namespace SimpleRelm.Models
     /// and provides methods for accessing, querying, and writing data sets. This class is not thread-safe; each
     /// instance should be used by a single thread at a time. Dispose the context when finished to ensure all resources
     /// are released.</remarks>
+    [Obsolete("RelmQuickContext is deprecated and will be removed in future versions. Please use RelmContext(autoInitializeDataSets: false) instead.")]
     public class RelmQuickContext : IDisposable, IRelmQuickContext
     {
         /// <summary>

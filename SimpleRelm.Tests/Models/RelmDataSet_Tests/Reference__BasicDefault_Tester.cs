@@ -68,7 +68,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                     TestFieldBoolean = null,
                 });
 
-            context = new ComplexTestContext("name=SimpleRelmMySql");
+            context = new ComplexTestContext("name=SimpleRelmMySql", autoVerifyTables: false);
 
             // create dummy data loaders for dummy data to be placed in both relevant data sets
             var modelDataLoader = new Mock<RelmDefaultDataLoader<ComplexTestModel>>(); // { CallBase = true };

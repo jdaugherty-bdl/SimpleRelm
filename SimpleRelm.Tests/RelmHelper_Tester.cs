@@ -173,7 +173,7 @@ namespace SimpleRelm.Tests
             var modelDataLoader = SetupReferenceDataLoader(true);
 
             // Act
-            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext().ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObjects, modelDataLoader.Object);
+            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext(autoVerifyTables: false).ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObjects, modelDataLoader.Object);
 
             // Assert
             var firstSource = mockComplexTestModels!.First();
@@ -210,7 +210,7 @@ namespace SimpleRelm.Tests
             var modelDataLoader = SetupReferenceDataLoader(false);
 
             // Act
-            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext().ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject, modelDataLoader.Object);
+            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext(autoVerifyTables: false).ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject, modelDataLoader.Object);
 
             // Assert
             Assert.Equal(2, loadedResults.Count);
@@ -240,7 +240,7 @@ namespace SimpleRelm.Tests
             var modelDataLoader = SetupSingleReturnReferenceDataLoader(true, true);
 
             // Act
-            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext().ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObjects, modelDataLoader.Object);
+            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext(autoVerifyTables: false).ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObjects, modelDataLoader.Object);
 
             // Assert
             var firstSource = mockComplexTestModels!.First();
@@ -270,7 +270,7 @@ namespace SimpleRelm.Tests
             var modelDataLoader = SetupSingleReturnReferenceDataLoader(false, false);
 
             // Act
-            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext().ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject, modelDataLoader.Object);
+            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext(autoVerifyTables: false).ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject, modelDataLoader.Object);
 
             // Assert
             var firstSource = mockComplexTestModels!.First();
@@ -287,7 +287,7 @@ namespace SimpleRelm.Tests
             var modelDataLoader = SetupNavigationDataLoader(true);
 
             // Act
-            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext().ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject_NavigationProperties, modelDataLoader.Object);
+            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext(autoVerifyTables: false).ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject_NavigationProperties, modelDataLoader.Object);
 
             // Assert
             var firstSource = mockComplexTestModels!.First();
@@ -316,7 +316,7 @@ namespace SimpleRelm.Tests
             var modelDataLoader = SetupNavigationDataLoader(false);
 
             // Act
-            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext().ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject_NavigationPropertyItem, modelDataLoader.Object);
+            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext(autoVerifyTables: false).ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject_NavigationPropertyItem, modelDataLoader.Object);
 
             // Assert
             var firstSource = mockComplexTestModels!.First();
@@ -334,7 +334,7 @@ namespace SimpleRelm.Tests
             var modelDataLoader = SetupPrincipalDataLoader(true);
 
             // Act
-            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext().ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject_PrincipalEntities, modelDataLoader.Object);
+            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext(autoVerifyTables: false).ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject_PrincipalEntities, modelDataLoader.Object);
 
             // Assert
             var firstSource = mockComplexTestModels!.First();
@@ -363,7 +363,7 @@ namespace SimpleRelm.Tests
             var modelDataLoader = SetupPrincipalDataLoader(false);
 
             // Act
-            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext().ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject_PrincipalEntityItem, modelDataLoader.Object);
+            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext(autoVerifyTables: false).ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject_PrincipalEntityItem, modelDataLoader.Object);
 
             // Assert
             var firstSource = mockComplexTestModels!.First();
@@ -381,7 +381,7 @@ namespace SimpleRelm.Tests
             var modelDataLoader = SetupPrincipalDataLoaderLocalKey(true);
 
             // Act
-            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext().ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject_PrincipalEntities_LocalKeys, modelDataLoader.Object);
+            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext(autoVerifyTables: false).ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject_PrincipalEntities_LocalKeys, modelDataLoader.Object);
 
             // Assert
             var firstSource = mockComplexTestModels!.First();
@@ -410,7 +410,7 @@ namespace SimpleRelm.Tests
             var modelDataLoader = SetupPrincipalDataLoaderLocalKey(false);
 
             // Act
-            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext().ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject_PrincipalEntity_LocalKey, modelDataLoader.Object);
+            var loadedResults = RelmHelper.LoadForeignKeyField(new ComplexTestContext(autoVerifyTables: false).ContextOptions, mockComplexTestModels, x => x.ComplexReferenceObject_PrincipalEntity_LocalKey, modelDataLoader.Object);
 
             // Assert
             var firstSource = mockComplexTestModels!.First();
@@ -425,7 +425,7 @@ namespace SimpleRelm.Tests
         public void RelmHelper_LoadDataLoaderField_Single_Boolean()
         {
             // Arrange
-            var complexTestContext = new ComplexTestContext();
+            var complexTestContext = new ComplexTestContext(autoVerifyTables: false);
             var complexTestModel = new ComplexTestModel();
 
             // Act
@@ -440,7 +440,7 @@ namespace SimpleRelm.Tests
         public void RelmHelper_LoadDataLoadersField_Multiple_Boolean()
         {
             // Arrange
-            var complexTestContext = new ComplexTestContext();
+            var complexTestContext = new ComplexTestContext(autoVerifyTables: false);
             var complexTestModel = new ComplexTestModel();
 
             // Act

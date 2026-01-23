@@ -43,7 +43,7 @@ namespace SimpleRelm.Tests.Models.RelmDataSet_Tests
                 },
             };
 
-            context = new NonDefaultForeignKeysTestContext("name=SimpleRelmMySql");
+            context = new NonDefaultForeignKeysTestContext("name=SimpleRelmMySql", autoVerifyTables: false);
 
             // create dummy data loaders for dummy data to be placed in both relevant data sets
             var modelDataLoader = new Mock<RelmDefaultDataLoader<NonDefaultForeignKeysTestObject>>(); // { CallBase = true };

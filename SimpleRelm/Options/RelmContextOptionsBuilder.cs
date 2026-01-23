@@ -88,6 +88,46 @@ namespace SimpleRelm.Options
         public MySqlTransaction DatabaseTransaction { get; private set; }
 
         /// <summary>
+        /// Gets a value indicating whether the connection should be automatically opened when required.
+        /// </summary>
+        public bool AutoOpenConnection { get; private set; } = true;
+
+        /// <summary>
+        /// Gets a value indicating whether a transaction is automatically opened when a database connection is
+        /// established.
+        /// </summary>
+        public bool AutoOpenTransaction { get; private set; } = false;
+
+        /// <summary>
+        /// Gets a value indicating whether user-defined variables are permitted in SQL statements.
+        /// </summary>
+        public bool AllowUserVariables { get; private set; } = false;
+
+        /// <summary>
+        /// Gets a value indicating whether date and time values of zero are converted to DateTime.MinValue when
+        /// retrieved from the database.
+        /// </summary>
+        /// <remarks>When enabled, date and time fields with a value of '0000-00-00' or '0000-00-00
+        /// 00:00:00' are returned as DateTime.MinValue instead of causing an exception or being treated as invalid.
+        /// This option is useful when working with databases that allow zero date values.</remarks>
+        public bool ConvertZeroDateTime { get; private set; } = false;
+
+        /// <summary>
+        /// Gets the maximum number of seconds to wait for a lock to be acquired before timing out.
+        /// </summary>
+        public int LockWaitTimeoutSeconds { get; private set; } = 30;
+
+        /// <summary>
+        /// Gets a value indicating whether data sets are automatically initialized when the component is created.
+        /// </summary>
+        public bool AutoInitializeDataSets { get; private set; } = true;
+
+        /// <summary>
+        /// Gets a value indicating whether table verification is performed automatically before database operations.
+        /// </summary>
+        public bool AutoVerifyTables { get; private set; } = true;
+
+        /// <summary>
         /// Gets the type of options builder used to configure options for this instance.
         /// </summary>
         public OptionsBuilderTypes OptionsBuilderType => _optionsBuilderType;
@@ -178,12 +218,15 @@ namespace SimpleRelm.Options
         /// subsequent database operations. The caller is responsible for managing the lifetime of the
         /// connection.</remarks>
         /// <param name="connection">The open <see cref="MySqlConnection"/> to associate with this instance. The connection must not be null.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="connection"/> is null.</exception>
-        public void SetDatabaseConnection(MySqlConnection connection)
+        public RelmContextOptionsBuilder SetDatabaseConnection(MySqlConnection connection)
         {
             DatabaseConnection = connection ?? throw new ArgumentNullException("Connection cannot be null.", nameof(connection));
 
             _optionsBuilderType = OptionsBuilderTypes.OpenConnection;
+
+            return this;
         }
 
         /// <summary>
@@ -194,19 +237,23 @@ namespace SimpleRelm.Options
         /// it is cleared or replaced.</remarks>
         /// <param name="transaction">The MySqlTransaction instance to associate with database operations. Can be null to clear the current
         /// transaction.</param>
-        public void SetDatabaseTransaction(MySqlTransaction transaction)
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
+        public RelmContextOptionsBuilder SetDatabaseTransaction(MySqlTransaction transaction)
         {
             DatabaseTransaction = transaction; // ?? throw new ArgumentNullException("Transaction cannot be null.", nameof(transaction));
 
             _optionsBuilderType = OptionsBuilderTypes.OpenConnection;
+
+            return this;
         }
 
         /// <summary>
         /// Sets the database server to use for establishing connections.
         /// </summary>
         /// <param name="databaseServer">The name or address of the database server. Cannot be null or empty.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="databaseServer"/> is null or empty.</exception>
-        public void SetDatabaseServer(string databaseServer)
+        public RelmContextOptionsBuilder SetDatabaseServer(string databaseServer)
         {
             if (string.IsNullOrEmpty(databaseServer))
                 throw new ArgumentNullException("Database server cannot be null or empty.", nameof(databaseServer));
@@ -214,6 +261,8 @@ namespace SimpleRelm.Options
             this.DatabaseServer = databaseServer;
 
             _optionsBuilderType = OptionsBuilderTypes.ConnectionString;
+
+            return this;
         }
 
         /// <summary>
@@ -221,10 +270,11 @@ namespace SimpleRelm.Options
         /// </summary>
         /// <param name="databaseName">The name of the database. Must be a non-empty string containing only alphanumeric characters, underscores
         /// (_), dollar signs ($), or Unicode characters in the range U+0080 to U+FFFF.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
         /// <exception cref="ArgumentNullException">Thrown if the databaseName parameter is null or an empty string.</exception>
         /// <exception cref="ArgumentException">Thrown if databaseName contains invalid characters. The name must be alphanumeric and may include
         /// underscores (_), dollar signs ($), or Unicode characters in the range U+0080 to U+FFFF.</exception>
-        public void SetDatabaseName(string databaseName)
+        public RelmContextOptionsBuilder SetDatabaseName(string databaseName)
         {
             if (string.IsNullOrEmpty(databaseName))
                 throw new ArgumentNullException("Database name cannot be null or empty.", nameof(databaseName));
@@ -237,14 +287,17 @@ namespace SimpleRelm.Options
             this.DatabaseName = databaseName;
 
             _optionsBuilderType = OptionsBuilderTypes.ConnectionString;
+
+            return this;
         }
 
         /// <summary>
         /// Sets the database user name to be used for the connection.
         /// </summary>
         /// <param name="databaseUser">The user name to associate with the database connection. Cannot be null or empty.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="databaseUser"/> is null or empty.</exception>
-        public void SetDatabaseUser(string databaseUser)
+        public RelmContextOptionsBuilder SetDatabaseUser(string databaseUser)
         {
             if (string.IsNullOrEmpty(databaseUser))
                 throw new ArgumentNullException("Database user cannot be null or empty.", nameof(databaseUser));
@@ -252,14 +305,17 @@ namespace SimpleRelm.Options
             this.DatabaseUser = databaseUser;
 
             _optionsBuilderType = OptionsBuilderTypes.ConnectionString;
+
+            return this;
         }
 
         /// <summary>
         /// Sets the password used to connect to the database.
         /// </summary>
         /// <param name="databasePassword">The password to use for authenticating the database connection. Cannot be null or empty.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="databasePassword"/> is null or empty.</exception>
-        public void SetDatabasePassword(string databasePassword)
+        public RelmContextOptionsBuilder SetDatabasePassword(string databasePassword)
         {
             if (string.IsNullOrEmpty(databasePassword))
                 throw new ArgumentNullException("Database password cannot be null or empty.", nameof(databasePassword));
@@ -267,15 +323,20 @@ namespace SimpleRelm.Options
             this.DatabasePassword = databasePassword;
 
             _optionsBuilderType = OptionsBuilderTypes.ConnectionString;
+
+            return this;
         }
 
         /// <summary>
         /// Sets the type of the connection string using the specified enumeration value.
         /// </summary>
         /// <param name="connectionStringType">An enumeration value that specifies the type of connection string to use. Must not be null.</param>
-        public void SetConnectionStringType(Enum connectionStringType)
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
+        public RelmContextOptionsBuilder SetConnectionStringType(Enum connectionStringType)
         {
             SetConnectionStringType(connectionStringType.GetType(), connectionStringType);
+
+            return this;
         }
 
         /// <summary>
@@ -283,8 +344,9 @@ namespace SimpleRelm.Options
         /// </summary>
         /// <param name="enumType">The enumeration type that defines the valid connection string types. Must be an enum type.</param>
         /// <param name="connectionStringType">The specific connection string type to set. Must be a defined value of <paramref name="enumType"/>.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="connectionStringType"/> is not a defined value of <paramref name="enumType"/>.</exception>
-        public void SetConnectionStringType(Type enumType, Enum connectionStringType)
+        public RelmContextOptionsBuilder SetConnectionStringType(Type enumType, Enum connectionStringType)
         { 
             if (!Enum.IsDefined(enumType, connectionStringType))
                 throw new ArgumentNullException("Invalid connection string type provided.", nameof(connectionStringType));
@@ -294,14 +356,17 @@ namespace SimpleRelm.Options
             NamedConnection = connectionStringType.ToString();
 
             _optionsBuilderType = OptionsBuilderTypes.NamedConnectionString;
+
+            return this;
         }
 
         /// <summary>
         /// Sets the current database connection using the specified named connection string.
         /// </summary>
         /// <param name="namedConnection">The name of the connection string to use. Cannot be null or empty.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
         /// <exception cref="ArgumentNullException">Thrown if the namedConnection parameter is null or empty.</exception>
-        public void SetNamedConnection(string namedConnection)
+        public RelmContextOptionsBuilder SetNamedConnection(string namedConnection)
         {
             if (string.IsNullOrEmpty(namedConnection))
                 throw new ArgumentNullException(nameof(namedConnection));
@@ -315,19 +380,24 @@ namespace SimpleRelm.Options
             */
 
             _optionsBuilderType = OptionsBuilderTypes.NamedConnectionString;
+
+            return this;
         }
 
         /// <summary>
         /// Sets the connection string used to connect to the database.
         /// </summary>
         /// <param name="DatabaseConnectionString">The connection string to use for database connections. Cannot be null or empty.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="DatabaseConnectionString"/> is null or empty.</exception>
-        public void SetDatabaseConnectionString(string DatabaseConnectionString)
+        public RelmContextOptionsBuilder SetDatabaseConnectionString(string DatabaseConnectionString)
         {
             if (string.IsNullOrEmpty(DatabaseConnectionString))
                 throw new ArgumentNullException(nameof(DatabaseConnectionString));
 
             this.DatabaseConnectionString = DatabaseConnectionString;
+
+            return this;
         }
 
         /// <summary>
@@ -489,6 +559,99 @@ namespace SimpleRelm.Options
 
                 DatabaseConnectionString = $"server={DatabaseServer};database={DatabaseName};user id={DatabaseUser};password={DatabasePassword}";
             }
+        }
+
+        /// <summary>
+        /// Enables or disables automatic opening of the connection when required by operations.
+        /// </summary>
+        /// <remarks>When automatic connection opening is enabled, the connection will be opened as needed
+        /// by operations that require it. If disabled, the caller is responsible for ensuring the connection is open
+        /// before performing such operations.</remarks>
+        /// <param name="autoOpenConnection">true to enable automatic opening of the connection; false to require manual connection management.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
+        public RelmContextOptionsBuilder SetAutoOpenConnection(bool autoOpenConnection)
+        {
+            this.AutoOpenConnection = autoOpenConnection;
+
+            return this;
+        }
+
+        /// <summary>
+        /// Enables or disables automatic opening of a transaction when executing database operations.
+        /// </summary>
+        /// <param name="autoOpenTransaction">true to automatically open a transaction for each operation; otherwise, false.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
+        public RelmContextOptionsBuilder SetAutoOpenTransaction(bool autoOpenTransaction)
+        {
+            this.AutoOpenTransaction = autoOpenTransaction;
+
+            return this;
+        }
+
+        /// <summary>
+        /// Enables or disables the use of user-defined variables in SQL statements.
+        /// </summary>
+        /// <param name="allowUserVariables">true to allow user-defined variables in SQL statements; otherwise, false.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
+        public RelmContextOptionsBuilder SetAllowUserVariables(bool allowUserVariables)
+        {
+            this.AllowUserVariables = allowUserVariables;
+
+            return this;
+        }
+
+        /// <summary>
+        /// Specifies whether zero date values should be converted to DateTime.MinValue when retrieving data.
+        /// </summary>
+        /// <remarks>Zero date values are commonly used in some databases to represent an undefined or
+        /// missing date. Enabling this option allows such values to be mapped to DateTime.MinValue in .NET, which may
+        /// simplify handling of missing dates in application code.</remarks>
+        /// <param name="convertZeroDateTime">true to convert zero date values to DateTime.MinValue; otherwise, false.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
+        public RelmContextOptionsBuilder SetConvertZeroDateTime(bool convertZeroDateTime)
+        {
+            this.ConvertZeroDateTime = convertZeroDateTime;
+
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the lock wait timeout period, in seconds, for acquiring a lock.
+        /// </summary>
+        /// <remarks>If the timeout is set to zero, the method will not wait and will attempt to acquire
+        /// the lock immediately. Setting an appropriate timeout can help prevent deadlocks in concurrent
+        /// scenarios.</remarks>
+        /// <param name="lockWaitTimeoutSeconds">The maximum number of seconds to wait for a lock to be acquired. Must be a non-negative value.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
+        public RelmContextOptionsBuilder SetLockWaitTimeoutSeconds(int lockWaitTimeoutSeconds)
+        {
+            this.LockWaitTimeoutSeconds = lockWaitTimeoutSeconds;
+
+            return this;
+        }
+
+        /// <summary>
+        /// Enables or disables automatic initialization of data sets.
+        /// </summary>
+        /// <param name="autoInitializeDataSets">true to enable automatic initialization of data sets; otherwise, false.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
+        public RelmContextOptionsBuilder SetAutoInitializeDataSets(bool autoInitializeDataSets)
+        {
+            this.AutoInitializeDataSets = autoInitializeDataSets;
+
+            return this;
+        }
+
+        /// <summary>
+        /// Enables or disables automatic verification of tables before performing operations.
+        /// </summary>
+        /// <param name="autoVerifyTables">true to enable automatic table verification; false to disable it.</param>
+        /// <returns>The current instance of the <see cref="RelmContextOptionsBuilder"/> class.</returns>
+        public RelmContextOptionsBuilder SetAutoVerifyTables(bool autoVerifyTables)
+        {
+            this.AutoVerifyTables = autoVerifyTables;
+
+            return this;
         }
     }
 }
