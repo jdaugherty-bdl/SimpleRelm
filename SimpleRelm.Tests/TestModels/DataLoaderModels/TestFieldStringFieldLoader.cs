@@ -27,8 +27,8 @@ namespace SimpleRelm.Tests.TestModels.DataLoaderModels
 
             var applications = testContext
                 .ComplexTestModels!
+                .ToList()
                 .Where(x => x.Active == true && keyData.Any(y => y.First().ToString() == x.TestFieldString))
-                .Load()
                 .ToDictionary(x => keyData.First(y => y.All(z => z.ToString() == x.TestFieldString)), x => (object)x);
 
             return applications;

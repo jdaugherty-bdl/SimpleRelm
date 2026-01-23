@@ -1,6 +1,7 @@
 ﻿using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
 using SimpleRelm.Models;
+using SimpleRelm.RelmInternal.Helpers.Expressions;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using System;
 using System.Collections;
@@ -26,9 +27,11 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
 
         private readonly Dictionary<string, string> UnderscoreProperties;
         private readonly Dictionary<string, string> UsedTableAliases;
+        private readonly string _tableName;
 
         internal ExpressionEvaluator(string TableName, Dictionary<string, string> UnderscoreProperties, Dictionary<string, string> UsedTableAliases = null)
         {
+            this._tableName = TableName;
             this.UnderscoreProperties = UnderscoreProperties;
 
             this.UsedTableAliases = UsedTableAliases ?? new Dictionary<string, string> { [TableName] = "a" }; // reserve 'a' for the main table
@@ -63,6 +66,34 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
                 throw new AccessViolationException($"Key {parameterName} already exists.");
 
             return parameterName;
+        }
+
+        internal string EvaluateWhereNew(List<IRelmExecutionCommand> executionCommands, Dictionary<string, object> parameters, bool giveCommandPrefix = true, ExpressionType nodeType = ExpressionType.And)
+        {
+            var query = $" WHERE ( ";
+
+            var expressionVisitor = new RelmExpressionVisitor(_tableName, UnderscoreProperties, UsedTableAliases);
+
+            // resolve query commands
+            foreach (var command in executionCommands)
+            {
+                var commandResolution = expressionVisitor.Visit(command.ExecutionExpression);
+
+                query += $" ( {commandResolution.Query} ) ";
+            }
+
+            query += " ) ";
+
+            // copy query parameters
+            foreach (var key in expressionVisitor.QueryParameters.Keys.ToList())
+            {
+                if (!parameters.ContainsKey(key))
+                    parameters.Add(key, expressionVisitor.QueryParameters[key]);
+                else
+                    parameters[key] = expressionVisitor.QueryParameters[key];
+            }
+
+            return query;
         }
 
         internal string EvaluateWhere(KeyValuePair<Command, List<IRelmExecutionCommand>> CommandExpression, Dictionary<string, object> QueryParameters, bool GiveCommandPrefix = true, ExpressionType NodeType = ExpressionType.And)

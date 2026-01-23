@@ -24,6 +24,16 @@ namespace SimpleRelm.Interfaces
         /// <summary>
         /// Gets the initial command that was associated with this execution command.
         /// </summary>
+        Command ExecutionCommand { get; }
+
+        /// <summary>
+        /// Gets the initial expression associated with this execution command.
+        /// </summary>
+        Expression ExecutionExpression { get; }
+
+        /// <summary>
+        /// Gets the initial command that was associated with this execution command.
+        /// </summary>
         Command InitialCommand { get; }
 
         /// <summary>

@@ -370,5 +370,43 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
 
             return methodCallVisitor.FoundRelevantMethodCall;
         }
+
+        public static string GetSqlOperator(ExpressionType expressionType)
+        {
+            switch (expressionType)
+            {
+                case ExpressionType.Equal:
+                    return "=";
+                case ExpressionType.NotEqual:
+                    return "<>";
+                case ExpressionType.GreaterThan:
+                    return ">";
+                case ExpressionType.GreaterThanOrEqual:
+                    return ">=";
+                case ExpressionType.LessThan:
+                    return "<";
+                case ExpressionType.LessThanOrEqual:
+                    return "<=";
+                case ExpressionType.AndAlso:
+                    return "AND";
+                case ExpressionType.OrElse:
+                    return "OR";
+                case ExpressionType.Add:
+                case ExpressionType.AddChecked:
+                    return "+";
+                case ExpressionType.Subtract:
+                case ExpressionType.SubtractChecked:
+                    return "-";
+                case ExpressionType.Multiply:
+                case ExpressionType.MultiplyChecked:
+                    return "*";
+                case ExpressionType.Divide:
+                    return "/";
+                case ExpressionType.Modulo:
+                    return "%";
+                default:
+                    throw new NotSupportedException($"The expression type '{expressionType}' is not supported.");
+            }
+        }
     }
 }

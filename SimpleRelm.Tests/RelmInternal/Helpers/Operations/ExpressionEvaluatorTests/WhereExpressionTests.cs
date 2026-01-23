@@ -20,6 +20,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
     {
         private readonly ExpressionEvaluator evaluator;
         private readonly Dictionary<string, object> queryParameters;
+        private readonly Dictionary<(string, string), object> queryParametersNew;
         private Expression<Func<ComplexTestModel, bool>>? predicate;
 
         public WhereExpressionTests()
@@ -39,13 +40,12 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => x.Id == 3L;
 
             // Act
-            var result = evaluator.EvaluateWhere(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                    Command.Where, 
-                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) })
-                , queryParameters);
+            var result = evaluator.EvaluateWhereNew(
+                new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) },
+                queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( a.`Id` = @_Id_1_ )", result);
+            Assert.Equal(" WHERE (  ( a.`Id` = @_Id_1_ )  ) ", result);
             Assert.Equal(3L, queryParameters["@_Id_1_"]);
         }
 
@@ -57,13 +57,12 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => x.Id == id;
 
             // Act
-            var result = evaluator.EvaluateWhere(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                    Command.Where,
-                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) })
-                , queryParameters);
+            var result = evaluator.EvaluateWhereNew(
+                new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) }, 
+                queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( a.`Id` = @_Id_1_ )", result);
+            Assert.Equal(" WHERE (  ( a.`Id` = @_Id_1_ )  ) ", result);
             Assert.Equal(id, queryParameters["@_Id_1_"]);
         }
 
@@ -74,13 +73,12 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => x.InternalId == "00000000-0000-0000-0000-000000000000";
 
             // Act
-            var result = evaluator.EvaluateWhere(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                    Command.Where,
-                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) })
-                , queryParameters);
+            var result = evaluator.EvaluateWhereNew(
+                new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) },
+                queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( a.`InternalId` = @_InternalId_1_ )", result);
+            Assert.Equal(" WHERE (  ( a.`InternalId` = @_InternalId_1_ )  ) ", result);
             Assert.Equal("00000000-0000-0000-0000-000000000000", queryParameters["@_InternalId_1_"]);
         }
 
@@ -92,13 +90,11 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => x.InternalId == internalId;
 
             // Act
-            var result = evaluator.EvaluateWhere(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                    Command.Where,
-                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) })
+            var result = evaluator.EvaluateWhereNew(new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) }
                 , queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( a.`InternalId` = @_InternalId_1_ )", result);
+            Assert.Equal(" WHERE (  ( a.`InternalId` = @_InternalId_1_ )  ) ", result);
             Assert.Equal(internalId, queryParameters["@_InternalId_1_"]);
         }
 
@@ -109,13 +105,11 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => x.CreateDate == new DateTime(2021, 1, 1);
 
             // Act
-            var result = evaluator.EvaluateWhere(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                    Command.Where,
-                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) })
+            var result = evaluator.EvaluateWhereNew(new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) }
                 , queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( a.`Create_Date` = @_CreateDate_1_ )", result);
+            Assert.Equal(" WHERE (  ( a.`Create_Date` = @_CreateDate_1_ )  ) ", result);
             Assert.Equal(new DateTime(2021, 1, 1), queryParameters["@_CreateDate_1_"]);
         }
 
@@ -126,13 +120,11 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => x.Active == true;
 
             // Act
-            var result = evaluator.EvaluateWhere(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                    Command.Where,
-                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) })
+            var result = evaluator.EvaluateWhereNew(new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) }
                 , queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( a.`Active` = @_Active_1_ )", result);
+            Assert.Equal(" WHERE (  ( a.`Active` = @_Active_1_ )  ) ", result);
             Assert.Equal(1, queryParameters["@_Active_1_"]);
         }
 
@@ -149,13 +141,11 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => objectList.Select(y => y.TestColumnInternalId).Contains(x.InternalId);
 
             // Act
-            var result = evaluator.EvaluateWhere(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                    Command.Where,
-                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) })
-                , queryParameters);
+            var result = evaluator.EvaluateWhereNew(new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) },
+                queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( FIND_IN_SET(a.`InternalId`, @_InternalId_1_) )", result);
+            Assert.Equal(" WHERE (  ( FIND_IN_SET(a.`InternalId`, @_InternalId_1_) )  ) ", result);
             Assert.Equal("00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000001", queryParameters["@_InternalId_1_"]);
         }
 
@@ -208,13 +198,11 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => x.CreateDate >= new DateTime(2021, 1, 1);
 
             // Act
-            var result = evaluator.EvaluateWhere(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                    Command.Where,
-                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) })
-                , queryParameters);
+            var result = evaluator.EvaluateWhereNew(new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) }, 
+                queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( a.`Create_Date` >= @_CreateDate_1_ )", result);
+            Assert.Equal(" WHERE (  ( a.`Create_Date` >= @_CreateDate_1_ )  ) ", result);
             Assert.Equal(new DateTime(2021, 1, 1), queryParameters["@_CreateDate_1_"]);
         }
 

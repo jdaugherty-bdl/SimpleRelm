@@ -113,6 +113,7 @@
     <Compile Include="RelmInternal\Helpers\DataTransfer\RowIdentityHelper.cs" />
     <Compile Include="RelmInternal\Helpers\EqualityComparers\JsonConverterAttributeEqualityComparer.cs" />
     <Compile Include="RelmInternal\Helpers\Expressions\ExpressionVisitor.cs" />
+    <Compile Include="RelmInternal\Helpers\Expressions\RelmExpressionVisitor.cs" />
     <Compile Include="RelmInternal\Helpers\Expressions\VisitExpressions.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\ConnectionHelper.cs" />
     <Compile Include="RelmInternal\Helpers\Operations\DatabaseColumnRegistry.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="RelmInternal\Models\DALPropertyType_MySQL.cs" />
     <Compile Include="RelmInternal\Models\DALPropertyType_ODBC.cs" />
     <Compile Include="RelmInternal\Models\DALTableRowDescriptor.cs" />
+    <Compile Include="RelmInternal\Models\ExpressionResolution.cs" />
     <Compile Include="RelmInternal\Models\ForeignKeyNavigationOptions.cs" />
     <Compile Include="RelmInternal\Models\WritableTableDefinition.cs" />
     <Compile Include="RelmInternal\Resolvers\DefaultRelmResolver.cs" />
