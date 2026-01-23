@@ -1,4 +1,6 @@
 ﻿using SimpleRelm.Attributes;
+using SimpleRelm.Interfaces;
+using SimpleRelm.RelmInternal.Helpers.Operations;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using SimpleRelm.RelmInternal.Models;
 using System;
@@ -6,23 +8,36 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SimpleRelm.RelmInternal.Helpers.Expressions
 {
-    internal class RelmExpressionVisitor
+    internal class RelmExpressionVisitor<T> where T : IRelmModel, new()
     {
         public Dictionary<string, object> QueryParameters { get; private set; }
 
-        private readonly Dictionary<string, string> UnderscoreProperties;
-        private readonly Dictionary<string, string> UsedTableAliases;
+        private readonly Dictionary<string, string> _underscoreProperties;
+        private readonly Dictionary<string, string> _usedTableAliases;
+        private readonly Dictionary<Type, Dictionary<string, string>> _objectProperties;
 
-        internal RelmExpressionVisitor(string TableName, Dictionary<string, string> UnderscoreProperties, Dictionary<string, string> UsedTableAliases = null)
+        internal RelmExpressionVisitor(string TableName = null, Dictionary<string, string> UnderscoreProperties = null, Dictionary<string, string> UsedTableAliases = null)
         {
-            this.UnderscoreProperties = UnderscoreProperties;
+            var _tableName = TableName;
+            if (string.IsNullOrWhiteSpace(_tableName))
+                _tableName = typeof(T).GetCustomAttribute<RelmTable>(false)?.TableName ?? throw new ArgumentNullException();
 
-            this.UsedTableAliases = UsedTableAliases ?? new Dictionary<string, string> { [TableName] = "a" }; // reserve 'a' for the main table
+            _underscoreProperties = UnderscoreProperties;
+            if ((_underscoreProperties?.Count ?? 0) == 0)
+                _underscoreProperties = DataNamingHelper.GetUnderscoreProperties<T>(true, false).ToDictionary(x => x.Value.Item1, x => x.Key);
+
+            _objectProperties = new Dictionary<Type, Dictionary<string, string>>
+            {
+                [typeof(T)] = UnderscoreProperties
+            };
+
+            _usedTableAliases = UsedTableAliases ?? new Dictionary<string, string> { [_tableName] = "a" }; // reserve 'a' for the main table
         }
 
         internal ExpressionResolution Visit(Expression expression, ExpressionResolution expressionResolution = null)
@@ -231,10 +246,16 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
                 resolution.ParameterValue = resolution.ParameterValue.GetType().GetField(member.Member.Name).GetValue(resolution.ParameterValue);
             else
             {
+                if (!_objectProperties.ContainsKey(member.Expression.Type))
+                {
+                    _objectProperties[member.Expression.Type] = DataNamingHelper.GetUnderscoreProperties(member.Expression.Type, true, false).ToDictionary(x => x.Value.Item1, x => x.Key);
+                }
+
                 resolution.FieldName = member.Member.Name;
                 resolution.ParameterName = GenerateParameterName(resolution);
 
-                resolution.Query = $"{resolution.TableAlias}.`{UnderscoreProperties[resolution.FieldName]}`";
+                //resolution.Query = $"{resolution.TableAlias}.`{_underscoreProperties[resolution.FieldName]}`";
+                resolution.Query = $"{resolution.TableAlias}.`{_objectProperties[member.Expression.Type][resolution.FieldName]}`";
             }
 
             return resolution;
@@ -478,13 +499,13 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
             if (string.IsNullOrWhiteSpace(PropertyName))
                 return null;
 
-            if (UsedTableAliases.ContainsKey(PropertyName))
-                return UsedTableAliases[PropertyName];
+            if (_usedTableAliases.ContainsKey(PropertyName))
+                return _usedTableAliases[PropertyName];
 
-            var aliasCount = UsedTableAliases.Count;
+            var aliasCount = _usedTableAliases.Count;
             var currentAlias = string.Concat(Enumerable.Repeat(((char)((aliasCount % 26) + 97)).ToString(), (int)(aliasCount / 26.0) + 1));
 
-            UsedTableAliases.Add(UnderscoreProperties[PropertyName], currentAlias);
+            _usedTableAliases.Add(_underscoreProperties[PropertyName], currentAlias);
 
             return string.Empty;
         }

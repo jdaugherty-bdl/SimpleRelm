@@ -11,7 +11,6 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using static SimpleRelm.Enums.Commands;
-using static SimpleRelm.RelmInternal.Helpers.Operations.ExpressionEvaluator;
 
 namespace SimpleRelm.Models
 {
@@ -276,7 +275,7 @@ namespace SimpleRelm.Models
                 throw new Exception($"RelmTable attribute not found on type {typeof(T).Name}");
 
             // hardcode first table alias to 'a', and inject that into the expression evaluator
-            var expressionEvaluator = new ExpressionEvaluator(TableName, _columnRegistry.PropertyColumns.ToDictionary(x => x.Key, x => x.Value.Item1), UsedTableAliases: new Dictionary<string, string> { [TableName] = "a" });
+            var expressionEvaluator = new ExpressionEvaluator<T>(TableName, _columnRegistry.PropertyColumns.ToDictionary(x => x.Key, x => x.Value.Item1), UsedTableAliases: new Dictionary<string, string> { [TableName] = "a" });
 
             // evaluate all the pieces of the query
             var queryPieces = new Dictionary<Command, List<string>>();

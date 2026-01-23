@@ -16,7 +16,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 {
     public class GroupByExpression_Tester
     {
-        private readonly ExpressionEvaluator evaluator;
+        private readonly ExpressionEvaluator<ComplexTestModel> evaluator;
         private readonly Dictionary<string, object> queryParameters;
         private Expression<Func<ComplexTestModel, object>>? predicate;
 
@@ -25,7 +25,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             var tableName = typeof(ComplexTestModel).GetCustomAttribute<RelmTable>(false)?.TableName ?? throw new ArgumentNullException();
             var underscoreProperties = DataNamingHelper.GetUnderscoreProperties<ComplexTestModel>(true, false).ToDictionary(x => x.Value.Item1, x => x.Key);
 
-            evaluator = new ExpressionEvaluator(tableName, underscoreProperties, UsedTableAliases: new Dictionary<string, string> { [tableName] = "a" });
+            evaluator = new ExpressionEvaluator<ComplexTestModel>(tableName, underscoreProperties, UsedTableAliases: new Dictionary<string, string> { [tableName] = "a" });
 
             queryParameters = new();
         }

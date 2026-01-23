@@ -15,7 +15,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
     public class CopilotGeneratedTests
     {
         [RelmTable("test_models")]
-        private class TestModel
+        private class TestModel : RelmModel
         {
             [RelmColumn("id")]
             public int Id { get; set; }
@@ -34,7 +34,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             Inactive = 2
         }
 
-        private readonly ExpressionEvaluator evaluator;
+        private readonly ExpressionEvaluator<TestModel> evaluator;
         private Dictionary<string, object> queryParameters;
         private readonly Dictionary<string, string> underscoreProperties;
 
@@ -47,7 +47,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
                 { nameof(TestModel.Status), "status" }
             };
 
-            evaluator = new ExpressionEvaluator("test_models", underscoreProperties);
+            evaluator = new ExpressionEvaluator<TestModel>("test_models", underscoreProperties);
             queryParameters = new Dictionary<string, object>();
         }
 

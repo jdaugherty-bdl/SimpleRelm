@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +17,7 @@ using static SimpleRelm.Enums.Commands;
 
 namespace SimpleRelm.RelmInternal.Helpers.Operations
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    internal class ExpressionEvaluator
+    internal class ExpressionEvaluator<T> where T : IRelmModel, new()
     {
         private bool HasWhere = false;
         private bool HasOrderBy = false;
@@ -29,12 +27,19 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         private readonly Dictionary<string, string> UsedTableAliases;
         private readonly string _tableName;
 
-        internal ExpressionEvaluator(string TableName, Dictionary<string, string> UnderscoreProperties, Dictionary<string, string> UsedTableAliases = null)
+        internal ExpressionEvaluator(string TableName = null, Dictionary<string, string> UnderscoreProperties = null, Dictionary<string, string> UsedTableAliases = null)
         {
-            this._tableName = TableName;
-            this.UnderscoreProperties = UnderscoreProperties;
+            if (string.IsNullOrWhiteSpace(TableName))
+                _tableName = typeof(T).GetCustomAttribute<RelmTable>(false)?.TableName ?? throw new ArgumentNullException();
+            else
+                _tableName = TableName;
 
-            this.UsedTableAliases = UsedTableAliases ?? new Dictionary<string, string> { [TableName] = "a" }; // reserve 'a' for the main table
+            if ((UnderscoreProperties?.Count ?? 0) == 0)
+                this.UnderscoreProperties = DataNamingHelper.GetUnderscoreProperties<T>(true, false).ToDictionary(x => x.Value.Item1, x => x.Key);
+            else
+                this.UnderscoreProperties = UnderscoreProperties;
+
+            this.UsedTableAliases = UsedTableAliases ?? new Dictionary<string, string> { [_tableName] = "a" }; // reserve 'a' for the main table
         }
 
         private string GetTableAlias(string PropertyName)
@@ -72,7 +77,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Operations
         {
             var query = $" WHERE ( ";
 
-            var expressionVisitor = new RelmExpressionVisitor(_tableName, UnderscoreProperties, UsedTableAliases);
+            var expressionVisitor = new RelmExpressionVisitor<T>(_tableName, UnderscoreProperties, UsedTableAliases);
 
             // resolve query commands
             foreach (var command in executionCommands)
