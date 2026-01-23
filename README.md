@@ -92,9 +92,9 @@ SimpleRelm revolves around a few core pieces:
           bool autoOpenTransaction = false,
           bool allowUserVariables = false,
           bool convertZeroDateTime = false,
+          int  lockWaitTimeoutSeconds = 0,
           bool autoInitializeDataSets = true, 
-          bool autoVerifyTables = true
-          int  lockWaitTimeoutSeconds = 0)
+          bool autoVerifyTables = true)
           : base("name=ExampleContextDatabase",
                  autoOpenConnection:  autoOpenConnection,
                  autoOpenTransaction: autoOpenTransaction,
