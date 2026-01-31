@@ -147,6 +147,23 @@ namespace SimpleRelm.RelmInternal.Helpers.Utilities
                 return null;
             }
 
+            // NEW: unwrap lists/collections by selecting a matching element
+            if (source is IEnumerable enumerable && targetType != typeof(string))
+            {
+                foreach (var item in enumerable.Cast<object>())
+                {
+                    if (IsAssignableTo(item, targetType))
+                        return item;
+                    else if (item != null)
+                    {
+                        // Try coercion on each item
+                        var coercedItem = CoerceArgument(item, targetType, pool);
+                        if (IsAssignableTo(coercedItem, targetType))
+                            return coercedItem;
+                    }
+                }
+            }
+
             // Direct assignable
             if (IsAssignableTo(source, targetType))
                 return source;

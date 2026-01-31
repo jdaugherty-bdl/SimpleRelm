@@ -332,10 +332,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         public void TestExpressionEvaluatorWhere_CompoundBuildWithMultipleLayers_NotEquals()
         {
             // Arrange
-            var keyData = new List<long[]>
-            {
-                new long[] { 2 },
-            };
+            var keyData = new List<long> { 2, 3 };
             var expectedIds = new List<ComplexTestModel>
             { 
                 new ComplexTestModel { InternalId = "1" },
@@ -345,16 +342,15 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             };
             var expectedInternalId = "00000000-0000-0000-0000-000000000000";
 
-            predicate = x => keyData.All(y => y.Select(z => z.ToString()).ToList().Contains(x.InternalId));
+            predicate = x => keyData.Select(y => y.ToString()).Contains(x.InternalId);
 
             // Act
             var result = evaluator.EvaluateWhereNew(new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, predicate) }, 
                 queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( FIND_IN_SET(a.`Id`, @_Id_1_)    AND  a.`Test_Column_No_Attribute_Arguments` <> @_TestColumnNoAttributeArguments_1_ )", result);
-            Assert.Equal(string.Join(",", expectedIds.Select(x => x.Id)), string.Join(",", queryParameters["@_Id_1_"]));
-            Assert.Equal(expectedInternalId, queryParameters["@_TestColumnNoAttributeArguments_1_"]);
+            Assert.Equal(" WHERE ( FIND_IN_SET(a.`InternalId`, @_InternalId_1_) )", result);
+            Assert.Equal(string.Join(",", expectedIds.Where(x => keyData.Select(y => y.ToString()).Contains(x.InternalId)).Select(x => x.InternalId)), string.Join(",", queryParameters["@_InternalId_1_"]));
         }
 
         [Fact]
@@ -578,9 +574,9 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
 
             var objectCompareList = new string[][]
             {
-                new string[] { "00000000-0000-0000-0000-000000000000", "0", "a" },
-                new string[] { "00000000-0000-0000-0000-000000000001", "1", "b" },
-                new string[] { "00000000-0000-0000-0000-000000000002", "2", "c" }
+                new string[] { "00000000-0000-0000-0000-000000000000", "0" },
+                new string[] { "00000000-0000-0000-0000-000000000001", "1" },
+                new string[] { "00000000-0000-0000-0000-000000000002", "2" }
             };
 
             var objectCompareListKeys = objectCompareList.Select(x => string.Join(string.Empty, x)).ToArray();
@@ -593,8 +589,8 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
                 queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE (  ( FIND_IN_SET(a.`test_column_InternalId`, @_TestColumnInternalId_1_) )  )", result);
-            Assert.Equal("00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000001", queryParameters["@_TestColumnInternalId_1_"]);
+            Assert.Equal(" WHERE (  ( FIND_IN_SET(CONCAT_WS('', a.`test_column_InternalId`, a.`Test_Column_No_Attribute_Arguments`), @_TestColumnInternalId_1_) )  ) ", result);
+            Assert.Equal("00000000-0000-0000-0000-0000000000000,00000000-0000-0000-0000-0000000000011,00000000-0000-0000-0000-0000000000022", queryParameters["@_TestColumnInternalId_1_"]);
         }
     }
 }

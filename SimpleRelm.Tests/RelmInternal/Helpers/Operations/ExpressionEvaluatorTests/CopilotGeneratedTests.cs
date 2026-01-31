@@ -289,7 +289,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             Assert.Equal(3, queryParameters.Count);
             Assert.Equal("Test", queryParameters["@_Name_1_"]);
             Assert.Equal(100, queryParameters["@_Id_1_"]);
-            Assert.Equal(1, queryParameters["@_Status_1_"]);
+            Assert.Equal(TestEnum.Active, queryParameters["@_Status_1_"]);
         }
 
         [Fact]

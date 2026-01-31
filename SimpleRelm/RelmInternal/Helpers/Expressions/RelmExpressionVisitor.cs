@@ -179,7 +179,32 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
                 };
             }
             else
+            {
                 right = this.Visit(binary.Right, binary.NodeType == ExpressionType.Equal ? left : expressionResolution ?? left);
+
+                if (binary.Left.NodeType == ExpressionType.Convert || binary.Left.NodeType == ExpressionType.ConvertChecked)
+                {
+                    var convertedLeft = (UnaryExpression)binary.Left;
+                    if (convertedLeft.Operand.Type != right.ParameterValue.GetType())
+                    {
+                        var targetType = convertedLeft.Operand.Type;
+                        if (targetType.IsEnum)
+                        {
+                            // Support int and string inputs
+                            if (right.ParameterValue is int i)
+                                right.ParameterValue = Enum.ToObject(targetType, i);
+                            else if (right.ParameterValue is string s)
+                                right.ParameterValue = Enum.Parse(targetType, s, ignoreCase: true);
+                            else
+                                right.ParameterValue = Enum.ToObject(targetType, Convert.ChangeType(right.ParameterValue, Enum.GetUnderlyingType(targetType)));
+                        }
+                        else
+                        {
+                            right.ParameterValue = Convert.ChangeType(right.ParameterValue, targetType);
+                        }
+                    }
+                }
+            }
             //var conversion = this.Visit(binary.Conversion);
 
             var fieldName = left.Query;
@@ -198,7 +223,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
             }
 
             QueryParameters = QueryParameters ?? new Dictionary<string, object>();
-            if (!QueryParameters.ContainsKey(parameterName))
+            if (!QueryParameters.ContainsKey(parameterName) && parameterValue != null)
                 QueryParameters.Add(parameterName, parameterValue);
 
             var finalResolution = new ExpressionResolution
@@ -211,11 +236,19 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
                 NodeType = binary.NodeType
             };
 
-            if (binary.NodeType == ExpressionType.AndAlso || binary.NodeType == ExpressionType.And 
-                || binary.NodeType == ExpressionType.Or || binary.NodeType == ExpressionType.OrElse)
+            switch (binary.NodeType)
             {
-                finalResolution.ParameterValue = new[] { left, right };
-                finalResolution.Query = $"({left.Query}) {ExpressionUtilities.GetSqlOperator(binary.NodeType)} ({right.Query})";
+                case ExpressionType.AndAlso:
+                case ExpressionType.And:
+                case ExpressionType.Or:
+                case ExpressionType.OrElse:
+                    finalResolution.ParameterValue = new[] { left, right };
+                    finalResolution.Query = $"({left.Query}) {ExpressionUtilities.GetSqlOperator(binary.NodeType)} ({right.Query})";
+                    break;
+                case ExpressionType.Add:
+                    finalResolution.ParameterValue = new[] { left, right };
+                    finalResolution.Query = $"CONCAT_WS('', {left.Query}, {right.Query})";
+                    break;
             }
 
             return finalResolution;
@@ -494,6 +527,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
                 }
                 else
                 {
+                    //var listItemResolution = this.Visit(original[i], expressionResolution ?? new ExpressionResolution { ParameterValue = list.FirstOrDefault() });
                     var listItemResolution = this.Visit(original[i], expressionResolution);
                     list.Add(listItemResolution?.ParameterValue);
                     //list.Add(this.Visit(original[i], expressionResolution));
