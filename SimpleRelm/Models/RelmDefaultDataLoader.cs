@@ -290,7 +290,7 @@ namespace SimpleRelm.Models
                     switch (command.Key)
                     {
                         case Command.Where:
-                            queryPieces[command.Key].Add(expressionEvaluator.EvaluateWhere(command, FindOptions));
+                            queryPieces[command.Key].Add(expressionEvaluator.EvaluateWhereNew(command.Value, FindOptions));
                             break;
                         case Command.OrderBy:
                         case Command.OrderByDescending:

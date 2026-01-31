@@ -32,6 +32,7 @@ namespace SimpleRelm.Models
         /// <summary>
         /// Gets the command that is executed when the associated component is initialized.
         /// </summary>
+        [Obsolete("InitialCommand is deprecated, please use ExecutionCommand instead.")]
         public Command InitialCommand => ExecutionCommand;
 
         /// <summary>
@@ -42,6 +43,7 @@ namespace SimpleRelm.Models
         /// <summary>
         /// Gets the initial expression used to define the starting state or value for this instance.
         /// </summary>
+        [Obsolete("InitialExpression is deprecated, please use ExecutionExpression instead.")]
         public Expression InitialExpression => ExecutionExpression;
 
         /// <summary>
@@ -52,6 +54,7 @@ namespace SimpleRelm.Models
         /// <summary>
         /// Gets the number of additional commands associated with this instance.
         /// </summary>
+        [Obsolete("AdditionalCommandCount is deprecated, please use ChildCommandCount instead.")]
         public int AdditionalCommandCount => ChildCommandCount;
 
         private readonly List<RelmExecutionCommand> _childCommands = new List<RelmExecutionCommand>();

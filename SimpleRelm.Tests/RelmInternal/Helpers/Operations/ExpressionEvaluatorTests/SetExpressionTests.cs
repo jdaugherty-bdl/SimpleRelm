@@ -76,10 +76,8 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             predicate = x => new ComplexTestModel { TestColumnInternalId = "TEST_VALUE" };
 
             // Act
-            var result = evaluator.EvaluateWhere(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                    Command.Where,
-                    new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, wherePredicate) })
-                , queryParameters);
+            var result = evaluator.EvaluateWhereNew(new List<IRelmExecutionCommand> { new RelmExecutionCommand(Command.Where, wherePredicate) }, 
+                queryParameters);
 
             result += evaluator.EvaluateSet(new KeyValuePair<Command, List<IRelmExecutionCommand>>(
                     Command.Set,
@@ -87,7 +85,7 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
                 , queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( a.`Active` = @_Active_1_ ) SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_  ", result);
+            Assert.Equal(" WHERE (  ( a.`Active` = @_Active_1_ )  )  SET  a.`test_column_InternalId` = @_TestColumnInternalId_1_  ", result);
 
             Assert.IsType<int>(queryParameters["@_Active_1_"]);
             Assert.Equal(0, (int)queryParameters["@_Active_1_"]);

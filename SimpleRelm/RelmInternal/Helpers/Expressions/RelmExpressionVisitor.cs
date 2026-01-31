@@ -1,11 +1,14 @@
 ﻿using SimpleRelm.Attributes;
 using SimpleRelm.Interfaces;
+using SimpleRelm.Models;
 using SimpleRelm.RelmInternal.Helpers.Operations;
 using SimpleRelm.RelmInternal.Helpers.Utilities;
 using SimpleRelm.RelmInternal.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -14,13 +17,14 @@ using System.Threading.Tasks;
 
 namespace SimpleRelm.RelmInternal.Helpers.Expressions
 {
-    internal class RelmExpressionVisitor<T> where T : IRelmModel, new()
+    internal class RelmExpressionVisitor<T> : ExpressionVisitor where T : IRelmModel, new()
     {
         public Dictionary<string, object> QueryParameters { get; private set; }
 
         private readonly Dictionary<string, string> _underscoreProperties;
         private readonly Dictionary<string, string> _usedTableAliases;
         private readonly Dictionary<Type, Dictionary<string, string>> _objectProperties;
+        private readonly HashSet<ParameterExpression> _expressionParameters = new HashSet<ParameterExpression>();
 
         internal RelmExpressionVisitor(string TableName = null, Dictionary<string, string> UnderscoreProperties = null, Dictionary<string, string> UsedTableAliases = null)
         {
@@ -79,7 +83,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
                 case ExpressionType.RightShift:
                 case ExpressionType.LeftShift:
                 case ExpressionType.ExclusiveOr:
-                    return this.VisitBinary((BinaryExpression)expression);
+                    return this.VisitBinary((BinaryExpression)expression, expressionResolution);
                 /*
                 case ExpressionType.TypeIs:
                     return this.VisitTypeIs((TypeBinaryExpression)expression);
@@ -89,7 +93,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
                 case ExpressionType.Constant:
                     return this.VisitConstant((ConstantExpression)expression, expressionResolution);
                 case ExpressionType.Parameter:
-                    return this.VisitParameter((ParameterExpression)expression);
+                    return this.VisitParameter((ParameterExpression)expression, expressionResolution);
                 case ExpressionType.MemberAccess:
                     return this.VisitMemberAccess((MemberExpression)expression, expressionResolution);
                 case ExpressionType.Call:
@@ -145,40 +149,76 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
         {
             var operand = this.Visit(unary.Operand, expressionResolution);
 
-            /*
-            if (operand != unary.Operand)
-                return Expression.MakeUnary(unary.NodeType, operand, unary.Type, unary.Method);
+            if (unary.NodeType == ExpressionType.Not)
+            {
+                operand.Query = $"NOT ({operand.Query})";
+            }
 
-            return unary;
-            */
             return operand;
         }
 
-        protected virtual ExpressionResolution VisitBinary(BinaryExpression binary)
+        protected virtual ExpressionResolution VisitBinary(BinaryExpression binary, ExpressionResolution expressionResolution)
         {
-            var left = this.Visit(binary.Left);
-            var right = this.Visit(binary.Right, left);
+            var left = this.Visit(binary.Left, expressionResolution);
+            ExpressionResolution right;
+            if (binary.Right.NodeType == ExpressionType.ArrayIndex)
+            {
+                // Evaluate lambda body (e.g., y[0]) using previously collected argument values
+                // The first collected argument is the sequence for Any/Contains; pass it to resolve indexers
+                var list = (List<object>)(expressionResolution?.ParameterValue ?? left.ParameterValue);
+
+                if (list.All(x => x is ExpressionResolution))
+                    list = list.Cast<ExpressionResolution>().Select(x => x.ParameterValue).ToList();
+
+                var resolved = ExpressionUtilities.GetValueWithArguments(binary.Right, list);
+                list.Add(resolved);
+
+                right = new ExpressionResolution
+                {
+                    ParameterValue = resolved
+                };
+            }
+            else
+                right = this.Visit(binary.Right, binary.NodeType == ExpressionType.Equal ? left : expressionResolution ?? left);
             //var conversion = this.Visit(binary.Conversion);
 
+            var fieldName = left.Query;
             var parameterName = left.ParameterName;
             var parameterValue = right.ParameterValue;
             var query = left.Query;
+            var tableAlias = left.TableAlias;
 
-            if (string.IsNullOrWhiteSpace(left.ParameterName))
+            if (string.IsNullOrWhiteSpace(left.TableAlias))
             {
+                fieldName = right.Query;
                 parameterName = right.ParameterName;
                 parameterValue = left.ParameterValue;
                 query = right.Query;
+                tableAlias = right.TableAlias;
             }
 
             QueryParameters = QueryParameters ?? new Dictionary<string, object>();
             if (!QueryParameters.ContainsKey(parameterName))
                 QueryParameters.Add(parameterName, parameterValue);
 
-            return new ExpressionResolution
+            var finalResolution = new ExpressionResolution
             {
-                Query = $"{query} {ExpressionUtilities.GetSqlOperator(binary.NodeType)} {parameterName}"
+                FieldName = fieldName,
+                ParameterName = parameterName,
+                ParameterValue = parameterValue,
+                Query = $"{query} {ExpressionUtilities.GetSqlOperator(binary.NodeType)} {parameterName}",
+                TableAlias = tableAlias,
+                NodeType = binary.NodeType
             };
+
+            if (binary.NodeType == ExpressionType.AndAlso || binary.NodeType == ExpressionType.And 
+                || binary.NodeType == ExpressionType.Or || binary.NodeType == ExpressionType.OrElse)
+            {
+                finalResolution.ParameterValue = new[] { left, right };
+                finalResolution.Query = $"({left.Query}) {ExpressionUtilities.GetSqlOperator(binary.NodeType)} ({right.Query})";
+            }
+
+            return finalResolution;
         }
 
         /*
@@ -205,6 +245,8 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
                 constantResolution.Query = (bool)constantResolution.ParameterValue ? "1" : "0";
                 constantResolution.ParameterValue = (bool)constantResolution.ParameterValue ? 1 : 0;
             }
+            else if (constantResolution.ParameterValue is IEnumerable valueList)
+                constantResolution.Query = string.Join(",", valueList.Cast<object>().Select(v => v.ToString()));
             else
                 constantResolution.Query = constantResolution.ParameterValue.ToString();
 
@@ -225,8 +267,20 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
         }
         */
 
-        protected virtual ExpressionResolution VisitParameter(ParameterExpression parameter)
+        protected virtual ExpressionResolution VisitParameter(ParameterExpression parameter, ExpressionResolution expressionResolution)
         {
+            _expressionParameters.Add(parameter);
+
+            if (parameter.Type.GetInterface(nameof(IRelmModel)) == null)
+            {
+                var parameterValue = ExpressionUtilities.GetValueWithArguments(parameter, (List<object>)expressionResolution?.ParameterValue);
+
+                return new ExpressionResolution
+                {
+                    ParameterValue = parameterValue
+                };
+            }
+
             var currentAlias = GetTableAlias(((RelmTable)parameter.Type.GetCustomAttributes(typeof(RelmTable), true).FirstOrDefault())?.TableName);
 
             if (string.IsNullOrWhiteSpace(currentAlias))
@@ -242,7 +296,6 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
             var resolution = this.Visit(member.Expression, expressionResolution);
 
             if (member.Expression.NodeType == ExpressionType.Constant)
-                //ParameterValue = ResolveParameter(constant, expressionResolution.TableAlias, expressionResolution.ParameterName)
                 resolution.ParameterValue = resolution.ParameterValue.GetType().GetField(member.Member.Name).GetValue(resolution.ParameterValue);
             else
             {
@@ -251,10 +304,15 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
                     _objectProperties[member.Expression.Type] = DataNamingHelper.GetUnderscoreProperties(member.Expression.Type, true, false).ToDictionary(x => x.Value.Item1, x => x.Key);
                 }
 
+                if (member.Expression.NodeType == ExpressionType.Call)
+                {
+                    var callValue = ExpressionUtilities.GetValueWithArguments(member, new[] { resolution.ParameterValue }.ToList());
+                    resolution.ParameterValue = callValue;
+                }
+
                 resolution.FieldName = member.Member.Name;
                 resolution.ParameterName = GenerateParameterName(resolution);
 
-                //resolution.Query = $"{resolution.TableAlias}.`{_underscoreProperties[resolution.FieldName]}`";
                 resolution.Query = $"{resolution.TableAlias}.`{_objectProperties[member.Expression.Type][resolution.FieldName]}`";
             }
 
@@ -264,15 +322,148 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
         protected virtual ExpressionResolution VisitMethodCall(MethodCallExpression methodCall, ExpressionResolution expressionResolution)
         {
             var obj = this.Visit(methodCall.Object, expressionResolution);
-            var args = this.VisitExpressionList(methodCall.Arguments, expressionResolution);
 
-            /*
-            if (obj != methodCall.Object || args != methodCall.Arguments)
-                return Expression.Call(obj, methodCall.Method, args);
+            // Prepare parameters: evaluate each argument, compiling lambdas if needed
+            var evaluatedParams = VisitExpressionList(methodCall.Arguments, expressionResolution ?? obj);
 
-            return methodCall;
-            */
-            return obj;
+            // Special-case Enumerable.Contains & Enumerable.Any -> SQL translation
+            if (new[] { nameof(Enumerable.Contains), nameof(Enumerable.Any) }.Contains(methodCall.Method.Name))
+            {
+                if (methodCall.Method.DeclaringType == typeof(Enumerable)
+                    || (methodCall.Object != null && typeof(IEnumerable).IsAssignableFrom(methodCall.Object.Type) && methodCall.Object.Type != typeof(string))
+                    || (methodCall.Method.DeclaringType.IsGenericType && (
+                        methodCall.Method.DeclaringType.GetGenericTypeDefinition() == typeof(List<>) ||
+                        methodCall.Method.DeclaringType.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IEnumerable<>))
+                    )))
+                {
+                    ExpressionResolution valueResolution = null;
+                    List<string> queries = new List<string>();
+                    List<string> paramNames = new List<string>();
+                    List<IEnumerable<string>> sequenceStringLists = new List<IEnumerable<string>>();
+                    if (methodCall.Method.Name == nameof(Enumerable.Any))
+                    {
+                        valueResolution = evaluatedParams.LastOrDefault(x => x is ExpressionResolution) as ExpressionResolution;
+
+                        if (valueResolution.ParameterValue is IEnumerable<ExpressionResolution> resolutionValue)
+                        {
+                            foreach (var res in resolutionValue)
+                            {
+                                sequenceStringLists.Add((res.ParameterValue as IEnumerable<object>).Cast<string>());
+                                paramNames.Add(res.ParameterName);
+                                queries.Add(res.FieldName);
+                            }
+                        }
+                        else
+                        {
+                            sequenceStringLists.Add((valueResolution.ParameterValue as IEnumerable<object>).Cast<string>());
+                            paramNames.Add(valueResolution.ParameterName);
+                            queries.Add(valueResolution.FieldName);
+                        }
+                    }
+                    else
+                    {
+                        valueResolution = this.Visit(methodCall.Arguments.Last(), expressionResolution);
+
+                        sequenceStringLists.Add(ToStringEnumerable(evaluatedParams[0] is ExpressionResolution ? obj?.ParameterValue : evaluatedParams[0]));
+                        paramNames.Add(valueResolution.ParameterName);
+                        queries.Add(valueResolution.Query);
+                    }
+
+                    QueryParameters = QueryParameters ?? new Dictionary<string, object>();
+                    var finalQuery = "";
+                    for (var i = 0; i < sequenceStringLists.Count; i++)
+                    {
+                        var paramName = paramNames[i];
+                        var sequenceStrings = sequenceStringLists[i];
+                        if (i > 0)
+                            finalQuery += valueResolution.NodeType == ExpressionType.AndAlso ? " AND " : " OR ";
+
+                        QueryParameters[paramName] = string.Join(",", sequenceStrings ?? Enumerable.Empty<string>());
+
+                        finalQuery += $"FIND_IN_SET({queries[i]}, {paramNames[i]})";
+                    }
+
+                    return new ExpressionResolution
+                    {
+                        Query = finalQuery,
+                        ParameterName = paramNames[0]
+                    };
+                }
+                else if (methodCall.Object.Type == typeof(string))
+                {
+                    ExpressionResolution valueResolution = null;
+                    List<string> queries = new List<string>();
+                    List<string> paramNames = new List<string>();
+                    List<string> matchStrings = new List<string>();
+
+                    valueResolution = this.Visit(methodCall.Arguments.Last(), expressionResolution);
+
+                    matchStrings.Add(evaluatedParams[0] is ExpressionResolution ? obj?.ParameterValue?.ToString() : evaluatedParams[0]?.ToString());
+                    paramNames.Add(obj.ParameterName);
+                    queries.Add(obj.Query);
+
+                    QueryParameters = QueryParameters ?? new Dictionary<string, object>();
+                    var finalQuery = "";
+                    for (var i = 0; i < matchStrings.Count; i++)
+                    {
+                        var paramName = paramNames[i];
+                        var matchString = matchStrings[i];
+                        if (i > 0)
+                            finalQuery += valueResolution.NodeType == ExpressionType.AndAlso ? " AND " : " OR ";
+
+                        QueryParameters[paramName] = $"%{matchString}%";
+
+                        finalQuery += $"{queries[i]} LIKE {paramNames[i]}";
+                    }
+
+                    return new ExpressionResolution
+                    {
+                        Query = finalQuery,
+                        ParameterName = paramNames[0]
+                    };
+                }
+            }
+
+            if (methodCall.Method.Name == nameof(string.IsNullOrEmpty) || methodCall.Method.Name == nameof(string.IsNullOrWhiteSpace))
+            {
+                var valueResolution = this.Visit(methodCall.Arguments[0], expressionResolution);
+                var paramName = valueResolution.ParameterName;
+                
+                if (valueResolution.ParameterValue != null)
+                {
+                    QueryParameters = QueryParameters ?? new Dictionary<string, object>();
+                    QueryParameters[paramName] = valueResolution.ParameterValue;
+                }
+                
+                return new ExpressionResolution
+                {
+                    Query = $"({valueResolution.Query} IS NULL OR {valueResolution.Query} = '')",
+                    ParameterName = paramName
+                };
+            }
+
+            // General invocation (avoid passing Expression[])
+            var target = methodCall.Method.IsStatic ? null : obj?.ParameterValue;
+            var result = methodCall.Method.Invoke(target, evaluatedParams.ToArray());
+
+            return new ExpressionResolution { ParameterValue = result, Query = obj?.Query, TableAlias = obj?.TableAlias };
+        }
+
+        private IEnumerable<string> ToStringEnumerable(object sequence)
+        {
+            if (sequence == null)
+                return Enumerable.Empty<string>();
+
+            var enumerable = sequence as IEnumerable;
+            if (enumerable == null)
+                return Enumerable.Empty<string>();
+
+            var list = new List<string>();
+            foreach (var item in enumerable)
+            {
+                list.Add(item?.ToString());
+            }
+            return list;
         }
 
         protected virtual List<object> VisitExpressionList(ReadOnlyCollection<Expression> original, ExpressionResolution expressionResolution)
@@ -282,9 +473,31 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
 
             for (var i = 0; i < originalCount; i++)
             {
-                var currentExpression = this.Visit(original[i], expressionResolution);
-
-                list.Add(currentExpression.ParameterValue);
+                if (original[i] is LambdaExpression lambda)
+                {
+                    if (lambda.Body is BinaryExpression || lambda.Body is MethodCallExpression)
+                    {
+                        expressionResolution = expressionResolution ?? new ExpressionResolution();
+                        expressionResolution.ParameterValue = list;
+                        var bodyResolution = this.Visit(lambda.Body, expressionResolution);
+                        list.Add(bodyResolution);
+                    }
+                    else
+                    {
+                        list.Add(lambda.Compile());
+                    }
+                }
+                else if ((original[i] is MemberExpression memberExpression) && memberExpression.Member.MemberType == MemberTypes.Property)
+                {
+                    var listItemResolution = this.Visit(original[i], expressionResolution);
+                    list.Add(listItemResolution);
+                }
+                else
+                {
+                    var listItemResolution = this.Visit(original[i], expressionResolution);
+                    list.Add(listItemResolution?.ParameterValue);
+                    //list.Add(this.Visit(original[i], expressionResolution));
+                }
             }
 
             return list;
@@ -292,7 +505,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
 
         /*
         protected virtual MemberAssignment VisitMemberAssignment(MemberAssignment memberAssignment)
-        {
+                {
             var e = this.Visit(memberAssignment.Expression);
 
             if (e != memberAssignment.Expression)
@@ -372,7 +585,7 @@ namespace SimpleRelm.RelmInternal.Helpers.Expressions
             }
 
             if (list != null)
-                return list;
+            return list;
 
             return original;
         }

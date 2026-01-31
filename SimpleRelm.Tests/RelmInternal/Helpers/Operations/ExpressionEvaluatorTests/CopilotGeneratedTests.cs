@@ -56,18 +56,16 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         {
             // Arrange
             Expression<Func<TestModel, bool>> expression = x => x.Id == 5;
-            var commandExpression = new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                Command.Where,
-                new List<IRelmExecutionCommand>
+            var commandExpression = new List<IRelmExecutionCommand>
                 {
                     new RelmExecutionCommand(Command.Where, expression)
-                });
+                };
 
             // Act
-            var sql = evaluator.EvaluateWhere(commandExpression, queryParameters);
+            var sql = evaluator.EvaluateWhereNew(commandExpression, queryParameters);
 
             // Assert
-            Assert.Equal(" WHERE ( a.`id` = @_Id_1_ )", sql);
+            Assert.Equal(" WHERE (  ( a.`id` = @_Id_1_ )  ) ", sql);
             Assert.Single(queryParameters);
             Assert.Equal(5, queryParameters["@_Id_1_"]);
         }
@@ -77,18 +75,16 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         {
             // Arrange
             Expression<Func<TestModel, bool>> expression = x => x.Name == "Test" && x.Status == TestEnum.Active;
-            var commandExpression = new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                Command.Where,
-                new List<IRelmExecutionCommand>
+            var commandExpression = new List<IRelmExecutionCommand>
                 {
                     new RelmExecutionCommand(Command.Where, expression)
-                });
+                };
 
             // Act
-            var sql = evaluator.EvaluateWhere(commandExpression, queryParameters);
+            var sql = evaluator.EvaluateWhereNew(commandExpression, queryParameters);
 
             // Assert
-            var expectedSql = " WHERE ( a.`name` = @_Name_1_    ) AND (  a.`status` = @_Status_1_ )";
+            var expectedSql = " WHERE (  ( (a.`name` = @_Name_1_) AND (a.`status` = @_Status_1_) )  ) ";
             Assert.Equal(expectedSql, sql);
             Assert.Equal(2, queryParameters.Count);
             Assert.Equal("Test", queryParameters["@_Name_1_"]);
@@ -96,22 +92,41 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         }
 
         [Fact]
-        public void EvaluateWhere_WithMethodCall_ReturnsCorrectSql()
+        public void EvaluateWhere_WithContainsMethodCall_StringLiteral_ReturnsCorrectSql()
         {
             // Arrange
             Expression<Func<TestModel, bool>> expression = x => x.Name.Contains("Test");
-            var commandExpression = new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                Command.Where,
-                new List<IRelmExecutionCommand>
+            var commandExpression = new List<IRelmExecutionCommand>
                 {
                     new RelmExecutionCommand(Command.Where, expression)
-                });
+                };
 
             // Act
-            var sql = evaluator.EvaluateWhere(commandExpression, queryParameters);
+            var sql = evaluator.EvaluateWhereNew(commandExpression, queryParameters);
 
             // Assert
-            var expectedSql = " WHERE ( a.`name` LIKE @_Name_1_ )";
+            var expectedSql = " WHERE (  ( a.`name` LIKE @_Name_1_ )  ) ";
+            Assert.Equal(expectedSql, sql);
+            Assert.Single(queryParameters);
+            Assert.Equal("%Test%", queryParameters["@_Name_1_"]);
+        }
+
+        [Fact]
+        public void EvaluateWhere_WithContainsMethodCall_Variable_ReturnsCorrectSql()
+        {
+            // Arrange
+            var searchTerm = "Test";
+            Expression<Func<TestModel, bool>> expression = x => x.Name.Contains(searchTerm);
+            var commandExpression = new List<IRelmExecutionCommand>
+                {
+                    new RelmExecutionCommand(Command.Where, expression)
+                };
+
+            // Act
+            var sql = evaluator.EvaluateWhereNew(commandExpression, queryParameters);
+
+            // Assert
+            var expectedSql = " WHERE (  ( a.`name` LIKE @_Name_1_ )  ) ";
             Assert.Equal(expectedSql, sql);
             Assert.Single(queryParameters);
             Assert.Equal("%Test%", queryParameters["@_Name_1_"]);
@@ -122,18 +137,16 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         {
             // Arrange
             Expression<Func<TestModel, bool>> expression = x => !string.IsNullOrEmpty(x.Name);
-            var commandExpression = new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                Command.Where,
-                new List<IRelmExecutionCommand>
+            var commandExpression = new List<IRelmExecutionCommand>
                 {
                     new RelmExecutionCommand(Command.Where, expression)
-                });
+                };
 
             // Act
-            var sql = evaluator.EvaluateWhere(commandExpression, queryParameters);
+            var sql = evaluator.EvaluateWhereNew(commandExpression, queryParameters);
 
             // Assert
-            var expectedSql = " WHERE ( a.`name` IS NOT NULL )";
+            var expectedSql = " WHERE (  ( NOT ((a.`name` IS NULL OR a.`name` = '')) )  ) ";
             Assert.Equal(expectedSql, sql);
             Assert.Empty(queryParameters);
         }
@@ -143,18 +156,16 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         {
             // Arrange
             Expression<Func<TestModel, bool>> expression = x => x.Status == TestEnum.Inactive;
-            var commandExpression = new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                Command.Where,
-                new List<IRelmExecutionCommand>
+            var commandExpression = new List<IRelmExecutionCommand>
                 {
                     new RelmExecutionCommand(Command.Where, expression)
-                });
+                };
 
             // Act
-            var sql = evaluator.EvaluateWhere(commandExpression, queryParameters);
+            var sql = evaluator.EvaluateWhereNew(commandExpression, queryParameters);
 
             // Assert
-            var expectedSql = " WHERE ( a.`status` = @_Status_1_ )";
+            var expectedSql = " WHERE (  ( a.`status` = @_Status_1_ )  ) ";
             Assert.Equal(expectedSql, sql);
             Assert.Single(queryParameters);
             Assert.Equal(TestEnum.Inactive, queryParameters["@_Status_1_"]);
@@ -243,18 +254,16 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         {
             // Arrange
             Expression<Func<TestModel, bool>> expression = x => x.Name == "Test" || x.Id > 100;
-            var commandExpression = new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                Command.Where,
-                new List<IRelmExecutionCommand>
+            var commandExpression = new List<IRelmExecutionCommand>
                 {
                     new RelmExecutionCommand(Command.Where, expression)
-                });
+                };
 
             // Act
-            var sql = evaluator.EvaluateWhere(commandExpression, queryParameters);
+            var sql = evaluator.EvaluateWhereNew(commandExpression, queryParameters);
 
             // Assert
-            var expectedSql = " WHERE ( a.`name` = @_Name_1_     ) OR ( a.`id` > @_Id_1_ ))";
+            var expectedSql = " WHERE (  ( (a.`name` = @_Name_1_) OR (a.`id` > @_Id_1_) )  ) ";
             Assert.Equal(expectedSql, sql);
             Assert.Equal(2, queryParameters.Count);
             Assert.Equal("Test", queryParameters["@_Name_1_"]);
@@ -266,18 +275,16 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
         {
             // Arrange
             Expression<Func<TestModel, bool>> expression = x => (x.Name == "Test" && x.Id > 100) || x.Status == TestEnum.Active;
-            var commandExpression = new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                Command.Where,
-                new List<IRelmExecutionCommand>
+            var commandExpression = new List<IRelmExecutionCommand>
                 {
                     new RelmExecutionCommand(Command.Where, expression)
-                });
+                };
 
             // Act
-            var sql = evaluator.EvaluateWhere(commandExpression, queryParameters);
+            var sql = evaluator.EvaluateWhereNew(commandExpression, queryParameters);
 
             // Assert
-            var expectedSql = " WHERE ( ( a.`name` = @_Name_1_ ) AND ( a.`id` > @_Id_1_ ) ) OR ( a.`status` = @_Status_1_ ))";
+            var expectedSql = " WHERE (  ( ((a.`name` = @_Name_1_) AND (a.`id` > @_Id_1_)) OR (a.`status` = @_Status_1_) )  ) ";
             Assert.Equal(expectedSql, sql);
             Assert.Equal(3, queryParameters.Count);
             Assert.Equal("Test", queryParameters["@_Name_1_"]);
@@ -338,18 +345,16 @@ namespace SimpleRelm.Tests.RelmInternal.Helpers.Operations.ExpressionEvaluatorTe
             // Arrange
             var values = new List<int> { 1, 2, 3 };
             Expression<Func<TestModel, bool>> expression = x => values.Contains(x.Id);
-            var commandExpression = new KeyValuePair<Command, List<IRelmExecutionCommand>>(
-                Command.Where,
-                new List<IRelmExecutionCommand>
+            var commandExpression = new List<IRelmExecutionCommand>
                 {
                     new RelmExecutionCommand(Command.Where, expression)
-                });
+                };
 
             // Act
-            var sql = evaluator.EvaluateWhere(commandExpression, queryParameters);
+            var sql = evaluator.EvaluateWhereNew(commandExpression, queryParameters);
 
             // Assert
-            var expectedSql = " WHERE ( FIND_IN_SET(a.`id`, @_Id_1_) )";
+            var expectedSql = " WHERE (  ( FIND_IN_SET(a.`id`, @_Id_1_) )  ) ";
             Assert.Equal(expectedSql, sql);
             Assert.Single(queryParameters);
             Assert.Equal("1,2,3", queryParameters["@_Id_1_"]);

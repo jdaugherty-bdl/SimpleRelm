@@ -21,8 +21,8 @@ namespace SimpleRelm.Quickstart
             var enumInitializedContext = new ExampleContext(ConnectionStringTypes.ExampleContextDatabase, autoOpenConnection: true, autoOpenTransaction: false, allowUserVariables: false, convertZeroDateTime: false, lockWaitTimeoutSeconds: 0);
             var connectionInitializedContext = new ExampleContext(exampleConnection, autoOpenConnection: true, autoOpenTransaction: false, allowUserVariables: false, convertZeroDateTime: false, lockWaitTimeoutSeconds: 0);
             var connectionTransactionInitializedContext = new ExampleContext(exampleConnection, exampleConnection.BeginTransaction(), autoOpenConnection: true, allowUserVariables: false, convertZeroDateTime: false, lockWaitTimeoutSeconds: 0);
-            var optionsBuilderInitializedContext = new ExampleContext(new RelmContextOptionsBuilder("name=ExampleContextDatabase"), autoOpenConnection: true, autoOpenTransaction: false, allowUserVariables: false, convertZeroDateTime: false, lockWaitTimeoutSeconds: 0);
-            var connectionStringInitializedContext = new ExampleContext(new RelmContextOptionsBuilder("example_server", "example_database", "example_user", "example_password"), autoOpenConnection: true, autoOpenTransaction: false, allowUserVariables: false, convertZeroDateTime: false, lockWaitTimeoutSeconds: 0);
+            var optionsBuilderInitializedContext = new ExampleContext(new RelmContextOptionsBuilder("name=ExampleContextDatabase"));
+            var connectionStringInitializedContext = new ExampleContext(new RelmContextOptionsBuilder("example_server", "example_database", "example_user", "example_password"));
 
             var autoSelectInitializedQuickContext = new ExampleQuickContext(autoOpenConnection: true, autoOpenTransaction: false, allowUserVariables: false, convertZeroDateTime: false, lockWaitTimeoutSeconds: 0);
             var enumInitializedQuickContext = new ExampleQuickContext(ConnectionStringTypes.ExampleContextDatabase, autoOpenConnection: true, autoOpenTransaction: false, allowUserVariables: false, convertZeroDateTime: false, lockWaitTimeoutSeconds: 0);
